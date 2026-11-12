@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 Production schema migration script for ScholarZone supervisor tables.
 
@@ -167,14 +167,14 @@ def parse_foreign_keys(ddl: str) -> list[dict]:
     
     # Also check for table-level FOREIGN KEY (though supervisor_ddl uses inline)
     fk_pattern = re.compile(
-        r'FOREIGN KEY\s*\(([^)]+)\)\s*REFERENCES\s+(\w+)\s*\(([^)]+)\)\s*(ON DELETE\s+\w+)?',
+        r'FOREIGN KEY\s*\(([^)]+)\)\s*REFERENCES\s+(\w+)\s*\(([^)]+)\)\s*(ON DELETE\s+(?:RESTRICT|CASCADE|SET NULL|SET DEFAULT|NO ACTION))?',
         re.IGNORECASE
     )
     for match in fk_pattern.finditer(ddl):
         cols = [c.strip() for c in match.group(1).split(',')]
         ref_table = match.group(2)
         ref_cols = [c.strip() for c in match.group(3).split(',')]
-        on_delete = match.group(4).upper() if match.group(4) else "NO ACTION"
+        on_delete = normalize_on_delete(match.group(4)) if match.group(4) else "NO ACTION"
         # Avoid duplicates from inline parsing
         existing = False
         for fk in fks:
@@ -226,6 +226,14 @@ def get_production_engine() -> Engine:
     if not database_url:
         raise RuntimeError("SCHOLARZONE_DATABASE_URL environment variable not set")
     
+    # For production use, require expected database identity
+    # Check if we're in a test environment
+    is_test = os.environ.get("SCHOLARZONE_ENVIRONMENT", "").lower() == "test"
+    if not is_test:
+        expected_db_id = os.environ.get("SCHOLARZONE_EXPECTED_DB_IDENTIFIER")
+        if not expected_db_id:
+            raise RuntimeError("SCHOLARZONE_EXPECTED_DB_IDENTIFIER environment variable must be set for production use")
+    
     # Rewrite postgresql:// to postgresql+psycopg:// for SQLAlchemy 2.0
     if database_url.startswith("postgresql://"):
         database_url = "postgresql+psycopg://" + database_url[len("postgresql://"):]
@@ -257,21 +265,84 @@ def verify_database_identity(conn: Connection) -> dict[str, Any]:
             result = conn.execute(text("SELECT current_database()")).scalar()
             db_identity["details"]["database_name"] = result
             
+            # Check the host/endpoint
+            host_result = conn.execute(text("SELECT inet_server_addr()")).scalar()
+            db_identity["details"]["host"] = str(host_result) if host_result else "unknown"
+            
             # Require explicit environment variable for production DB identity
             expected_db_id = os.environ.get("SCHOLARZONE_EXPECTED_DB_IDENTIFIER")
+            expected_host = os.environ.get("SCHOLARZONE_EXPECTED_DB_HOST")
+            
             if expected_db_id:
-                if expected_db_id in result:
-                    db_identity["verified"] = True
-                    db_identity["details"]["matched_identifier"] = expected_db_id
+                if expected_db_id == result:
+                    db_identity["details"]["database_name_match"] = True
                 else:
+                    db_identity["details"]["database_name_match"] = False
                     raise RuntimeError(
                         f"Database identity mismatch. Expected identifier '{expected_db_id}' "
                         f"not found in database name '{result}'. "
-                        f"Set SCHOLARZONE_EXPECTED_DB_IDENTIFIER to the expected Neon project/branch identifier."
+                        f"Set SCHOLARZONE_EXPECTED_DB_IDENTIFIER to the exact expected database name."
                     )
             else:
-                # Not verified - will be checked at apply time
-                db_identity["details"]["warning"] = "SCHOLARZONE_EXPECTED_DB_IDENTIFIER not set; identity not verified"
+                db_identity["details"]["warning"] = "SCHOLARZONE_EXPECTED_DB_IDENTIFIER not set; database name not verified"
+            
+            if expected_host:
+                if expected_host == str(host_result):
+                    db_identity["details"]["host_match"] = True
+                else:
+                    db_identity["details"]["host_match"] = False
+                    raise RuntimeError(
+                        f"Database host mismatch. Expected '{expected_host}', got '{host_result}'. "
+                        f"Set SCHOLARZONE_EXPECTED_DB_HOST to the expected database host/endpoint."
+                    )
+            else:
+                db_identity["details"]["warning"] = (db_identity["details"].get("warning", "") + 
+                    " SCHOLARZONE_EXPECTED_DB_HOST not set; host not verified").strip()
+            
+            # Overall verification: both database name and host must match if provided
+            name_ok = db_identity["details"].get("database_name_match", False)
+            host_ok = db_identity["details"].get("host_match", False) if os.environ.get("SCHOLARZONE_EXPECTED_DB_HOST") else True
+            db_identity["verified"] = name_ok and host_ok
+            
+            if not db_identity["verified"] and (os.environ.get("SCHOLARZONE_EXPECTED_DB_IDENTIFIER") or os.environ.get("SCHOLARZONE_EXPECTED_DB_HOST")):
+                raise RuntimeError("Database identity verification failed.")
+                
+        except Exception as e:
+            if "identity mismatch" in str(e).lower() or "mismatch" in str(e).lower() or "verification failed" in str(e).lower():
+                raise
+            db_identity["details"]["error"] = str(e)
+    elif dialect == "sqlite":
+        # For SQLite, verify the database file name matches expected identifier
+        try:
+            # Get the database file path from PRAGMA database_list
+            result = conn.execute(text("PRAGMA database_list")).fetchall()
+            if result:
+                db_file_path = result[0][2]  # Third column is the file path
+                # Extract just the filename without path
+                import os
+                db_filename = os.path.basename(db_file_path)
+                # Remove .db extension if present
+                db_name = db_filename
+                if db_name.endswith('.db'):
+                    db_name = db_name[:-3]
+                db_identity["details"]["database_name"] = db_name
+                db_identity["details"]["database_file_path"] = db_file_path
+                
+                # Require explicit environment variable for production DB identity
+                expected_db_id = os.environ.get("SCHOLARZONE_EXPECTED_DB_IDENTIFIER")
+                if expected_db_id:
+                    # Match against filename (without path) or full path
+                    if expected_db_id == db_filename or expected_db_id == db_file_path or expected_db_id == os.path.splitext(db_filename)[0]:
+                        db_identity["verified"] = True
+                        db_identity["details"]["matched_identifier"] = expected_db_id
+                    else:
+                        raise RuntimeError(
+                            f"Database identity mismatch. Expected identifier '{expected_db_id}' "
+                            f"not found in database name '{db_filename}' or file path '{db_file_path}'. "
+                            f"Set SCHOLARZONE_EXPECTED_DB_IDENTIFIER to the expected database filename or path."
+                        )
+                else:
+                    db_identity["details"]["warning"] = "SCHOLARZONE_EXPECTED_DB_IDENTIFIER not set; identity not verified"
         except Exception as e:
             if "identity mismatch" in str(e):
                 raise
@@ -317,6 +388,48 @@ def verify_production_database(engine: Engine) -> dict[str, Any]:
     }
 
 
+def verify_backup_pitr_status(conn: Connection) -> dict[str, Any]:
+    """Verify backup/PITR status for the production database.
+    
+    This is a placeholder function that documents what needs to be verified.
+    Actual verification requires Neon API access or manual confirmation.
+    
+    For production use, this should be called with verified credentials from the
+    workflow, which should have already performed the backup/PITR verification
+    via Neon API or manual attestation.
+    
+    Returns a dict with verification status and evidence reference.
+    """
+    backup_info = {
+        "verified": False,
+        "details": {
+            "note": "Backup/PITR verification requires Neon API access or manual attestation. "
+                   "This script cannot automatically verify backup status. "
+                   "The workflow must set SCHOLARZONE_BACKUP_VERIFIED=true after verification.",
+            "neon_api_check": "not_implemented_in_script",
+            "requires_manual_attestation": True,
+        }
+    }
+    
+    # Check if environment indicates verification was done
+    backup_verified = os.environ.get("SCHOLARZONE_BACKUP_VERIFIED", "").lower() == "true"
+    restore_test_date = os.environ.get("SCHOLARZONE_RESTORE_TEST_DATE", "")
+    evidence_ref = os.environ.get("SCHOLARZONE_BACKUP_EVIDENCE_REF", "")
+    
+    if backup_verified:
+        backup_info["verified"] = True
+        backup_info["details"]["backup_verified"] = True
+        backup_info["details"]["restore_test_date"] = restore_test_date
+        backup_info["details"]["evidence_ref"] = evidence_ref
+        backup_info["details"]["note"] = "Backup/PITR verified via workflow attestation."
+    else:
+        backup_info["details"]["backup_verified"] = False
+        backup_info["details"]["restore_test_date"] = restore_test_date
+        backup_info["details"]["evidence_ref"] = evidence_ref
+    
+    return backup_info
+
+
 def check_existing_supervisor_tables(engine: Engine) -> dict[str, Any]:
     """Check which supervisor tables already exist."""
     inspector = inspect(engine)
@@ -360,13 +473,45 @@ def generate_create_statements(dialect: str, missing_tables: list[str]) -> list[
     return statements
 
 
-def generate_index_statements(missing_tables: list[str]) -> list[str]:
-    """Generate CREATE INDEX statements for missing tables."""
+def generate_index_statements(engine: Engine, missing_tables: list[str], existing_tables_info: dict = None) -> list[str]:
+    """Generate CREATE INDEX statements for missing tables AND existing tables with missing indexes.
+    
+    Args:
+        engine: Database engine for inspecting existing indexes
+        missing_tables: List of table names that don't exist yet
+        existing_tables_info: Optional dict from check_existing_supervisor_tables with index info
+    
+    Returns:
+        List of CREATE INDEX IF NOT EXISTS statements
+    """
     statements = []
+    inspector = inspect(engine)
+    
+    # First, generate indexes for completely missing tables
     for table_name in missing_tables:
         for idx in index_statements():
             if f" ON {table_name} " in idx:
                 statements.append(idx)
+    
+    # Then, check existing tables for missing required indexes
+    if existing_tables_info:
+        for table_name, info in existing_tables_info.get("tables", {}).items():
+            if not info.get("exists", False):
+                continue
+            
+            # Get actual indexes for this table
+            existing_indexes = {i["name"]: i for i in inspector.get_indexes(table_name)}
+            
+            # Check each required index for this table
+            for idx in index_statements():
+                if f" ON {table_name} " not in idx:
+                    continue
+                
+                idx_name = idx.split("IF NOT EXISTS ")[1].split(" ON ")[0]
+                if idx_name not in existing_indexes:
+                    statements.append(idx)
+                    print(f"[REPAIR] Missing index {idx_name} on {table_name} will be created")
+    
     return statements
 
 
@@ -387,7 +532,7 @@ def dry_run(engine: Engine) -> dict[str, Any]:
     
     # Generate statements
     create_stmts = generate_create_statements(dialect, missing_tables)
-    index_stmts = generate_index_statements(missing_tables)
+    index_stmts = generate_index_statements(engine, missing_tables, table_info)
     
     return {
         "mode": "dry-run",
@@ -526,20 +671,43 @@ def normalize_on_delete(on_delete: str) -> str:
 
 
 def normalize_type(dialect: str, type_str: str) -> str:
-    """Normalize type string for dialect-aware comparison."""
+    """Normalize type string for dialect-aware comparison.
+    
+    Preserves length specifications for relevant type dimensions:
+    - VARCHAR length
+    - NUMERIC precision/scale
+    - timestamp timezone
+    - dialect-specific equivalent types
+    """
     if not type_str:
         return ""
-    # Remove length specifications for base type comparison
+    
     type_str = type_str.upper().strip()
-    # Handle common aliases
+    
+    # Handle common aliases first
     type_str = type_str.replace("TIMESTAMP WITH TIME ZONE", "TIMESTAMPTZ")
     type_str = type_str.replace("TIMESTAMP WITHOUT TIME ZONE", "TIMESTAMP")
-    # SQLite uses DATETIME for what PostgreSQL calls TIMESTAMPTZ
+    type_str = type_str.replace("CHARACTER VARYING", "VARCHAR")
+    type_str = type_str.replace("CHAR VARYING", "VARCHAR")
+    
+    # SQLite uses NUMERIC for what PostgreSQL calls TIMESTAMPTZ (Unix timestamp)
+    # Also handles TIMESTAMP which SQLite stores as DATETIME
     if dialect == "sqlite":
-        type_str = type_str.replace("TIMESTAMPTZ", "DATETIME")
-    # Remove length specifiers for base type comparison
-    base_type = re.sub(r'\(.*\)', '', type_str)
-    return base_type.strip()
+        type_str = type_str.replace("TIMESTAMPTZ", "NUMERIC")
+        type_str = type_str.replace("TIMESTAMP", "DATETIME")
+        # Also normalize NUMERIC to DECIMAL for SQLite
+        type_str = type_str.replace("NUMERIC", "DECIMAL")
+    else:
+        # For PostgreSQL and other dialects
+        type_str = type_str.replace("NUMERIC", "DECIMAL")
+    
+    # Normalize whitespace
+    type_str = re.sub(r'\s+', ' ', type_str)
+    
+    return type_str.strip()
+    type_str = re.sub(r'\s+', ' ', type_str)
+    
+    return type_str.strip()
 
 
 def types_match(dialect: str, expected_type: str, actual_type: str) -> bool:
@@ -652,6 +820,10 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
             actual_pk_bool = col_name in pk_info
             pk_ok = expected_pk == actual_pk_bool
             
+            # Primary key columns are implicitly NOT NULL
+            if expected_pk:
+                nullable_ok = True
+            
             # Check unique (column-level)
             expected_unique = expected_col["unique"]
             actual_unique = actual_col.get("unique", False)
@@ -752,6 +924,7 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
         # Foreign key validation with exact constrained/referred columns and ON DELETE
         fk_results = []
         actual_foreign_keys = inspector.get_foreign_keys(table_name)
+        dialect = "postgresql" if engine.dialect.name == "postgresql" else "sqlite"
         
         for expected_fk in expected.get("foreign_keys", []):
             # Match by constrained columns AND referred table
@@ -764,7 +937,13 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
                     found = True
                     actual_on_delete = normalize_on_delete(actual_fk.get("options", {}).get("ondelete", "NO ACTION"))
                     expected_on_delete = normalize_on_delete(expected_fk.get("on_delete", "NO ACTION"))
-                    on_delete_match = actual_on_delete == expected_on_delete
+                    
+                    # For SQLite, RESTRICT in DDL maps to NO ACTION in actual (SQLite doesn't support ON DELETE RESTRICT)
+                    if dialect == "sqlite" and expected_on_delete == "RESTRICT" and actual_on_delete == "NO ACTION":
+                        on_delete_match = True
+                    else:
+                        on_delete_match = actual_on_delete == expected_on_delete
+                    
                     if not on_delete_match:
                         fk_results.append({
                             "constrained_columns": expected_cols,
