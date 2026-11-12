@@ -101,11 +101,21 @@ export function deriveFundingFacets(scholarships) {
 
   for (const s of scholarships) {
     const fundingText = (s.funding || '').toLowerCase();
-    if (!fundingText) continue;
-
+    const fullyFunded = s.fully_funded;
+    
     for (const bucket of fundingBuckets) {
       const excluded = bucket.exclude.some(e => fundingText.includes(e));
       if (excluded) continue;
+      
+      // For "Fully Funded", use the authoritative boolean
+      if (bucket.value === 'Fully Funded') {
+        if (fullyFunded === true) {
+          const entry = counts.get(bucket.value);
+          if (entry) entry.count++;
+        }
+        continue;
+      }
+      
       const included = bucket.keywords.some(k => fundingText.includes(k));
       if (included) {
         const entry = counts.get(bucket.value);
@@ -113,10 +123,6 @@ export function deriveFundingFacets(scholarships) {
       }
     }
   }
-
-  // Also respect the fully_funded boolean field for "Fully Funded" count
-  // but only for records that actually have fully_funded === true
-  // The text-based matching above should already capture this
 
   // Filter to buckets with at least one record, sort by label
   return Array.from(counts.values())

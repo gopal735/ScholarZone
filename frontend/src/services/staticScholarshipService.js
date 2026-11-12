@@ -2,6 +2,7 @@ import { readFundingDetails } from '../utils/scholarshipDetail'
 import { classifyLifecycle, parseDate } from '../utils/lifecycle'
 import { getScholarshipStatus, matchesDegreeFilter, matchesFundingFilter } from '../utils/scholarshipPresentation'
 import { deriveAllFacets } from '../utils/filterFacets'
+import { canonicalCountry } from '../utils/countryTaxonomy'
 
 /* ═══════════════════════════════════════════════════════════════════
    Static scholarship service — the API-independent catalogue
@@ -128,6 +129,15 @@ function statusOf(record) {
 
 /** Extract deadline month (1-12) from a record, or null if not available. */
 function getDeadlineMonth(record) {
+  // Use deadline_date directly for month extraction to avoid timezone/precision issues
+  // The deadline_date is in ISO format (YYYY-MM-DD or YYYY-MM)
+  if (record.deadline_date) {
+    const match = record.deadline_date.match(/^\d{4}-(\d{2})/);
+    if (match) {
+      return parseInt(match[1], 10);
+    }
+  }
+  // Fallback to parseDate for records without deadline_date
   const parsedDeadline = parseDate(record, 'deadline').date
   return parsedDeadline ? parsedDeadline.getUTCMonth() + 1 : null
 }
@@ -135,6 +145,11 @@ function getDeadlineMonth(record) {
 /** Get status key from a record (open, closing-soon, closed, upcoming). */
 function getStatusKey(record) {
   return statusOf(record).className
+}
+
+/** Get canonical country for a record, matching backend canonical_country logic. */
+function getCanonicalCountry(record) {
+  return canonicalCountry(record.country)
 }
 
 // Use shared filter matching functions from scholarshipPresentation
@@ -316,7 +331,8 @@ export async function fetchScholarshipsFromSnapshot(query = {}) {
   }
 
   if (country && country !== 'All') {
-    records = records.filter((record) => record.country === country)
+    const canonicalFilter = canonicalCountry(country)
+    records = records.filter((record) => getCanonicalCountry(record) === canonicalFilter)
   }
   if (degree && degree !== 'All') {
     records = records.filter((record) => matchesDegreeFilter(record.degree, degree))
@@ -366,7 +382,7 @@ export async function fetchScholarshipStatsFromSnapshot() {
 
   return {
     total: records.length,
-    countries: new Set(records.map((record) => record.country).filter(Boolean)).size,
+    countries: new Set(records.map((record) => getCanonicalCountry(record)).filter(Boolean)).size,
     fullyFunded,
     verified,
   }

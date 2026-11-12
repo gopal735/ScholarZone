@@ -183,7 +183,7 @@ export async function fetchScholarships(query = {}, options) {
       .then((payload) => ({
         items: Array.isArray(payload.items) ? payload.items.map(normalizeScholarship) : [],
         pagination: payload.pagination,
-        facets: payload.facets,
+        facets: normalizeFacets(payload.facets),
       }))
       // The API is the source of truth. When it cannot answer due to a
       // transient failure (network, timeout, 5xx), the catalogue is still
@@ -200,6 +200,17 @@ export async function fetchScholarships(query = {}, options) {
       })
 
   return dedupe(key, send, options?.signal)
+}
+
+/** Normalize facet keys from snake_case (API) to camelCase (frontend). */
+function normalizeFacets(facets) {
+  if (!facets) return null
+  return {
+    country: facets.country ?? [],
+    degree: facets.degree ?? [],
+    funding: facets.funding ?? [],
+    deadlineMonth: facets.deadlineMonth ?? facets.deadline_month ?? [],
+  }
 }
 
 /**
@@ -221,6 +232,7 @@ export async function fetchScholarshipsByLifecycle(query = {}, lifecycle = 'All'
     return {
       items: [],
       pagination: { page, limit, total: 0, total_pages: 1 },
+      facets: null,
     }
   }
 
@@ -238,6 +250,9 @@ export async function fetchScholarshipsByLifecycle(query = {}, lifecycle = 'All'
   }
   const firstPage = await fetchScholarships({ ...apiFilters, page: 1, limit: 100 }, options)
 
+  // Preserve facets from the first API response
+  const preservedFacets = firstPage.facets
+
   if (firstPage.fromSnapshot) {
     const snapshot = await fetchScholarshipsFromSnapshot({
       ...apiFilters,
@@ -248,6 +263,7 @@ export async function fetchScholarshipsByLifecycle(query = {}, lifecycle = 'All'
     return {
       ...snapshot,
       fromSnapshot: true,
+      facets: preservedFacets ?? snapshot.facets,
       ...(firstPage.staticMode ? { staticMode: true } : {}),
     }
   }
@@ -266,7 +282,7 @@ export async function fetchScholarshipsByLifecycle(query = {}, lifecycle = 'All'
       page,
       limit,
     })
-    return { ...snapshot, fromSnapshot: true }
+    return { ...snapshot, fromSnapshot: true, facets: preservedFacets ?? snapshot.facets }
   }
 
   const allItems = [firstPage, ...remainingPages].flatMap((result) => result.items)
@@ -281,6 +297,7 @@ export async function fetchScholarshipsByLifecycle(query = {}, lifecycle = 'All'
       total,
       total_pages: Math.max(1, Math.ceil(total / limit)),
     },
+    facets: preservedFacets,
   }
 }
 

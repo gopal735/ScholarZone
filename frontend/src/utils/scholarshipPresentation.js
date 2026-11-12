@@ -100,9 +100,10 @@ export function matchesFundingFilter(label, value, fullyFunded) {
   // Special handling for "Fully Funded" filter: respect the tri-state fully_funded field
   // fully_funded: true = confirmed, false = explicitly not, null = unknown
   if (key === 'fully funded') {
+    // Only records with fully_funded === true match the Fully Funded filter
     if (fullyFunded === true) return true
-    if (fullyFunded === false) return false
-    // If fully_funded is null/undefined, fall back to text matching
+    // false or null/undefined: excluded
+    return false
   }
   
   if (aspects) {

@@ -210,7 +210,10 @@ export default function ScholarshipList({ items, initialCountry }) {
           return
         }
 
-        setApiDirectory(directory)
+        setApiDirectory((prev) => ({
+          ...directory,
+          facets: directory.facets ?? prev?.facets ?? null,
+        }))
         // A snapshot answer is still a fallback, not a live directory. The
         // service tags it so the visitor is told which of the two they are
         // looking at: a catalogue that silently changes its provenance is
