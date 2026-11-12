@@ -141,6 +141,14 @@ def enforce_test_isolation(
         # Allow it to proceed without opt-in
         return
 
+    # Production mode must ALWAYS be refused first, regardless of opt-in
+    if environment == "production":
+        raise UnsafeTestDatabaseTarget(
+            "SCHOLARZONE_ENVIRONMENT=production: a test run must never resolve "
+            f"production settings. Set {OPT_IN_VARIABLE}=1 only for a deliberate, "
+            "informed run."
+        )
+
     if opt_in:
         # Opting in is allowed. Opting in quietly is not: the run that has set
         # this variable is by definition pointed at something that outlives it,
@@ -154,13 +162,6 @@ def enforce_test_isolation(
             file=__import__("sys").stderr,
         )
         return
-
-    if environment == "production":
-        raise UnsafeTestDatabaseTarget(
-            "SCHOLARZONE_ENVIRONMENT=production: a test run must never resolve "
-            f"production settings. Set {OPT_IN_VARIABLE}=1 only for a deliberate, "
-            "informed run."
-        )
 
     if database_url.startswith(("postgres://", "postgresql://")):
         raise UnsafeTestDatabaseTarget(

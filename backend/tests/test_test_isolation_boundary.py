@@ -332,6 +332,22 @@ class TestDisposableGitHubActionsPGTarget:
         assert out["returncode"] == 3
         assert out["result"]["raised"] == "UnsafeTestDatabaseTarget"
 
+    def test_production_mode_with_opt_in_is_rejected(self):
+        """Production mode with explicit opt-in is still rejected.
+        
+        The production environment must always be refused, even if
+        SCHOLARZONE_TEST_ALLOW_EXTERNAL_DB is set.
+        """
+        env = {
+            "SCHOLARZONE_ENVIRONMENT": "production",
+            "SCHOLARZONE_TEST_ALLOW_EXTERNAL_DB": "1",
+            "SCHOLARZONE_DATABASE_URL": "postgresql://user:pass@ep-neon.us-east-2.aws.neon.tech/db",
+        }
+        out = run_session(env)
+        assert out["returncode"] == 3
+        assert out["result"]["raised"] == "UnsafeTestDatabaseTarget"
+        assert "production" in out["result"]["message"].lower()
+
 
 class TestWorkingCatalogueIsRefused:
     def test_the_working_database_is_refused(self):

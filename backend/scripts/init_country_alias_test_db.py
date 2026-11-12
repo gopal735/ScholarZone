@@ -266,13 +266,57 @@ if __name__ == "__main__":
         "postgresql://test:test@localhost:5439/country_alias_test?sslmode=disable"
     )
     
-    # Verify we're using a test database
+    # Verify we're using a test database with strict URL validation
     db_url = os.environ["SCHOLARZONE_DATABASE_URL"]
-    if "country_alias_test" not in db_url:
+    
+    # Strict URL validation - parse and verify each component
+    from sqlalchemy.engine.url import make_url
+    from urllib.parse import parse_qs
+    
+    url = make_url(db_url)
+    
+    if url.get_backend_name() != "postgresql":
         raise RuntimeError(
-            f"SAFETY VIOLATION: This script must only run against the test database. "
-            f"Current URL: {db_url}"
+            f"SAFETY VIOLATION: This script must only run against PostgreSQL. "
+            f"Current dialect: {url.get_backend_name()}"
         )
+    
+    if url.host != "localhost":
+        raise RuntimeError(
+            f"SAFETY VIOLATION: This script must only run against localhost. "
+            f"Current host: {url.host}"
+        )
+    
+    if url.port != 5439:
+        raise RuntimeError(
+            f"SAFETY VIOLATION: This script must only run on port 5439. "
+            f"Current port: {url.port}"
+        )
+    
+    if url.database != "country_alias_test":
+        raise RuntimeError(
+            f"SAFETY VIOLATION: This script must only run against country_alias_test database. "
+            f"Current database: {url.database}"
+        )
+    
+    if url.username != "test":
+        raise RuntimeError(
+            f"SAFETY VIOLATION: This script must only run with username 'test'. "
+            f"Current username: {url.username}"
+        )
+    
+    # Check sslmode query parameter
+    query_string = str(url.query)
+    from urllib.parse import parse_qs
+    query = parse_qs(query_string)
+    sslmode = query.get("sslmode", [None])[0]
+    if sslmode != "disable":
+        raise RuntimeError(
+            f"SAFETY VIOLATION: This script must only run with sslmode=disable. "
+            f"Current sslmode: {sslmode}"
+        )
+    
+    print("All database safety checks passed.")
     
     # Clear cached database connections
     from app.database import reset_database_connections

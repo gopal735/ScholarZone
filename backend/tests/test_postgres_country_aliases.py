@@ -6,7 +6,7 @@ They are skipped unless SCHOLARZONE_TEST_POSTGRES=1 is set.
 
 import os
 import pytest
-from uuid import uuid4
+from unittest.mock import patch
 
 # Skip all tests in this module unless explicitly enabled
 pytestmark = pytest.mark.skipif(
@@ -45,44 +45,54 @@ class TestPostgresCountryAliasMatching:
         from app.seed import seed_database
         from sqlalchemy import text
         
-        # Create test client
-        client = TestClient(app)
-        client.__enter__()
+        # Patch seed_database to do nothing during test setup to avoid
+        # collisions with test data (canonical catalogue tries to insert id=15)
+        with patch("app.seed.seed_database", lambda: None):
+            # Create test client - this triggers lifespan which runs _run_init()
+            # but seed_database is patched to do nothing
+            client = TestClient(app)
+            client.__enter__()
         
         # Get session factory for direct DB access
+        from app.database import get_session_factory
         session_factory = get_session_factory()
         
-        # Seed test data with specific country aliases
+        # Now initialize the test database schema and seed test data
+        from app.database import init_database
+        init_database()
+        
         session = session_factory()
         with session:
+            from sqlalchemy import text
             # Clear existing test data
             session.execute(text("DELETE FROM scholarships WHERE official_source_url LIKE 'https://test.country.alias/%'"))
+            session.execute(text("DELETE FROM scholarships WHERE official_source_url LIKE 'https://test.deadline/%'"))
             session.commit()
             
             # Insert test records with various country aliases
             test_records = [
                 # Türkiye aliases
-                {"name": "Test Turkey 1", "country": "Türkiye", "degree_levels": "Master", "funding_type": "Fully Funded",
+                {"name": "Test Turkey Diacritic 1", "country": "Türkiye", "degree_levels": "Master", "funding_type": "Fully Funded",
                  "official_source_url": "https://test.country.alias/turkiye-1"},
-                {"name": "Test Turkey 2", "country": "Turkiye", "degree_levels": "PhD", "funding_type": "Stipend",
+                {"name": "Test Turkey ASCII 1", "country": "Turkiye", "degree_levels": "PhD", "funding_type": "Stipend",
                  "official_source_url": "https://test.country.alias/turkiye-2"},
-                {"name": "Test Turkey 3", "country": "Turkey", "degree_levels": "Master", "funding_type": "Tuition Fee Waiver",
+                {"name": "Test Turkey Canonical 1", "country": "Turkey", "degree_levels": "Master", "funding_type": "Tuition Fee Waiver",
                  "official_source_url": "https://test.country.alias/turkey-1"},
-                
+                 
                 # USA aliases
                 {"name": "Test USA 1", "country": "USA", "degree_levels": "Bachelor", "funding_type": "Fully Funded",
                  "official_source_url": "https://test.country.alias/usa-1"},
-                {"name": "Test USA 2", "country": "US", "degree_levels": "Master", "funding_type": "Stipend",
+                {"name": "Test US 1", "country": "US", "degree_levels": "Master", "funding_type": "Stipend",
                  "official_source_url": "https://test.country.alias/us-1"},
-                {"name": "Test USA 3", "country": "United States", "degree_levels": "PhD", "funding_type": "Fully Funded",
+                {"name": "Test USA 2", "country": "United States", "degree_levels": "PhD", "funding_type": "Fully Funded",
                  "official_source_url": "https://test.country.alias/us-2"},
-                
+                 
                 # UK aliases
                 {"name": "Test UK 1", "country": "UK", "degree_levels": "Master", "funding_type": "Fully Funded",
                  "official_source_url": "https://test.country.alias/uk-1"},
                 {"name": "Test UK 2", "country": "United Kingdom", "degree_levels": "Bachelor", "funding_type": "Tuition Fee Waiver",
                  "official_source_url": "https://test.country.alias/uk-2"},
-                
+                 
                 # Control: non-matching country
                 {"name": "Test Germany", "country": "Germany", "degree_levels": "Master", "funding_type": "Fully Funded",
                  "official_source_url": "https://test.country.alias/germany-1"},
@@ -90,13 +100,10 @@ class TestPostgresCountryAliasMatching:
             
             for record in test_records:
                 sch = Scholarship(
-                    name=record["name"],
                     title=record["name"],
                     country=record["country"],
                     degree=record["degree_levels"],
-                    degree_levels=record["degree_levels"],
                     funding=record["funding_type"],
-                    funding_type=record["funding_type"],
                     official_source_url=record["official_source_url"],
                     deadline_date=None,
                     deadline_precision="none",
@@ -284,13 +291,10 @@ class TestPostgresCountryAliasMatching:
             
             for record in test_records:
                 sch = Scholarship(
-                    name=record["name"],
                     title=record["name"],
                     country=record["country"],
                     degree=record["degree_levels"],
-                    degree_levels=record["degree_levels"],
                     funding=record["funding_type"],
-                    funding_type=record["funding_type"],
                     official_source_url=record["official_source_url"],
                     deadline_date=record.get("deadline_date"),
                     deadline_precision="exact" if record.get("deadline_date") else "none",
