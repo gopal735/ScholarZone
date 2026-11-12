@@ -6,7 +6,8 @@
     "timezone": "Asia/Dhaka",
     "branch": "feat/us-scholarship-catalogue-expansion-2027",
     "base_sha": "464dcc9802be1bd3d628e651cd33e3ae80129170",
-    "head_sha": "c6dba9d3493eac930bf0e74456dd8714ee3605cf",
+    "reconciliation_sha": "c6dba9d3493eac930bf0e74456dd8714ee3605cf",
+    "final_delivery_sha": "8e2b1f5bbe6c02cf8c3b8fc05a7e12a08c86ee7a",
     "researcher": "Kilo AI Assistant",
     "correction_date": "2026-11-12",
     "corrections_applied": [
@@ -122,13 +123,6 @@
   ],
   "monitoring_sources_2028": [
     {
-      "source_id": "MCDONALD-2028",
-      "institution": "MS International Federation",
-      "url": "https://www.msif.org/research/awards-grants-and-fellowships/mcdonald-fellowships",
-      "priority": "HIGH",
-      "notes": "Next round 2028; Europe-only hosts; verify 2028 application opening; DB ID 1381 pending correction"
-    },
-    {
       "source_id": "GATECH-STAMPS-2028",
       "institution": "Georgia Institute of Technology",
       "url": "https://stampsps.gatech.edu/",
@@ -178,10 +172,18 @@
       "notes": "International eligibility varies by partner; requires per-partner verification"
     }
   ],
+  "out_of_scope_followups": [
+    {
+      "source_id": "MCDONALD-2028",
+      "institution": "MS International Federation",
+      "url": "https://www.msif.org/research/awards-grants-and-fellowships/mcdonald-fellowships",
+      "priority": "HIGH",
+      "notes": "Europe-hosted (ECTRIMS partner institutions); out of USA-hosted catalogue scope. Next round 2028; verify 2028 application opening. DB ID 1381 (2027 insertion) pending controlled correction."
+    }
+  ],
   "resume_instructions": {
     "next_batch_id": "US-2028-BATCH-001",
     "priority_sources": [
-      "McDonald Fellowships 2028 (verify 2028 round opening)",
       "Rotary Peace Fellowship 2028-29 (application opens Feb 2027)",
       "Fulbright 2028-29 (country commissions open Aug 2027)",
       "Humphrey Fellowship 2028-29 (embassy calls Spring 2027)",
