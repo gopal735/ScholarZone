@@ -44,7 +44,7 @@ const scholarships = [
   {
     id: 3,
     title: 'Gamma Grant',
-    country: 'USA',
+    country: 'United States',
     degree: "Bachelor's",
     funding: 'Partially Funded',
     deadline: '2028-01-31',
@@ -58,7 +58,7 @@ const scholarships = [
   {
     id: 4,
     title: 'Delta Grant',
-    country: 'UK',
+    country: 'United Kingdom',
     degree: "Master's",
     funding: 'Tuition Fee Waiver',
     deadline: '2000-01-01',
@@ -84,14 +84,15 @@ const scholarships = [
 ]
 
 describe('ScholarshipList filters and sorting', () => {
-  it('starts with an empty search and unfiltered controls, with every deadline month available', () => {
+  it('starts with an empty search and unfiltered controls, with deadline months from data', () => {
     const { container } = render(<ScholarshipList items={scholarships} />)
 
     expect(screen.getByRole('searchbox', { name: 'Search scholarships by name' })).toHaveValue('')
     expect(screen.getByLabelText('Country')).toHaveValue('All')
     expect(screen.getByLabelText('Degree')).toHaveValue('All')
     expect(screen.getByLabelText('Funding')).toHaveValue('All')
-    expect(screen.getByLabelText('Deadline month').querySelectorAll('option')).toHaveLength(13)
+    // Deadline month dropdown now only shows months present in the data (Jan, Apr, Dec) + All
+    expect(screen.getByLabelText('Deadline month').querySelectorAll('option')).toHaveLength(4)
     expect(screen.getByLabelText('Deadline month')).toHaveValue('All')
     expect(screen.getByLabelText('Status')).toHaveValue('All')
     expect(screen.getByRole('button', { name: 'All Lifecycles' })).toHaveAttribute('aria-pressed', 'true')
@@ -123,8 +124,11 @@ describe('ScholarshipList filters and sorting', () => {
     expect(resultCount()).toBe(1)
     fireEvent.change(screen.getByLabelText('Deadline month'), { target: { value: 'All' } })
 
-    fireEvent.change(screen.getByLabelText('Status'), { target: { value: 'closed' } })
-    expect(resultCount()).toBe(1)
+    // Status filter no longer has 'closed' option (excluded from public catalogue)
+    fireEvent.change(screen.getByLabelText('Status'), { target: { value: 'open' } })
+    // Only 3 records have lifecycle "open" (Alpha, Beta, Gamma)
+    // Delta has past deadline -> "closed", Epsilon has no deadline -> "unknown"
+    expect(resultCount()).toBe(3)
     fireEvent.change(screen.getByLabelText('Status'), { target: { value: 'All' } })
 
     fireEvent.click(screen.getByRole('button', { name: 'Check deadline' }))

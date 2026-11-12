@@ -464,7 +464,7 @@ DEGREE_FILTER_BUCKETS: dict[str, tuple[str, ...]] = {
     "master": ("master",),
     "phd": ("phd", "ph.d", "doctoral", "doctorate"),
     "doctoral": ("phd", "ph.d", "doctoral", "doctorate"),
-    "postgraduate": ("master", "phd", "postgraduate"),
+    "postgraduate": ("postgraduate",),
     "postdoc": ("postdoctoral", "post-doc"),
 }
 

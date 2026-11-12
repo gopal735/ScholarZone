@@ -2,7 +2,9 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import ScholarshipCard from './ScholarshipCard'
 import { fetchScholarshipsByLifecycle } from '../services/scholarshipService'
 import { getScholarshipStatus, matchesDegreeFilter, matchesFundingFilter } from '../utils/scholarshipPresentation'
-import { classifyLifecycle, LIFECYCLE, parseDate } from '../utils/lifecycle'
+import { classifyLifecycle, LIFECYCLE } from '../utils/lifecycle'
+import { deriveAllFacets } from '../utils/filterFacets'
+import { canonicalCountry } from '../utils/countryTaxonomy'
 import './ScholarshipList.css'
 
 const PAGE_SIZE = 12
@@ -24,11 +26,11 @@ function compareNullableTimestamps(firstValue, secondValue, direction = 'asc') {
   }
 
   if (firstValue === null) {
-    return 1
+    return direction === 'asc' ? 1 : -1 // null sorts last in both directions
   }
 
   if (secondValue === null) {
-    return -1
+    return direction === 'asc' ? -1 : 1 // null sorts last in both directions
   }
 
   return direction === 'asc' ? firstValue - secondValue : secondValue - firstValue
@@ -78,7 +80,7 @@ function sortLocalScholarships(items, sortBy) {
         case 'name-desc':
           return secondTitle.localeCompare(firstTitle, undefined, { sensitivity: 'base' })
         case 'fully-funded':
-          return Number(matchesFundingFilter(second.scholarship.funding, 'Fully Funded')) - Number(matchesFundingFilter(first.scholarship.funding, 'Fully Funded'))
+          return Number(matchesFundingFilter(second.scholarship.funding, 'Fully Funded', second.scholarship.fully_funded)) - Number(matchesFundingFilter(first.scholarship.funding, 'Fully Funded', first.scholarship.fully_funded))
         case 'default':
         default:
           return compareNullableTimestamps(
@@ -96,36 +98,43 @@ function sortLocalScholarships(items, sortBy) {
 }
 
 function getLocalDeadlineMonth(scholarship) {
-  const parsedDeadline = parseDate(scholarship, 'deadline').date
-  return parsedDeadline ? parsedDeadline.getUTCMonth() + 1 : null
-}
+    // Use deadline_date directly as authoritative source (YYYY-MM-DD or YYYY-MM)
+    if (scholarship.deadline_date) {
+      const match = scholarship.deadline_date.match(/^\d{4}-(\d{2})/)
+      if (match) {
+        return parseInt(match[1], 10)
+      }
+    }
+    return null
+  }
 
 function filterLocalScholarships(items, { search, country, degree, funding, deadlineMonth, status, lifecycleFilter, sortBy }) {
-  const normalizedSearch = search.trim().toLowerCase()
-  const filteredItems = items.filter((scholarship) => {
-    const title = typeof scholarship.title === 'string' ? scholarship.title : ''
-    const searchableText = [title, scholarship.country, scholarship.degree, scholarship.funding, scholarship.description]
-      .filter((value) => typeof value === 'string')
-      .join(' ')
-      .toLowerCase()
-    const matchSearch = searchableText.includes(normalizedSearch)
-    const matchCountry = country === 'All' || scholarship.country === country
-    const matchDegree = matchesDegreeFilter(scholarship.degree, degree)
-    const matchFunding = matchesFundingFilter(scholarship.funding, funding)
-    const matchDeadlineMonth = deadlineMonth === 'All' || getLocalDeadlineMonth(scholarship) === Number(deadlineMonth)
-    const lifecycle = classifyLifecycle(scholarship)
-    const matchStatus = status === 'All' || (
-      status === 'closed'
-        ? lifecycle.status === LIFECYCLE.CLOSED
-        : getScholarshipStatus(scholarship).className === status
-    )
-    const matchLifecycle = lifecycleFilter === 'All' || lifecycle.status === lifecycleFilter
+    const normalizedSearch = search.trim().toLowerCase()
+    const canonicalFilterCountry = country !== 'All' ? canonicalCountry(country) : null
+    const filteredItems = items.filter((scholarship) => {
+      const title = typeof scholarship.title === 'string' ? scholarship.title : ''
+      const searchableText = [title, scholarship.country, scholarship.degree, scholarship.funding, scholarship.description]
+        .filter((value) => typeof value === 'string')
+        .join(' ')
+        .toLowerCase()
+      const matchSearch = searchableText.includes(normalizedSearch)
+      const matchCountry = country === 'All' || canonicalCountry(scholarship.country) === canonicalFilterCountry
+      const matchDegree = matchesDegreeFilter(scholarship.degree, degree)
+      const matchFunding = matchesFundingFilter(scholarship.funding, funding, scholarship.fully_funded)
+      const matchDeadlineMonth = deadlineMonth === 'All' || getLocalDeadlineMonth(scholarship) === Number(deadlineMonth)
+      const lifecycle = classifyLifecycle(scholarship)
+      const matchStatus = status === 'All' || (
+        status === 'closed'
+          ? lifecycle.status === LIFECYCLE.CLOSED
+          : getScholarshipStatus(scholarship).className === status
+      )
+      const matchLifecycle = lifecycleFilter === 'All' || lifecycle.status === lifecycleFilter
 
-    return matchSearch && matchCountry && matchDegree && matchFunding && matchDeadlineMonth && matchStatus && matchLifecycle
-  })
+      return matchSearch && matchCountry && matchDegree && matchFunding && matchDeadlineMonth && matchStatus && matchLifecycle
+    })
 
-  return sortLocalScholarships(filteredItems, sortBy)
-}
+    return sortLocalScholarships(filteredItems, sortBy)
+  }
 
 function LoadingCards() {
   return (
@@ -157,7 +166,7 @@ export default function ScholarshipList({ items, initialCountry }) {
   const [sortBy, setSortBy] = useState('recommended')
   const [page, setPage] = useState(1)
   const [requestVersion, setRequestVersion] = useState(0)
-  const [apiDirectory, setApiDirectory] = useState({ items: [], pagination: null })
+  const [apiDirectory, setApiDirectory] = useState({ items: [], pagination: null, facets: null })
   const [loadState, setLoadState] = useState(isDirectory ? 'loading' : 'local')
   const [apiError, setApiError] = useState('')
   const searchInputRef = useRef(null)
@@ -209,7 +218,10 @@ export default function ScholarshipList({ items, initialCountry }) {
           return
         }
 
-        setApiDirectory(directory)
+        setApiDirectory((prev) => ({
+          ...directory,
+          facets: directory.facets ?? prev?.facets ?? null,
+        }))
         // A snapshot answer is still a fallback, not a live directory. The
         // service tags it so the visitor is told which of the two they are
         // looking at: a catalogue that silently changes its provenance is
@@ -261,6 +273,22 @@ export default function ScholarshipList({ items, initialCountry }) {
   const totalResults = pagination?.total ?? currentItems.length
   const resultLabel = totalResults === 1 ? 'scholarship' : 'scholarships'
   const pageCount = pagination?.total_pages ?? 0
+
+  // Derive filter facets from the complete dataset
+  // For local mode: use localItems
+  // For API/snapshot mode: use facets from the API response if available,
+  // otherwise fall back to current page items (less accurate)
+  const facets = useMemo(() => {
+    if (!isDirectory) {
+      return deriveAllFacets(localItems)
+    }
+    if (apiDirectory.facets) {
+      return apiDirectory.facets
+    }
+    // Fallback: derive from current page (incomplete but better than hardcoded)
+    const sourceItems = isSnapshot ? apiDirectory.items : localResults
+    return sourceItems.length > 0 ? deriveAllFacets(sourceItems) : { country: [], degree: [], funding: [], deadlineMonth: [] }
+  }, [isDirectory, localItems, apiDirectory.facets, apiDirectory.items, isSnapshot, localResults])
 
   function resetControls() {
     setSearch('')
@@ -340,25 +368,11 @@ export default function ScholarshipList({ items, initialCountry }) {
               }}
             >
               <option value="All">All countries</option>
-              <option value="Australia">Australia</option>
-              <option value="Austria">Austria</option>
-              <option value="Canada">Canada</option>
-              <option value="China">China</option>
-              <option value="Europe">Europe</option>
-              <option value="France">France</option>
-              <option value="Germany">Germany</option>
-              <option value="India">India</option>
-              <option value="Italy">Italy</option>
-              <option value="Japan">Japan</option>
-              <option value="Netherlands">Netherlands</option>
-              <option value="Singapore">Singapore</option>
-              <option value="South Korea">South Korea</option>
-              <option value="Spain">Spain</option>
-              <option value="Sweden">Sweden</option>
-              <option value="Switzerland">Switzerland</option>
-              <option value="Taiwan">Taiwan</option>
-              <option value="UK">United Kingdom</option>
-              <option value="USA">United States</option>
+              {facets.country.map((facet) => (
+                <option key={facet.value} value={facet.value}>
+                  {facet.label} ({facet.count})
+                </option>
+              ))}
             </select>
           </div>
 
@@ -373,14 +387,11 @@ export default function ScholarshipList({ items, initialCountry }) {
               }}
             >
               <option value="All">All degrees</option>
-              {/* Values are the level words the API's filter buckets match on.
-                  The catalogue stores "Master's, PhD" style labels, so a
-                  verbatim label matched nothing: "UG (Bachelor's/Associate)"
-                  used to be sent as-is and returned zero rows. */}
-              <option value="Bachelor">Bachelor / Undergraduate</option>
-              <option value="Master">Master</option>
-              <option value="PhD">PhD / Doctoral</option>
-              <option value="Postgraduate">Postgraduate</option>
+              {facets.degree.map((facet) => (
+                <option key={facet.value} value={facet.value}>
+                  {facet.label} ({facet.count})
+                </option>
+              ))}
             </select>
           </div>
 
@@ -395,13 +406,11 @@ export default function ScholarshipList({ items, initialCountry }) {
               }}
             >
               <option value="All">All funding</option>
-              {/* Same contract as the degree select: the API matches the
-                  aspect, not the verbatim label, so these values are the
-                  dominant catalogue terms. */}
-              <option value="Fully Funded">Fully funded</option>
-              <option value="Tuition Fee Waiver">Tuition waiver</option>
-              <option value="Stipend">Stipend</option>
-              <option value="Partially Funded">Partial funding</option>
+              {facets.funding.map((facet) => (
+                <option key={facet.value} value={facet.value}>
+                  {facet.label} ({facet.count})
+                </option>
+              ))}
             </select>
           </div>
 
@@ -417,11 +426,10 @@ export default function ScholarshipList({ items, initialCountry }) {
               }}
             >
               <option value="All">Any month</option>
-              {[
-                'January', 'February', 'March', 'April', 'May', 'June',
-                'July', 'August', 'September', 'October', 'November', 'December',
-              ].map((month, index) => (
-                <option key={month} value={index + 1}>{month}</option>
+              {facets.deadlineMonth.map((facet) => (
+                <option key={facet.value} value={facet.value}>
+                  {facet.label} ({facet.count})
+                </option>
               ))}
             </select>
           </div>
@@ -439,7 +447,6 @@ export default function ScholarshipList({ items, initialCountry }) {
               <option value="All">All statuses</option>
               <option value="open">Open</option>
               <option value="closing-soon">Closing soon</option>
-              <option value="closed">Closed</option>
             </select>
           </div>
 
@@ -482,7 +489,6 @@ export default function ScholarshipList({ items, initialCountry }) {
             { value: LIFECYCLE.OPEN, label: 'Open' },
             { value: LIFECYCLE.CLOSING_SOON, label: 'Closing Soon' },
             { value: LIFECYCLE.UNKNOWN, label: 'Check deadline' },
-            { value: LIFECYCLE.CLOSED, label: 'Closed' },
           ].map((tab) => (
             <button
               key={tab.value}
@@ -541,46 +547,20 @@ export default function ScholarshipList({ items, initialCountry }) {
           >
             🏛️ Bachelor's
           </button>
-          <button
-            type="button"
-            className={`sz-quick-pill ${country === 'Germany' ? 'is-active' : ''}`}
-            onClick={() => {
-              setCountry((c) => (c === 'Germany' ? 'All' : 'Germany'))
-              setPage(1)
-            }}
-          >
-            🇩🇪 Germany
-          </button>
-          <button
-            type="button"
-            className={`sz-quick-pill ${country === 'Japan' ? 'is-active' : ''}`}
-            onClick={() => {
-              setCountry((c) => (c === 'Japan' ? 'All' : 'Japan'))
-              setPage(1)
-            }}
-          >
-            🇯🇵 Japan
-          </button>
-          <button
-            type="button"
-            className={`sz-quick-pill ${country === 'UK' ? 'is-active' : ''}`}
-            onClick={() => {
-              setCountry((c) => (c === 'UK' ? 'All' : 'UK'))
-              setPage(1)
-            }}
-          >
-            🇬🇧 UK
-          </button>
-          <button
-            type="button"
-            className={`sz-quick-pill ${country === 'USA' ? 'is-active' : ''}`}
-            onClick={() => {
-              setCountry((c) => (c === 'USA' ? 'All' : 'USA'))
-              setPage(1)
-            }}
-          >
-            🇺🇸 USA
-          </button>
+          {/* Quick-filter country pills - show top 4 countries by count */}
+          {facets.country.slice(0, 4).map((facet) => (
+            <button
+              key={facet.value}
+              type="button"
+              className={`sz-quick-pill ${country === facet.value ? 'is-active' : ''}`}
+              onClick={() => {
+                setCountry((c) => (c === facet.value ? 'All' : facet.value))
+                setPage(1)
+              }}
+            >
+              {facet.label}
+            </button>
+          ))}
           <button
             type="button"
             className={`sz-quick-pill ${status === 'closing-soon' ? 'is-active' : ''}`}

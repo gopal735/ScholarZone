@@ -20,6 +20,7 @@ from .verification_contract import (
     public_verified_from_status,
 )
 
+
 class ScholarshipSort(str, Enum):
     DEFAULT = "default"
     RECOMMENDED = "recommended"
@@ -32,11 +33,13 @@ class ScholarshipSort(str, Enum):
     NAME_ASC = "name-asc"
     NAME_DESC = "name-desc"
 
+
 class ScholarshipStatus(str, Enum):
     OPEN = "open"
     UPCOMING = "upcoming"
     CLOSING_SOON = "closing-soon"
     CLOSED = "closed"
+
 
 class ImageKind(str, Enum):
     PROGRAM_IMAGE = "program_image"
@@ -45,6 +48,7 @@ class ImageKind(str, Enum):
     OFFICIAL_OG = "official_og"
     OFFICIAL_MEDIA = "official_media"
     GENERIC_OFFICIAL = "generic_official"
+
 
 class ScholarshipQuery(BaseModel):
     """Validated values accepted by the directory endpoint."""
@@ -58,6 +62,7 @@ class ScholarshipQuery(BaseModel):
     sort: ScholarshipSort = ScholarshipSort.DEFAULT
     page: int = Field(default=1, ge=1, le=100_000)
     limit: int = Field(default=12, ge=1, le=100)
+
 
 class ScholarshipResponse(BaseModel):
     """Frontend-compatible scholarship list item."""
@@ -243,6 +248,7 @@ class ScholarshipResponse(BaseModel):
             return [value] if value.strip() else []
         return value
 
+
 class ScholarshipDetailResponse(ScholarshipResponse):
     description: str | None = None
     region: str | None = None
@@ -313,15 +319,32 @@ class ScholarshipDetailResponse(ScholarshipResponse):
             return [value] if value.strip() else []
         return value
 
+
 class PaginationMetadata(BaseModel):
     page: int
     limit: int
     total: int
     total_pages: int
 
+
+class FacetItem(BaseModel):
+    value: str
+    label: str
+    count: int
+
+
+class FilterFacets(BaseModel):
+    country: list[FacetItem] = []
+    degree: list[FacetItem] = []
+    funding: list[FacetItem] = []
+    deadline_month: list[FacetItem] = []
+
+
 class ScholarshipListResponse(BaseModel):
     items: list[ScholarshipResponse]
     pagination: PaginationMetadata
+    facets: FilterFacets | None = None
+
 
 class ScholarshipStatsResponse(BaseModel):
     """Live aggregate statistics served from the database."""
@@ -336,6 +359,7 @@ class ScholarshipStatsResponse(BaseModel):
     with_image: int
     with_official_source: int
 
+
 class ScholarshipImageVerifyRequest(BaseModel):
     scholarship_id: int = Field(ge=1)
     image_url: str = Field(max_length=2048)
@@ -349,9 +373,11 @@ class ScholarshipImageVerifyRequest(BaseModel):
     image_kind: ImageKind | None = None
     image_alt_text: str | None = Field(default=None, max_length=512)
 
+
 class ImageReviewDecision(BaseModel):
     approved: bool
     reviewer_note: str | None = Field(default=None, max_length=1024)
+
 
 class ImageReviewResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
@@ -374,11 +400,13 @@ class ImageReviewResponse(BaseModel):
     reviewer_note: str | None = None
     created_at: datetime
 
+
 class ScholarshipVerificationUpdate(BaseModel):
     verification_status: Literal["active", "needs_review", "inactive"]
     verification_notes: str | None = None
     verified_by: str | None = None
 # redeploy trigger
+
 
 # ---------------------------------------------------------------------------
 # Supervisor discovery, public
@@ -388,11 +416,13 @@ class ScholarshipVerificationUpdate(BaseModel):
 # no field for a probability, a response rate or a count of publications.
 # ---------------------------------------------------------------------------
 
+
 class SupervisorAvailabilityResponse(BaseModel):
     scope: str
     state: str
     source_url: str
     verified_at: str
+
 
 class SupervisorSourceResponse(BaseModel):
     source_url: str
@@ -402,11 +432,13 @@ class SupervisorSourceResponse(BaseModel):
     verified_at: str | None = None
     evidence_summary: str | None = None
 
+
 class ResearchAlignmentResponse(BaseModel):
     band: str
     matched_interests: list[str] = []
     matched_areas: list[str] = []
     explanation: str = ""
+
 
 class ProfessorResponse(BaseModel):
     id: int
@@ -429,12 +461,14 @@ class ProfessorResponse(BaseModel):
     last_verified_at: str | None = None
     sources: list[SupervisorSourceResponse] = []
 
+
 class SupervisorCoverageResponse(BaseModel):
     coverage_status: str
     verified_supervisor_count: int
     evidence_state: str
     last_checked_at: str | None = None
     discovery_pending: bool = False
+
 
 class OfficialContactResponse(BaseModel):
     id: int
@@ -454,11 +488,13 @@ class OfficialContactResponse(BaseModel):
     verified_at: str | None = None
     verification_status: str
 
+
 class SupervisorListResponse(BaseModel):
     scholarship_id: int
     coverage: SupervisorCoverageResponse
     supervisors: list[ProfessorResponse] = []
     official_contacts: list[OfficialContactResponse] = []
+
 
 class SupervisorSummaryResponse(BaseModel):
     """The lightweight shape a scholarship card needs.
@@ -474,12 +510,14 @@ class SupervisorSummaryResponse(BaseModel):
     last_checked_at: str | None = None
     discovery_pending: bool = False
 
+
 # ---------------------------------------------------------------------------
 # Outreach, private
 #
 # Every one of these models is served only from an authenticated session, and the
 # user id is never accepted from the client.
 # ---------------------------------------------------------------------------
+
 
 class OutreachCreateRequest(BaseModel):
     scholarship_id: int
@@ -488,6 +526,7 @@ class OutreachCreateRequest(BaseModel):
     draft_subject: str | None = None
     draft_body: str | None = None
     next_action: str | None = None
+
 
 class OutreachUpdateRequest(BaseModel):
     status: str | None = None
@@ -500,6 +539,7 @@ class OutreachUpdateRequest(BaseModel):
     #: Required on every update. A write that does not carry the version it read
     #: is refused with 409 rather than allowed to overwrite a concurrent edit.
     version: int
+
 
 class OutreachResponse(BaseModel):
     id: int
@@ -521,6 +561,7 @@ class OutreachResponse(BaseModel):
     created_at: datetime
     updated_at: datetime
 
+
 class OutreachSummaryResponse(BaseModel):
     """Counts of the student's own outreach.
 
@@ -534,6 +575,7 @@ class OutreachSummaryResponse(BaseModel):
     awaiting_reply: int
     positive_responses: int
 
+
 class ContactTemplateResponse(BaseModel):
     id: int
     template_key: str
@@ -542,6 +584,7 @@ class ContactTemplateResponse(BaseModel):
     subject_hint: str | None = None
     body_text: str
 
+
 class EmailDraftRequest(BaseModel):
     scholarship_id: int
     professor_id: int
@@ -549,6 +592,7 @@ class EmailDraftRequest(BaseModel):
     #: The student's own stated interests, used for this draft only. Not stored,
     #: and never inferred from anything the student did not type here.
     interests: list[str] = []
+
 
 class EmailDraftResponse(BaseModel):
     subject: str

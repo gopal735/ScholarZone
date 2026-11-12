@@ -533,5 +533,142 @@ class ScholarshipApiTests(unittest.TestCase):
                 self.assertIn("academic_provenance", s)
                 self.assertIn("coverage", s)
 
+    def test_country_alias_usa_aliases(self):
+        """Test that USA, US, U S, U S A all resolve to United States."""
+        from app.services.taxonomy import canonical_country
+        
+        for alias in ["USA", "US", "U S", "U S A", "United States of America", "America"]:
+            with self.subTest(alias=alias):
+                self.assertEqual(canonical_country(alias), "United States")
+
+    def test_country_alias_uk_aliases(self):
+        """Test that UK, U K, Great Britain, Britain resolve to United Kingdom."""
+        from app.services.taxonomy import canonical_country
+        
+        for alias in ["UK", "U K", "Great Britain", "Britain", "England", "Scotland", "Wales", "Northern Ireland"]:
+            with self.subTest(alias=alias):
+                self.assertEqual(canonical_country(alias), "United Kingdom")
+
+    def test_country_alias_korea_aliases(self):
+        """Test that Republic of Korea, Korea resolve to South Korea."""
+        from app.services.taxonomy import canonical_country
+        
+        for alias in ["Republic of Korea", "Korea"]:
+            with self.subTest(alias=alias):
+                self.assertEqual(canonical_country(alias), "South Korea")
+
+    def test_country_alias_vietnam_turkiye(self):
+        """Test that Viet Nam -> Vietnam and Türkiye -> Turkey."""
+        from app.services.taxonomy import canonical_country
+        
+        self.assertEqual(canonical_country("Viet Nam"), "Vietnam")
+        self.assertEqual(canonical_country("Turkiye"), "Turkey")
+        self.assertEqual(canonical_country("Türkiye"), "Turkey")
+
+    def test_country_api_filter_usa_aliases(self):
+        """Test API country filter with USA aliases returns same results."""
+        # Test with canonical value
+        canonical_resp = self.client.get("/scholarships", params={"country": "United States"})
+        self.assertEqual(canonical_resp.status_code, 200)
+        canonical_ids = {item["id"] for item in canonical_resp.json()["items"]}
+        
+        # Test with aliases - should return same IDs
+        for alias in ["USA", "US"]:
+            with self.subTest(alias=alias):
+                alias_resp = self.client.get("/scholarships", params={"country": alias})
+                self.assertEqual(alias_resp.status_code, 200)
+                alias_ids = {item["id"] for item in alias_resp.json()["items"]}
+                self.assertEqual(alias_ids, canonical_ids, 
+                    f"Alias '{alias}' should return same IDs as 'United States'")
+
+    def test_country_api_filter_uk_aliases(self):
+        """Test API country filter with UK aliases returns same results."""
+        canonical_resp = self.client.get("/scholarships", params={"country": "United Kingdom"})
+        self.assertEqual(canonical_resp.status_code, 200)
+        canonical_ids = {item["id"] for item in canonical_resp.json()["items"]}
+        
+        for alias in ["UK", "Great Britain"]:
+            with self.subTest(alias=alias):
+                alias_resp = self.client.get("/scholarships", params={"country": alias})
+                self.assertEqual(alias_resp.status_code, 200)
+                alias_ids = {item["id"] for item in alias_resp.json()["items"]}
+                self.assertEqual(alias_ids, canonical_ids,
+                    f"Alias '{alias}' should return same IDs as 'United Kingdom'")
+
+    def test_country_facet_count_matches_distinct_ids(self):
+        """Test that country facet count equals distinct matching IDs."""
+        # Get facets from first page
+        resp = self.client.get("/scholarships", params={"page": 1, "limit": 12})
+        self.assertEqual(resp.status_code, 200)
+        data = resp.json()
+        
+        # Find United States facet
+        us_facet = next((f for f in data["facets"]["country"] if f["value"] == "United States"), None)
+        if us_facet:
+            facet_count = us_facet["count"]
+            
+            # Query all pages with United States filter and collect all IDs
+            all_ids = set()
+            page = 1
+            while True:
+                page_resp = self.client.get("/scholarships", params={"country": "United States", "page": page, "limit": 50})
+                self.assertEqual(page_resp.status_code, 200)
+                page_data = page_resp.json()
+                page_ids = {item["id"] for item in page_data["items"]}
+                if not page_ids:
+                    break
+                all_ids.update(page_ids)
+                if page >= page_data["pagination"]["total_pages"]:
+                    break
+                page += 1
+            
+            # Facet count should equal distinct IDs
+            self.assertEqual(facet_count, len(all_ids),
+                f"Facet count ({facet_count}) should equal distinct matching IDs ({len(all_ids)})")
+
+    def test_country_api_vs_snapshot_parity(self):
+        """Test that API and snapshot return identical IDs for country filters."""
+        # Test with United States via API
+        api_resp = self.client.get("/scholarships", params={"country": "United States", "limit": 100})
+        self.assertEqual(api_resp.status_code, 200)
+        api_ids = {item["id"] for item in api_resp.json()["items"]}
+        self.assertGreater(len(api_ids), 0, "Should have US scholarships via API")
+        
+        # Test with snapshot via build_public_snapshot
+        # Build snapshot payload from the test database
+        import sys
+        from pathlib import Path
+        scripts_path = Path(__file__).resolve().parents[1] / "scripts"
+        sys.path.insert(0, str(scripts_path))
+        from build_public_snapshot import build_payload
+        from app.database import get_session_factory
+        
+        session_factory = self.__class__.get_session_factory()
+        session = session_factory()
+        with session:
+            payload = build_payload(session)
+            snapshot_scholarships = payload["scholarships"]
+        
+        # Filter snapshot for United States using canonical_country
+        from app.services.taxonomy import canonical_country
+        snapshot_us_ids = set()
+        for s in snapshot_scholarships:
+            canon = canonical_country(s.get("country", ""))
+            if canon == "United States":
+                snapshot_us_ids.add(s["id"])
+        
+        # Compare ID sets - they must be exactly equal
+        self.assertEqual(api_ids, snapshot_us_ids,
+            f"API IDs ({len(api_ids)}) and snapshot IDs ({len(snapshot_us_ids)}) must match exactly for United States")
+        
+        # Also verify facets match
+        api_resp2 = self.client.get("/scholarships", params={"country": "United States", "limit": 12})
+        self.assertEqual(api_resp2.status_code, 200)
+        api_data = api_resp2.json()
+        us_facet = next((f for f in api_data["facets"]["country"] if f["value"] == "United States"), None)
+        self.assertIsNotNone(us_facet, "United States facet must be present")
+        self.assertEqual(us_facet["count"], len(api_ids),
+            f"Facet count ({us_facet['count']}) must equal distinct matching IDs ({len(api_ids)})")
+
 if __name__ == "__main__":
     unittest.main()
