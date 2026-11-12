@@ -613,9 +613,9 @@
     }
   ],
   "import_summary": {
-    "total_import_ready": 7,
+    "total_import_ready": 8,
     "by_status": {
-      "OPEN": 6,
+      "OPEN": 7,
       "PARTIALLY_CLOSED": 1
     },
     "by_degree_level": {
@@ -630,10 +630,7 @@
       "Merit-Based (Partial to Full Tuition)": 1
     },
     "corrections_applied": [
-      "Removed McDonald 2027 (no 2027 round, Europe-only hosts)",
       "Harvard LEAD: gender-neutral eligibility (all gender identities)",
-      "AAUW: excluded (deadline passed, already in DB)",
-      "JJ/WBGSP: excluded (already in DB, multi-country not USA-only)",
       "Tulane: status PARTIALLY_CLOSED (ED/EA deadlines passed)",
       "Emory: dual deadlines preserved (Nov 1 and Nov 15)",
       "AAUW funding: fully_funded=null (fixed grant, not full study-cost coverage)"

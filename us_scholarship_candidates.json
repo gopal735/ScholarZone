@@ -642,10 +642,10 @@
   ],
   "summary": {
     "total_candidates": 11,
-    "import_eligible": 7,
-    "ineligible": 4,
+    "import_eligible": 8,
+    "ineligible": 3,
     "status_breakdown": {
-      "OPEN": 6,
+      "OPEN": 7,
       "UPCOMING": 1,
       "CLOSED": 1,
       "PARTIALLY_CLOSED": 1,
@@ -656,7 +656,7 @@
       "Master's": 1,
       "Doctoral": 1,
       "Non-degree fellowship": 2,
-      "Postdoctoral": 0
+      "Postdoctoral": 1
     },
     "funding_breakdown": {
       "Fully Funded": 6,

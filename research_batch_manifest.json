@@ -10,7 +10,7 @@
     "researcher": "Kilo AI Assistant",
     "correction_date": "2026-11-12",
     "corrections_applied": [
-      "McDonald 2027 removed: no 2027 round, Europe-only hosts, not USA-hosted",
+      "McDonald 2027: imported at DB ID 1381 but INVALID (no 2027 round, Europe-only hosts, not USA-hosted); pending controlled correction",
       "Harvard LEAD: corrected to gender-neutral eligibility (all gender identities)",
       "AAUW: status CLOSED (deadline passed Sept 17, 2026), already in DB as ID 473",
       "JJ/WBGSP: reclassified as multi-country (US, Europe, Africa, Oceania, Japan), already in DB as ID 475",
@@ -75,12 +75,21 @@
       "notes": "Next round 2028; Host institutions in Europe only; Not USA-hosted; Moved to 2028 monitoring"
     },
     {
+      "source_id": "MCDONALD-2027",
+      "institution": "MS International Federation",
+      "url": "https://www.msif.org/research/awards-grants-and-fellowships/mcdonald-fellowships",
+      "date_checked": "2026-11-12",
+      "status": "VERIFIED",
+      "result": "IMPORTED (DB ID 1381) - INVALID: no 2027 round, Europe-only hosts",
+      "notes": "Next round 2028; Host institutions in Europe only; Not USA-hosted; Moved to 2028 monitoring; pending controlled correction"
+    },
+    {
       "source_id": "IWU-2027",
       "institution": "Illinois Wesleyan University",
       "url": "https://www.iwu.edu/international/scholarships.html",
       "date_checked": "2026-11-12",
       "status": "VERIFIED",
-      "result": "IMPORTED (DB ID 1381)",
+      "result": "IMPORTED (DB ID 1382)",
       "notes": "OPEN, Early Action Nov 15, 2026"
     },
     {
@@ -89,7 +98,7 @@
       "url": "https://admission.tulane.edu/international/aid",
       "date_checked": "2026-11-12",
       "status": "VERIFIED",
-      "result": "IMPORTED (DB ID 1382)",
+      "result": "IMPORTED (DB ID 1383)",
       "notes": "PARTIALLY_CLOSED: ED I Nov 1 and EA Nov 10 passed; Regular Decision Jan 15, 2027 open"
     },
     {
@@ -98,7 +107,7 @@
       "url": "https://scholars.richmond.edu/prospective-scholars/index.html",
       "date_checked": "2026-11-12",
       "status": "VERIFIED",
-      "result": "IMPORTED (DB ID 1383)",
+      "result": "IMPORTED (DB ID 1384)",
       "notes": "OPEN, deadline Dec 1, 2026"
     },
     {
@@ -107,7 +116,7 @@
       "url": "https://www.vanderbilt.edu/scholarships/",
       "date_checked": "2026-11-12",
       "status": "VERIFIED",
-      "result": "IMPORTED (DB ID 1384)",
+      "result": "IMPORTED (DB ID 1385)",
       "notes": "OPEN, deadline Dec 1, 2026"
     },
     {
@@ -116,7 +125,7 @@
       "url": "https://apply.emory.edu/financial-aid/scholar-program",
       "date_checked": "2026-11-12",
       "status": "VERIFIED",
-      "result": "IMPORTED (DB ID 1385)",
+      "result": "IMPORTED (DB ID 1386)",
       "notes": "OPEN, dual deadlines: ED I Nov 1, ED II/Reg Nov 15, 2026"
     }
   ],
@@ -126,7 +135,7 @@
       "institution": "MS International Federation",
       "url": "https://www.msif.org/research/awards-grants-and-fellowships/mcdonald-fellowships",
       "priority": "HIGH",
-      "notes": "Next round 2028; Europe-only hosts; verify 2028 application opening"
+      "notes": "Next round 2028; Europe-only hosts; verify 2028 application opening; DB ID 1381 pending correction"
     },
     {
       "source_id": "GATECH-STAMPS-2028",

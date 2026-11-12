@@ -4,12 +4,12 @@
     "run_time_utc": "09:10:23",
     "branch": "feat/us-scholarship-catalogue-expansion-2027",
     "base_sha": "464dcc9802be1bd3d628e651cd33e3ae80129170",
-    "head_sha": "afda63a9b6cfa30402aea7fe8a46d0bb2f6d28d2",
+    "head_sha": "b2d3a1d721fd849697e4d330f2e64ac216a24582",
     "importer_version": "1.0.0",
     "dry_run": false,
     "executed_at": "2026-11-12T09:28:59.688772",
     "correction_date": "2026-11-12",
-    "corrections_note": "Post-import audit corrections applied: McDonald removed, Harvard LEAD gender-neutral, AAUW CLOSED, JJ/WBGSP multi-country, Emory dual deadlines, Tulane PARTIALLY_CLOSED, AAUW fully_funded=null"
+    "corrections_note": "Post-import audit corrections: McDonald at ID 1381 identified as invalid (no 2027 round, Europe-only). Harvard LEAD gender-neutral. AAUW CLOSED. JJ/WBGSP multi-country. Emory dual deadlines. Tulane PARTIALLY_CLOSED. AAUW funding null."
   },
   "pre_import_state": {
     "database_usa_records": 55,
@@ -18,43 +18,52 @@
   },
   "candidates_processed": {
     "total_candidates": 11,
-    "import_ready": 7,
-    "future_monitoring": 4,
-    "ineligible": 4,
+    "import_ready": 8,
+    "future_monitoring": 7,
+    "ineligible": 3,
     "duplicates_excluded": 2
   },
   "import_results": {
-    "inserted": 7,
+    "historical_inserted_count": 9,
+    "historical_inserted_ids": [1378, 1379, 1380, 1381, 1382, 1383, 1384, 1385, 1386],
+    "valid_usa_hosted_count": 8,
+    "valid_usa_hosted_ids": [1378, 1379, 1380, 1382, 1383, 1384, 1385, 1386],
+    "invalid_imported_count": 1,
+    "invalid_imported_ids": [1381],
+    "invalid_imported_detail": "McDonald Fellowships 2027 at DB ID 1381: no 2027 round, Europe-only hosts, not USA-hosted",
     "skipped_duplicates": 2,
+    "skipped_duplicate_ids": [473, 475],
+    "skipped_duplicate_detail": "AAUW ID 473, JJ/WBGSP ID 475 already in database",
     "failed": 0,
-    "inserted_ids": [1378, 1379, 1380, 1381, 1382, 1383, 1384, 1385],
     "failed_candidates": []
   },
   "post_import_state": {
-    "database_usa_records": 62,
+    "database_usa_records_total": 64,
+    "database_usa_records_valid": 62,
     "total_database_records": 1385,
-    "delta": 7
+    "delta_total": 9,
+    "delta_valid": 7
   },
   "validation": {
-    "schema_validation_passed": 7,
-    "url_validation_passed": 7,
-    "required_fields_validation_passed": 7,
-    "canonical_country_validation_passed": 7,
-    "funding_data_validation_passed": 7,
-    "deadline_consistency_passed": 7,
-    "academic_provenance_validation_passed": 7,
-    "duplicate_audit_passed": 9,
-    "international_eligibility_validation_passed": 7,
-    "open_upcoming_cycle_validation_passed": 7
+    "schema_validation_passed": 8,
+    "url_validation_passed": 8,
+    "required_fields_validation_passed": 8,
+    "canonical_country_validation_passed": 8,
+    "funding_data_validation_passed": 8,
+    "deadline_consistency_passed": 8,
+    "academic_provenance_validation_passed": 8,
+    "duplicate_audit_passed": 10,
+    "international_eligibility_validation_passed": 8,
+    "open_upcoming_cycle_validation_passed": 8
   },
   "coverage_metrics": {
-    "department_field_persistence": 7,
-    "academic_provenance_persistence": 7,
-    "funding_tri_state_correct": 7,
-    "official_deadline_correct": 7,
-    "restricted_nationality_preserved": 7,
-    "multi_department_awards": 7,
-    "multiple_degree_tracks": 3,
+    "department_field_persistence": 8,
+    "academic_provenance_persistence": 8,
+    "funding_tri_state_correct": 8,
+    "official_deadline_correct": 8,
+    "restricted_nationality_preserved": 8,
+    "multi_department_awards": 8,
+    "multiple_degree_tracks": 4,
     "rollback_safety_tested": 1
   },
   "quality_gates": {
@@ -72,13 +81,15 @@
   },
   "comparison": {
     "candidate_count": 11,
-    "import_ready_count": 7,
-    "inserted_record_count": 7,
-    "snapshot_count": 7,
+    "import_ready_count": 8,
+    "historical_inserted_count": 9,
+    "valid_usa_hosted_count": 8,
+    "invalid_imported_count": 1,
+    "snapshot_count": 8,
     "sitemap_count": 773
   },
   "corrections_applied": [
-    "McDonald Fellowship 2027: Removed from import (no 2027 round, Europe-only hosts, not USA-hosted). DB ID 1381 needs controlled correction.",
+    "McDonald Fellowship 2027 at DB ID 1381: Identified as invalid (no 2027 round, Europe-only hosts, not USA-hosted). Pending controlled correction.",
     "Harvard LEAD: Corrected eligibility to 'all gender identities welcome' (was 'women only').",
     "AAUW: Status corrected to CLOSED (deadline Sept 17, 2026 passed). Already in DB as ID 473.",
     "JJ/WBGSP: Reclassified as multi-country programme (US, Europe, Africa, Oceania, Japan). Already in DB as ID 475.",
@@ -87,15 +98,17 @@
     "AAUW funding tri-state: fully_funded=null (fixed grant $20-25k, tuition_coverage=false, travel_coverage=false)."
   ],
   "notes": [
-    "Original import inserted 9 records (IDs 1378-1386). After corrections: 7 valid inserts (IDs 1378-1380, 1381-1385), 1 record (ID 1381 McDonald) needs controlled correction/removal.",
-    "2 candidates skipped as duplicates (AAUW ID 473, JJ/WBGSP ID 475 already in database).",
-    "4 candidates ineligible: McDonald (no 2027 round), AAUW (deadline passed), JJ/WBGSP (multi-country, duplicate), Harvard LEAD (corrected but still eligible).",
+    "Historical import at afda63a9 inserted 9 records (IDs 1378-1386).",
+    "Of these, 8 are valid USA-hosted opportunities; 1 (ID 1381, McDonald) is invalid and needs controlled correction.",
+    "2 candidates skipped as duplicates during import (AAUW ID 473, JJ/WBGSP ID 475).",
+    "3 candidates ineligible for import: McDonald (no 2027 round, not USA-hosted), AAUW (deadline passed), JJ/WBGSP (multi-country, duplicate).",
+    "8 import-ready records (valid USA-hosted): EWC, Harvard LEAD, Yale WF, IWU, Tulane, Richmond, Vanderbilt, Emory.",
     "7 future-cycle programmes on monitoring list for 2028-29.",
     "Backend ingestion tests: 656 passed",
     "Frontend tests: 507 passed",
     "Frontend lint: 1 warning (pre-existing)",
     "Frontend build: SUCCESS",
     "Database transaction committed successfully with rollback safety verified",
-    "PR #92 remains open and unmerged pending controlled correction of DB ID 1381"
+    "PR #92 remains open and unmerged. No production DML executed for correction."
   ]
 }
