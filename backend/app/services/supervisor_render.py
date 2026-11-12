@@ -34,6 +34,7 @@ from __future__ import annotations
 import asyncio
 import logging
 import os
+import sys
 import time
 from typing import Protocol
 
@@ -395,15 +396,24 @@ def _run_coroutine(coroutine):
     raising, so a render degrades into an inconclusive outcome instead of an
     exception.
     """
+    def run_in_fresh_loop(awaitable):
+        # Playwright launches its driver with asyncio subprocess APIs. Windows'
+        # selector loop does not implement subprocess transports, so use the
+        # Proactor loop explicitly even if a test harness changed the global
+        # event-loop policy.
+        loop_factory = asyncio.ProactorEventLoop if sys.platform == "win32" else None
+        with asyncio.Runner(loop_factory=loop_factory) as runner:
+            return runner.run(awaitable)
+
     try:
         asyncio.get_running_loop()
     except RuntimeError:
-        return asyncio.run(coroutine)
+        return run_in_fresh_loop(coroutine)
 
     import concurrent.futures
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=1) as pool:
-        return pool.submit(asyncio.run, coroutine).result()
+        return pool.submit(run_in_fresh_loop, coroutine).result()
 
 
 def render_blocking(
@@ -430,15 +440,27 @@ def render_blocking(
         # would hand the second call a browser attached to a dead loop - which
         # surfaces as a baffling AttributeError rather than a lifecycle error.
         async def _session() -> SourceObservation:
-            if isinstance(active, PlaywrightRenderDriver):
-                await active.start()
+            started = time.monotonic()
             try:
+                if isinstance(active, PlaywrightRenderDriver):
+                    await active.start()
                 return await active.render(
                     url,
                     budget=budget,
                     seed_host=seed_host,
                     max_scroll_iterations=max_scroll_iterations,
                 )
+            except Exception as exc:  # noqa: BLE001 - startup failures are inconclusive
+                if isinstance(active, PlaywrightRenderDriver):
+                    logger.exception("Browser startup failed for %s", url)
+                    return SourceObservation(
+                        url=url,
+                        outcome=SourceOutcome.ERROR,
+                        error_kind=str(RenderErrorKind.BROWSER_UNAVAILABLE),
+                        detail=type(exc).__name__,
+                        elapsed_ms=int((time.monotonic() - started) * 1000),
+                    )
+                raise
             finally:
                 if isinstance(active, PlaywrightRenderDriver):
                     await active.close()
