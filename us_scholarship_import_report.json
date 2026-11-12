@@ -4,7 +4,7 @@
     "run_time_utc": "09:10:23",
     "branch": "feat/us-scholarship-catalogue-expansion-2027",
     "base_sha": "464dcc9802be1bd3d628e651cd33e3ae80129170",
-    "head_sha": "b2d3a1d721fd849697e4d330f2e64ac216a24582",
+    "head_sha": "c6dba9d3493eac930bf0e74456dd8714ee3605cf",
     "importer_version": "1.0.0",
     "dry_run": false,
     "executed_at": "2026-11-12T09:28:59.688772",
@@ -42,7 +42,8 @@
     "database_usa_records_valid": 62,
     "total_database_records": 1385,
     "delta_total": 9,
-    "delta_valid": 7
+    "delta_valid": 7,
+    "delta_valid_note": "Net increase in valid USA-hosted records = 62 - 55 = 7. Valid records inserted = 8, but one invalid record (ID 1381) was also inserted, so total USA records increased by 9."
   },
   "validation": {
     "schema_validation_passed": 8,
@@ -86,7 +87,8 @@
     "valid_usa_hosted_count": 8,
     "invalid_imported_count": 1,
     "snapshot_count": 8,
-    "sitemap_count": 773
+    "sitemap_count": 773,
+    "delta_valid_note": "Pre-import valid USA baseline = 55. Post-import valid USA = 62. Delta valid = 7 (62-55). Valid inserted = 8, but one invalid record also inserted (ID 1381)."
   },
   "corrections_applied": [
     "McDonald Fellowship 2027 at DB ID 1381: Identified as invalid (no 2027 round, Europe-only hosts, not USA-hosted). Pending controlled correction.",

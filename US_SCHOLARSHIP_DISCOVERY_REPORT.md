@@ -4,7 +4,7 @@
 **Correction Date:** 2026-11-12  
 **Branch:** feat/us-scholarship-catalogue-expansion-2027  
 **Base Branch:** master (464dcc9802be1bd3d628e651cd33e3ae80129170)  
-**HEAD:** b2d3a1d721fd849697e4d330f2e64ac216a24582  
+**HEAD:** c6dba9d3493eac930bf0e74456dd8714ee3605cf  
 **Repository:** gopal735/ScholarZone  
 **PR:** #92 (open, unmerged)
 
@@ -172,15 +172,16 @@ For every candidate:
 | US-2028-FULBRIGHT-001 | Fulbright Foreign Student 2028-29 | Aug 2027 | Country-specific commissions, fully funded varies |
 | US-2028-HUMPHREY-001 | Humphrey Fellowship 2028-29 | Spring/Summer 2027 | Mid-career, 5+ years exp, non-degree |
 | US-2028-STAMPS-NETWORK-001 | Stamps Scholars Network (38 partners) | Varies by partner | International eligibility varies by partner |
-| US-2028-MCDONALD-001 | McDonald Fellowships 2028 | 2028 | Next confirmed round; Europe-only hosts; DB ID 1381 pending correction |
+
+> **Note:** McDonald Fellowships 2028 is Europe-hosted (ECTRIMS partner institutions) and outside the USA-hosted catalogue scope. Tracked separately as out-of-scope follow-up.
 
 ---
 
-## 6. Status Breakdown (Imported Records)
+## 6. Status Breakdown (Valid USA-Hosted Imported Records)
 
 | Status | Count | Percentage |
 |--------|-------|------------|
-| OPEN | 6 | 75% |
+| OPEN | 7 | 87.5% |
 | PARTIALLY_CLOSED | 1 | 12.5% |
 
 ---
@@ -284,7 +285,7 @@ For every candidate:
 
 ## 10. Academic Provenance Summary
 
-All 7 imported records have:
+All 8 valid USA-hosted imported records have:
 - ✅ **Departments** explicitly mapped from official sources
 - ✅ **Eligible fields** from official programme rules
 - ✅ **Eligible programmes** (degree types) from official rules
