@@ -488,6 +488,11 @@ def main():
         help="Evidence reference for backup/PITR verification (required for --execute)",
     )
     parser.add_argument(
+        "--environment",
+        required=False,
+        help="Target environment (required for --execute, must be 'production')",
+    )
+    parser.add_argument(
         "--report",
         default="us_scholarship_import_report.json",
         help="Output path for import report",
@@ -509,6 +514,9 @@ def main():
         # Require expected endpoint
         if not args.expected_endpoint:
             parser.error("--execute requires --expected-endpoint (or SCHOLARZONE_EXPECTED_ENDPOINT)")
+        # Require explicit production environment
+        if not args.environment or args.environment.lower() != "production":
+            parser.error("--execute requires --environment production")
         # Require backup attestation
         if not args.backup_attestation:
             parser.error("--execute requires --backup-attestation (manual|provider) or SCHOLARZONE_BACKUP_ATTESTATION")
@@ -534,6 +542,7 @@ def main():
     if args.execute:
         print(f"Expected DB ID: {args.expected_db_id}")
         print(f"Expected Endpoint: {args.expected_endpoint}")
+        print(f"Environment: {args.environment}")
         print(f"Backup Attestation: {args.backup_attestation}")
         if args.backup_attestation == "provider":
             print(f"Provider Backup ID: {args.provider_backup_id}")
