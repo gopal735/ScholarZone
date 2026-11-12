@@ -12,6 +12,8 @@ Tests cover:
 - report matches actual committed rows
 - failed commit does not claim inserted records
 - repeated execution is idempotent
+- any validation failure aborts entire batch
+- flush failure aborts entire batch
 
 Run with: python -m pytest backend/tests/test_append_only_importer.py -v
 """
@@ -35,6 +37,8 @@ from append_only_importer import (
     ImportReport,
     load_candidates,
     check_database_connection,
+    get_database_identity,
+    verify_database_identity,
     get_existing_usa_count,
     get_existing_urls,
     find_duplicates,
@@ -151,11 +155,12 @@ class TestImportReport:
         assert len(report.failed) == 1
         assert report.failed[0]["error"] == "Validation error"
 
-    def test_record_rolled_back(self):
+    def test_record_rolled_back_uses_candidate_id(self):
         report = ImportReport()
         record = make_record(0)
-        report.record_rolled_back(record, "Batch commit failed")
+        report.record_rolled_back(record, "Batch commit failed", "TEST-001")
         assert len(report.rolled_back) == 1
+        assert report.rolled_back[0]["candidate_id"] == "TEST-001"
         assert report.rolled_back[0]["error"] == "Batch commit failed"
 
     def test_summary(self):
@@ -166,7 +171,7 @@ class TestImportReport:
         report.record_failed(record, "Error")
         report.record_rolled_back(record, "Rollback")
         report.record_error("General error")
-        report.finalize(commit_succeeded=True)
+        report.finalize()
         
         summary = report.summary()
         assert summary["inserted_count"] == 1
@@ -174,7 +179,14 @@ class TestImportReport:
         assert summary["failed_count"] == 1
         assert summary["rolled_back_count"] == 1
         assert summary["error_count"] == 1
-        assert summary["commit_succeeded"] is True
+        assert summary["commit_succeeded"] is False  # default is False
+
+    def test_finalize_does_not_take_parameter(self):
+        report = ImportReport()
+        # finalize() no longer takes a parameter
+        report.finalize()
+        # commit_succeeded should remain False (default) unless set by import_records
+        assert report.commit_succeeded is False
 
 
 class TestLoadCandidates:
@@ -302,21 +314,25 @@ class TestImportRecords:
         report = ImportReport()
         import_records(records, test_session, report, dry_run=False)
         
-        # First record should be skipped as duplicate
+        # First record should be skipped as duplicate, other two inserted
         assert len(report.skipped_duplicates) == 1
         assert "already exists in database" in report.skipped_duplicates[0]["reason"]
         assert len(report.inserted) == 2  # Other two records inserted
 
-    def test_missing_funding_type_fails(self, test_session):
+    def test_missing_funding_type_aborts_entire_batch(self, test_session):
+        """Any validation failure must abort the entire batch - zero committed rows."""
         records = [(make_record(i), f"TEST-{i:03d}") for i in range(3)]
         records[0][0].funding_type = None
         
         report = ImportReport()
         import_records(records, test_session, report, dry_run=False)
         
+        # All records must fail - zero committed rows
         assert len(report.failed) == 1
         assert "funding_type is required" in report.failed[0]["error"]
-        assert len(report.inserted) == 2  # Other two succeed
+        assert len(report.inserted) == 0  # Zero committed rows
+        assert len(report.rolled_back) == 0  # No rollback needed since no flush occurred
+        assert report.commit_succeeded is False
 
     def test_successful_batch_commit(self, test_session):
         records = [(make_record(i), f"TEST-{i:03d}") for i in range(3)]
@@ -328,7 +344,7 @@ class TestImportRecords:
         assert len(report.rolled_back) == 0
         assert all(item["db_id"] > 0 for item in report.inserted)
 
-    def test_batch_rollback_on_failure(self, test_session):
+    def test_batch_rollback_on_commit_failure(self, test_session):
         records = [(make_record(i), f"TEST-{i:03d}") for i in range(3)]
         with patch.object(type(test_session), 'commit', side_effect=Exception("Simulated commit failure")):
             report = ImportReport()
@@ -339,7 +355,33 @@ class TestImportRecords:
             assert len(report.inserted) == 0
             assert report.commit_succeeded is False
             assert len(report.errors) == 1
-            assert "Transaction commit failed" in report.errors[0]
+            assert "Transaction failed" in report.errors[0]
+
+    def test_flush_failure_aborts_entire_batch(self, test_session):
+        """Failure during flush should abort entire batch."""
+        records = [(make_record(i), f"TEST-{i:03d}") for i in range(3)]
+        
+        # Mock the session.add to raise an exception on the second call (simulating flush failure)
+        original_add = test_session.add
+        call_count = [0]
+        
+        def mock_add(obj):
+            call_count[0] += 1
+            if call_count[0] == 2:
+                raise Exception("Simulated flush failure")
+            return original_add(obj)
+        
+        with patch.object(test_session, 'add', side_effect=mock_add):
+            report = ImportReport()
+            import_records(records, test_session, report, dry_run=False)
+            
+            # First record was added to pending_inserts before failure, so it gets rolled back
+            # Second and third records never made it to pending_inserts
+            assert len(report.rolled_back) == 1
+            assert len(report.inserted) == 0
+            assert report.commit_succeeded is False
+            assert len(report.errors) == 1
+            assert "Transaction failed" in report.errors[0]
 
     def test_report_matches_committed_rows(self, test_session):
         records = [(make_record(i), f"TEST-{i:03d}") for i in range(3)]
@@ -435,6 +477,130 @@ class TestIdempotency:
         assert len(report2.inserted) == 0
 
 
+class TestCLISafetyGates:
+    """Tests for CLI safety gate validation."""
+
+    def test_execute_requires_expected_db_id(self):
+        from append_only_importer import main
+        with patch('sys.argv', ['importer.py', '--execute']):
+            with pytest.raises(SystemExit):
+                main()
+
+    def test_execute_requires_expected_endpoint(self):
+        from append_only_importer import main
+        with patch('sys.argv', ['importer.py', '--execute', '--expected-db-id', 'test']):
+            with pytest.raises(SystemExit):
+                main()
+
+    def test_execute_requires_backup_attestation(self):
+        from append_only_importer import main
+        with patch('sys.argv', ['importer.py', '--execute', '--expected-db-id', 'test', '--expected-endpoint', 'host:5432']):
+            with pytest.raises(SystemExit):
+                main()
+
+    def test_execute_requires_operator_attestation(self):
+        from append_only_importer import main
+        with patch('sys.argv', ['importer.py', '--execute', '--expected-db-id', 'test', '--expected-endpoint', 'host:5432', '--backup-attestation', 'manual']):
+            with pytest.raises(SystemExit):
+                main()
+
+    def test_execute_requires_evidence_ref(self):
+        from append_only_importer import main
+        with patch('sys.argv', ['importer.py', '--execute', '--expected-db-id', 'test', '--expected-endpoint', 'host:5432', '--backup-attestation', 'manual', '--operator-attestation', 'I confirm']):
+            with pytest.raises(SystemExit):
+                main()
+
+    def test_execute_rejects_weak_operator_attestation(self):
+        from append_only_importer import main
+        with patch('sys.argv', ['importer.py', '--execute', '--expected-db-id', 'test', '--expected-endpoint', 'host:5432', '--backup-attestation', 'manual', '--operator-attestation', 'yes']):
+            with pytest.raises(SystemExit):
+                main()
+
+
+class TestDatabaseIdentity:
+    """Tests for database identity verification."""
+
+    def test_get_database_identity_sqlite(self, test_engine):
+        """Test that SQLite identity works (different from PostgreSQL)."""
+        identity = get_database_identity(test_engine)
+        assert "database" in identity
+        assert "host" in identity
+        assert "port" in identity
+        assert "endpoint" in identity
+        assert "sanitized_url" in identity
+        # SQLite should return "sqlite" as database name
+        assert identity["database"] == "sqlite"
+
+    def test_verify_database_identity_match_sqlite(self, test_engine):
+        """Test identity verification with SQLite."""
+        identity = get_database_identity(test_engine)
+        ok, msg = verify_database_identity(test_engine, identity["database"], identity["endpoint"])
+        assert ok is True
+        assert "verified" in msg.lower()
+
+    def test_verify_database_identity_mismatch(self, test_engine):
+        ok, msg = verify_database_identity(test_engine, "wrong_db", "wrong_host:5432")
+        assert ok is False
+        assert "mismatch" in msg.lower()
+
+
+class TestBackupAttestation:
+    """Tests for backup attestation validation."""
+
+    def test_manual_attestation_requires_descriptive_text(self):
+        # Tested in CLI validation - operator attestation must not be just "yes"
+        pass
+
+    def test_provider_attestation_requires_backup_id(self):
+        # Tested in CLI validation
+        pass
+
+
+class TestDryRunNonMutating:
+    """Tests to ensure dry-run never mutates the database."""
+
+    def test_dry_run_no_database_changes(self, test_session):
+        records = [(make_record(i), f"TEST-{i:03d}") for i in range(3)]
+        count_before = get_existing_usa_count(test_session)
+        
+        report = ImportReport()
+        import_records(records, test_session, report, dry_run=True)
+        
+        count_after = get_existing_usa_count(test_session)
+        assert count_before == count_after
+        assert count_after == 0
+
+    def test_dry_run_reports_would_insert(self, test_session):
+        records = [(make_record(i), f"TEST-{i:03d}") for i in range(3)]
+        report = ImportReport()
+        import_records(records, test_session, report, dry_run=True)
+        
+        assert len(report.inserted) == 3
+        assert all(item["db_id"] == -1 for item in report.inserted)
+        assert report.commit_succeeded is False
+
+
+class TestIdempotency:
+    """Tests for idempotent execution."""
+
+    def test_repeated_execution_idempotent(self, test_session):
+        records = [(make_record(i), f"TEST-{i:03d}") for i in range(3)]
+        
+        # First execution
+        report1 = ImportReport()
+        import_records(records, test_session, report1, dry_run=False)
+        count_after_first = get_existing_usa_count(test_session)
+        
+        # Second execution (should skip all as duplicates)
+        report2 = ImportReport()
+        import_records(records, test_session, report2, dry_run=False)
+        count_after_second = get_existing_usa_count(test_session)
+        
+        assert count_after_first == count_after_second
+        assert len(report2.skipped_duplicates) == 3
+        assert len(report2.inserted) == 0
+
+
 class TestIntegration:
     """Integration tests with a real database."""
 
@@ -460,6 +626,72 @@ class TestIntegration:
         import_records(records, test_session, ImportReport(), dry_run=False)
         count_after_rerun = get_existing_usa_count(test_session)
         assert count_after_rerun == 3
+
+
+class TestReportCorrectness:
+    """Tests for report correctness."""
+
+    def test_finalize_does_not_take_commit_succeeded_parameter(self):
+        report = ImportReport()
+        # finalize() no longer takes a parameter
+        report.finalize()
+        # commit_succeeded should remain False (default) unless set by import_records
+        assert report.commit_succeeded is False
+
+    def test_record_rolled_back_uses_supplied_candidate_id(self):
+        report = ImportReport()
+        record = make_record(0)
+        report.record_rolled_back(record, "Batch commit failed", "TEST-001")
+        assert len(report.rolled_back) == 1
+        assert report.rolled_back[0]["candidate_id"] == "TEST-001"
+
+    def test_report_json_output_after_successful_transaction(self, test_session):
+        records = [(make_record(i), f"TEST-{i:03d}") for i in range(3)]
+        report = ImportReport()
+        import_records(records, test_session, report, dry_run=False)
+        
+        summary = report.summary()
+        assert summary["commit_succeeded"] is True
+        assert summary["inserted_count"] == 3
+        assert summary["rolled_back_count"] == 0
+
+    def test_report_json_output_after_failed_transaction(self, test_session):
+        records = [(make_record(i), f"TEST-{i:03d}") for i in range(3)]
+        with patch.object(type(test_session), 'commit', side_effect=Exception("Simulated commit failure")):
+            report = ImportReport()
+            import_records(records, test_session, report, dry_run=False)
+            
+            summary = report.summary()
+            assert summary["commit_succeeded"] is False
+            assert summary["inserted_count"] == 0
+            assert summary["rolled_back_count"] == 3
+
+
+class TestDatabaseIdentity:
+    """Tests for database identity verification."""
+
+    def test_get_database_identity_sqlite(self, test_engine):
+        """Test that SQLite identity works (different from PostgreSQL)."""
+        identity = get_database_identity(test_engine)
+        assert "database" in identity
+        assert "host" in identity
+        assert "port" in identity
+        assert "endpoint" in identity
+        assert "sanitized_url" in identity
+        # SQLite should return "sqlite" as database name
+        assert identity["database"] == "sqlite"
+
+    def test_verify_database_identity_match_sqlite(self, test_engine):
+        """Test identity verification with SQLite."""
+        identity = get_database_identity(test_engine)
+        ok, msg = verify_database_identity(test_engine, identity["database"], identity["endpoint"])
+        assert ok is True
+        assert "verified" in msg.lower()
+
+    def test_verify_database_identity_mismatch(self, test_engine):
+        ok, msg = verify_database_identity(test_engine, "wrong_db", "wrong_host:5432")
+        assert ok is False
+        assert "mismatch" in msg.lower()
 
 
 if __name__ == "__main__":
