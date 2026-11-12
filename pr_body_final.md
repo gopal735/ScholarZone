@@ -60,6 +60,7 @@
 - ✅ Frontend: 507 passed (exact-head CI Run #731)
 - ✅ Frontend lint: 1 warning (pre-existing)
 - ✅ Frontend build: SUCCESS (773 URLs in sitemap)
+- ✅ Dedicated importer tests: 23 passed
 - ✅ No duplicate insertion
 - ✅ No existing row updates
 - ✅ Department/field/provenance persistence verified
