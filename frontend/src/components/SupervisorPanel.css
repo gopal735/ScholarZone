@@ -447,7 +447,118 @@
   margin-bottom: 0.25rem;
 }
 
-/* ── Outreach tracker ────────────────────────────────────────────────── */
+/* == Official Contacts ======================================================== */
+
+.sz-supervisor-panel__section-heading {
+  margin: 1.5rem 0 0.5rem;
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: var(--text-primary, #14130f);
+}
+
+.sz-official-contact {
+  padding: 1rem;
+  background: var(--surface, #fff);
+  border: 1px solid var(--border, rgba(20, 19, 15, 0.12));
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+}
+
+.sz-official-contact__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border, rgba(20, 19, 15, 0.12));
+  margin-bottom: 0.75rem;
+}
+
+.sz-official-contact__name {
+  margin: 0;
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: var(--text-primary, #14130f);
+}
+
+.sz-official-contact__affiliation {
+  margin: 0.25rem 0 0;
+  font-size: 0.8125rem;
+  color: var(--text-secondary, #24221c);
+}
+
+.sz-official-contact__type {
+  font-size: 0.75rem;
+  color: var(--text-muted, #6e6a61);
+  background: var(--background-alt, #f5f3ef);
+  padding: 0.125rem 0.5rem;
+  border-radius: 999px;
+}
+
+.sz-official-contact__details {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sz-official-contact__details dt {
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted, #6e6a61);
+  margin-bottom: 0.125rem;
+}
+
+.sz-official-contact__details dd {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--text-primary, #14130f);
+}
+
+.sz-official-contact__source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--accent, #1b3a5c);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.sz-official-contact__source-link:hover {
+  text-decoration: underline;
+}
+
+.sz-official-contact__evidence-summary {
+  font-size: 0.8125rem;
+  color: var(--text-secondary, #24221c).
+}
+
+.sz-official-contact__verified-note {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--success, #1a7f37);
+}
+
+.sz-official-contact__unverified-note {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--text-muted, #6e6a61);
+}
+
+.sz-official-contact time {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--text-muted, #6e6a61);
+}
+
+/* == Outreach tracker ========================================================= */
 
 .sz-supervisor-panel__tracker {
   margin-top: 1.5rem;
@@ -528,8 +639,7 @@
   }
 }
 
-/* Motion is decoration here, so it is dropped entirely when the reader has asked
-   for less of it. No information is carried by the transition. */
+/* Motion is decoration here, so it is dropped entirely when the reader has asked for less of it. No information is carried by the transition. */
 @media (prefers-reduced-motion: reduce) {
   .sz-supervisor-panel *,
   .sz-supervisor * {

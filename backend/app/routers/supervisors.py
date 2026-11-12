@@ -22,6 +22,7 @@ from ..core.rate_limit import RateLimitExceeded, supervisor_read_limiter
 from ..database import get_db
 from ..schemas import (
     ProfessorResponse,
+    OfficialContactResponse,
     SupervisorCoverageResponse,
     SupervisorListResponse,
     SupervisorSummaryResponse,
@@ -43,7 +44,6 @@ router = APIRouter(prefix="/scholarships", tags=["supervisors"])
 #: turn one request into unbounded work.
 MAX_INTERESTS = 20
 MAX_INTEREST_LENGTH = 120
-
 
 @router.get("/{scholarship_id}/supervisors", response_model=SupervisorListResponse)
 def list_supervisors(
@@ -74,7 +74,7 @@ def list_supervisors(
         )
 
     try:
-        coverage, professors = build_supervisor_list(db, scholarship_id, cleaned, limit)
+        coverage, professors, official_contacts = build_supervisor_list(db, scholarship_id, cleaned, limit)
     except ScholarshipNotPublic:
         # One answer for "absent" and "not publicly visible". A 403 here would
         # confirm that an archived or quarantined record exists at this id.
@@ -84,8 +84,8 @@ def list_supervisors(
         scholarship_id=scholarship_id,
         coverage=SupervisorCoverageResponse(**coverage),
         supervisors=[ProfessorResponse(**professor) for professor in professors],
+        official_contacts=[OfficialContactResponse(**contact) for contact in official_contacts],
     )
-
 
 @router.get("/{scholarship_id}/supervisor-summary", response_model=SupervisorSummaryResponse)
 def supervisor_summary(
@@ -121,6 +121,5 @@ def supervisor_summary(
         last_checked_at=state["last_checked_at"],
         discovery_pending=state["discovery_pending"],
     )
-
 
 __all__ = ["MAX_INTERESTS", "MAX_INTEREST_LENGTH", "router"]

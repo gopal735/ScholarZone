@@ -17,7 +17,6 @@ from __future__ import annotations
 
 from enum import StrEnum
 
-
 class SupervisorCoverageStatus(StrEnum):
     """The discovery state of exactly one scholarship.
 
@@ -58,7 +57,6 @@ class SupervisorCoverageStatus(StrEnum):
     #: from "we looked and could not read it".
     SOURCE_REQUIRES_RENDERING = "source_requires_rendering"
 
-
 #: States in which no supervisor may be shown publicly, whatever the count says.
 NON_PUBLISHING_COVERAGE_STATUSES: frozenset[str] = frozenset(
     {
@@ -83,14 +81,12 @@ INCONCLUSIVE_COVERAGE_STATUSES: frozenset[str] = frozenset(
     }
 )
 
-
 class CoverageEvidenceState(StrEnum):
     """How far the provenance chain for a coverage row was built."""
 
     NOT_COLLECTED = "not_collected"
     PARTIAL = "partial"
     COMPLETE = "complete"
-
 
 class ProfessorProfileStatus(StrEnum):
     """Lifecycle of a reusable professor entity.
@@ -103,7 +99,6 @@ class ProfessorProfileStatus(StrEnum):
     ACTIVE = "active"
     RETIRED = "retired"
     MERGED = "merged"
-
 
 class ProfessorRelationshipType(StrEnum):
     """Why a professor is connected to a scholarship.
@@ -123,7 +118,6 @@ class ProfessorRelationshipType(StrEnum):
     #: Faculty elsewhere at the same institution, relevant by research area.
     PROGRAM_RELEVANT_FACULTY = "program_relevant_faculty"
 
-
 class RelationshipVerificationStatus(StrEnum):
     """Whether the link's provenance was confirmed against an official source."""
 
@@ -135,30 +129,25 @@ class RelationshipVerificationStatus(StrEnum):
     #: freshness window. Kept, but never presented as current.
     STALE = "stale"
 
-
 #: The only relationship status that may reach a public response.
 PUBLIC_RELATIONSHIP_STATUSES: frozenset[str] = frozenset(
     {RelationshipVerificationStatus.VERIFIED}
 )
 
-
 class SourceType(StrEnum):
     """What kind of page a piece of evidence came from.
-
     The distinction that matters is authoritative versus supporting. A secondary
     source may help find a person; it may never be the reason a relationship is
     published.
     """
-
     OFFICIAL_UNIVERSITY_PROFILE = "official_university_profile"
     OFFICIAL_DEPARTMENT_PAGE = "official_department_page"
     OFFICIAL_RESEARCH_GROUP = "official_research_group"
     OFFICIAL_PROGRAMME_PAGE = "official_programme_page"
     OFFICIAL_INSTITUTION_DOMAIN = "official_institution_domain"
-
+    OFFICIAL_CONTACT_PAGE = "official_contact_page"
     #: Discovery aids only. Never sufficient to publish a relationship.
     SECONDARY_AGGREGATOR = "secondary_aggregator"
-
 
 AUTHORITATIVE_SOURCE_TYPES: frozenset[str] = frozenset(
     {
@@ -167,9 +156,19 @@ AUTHORITATIVE_SOURCE_TYPES: frozenset[str] = frozenset(
         SourceType.OFFICIAL_RESEARCH_GROUP,
         SourceType.OFFICIAL_PROGRAMME_PAGE,
         SourceType.OFFICIAL_INSTITUTION_DOMAIN,
+        SourceType.OFFICIAL_CONTACT_PAGE,
     }
 )
+class OfficialContactVerificationStatus(StrEnum):
+    """Verification state for official contact records."""
 
+    UNVERIFIED = "unverified"
+    VERIFIED = "verified"
+    STALE = "stale"
+
+PUBLIC_CONTACT_STATUSES: frozenset[str] = frozenset(
+    {OfficialContactVerificationStatus.VERIFIED}
+)
 
 class AvailabilityScope(StrEnum):
     """Which question an availability claim answers.
@@ -182,7 +181,6 @@ class AvailabilityScope(StrEnum):
     PHD_SUPERVISION = "phd_supervision"
     POSTDOC_SUPERVISION = "postdoc_supervision"
     FUNDING = "funding"
-
 
 class AvailabilityState(StrEnum):
     """An availability answer, including the two honest non-answers.
@@ -201,13 +199,11 @@ class AvailabilityState(StrEnum):
     #: The claim was once verified and the freshness window has since passed.
     STALE = "stale"
 
-
 #: The only availability state that may be shown as a live answer. Everything
 #: else renders as an explicit absence, never as a quiet "no".
 PUBLISHABLE_AVAILABILITY_STATES: frozenset[str] = frozenset(
     {AvailabilityState.VERIFIED_YES, AvailabilityState.VERIFIED_NO}
 )
-
 
 class ResearchAlignmentBand(StrEnum):
     """Overlap between stated interests and verified research areas.
@@ -222,7 +218,6 @@ class ResearchAlignmentBand(StrEnum):
     #: No explicit student interest was supplied, or no verified faculty area
     #: exists to compare against. This is the default and it is correct.
     INSUFFICIENT_EVIDENCE = "insufficient_evidence"
-
 
 class OutreachStatus(StrEnum):
     """The single outreach state machine.
@@ -241,7 +236,6 @@ class OutreachStatus(StrEnum):
     NEGATIVE = "negative"
     NO_RESPONSE = "no_response"
     CLOSED = "closed"
-
 
 #: The only permitted transitions. Anything absent here is rejected with 422
 #: rather than silently applied, so two clients cannot invent divergent states.
@@ -294,7 +288,6 @@ OUTREACH_TRANSITIONS: dict[str, frozenset[str]] = {
 #: recoverable rather than a dead row.
 CLOSED_OUTREACH_STATUSES: frozenset[str] = frozenset({OutreachStatus.CLOSED})
 
-
 def outreach_transition_is_legal(current: str, requested: str) -> bool:
     """Return whether ``current`` may become ``requested``.
 
@@ -305,7 +298,6 @@ def outreach_transition_is_legal(current: str, requested: str) -> bool:
         return True
     return requested in OUTREACH_TRANSITIONS.get(current, frozenset())
 
-
 __all__ = [
     "AUTHORITATIVE_SOURCE_TYPES",
     "CLOSED_OUTREACH_STATUSES",
@@ -313,10 +305,12 @@ __all__ = [
     "NON_PUBLISHING_COVERAGE_STATUSES",
     "OUTREACH_TRANSITIONS",
     "PUBLIC_RELATIONSHIP_STATUSES",
+    "PUBLIC_CONTACT_STATUSES",
     "PUBLISHABLE_AVAILABILITY_STATES",
     "AvailabilityScope",
     "AvailabilityState",
     "CoverageEvidenceState",
+    "OfficialContactVerificationStatus",
     "OutreachStatus",
     "ProfessorProfileStatus",
     "ProfessorRelationshipType",

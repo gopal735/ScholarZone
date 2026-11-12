@@ -14,10 +14,11 @@ import shutil
 from datetime import date, datetime, timedelta, timezone
 
 import pytest
-from sqlalchemy import create_engine, select
+from sqlalchemy import create_engine, event, select
 from sqlalchemy.orm import sessionmaker
 
 from app.models import Base, DiscoveryCandidate, Scholarship, ScholarshipReview
+import app.models_supervisor  # noqa: F401 - registers OfficialContact in Base.metadata
 from app.services.retention_contract import (
     BUCKET_ADMIN_REVIEW,
     BUCKET_AMBIGUOUS,
@@ -544,13 +545,14 @@ class TestManifestSemantics:
     def test_every_preserve_table_is_named_in_the_manifest(self):
         report = reference_integrity_report()
         assert report["integrity_uncertain"] is False
-        assert report["relationship_count"] == 13
+        assert report["relationship_count"] == 14
         assert set(PRESERVE_MODELS) == {
             "ScholarshipReview", "ScholarshipVerificationHistory", "ScholarshipSnapshot",
             "ScholarshipRestoreRecord", "ImageReview",
             "SavedScholarship", "ApplicationRecord",
             "ScholarshipSupervisorCoverage", "ScholarshipProfessorLink",
             "SupervisorSourceEvidence", "ProfessorOutreachRecord",
+            "OfficialContact",
         }
 
 
@@ -795,6 +797,13 @@ class TestReleaseGateIsClosed:
 @pytest.fixture()
 def session(tmp_path):
     engine = create_engine(f"sqlite:///{tmp_path / 'integration.db'}")
+
+    @event.listens_for(engine, "connect")
+    def _fk_on(dbapi_conn, _):
+        cursor = dbapi_conn.cursor()
+        cursor.execute("PRAGMA foreign_keys = ON")
+        cursor.close()
+
     Base.metadata.create_all(bind=engine)
     factory = sessionmaker(bind=engine, autoflush=False, expire_on_commit=False)
     db = factory()
