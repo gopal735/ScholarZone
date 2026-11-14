@@ -94,7 +94,15 @@ class ScholarshipResponse(BaseModel):
         """
         if value is None:
             return None
-        allowed = {member.value for member in ScholarshipStatus}
+        # UNKNOWN is a query selector for records with no recognized stored
+        # round state, not a public status to emit. Keep the response honest:
+        # the stored value "unknown" is surfaced as null just like any other
+        # invalid status token.
+        allowed = {
+            member.value
+            for member in ScholarshipStatus
+            if member is not ScholarshipStatus.UNKNOWN
+        }
         if isinstance(value, str):
             return value if value in allowed else None
         return value
