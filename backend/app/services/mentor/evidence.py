@@ -94,6 +94,20 @@ def _verification_for(item: ScholarshipFacts) -> str:
     return item.verification_label
 
 
+def _sourced_verification(label: str, source_url: str | None) -> str | None:
+    """A verification label is only shown when the reader can open the source.
+
+    "Verified" with nothing behind it asks the reader to take the mentor's word
+    for a figure. Every item carrying this label also carries the scholarship's
+    own official page, so the claim is checkable rather than asserted. When the
+    canonical source is absent the label is dropped, and the figure still appears
+    - it just stops claiming a backing it does not have.
+    """
+    if not source_url:
+        return None
+    return label
+
+
 def scholarship_evidence(item: ScholarshipFacts) -> list[EvidenceItem]:
     """Evidence for one scholarship, skipping anything unmeasured.
 
@@ -103,6 +117,7 @@ def scholarship_evidence(item: ScholarshipFacts) -> list[EvidenceItem]:
     """
     evidence: list[EvidenceItem] = []
     verification = _verification_for(item)
+    sourced_verification = _sourced_verification(verification, item.official_source_url)
 
     evidence.append(
         EvidenceItem(
@@ -169,7 +184,8 @@ def scholarship_evidence(item: ScholarshipFacts) -> list[EvidenceItem]:
                 value=_eligibility_word(item.eligibility),
                 field="match.eligibility",
                 basis=BASIS_MATCH,
-                verification=verification,
+                verification=sourced_verification,
+                source_url=item.official_source_url,
                 scholarship_id=item.scholarship_id,
             )
         )
@@ -183,7 +199,8 @@ def scholarship_evidence(item: ScholarshipFacts) -> list[EvidenceItem]:
                 + (f" ({item.fit_label})" if item.fit_label else ""),
                 field="match.fit_score",
                 basis=BASIS_MATCH,
-                verification=verification,
+                verification=sourced_verification,
+                source_url=item.official_source_url,
                 scholarship_id=item.scholarship_id,
             )
         )
@@ -196,7 +213,8 @@ def scholarship_evidence(item: ScholarshipFacts) -> list[EvidenceItem]:
                 value=item.readiness_label,
                 field="match.readiness.band",
                 basis=BASIS_MATCH,
-                verification=verification,
+                verification=sourced_verification,
+                source_url=item.official_source_url,
                 scholarship_id=item.scholarship_id,
             )
         )
@@ -273,7 +291,17 @@ def application_evidence(item: ApplicationFacts) -> list[EvidenceItem]:
             value=item.deadline.describe(),
             field="deadline (evaluate_deadline)",
             basis=BASIS_WORKSPACE,
-            verification=item.verification_label if item.is_listed else None,
+            # The scholarship's own page, so the figure can be checked rather than
+            # believed. Copied from the canonical row upstream, never built here.
+            source_url=item.official_source_url,
+            # A deadline the reader cannot open is not a verified deadline. Where the
+            # canonical source is known and missing, the claim is dropped instead of
+            # being labelled verified with nothing behind it.
+            verification=(
+                item.verification_label
+                if item.is_listed and item.official_source_url
+                else None
+            ),
             scholarship_id=item.scholarship_id,
         )
     )
