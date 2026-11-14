@@ -456,7 +456,7 @@ describe('staticScholarshipService', () => {
       expect(result.pagination.total).toBe(0)
     })
 
-    it('does not expose expired records classified as closed', async () => {
+    it('keeps visibility tied to stored public status rather than a derived lifecycle badge', async () => {
       clearSnapshotCache()
       const expiredSnapshot = {
         ...extendedSnapshot,
@@ -472,8 +472,9 @@ describe('staticScholarshipService', () => {
       vi.stubGlobal('fetch', vi.fn(async () => ({ ok: true, json: async () => expiredSnapshot })))
 
       const result = await fetchScholarshipsFromSnapshot()
-      expect(result.items).toEqual([])
-      expect(result.pagination.total).toBe(0)
+      expect(result.items).toHaveLength(1)
+      expect(result.items[0].statusInfo.className).toBe('closed')
+      expect(result.pagination.total).toBe(1)
     })
 
     it('counts only visible records in snapshot statistics', async () => {

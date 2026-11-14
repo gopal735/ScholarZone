@@ -212,7 +212,10 @@ export function getDaysDifference(targetDate) {
   if (!targetDate) return null;
   
   const today = new Date();
-  const todayStart = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate());
+  // Date-only scholarship deadlines are compared by calendar day in the
+  // visitor's local timezone. Using UTC getters for "today" shifts the
+  // baseline by one day for users east or west of UTC around midnight.
+  const todayStart = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
   const target = new Date(targetDate);
   const targetStart = Date.UTC(target.getUTCFullYear(), target.getUTCMonth(), target.getUTCDate());
   const diffMs = targetStart - todayStart;
