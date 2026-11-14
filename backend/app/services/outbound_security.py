@@ -304,11 +304,24 @@ class _UrlopenResponse:
         content = self._response.read()
         return content if amount < 0 else content[:amount]
 
+    @property
+    def status(self) -> int:
+        return self._response.status_code
+
+    @property
+    def code(self) -> int:
+        return self._response.status_code
+
     def __getattr__(self, name):
         return getattr(self._response, name)
 
 
-def secure_urlopen(request: urllib.request.Request | str, *, timeout: float = 10.0) -> _UrlopenResponse:
+def secure_urlopen(
+    request: urllib.request.Request | str,
+    *,
+    timeout: float = 10.0,
+    policy: DestinationPolicy | None = None,
+) -> _UrlopenResponse:
     """urllib-compatible adapter that applies the same pinned egress policy."""
     if isinstance(request, urllib.request.Request):
         url = request.full_url
@@ -320,8 +333,11 @@ def secure_urlopen(request: urllib.request.Request | str, *, timeout: float = 10
         method = "GET"
         headers = {}
         body = None
-    with secure_client(timeout=timeout, follow_redirects=True) as client:
-        response = client.request(method, url, headers=headers, content=body)
+    try:
+        with secure_client(policy=policy, timeout=timeout, follow_redirects=True) as client:
+            response = client.request(method, url, headers=headers, content=body)
+    except httpx.RequestError as exc:
+        raise urllib.error.URLError(exc) from exc
     if response.status_code >= 400:
         raise urllib.error.HTTPError(
             str(response.url), response.status_code, response.reason_phrase,

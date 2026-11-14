@@ -25,4 +25,6 @@ non-proxied WebRTC traffic.
 to cover prohibited addresses, mixed DNS answers, DNS rebinding, peer checks,
 redirects, and browser proxy rejection. The local Playwright end-to-end fixture
 uses a test-only policy restricted to loopback; production defaults remain
-unchanged.
+unchanged. The Docker artifact smoke script has a separate policy restricted
+to `127.0.0.1` and its explicitly selected test port so it can probe its own
+disposable container without relaxing application egress.

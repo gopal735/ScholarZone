@@ -11,7 +11,7 @@ import urllib.request
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 BACKEND_DIR = os.path.join(REPO_ROOT, "backend")
 sys.path.insert(0, BACKEND_DIR)
-from app.services.outbound_security import secure_urlopen
+from local_smoke_http import open_local_smoke_url
 IMAGE_TAG = "scholarzone:smoke-test"
 CONTAINER_NAME = "scholarzone-smoke-test"
 SCRIPT_PATH_IN_CONTAINER = "/app/scripts/import_smoke_test.py"
@@ -79,7 +79,7 @@ def wait_for_health(port: str, timeout: int = 60) -> bool:
     start = time.time()
     while time.time() - start < timeout:
         try:
-            with secure_urlopen(url, timeout=5) as resp:
+            with open_local_smoke_url(url, allowed_ports={int(port)}, timeout=5) as resp:
                 if resp.status == 200:
                     print("[PASS] /health returned 200")
                     return True
@@ -93,7 +93,7 @@ def wait_for_health(port: str, timeout: int = 60) -> bool:
 def test_endpoint(port: str, path: str, expected: int = 200) -> bool:
     url = f"http://127.0.0.1:{port}{path}"
     try:
-        with secure_urlopen(url, timeout=10) as resp:
+        with open_local_smoke_url(url, allowed_ports={int(port)}, timeout=10) as resp:
             if resp.status == expected:
                 print(f"[PASS] {path} -> {resp.status}")
                 return True
