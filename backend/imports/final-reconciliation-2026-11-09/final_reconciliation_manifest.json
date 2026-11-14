@@ -1,0 +1,149 @@
+{
+  "manifest_version": "2.0",
+  "manifest_date": "2026-11-10",
+  "package_status": "BLOCKED",
+  "review_package_only": true,
+  "production_import_authorized": false,
+  "branch": "feat/final-scholarship-catalogue-reconciliation",
+  "base_sha": "5b28ceef0480a4bd6612d1cf08c26e8629bea285",
+  "pre_remediation_head": "dec6dbcd65ffe98da42f0e6fff665c3c840ce04a",
+  "final_head": "SEE_CI_EVIDENCE_MD",
+  "canonical_files": {
+    "final_import_ready_scholarships.json": {
+      "records": 0,
+      "importable": true,
+      "purpose": "Canonical insert file; empty by design."
+    },
+    "final_existing_cycle_updates.json": {
+      "records": 11,
+      "importable": true,
+      "purpose": "Canonical approved cycle updates; all DIRECT evidence."
+    },
+    "final_funding_corrections.json": {
+      "records": 2,
+      "importable": true,
+      "purpose": "Canonical approved funding corrections; all DIRECT evidence."
+    },
+    "final_lifecycle_corrections.json": {
+      "records": 2,
+      "importable": false,
+      "purpose": "Lifecycle proposals only; PENDING_RESEARCH and not approved."
+    },
+    "final_source_evidence.json": {
+      "records": 13,
+      "importable": false,
+      "purpose": "DIRECT evidence registry for the approved subset."
+    },
+    "operation_evidence_mapping.json": {
+      "records": 25,
+      "importable": false,
+      "purpose": "25-operation mapping: 13 DIRECT approved, 12 PENDING excluded."
+    },
+    "blocked_records.json": {
+      "records": 6,
+      "importable": false,
+      "purpose": "Blocked new-insert candidates; never importable from this package."
+    },
+    "duplicate_merge_plan.json": {
+      "records": 5,
+      "importable": false,
+      "purpose": "5 duplicate pairs; 4 archive-only plans for owner review, no execution."
+    },
+    "duplicate_fk_dependency_report.json": {
+      "records": 14,
+      "importable": false,
+      "purpose": "Actual FK introspection for all dependent tables."
+    },
+    "duplicate_merge_dry_run.json": {
+      "records": 4,
+      "importable": false,
+      "purpose": "Isolated SQLite simulation; PostgreSQL simulation unavailable."
+    },
+    "final_database_reconciliation.json": {
+      "records": 1,
+      "importable": false,
+      "purpose": "Before/after count reconciliation with archives separated."
+    }
+  },
+  "operation_counts": {
+    "new_inserts": 0,
+    "cycle_updates": 11,
+    "funding_corrections": 2,
+    "lifecycle_corrections_approved": 0,
+    "lifecycle_corrections_pending": 2,
+    "total_approved": 13,
+    "total_pending_excluded": 12
+  },
+  "baseline_counts": {
+    "total": 830,
+    "active": 830,
+    "archived": 0
+  },
+  "projected_counts": {
+    "after_approved_subset": {
+      "total": 830,
+      "active": 830,
+      "archived": 0,
+      "status_distribution": {
+        "closed": 6,
+        "closing-soon": 4,
+        "open": 820
+      },
+      "description": "After the 11 cycle updates and 2 funding corrections only. No inserts, archives, or duplicate merges."
+    },
+    "after_approved_plus_lifecycle_proposals": {
+      "total": 830,
+      "active": 828,
+      "archived": 2,
+      "status_distribution": {
+        "closed": 8,
+        "closing-soon": 4,
+        "open": 818
+      },
+      "description": "If the 2 PENDING_RESEARCH lifecycle proposals were later approved. Duplicate merges still not executed."
+    },
+    "after_approved_plus_lifecycle_plus_4_duplicate_archives": {
+      "total": 830,
+      "active": 824,
+      "archived": 6,
+      "status_distribution": {
+        "closed": 8,
+        "closing-soon": 4,
+        "open": 818
+      },
+      "description": "If lifecycle proposals and the 4 archive-only duplicate plans were all approved. Fulbright remains blocked. Duplicate archives do not change status."
+    }
+  },
+  "duplicate_plan": {
+    "total_pairs": 5,
+    "merge_ready_for_owner_review": 4,
+    "blocked_manual_review": 1,
+    "plans_approved_for_execution": 0,
+    "plans_executed": 0,
+    "record_deletions": 0,
+    "fk_reassignments": 0,
+    "postgresql_simulation": "UNAVAILABLE"
+  },
+  "blocked_new_insert_candidates": 6,
+  "blocking_reasons": [
+    "Vanier CGS and NFP/OTS lifecycle proposals are PENDING_RESEARCH and excluded from the approved set.",
+    "PostgreSQL duplicate-merge simulation is unavailable in this environment.",
+    "No duplicate merge has been executed; 4 archive-only plans await owner approval.",
+    "6 new-insert candidates remain blocked for insufficient evidence or excluded region.",
+    "This is a review package, not production import authorization."
+  ],
+  "hashed_files": {
+    "package_baseline.json": "9e77451bde2224fc742ac0f443c56c8c7ed1082761d64867fc6b78fff14bbc21",
+    "final_import_ready_scholarships.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "final_existing_cycle_updates.json": "6153732aa7e3672c493c098e44fafc9dd01467ee2eaf1e00ba7b3cf7f52b7fd6",
+    "final_funding_corrections.json": "ebfa569edbd0f6bc6d87971717188cbe55a95a5e78b14fa5bdde94d0de0af87b",
+    "final_lifecycle_corrections.json": "5031e3ddf321a7046d6cb99c19fea195d246dba7ba8a9e40f750d5d0cd83b4f7",
+    "final_source_evidence.json": "fb39f6da04541e91ef6441d343aed8b6764af9d6c18718b33b09c272e13e69c1",
+    "operation_evidence_mapping.json": "60f8b16d0f68ecd39ccf98dacec65d19e1c7b246559a964abcfc818bc058b75d",
+    "blocked_records.json": "72749ae095eb01d041f20bccf86f83c46194eb79f2af4a000139d119f11f992e",
+    "duplicate_merge_plan.json": "dc04508aee5faeb613f4db69b1e969b549bde201991a5821ac4823a632049f82",
+    "duplicate_fk_dependency_report.json": "807bf024932e9db201644666d5306d2762b1261a70005f6a27b4508acbab3ca0",
+    "duplicate_merge_dry_run.json": "bda764e9d8c59b5da84cf6e0264ebb1d66b22aabc6c7e3767452e4adaf54af5f",
+    "final_database_reconciliation.json": "f33336f032ccd6ce6789733f157ba3ed843dbc9fba3a790ea64c5de0281a46c6"
+  }
+}
