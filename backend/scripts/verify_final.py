@@ -1,5 +1,9 @@
-import urllib.request
+import os
+import sys
 import json
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from app.services.outbound_security import secure_urlopen
 
 countries = ["Belgium", "Hungary", "Poland", "Czech Republic", "Portugal"]
 
@@ -9,7 +13,7 @@ for country in countries:
     encoded = country.replace(" ", "%20")
     url = f"http://localhost:8000/scholarships?country={encoded}"
     try:
-        with urllib.request.urlopen(url) as resp:
+        with secure_urlopen(url) as resp:
             data = json.loads(resp.read().decode())
         if isinstance(data, dict):
             data = data.get("items", data.get("results", []))
@@ -33,7 +37,7 @@ print(f"Duplicate IDs: {len(all_ids) - len(set(all_ids))}")
 print(f"\n=== DATABASE URL UNIQUENESS CHECK ===")
 try:
     url_all = "http://localhost:8000/scholarships"
-    with urllib.request.urlopen(url_all) as resp:
+    with secure_urlopen(url_all) as resp:
         all_data = json.loads(resp.read().decode())
     if isinstance(all_data, dict):
         all_data = all_data.get("items", all_data.get("results", []))

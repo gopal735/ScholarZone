@@ -34,6 +34,8 @@ from enum import Enum
 from urllib.parse import urljoin, urlparse
 
 import httpx
+
+from .outbound_security import secure_get
 from sqlalchemy import select
 from sqlalchemy.orm import Session, sessionmaker
 
@@ -232,7 +234,7 @@ class SourceRepairService:
         if domain:
             self.rate_limiter.wait_if_needed(domain)
         try:
-            response = httpx.get(
+            response = secure_get(
                 url,
                 headers={"User-Agent": BROWSER_UA, "Accept": "text/html,application/xhtml+xml"},
                 timeout=self.timeout,
@@ -255,7 +257,7 @@ class SourceRepairService:
         if domain:
             self.rate_limiter.wait_if_needed(domain)
         try:
-            response = httpx.get(
+            response = secure_get(
                 url,
                 headers={"User-Agent": BROWSER_UA},
                 timeout=self.timeout,

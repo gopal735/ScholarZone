@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import sys
 
-import httpx
+from app.services.outbound_security import secure_get
 
 UA = {
     "User-Agent": (
@@ -25,7 +25,7 @@ CANDIDATES = [
 def main() -> None:
     for url in CANDIDATES:
         try:
-            response = httpx.get(url, headers=UA, timeout=25.0, follow_redirects=True)
+            response = secure_get(url, headers=UA, timeout=25.0, follow_redirects=True)
             body = response.text or ""
             print(f"{response.status_code}  len={len(body):>7}  {response.url}")
         except Exception as exc:  # noqa: BLE001

@@ -8,6 +8,8 @@ import time
 import httpx
 from pydantic import BaseModel, ConfigDict
 
+from .outbound_security import secure_client
+
 
 class OfficialSourceFetchResult(BaseModel):
     """Structured outcome of fetching an official scholarship source."""
@@ -105,7 +107,7 @@ def fetch_official_source(url: str) -> OfficialSourceFetchResult:
         return cached
 
     try:
-        with httpx.Client(
+        with secure_client(
             timeout=DEFAULT_TIMEOUT,
             follow_redirects=True,
             headers=DEFAULT_HEADERS,

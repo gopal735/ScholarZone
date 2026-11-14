@@ -271,6 +271,18 @@ def _classify_lost_claim(
             lease_until=to_utc(row.lease_until),
             reason=f"already claimed by {row.owner}",
         )
+    if current in {SlotState.DISPATCHED, SlotState.RUNNING}:
+        # A competing scheduler may observe the slot after the winner has
+        # dispatched the workflow (and the worker may already have started).
+        # This is an ordinary lost race, not a forbidden state mutation: the
+        # guarded UPDATE changed no row, so report the existing execution and
+        # keep the caller from surfacing a thread exception.
+        return ClaimOutcome(
+            claimed=False,
+            owner=row.owner,
+            lease_until=to_utc(row.lease_until),
+            reason=f"already {current.value.lower()}",
+        )
     if not is_legal_transition(current, target):
         raise InvalidTransition(
             f"{current.value} -> {target.value} is not a legal transition"

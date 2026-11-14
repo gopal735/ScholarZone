@@ -102,7 +102,7 @@ class TestSourceResolver:
         mock_response.text = html
         mock_response.url = "https://studyinkorea.go.kr"
 
-        with patch("app.services.source_resolver.httpx.get", return_value=mock_response):
+        with patch("app.services.source_resolver.secure_get", return_value=mock_response):
             result = resolver.resolve_source(
                 "https://studyinkorea.go.kr",
                 "Global Korea Scholarship",
@@ -130,7 +130,7 @@ class TestSourceResolver:
         mock_response.headers = {"content-type": "text/html"}
         mock_response.text = html
 
-        with patch("app.services.source_resolver.httpx.get", return_value=mock_response):
+        with patch("app.services.source_resolver.secure_get", return_value=mock_response):
             result = resolver.resolve_source(
                 "https://example-university.edu",
                 "Test Scholarship",
@@ -145,7 +145,7 @@ class TestSourceResolver:
         mock_response = MagicMock()
         mock_response.status_code = 403
 
-        with patch("app.services.source_resolver.httpx.get", return_value=mock_response):
+        with patch("app.services.source_resolver.secure_get", return_value=mock_response):
             result = resolver.resolve_source(
                 "https://www.daad.de",
                 "DAAD Scholarship",
@@ -168,7 +168,7 @@ class TestSourceResolver:
             response.text = "<html><body><a href='/scholarships'>Scholarships</a></body></html>"
             return response
 
-        with patch("app.services.source_resolver.httpx.get", side_effect=mock_get):
+        with patch("app.services.source_resolver.secure_get", side_effect=mock_get):
             resolver.resolve_source("https://studyinkorea.go.kr", "GKS")
             resolver.resolve_source("https://studyinkorea.go.kr", "GKS")
 
@@ -214,7 +214,7 @@ class TestWeakPagePenalties:
         mock_response.text = html
         mock_response.url = "https://studyinkorea.go.kr"
 
-        with patch("app.services.source_resolver.httpx.get", return_value=mock_response):
+        with patch("app.services.source_resolver.secure_get", return_value=mock_response):
             result = resolver.resolve_source(
                 "https://studyinkorea.go.kr",
                 "Global Korea Scholarship",
@@ -240,7 +240,7 @@ class TestWeakPagePenalties:
         mock_response.text = html
         mock_response.url = "https://studyinkorea.go.kr"
 
-        with patch("app.services.source_resolver.httpx.get", return_value=mock_response):
+        with patch("app.services.source_resolver.secure_get", return_value=mock_response):
             result = resolver.resolve_source(
                 "https://studyinkorea.go.kr",
                 "Global Korea Scholarship",
@@ -266,7 +266,7 @@ class TestWeakPagePenalties:
         mock_response.headers = {"content-type": "text/html"}
         mock_response.text = html
 
-        with patch("app.services.source_resolver.httpx.get", return_value=mock_response):
+        with patch("app.services.source_resolver.secure_get", return_value=mock_response):
             result = resolver.resolve_source(
                 "https://www.daad.de",
                 "DAAD Scholarship",
@@ -291,7 +291,7 @@ class TestWeakPagePenalties:
         mock_response.headers = {"content-type": "text/html"}
         mock_response.text = html
 
-        with patch("app.services.source_resolver.httpx.get", return_value=mock_response):
+        with patch("app.services.source_resolver.secure_get", return_value=mock_response):
             result = resolver.resolve_source(
                 "https://www.daad.de",
                 "DAAD Scholarship Program",
@@ -319,7 +319,7 @@ class TestWeakPagePenalties:
         mock_response.headers = {"content-type": "text/html"}
         mock_response.text = html
 
-        with patch("app.services.source_resolver.httpx.get", return_value=mock_response):
+        with patch("app.services.source_resolver.secure_get", return_value=mock_response):
             result = resolver.resolve_source(
                 "https://www.university.edu",
                 "Test Scholarship",

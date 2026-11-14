@@ -113,6 +113,32 @@ def loopback_is_official(monkeypatch):
     explicitly rather than the allowance being quietly baked into production code.
     """
     from app.services import supervisor_discovery as worker
+    from app.services import outbound_proxy, outbound_security
+    import ipaddress
+
+    class LocalFixturePolicy(outbound_security.DestinationPolicy):
+        allow_http = True
+
+        @classmethod
+        def _normalize_host(cls, raw_host):
+            try:
+                address = ipaddress.ip_address(raw_host)
+            except ValueError:
+                return super()._normalize_host(raw_host)
+            if address.is_loopback:
+                return address.compressed, address
+            return super()._normalize_host(raw_host)
+
+        @staticmethod
+        def _public_ip(value):
+            address = ipaddress.ip_address(value)
+            if address.is_loopback:
+                return address
+            return outbound_security.DestinationPolicy._public_ip(value)
+
+    fixture_policy = LocalFixturePolicy()
+    monkeypatch.setattr(outbound_security, "DEFAULT_POLICY", fixture_policy)
+    monkeypatch.setattr(outbound_proxy, "DEFAULT_POLICY", fixture_policy)
 
     original = worker.host_is_official
     monkeypatch.setattr(
@@ -129,7 +155,7 @@ def rendering_on(monkeypatch, loopback_is_official):
     yield
 
 
-def test_static_fetch_cannot_see_any_professor(server):
+def test_static_fetch_cannot_see_any_professor(server, loopback_is_official):
     """Establishes that the browser is genuinely necessary here.
 
     If a static client could read the professor, the whole exercise would prove
@@ -161,7 +187,7 @@ def test_real_browser_rendering_yields_a_real_professor(server, db, rendering_on
     names = {professor.canonical_name for professor in professors}
 
     # The two academics, and only them.
-    assert "Ada Lovelace" in names, f"expected a rendered professor, got {names}"
+    assert "Ada Lovelace" in names, f"expected a rendered professor, got {names}; discovery={outcome}"
     assert "Alan Turing" in names
     assert "South Australia" not in names, "a rendered place name is still not a person"
     assert "School of Computing" not in names, "a rendered unit is still not a person"
