@@ -1,10 +1,10 @@
 """Database queries for scholarship discovery."""
 
-from sqlalchemy import case, func, or_, select
+from sqlalchemy import String, case, cast, func, or_, select
 from sqlalchemy.orm import Session
 
 from ..models import Scholarship
-from ..schemas import ScholarshipQuery, ScholarshipSort
+from ..schemas import ScholarshipQuery, ScholarshipSort, ScholarshipStatus
 from ..services.taxonomy import degree_filter_bucket, funding_filter_bucket
 
 
@@ -19,6 +19,12 @@ def _normalise_optional_filter(value: str | None) -> str | None:
 def _escape_like(value: str) -> str:
     """Treat LIKE wildcard characters as literal search text."""
     return value.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
+
+
+def _json_array_item_condition(column, value: str):
+    """Case-insensitive exact item match for JSON string arrays on SQLite/Postgres."""
+    needle = _escape_like(value.strip().casefold())
+    return cast(column, String).ilike(f'%"{needle}"%', escape="\\")
 
 
 def _funding_conditions(column, requested: str) -> list:
@@ -111,6 +117,10 @@ def _filter_conditions(query: ScholarshipQuery):
     country = _normalise_optional_filter(query.country)
     degree = _normalise_optional_filter(query.degree)
     funding = _normalise_optional_filter(query.funding)
+    department = _normalise_optional_filter(query.department)
+    eligible_field = _normalise_optional_filter(query.eligible_field)
+    eligible_programme = _normalise_optional_filter(query.eligible_programme)
+    programme_type = _normalise_optional_filter(query.programme_type)
 
     if search:
         pattern = f"%{_escape_like(search)}%"
@@ -121,6 +131,10 @@ def _filter_conditions(query: ScholarshipQuery):
                 Scholarship.country.ilike(pattern, escape="\\"),
                 Scholarship.degree.ilike(pattern, escape="\\"),
                 Scholarship.funding.ilike(pattern, escape="\\"),
+                Scholarship.program_type.ilike(pattern, escape="\\"),
+                cast(Scholarship.departments, String).ilike(pattern, escape="\\"),
+                cast(Scholarship.eligible_fields, String).ilike(pattern, escape="\\"),
+                cast(Scholarship.eligible_programmes, String).ilike(pattern, escape="\\"),
             )
         )
     if country:
@@ -129,10 +143,27 @@ def _filter_conditions(query: ScholarshipQuery):
         conditions.extend(_degree_conditions(Scholarship.degree, degree))
     if funding:
         conditions.extend(_funding_conditions(Scholarship.funding, funding))
+    if query.fully_funded is not None:
+        if query.fully_funded.value == "unknown":
+            conditions.append(Scholarship.fully_funded.is_(None))
+        else:
+            conditions.append(Scholarship.fully_funded.is_(query.fully_funded.value == "true"))
+    if department:
+        conditions.append(_json_array_item_condition(Scholarship.departments, department))
+    if eligible_field:
+        conditions.append(_json_array_item_condition(Scholarship.eligible_fields, eligible_field))
+    if eligible_programme:
+        conditions.append(_json_array_item_condition(Scholarship.eligible_programmes, eligible_programme))
+    if programme_type:
+        conditions.append(func.lower(Scholarship.program_type) == programme_type.casefold())
     if query.deadline_month is not None:
         conditions.append(func.extract("month", Scholarship.deadline_date) == query.deadline_month)
     if query.status is not None:
-        conditions.append(Scholarship.status == query.status.value)
+        if query.status.value == "unknown":
+            known = [status.value for status in ScholarshipStatus if status.value != "unknown"]
+            conditions.append(~Scholarship.status.in_(known))
+        else:
+            conditions.append(Scholarship.status == query.status.value)
 
     return conditions
 
@@ -155,7 +186,7 @@ def _sort_expressions(sort: ScholarshipSort):
         return (null_deadline_last.asc(), Scholarship.deadline_date.asc(), Scholarship.id.asc())
     if sort is ScholarshipSort.FULLY_FUNDED:
         return (
-            case((func.lower(Scholarship.funding) == "fully funded", 0), else_=1).asc(),
+            case((Scholarship.fully_funded.is_(True), 0), (Scholarship.fully_funded.is_(False), 1), else_=2).asc(),
             Scholarship.updated_at.desc(),
             Scholarship.id.asc(),
         )
