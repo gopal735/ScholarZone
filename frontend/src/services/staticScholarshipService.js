@@ -222,7 +222,10 @@ function sortRecords(records, sortBy) {
         return right - left
       })
     case 'fully-funded':
-      return sorted.sort((a, b) => Number(Boolean(b.fully_funded)) - Number(Boolean(a.fully_funded)))
+      return sorted.sort((a, b) => {
+        const rank = (value) => value === true ? 0 : value === false ? 1 : 2
+        return rank(a.fully_funded) - rank(b.fully_funded)
+      })
     case 'name-asc':
       return sorted.sort((a, b) => a.title.localeCompare(b.title))
     case 'name-desc':
@@ -315,7 +318,9 @@ export function toScholarship(record) {
 
 function getPublicSnapshotRecords(snapshot) {
   return snapshot.scholarships
-    .filter((record) => classifyLifecycle(record).status !== 'closed')
+    .filter((record) => record.verification_status !== 'quarantined'
+      && record.is_archived !== true
+      && record.status !== 'closed')
     .map(toScholarship)
 }
 
@@ -331,6 +336,11 @@ export async function fetchScholarshipsFromSnapshot(query = {}) {
     country = 'All',
     degree = 'All',
     funding = 'All',
+    fully_funded = 'All',
+    department = 'All',
+    eligible_field = 'All',
+    eligible_programme = 'All',
+    programme_type = 'All',
     deadline_month = 'All',
     status = 'All',
     lifecycle = 'All',
@@ -344,7 +354,8 @@ export async function fetchScholarshipsFromSnapshot(query = {}) {
   const needle = String(search).trim().toLowerCase()
   if (needle) {
     records = records.filter((record) =>
-      [record.title, record.country, record.degree, record.description, record.funding]
+      [record.title, record.country, record.degree, record.description, record.funding,
+        record.program_type, ...(record.departments || []), ...(record.eligible_fields || []), ...(record.eligible_programmes || [])]
         .filter(Boolean)
         .some((field) => field.toLowerCase().includes(needle))
     )
@@ -358,6 +369,19 @@ export async function fetchScholarshipsFromSnapshot(query = {}) {
   }
   if (funding && funding !== 'All') {
     records = records.filter((record) => matchesFunding(record.funding, funding))
+  }
+  if (fully_funded && fully_funded !== 'All') {
+    records = records.filter((record) => fully_funded === 'unknown'
+      ? record.fully_funded == null
+      : String(record.fully_funded) === fully_funded)
+  }
+  const exactArrayMatch = (record, key, value) => !value || value === 'All'
+    || (Array.isArray(record[key]) && record[key].some((item) => String(item).toLowerCase() === value.toLowerCase()))
+  records = records.filter((record) => exactArrayMatch(record, 'departments', department)
+    && exactArrayMatch(record, 'eligible_fields', eligible_field)
+    && exactArrayMatch(record, 'eligible_programmes', eligible_programme))
+  if (programme_type && programme_type !== 'All') {
+    records = records.filter((record) => String(record.program_type || '').toLowerCase() === programme_type.toLowerCase())
   }
   if (deadline_month && deadline_month !== 'All') {
     const targetMonth = Number(deadline_month)

@@ -9,6 +9,11 @@ const PAGE_SIZE = 12
 const SEARCH_DEBOUNCE_MS = 250
 const STATUS_ORDER = { open: 0, opening: 1, upcoming: 2, 'closing-soon': 3, closed: 4, unknown: 5 }
 
+function readQueryValue(key, fallback = 'All') {
+  if (typeof window === 'undefined') return fallback
+  return new URLSearchParams(window.location.search).get(key) || fallback
+}
+
 function toValidTimestamp(value) {
   if (typeof value !== 'string' || value.trim() === '') {
     return null
@@ -78,7 +83,8 @@ function sortLocalScholarships(items, sortBy) {
         case 'name-desc':
           return secondTitle.localeCompare(firstTitle, undefined, { sensitivity: 'base' })
         case 'fully-funded':
-          return Number(matchesFundingFilter(second.scholarship.funding, 'Fully Funded')) - Number(matchesFundingFilter(first.scholarship.funding, 'Fully Funded'))
+          return (first.scholarship.fully_funded === true ? 0 : first.scholarship.fully_funded === false ? 1 : 2)
+            - (second.scholarship.fully_funded === true ? 0 : second.scholarship.fully_funded === false ? 1 : 2)
         case 'default':
         default:
           return compareNullableTimestamps(
@@ -100,7 +106,7 @@ function getLocalDeadlineMonth(scholarship) {
   return parsedDeadline ? parsedDeadline.getUTCMonth() + 1 : null
 }
 
-function filterLocalScholarships(items, { search, country, degree, funding, deadlineMonth, status, lifecycleFilter, sortBy }) {
+function filterLocalScholarships(items, { search, country, degree, funding, deadlineMonth, status, lifecycleFilter, sortBy, fullyFunded, department, eligibleField, eligibleProgramme, programmeType }) {
   const normalizedSearch = search.trim().toLowerCase()
   const filteredItems = items.filter((scholarship) => {
     const title = typeof scholarship.title === 'string' ? scholarship.title : ''
@@ -120,8 +126,18 @@ function filterLocalScholarships(items, { search, country, degree, funding, dead
         : getScholarshipStatus(scholarship).className === status
     )
     const matchLifecycle = lifecycleFilter === 'All' || lifecycle.status === lifecycleFilter
+    const matchFullyFunded = fullyFunded === 'All' || (
+      fullyFunded === 'unknown' ? scholarship.fully_funded == null : String(scholarship.fully_funded) === fullyFunded
+    )
+    const includes = (values, selected) => selected === 'All' || (
+      Array.isArray(values) && values.some((value) => String(value).toLowerCase() === selected.toLowerCase())
+    )
+    const matchDepartment = includes(scholarship.departments, department)
+    const matchField = includes(scholarship.eligible_fields, eligibleField)
+    const matchProgramme = includes(scholarship.eligible_programmes, eligibleProgramme)
+    const matchProgrammeType = programmeType === 'All' || String(scholarship.program_type || '').toLowerCase() === programmeType.toLowerCase()
 
-    return matchSearch && matchCountry && matchDegree && matchFunding && matchDeadlineMonth && matchStatus && matchLifecycle
+    return matchSearch && matchCountry && matchDegree && matchFunding && matchDeadlineMonth && matchStatus && matchLifecycle && matchFullyFunded && matchDepartment && matchField && matchProgramme && matchProgrammeType
   })
 
   return sortLocalScholarships(filteredItems, sortBy)
@@ -146,16 +162,20 @@ function LoadingCards() {
 
 export default function ScholarshipList({ items, initialCountry }) {
   const isDirectory = !Array.isArray(items)
-  const localItems = Array.isArray(items) ? items : []
-  const [search, setSearch] = useState('')
-  const [country, setCountry] = useState(initialCountry ?? 'All')
-  const [degree, setDegree] = useState('All')
-  const [funding, setFunding] = useState('All')
-  const [deadlineMonth, setDeadlineMonth] = useState('All')
-  const [status, setStatus] = useState('All')
-  const [lifecycleFilter, setLifecycleFilter] = useState('All')
-  const [sortBy, setSortBy] = useState('recommended')
-  const [page, setPage] = useState(1)
+  const [search, setSearch] = useState(() => readQueryValue('search', ''))
+  const [country, setCountry] = useState(() => readQueryValue('country', initialCountry ?? 'All'))
+  const [degree, setDegree] = useState(() => readQueryValue('degree'))
+  const [funding, setFunding] = useState(() => readQueryValue('funding'))
+  const [fullyFunded, setFullyFunded] = useState(() => readQueryValue('fully_funded'))
+  const [department, setDepartment] = useState(() => readQueryValue('department'))
+  const [eligibleField, setEligibleField] = useState(() => readQueryValue('eligible_field'))
+  const [eligibleProgramme, setEligibleProgramme] = useState(() => readQueryValue('eligible_programme'))
+  const [programmeType, setProgrammeType] = useState(() => readQueryValue('programme_type'))
+  const [deadlineMonth, setDeadlineMonth] = useState(() => readQueryValue('deadline_month'))
+  const [status, setStatus] = useState(() => readQueryValue('status'))
+  const [lifecycleFilter, setLifecycleFilter] = useState(() => readQueryValue('lifecycle'))
+  const [sortBy, setSortBy] = useState(() => readQueryValue('sort', 'recommended'))
+  const [page, setPage] = useState(() => Math.max(1, Number(readQueryValue('page', '1')) || 1))
   const [requestVersion, setRequestVersion] = useState(0)
   const [apiDirectory, setApiDirectory] = useState({ items: [], pagination: null })
   const [loadState, setLoadState] = useState(isDirectory ? 'loading' : 'local')
@@ -164,8 +184,8 @@ export default function ScholarshipList({ items, initialCountry }) {
   const requestIdRef = useRef(0)
 
   const localResults = useMemo(
-    () => filterLocalScholarships(localItems, { search, country, degree, funding, deadlineMonth, status, lifecycleFilter, sortBy }),
-    [localItems, search, country, degree, funding, deadlineMonth, status, lifecycleFilter, sortBy],
+    () => filterLocalScholarships(Array.isArray(items) ? items : [], { search, country, degree, funding, deadlineMonth, status, lifecycleFilter, sortBy, fullyFunded, department, eligibleField, eligibleProgramme, programmeType }),
+    [items, search, country, degree, funding, deadlineMonth, status, lifecycleFilter, sortBy, fullyFunded, department, eligibleField, eligibleProgramme, programmeType],
   )
 
   useEffect(() => {
@@ -189,6 +209,11 @@ export default function ScholarshipList({ items, initialCountry }) {
             country,
             degree,
             funding,
+            fully_funded: fullyFunded === 'All' ? undefined : fullyFunded,
+            department: department === 'All' ? undefined : department,
+            eligible_field: eligibleField === 'All' ? undefined : eligibleField,
+            eligible_programme: eligibleProgramme === 'All' ? undefined : eligibleProgramme,
+            programme_type: programmeType === 'All' ? undefined : programmeType,
             deadline_month: deadlineMonth === 'All' ? undefined : deadlineMonth,
             status,
             sort: sortBy,
@@ -231,9 +256,26 @@ export default function ScholarshipList({ items, initialCountry }) {
       window.clearTimeout(timer)
       controller.abort()
     }
-  }, [country, deadlineMonth, degree, funding, isDirectory, lifecycleFilter, page, requestVersion, search, sortBy, status])
+  }, [country, deadlineMonth, degree, funding, fullyFunded, department, eligibleField, eligibleProgramme, programmeType, isDirectory, lifecycleFilter, page, requestVersion, search, sortBy, status])
 
-  const hasActiveControls = Boolean(search) || country !== 'All' || degree !== 'All' || funding !== 'All' || deadlineMonth !== 'All' || status !== 'All' || lifecycleFilter !== 'All' || sortBy !== 'recommended'
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    const params = new URLSearchParams()
+    const values = {
+      search, country, degree, funding, fully_funded: fullyFunded, department,
+      eligible_field: eligibleField, eligible_programme: eligibleProgramme,
+      programme_type: programmeType, deadline_month: deadlineMonth, status,
+      lifecycle: lifecycleFilter, sort: sortBy, page: String(page),
+    }
+    for (const [key, value] of Object.entries(values)) {
+      const defaultValue = key === 'sort' ? 'recommended' : key === 'page' ? '1' : key === 'search' ? '' : 'All'
+      if (value && value !== defaultValue) params.set(key, value)
+    }
+    const query = params.toString()
+    window.history.replaceState(window.history.state, '', `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`)
+  }, [search, country, degree, funding, fullyFunded, department, eligibleField, eligibleProgramme, programmeType, deadlineMonth, status, lifecycleFilter, sortBy, page])
+
+  const hasActiveControls = Boolean(search) || country !== 'All' || degree !== 'All' || funding !== 'All' || fullyFunded !== 'All' || department !== 'All' || eligibleField !== 'All' || eligibleProgramme !== 'All' || programmeType !== 'All' || deadlineMonth !== 'All' || status !== 'All' || lifecycleFilter !== 'All' || sortBy !== 'recommended'
   const isInitialLoading = isDirectory && loadState === 'loading' && apiDirectory.items.length === 0
   const isRefreshing = isDirectory && loadState === 'refreshing'
   const isUsingFallback = isDirectory && loadState === 'fallback'
@@ -267,6 +309,11 @@ export default function ScholarshipList({ items, initialCountry }) {
     setCountry('All')
     setDegree('All')
     setFunding('All')
+    setFullyFunded('All')
+    setDepartment('All')
+    setEligibleField('All')
+    setEligibleProgramme('All')
+    setProgrammeType('All')
     setDeadlineMonth('All')
     setStatus('All')
     setLifecycleFilter('All')
@@ -404,6 +451,35 @@ export default function ScholarshipList({ items, initialCountry }) {
               <option value="Partially Funded">Partial funding</option>
             </select>
           </div>
+
+          <div className={`filter-control ${fullyFunded !== 'All' ? 'is-active' : ''}`}>
+            <label htmlFor="scholarship-fully-funded">Fully funded evidence</label>
+            <select className="p-sel" id="scholarship-fully-funded" value={fullyFunded} onChange={(event) => { setFullyFunded(event.target.value); setPage(1) }}>
+              <option value="All">Any evidence state</option>
+              <option value="true">Confirmed fully funded</option>
+              <option value="false">Confirmed partial funding</option>
+              <option value="unknown">Unknown</option>
+            </select>
+          </div>
+
+          {[
+            ['department', 'Department', department, setDepartment],
+            ['eligible-field', 'Eligible subject', eligibleField, setEligibleField],
+            ['eligible-programme', 'Eligible programme', eligibleProgramme, setEligibleProgramme],
+            ['programme-type', 'Programme type', programmeType, setProgrammeType],
+          ].map(([key, label, value, setter]) => (
+            <div className={`filter-control ${value !== 'All' ? 'is-active' : ''}`} key={key}>
+              <label htmlFor={`scholarship-${key}`}>{label}</label>
+              <input
+                className="p-sel"
+                id={`scholarship-${key}`}
+                type="search"
+                value={value === 'All' ? '' : value}
+                placeholder={`Any ${label.toLowerCase()}`}
+                onChange={(event) => { setter(event.target.value || 'All'); setPage(1) }}
+              />
+            </div>
+          ))}
 
           <div className={`filter-control ${deadlineMonth !== 'All' ? 'is-active' : ''}`}>
             <label htmlFor="scholarship-deadline-month">Deadline month</label>

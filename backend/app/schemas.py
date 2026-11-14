@@ -33,10 +33,18 @@ class ScholarshipSort(str, Enum):
     NAME_DESC = "name-desc"
 
 class ScholarshipStatus(str, Enum):
+    OPENING = "opening"
     OPEN = "open"
     UPCOMING = "upcoming"
     CLOSING_SOON = "closing-soon"
     CLOSED = "closed"
+    UNKNOWN = "unknown"
+
+
+class FullyFundedFilter(str, Enum):
+    TRUE = "true"
+    FALSE = "false"
+    UNKNOWN = "unknown"
 
 class ImageKind(str, Enum):
     PROGRAM_IMAGE = "program_image"
@@ -53,6 +61,11 @@ class ScholarshipQuery(BaseModel):
     country: str | None = Field(default=None, max_length=120)
     degree: str | None = Field(default=None, max_length=255)
     funding: str | None = Field(default=None, max_length=120)
+    fully_funded: FullyFundedFilter | None = None
+    department: str | None = Field(default=None, max_length=120)
+    eligible_field: str | None = Field(default=None, max_length=120)
+    eligible_programme: str | None = Field(default=None, max_length=160)
+    programme_type: str | None = Field(default=None, max_length=120)
     deadline_month: int | None = Field(default=None, ge=1, le=12)
     status: ScholarshipStatus | None = None
     sort: ScholarshipSort = ScholarshipSort.DEFAULT
