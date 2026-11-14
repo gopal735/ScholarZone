@@ -9,7 +9,7 @@ import sys
 
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
-import httpx
+from app.services.outbound_security import secure_get
 
 from app.services.official_source_fetcher import fetch_official_source
 from app.services.section_extractor import extract_all
@@ -38,7 +38,7 @@ def main() -> None:
                 print(f"id={sid} {label}: no url")
                 continue
             try:
-                resp = httpx.get(
+                resp = secure_get(
                     row.official_source_url,
                     headers={"User-Agent": UA, "Accept": "text/html"},
                     timeout=25.0,

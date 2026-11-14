@@ -14,6 +14,8 @@ from urllib.parse import urljoin, urlparse
 import httpx
 from bs4 import BeautifulSoup
 
+from .outbound_security import secure_get
+
 
 class SourceResolutionType(str, Enum):
     EXACT_PROGRAM_PAGE = "exact_program_page"
@@ -371,7 +373,7 @@ class SourceResolverService:
             return self._page_cache[url]
 
         try:
-            response = httpx.get(
+            response = secure_get(
                 url,
                 headers={"User-Agent": BROWSER_UA, "Accept": "text/html"},
                 timeout=self.timeout,

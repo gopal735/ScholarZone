@@ -2313,7 +2313,7 @@ def test_regression_neon_api_contract_project():
         mock_resp.__exit__ = MagicMock(return_value=None)
         return mock_resp
 
-    with patch('urllib.request.urlopen') as mock_urlopen:
+    with patch('app.services.purge_preflight.gate4_backup.secure_urlopen') as mock_urlopen:
         # First call: project endpoint
         # Second call: branches page 1 (branch-456 found here, so page 2 not needed)
         mock_urlopen.side_effect = [
@@ -2361,7 +2361,7 @@ def test_regression_neon_api_contract_branches():
         mock_resp.__exit__ = MagicMock(return_value=None)
         return mock_resp
 
-    with patch('urllib.request.urlopen') as mock_urlopen:
+    with patch('app.services.purge_preflight.gate4_backup.secure_urlopen') as mock_urlopen:
         mock_urlopen.side_effect = [
             make_mock_response(project_response),
             make_mock_response(branches_response),
@@ -2403,7 +2403,7 @@ def test_regression_neon_api_contract_branch_not_found():
         mock_resp.__exit__ = MagicMock(return_value=None)
         return mock_resp
 
-    with patch('urllib.request.urlopen') as mock_urlopen:
+    with patch('app.services.purge_preflight.gate4_backup.secure_urlopen') as mock_urlopen:
         mock_urlopen.side_effect = [
             make_mock_response(project_response),
             make_mock_response(branches_response),
@@ -2422,7 +2422,7 @@ def test_regression_neon_api_contract_auth_failure():
     import urllib.request
     import urllib.error
 
-    with patch('urllib.request.urlopen') as mock_urlopen:
+    with patch('app.services.purge_preflight.gate4_backup.secure_urlopen') as mock_urlopen:
         # Simulate 401 Unauthorized
         error = urllib.error.HTTPError(
             url="https://console.neon.tech/api/v2/projects/proj-123",
@@ -2446,7 +2446,7 @@ def test_regression_neon_api_contract_project_not_found():
     import urllib.request
     import urllib.error
 
-    with patch('urllib.request.urlopen') as mock_urlopen:
+    with patch('app.services.purge_preflight.gate4_backup.secure_urlopen') as mock_urlopen:
         error = urllib.error.HTTPError(
             url="https://console.neon.tech/api/v2/projects/proj-123",
             code=404,
@@ -2469,7 +2469,7 @@ def test_regression_neon_api_contract_connection_error():
     import urllib.request
     import urllib.error
 
-    with patch('urllib.request.urlopen') as mock_urlopen:
+    with patch('app.services.purge_preflight.gate4_backup.secure_urlopen') as mock_urlopen:
         error = urllib.error.URLError("Connection refused")
         mock_urlopen.side_effect = error
 

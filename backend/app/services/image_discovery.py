@@ -24,6 +24,8 @@ from dataclasses import dataclass, field
 from urllib.parse import parse_qsl, urlencode, urljoin, urlparse, urlunparse
 
 import httpx
+
+from .outbound_security import secure_get
 from bs4 import BeautifulSoup
 
 from ..services.scholarship_image_verifier import ImageSourceType, is_official_domain
@@ -690,7 +692,7 @@ class ImageDiscoveryService:
                 if tried_enhanced:
                     headers = {**headers, **ENHANCED_BROWSER_HEADERS}
 
-                response = httpx.get(
+                response = secure_get(
                     url,
                     headers=headers,
                     timeout=self.timeout,

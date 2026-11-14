@@ -23,7 +23,6 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import quote_plus, urljoin, urlparse
 
-import requests
 from bs4 import BeautifulSoup
 
 _BACKEND_DIR = Path(__file__).resolve().parents[1]
@@ -35,6 +34,7 @@ from sqlalchemy.orm import sessionmaker
 
 from app.database import get_engine
 from app.models import Scholarship
+from app.services.outbound_security import secure_client, secure_get
 from app.services.image_discovery import ImageCandidate
 from app.services.image_validator import (
     ImageValidator,
@@ -161,8 +161,7 @@ def _web_search_images(query: str, max_results: int = 5) -> list[str]:
     """
     results = []
     try:
-        session = requests.Session()
-        session.headers.update(DDG_HEADERS)
+        session = secure_client(headers=DDG_HEADERS)
         
         params = {"q": query, "b": "", "kl": "us-en"}
         response = session.get(DDG_SEARCH_URL, params=params, timeout=15)
@@ -191,7 +190,7 @@ def _web_search_images(query: str, max_results: int = 5) -> list[str]:
 
 def _fetch_page(url: str, timeout: float = DEFAULT_TIMEOUT) -> tuple[int | None, str | None, str | None]:
     try:
-        response = requests.get(
+        response = secure_get(
             url,
             headers={"User-Agent": BROWSER_UA, "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"},
             timeout=timeout,

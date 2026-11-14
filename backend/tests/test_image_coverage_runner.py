@@ -301,13 +301,13 @@ class TestSharedPageCache:
             calls["n"] += 1
             return Resp()
 
-        orig = mod.httpx.get
-        mod.httpx.get = fake_get
+        orig = mod.secure_get
+        mod.secure_get = fake_get
         try:
             first = svc._fetch_page("https://www.daad.de/page")
             second = svc._fetch_page("https://www.daad.de/page")
         finally:
-            mod.httpx.get = orig
+            mod.secure_get = orig
             clear_shared_page_cache()
 
         assert first.content == second.content
@@ -338,12 +338,12 @@ class TestPreflight:
             def __bool__(self):
                 return True
 
-        orig = mod.httpx.get
-        mod.httpx.get = lambda *a, **k: Resp()
+        orig = mod.secure_get
+        mod.secure_get = lambda *a, **k: Resp()
         try:
             r = mod.preflight_check("https://blocked.example.org/x")
         finally:
-            mod.httpx.get = orig
+            mod.secure_get = orig
         assert r.reachable is False
         assert r.reason == "blocked"
 
@@ -353,12 +353,12 @@ class TestPreflight:
         class Resp:
             status_code = 200
 
-        orig = mod.httpx.get
-        mod.httpx.get = lambda *a, **k: Resp()
+        orig = mod.secure_get
+        mod.secure_get = lambda *a, **k: Resp()
         try:
             r = mod.preflight_check("https://ok.example.org/x")
         finally:
-            mod.httpx.get = orig
+            mod.secure_get = orig
         assert r.reachable is True
 
     def test_404_still_allows_the_crawl(self):
@@ -368,12 +368,12 @@ class TestPreflight:
         class Resp:
             status_code = 404
 
-        orig = mod.httpx.get
-        mod.httpx.get = lambda *a, **k: Resp()
+        orig = mod.secure_get
+        mod.secure_get = lambda *a, **k: Resp()
         try:
             r = mod.preflight_check("https://ok.example.org/missing")
         finally:
-            mod.httpx.get = orig
+            mod.secure_get = orig
         assert r.reachable is True
 
     def test_no_url_is_unreachable(self):

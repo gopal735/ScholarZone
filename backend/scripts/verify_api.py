@@ -1,7 +1,11 @@
 """Verify API returns for each country."""
 
-import requests
+import os
+import sys
 import json
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from app.services.outbound_security import secure_get
 
 countries = ['Belgium', 'Hungary', 'Poland', 'Czech Republic', 'Portugal']
 base_url = 'http://localhost:8000/api/scholarships'
@@ -9,7 +13,7 @@ base_url = 'http://localhost:8000/api/scholarships'
 print('=== API VERIFICATION ===')
 for country in countries:
     try:
-        r = requests.get(f'{base_url}?country={country}')
+        r = secure_get(f'{base_url}?country={country}')
         if r.status_code == 200:
             data = r.json()
             count = len(data.get('scholarships', []))
@@ -24,7 +28,7 @@ for country in countries:
 
 # Test total count
 try:
-    r = requests.get(base_url)
+    r = secure_get(base_url)
     if r.status_code == 200:
         data = r.json()
         print(f'\nTotal scholarships in API: {data.get("total", "N/A")}')

@@ -26,6 +26,7 @@ tested directly rather than inferred from a live deployment.
 from __future__ import annotations
 
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -34,6 +35,9 @@ import urllib.error
 import urllib.request
 from dataclasses import dataclass
 from typing import Any, Mapping
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from app.services.outbound_security import secure_urlopen
 
 #: Exactly forty lowercase hex characters. Anchored, so nothing is accepted by
 #: prefix, by extension, or with surrounding whitespace.
@@ -268,7 +272,7 @@ def _fetch_json(url: str, *, token: str | None, timeout: float = 30.0) -> Any:
     request = urllib.request.Request(url, headers={"Accept": "application/json"})
     if token:
         request.add_header("Authorization", f"Bearer {token}")
-    with urllib.request.urlopen(request, timeout=timeout) as response:  # noqa: S310
+    with secure_urlopen(request, timeout=timeout) as response:
         return json.loads(response.read().decode("utf-8"))
 
 

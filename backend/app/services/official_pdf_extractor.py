@@ -35,6 +35,8 @@ from urllib.parse import urljoin, urlparse
 
 import httpx
 
+from .outbound_security import secure_client
+
 logger = logging.getLogger(__name__)
 
 #: A circular is a document, not a dataset. Beyond this the text layer is not
@@ -217,7 +219,7 @@ class OfficialPdfExtractor:
 
     def _get_client(self) -> httpx.Client:
         if self._client is None:
-            self._client = httpx.Client(
+            self._client = secure_client(
                 timeout=self.timeout,
                 follow_redirects=True,
                 headers={
