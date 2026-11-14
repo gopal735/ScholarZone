@@ -57,10 +57,68 @@ jobs:
           cd backend
           pip install -r requirements.txt
 
+      - name: Pre-apply validation
+        if: ${{ inputs.apply }}
+        env:
+          SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
+          SCHOLARZONE_ENVIRONMENT: production
+          SCHOLARZONE_EXPECTED_DB_IDENTIFIER: ${{ secrets.SCHOLARZONE_EXPECTED_DB_IDENTIFIER }}
+          SCHOLARZONE_EXPECTED_DB_HOST: ${{ secrets.SCHOLARZONE_EXPECTED_DB_HOST }}
+          SCHOLARZONE_BACKUP_VERIFIED: ${{ secrets.SCHOLARZONE_BACKUP_VERIFIED }}
+          SCHOLARZONE_RESTORE_TEST_DATE: ${{ secrets.SCHOLARZONE_RESTORE_TEST_DATE }}
+          SCHOLARZONE_BACKUP_EVIDENCE_REF: ${{ secrets.SCHOLARZONE_BACKUP_EVIDENCE_REF }}
+        run: |
+          set -euo pipefail
+          cd backend
+          
+          # Verify all required inputs are present
+          if [[ -z "${SCHOLARZONE_EXPECTED_DB_IDENTIFIER}" ]]; then
+            echo "ERROR: SCHOLARZONE_EXPECTED_DB_IDENTIFIER secret not configured"
+            exit 1
+          fi
+          if [[ -z "${SCHOLARZONE_EXPECTED_DB_HOST}" ]]; then
+            echo "ERROR: SCHOLARZONE_EXPECTED_DB_HOST secret not configured"
+            exit 1
+          fi
+          if [[ "${SCHOLARZONE_BACKUP_VERIFIED,,}" != "true" ]]; then
+            echo "ERROR: SCHOLARZONE_BACKUP_VERIFIED must be explicitly set to true after operator verification"
+            exit 1
+          fi
+          if [[ -z "${SCHOLARZONE_RESTORE_TEST_DATE}" ]]; then
+            echo "ERROR: SCHOLARZONE_RESTORE_TEST_DATE secret not configured"
+            exit 1
+          fi
+          if [[ -z "${SCHOLARZONE_BACKUP_EVIDENCE_REF}" ]]; then
+            echo "ERROR: SCHOLARZONE_BACKUP_EVIDENCE_REF secret not configured"
+            exit 1
+          fi
+          
+          python - <<'PY'
+          import os
+          from datetime import date, datetime, timedelta
+
+          raw = os.environ["SCHOLARZONE_RESTORE_TEST_DATE"]
+          try:
+              tested = datetime.strptime(raw, "%Y-%m-%d").date()
+          except ValueError:
+              raise SystemExit("ERROR: restore test date must use YYYY-MM-DD")
+          today = date.today()
+          if tested > today:
+              raise SystemExit("ERROR: restore test date cannot be in the future")
+          if today - tested > timedelta(days=30):
+              raise SystemExit("ERROR: restore test evidence must be no older than 30 days")
+          if not os.environ["SCHOLARZONE_BACKUP_EVIDENCE_REF"].strip():
+              raise SystemExit("ERROR: backup evidence reference must not be empty")
+          PY
+          
+          echo "Pre-apply validation passed."
+
       - name: Dry run
         env:
           SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
           SCHOLARZONE_ENVIRONMENT: production
+          SCHOLARZONE_EXPECTED_DB_IDENTIFIER: ${{ secrets.SCHOLARZONE_EXPECTED_DB_IDENTIFIER }}
+          SCHOLARZONE_EXPECTED_DB_HOST: ${{ secrets.SCHOLARZONE_EXPECTED_DB_HOST }}
         run: |
           cd backend
           python migrate_schema.py --dry-run 2>&1 | tee migrate_dry_run.log
@@ -70,15 +128,22 @@ jobs:
         env:
           SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
           SCHOLARZONE_ENVIRONMENT: production
+          SCHOLARZONE_EXPECTED_DB_IDENTIFIER: ${{ secrets.SCHOLARZONE_EXPECTED_DB_IDENTIFIER }}
+          SCHOLARZONE_EXPECTED_DB_HOST: ${{ secrets.SCHOLARZONE_EXPECTED_DB_HOST }}
+          SCHOLARZONE_BACKUP_VERIFIED: ${{ secrets.SCHOLARZONE_BACKUP_VERIFIED }}
+          SCHOLARZONE_RESTORE_TEST_DATE: ${{ secrets.SCHOLARZONE_RESTORE_TEST_DATE }}
+          SCHOLARZONE_BACKUP_EVIDENCE_REF: ${{ secrets.SCHOLARZONE_BACKUP_EVIDENCE_REF }}
         run: |
           cd backend
-          python migrate_schema.py 2>&1 | tee migrate_apply.log
+          python migrate_schema.py --apply 2>&1 | tee migrate_apply.log
 
       - name: Validate
         if: ${{ inputs.apply }}
         env:
           SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
           SCHOLARZONE_ENVIRONMENT: production
+          SCHOLARZONE_EXPECTED_DB_IDENTIFIER: ${{ secrets.SCHOLARZONE_EXPECTED_DB_IDENTIFIER }}
+          SCHOLARZONE_EXPECTED_DB_HOST: ${{ secrets.SCHOLARZONE_EXPECTED_DB_HOST }}
         run: |
           cd backend
           python migrate_schema.py --validate-only
