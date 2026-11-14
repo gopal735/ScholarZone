@@ -453,15 +453,27 @@ def render_blocking(
         # would hand the second call a browser attached to a dead loop - which
         # surfaces as a baffling AttributeError rather than a lifecycle error.
         async def _session() -> SourceObservation:
-            if isinstance(active, PlaywrightRenderDriver):
-                await active.start()
+            started = time.monotonic()
             try:
+                if isinstance(active, PlaywrightRenderDriver):
+                    await active.start()
                 return await active.render(
                     url,
                     budget=budget,
                     seed_host=seed_host,
                     max_scroll_iterations=max_scroll_iterations,
                 )
+            except Exception as exc:  # noqa: BLE001 - startup failures are inconclusive
+                if isinstance(active, PlaywrightRenderDriver):
+                    logger.exception("Browser startup failed for %s", url)
+                    return SourceObservation(
+                        url=url,
+                        outcome=SourceOutcome.ERROR,
+                        error_kind=str(RenderErrorKind.BROWSER_UNAVAILABLE),
+                        detail=type(exc).__name__,
+                        elapsed_ms=int((time.monotonic() - started) * 1000),
+                    )
+                raise
             finally:
                 if isinstance(active, PlaywrightRenderDriver):
                     await active.close()
