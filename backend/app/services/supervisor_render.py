@@ -34,6 +34,7 @@ from __future__ import annotations
 import asyncio
 import logging
 import os
+import sys
 import time
 from typing import Protocol
 
@@ -44,6 +45,7 @@ from .supervisor_source import (
     SourceOutcome,
     detect_access_barrier,
 )
+from .outbound_proxy import OutboundProxy
 
 logger = logging.getLogger(__name__)
 
@@ -123,17 +125,26 @@ class PlaywrightRenderDriver:
         self._headless = headless
         self._playwright = None
         self._browser = None
+        self._outbound_proxy: OutboundProxy | None = None
         self._lock = asyncio.Lock()
         self._contexts_open = 0
 
     async def start(self) -> None:
         from playwright.async_api import async_playwright
 
+        self._outbound_proxy = OutboundProxy()
+        proxy_server = await self._outbound_proxy.start()
         self._playwright = await async_playwright().start()
         self._browser = await self._playwright.chromium.launch(
             headless=self._headless,
+            proxy={"server": proxy_server, "bypass": ""},
             # Resource ceilings so a pathological page cannot consume the host.
-            args=["--disable-dev-shm-usage", "--no-sandbox", "--disable-gpu"],
+            args=[
+                "--disable-dev-shm-usage", "--no-sandbox", "--disable-gpu",
+                "--disable-background-networking", "--disable-dns-prefetch", "--disable-quic",
+                "--force-webrtc-ip-handling-policy=disable_non_proxied_udp",
+                "--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE 127.0.0.1",
+            ],
         )
 
     async def close(self) -> None:
@@ -143,6 +154,9 @@ class PlaywrightRenderDriver:
         if self._playwright is not None:
             await self._playwright.stop()
             self._playwright = None
+        if self._outbound_proxy is not None:
+            await self._outbound_proxy.close()
+            self._outbound_proxy = None
 
     async def __aenter__(self) -> "PlaywrightRenderDriver":
         await self.start()
@@ -198,6 +212,7 @@ class PlaywrightRenderDriver:
                     # Anonymous by construction: no storage state, no user cookies.
                     storage_state=None,
                     service_workers="block",
+                    java_script_enabled=True,
                 )
                 self._contexts_open += 1
 
@@ -395,15 +410,23 @@ def _run_coroutine(coroutine):
     raising, so a render degrades into an inconclusive outcome instead of an
     exception.
     """
+    def run_in_fresh_loop(awaitable):
+        # Playwright starts its driver with asyncio subprocess APIs. Windows'
+        # selector loop does not implement subprocess transports, so its loop
+        # must be a Proactor even if the test harness changed global policy.
+        loop_factory = asyncio.ProactorEventLoop if sys.platform == "win32" else None
+        with asyncio.Runner(loop_factory=loop_factory) as runner:
+            return runner.run(awaitable)
+
     try:
         asyncio.get_running_loop()
     except RuntimeError:
-        return asyncio.run(coroutine)
+        return run_in_fresh_loop(coroutine)
 
     import concurrent.futures
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=1) as pool:
-        return pool.submit(asyncio.run, coroutine).result()
+        return pool.submit(run_in_fresh_loop, coroutine).result()
 
 
 def render_blocking(
@@ -430,15 +453,27 @@ def render_blocking(
         # would hand the second call a browser attached to a dead loop - which
         # surfaces as a baffling AttributeError rather than a lifecycle error.
         async def _session() -> SourceObservation:
-            if isinstance(active, PlaywrightRenderDriver):
-                await active.start()
+            started = time.monotonic()
             try:
+                if isinstance(active, PlaywrightRenderDriver):
+                    await active.start()
                 return await active.render(
                     url,
                     budget=budget,
                     seed_host=seed_host,
                     max_scroll_iterations=max_scroll_iterations,
                 )
+            except Exception as exc:  # noqa: BLE001 - startup failures are inconclusive
+                if isinstance(active, PlaywrightRenderDriver):
+                    logger.exception("Browser startup failed for %s", url)
+                    return SourceObservation(
+                        url=url,
+                        outcome=SourceOutcome.ERROR,
+                        error_kind=str(RenderErrorKind.BROWSER_UNAVAILABLE),
+                        detail=type(exc).__name__,
+                        elapsed_ms=int((time.monotonic() - started) * 1000),
+                    )
+                raise
             finally:
                 if isinstance(active, PlaywrightRenderDriver):
                     await active.close()
