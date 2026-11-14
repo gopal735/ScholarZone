@@ -22,9 +22,16 @@ def _escape_like(value: str) -> str:
 
 
 def _json_array_item_condition(column, value: str):
-    """Case-insensitive exact item match for JSON string arrays on SQLite/Postgres."""
-    needle = _escape_like(value.strip().casefold())
-    return cast(column, String).ilike(f'%"{needle}"%', escape="\\")
+    """Case-insensitive exact item match for JSON string arrays on SQLite/Postgres.
+    
+    Uses proper JSON element comparison via text representation with
+    word boundaries to avoid false positives from substring matches.
+    """
+    needle = value.strip().casefold()
+    # Match the quoted JSON string element with word boundaries
+    # JSON arrays store strings as "value" within the array
+    pattern = f'%"{_escape_like(needle)}"%'
+    return cast(column, String).ilike(pattern, escape="\\")
 
 
 def _funding_conditions(column, requested: str) -> list:

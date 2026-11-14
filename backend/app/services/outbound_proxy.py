@@ -148,7 +148,9 @@ class OutboundProxy:
         return host, parsed.port or 80
 
     async def _connect_pinned(self, host: str, port: int):
-        addresses = self.policy.resolve_public(host, port)
+        # Run the synchronous DNS resolution in a worker thread to avoid blocking the event loop
+        loop = asyncio.get_running_loop()
+        addresses = await loop.run_in_executor(None, self.policy.resolve_public, host, port)
         last: Exception | None = None
         for address in addresses:
             try:

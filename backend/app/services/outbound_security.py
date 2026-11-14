@@ -220,12 +220,22 @@ class SSRFSafeClient(httpx.Client):
             raise ValueError("proxy transports and mounts are disabled by outbound policy")
         if transport is not None and not isinstance(transport, httpx.MockTransport):
             raise ValueError("custom transports are disabled; only non-networking MockTransport is accepted for tests")
+        # Reject transport options that would be ignored when custom transport is used
+        ignored = sorted({"verify", "cert", "http2", "limits"} & kwargs.keys())
+        if ignored:
+            raise ValueError(f"client options are not applied with the outbound transport: {ignored}")
         requested_redirects = bool(kwargs.pop("follow_redirects", False))
         # The base client must never process redirects internally; this class
         # validates each intermediate URL before making the following request.
         kwargs["follow_redirects"] = False
         kwargs["trust_env"] = False
         super().__init__(transport=transport or SSRFSafeTransport(policy), **kwargs)
+        # Verify the pinned network backend was installed (only for real transports)
+        if not isinstance(transport, httpx.MockTransport):
+            if not hasattr(self._pool, "_network_backend"):
+                raise RuntimeError("unsupported httpcore: cannot install pinned network backend")
+            if not isinstance(self._pool._network_backend, PinnedSyncBackend):
+                raise RuntimeError("pinned network backend not installed")
         self._outbound_policy = policy
         self._outbound_follow_redirects = requested_redirects
         self._outbound_max_redirects = max_redirects
@@ -255,8 +265,15 @@ class SSRFSafeClient(httpx.Client):
             if hop >= self._outbound_max_redirects:
                 response.close()
                 raise httpx.TooManyRedirects("outbound redirect limit exceeded", request=current)
-            next_url = current.url.join(location)
-            self._outbound_policy.validate_url(next_url, request=current)
+            try:
+                next_url = current.url.join(location)
+                self._outbound_policy.validate_url(next_url, request=current)
+            except httpx.InvalidURL as exc:
+                response.close()
+                raise UnsafeOutboundTarget("invalid redirect Location header", request=current) from exc
+            except BaseException:
+                response.close()
+                raise
             if current.url.scheme == "https" and next_url.scheme == "http":
                 response.close()
                 raise UnsafeOutboundTarget("HTTPS-to-HTTP redirect is not accepted", request=current)
@@ -293,6 +310,7 @@ def secure_head(url: str, **kwargs) -> httpx.Response:
 class _UrlopenResponse:
     def __init__(self, response: httpx.Response) -> None:
         self._response = response
+        self._offset = 0
 
     def __enter__(self):
         return self
@@ -302,7 +320,10 @@ class _UrlopenResponse:
 
     def read(self, amount: int = -1) -> bytes:
         content = self._response.read()
-        return content if amount < 0 else content[:amount]
+        end = len(content) if amount < 0 else self._offset + amount
+        chunk = content[self._offset:end]
+        self._offset += len(chunk)
+        return chunk
 
     @property
     def status(self) -> int:

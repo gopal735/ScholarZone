@@ -110,7 +110,8 @@ function filterLocalScholarships(items, { search, country, degree, funding, dead
   const normalizedSearch = search.trim().toLowerCase()
   const filteredItems = items.filter((scholarship) => {
     const title = typeof scholarship.title === 'string' ? scholarship.title : ''
-    const searchableText = [title, scholarship.country, scholarship.degree, scholarship.funding, scholarship.description]
+    const searchableText = [title, scholarship.country, scholarship.degree, scholarship.funding, scholarship.description,
+      ...(scholarship.departments || []), ...(scholarship.eligible_fields || []), ...(scholarship.eligible_programmes || []), scholarship.program_type || '']
       .filter((value) => typeof value === 'string')
       .join(' ')
       .toLowerCase()

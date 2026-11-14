@@ -4,13 +4,12 @@
 import os
 import subprocess
 import sys
-import urllib.request
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 BACKEND_DIR = os.path.join(REPO_ROOT, "backend")
 SCRIPTS_DIR = os.path.join(BACKEND_DIR, "scripts")
 sys.path.insert(0, BACKEND_DIR)
-from app.services.outbound_security import secure_urlopen
+from scripts.local_smoke_http import open_local_smoke_url
 
 
 def run_script_gate(name: str, script_name: str, cwd: str) -> tuple[bool, str | None]:
@@ -53,7 +52,7 @@ def gate_readiness() -> tuple[bool, str | None]:
     print(f"{'=' * 60}")
     url = os.environ.get("SCHOLARZONE_API_URL", "http://127.0.0.1:8000")
     try:
-        with secure_urlopen(f"{url}/health", timeout=5) as resp:
+        with open_local_smoke_url(f"{url}/health", allowed_ports={8000}, timeout=5) as resp:
             if resp.status == 200:
                 print(f"[PASS] API is ready at {url}")
                 return True, None
@@ -72,7 +71,7 @@ def gate_api_smoke_tests() -> tuple[bool, str | None]:
     ok = True
     for path in ["/health", "/scholarships/stats"]:
         try:
-            with secure_urlopen(f"{url}{path}", timeout=10) as resp:
+            with open_local_smoke_url(f"{url}{path}", allowed_ports={8000}, timeout=10) as resp:
                 print(f"[PASS] {path} -> {resp.status}")
         except Exception as exc:
             print(f"[FAIL] {path} -> {exc}")

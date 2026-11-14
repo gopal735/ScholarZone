@@ -320,7 +320,7 @@ function getPublicSnapshotRecords(snapshot) {
   return snapshot.scholarships
     .filter((record) => record.verification_status !== 'quarantined'
       && record.is_archived !== true
-      && record.status !== 'closed')
+      && (record.status || '').toLowerCase() !== 'closed')
     .map(toScholarship)
 }
 
@@ -376,7 +376,8 @@ export async function fetchScholarshipsFromSnapshot(query = {}) {
       : String(record.fully_funded) === fully_funded)
   }
   const exactArrayMatch = (record, key, value) => !value || value === 'All'
-    || (Array.isArray(record[key]) && record[key].some((item) => String(item).toLowerCase() === value.toLowerCase()))
+    || (Array.isArray(record[key]) && record[key].some((item) => 
+      String(item).trim().toLowerCase() === String(value).trim().toLowerCase()))
   records = records.filter((record) => exactArrayMatch(record, 'departments', department)
     && exactArrayMatch(record, 'eligible_fields', eligible_field)
     && exactArrayMatch(record, 'eligible_programmes', eligible_programme))

@@ -183,7 +183,8 @@ def test_rejected_literal_target_never_reaches_transport():
     assert calls == []
 
 
-def test_browser_proxy_blocks_local_subresource_without_connecting_to_it():
+@pytest.mark.asyncio
+async def test_browser_proxy_blocks_local_subresource_without_connecting_to_it():
     async def exercise():
         received: list[bytes] = []
 
@@ -214,4 +215,66 @@ def test_browser_proxy_blocks_local_subresource_without_connecting_to_it():
             target_server.close()
             await target_server.wait_closed()
 
-    asyncio.run(exercise())
+    await exercise()
+
+
+def test_ssrf_client_request_level_validation():
+    """Test that SSRFSafeClient validates at request level."""
+    from app.services.outbound_security import SSRFSafeClient, UnsafeOutboundTarget, DestinationPolicy
+
+    policy = DestinationPolicy(lambda _host, _port: ["8.8.8.8"])
+
+    def mock_send(request):
+        return httpx.Response(200, request=request)
+
+    with SSRFSafeClient(
+        policy=policy,
+        transport=httpx.MockTransport(mock_send),
+    ) as client:
+        # Valid request should succeed
+        response = client.get("https://public.example/path")
+        assert response.status_code == 200
+
+        # Invalid URL should be rejected at request level
+        with pytest.raises(UnsafeOutboundTarget):
+            client.get("http://127.0.0.1/admin")
+
+
+@pytest.mark.asyncio
+async def test_browser_proxy_blocks_connect_to_loopback():
+    """CONNECT to loopback should be rejected before any connection."""
+    async def exercise():
+        received: list[bytes] = []
+
+        async def target(reader, writer):
+            received.append(await reader.read(1024))
+            writer.close()
+            await writer.wait_closed()
+
+        target_server = await asyncio.start_server(target, "127.0.0.1", 0)
+        target_port = target_server.sockets[0].getsockname()[1]
+        proxy = OutboundProxy()
+        proxy_url = await proxy.start()
+        proxy_port = int(proxy_url.rsplit(":", 1)[1])
+        try:
+            reader, writer = await asyncio.open_connection("127.0.0.1", proxy_port)
+            writer.write(
+                f"CONNECT 127.0.0.1:{target_port} HTTP/1.1\r\n"
+                f"Host: 127.0.0.1:{target_port}\r\n\r\n".encode()
+            )
+            await writer.drain()
+            reply = await reader.read(1024)
+            writer.close()
+            await writer.wait_closed()
+            assert reply.startswith(b"HTTP/1.1 403")
+            assert received == []
+        finally:
+            await proxy.close()
+            target_server.close()
+            await target_server.wait_closed()
+
+    await exercise()
+
+
+# ============================================================
+# Regression Tests

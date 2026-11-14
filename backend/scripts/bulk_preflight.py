@@ -5,12 +5,8 @@ import argparse
 import os
 import subprocess
 import sys
-import urllib.error
-import urllib.request
 
-BACKEND_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, BACKEND_DIR)
-from app.services.outbound_security import secure_urlopen
+from scripts.local_smoke_http import open_local_smoke_url
 
 
 def run_check(name: str, cmd: list[str], cwd: str | None = None) -> bool:
@@ -19,7 +15,7 @@ def run_check(name: str, cmd: list[str], cwd: str | None = None) -> bool:
         cmd,
         capture_output=True,
         text=True,
-        cwd=cwd or BACKEND_DIR,
+        cwd=cwd or os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
     )
     print(result.stdout, end="")
     if result.stderr:
@@ -32,9 +28,8 @@ def run_check(name: str, cmd: list[str], cwd: str | None = None) -> bool:
 
 
 def check_health(base_url: str) -> bool:
-    url = f"{base_url}/health"
     try:
-        with secure_urlopen(url, timeout=10) as resp:
+        with open_local_smoke_url(f"{base_url}/health", allowed_ports={8000}, timeout=10) as resp:
             if resp.status == 200:
                 print("[PASS] Backend healthy (/health = 200)")
                 return True
@@ -46,9 +41,8 @@ def check_health(base_url: str) -> bool:
 
 
 def check_scheduler(base_url: str) -> bool:
-    url = f"{base_url}/internal/verify/status"
     try:
-        with secure_urlopen(url, timeout=10) as resp:
+        with open_local_smoke_url(f"{base_url}/internal/verify/status", allowed_ports={8000}, timeout=10) as resp:
             data = resp.read().decode("utf-8", errors="replace")
             print(f"[PASS] Scheduler available ({data[:120]})")
             return True

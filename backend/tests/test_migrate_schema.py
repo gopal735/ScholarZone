@@ -544,7 +544,7 @@ class TestBackupPITRGate:
 class TestTransactionRollback:
     """Tests for transactional rollback on validation failure."""
     
-    def test_apply_rollback_on_validation_failure(self, sqlite_engine):
+    def test_apply_validation_failure_rolls_back_transaction(self, sqlite_engine):
         """Validation failure should roll back all DDL."""
         from migrate_schema import apply_migration, dry_run
         

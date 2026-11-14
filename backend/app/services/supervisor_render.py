@@ -137,7 +137,7 @@ class PlaywrightRenderDriver:
         self._playwright = await async_playwright().start()
         self._browser = await self._playwright.chromium.launch(
             headless=self._headless,
-            proxy={"server": proxy_server, "bypass": ""},
+            proxy={"server": proxy_server, "bypass": "<-loopback>"},
             # Resource ceilings so a pathological page cannot consume the host.
             args=[
                 "--disable-dev-shm-usage", "--no-sandbox", "--disable-gpu",
@@ -148,15 +148,14 @@ class PlaywrightRenderDriver:
         )
 
     async def close(self) -> None:
-        if self._browser is not None:
-            await self._browser.close()
-            self._browser = None
-        if self._playwright is not None:
-            await self._playwright.stop()
-            self._playwright = None
-        if self._outbound_proxy is not None:
-            await self._outbound_proxy.close()
-            self._outbound_proxy = None
+        for attr in ("_context", "_browser", "_playwright", "_outbound_proxy"):
+            obj = getattr(self, attr, None)
+            if obj is not None:
+                try:
+                    await obj.close() if hasattr(obj, "close") and callable(getattr(obj, "close")) else obj.close() if attr != "_outbound_proxy" else obj.close()
+                except Exception:
+                    pass
+                setattr(self, attr, None)
 
     async def __aenter__(self) -> "PlaywrightRenderDriver":
         await self.start()

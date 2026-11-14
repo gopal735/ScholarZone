@@ -319,7 +319,6 @@ def verify_database_identity(conn: Connection) -> dict[str, Any]:
             if result:
                 db_file_path = result[0][2]  # Third column is the file path
                 # Extract just the filename without path
-                import os
                 db_filename = os.path.basename(db_file_path)
                 # Remove .db extension if present
                 db_name = db_filename
@@ -378,7 +377,17 @@ def verify_production_database(engine: Engine) -> dict[str, Any]:
         
         # Verify identity
         db_identity = verify_database_identity(conn)
-    
+        
+        # Fail closed if identity cannot be positively verified when expected identifier is configured
+        expected_db_id = os.environ.get("SCHOLARZONE_EXPECTED_DB_IDENTIFIER")
+        if expected_db_id and not db_identity.get("verified", False):
+            error_detail = db_identity.get("details", {}).get("error", "identity not verified")
+            raise RuntimeError(
+                f"Database identity verification failed for {dialect}: {error_detail}. "
+                f"Expected identifier: '{expected_db_id}'. "
+                f"Cannot proceed with migration against an unverified database."
+            )
+
     return {
         "database_url": str(engine.url).replace(str(engine.url.password), "***") if engine.url.password else str(engine.url),
         "core_tables_present": list(required_core_tables),
@@ -608,6 +617,33 @@ def get_all_indexes_with_pragma(conn: Connection, table_name: str) -> list[dict]
 # Apply Migration with Transactional Validation
 # ============================================================
 
+def dry_run(engine: Engine) -> dict[str, Any]:
+    """Perform a dry run of the migration."""
+    dialect = "postgresql" if engine.dialect.name == "postgresql" else "sqlite"
+    
+    # Verify production database
+    db_info = verify_production_database(engine)
+    
+    # Check existing tables
+    table_info = check_existing_supervisor_tables(engine)
+    missing_tables = [t for t, info in table_info["tables"].items() if not info["exists"]]
+    
+    # Generate statements
+    create_stmts = generate_create_statements(dialect, missing_tables)
+    index_stmts = generate_index_statements(engine, missing_tables, table_info)
+    
+    return {
+        "mode": "dry-run",
+        "timestamp": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+        "database": db_info,
+        "supervisor_tables": table_info,
+        "missing_tables": missing_tables,
+        "create_statements": create_stmts,
+        "index_statements": index_stmts,
+        "total_statements": len(create_stmts) + len(index_stmts),
+    }
+
+
 def apply_migration(engine: Engine, report: dict[str, Any]) -> dict[str, Any]:
     """Apply the migration with full transactional validation.
     
@@ -635,42 +671,94 @@ def apply_migration(engine: Engine, report: dict[str, Any]) -> dict[str, Any]:
     validation = None
     
     # Use a single transaction for all DDL AND validation
-    with engine.begin() as conn:
-        # Create tables
-        for stmt in create_stmts:
-            try:
-                conn.execute(text(stmt))
-                table_name = stmt.split()[2]
-                applied["tables_created"].append(table_name)
-                print(f"[APPLIED] CREATE TABLE {table_name}")
-            except Exception as e:
-                applied["errors"].append({"statement": stmt, "error": str(e)})
-                print(f"[ERROR] CREATE TABLE failed: {e}")
-                raise  # Rollback the transaction
-        
-        # Create indexes
-        for stmt in index_stmts:
-            try:
-                conn.execute(text(stmt))
-                applied["indexes_created"].append(stmt)
-                print(f"[APPLIED] {stmt}")
-            except Exception as e:
-                applied["errors"].append({"statement": stmt, "error": str(e)})
-                print(f"[ERROR] CREATE INDEX failed: {e}")
-                raise  # Rollback the transaction
-        
-        # VALIDATE WITHIN THE SAME TRANSACTION
-        # Use the transaction connection for inspection
-        validation = validate_schema_with_connection(conn)
-        
-        # If validation fails, raise to trigger rollback
-        if not validation.get("valid", False):
-            error_msg = "SCHEMA VALIDATION FAILED: " + json.dumps(
-                {k: v for k, v in validation.items() if k != "table_details"},
-                indent=2
-            )
-            print(f"[ERROR] {error_msg}", file=sys.stderr)
-            raise RuntimeError(error_msg)
+    # SQLite requires explicit transaction management for DDL
+    if engine.dialect.name == "sqlite":
+        # For SQLite, we need to manage the transaction manually since DDL commits implicitly
+        conn = engine.connect()
+        trans = conn.begin()
+        try:
+            # Create tables
+            for stmt in create_stmts:
+                try:
+                    conn.execute(text(stmt))
+                    table_name = stmt.split()[2]
+                    applied["tables_created"].append(table_name)
+                    print(f"[APPLIED] CREATE TABLE {table_name}")
+                except Exception as e:
+                    applied["errors"].append({"statement": stmt, "error": str(e)})
+                    print(f"[ERROR] CREATE TABLE failed: {e}")
+                    raise  # Will trigger rollback
+            
+            # Create indexes
+            for stmt in index_stmts:
+                try:
+                    conn.execute(text(stmt))
+                    applied["indexes_created"].append(stmt)
+                    print(f"[APPLIED] {stmt}")
+                except Exception as e:
+                    applied["errors"].append({"statement": stmt, "error": str(e)})
+                    print(f"[ERROR] CREATE INDEX failed: {e}")
+                    raise  # Will trigger rollback
+            
+            # VALIDATE WITHIN THE SAME TRANSACTION
+            # Use the transaction connection for inspection
+            validation = validate_schema_with_connection(conn)
+            
+            # If validation fails, raise to trigger rollback
+            if not validation.get("valid", False):
+                error_msg = "SCHEMA VALIDATION FAILED: " + json.dumps(
+                    {k: v for k, v in validation.items() if k != "table_details"},
+                    indent=2
+                )
+                print(f"[ERROR] {error_msg}", file=sys.stderr)
+                raise RuntimeError(error_msg)
+            
+            trans.commit()
+        except Exception:
+            trans.rollback()
+            conn.close()
+            raise
+        finally:
+            if not trans.is_active:
+                conn.close()
+    else:
+        # PostgreSQL: use engine.begin() for transaction management
+        with engine.begin() as conn:
+            # Create tables
+            for stmt in create_stmts:
+                try:
+                    conn.execute(text(stmt))
+                    table_name = stmt.split()[2]
+                    applied["tables_created"].append(table_name)
+                    print(f"[APPLIED] CREATE TABLE {table_name}")
+                except Exception as e:
+                    applied["errors"].append({"statement": stmt, "error": str(e)})
+                    print(f"[ERROR] CREATE TABLE failed: {e}")
+                    raise  # Rollback the transaction
+            
+            # Create indexes
+            for stmt in index_stmts:
+                try:
+                    conn.execute(text(stmt))
+                    applied["indexes_created"].append(stmt)
+                    print(f"[APPLIED] {stmt}")
+                except Exception as e:
+                    applied["errors"].append({"statement": stmt, "error": str(e)})
+                    print(f"[ERROR] CREATE INDEX failed: {e}")
+                    raise  # Rollback the transaction
+            
+            # VALIDATE WITHIN THE SAME TRANSACTION
+            # Use the transaction connection for inspection
+            validation = validate_schema_with_connection(conn)
+            
+            # If validation fails, raise to trigger rollback
+            if not validation.get("valid", False):
+                error_msg = "SCHEMA VALIDATION FAILED: " + json.dumps(
+                    {k: v for k, v in validation.items() if k != "table_details"},
+                    indent=2
+                )
+                print(f"[ERROR] {error_msg}", file=sys.stderr)
+                raise RuntimeError(error_msg)
     
     return {
         "mode": "apply",
@@ -892,6 +980,23 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
             if expected_pk:
                 nullable_ok = True
             
+            # Validate PostgreSQL GENERATED ALWAYS AS IDENTITY for canonical ID columns
+            identity_ok = True
+            if dialect == "postgresql" and expected_pk and col_name == "id":
+                # For PostgreSQL, canonical ID columns must be GENERATED ALWAYS AS IDENTITY
+                # Check reflected identity metadata
+                identity_info = actual_col.get("identity")
+                if identity_info is None or identity_info == "NO":
+                    # Not an identity column - this is a mismatch for canonical ID
+                    identity_ok = False
+                elif identity_info == "ALWAYS":
+                    identity_ok = True
+                elif identity_info == "BY DEFAULT":
+                    # BY DEFAULT is not GENERATED ALWAYS
+                    identity_ok = False
+                else:
+                    identity_ok = False
+            
             # Check unique (column-level)
             expected_unique = expected_col["unique"]
             actual_unique = actual_col.get("unique", False)
@@ -915,7 +1020,7 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
             ):
                 actual_type_label = "TIMESTAMP WITH TIME ZONE"
             
-            col_ok = type_ok and nullable_ok and pk_ok and unique_ok and default_ok
+            col_ok = type_ok and nullable_ok and pk_ok and unique_ok and default_ok and identity_ok
             if not col_ok:
                 table_ok = False
             
@@ -928,6 +1033,7 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
                     "primary_key": actual_pk_bool,
                     "unique": actual_unique,
                     "default": actual_default,
+                    "identity": actual_col.get("identity") if dialect == "postgresql" and expected_pk and col_name == "id" else None,
                 },
                 "checks": {
                     "type": type_ok,
@@ -935,6 +1041,7 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
                     "primary_key": pk_ok,
                     "unique": unique_ok,
                     "default": default_ok,
+                    "identity": identity_ok,
                 },
             }
         
@@ -959,14 +1066,32 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
                 found = False
                 for idx in actual_indexes:
                     if idx.get("unique") and list(idx["column_names"]) == expected_comp["columns"]:
+                        # Reject partial unique indexes when unrestricted UNIQUE constraint is required
+                        if idx.get("predicate"):
+                            # Partial unique index cannot satisfy required unrestricted UNIQUE constraint
+                            composite_results.append({
+                                "name": expected_comp["name"],
+                                "columns": expected_comp["columns"],
+                                "found": False,
+                                "reason": "partial_unique_index_rejected",
+                                "details": f"Found partial unique index with predicate: {idx['predicate']}; unrestricted UNIQUE constraint required"
+                            })
+                            table_ok = False
+                            break
                         found = True
                         break
-                composite_results.append({
-                    "name": expected_comp["name"],
-                    "columns": expected_comp["columns"],
-                    "found": found,
-                })
-                if not found:
+                if found:
+                    composite_results.append({
+                        "name": expected_comp["name"],
+                        "columns": expected_comp["columns"],
+                        "found": True,
+                    })
+                elif not any(r.get("reason") == "partial_unique_index_rejected" for r in composite_results if r.get("name") == expected_comp["name"]):
+                    composite_results.append({
+                        "name": expected_comp["name"],
+                        "columns": expected_comp["columns"],
+                        "found": False,
+                    })
                     table_ok = False
         
         validation["composite_unique_validation"][table_name] = {
@@ -974,19 +1099,45 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
             "results": composite_results,
         }
         
-        # Index validation - exact name, columns, uniqueness, order
+        # Index validation - exact columns, order, uniqueness, and predicate
+        # Note: expected indexes are defined by their attributes in the canonical DDL
+        # We match by attributes, not just name, since names may differ
         missing_indexes = []
         index_details = {}
-        for idx_name in expected.get("indexes", []):
-            idx = next((i for i in actual_indexes if i["name"] == idx_name), None)
-            if idx is None:
-                missing_indexes.append(idx_name)
+        expected_indexes_list = expected.get("indexes", [])
+        for expected_idx in expected_indexes_list:
+            expected_cols = expected_idx.get("columns", [])
+            expected_unique = expected_idx.get("unique", False)
+            expected_predicate = expected_idx.get("predicate")
+            expected_name = expected_idx.get("name")
+            
+            found = False
+            for actual_idx in actual_indexes:
+                actual_cols = actual_idx.get("column_names", [])
+                actual_unique = actual_idx.get("unique", False)
+                actual_predicate = actual_idx.get("predicate")
+                
+                # Match by columns (order matters), uniqueness, and predicate
+                if (actual_cols == expected_cols and 
+                    actual_unique == expected_unique and
+                    actual_predicate == expected_predicate):
+                    found = True
+                    index_details[expected_name] = {
+                        "found": True,
+                        "unique": actual_unique,
+                        "columns": actual_cols,
+                        "predicate": actual_predicate,
+                    }
+                    break
+            
+            if not found:
+                missing_indexes.append(expected_name)
                 table_ok = False
-            else:
-                index_details[idx_name] = {
-                    "found": True,
-                    "unique": idx.get("unique", False),
-                    "columns": idx.get("column_names", []),
+                index_details[expected_name] = {
+                    "found": False,
+                    "expected_columns": expected_cols,
+                    "expected_unique": expected_unique,
+                    "expected_predicate": expected_predicate,
                 }
         
         validation["index_validation"][table_name] = {
@@ -1149,7 +1300,7 @@ def main():
                 "timestamp": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
                 "validation": validation,
             }
-        elif args.dry_run or args.report:
+        elif args.dry_run:
             report = dry_run(engine)
         elif args.apply:
             # Apply mode: run dry-run first to get the plan, then apply with transactional validation
@@ -1164,7 +1315,7 @@ def main():
             with open(args.output, "w") as f:
                 json.dump(report, f, indent=2, default=str)
             print(f"Report written to {args.output}")
-        elif args.report:
+        if args.report:
             json.dump(report, sys.stdout, indent=2, default=str)
             print()
         

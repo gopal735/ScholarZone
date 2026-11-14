@@ -194,6 +194,8 @@ def _fetch_page(url: str, timeout: float = DEFAULT_TIMEOUT) -> tuple[int | None,
             url,
             headers={"User-Agent": BROWSER_UA, "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"},
             timeout=timeout,
+            follow_redirects=True,
+            max_redirects=5,
         )
         if response.status_code == 200:
             ct = response.headers.get("content-type", "")
