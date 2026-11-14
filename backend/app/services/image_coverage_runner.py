@@ -22,6 +22,8 @@ from urllib.parse import urlparse
 
 import httpx
 
+from .outbound_security import secure_get
+
 from sqlalchemy import select
 from sqlalchemy.orm import Session, sessionmaker
 
@@ -75,7 +77,7 @@ def preflight_check(url: str | None, timeout: float = PREFLIGHT_TIMEOUT_SECONDS)
     if not url:
         return PreflightResult(False, None, "no_source_url")
     try:
-        response = httpx.get(
+        response = secure_get(
             url,
             headers={"User-Agent": BROWSER_UA, "Accept": "text/html"},
             timeout=timeout,

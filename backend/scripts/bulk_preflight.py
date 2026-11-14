@@ -9,6 +9,8 @@ import urllib.error
 import urllib.request
 
 BACKEND_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, BACKEND_DIR)
+from app.services.outbound_security import secure_urlopen
 
 
 def run_check(name: str, cmd: list[str], cwd: str | None = None) -> bool:
@@ -32,7 +34,7 @@ def run_check(name: str, cmd: list[str], cwd: str | None = None) -> bool:
 def check_health(base_url: str) -> bool:
     url = f"{base_url}/health"
     try:
-        with urllib.request.urlopen(url, timeout=10) as resp:
+        with secure_urlopen(url, timeout=10) as resp:
             if resp.status == 200:
                 print("[PASS] Backend healthy (/health = 200)")
                 return True
@@ -46,7 +48,7 @@ def check_health(base_url: str) -> bool:
 def check_scheduler(base_url: str) -> bool:
     url = f"{base_url}/internal/verify/status"
     try:
-        with urllib.request.urlopen(url, timeout=10) as resp:
+        with secure_urlopen(url, timeout=10) as resp:
             data = resp.read().decode("utf-8", errors="replace")
             print(f"[PASS] Scheduler available ({data[:120]})")
             return True
