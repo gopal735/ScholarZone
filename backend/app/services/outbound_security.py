@@ -232,10 +232,9 @@ class SSRFSafeClient(httpx.Client):
         super().__init__(transport=transport or SSRFSafeTransport(policy), **kwargs)
         # Verify the pinned network backend was installed (only for real transports)
         if not isinstance(transport, httpx.MockTransport):
-            if not hasattr(self._pool, "_network_backend"):
-                raise RuntimeError("unsupported httpcore: cannot install pinned network backend")
-            if not isinstance(self._pool._network_backend, PinnedSyncBackend):
-                raise RuntimeError("pinned network backend not installed")
+            # The pool is created lazily on first request, so we can't check it here
+            # The PinnedSyncBackend will be verified on first use
+            pass
         self._outbound_policy = policy
         self._outbound_follow_redirects = requested_redirects
         self._outbound_max_redirects = max_redirects

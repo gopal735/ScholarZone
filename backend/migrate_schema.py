@@ -202,16 +202,27 @@ def get_expected_schema(dialect: str) -> dict[str, dict]:
         if table_name not in NEW_TABLE_DDL:
             continue
         ddl = NEW_TABLE_DDL[table_name][dialect]
+        # Parse indexes from NEW_TABLE_INDEXES - format is "ix_name ON table (columns)"
+        indexes = []
+        for idx_def in NEW_TABLE_INDEXES.get(table_name, []):
+            # Parse "ix_name ON table (columns)" format
+            # May include WHERE predicate for partial indexes
+            match = re.match(r'(\w+)\s+ON\s+(\w+)\s*\(([^)]+)\)(?:\s+WHERE\s+(.+))?', idx_def, re.IGNORECASE)
+            if match:
+                name, table, cols_str, predicate = match.groups()
+                cols = [c.strip() for c in match.group(3).split(',')]
+                indexes.append({
+                    "name": name,
+                    "columns": cols,
+                    "unique": False,  # These are regular indexes, not unique
+                    "predicate": predicate.strip() if predicate else None,
+                })
         expected[table_name] = {
-            "ddl": ddl,
-            "columns": parse_ddl_columns(ddl),
-            "composite_constraints": parse_composite_constraints(ddl),
-            "foreign_keys": parse_foreign_keys(ddl),
-            "indexes": [
-                idx.split("IF NOT EXISTS ")[1].split(" ON ")[0]
-                for idx in index_statements()
-                if f" ON {table_name} " in idx
-            ],
+            "ddl": NEW_TABLE_DDL[table_name][dialect],
+            "columns": parse_ddl_columns(NEW_TABLE_DDL[table_name][dialect]),
+            "composite_constraints": parse_composite_constraints(NEW_TABLE_DDL[table_name][dialect]),
+            "foreign_keys": parse_foreign_keys(NEW_TABLE_DDL[table_name][dialect]),
+            "indexes": indexes,
         }
     return expected
 
