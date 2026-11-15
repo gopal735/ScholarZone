@@ -242,12 +242,10 @@ class SSRFSafeClient(httpx.Client):
     def send(self, request: httpx.Request, *, stream: bool = False, auth=httpx.USE_CLIENT_DEFAULT, follow_redirects=httpx.USE_CLIENT_DEFAULT) -> httpx.Response:
         # Reject credential-bearing requests over plaintext HTTP.
         if request.url.scheme == "http":
-            # Check client-configured auth
-            has_client_auth = (
-                auth is not None
-                and auth is not httpx.USE_CLIENT_DEFAULT
-                and auth is not False
-            )
+            # Determine effective authentication for this request.
+            # When auth is USE_CLIENT_DEFAULT, the client's configured auth applies.
+            effective_auth = self.auth if auth is httpx.USE_CLIENT_DEFAULT else auth
+            has_client_auth = effective_auth is not None and effective_auth is not False
             # Check request-level Authorization header
             has_request_auth = "authorization" in request.headers
             if has_client_auth or has_request_auth:

@@ -18,6 +18,13 @@ from scripts.local_smoke_http import open_api_url  # noqa: E402
 ALLOWED_LOOPBACK_PORTS = {8000}
 
 
+class PaginationError(Exception):
+    """Raised when pagination fails to fetch a complete dataset."""
+    def __init__(self, message: str, page: int | None = None):
+        self.page = page
+        super().__init__(message)
+
+
 def _join_url(base_url: str, path: str) -> str:
     base = base_url.rstrip("/") + "/"
     return urljoin(base, path.lstrip("/"))
@@ -62,6 +69,9 @@ def _fetch_all_pages(base_url: str, path: str, *, allowed_ports: set[int], timeo
     """Fetch all pages of a paginated endpoint.
 
     Returns all items and the pagination info from the first page.
+
+    Raises:
+        PaginationError: If any page request fails (exception or non-200 status).
     """
     all_items = []
     pagination_info = None
@@ -72,10 +82,18 @@ def _fetch_all_pages(base_url: str, path: str, *, allowed_ports: set[int], timeo
         try:
             with open_api_url(url, allowed_loopback_ports=ALLOWED_LOOPBACK_PORTS, timeout=timeout) as resp:
                 if resp.status != 200:
-                    break
+                    raise PaginationError(
+                        f"Page {page} returned HTTP {resp.status}",
+                        page=page
+                    )
                 data = json.loads(resp.read().decode())
-        except Exception:
-            break
+        except PaginationError:
+            raise
+        except Exception as e:
+            raise PaginationError(
+                f"Page {page} request failed: {e}",
+                page=page
+            ) from e
 
         items, pagination = _extract_items_and_pagination(data)
         if not items:
@@ -100,30 +118,56 @@ def _fetch_all_pages(base_url: str, path: str, *, allowed_ports: set[int], timeo
     return all_items, pagination_info
 
 
+def _fetch_all_pages_once(base_url: str, path: str, *, allowed_ports: set[int], timeout: float = 10.0) -> tuple[list[dict], dict | None]:
+    """Fetch all pages once and return the complete dataset.
+
+    This is the primary function for fetching the complete scholarship dataset.
+    It raises PaginationError on any failure instead of returning partial results.
+    """
+    return _fetch_all_pages(base_url, path, allowed_ports=allowed_ports, timeout=timeout)
+
+
 def main() -> int:
     base_url = os.environ.get("SCHOLARZONE_API_URL", "http://127.0.0.1:8000").rstrip("/")
     countries = ["Belgium", "Hungary", "Poland", "Czech Republic", "Portugal"]
 
+    # Fetch the complete dataset ONCE and reuse for all checks
+    try:
+        all_items, pagination = _fetch_all_pages_once(
+            base_url, "/scholarships", allowed_ports=ALLOWED_LOOPBACK_PORTS, timeout=10
+        )
+    except PaginationError as e:
+        page_info = f" (page {e.page})" if e.page else ""
+        print(f"FAILURE: Could not fetch complete scholarship dataset{page_info}: {e}", file=sys.stderr)
+        return 1
+    except Exception as e:
+        print(f"FAILURE: Unexpected error fetching scholarship dataset: {e}", file=sys.stderr)
+        return 1
+
+    print(f"Total scholarships in DB: {len(all_items)}")
+    if pagination:
+        print(f"Pagination info: total={pagination.get('total')}, total_pages={pagination.get('total_pages')}")
+
+    # Verify total count matches pagination metadata if available
+    if pagination and pagination.get("total") is not None:
+        expected_total = pagination["total"]
+        if len(all_items) != expected_total:
+            print(f"WARNING: Fetched {len(all_items)} records but pagination reports total={expected_total}", file=sys.stderr)
+
     all_ids = []
     total = 0
     for country in countries:
-        url = f"{_join_url(base_url, '/scholarships')}?country={quote(country)}"
-        try:
-            items, _ = _fetch_all_pages(base_url, "/scholarships", allowed_ports=ALLOWED_LOOPBACK_PORTS, timeout=10)
-            # Filter by country (API may not support server-side filtering for all pages)
-            # For now, fetch all and filter locally
-            country_items = [s for s in items if s.get("country") == country]
-            ids = [s["id"] for s in country_items]
-            names = [s["name"] for s in country_items]
-            unique_ids = len(set(ids)) == len(ids)
-            unique_names = len(set(names)) == len(names)
-            all_ids.extend(ids)
-            total += len(country_items)
-            print(f"{country}: {len(country_items)} records, unique IDs: {unique_ids}, unique names: {unique_names}")
-            for s in country_items:
-                print(f"  - [{s['id']}] {s['name'][:65]}")
-        except Exception as e:
-            print(f"{country}: ERROR - {e}")
+        # Filter by country from the already-fetched dataset
+        country_items = [s for s in all_items if s.get("country") == country]
+        ids = [s["id"] for s in country_items]
+        names = [s["name"] for s in country_items]
+        unique_ids = len(set(ids)) == len(ids)
+        unique_names = len(set(names)) == len(names)
+        all_ids.extend(ids)
+        total += len(country_items)
+        print(f"{country}: {len(country_items)} records, unique IDs: {unique_ids}, unique names: {unique_names}")
+        for s in country_items:
+            print(f"  - [{s['id']}] {s['name'][:65]}")
 
     print("\n=== API SUMMARY ===")
     print(f"Total records across all 5 countries: {total}")
@@ -131,17 +175,9 @@ def main() -> int:
     print(f"Duplicate IDs: {len(all_ids) - len(set(all_ids))}")
 
     print("\n=== DATABASE URL UNIQUENESS CHECK ===")
-    try:
-        all_items, pagination = _fetch_all_pages(base_url, "/scholarships", allowed_ports=ALLOWED_LOOPBACK_PORTS, timeout=10)
-        print(f"Total scholarships in DB: {len(all_items)}")
-        if pagination:
-            print(f"Pagination info: total={pagination.get('total')}, total_pages={pagination.get('total_pages')}")
-        all_db_ids = [s["id"] for s in all_items]
-        print(f"Unique IDs in DB: {len(set(all_db_ids))}")
-        print(f"Duplicate IDs in DB: {len(all_db_ids) - len(set(all_db_ids))}")
-    except Exception as e:
-        print(f"Could not fetch full DB via API: {e}")
-        print("Note: API response does not include official_source_url field.")
+    all_db_ids = [s["id"] for s in all_items]
+    print(f"Unique IDs in DB: {len(set(all_db_ids))}")
+    print(f"Duplicate IDs in DB: {len(all_db_ids) - len(set(all_db_ids))}")
 
     return 0
 

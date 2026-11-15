@@ -251,6 +251,277 @@ def test_verify_final_pagination_across_multiple_pages(monkeypatch):
 
 
 # ============================================================
+# verify_final.py pagination failure handling tests
+# ============================================================
+
+
+def test_verify_final_pagination_requests_correct_pages(monkeypatch):
+    """Test that pagination requests exactly pages [1, 2, 3] in order."""
+    from scripts import verify_final
+    import json
+
+    requested_pages = []
+
+    page1 = {
+        "items": [{"id": 1}, {"id": 2}],
+        "pagination": {"total": 6, "total_pages": 3, "page": 1, "page_size": 2}
+    }
+    page2 = {
+        "items": [{"id": 3}, {"id": 4}],
+        "pagination": {"total": 6, "total_pages": 3, "page": 2, "page_size": 2}
+    }
+    page3 = {
+        "items": [{"id": 5}, {"id": 6}],
+        "pagination": {"total": 6, "total_pages": 3, "page": 3, "page_size": 2}
+    }
+    page4 = {"items": [], "pagination": {"total": 6, "total_pages": 3, "page": 4, "page_size": 2}}
+
+    pages = [page1, page2, page3, page4]
+
+    def mock_open_api_url(url, allowed_loopback_ports, timeout):
+        # Parse the requested page from the URL
+        import urllib.parse
+        parsed = urllib.parse.urlparse(url)
+        qs = urllib.parse.parse_qs(parsed.query)
+        requested_page = int(qs.get("page", ["1"])[0])
+        requested_pages.append(requested_page)
+
+        class MockResp:
+            def __init__(self, data):
+                self._data = data
+                self.status = 200
+            def __enter__(self):
+                return self
+            def __exit__(self, *a):
+                return False
+            def read(self):
+                return json.dumps(self._data).encode()
+            def decode(self):
+                return json.dumps(self._data)
+        if requested_page - 1 >= len(pages):
+            raise AssertionError(f"Too many page requests: {requested_page}")
+        data = pages[requested_page - 1]
+        return MockResp(data)
+
+    import scripts.verify_final as verify_final_module
+    monkeypatch.setattr(verify_final_module, "open_api_url", mock_open_api_url)
+
+    items, pagination = verify_final_module._fetch_all_pages(
+        "http://127.0.0.1:8000", "/scholarships", allowed_ports={8000}, timeout=10
+    )
+
+    assert len(items) == 6
+    assert requested_pages == [1, 2, 3], f"Expected pages [1, 2, 3], got {requested_pages}"
+
+
+def test_verify_final_page_1_failure_raises_page_specific_error(monkeypatch):
+    """Test that page 1 failure raises a page-specific error."""
+    from scripts import verify_final
+
+    def mock_open_api_url(url, allowed_loopback_ports, timeout):
+        raise ConnectionError("Network unavailable")
+
+    import scripts.verify_final as verify_final_module
+    monkeypatch.setattr(verify_final_module, "open_api_url", mock_open_api_url)
+
+    try:
+        verify_final_module._fetch_all_pages(
+            "http://127.0.0.1:8000", "/scholarships", allowed_ports={8000}, timeout=10
+        )
+        assert False, "Expected PaginationError"
+    except verify_final_module.PaginationError as e:
+        assert e.page == 1
+        assert "page 1" in str(e).lower()
+
+
+def test_verify_final_page_2_timeout_raises_instead_of_returning_partial(monkeypatch):
+    """Test that page 2 timeout after page 1 raises instead of returning page 1."""
+    from scripts import verify_final
+    import json
+
+    page1 = {
+        "items": [{"id": 1}, {"id": 2}],
+        "pagination": {"total": 6, "total_pages": 3, "page": 1, "page_size": 2}
+    }
+    call_count = [0]
+
+    def mock_open_api_url(url, allowed_loopback_ports, timeout):
+        call_count[0] += 1
+        if call_count[0] == 1:
+            class MockResp:
+                def __init__(self, data):
+                    self._data = data
+                    self.status = 200
+                def __enter__(self):
+                    return self
+                def __exit__(self, *a):
+                    return False
+                def read(self):
+                    return json.dumps(self._data).encode()
+                def decode(self):
+                    return json.dumps(self._data)
+            return MockResp(page1)
+        # Page 2: simulate timeout
+        raise TimeoutError("Request timed out")
+
+    import scripts.verify_final as verify_final_module
+    monkeypatch.setattr(verify_final_module, "open_api_url", mock_open_api_url)
+
+    try:
+        verify_final_module._fetch_all_pages(
+            "http://127.0.0.1:8000", "/scholarships", allowed_ports={8000}, timeout=10
+        )
+        assert False, "Expected PaginationError"
+    except verify_final_module.PaginationError as e:
+        assert e.page == 2
+        assert "page 2" in str(e).lower()
+
+
+def test_verify_final_page_2_non_200_raises(monkeypatch):
+    """Test that page 2 non-200 response raises."""
+    from scripts import verify_final
+    import json
+
+    page1 = {
+        "items": [{"id": 1}, {"id": 2}],
+        "pagination": {"total": 6, "total_pages": 3, "page": 1, "page_size": 2}
+    }
+    call_count = [0]
+
+    def mock_open_api_url(url, allowed_loopback_ports, timeout):
+        call_count[0] += 1
+        class MockResp:
+            def __init__(self, data, status=200):
+                self._data = data
+                self.status = status
+            def __enter__(self):
+                return self
+            def __exit__(self, *a):
+                return False
+            def read(self):
+                return json.dumps(self._data).encode()
+            def decode(self):
+                return json.dumps(self._data)
+        if call_count[0] == 1:
+            return MockResp(page1)
+        # Page 2: return 500
+        return MockResp({"error": "Internal server error"}, status=500)
+
+    import scripts.verify_final as verify_final_module
+    monkeypatch.setattr(verify_final_module, "open_api_url", mock_open_api_url)
+
+    try:
+        verify_final_module._fetch_all_pages(
+            "http://127.0.0.1:8000", "/scholarships", allowed_ports={8000}, timeout=10
+        )
+        assert False, "Expected PaginationError"
+    except verify_final_module.PaginationError as e:
+        assert e.page == 2
+        assert "http 500" in str(e).lower()
+
+
+def test_verify_final_callers_do_not_report_incomplete_data(monkeypatch):
+    """Test that callers report verification failure instead of incomplete totals."""
+    from scripts import verify_final
+    import json
+
+    page1 = {
+        "items": [{"id": 1, "name": "Item 1", "country": "Belgium"}],
+        "pagination": {"total": 6, "total_pages": 3, "page": 1, "page_size": 2}
+    }
+    call_count = [0]
+
+    def mock_open_api_url(url, allowed_loopback_ports, timeout):
+        call_count[0] += 1
+        class MockResp:
+            def __init__(self, data, status=200):
+                self._data = data
+                self.status = status
+            def __enter__(self):
+                return self
+            def __exit__(self, *a):
+                return False
+            def read(self):
+                return json.dumps(self._data).encode()
+            def decode(self):
+                return json.dumps(self._data)
+        if call_count[0] == 1:
+            return MockResp(page1)
+        # Page 2: return 500
+        return MockResp({"error": "Internal server error"}, status=500)
+
+    import scripts.verify_final as verify_final_module
+    monkeypatch.setattr(verify_final_module, "open_api_url", mock_open_api_url)
+
+    # The main() function should return non-zero exit code
+    import sys
+    old_argv = sys.argv
+    old_env = dict(os.environ)
+    try:
+        sys.argv = ["verify_final.py"]
+        os.environ["SCHOLARZONE_API_URL"] = "http://127.0.0.1:8000"
+        exit_code = verify_final_module.main()
+        assert exit_code != 0, "Expected non-zero exit code on pagination failure"
+    finally:
+        sys.argv = old_argv
+        os.environ.clear()
+        os.environ.update(old_env)
+
+
+def test_verify_final_dataset_fetched_once_and_reused(monkeypatch):
+    """Test that the dataset is fetched once and reused across country checks."""
+    from scripts import verify_final
+    import json
+
+    # Create a dataset with items from multiple countries
+    all_items = [
+        {"id": 1, "name": "Belgium Scholarship", "country": "Belgium"},
+        {"id": 2, "name": "Hungary Scholarship", "country": "Hungary"},
+        {"id": 3, "name": "Poland Scholarship", "country": "Poland"},
+    ]
+    page1 = {
+        "items": all_items,
+        "pagination": {"total": 3, "total_pages": 1, "page": 1, "page_size": 10}
+    }
+    fetch_count = [0]
+
+    def mock_open_api_url(url, allowed_loopback_ports, timeout):
+        fetch_count[0] += 1
+        class MockResp:
+            def __init__(self, data):
+                self._data = data
+                self.status = 200
+            def __enter__(self):
+                return self
+            def __exit__(self, *a):
+                return False
+            def read(self):
+                return json.dumps(self._data).encode()
+            def decode(self):
+                return json.dumps(self._data)
+        return MockResp(page1)
+
+    import scripts.verify_final as verify_final_module
+    monkeypatch.setattr(verify_final_module, "open_api_url", mock_open_api_url)
+
+    # Call main - it should fetch the dataset once
+    import sys
+    old_argv = sys.argv
+    old_env = dict(os.environ)
+    try:
+        sys.argv = ["verify_final.py"]
+        os.environ["SCHOLARZONE_API_URL"] = "http://127.0.0.1:8000"
+        exit_code = verify_final_module.main()
+        assert exit_code == 0
+        # Dataset should only be fetched once
+        assert fetch_count[0] == 1, f"Expected 1 fetch, got {fetch_count[0]}"
+    finally:
+        sys.argv = old_argv
+        os.environ.clear()
+        os.environ.update(old_env)
+
+
+# ============================================================
 # web_search_dry_run.py regression tests
 # ============================================================
 

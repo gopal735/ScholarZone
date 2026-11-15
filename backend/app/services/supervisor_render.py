@@ -172,35 +172,71 @@ class PlaywrightRenderDriver:
         )
 
     async def close(self) -> None:
+        # Capture references first, then clear instance variables to avoid
+        # re-entrancy issues. Each resource is closed independently with its
+        # own timeout so a stall in one doesn't block the others.
+        # Use asyncio.shield to protect cleanup from external cancellation.
         browser = getattr(self, "_browser", None)
         playwright = getattr(self, "_playwright", None)
         proxy = getattr(self, "_outbound_proxy", None)
         self._browser = None
         self._playwright = None
         self._outbound_proxy = None
-        errors: list[Exception] = []
+
+        # Each cleanup step gets its own short deadline. We attempt all three
+        # regardless of individual failures, and log any abandoned cleanup.
+        # Shield each step from external cancellation to ensure cleanup runs.
+        cleanup_timeout = 5.0  # seconds per resource
+
         if browser is not None:
             try:
-                await browser.close()
+                await asyncio.wait_for(asyncio.shield(browser.close()), timeout=cleanup_timeout)
+            except asyncio.TimeoutError:
+                logger.warning("browser.close() timed out during cleanup; abandoned")
+            except asyncio.CancelledError:
+                # If externally cancelled, still try to close but don't wait forever
+                logger.warning("browser.close() cancelled during cleanup; attempting anyway")
+                try:
+                    await asyncio.wait_for(browser.close(), timeout=cleanup_timeout)
+                except Exception:
+                    pass
+                raise
             except Exception as exc:  # noqa: BLE001
-                errors.append(exc)
                 logger.debug("browser.close() failed during cleanup", exc_info=exc)
+
         if playwright is not None:
             try:
-                # Playwright's async driver instance is stopped via stop(), not close().
-                await playwright.stop()
+                await asyncio.wait_for(asyncio.shield(playwright.stop()), timeout=cleanup_timeout)
+            except asyncio.TimeoutError:
+                logger.warning("playwright.stop() timed out during cleanup; abandoned")
+            except asyncio.CancelledError:
+                logger.warning("playwright.stop() cancelled during cleanup; attempting anyway")
+                try:
+                    await asyncio.wait_for(playwright.stop(), timeout=cleanup_timeout)
+                except Exception:
+                    pass
+                raise
             except Exception as exc:  # noqa: BLE001
-                errors.append(exc)
                 logger.debug("playwright.stop() failed during cleanup", exc_info=exc)
+
         if proxy is not None:
             try:
                 result = proxy.close()
                 if inspect.isawaitable(result):
-                    await result
+                    await asyncio.wait_for(asyncio.shield(result), timeout=cleanup_timeout)
+            except asyncio.TimeoutError:
+                logger.warning("proxy.close() timed out during cleanup; abandoned")
+            except asyncio.CancelledError:
+                logger.warning("proxy.close() cancelled during cleanup; attempting anyway")
+                try:
+                    result = proxy.close()
+                    if inspect.isawaitable(result):
+                        await asyncio.wait_for(result, timeout=cleanup_timeout)
+                except Exception:
+                    pass
+                raise
             except Exception as exc:  # noqa: BLE001
-                errors.append(exc)
                 logger.debug("proxy.close() failed during cleanup", exc_info=exc)
-        # Cleanup exceptions are logged but never replace a caller's observation.
 
     async def __aenter__(self) -> "PlaywrightRenderDriver":
         await self.start()
@@ -623,13 +659,16 @@ def render_blocking(
                 return primary
             finally:
                 if isinstance(active, PlaywrightRenderDriver):
-                    # Bound cleanup with its own deadline to avoid blocking indefinitely.
-                    # Use a short, fixed deadline for cleanup to prevent hanging.
-                    cleanup_deadline = time.monotonic() + 10.0  # 10 seconds max for cleanup
+                    # Close the driver. The close() method now handles its own
+                    # per-resource timeouts and is shielded from external cancellation.
+                    # We don't wrap it in an outer timeout to avoid cancelling the
+                    # individual resource cleanup steps.
                     try:
-                        await _await_with_deadline(active.close(), cleanup_deadline)
+                        await active.close()
                     except asyncio.TimeoutError:
-                        logger.warning("Owned-driver cleanup timed out after 10 seconds for %s", url)
+                        # This should not happen with the new close() implementation,
+                        # but log it just in case.
+                        logger.warning("Owned-driver cleanup timed out for %s", url)
                     except Exception as exc:  # noqa: BLE001
                         logger.debug("Owned-driver cleanup failed for %s", url, exc_info=exc)
 

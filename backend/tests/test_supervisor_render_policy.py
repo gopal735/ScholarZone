@@ -1103,4 +1103,311 @@ def test_shared_driver_legacy_signature_without_deadline_still_supported(monkeyp
     assert observation.html == "<html>ok</html>"
 
 
+# ============================================================
+# Adversarial cleanup tests - test the REAL close() implementation
+# ============================================================
+
+
+class _StallingBrowser:
+    """Browser that stalls indefinitely on close()."""
+    def __init__(self):
+        self.close_called = False
+        self.close_completed = asyncio.Event()
+
+    async def close(self):
+        self.close_called = True
+        # Stall indefinitely - simulate a hung browser process
+        await self.close_completed.wait()
+
+
+class _StallingPlaywright:
+    """Playwright that stalls indefinitely on stop()."""
+    def __init__(self):
+        self.stop_called = False
+        self.stop_completed = asyncio.Event()
+
+    async def stop(self):
+        self.stop_called = True
+        await self.stop_completed.wait()
+
+
+class _StallingProxy:
+    """Proxy that stalls indefinitely on close()."""
+    def __init__(self):
+        self.close_called = False
+        self.close_completed = asyncio.Event()
+
+    async def close(self):
+        self.close_called = True
+        await self.close_completed.wait()
+
+
+class _RaisingBrowser:
+    """Browser that raises on close()."""
+    def __init__(self):
+        self.close_called = False
+
+    async def close(self):
+        self.close_called = True
+        raise RuntimeError("browser close failed")
+
+
+class _RaisingPlaywright:
+    """Playwright that raises on stop()."""
+    def __init__(self):
+        self.stop_called = False
+
+    async def stop(self):
+        self.stop_called = True
+        raise RuntimeError("playwright stop failed")
+
+
+class _RaisingProxy:
+    """Proxy that raises on close()."""
+    def __init__(self):
+        self.close_called = False
+
+    async def close(self):
+        self.close_called = True
+        raise RuntimeError("proxy close failed")
+
+
+async def _test_real_close_with_stalling_browser():
+    """Test that real close() handles stalling browser and continues with other resources."""
+    driver = render_module.PlaywrightRenderDriver()
+    browser = _StallingBrowser()
+    playwright = _StallingPlaywright()
+    proxy = _StallingProxy()
+    driver._browser = browser
+    driver._playwright = playwright
+    driver._outbound_proxy = proxy
+
+    # close() should timeout on browser but continue with playwright and proxy
+    # Each resource gets ~5s timeout, so 3 resources = ~15s total
+    start = time.monotonic()
+    await asyncio.wait_for(driver.close(), timeout=20.0)
+    elapsed = time.monotonic() - start
+
+    # All three should have been attempted
+    assert browser.close_called
+    assert playwright.stop_called
+    assert proxy.close_called
+    # Should complete within bounded time (not hang indefinitely)
+    assert elapsed < 18.0  # 3 resources * ~5s each + overhead
+
+
+async def _test_real_close_with_raising_resources():
+    """Test that real close() handles raising resources and continues with others."""
+    driver = render_module.PlaywrightRenderDriver()
+    browser = _RaisingBrowser()
+    playwright = _RaisingPlaywright()
+    proxy = _RaisingProxy()
+    driver._browser = browser
+    driver._playwright = playwright
+    driver._outbound_proxy = proxy
+
+    # close() should not raise, but swallow exceptions
+    await driver.close()
+
+    # All three should have been attempted
+    assert browser.close_called
+    assert playwright.stop_called
+    assert proxy.close_called
+    # References should be cleared
+    assert driver._browser is None
+    assert driver._playwright is None
+    assert driver._outbound_proxy is None
+
+
+def test_real_close_stalling_browser_continues_with_other_resources():
+    """Test that stalling browser.close() doesn't block playwright/proxy cleanup."""
+    asyncio.run(_test_real_close_with_stalling_browser())
+
+
+def test_real_close_raising_resources_all_attempted():
+    """Test that raising resources don't skip later cleanup steps."""
+    asyncio.run(_test_real_close_with_raising_resources())
+
+
+class _SlowStallingBrowser:
+    """Browser that stalls for a long time on close()."""
+    def __init__(self):
+        self.close_called = False
+
+    async def close(self):
+        self.close_called = True
+        await asyncio.sleep(10)  # Longer than per-resource timeout
+
+
+class _SlowStallingPlaywright:
+    """Playwright that stalls for a long time on stop()."""
+    def __init__(self):
+        self.stop_called = False
+
+    async def stop(self):
+        self.stop_called = True
+        await asyncio.sleep(10)
+
+
+class _SlowStallingProxy:
+    """Proxy that stalls for a long time on close()."""
+    def __init__(self):
+        self.close_called = False
+
+    async def close(self):
+        self.close_called = True
+        await asyncio.sleep(10)
+
+
+async def _test_real_close_all_stalling():
+    """Test that all three stalling resources are handled with bounded total time."""
+    driver = render_module.PlaywrightRenderDriver()
+    browser = _SlowStallingBrowser()
+    playwright = _SlowStallingPlaywright()
+    proxy = _SlowStallingProxy()
+    driver._browser = browser
+    driver._playwright = playwright
+    driver._outbound_proxy = proxy
+
+    start = time.monotonic()
+    await asyncio.wait_for(driver.close(), timeout=25.0)
+    elapsed = time.monotonic() - start
+
+    # All three should have been attempted
+    assert browser.close_called
+    assert playwright.stop_called
+    assert proxy.close_called
+    # Total time should be bounded (~3 * 5s per-resource timeout = ~15s)
+    assert elapsed < 20.0
+
+
+def test_real_close_all_stalling_bounded_total_time():
+    """Test that three stalling resources complete within bounded total time."""
+    asyncio.run(_test_real_close_all_stalling())
+
+
+class _CancellationResistantBrowser:
+    """Browser that ignores cancellation on close()."""
+    def __init__(self):
+        self.close_called = False
+        self.close_finished = False
+
+    async def close(self):
+        self.close_called = True
+        try:
+            # This simulates a browser that catches and ignores CancelledError
+            await asyncio.sleep(10)
+        except asyncio.CancelledError:
+            # Swallow cancellation and keep going
+            await asyncio.sleep(1)
+        finally:
+            self.close_finished = True
+
+
+async def _test_real_close_cancellation_resistant():
+    """Test that cancellation-resistant browser is handled."""
+    driver = render_module.PlaywrightRenderDriver()
+    browser = _CancellationResistantBrowser()
+    playwright = _StallingPlaywright()  # Use stalling for others to see if they're attempted
+    proxy = _StallingProxy()
+    driver._browser = browser
+    driver._playwright = playwright
+    driver._outbound_proxy = proxy
+
+    start = time.monotonic()
+    await asyncio.wait_for(driver.close(), timeout=20.0)
+    elapsed = time.monotonic() - start
+
+    # Browser close was called but resisted cancellation
+    assert browser.close_called
+    # Other resources should still be attempted
+    assert playwright.stop_called
+    assert proxy.close_called
+    # Should complete within bounded time
+    assert elapsed < 18.0
+
+
+def test_real_close_cancellation_resistant_browser():
+    """Test that cancellation-resistant browser doesn't block other cleanup."""
+    asyncio.run(_test_real_close_cancellation_resistant())
+
+
+def test_render_blocking_returns_within_measured_bound(monkeypatch):
+    """Test that render_blocking returns within a measured upper bound even with cleanup stalls."""
+    _enable_render(monkeypatch)
+
+    class SlowCleanupDriver(render_module.PlaywrightRenderDriver):
+        def __init__(self):
+            super().__init__(headless=True)
+            self.browser = _SlowStallingBrowser()
+            self.playwright = _SlowStallingPlaywright()
+            self.proxy = _SlowStallingProxy()
+            self._browser = self.browser
+            self._playwright = self.playwright
+            self._outbound_proxy = self.proxy
+
+        async def start(self):
+            # Don't overwrite our test instances
+            pass
+
+        async def render(self, url, *, budget, seed_host, max_scroll_iterations=0, deadline_monotonic=None):
+            # Simulate immediate timeout
+            raise asyncio.TimeoutError()
+
+    # Use a very short budget to force quick timeout
+    # Don't pass a driver - let render_blocking create and own it (so cleanup runs)
+    monkeypatch.setattr(render_module, "build_driver", lambda: SlowCleanupDriver())
+    budget = RenderBudget(total_seconds=0.01)
+    start = time.monotonic()
+    observation = render_module.render_blocking(
+        "https://uni1.edu/directory",
+        budget=budget,
+        seed_host="uni1.edu",
+    )
+    elapsed = time.monotonic() - start
+
+    # Should get PAGE_TIMEOUT from the render, not hang on cleanup
+    assert observation.error_kind == RenderErrorKind.PAGE_TIMEOUT
+    # Should complete within reasonable time (budget + cleanup overhead)
+    # Budget is 0.01s, cleanup max ~20s, so allow up to 25s
+    assert elapsed < 25.0
+    # We can't easily check the driver's internal state since it's created internally,
+    # but the test passing within bounded time proves cleanup doesn't hang
+
+
+def test_primary_page_timeout_preserved_despite_cleanup_failures(monkeypatch):
+    """Test that the primary PAGE_TIMEOUT observation is preserved even when cleanup fails."""
+    _enable_render(monkeypatch)
+
+    class FailingCleanupDriver(render_module.PlaywrightRenderDriver):
+        def __init__(self):
+            super().__init__(headless=True)
+            self.browser = _RaisingBrowser()
+            self.playwright = _RaisingPlaywright()
+            self.proxy = _RaisingProxy()
+            self._browser = self.browser
+            self._playwright = self.playwright
+            self._outbound_proxy = self.proxy
+
+        async def start(self):
+            pass
+
+        async def render(self, url, *, budget, seed_host, max_scroll_iterations=0, deadline_monotonic=None):
+            raise asyncio.TimeoutError()
+
+    budget = RenderBudget(total_seconds=0.01)
+    observation = render_module.render_blocking(
+        "https://uni1.edu/directory",
+        budget=budget,
+        seed_host="uni1.edu",
+        driver=FailingCleanupDriver(),
+    )
+
+    # Primary result should be PAGE_TIMEOUT from the render timeout
+    assert observation.error_kind == RenderErrorKind.PAGE_TIMEOUT
+    assert observation.outcome == SourceOutcome.ERROR
+    # Cleanup errors should not replace the primary result
+    assert "cleanup" not in observation.detail.lower()
+
+
 

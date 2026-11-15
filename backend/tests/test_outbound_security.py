@@ -406,6 +406,72 @@ def test_credentials_over_plaintext_http_rejected():
             client.get("http://public.example/path", headers={"Authorization": "Bearer token"})
 
 
+def test_client_configured_auth_over_plaintext_http_rejected():
+    """Client-configured auth over plaintext HTTP is rejected even with USE_CLIENT_DEFAULT."""
+    policy = DestinationPolicy(lambda host, port: ["8.8.8.8"])
+
+    sent = []
+
+    def mock_send(request):
+        sent.append(request)
+        return httpx.Response(200, request=request)
+
+    # Client created with auth
+    with SSRFSafeClient(
+        policy=policy,
+        auth=("user", "pass"),
+        transport=httpx.MockTransport(mock_send),
+    ) as client:
+        # Request without explicit auth should use client auth and be rejected
+        with pytest.raises(UnsafeOutboundTarget, match="credential-bearing requests are not accepted over plaintext HTTP"):
+            client.get("http://public.example/path")
+
+    # Transport should never be invoked
+    assert sent == []
+
+
+def test_credential_free_http_allowed():
+    """Credential-free HTTP requests are allowed."""
+    policy = DestinationPolicy(lambda host, port: ["8.8.8.8"])
+
+    sent = []
+
+    def mock_send(request):
+        sent.append(str(request.url))
+        return httpx.Response(200, request=request)
+
+    with SSRFSafeClient(
+        policy=policy,
+        transport=httpx.MockTransport(mock_send),
+    ) as client:
+        response = client.get("http://public.example/path")
+        assert response.status_code == 200
+
+    assert sent == ["http://public.example/path"]
+
+
+def test_client_configured_auth_https_allowed():
+    """Client-configured auth over HTTPS is allowed."""
+    policy = DestinationPolicy(lambda host, port: ["8.8.8.8"])
+
+    sent = []
+
+    def mock_send(request):
+        sent.append((str(request.url), request.headers.get("authorization")))
+        return httpx.Response(200, request=request)
+
+    with SSRFSafeClient(
+        policy=policy,
+        auth=("user", "pass"),
+        transport=httpx.MockTransport(mock_send),
+    ) as client:
+        response = client.get("https://public.example/path")
+        assert response.status_code == 200
+
+    # Auth header should be present
+    assert sent[0][1] is not None
+
+
 def test_redirect_a_to_b_to_b_never_restores_auth():
     """A→B→B redirect pattern: once auth is stripped at B, it's never restored."""
     sent = []
