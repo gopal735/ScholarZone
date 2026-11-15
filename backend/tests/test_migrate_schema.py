@@ -875,24 +875,57 @@ def test_parse_index_definition_preserves_unique_and_where():
     assert parsed_non_unique["predicate"] is None
 
 
-def test_partial_unique_index_rejected_for_unrestricted_unique_constraint(sqlite_engine_with_supervisor):
-    """A partial unique index cannot satisfy a required unrestricted UNIQUE constraint."""
-    from sqlalchemy import text
-    from migrate_schema import validate_schema_with_connection
+def test_partial_unique_index_rejected_for_unrestricted_unique_constraint():
+    """A partial unique index cannot satisfy a required unrestricted UNIQUE constraint.
 
-    # Replace unrestricted unique index on official_contacts(scholarship_id, official_contact_url)
-    # with a partial unique index over the same columns.
-    with sqlite_engine_with_supervisor.begin() as conn:
-        conn.execute(text("DROP INDEX IF EXISTS ix_official_contacts_scholarship_id_url"))
-        conn.execute(text(
-            "CREATE UNIQUE INDEX ix_official_contacts_scholarship_id_url "
-            "ON official_contacts (scholarship_id, official_contact_url) "
-            "WHERE official_contact_url <> ''"
-        ))
-        result = validate_schema_with_connection(conn)
+    This test uses a fresh engine to isolate the test from fixture contamination.
+    """
+    from sqlalchemy import create_engine, text
+    from migrate_schema import validate_schema_with_connection
+    import tempfile
+    import os
+
+    db_path = tempfile.mktemp(suffix='.db')
+    engine = create_engine(f"sqlite:///{db_path}")
+    try:
+        # Create table with composite unique constraint (matching canonical DDL)
+        with engine.begin() as conn:
+            conn.execute(text("""
+                CREATE TABLE official_contacts (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    scholarship_id INTEGER NOT NULL,
+                    official_contact_url VARCHAR(2048) NOT NULL,
+                    UNIQUE (scholarship_id, official_contact_url)
+                )
+            """))
+
+        # Now replace the unrestricted unique index with a partial one
+        # In SQLite, we must recreate the table to remove the UNIQUE constraint
+        with engine.begin() as conn:
+            conn.execute(text("DROP TABLE official_contacts"))
+            conn.execute(text("""
+                CREATE TABLE official_contacts (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    scholarship_id INTEGER NOT NULL,
+                    official_contact_url VARCHAR(2048) NOT NULL
+                )
+            """))
+            conn.execute(text(
+                "CREATE UNIQUE INDEX ix_official_contacts_scholarship_id_url "
+                "ON official_contacts (scholarship_id, official_contact_url) "
+                "WHERE official_contact_url <> ''"
+            ))
+
+        from migrate_schema import validate_schema_with_connection
+        result = validate_schema_with_connection(engine.connect())
         assert result["valid"] is False
         comp = result["composite_unique_validation"]["official_contacts"]["results"]
         assert any(r.get("reason") == "partial_unique_index_rejected" for r in comp)
+    finally:
+        try:
+            os.unlink(db_path)
+        except Exception:
+            pass
 
 
 def test_sqlite_partial_index_predicate_preserved_and_indeterminate_rejected(sqlite_engine_with_supervisor):
@@ -1010,6 +1043,108 @@ def test_identity_validation_accepts_mapping_and_object_and_rejects_by_default()
 
     assert is_always(IdentityObj(True)) is True
     assert is_always(IdentityObj(False)) is False
+
+
+# ============================================================
+# Composite Unique Ordering Regression Tests
+# ============================================================
+
+
+def test_composite_unique_partial_then_unrestricted_ordering(sqlite_engine_with_supervisor):
+    """When a partial unique index appears first, the validator must continue
+    searching and accept a later unrestricted matching unique index."""
+    from sqlalchemy import text
+    import migrate_schema
+
+    with sqlite_engine_with_supervisor.begin() as conn:
+        # Create a partial unique index first (should be rejected)
+        conn.execute(text(
+            "CREATE UNIQUE INDEX ix_test_partial_first "
+            "ON official_contacts (scholarship_id, official_contact_url) "
+            "WHERE official_contact_url <> ''"
+        ))
+        # Then create an unrestricted unique index on the same columns (should be accepted)
+        conn.execute(text(
+            "CREATE UNIQUE INDEX ix_test_unrestricted_second "
+            "ON official_contacts (scholarship_id, official_contact_url)"
+        ))
+        result = migrate_schema.validate_schema_with_connection(conn)
+        assert result["valid"] is True, f"Validation failed: {result}"
+        comp = result["composite_unique_validation"]["official_contacts"]["results"]
+        assert any(r.get("found") is True for r in comp), "Unrestricted unique index should be found"
+
+
+def test_composite_unique_unrestricted_then_partial_ordering(sqlite_engine_with_supervisor):
+    """When an unrestricted unique index appears first, it should be accepted
+    even if a partial unique index on the same columns exists later."""
+    from sqlalchemy import text
+    import migrate_schema
+
+    with sqlite_engine_with_supervisor.begin() as conn:
+        # Create an unrestricted unique index first (should be accepted)
+        conn.execute(text(
+            "CREATE UNIQUE INDEX ix_test_unrestricted_first "
+            "ON official_contacts (scholarship_id, official_contact_url)"
+        ))
+        # Then create a partial unique index on the same columns (should be ignored)
+        conn.execute(text(
+            "CREATE UNIQUE INDEX ix_test_partial_second "
+            "ON official_contacts (scholarship_id, official_contact_url) "
+            "WHERE official_contact_url <> ''"
+        ))
+        result = migrate_schema.validate_schema_with_connection(conn)
+        assert result["valid"] is True, f"Validation failed: {result}"
+        comp = result["composite_unique_validation"]["official_contacts"]["results"]
+        assert any(r.get("found") is True for r in comp), "Unrestricted unique index should be found"
+
+
+def test_composite_unique_only_partial_rejected():
+    """If only partial unique indexes exist for a constraint, validation must fail."""
+    from sqlalchemy import create_engine, text
+    import migrate_schema
+    import tempfile
+    import os
+
+    db_path = tempfile.mktemp(suffix='.db')
+    engine = create_engine(f"sqlite:///{db_path}")
+    try:
+        # Create table with composite unique constraint (matching canonical DDL)
+        with engine.begin() as conn:
+            conn.execute(text("""
+                CREATE TABLE official_contacts (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    scholarship_id INTEGER NOT NULL,
+                    official_contact_url VARCHAR(2048) NOT NULL,
+                    UNIQUE (scholarship_id, official_contact_url)
+                )
+            """))
+
+        # Replace unrestricted unique index with a partial one
+        # In SQLite, we must recreate the table to remove the UNIQUE constraint
+        with engine.begin() as conn:
+            conn.execute(text("DROP TABLE official_contacts"))
+            conn.execute(text("""
+                CREATE TABLE official_contacts (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    scholarship_id INTEGER NOT NULL,
+                    official_contact_url VARCHAR(2048) NOT NULL
+                )
+            """))
+            conn.execute(text(
+                "CREATE UNIQUE INDEX ix_test_partial_only "
+                "ON official_contacts (scholarship_id, official_contact_url) "
+                "WHERE official_contact_url <> ''"
+            ))
+
+        result = migrate_schema.validate_schema_with_connection(engine.connect())
+        assert result["valid"] is False
+        comp = result["composite_unique_validation"]["official_contacts"]["results"]
+        assert any(r.get("reason") == "partial_unique_index_rejected" for r in comp)
+    finally:
+        try:
+            os.unlink(db_path)
+        except Exception:
+            pass
 
 
 

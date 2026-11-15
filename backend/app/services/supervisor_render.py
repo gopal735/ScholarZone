@@ -623,8 +623,13 @@ def render_blocking(
                 return primary
             finally:
                 if isinstance(active, PlaywrightRenderDriver):
+                    # Bound cleanup with its own deadline to avoid blocking indefinitely.
+                    # Use a short, fixed deadline for cleanup to prevent hanging.
+                    cleanup_deadline = time.monotonic() + 10.0  # 10 seconds max for cleanup
                     try:
-                        await active.close()
+                        await _await_with_deadline(active.close(), cleanup_deadline)
+                    except asyncio.TimeoutError:
+                        logger.warning("Owned-driver cleanup timed out after 10 seconds for %s", url)
                     except Exception as exc:  # noqa: BLE001
                         logger.debug("Owned-driver cleanup failed for %s", url, exc_info=exc)
 
@@ -650,7 +655,7 @@ def render_blocking(
             )
             if _remaining_seconds(deadline) <= 0 and observation.outcome != SourceOutcome.ERROR:
                 return _timeout_observation(
-                    url, budget, started, observation.limits_used.get(scrolls, 0)
+                    url, budget, started, observation.limits_used.get("scrolls", 0)
                 )
             return observation
         except asyncio.TimeoutError:

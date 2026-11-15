@@ -384,3 +384,53 @@ def test_request_authorization_header_preserved_on_same_origin_redirect():
 
     assert sent[0][1] == "Bearer secret-token"
     assert sent[1][1] == "Bearer secret-token"
+
+
+def test_credentials_over_plaintext_http_rejected():
+    """Credential-bearing requests over plaintext HTTP are rejected."""
+    policy = DestinationPolicy(lambda host, port: ["8.8.8.8"])
+
+    def mock_send(request):
+        return httpx.Response(200, request=request)
+
+    with SSRFSafeClient(
+        policy=policy,
+        transport=httpx.MockTransport(mock_send),
+    ) as client:
+        # Client-configured auth over HTTP should be rejected
+        with pytest.raises(UnsafeOutboundTarget, match="credential-bearing requests are not accepted over plaintext HTTP"):
+            client.get("http://public.example/path", auth=("user", "pass"))
+
+        # Request-level Authorization header over HTTP should be rejected
+        with pytest.raises(UnsafeOutboundTarget, match="credential-bearing requests are not accepted over plaintext HTTP"):
+            client.get("http://public.example/path", headers={"Authorization": "Bearer token"})
+
+
+def test_redirect_a_to_b_to_b_never_restores_auth():
+    """A→B→B redirect pattern: once auth is stripped at B, it's never restored."""
+    sent = []
+
+    def mock_send(request):
+        sent.append((str(request.url), request.headers.get("authorization")))
+        if len(sent) == 1:
+            # A → B (cross-origin)
+            return httpx.Response(302, headers={"location": "https://other.example/next"}, request=request)
+        elif len(sent) == 2:
+            # B → B (same-origin, but we already left original origin)
+            return httpx.Response(302, headers={"location": "https://other.example/final"}, request=request)
+        return httpx.Response(200, request=request)
+
+    policy = DestinationPolicy(lambda host, port: ["8.8.8.8"])
+    with SSRFSafeClient(
+        policy=policy,
+        follow_redirects=True,
+        transport=httpx.MockTransport(mock_send),
+    ) as client:
+        response = client.get("https://public.example/start", auth=("user", "pass"))
+        assert response.status_code == 200
+
+    # First hop: A → B (cross-origin), auth stripped
+    assert sent[0][1] is not None
+    assert sent[1][1] is None
+    # Second hop: B → B (same-origin at B, but we left original origin), auth NOT restored
+    assert sent[2][1] is None

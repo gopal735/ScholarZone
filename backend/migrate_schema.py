@@ -1192,6 +1192,9 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
             found = False
             rejected_partial = False
             expected_cols = list(expected_comp.get("columns") or [])
+            # Search ALL matching unique indexes. We must continue searching after
+            # rejecting a partial unique index, because a later unrestricted
+            # matching unique index may satisfy the constraint.
             for idx in actual_indexes:
                 if not bool(idx.get("unique")):
                     continue
@@ -1203,18 +1206,11 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
                 # indexes and reject indeterminate indexes where partiality cannot be
                 # proven absent from authoritative metadata.
                 if predicate is not None or not predicate_known:
-                    composite_results.append({
-                        "name": expected_comp.get("name"),
-                        "columns": expected_cols,
-                        "found": False,
-                        "reason": "partial_unique_index_rejected",
-                        "details": "partial or indeterminate unique index cannot satisfy required unrestricted UNIQUE constraint",
-                        "predicate": predicate,
-                        "predicate_known": predicate_known,
-                    })
-                    table_ok = False
+                    # This matching unique index is partial or indeterminate; it cannot
+                    # satisfy the unrestricted UNIQUE constraint. Continue searching.
                     rejected_partial = True
-                    break
+                    continue
+                # Found a valid unrestricted unique index matching the constraint.
                 found = True
                 break
             if found:
@@ -1223,11 +1219,12 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
                     "columns": expected_cols,
                     "found": True,
                 })
-            elif not rejected_partial:
+            else:
                 composite_results.append({
                     "name": expected_comp.get("name"),
                     "columns": expected_cols,
                     "found": False,
+                    "reason": "partial_unique_index_rejected" if rejected_partial else "no_matching_index",
                 })
                 table_ok = False
 

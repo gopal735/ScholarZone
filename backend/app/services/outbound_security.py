@@ -240,6 +240,21 @@ class SSRFSafeClient(httpx.Client):
         return (source.scheme, source.host, source.port) == (target.scheme, target.host, target.port)
 
     def send(self, request: httpx.Request, *, stream: bool = False, auth=httpx.USE_CLIENT_DEFAULT, follow_redirects=httpx.USE_CLIENT_DEFAULT) -> httpx.Response:
+        # Reject credential-bearing requests over plaintext HTTP.
+        if request.url.scheme == "http":
+            # Check client-configured auth
+            has_client_auth = (
+                auth is not None
+                and auth is not httpx.USE_CLIENT_DEFAULT
+                and auth is not False
+            )
+            # Check request-level Authorization header
+            has_request_auth = "authorization" in request.headers
+            if has_client_auth or has_request_auth:
+                raise UnsafeOutboundTarget(
+                    "credential-bearing requests are not accepted over plaintext HTTP",
+                    request=request,
+                )
         should_follow = (
             self._outbound_follow_redirects
             if follow_redirects is httpx.USE_CLIENT_DEFAULT or follow_redirects is None
@@ -248,6 +263,11 @@ class SSRFSafeClient(httpx.Client):
         current = request
         history: list[httpx.Response] = []
         request_auth = auth
+        # Track whether we have ever left the original origin.
+        # Once we leave the original origin, we never restore the original
+        # configured/request auth, even if we later redirect back to it.
+        original_origin = (request.url.scheme, request.url.host, request.url.port)
+        have_left_origin = False
         for hop in range(self._outbound_max_redirects + 1):
             self._outbound_policy.validate_url(current.url, request=current)
             response = super().send(current, stream=True, auth=request_auth, follow_redirects=False)
@@ -278,14 +298,23 @@ class SSRFSafeClient(httpx.Client):
                 response.close()
                 raise UnsafeOutboundTarget("HTTPS-to-HTTP redirect is not accepted", request=current)
             next_request = self._build_redirect_request(current, response)
-            # Prevent client-level/configured auth from being reapplied on a
-            # different origin after redirect (scheme, host, or port change).
-            if not self._same_origin_for_auth(current.url, next_request.url):
+            # Determine if this redirect crosses origin boundaries.
+            next_origin = (next_request.url.scheme, next_request.url.host, next_request.url.port)
+            is_cross_origin = next_origin != original_origin
+            # Once we leave the original origin, we never restore auth.
+            if is_cross_origin:
+                have_left_origin = True
                 next_request.headers.pop("authorization", None)
                 next_request.headers.pop("proxy-authorization", None)
                 request_auth = None
             else:
-                request_auth = auth
+                # Same-origin redirect: only keep auth if we never left the origin.
+                if have_left_origin:
+                    next_request.headers.pop("authorization", None)
+                    next_request.headers.pop("proxy-authorization", None)
+                    request_auth = None
+                else:
+                    request_auth = auth
             response.close()
             history.append(response)
             current = next_request
