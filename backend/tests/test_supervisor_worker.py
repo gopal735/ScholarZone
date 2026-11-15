@@ -586,7 +586,7 @@ def test_robots_disallow_prevents_the_request(monkeypatch):
     monkeypatch.setattr(outbound_security, "secure_client", fake_secure_client)
     monkeypatch.setattr(supervisor_discovery, "secure_client", fake_secure_client)
     monkeypatch.setattr(official_source_fetcher, "secure_client", fake_secure_client)
-    
+
     worker.clear_robots_cache()
 
     allowed = worker.polite_fetch("https://uni1.edu/programmes/msc")
@@ -672,3 +672,6 @@ def test_an_empty_batch_returns_nothing(db):
 def test_robots_cache_can_be_cleared():
     worker.clear_robots_cache()
     assert worker._ROBOTS_CACHE == {}
+
+
+

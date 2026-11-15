@@ -1,15 +1,23 @@
 #!/usr/bin/env python3
 """Master deployment preflight command that runs all gates in sequence."""
 
+from __future__ import annotations
+
 import os
 import subprocess
 import sys
+from urllib.parse import urljoin
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 BACKEND_DIR = os.path.join(REPO_ROOT, "backend")
 SCRIPTS_DIR = os.path.join(BACKEND_DIR, "scripts")
-sys.path.insert(0, BACKEND_DIR)
-from scripts.local_smoke_http import open_local_smoke_url
+if BACKEND_DIR not in sys.path:
+    sys.path.insert(0, BACKEND_DIR)
+
+from scripts.local_smoke_http import open_api_url  # noqa: E402
+
+
+ALLOWED_LOOPBACK_PORTS = {8000}
 
 
 def run_script_gate(name: str, script_name: str, cwd: str) -> tuple[bool, str | None]:
@@ -46,13 +54,22 @@ def docker_available() -> bool:
         return False
 
 
+def _join_url(base_url: str, path: str) -> str:
+    base = base_url.rstrip("/") + "/"
+    return urljoin(base, path.lstrip("/"))
+
+
 def gate_readiness() -> tuple[bool, str | None]:
     print(f"\n{'=' * 60}")
     print("GATE: Readiness")
     print(f"{'=' * 60}")
     url = os.environ.get("SCHOLARZONE_API_URL", "http://127.0.0.1:8000")
     try:
-        with open_local_smoke_url(f"{url}/health", allowed_ports={8000}, timeout=5) as resp:
+        with open_api_url(
+            _join_url(url, "/health"),
+            allowed_loopback_ports=ALLOWED_LOOPBACK_PORTS,
+            timeout=5,
+        ) as resp:
             if resp.status == 200:
                 print(f"[PASS] API is ready at {url}")
                 return True, None
@@ -71,7 +88,11 @@ def gate_api_smoke_tests() -> tuple[bool, str | None]:
     ok = True
     for path in ["/health", "/scholarships/stats"]:
         try:
-            with open_local_smoke_url(f"{url}{path}", allowed_ports={8000}, timeout=10) as resp:
+            with open_api_url(
+                _join_url(url, path),
+                allowed_loopback_ports=ALLOWED_LOOPBACK_PORTS,
+                timeout=10,
+            ) as resp:
                 print(f"[PASS] {path} -> {resp.status}")
         except Exception as exc:
             print(f"[FAIL] {path} -> {exc}")
@@ -160,3 +181,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
+

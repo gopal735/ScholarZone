@@ -45,11 +45,11 @@ from app.supervisor_ddl import (
 
 def parse_ddl_columns(ddl: str) -> dict[str, dict]:
     """Parse column definitions from a CREATE TABLE DDL string.
-    
+
     Returns dict: column_name -> {type, nullable, default, primary_key, unique, references}
     """
     columns = {}
-    
+
     # The DDL from supervisor_ddl contains just the column definitions (without CREATE TABLE wrapper)
     # Split by comma at depth 0 to get individual column/constraint definitions
     parts = []
@@ -67,7 +67,7 @@ def parse_ddl_columns(ddl: str) -> dict[str, dict]:
             current += char
     if current.strip():
         parts.append(current.strip())
-    
+
     for part in parts:
         part = part.strip()
         if not part:
@@ -75,21 +75,21 @@ def parse_ddl_columns(ddl: str) -> dict[str, dict]:
         # Skip table-level constraints (CONSTRAINT, PRIMARY KEY, UNIQUE, FOREIGN KEY, CHECK, INDEX)
         if part.upper().startswith(('CONSTRAINT', 'PRIMARY KEY', 'UNIQUE', 'FOREIGN KEY', 'CHECK', 'INDEX')):
             continue
-        
+
         # Parse column definition: name type [constraints...]
         tokens = part.split()
         if len(tokens) < 2:
             continue
         col_name = tokens[0]
         col_type = tokens[1]
-        
+
         # Check constraints
         nullable = True
         default = None
         primary_key = False
         unique = False
         references = None  # Will store {table, column, on_delete} if FK
-        
+
         part_upper = part.upper()
         if 'NOT NULL' in part_upper:
             nullable = False
@@ -102,7 +102,7 @@ def parse_ddl_columns(ddl: str) -> dict[str, dict]:
         default_match = re.search(r'DEFAULT\s+([^,\s]+)', part, re.IGNORECASE)
         if default_match:
             default = default_match.group(1)
-        
+
         # Check for inline REFERENCES - capture local column, referenced table/column, ON DELETE
         ref_match = re.search(r'REFERENCES\s+(\w+)\s*\((\w+)\)\s*(ON DELETE\s+\w+)?', part, re.IGNORECASE)
         if ref_match:
@@ -115,7 +115,7 @@ def parse_ddl_columns(ddl: str) -> dict[str, dict]:
                 "on_delete": on_delete,
                 "constrained_columns": [col_name],  # Local column that has this REFERENCES
             }
-        
+
         columns[col_name] = {
             "type": col_type,
             "nullable": nullable,
@@ -124,7 +124,7 @@ def parse_ddl_columns(ddl: str) -> dict[str, dict]:
             "unique": unique,
             "references": references,
         }
-    
+
     return columns
 
 
@@ -152,7 +152,7 @@ def parse_foreign_keys(ddl: str) -> list[dict]:
     """Parse FOREIGN KEY constraints from DDL - both inline and table-level."""
     fks = []
     columns = parse_ddl_columns(ddl)
-    
+
     # Extract FKs from column definitions (inline REFERENCES)
     for col_name, col_info in columns.items():
         if col_info.get("references"):
@@ -164,7 +164,7 @@ def parse_foreign_keys(ddl: str) -> list[dict]:
                 "on_delete": ref["on_delete"],
                 "name": None,  # Inline FKs don't have explicit names
             })
-    
+
     # Also check for table-level FOREIGN KEY (though supervisor_ddl uses inline)
     fk_pattern = re.compile(
         r'FOREIGN KEY\s*\(([^)]+)\)\s*REFERENCES\s+(\w+)\s*\(([^)]+)\)\s*(ON DELETE\s+(?:RESTRICT|CASCADE|SET NULL|SET DEFAULT|NO ACTION))?',
@@ -178,7 +178,7 @@ def parse_foreign_keys(ddl: str) -> list[dict]:
         # Avoid duplicates from inline parsing
         existing = False
         for fk in fks:
-            if (fk["constrained_columns"] == cols and 
+            if (fk["constrained_columns"] == cols and
                 fk["referred_table"] == ref_table and
                 fk["referred_columns"] == ref_cols):
                 existing = True
@@ -191,8 +191,87 @@ def parse_foreign_keys(ddl: str) -> list[dict]:
                 "on_delete": on_delete,
                 "name": None,
             })
-    
+
     return fks
+
+
+def _normalize_index_predicate(predicate: str | None) -> str | None:
+    if predicate is None:
+        return None
+    value = str(predicate).strip().rstrip(";")
+    if not value:
+        return None
+    # Strip balanced outer parentheses commonly added by reflection/catalog renderers.
+    changed = True
+    while changed and value.startswith("(") and value.endswith(")"):
+        changed = False
+        depth = 0
+        balanced = True
+        for i, ch in enumerate(value):
+            if ch == "(":
+                depth += 1
+            elif ch == ")":
+                depth -= 1
+                if depth == 0 and i != len(value) - 1:
+                    balanced = False
+                    break
+                if depth < 0:
+                    balanced = False
+                    break
+        if balanced and depth == 0:
+            inner = value[1:-1].strip()
+            if inner:
+                value = inner
+                changed = True
+    value = re.sub(r"\s+", " ", value).strip()
+    return value or None
+
+
+def _parse_index_definition(idx_def: str) -> dict[str, Any] | None:
+    """Parse an index definition from NEW_TABLE_INDEXES.
+
+    Supports forms such as:
+      ix_name ON table (col1, col2)
+      UNIQUE ix_name ON table (col1) WHERE predicate
+      CREATE [UNIQUE] INDEX [IF NOT EXISTS] ix_name ON table (col1) [WHERE ...]
+    """
+    if not idx_def:
+        return None
+    raw = str(idx_def).strip().rstrip(";")
+    raw = re.sub(
+        r"^CREATE\s+(?:(UNIQUE)\s+)?INDEX\s+(?:IF\s+NOT\s+EXISTS\s+)?",
+        lambda m: ("UNIQUE " if m.group(1) else ""),
+        raw,
+        flags=re.IGNORECASE,
+    ).strip()
+
+    unique = False
+    if raw.upper().startswith("UNIQUE "):
+        unique = True
+        raw = raw[7:].strip()
+
+    match = re.match(
+        r'(?P<name>"?\w+"?)\s+ON\s+(?P<table>"?\w+"?(?:\."?\w+"?)?)\s*\((?P<cols>.+?)\)(?:\s+WHERE\s+(?P<predicate>.+))?$',
+        raw,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    if not match:
+        match = re.match(
+            r'(?P<name>"?\w+"?)\s*\((?P<cols>.+?)\)(?:\s+WHERE\s+(?P<predicate>.+))?$',
+            raw,
+            flags=re.IGNORECASE | re.DOTALL,
+        )
+    if not match:
+        return None
+
+    cols = [c.strip().strip('"') for c in re.split(r",\s*(?![^()]*\))", match.group("cols")) if c.strip()]
+    predicate = _normalize_index_predicate(match.groupdict().get("predicate"))
+    return {
+        "name": match.group("name").strip().strip('"'),
+        "columns": cols,
+        "unique": unique,
+        "predicate": predicate,
+    }
 
 
 def get_expected_schema(dialect: str) -> dict[str, dict]:
@@ -202,26 +281,16 @@ def get_expected_schema(dialect: str) -> dict[str, dict]:
         if table_name not in NEW_TABLE_DDL:
             continue
         ddl = NEW_TABLE_DDL[table_name][dialect]
-        # Parse indexes from NEW_TABLE_INDEXES - format is "ix_name ON table (columns)"
         indexes = []
         for idx_def in NEW_TABLE_INDEXES.get(table_name, []):
-            # Parse "ix_name ON table (columns)" format
-            # May include WHERE predicate for partial indexes
-            match = re.match(r'(\w+)\s+ON\s+(\w+)\s*\(([^)]+)\)(?:\s+WHERE\s+(.+))?', idx_def, re.IGNORECASE)
-            if match:
-                name, table, cols_str, predicate = match.groups()
-                cols = [c.strip() for c in match.group(3).split(',')]
-                indexes.append({
-                    "name": name,
-                    "columns": cols,
-                    "unique": False,  # These are regular indexes, not unique
-                    "predicate": predicate.strip() if predicate else None,
-                })
+            parsed = _parse_index_definition(idx_def)
+            if parsed:
+                indexes.append(parsed)
         expected[table_name] = {
-            "ddl": NEW_TABLE_DDL[table_name][dialect],
-            "columns": parse_ddl_columns(NEW_TABLE_DDL[table_name][dialect]),
-            "composite_constraints": parse_composite_constraints(NEW_TABLE_DDL[table_name][dialect]),
-            "foreign_keys": parse_foreign_keys(NEW_TABLE_DDL[table_name][dialect]),
+            "ddl": ddl,
+            "columns": parse_ddl_columns(ddl),
+            "composite_constraints": parse_composite_constraints(ddl),
+            "foreign_keys": parse_foreign_keys(ddl),
             "indexes": indexes,
         }
     return expected
@@ -236,7 +305,7 @@ def get_production_engine() -> Engine:
     database_url = os.environ.get("SCHOLARZONE_DATABASE_URL")
     if not database_url:
         raise RuntimeError("SCHOLARZONE_DATABASE_URL environment variable not set")
-    
+
     # For production use, require expected database identity
     # Check if we're in a test environment
     is_test = os.environ.get("SCHOLARZONE_ENVIRONMENT", "").lower() == "test"
@@ -244,46 +313,46 @@ def get_production_engine() -> Engine:
         expected_db_id = os.environ.get("SCHOLARZONE_EXPECTED_DB_IDENTIFIER")
         if not expected_db_id:
             raise RuntimeError("SCHOLARZONE_EXPECTED_DB_IDENTIFIER environment variable must be set for production use")
-    
+
     # Rewrite postgresql:// to postgresql+psycopg:// for SQLAlchemy 2.0
     if database_url.startswith("postgresql://"):
         database_url = "postgresql+psycopg://" + database_url[len("postgresql://"):]
-    
+
     # Require SSL for PostgreSQL
     if database_url.startswith("postgresql"):
         if "sslmode=" not in database_url:
             database_url += ("&" if "?" in database_url else "?") + "sslmode=require"
-    
+
     connect_args = {"check_same_thread": False} if database_url.startswith("sqlite") else {}
     if database_url.startswith("postgresql"):
         connect_args["connect_timeout"] = 10
-    
+
     return create_engine(database_url, connect_args=connect_args, pool_pre_ping=True)
 
 
 def verify_database_identity(conn: Connection) -> dict[str, Any]:
     """Verify production database identity using trusted metadata.
-    
+
     Returns identity dict with 'verified' bool and 'details'.
     Raises RuntimeError if identity check fails and SCHOLARZONE_EXPECTED_DB_IDENTIFIER is set.
     """
     dialect = conn.engine.dialect.name
     db_identity = {"verified": False, "details": {}}
-    
+
     if dialect == "postgresql":
         try:
             # Check the database name
             result = conn.execute(text("SELECT current_database()")).scalar()
             db_identity["details"]["database_name"] = result
-            
+
             # Check the host/endpoint
             host_result = conn.execute(text("SELECT inet_server_addr()")).scalar()
             db_identity["details"]["host"] = str(host_result) if host_result else "unknown"
-            
+
             # Require explicit environment variable for production DB identity
             expected_db_id = os.environ.get("SCHOLARZONE_EXPECTED_DB_IDENTIFIER")
             expected_host = os.environ.get("SCHOLARZONE_EXPECTED_DB_HOST")
-            
+
             if expected_db_id:
                 if expected_db_id == result:
                     db_identity["details"]["database_name_match"] = True
@@ -296,7 +365,7 @@ def verify_database_identity(conn: Connection) -> dict[str, Any]:
                     )
             else:
                 db_identity["details"]["warning"] = "SCHOLARZONE_EXPECTED_DB_IDENTIFIER not set; database name not verified"
-            
+
             if expected_host:
                 if expected_host == str(host_result):
                     db_identity["details"]["host_match"] = True
@@ -307,17 +376,17 @@ def verify_database_identity(conn: Connection) -> dict[str, Any]:
                         f"Set SCHOLARZONE_EXPECTED_DB_HOST to the expected database host/endpoint."
                     )
             else:
-                db_identity["details"]["warning"] = (db_identity["details"].get("warning", "") + 
+                db_identity["details"]["warning"] = (db_identity["details"].get("warning", "") +
                     " SCHOLARZONE_EXPECTED_DB_HOST not set; host not verified").strip()
-            
+
             # Overall verification: both database name and host must match if provided
             name_ok = db_identity["details"].get("database_name_match", False)
             host_ok = db_identity["details"].get("host_match", False) if os.environ.get("SCHOLARZONE_EXPECTED_DB_HOST") else True
             db_identity["verified"] = name_ok and host_ok
-            
+
             if not db_identity["verified"] and (os.environ.get("SCHOLARZONE_EXPECTED_DB_IDENTIFIER") or os.environ.get("SCHOLARZONE_EXPECTED_DB_HOST")):
                 raise RuntimeError("Database identity verification failed.")
-                
+
         except Exception as e:
             if "identity mismatch" in str(e).lower() or "mismatch" in str(e).lower() or "verification failed" in str(e).lower():
                 raise
@@ -337,7 +406,7 @@ def verify_database_identity(conn: Connection) -> dict[str, Any]:
                     db_name = db_name[:-3]
                 db_identity["details"]["database_name"] = db_name
                 db_identity["details"]["database_file_path"] = db_file_path
-                
+
                 # Require explicit environment variable for production DB identity
                 expected_db_id = os.environ.get("SCHOLARZONE_EXPECTED_DB_IDENTIFIER")
                 if expected_db_id:
@@ -359,7 +428,7 @@ def verify_database_identity(conn: Connection) -> dict[str, Any]:
             db_identity["details"]["error"] = str(e)
     else:
         db_identity["details"]["note"] = f"Identity verification not applicable for {dialect}"
-    
+
     return db_identity
 
 
@@ -367,28 +436,28 @@ def verify_production_database(engine: Engine) -> dict[str, Any]:
     """Verify this is the expected production database using trusted metadata."""
     inspector = inspect(engine)
     dialect = engine.dialect.name
-    
+
     # Check for core tables that must exist
     required_core_tables = {"scholarships", "users"}
     existing_tables = set(inspector.get_table_names())
     missing_core = required_core_tables - existing_tables
-    
+
     if missing_core:
         raise RuntimeError(
             f"Database missing required core tables: {missing_core}. "
             f"This does not appear to be the expected production database."
         )
-    
+
     # Check for a known scholarship record to verify data
     with engine.connect() as conn:
         try:
             scholarship_count = conn.execute(text("SELECT COUNT(*) FROM scholarships")).scalar()
         except Exception as e:
             raise RuntimeError(f"Cannot query scholarships table: {e}")
-        
+
         # Verify identity
         db_identity = verify_database_identity(conn)
-        
+
         # Fail closed if identity cannot be positively verified when expected identifier is configured
         expected_db_id = os.environ.get("SCHOLARZONE_EXPECTED_DB_IDENTIFIER")
         if expected_db_id and not db_identity.get("verified", False):
@@ -410,14 +479,14 @@ def verify_production_database(engine: Engine) -> dict[str, Any]:
 
 def verify_backup_pitr_status(conn: Connection) -> dict[str, Any]:
     """Verify backup/PITR status for the production database.
-    
+
     This is a placeholder function that documents what needs to be verified.
     Actual verification requires Neon API access or manual confirmation.
-    
+
     For production use, this should be called with verified credentials from the
     workflow, which should have already performed the backup/PITR verification
     via Neon API or manual attestation.
-    
+
     Returns a dict with verification status and evidence reference.
     """
     backup_info = {
@@ -430,7 +499,7 @@ def verify_backup_pitr_status(conn: Connection) -> dict[str, Any]:
             "requires_manual_attestation": True,
         }
     }
-    
+
     # A configured boolean alone is not a sufficient gate. Require a recent,
     # non-future restore test date and a traceable evidence reference before
     # any DDL. This remains an operator attestation: automatic verification
@@ -467,7 +536,7 @@ def verify_backup_pitr_status(conn: Connection) -> dict[str, Any]:
         backup_info["details"]["note"] = date_error or (
             "SCHOLARZONE_BACKUP_VERIFIED must be true and backup evidence reference must be supplied"
         )
-    
+
     return backup_info
 
 
@@ -475,7 +544,7 @@ def check_existing_supervisor_tables(engine: Engine) -> dict[str, Any]:
     """Check which supervisor tables already exist."""
     inspector = inspect(engine)
     existing_tables = set(inspector.get_table_names())
-    
+
     supervisor_tables = {}
     for table_name in REQUIRED_NEW_TABLES:
         exists = table_name in existing_tables
@@ -494,7 +563,7 @@ def check_existing_supervisor_tables(engine: Engine) -> dict[str, Any]:
             }
         else:
             supervisor_tables[table_name] = {"exists": False}
-    
+
     return {
         "total_required": len(REQUIRED_NEW_TABLES),
         "existing_count": sum(1 for t in supervisor_tables.values() if t["exists"]),
@@ -516,43 +585,43 @@ def generate_create_statements(dialect: str, missing_tables: list[str]) -> list[
 
 def generate_index_statements(engine: Engine, missing_tables: list[str], existing_tables_info: dict = None) -> list[str]:
     """Generate CREATE INDEX statements for missing tables AND existing tables with missing indexes.
-    
+
     Args:
         engine: Database engine for inspecting existing indexes
         missing_tables: List of table names that don't exist yet
         existing_tables_info: Optional dict from check_existing_supervisor_tables with index info
-    
+
     Returns:
         List of CREATE INDEX IF NOT EXISTS statements
     """
     statements = []
     inspector = inspect(engine)
-    
+
     # First, generate indexes for completely missing tables
     for table_name in missing_tables:
         for idx in index_statements():
             if f" ON {table_name} " in idx:
                 statements.append(idx)
-    
+
     # Then, check existing tables for missing required indexes
     if existing_tables_info:
         for table_name, info in existing_tables_info.get("tables", {}).items():
             if not info.get("exists", False):
                 continue
-            
+
             # Get actual indexes for this table
             existing_indexes = {i["name"]: i for i in inspector.get_indexes(table_name)}
-            
+
             # Check each required index for this table
             for idx in index_statements():
                 if f" ON {table_name} " not in idx:
                     continue
-                
+
                 idx_name = idx.split("IF NOT EXISTS ")[1].split(" ON ")[0]
                 if idx_name not in existing_indexes:
                     statements.append(idx)
                     print(f"[REPAIR] Missing index {idx_name} on {table_name} will be created")
-    
+
     return statements
 
 
@@ -563,18 +632,18 @@ def generate_index_statements(engine: Engine, missing_tables: list[str], existin
 def dry_run(engine: Engine) -> dict[str, Any]:
     """Perform a dry run of the migration."""
     dialect = "postgresql" if engine.dialect.name == "postgresql" else "sqlite"
-    
+
     # Verify production database
     db_info = verify_production_database(engine)
-    
+
     # Check existing tables
     table_info = check_existing_supervisor_tables(engine)
     missing_tables = [t for t, info in table_info["tables"].items() if not info["exists"]]
-    
+
     # Generate statements
     create_stmts = generate_create_statements(dialect, missing_tables)
     index_stmts = generate_index_statements(engine, missing_tables, table_info)
-    
+
     return {
         "mode": "dry-run",
         "timestamp": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
@@ -591,73 +660,11 @@ def dry_run(engine: Engine) -> dict[str, Any]:
 # Index Helpers for Validation (SQLite auto-generated indexes)
 # ============================================================
 
-def get_all_indexes_with_pragma(conn: Connection, table_name: str) -> list[dict]:
-    """Get all indexes for a table including SQLite auto-generated unique constraint indexes."""
-    dialect = conn.engine.dialect.name
-    if dialect == "sqlite":
-        # Use raw PRAGMA to get all indexes including auto-generated unique constraint indexes
-        result = conn.execute(text(f"PRAGMA index_list({table_name})"))
-        indexes = []
-        for row in result:
-            # row: (seq, name, unique, origin, partial)
-            idx_name = row[1]
-            is_unique = bool(row[2])
-            # Get column names for this index
-            col_result = conn.execute(text(f"PRAGMA index_info({idx_name})"))
-            columns = [col_row[2] for col_row in col_result]
-            indexes.append({
-                "name": idx_name,
-                "unique": is_unique,
-                "column_names": columns,
-            })
-        return indexes
-    else:
-        # Use standard inspector for PostgreSQL
-        inspector = inspect(conn.engine)
-        return [
-            {
-                "name": i["name"],
-                "unique": i.get("unique", False),
-                "column_names": i.get("column_names", []),
-            }
-            for i in inspector.get_indexes(table_name)
-        ]
-
-
-# ============================================================
-# Apply Migration with Transactional Validation
-# ============================================================
-
-def dry_run(engine: Engine) -> dict[str, Any]:
-    """Perform a dry run of the migration."""
-    dialect = "postgresql" if engine.dialect.name == "postgresql" else "sqlite"
-    
-    # Verify production database
-    db_info = verify_production_database(engine)
-    
-    # Check existing tables
-    table_info = check_existing_supervisor_tables(engine)
-    missing_tables = [t for t, info in table_info["tables"].items() if not info["exists"]]
-    
-    # Generate statements
-    create_stmts = generate_create_statements(dialect, missing_tables)
-    index_stmts = generate_index_statements(engine, missing_tables, table_info)
-    
-    return {
-        "mode": "dry-run",
-        "timestamp": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
-        "database": db_info,
-        "supervisor_tables": table_info,
-        "missing_tables": missing_tables,
-        "create_statements": create_stmts,
-        "index_statements": index_stmts,
-        "total_statements": len(create_stmts) + len(index_stmts),
-    }
 
 
 def apply_migration(engine: Engine, report: dict[str, Any]) -> dict[str, Any]:
     """Apply the migration with full transactional validation.
-    
+
     All DDL and validation happen in a SINGLE transaction.
     If validation fails, the entire transaction rolls back.
     """
@@ -665,10 +672,10 @@ def apply_migration(engine: Engine, report: dict[str, Any]) -> dict[str, Any]:
     missing_tables = report["missing_tables"]
     create_stmts = report["create_statements"]
     index_stmts = report["index_statements"]
-    
+
     applied = {"tables_created": [], "indexes_created": [], "errors": []}
     validation = None
-    
+
     # PRE-APPLY SAFETY GATE: Verify backup/PITR status before any DDL
     with engine.connect() as conn:
         backup_status = verify_backup_pitr_status(conn)
@@ -677,61 +684,57 @@ def apply_migration(engine: Engine, report: dict[str, Any]) -> dict[str, Any]:
             print(f"[ERROR] {error_msg}", file=sys.stderr)
             raise RuntimeError(f"Backup/PITR gate failed: {error_msg}")
         print(f"[INFO] Backup/PITR verification passed: {backup_status['details'].get('evidence_ref', 'unknown')}")
-    
+
     applied = {"tables_created": [], "indexes_created": [], "errors": []}
     validation = None
-    
-    # Use a single transaction for all DDL AND validation
-    # SQLite requires explicit transaction management for DDL
-    if engine.dialect.name == "sqlite":
-        # For SQLite, we need to manage the transaction manually since DDL commits implicitly
-        conn = engine.connect()
-        trans = conn.begin()
-        try:
-            # Create tables
-            for stmt in create_stmts:
-                try:
-                    conn.execute(text(stmt))
-                    table_name = stmt.split()[2]
-                    applied["tables_created"].append(table_name)
-                    print(f"[APPLIED] CREATE TABLE {table_name}")
-                except Exception as e:
-                    applied["errors"].append({"statement": stmt, "error": str(e)})
-                    print(f"[ERROR] CREATE TABLE failed: {e}")
-                    raise  # Will trigger rollback
-            
-            # Create indexes
-            for stmt in index_stmts:
-                try:
-                    conn.execute(text(stmt))
-                    applied["indexes_created"].append(stmt)
-                    print(f"[APPLIED] {stmt}")
-                except Exception as e:
-                    applied["errors"].append({"statement": stmt, "error": str(e)})
-                    print(f"[ERROR] CREATE INDEX failed: {e}")
-                    raise  # Will trigger rollback
-            
-            # VALIDATE WITHIN THE SAME TRANSACTION
-            # Use the transaction connection for inspection
-            validation = validate_schema_with_connection(conn)
-            
-            # If validation fails, raise to trigger rollback
-            if not validation.get("valid", False):
-                error_msg = "SCHEMA VALIDATION FAILED: " + json.dumps(
-                    {k: v for k, v in validation.items() if k != "table_details"},
-                    indent=2
-                )
-                print(f"[ERROR] {error_msg}", file=sys.stderr)
-                raise RuntimeError(error_msg)
-            
-            trans.commit()
-        except Exception:
-            trans.rollback()
-            conn.close()
-            raise
-        finally:
-            if not trans.is_active:
-                conn.close()
+
+    # Use a single transaction for all DDL AND validation.
+    # SQLite DDL is transactional in supported configurations; keep apply+validate
+    # in one explicit transaction so a validation failure rolls back every created object.
+    if dialect == "sqlite":
+        with engine.connect() as conn:
+            trans = conn.begin()
+            try:
+                # Create tables
+                for stmt in create_stmts:
+                    try:
+                        conn.execute(text(stmt))
+                        table_name = stmt.split()[2]
+                        applied["tables_created"].append(table_name)
+                        print(f"[APPLIED] CREATE TABLE {table_name}")
+                    except Exception as e:
+                        applied["errors"].append({"statement": stmt, "error": str(e)})
+                        print(f"[ERROR] CREATE TABLE failed: {e}")
+                        raise  # Rollback the transaction
+
+                # Create indexes
+                for stmt in index_stmts:
+                    try:
+                        conn.execute(text(stmt))
+                        applied["indexes_created"].append(stmt)
+                        print(f"[APPLIED] {stmt}")
+                    except Exception as e:
+                        applied["errors"].append({"statement": stmt, "error": str(e)})
+                        print(f"[ERROR] CREATE INDEX failed: {e}")
+                        raise  # Rollback the transaction
+
+                # VALIDATE WITHIN THE SAME TRANSACTION
+                validation = validate_schema_with_connection(conn)
+
+                # If validation fails, raise to trigger rollback
+                if not validation.get("valid", False):
+                    error_msg = "SCHEMA VALIDATION FAILED: " + json.dumps(
+                        {k: v for k, v in validation.items() if k != "table_details"},
+                        indent=2
+                    )
+                    print(f"[ERROR] {error_msg}", file=sys.stderr)
+                    raise RuntimeError(error_msg)
+
+                trans.commit()
+            except Exception:
+                if trans.is_active:
+                    trans.rollback()
+                raise
     else:
         # PostgreSQL: use engine.begin() for transaction management
         with engine.begin() as conn:
@@ -746,7 +749,7 @@ def apply_migration(engine: Engine, report: dict[str, Any]) -> dict[str, Any]:
                     applied["errors"].append({"statement": stmt, "error": str(e)})
                     print(f"[ERROR] CREATE TABLE failed: {e}")
                     raise  # Rollback the transaction
-            
+
             # Create indexes
             for stmt in index_stmts:
                 try:
@@ -757,11 +760,10 @@ def apply_migration(engine: Engine, report: dict[str, Any]) -> dict[str, Any]:
                     applied["errors"].append({"statement": stmt, "error": str(e)})
                     print(f"[ERROR] CREATE INDEX failed: {e}")
                     raise  # Rollback the transaction
-            
+
             # VALIDATE WITHIN THE SAME TRANSACTION
-            # Use the transaction connection for inspection
             validation = validate_schema_with_connection(conn)
-            
+
             # If validation fails, raise to trigger rollback
             if not validation.get("valid", False):
                 error_msg = "SCHEMA VALIDATION FAILED: " + json.dumps(
@@ -770,7 +772,7 @@ def apply_migration(engine: Engine, report: dict[str, Any]) -> dict[str, Any]:
                 )
                 print(f"[ERROR] {error_msg}", file=sys.stderr)
                 raise RuntimeError(error_msg)
-    
+
     return {
         "mode": "apply",
         "timestamp": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
@@ -802,44 +804,36 @@ def normalize_on_delete(on_delete: str) -> str:
     return on_delete
 
 
-def normalize_type(dialect: str, type_str: str) -> str:
+def normalize_type(dialect: str, type_str: Any) -> str:
     """Normalize type string for dialect-aware comparison.
-    
+
     Preserves length specifications for relevant type dimensions:
     - VARCHAR length
     - NUMERIC precision/scale
     - timestamp timezone
     - dialect-specific equivalent types
     """
-    if not type_str:
+    if type_str is None:
         return ""
-    
-    type_str = type_str.upper().strip()
-    
+
+    text_value = str(type_str).upper().strip()
+
     # Handle common aliases first
-    type_str = type_str.replace("TIMESTAMP WITH TIME ZONE", "TIMESTAMPTZ")
-    type_str = type_str.replace("TIMESTAMP WITHOUT TIME ZONE", "TIMESTAMP")
-    type_str = type_str.replace("CHARACTER VARYING", "VARCHAR")
-    type_str = type_str.replace("CHAR VARYING", "VARCHAR")
-    
+    text_value = text_value.replace("TIMESTAMP WITH TIME ZONE", "TIMESTAMPTZ")
+    text_value = text_value.replace("TIMESTAMP WITHOUT TIME ZONE", "TIMESTAMP")
+    text_value = text_value.replace("CHARACTER VARYING", "VARCHAR")
+    text_value = text_value.replace("CHAR VARYING", "VARCHAR")
+
     # SQLite uses NUMERIC for what PostgreSQL calls TIMESTAMPTZ (Unix timestamp)
-    # Also handles TIMESTAMP which SQLite stores as DATETIME
+    # and commonly reflects timestamps as DATETIME.
     if dialect == "sqlite":
-        type_str = type_str.replace("TIMESTAMPTZ", "NUMERIC")
-        type_str = type_str.replace("TIMESTAMP", "DATETIME")
-        # Also normalize NUMERIC to DECIMAL for SQLite
-        type_str = type_str.replace("NUMERIC", "DECIMAL")
+        text_value = text_value.replace("TIMESTAMPTZ", "NUMERIC")
+        text_value = text_value.replace("TIMESTAMP", "DATETIME")
+        text_value = text_value.replace("NUMERIC", "DECIMAL")
     else:
-        # For PostgreSQL and other dialects
-        type_str = type_str.replace("NUMERIC", "DECIMAL")
-    
-    # Normalize whitespace
-    type_str = re.sub(r'\s+', ' ', type_str)
-    
-    return type_str.strip()
-    type_str = re.sub(r'\s+', ' ', type_str)
-    
-    return type_str.strip()
+        text_value = text_value.replace("NUMERIC", "DECIMAL")
+
+    return re.sub(r"\s+", " ", text_value).strip()
 
 
 def types_match(dialect: str, expected_type: str, actual_type: Any) -> bool:
@@ -883,42 +877,128 @@ def defaults_match(expected: Any, actual: Any) -> bool:
     return canonical(expected) == canonical(actual)
 
 
+
+
+
+# ============================================================
+# Index Helpers for Validation
+# ============================================================
+
+def _sqlite_index_sql(conn: Connection, index_name: str) -> str | None:
+    row = conn.execute(
+        text("SELECT sql FROM sqlite_master WHERE type='index' AND name = :name"),
+        {"name": index_name},
+    ).fetchone()
+    return row[0] if row and row[0] is not None else None
+
+
+def _extract_sqlite_index_predicate(index_sql: str | None) -> str | None:
+    if not index_sql:
+        return None
+    match = re.search(r"\bWHERE\s+(.+)$", str(index_sql), flags=re.IGNORECASE | re.DOTALL)
+    if not match:
+        return None
+    return _normalize_index_predicate(match.group(1))
+
+
+def _postgresql_index_predicate_info(
+    conn: Connection, schema: str | None, table_name: str, index_name: str
+) -> tuple[str | None, bool]:
+    """Return (predicate, predicate_known).
+
+    predicate_known is False when PostgreSQL reports the index as partial but the
+    predicate expression cannot be retrieved from authoritative catalog metadata.
+    """
+    schema = schema or "public"
+    row = conn.execute(
+        text(
+            """
+            SELECT pg_get_expr(i.indpred, i.indrelid) AS predicate, i.indpred IS NOT NULL AS is_partial
+            FROM pg_index i
+            JOIN pg_class idx ON idx.oid = i.indexrelid
+            JOIN pg_class tbl ON tbl.oid = i.indrelid
+            JOIN pg_namespace ns ON ns.oid = tbl.relnamespace
+            WHERE ns.nspname = :schema AND tbl.relname = :table_name AND idx.relname = :index_name
+            """
+        ),
+        {"schema": schema, "table_name": table_name, "index_name": index_name},
+    ).fetchone()
+    if not row:
+        # If not found in catalog, treat as unrestricted/known absent predicate.
+        return None, True
+    is_partial = bool(row[1])
+    predicate = _normalize_index_predicate(row[0]) if row[0] is not None else None
+    if is_partial and predicate is None:
+        return None, False
+    return predicate, True
+
+
 def get_all_indexes_with_pragma(conn: Connection, table_name: str) -> list[dict]:
-    """Get all indexes for a table including SQLite auto-generated unique constraint indexes."""
+    """Get all indexes with normalized columns, uniqueness, predicate, and predicate_known.
+
+    Uses the provided connection so validation can observe uncommitted DDL within
+    the same transaction. Does not treat missing predicate metadata as proof that
+    an index is unrestricted when partiality is indicated but the predicate cannot
+    be recovered.
+    """
     dialect = conn.engine.dialect.name
     if dialect == "sqlite":
-        # Use raw PRAGMA to get all indexes including auto-generated unique constraint indexes
-        result = conn.execute(text(f"PRAGMA index_list({table_name})"))
+        result = conn.execute(text(f'PRAGMA index_list("{table_name}")'))
         indexes = []
         for row in result:
-            # row: (seq, name, unique, origin, partial)
+            # PRAGMA index_list: (seq, name, unique, origin, partial)
             idx_name = row[1]
             is_unique = bool(row[2])
-            # Get column names for this index
-            col_result = conn.execute(text(f"PRAGMA index_info({idx_name})"))
+            partial_flag = bool(row[4]) if len(row) > 4 else False
+            col_result = conn.execute(text(f'PRAGMA index_info("{idx_name}")'))
             columns = [col_row[2] for col_row in col_result]
+            predicate = None
+            predicate_known = True
+            if partial_flag:
+                predicate = _extract_sqlite_index_predicate(_sqlite_index_sql(conn, idx_name))
+                predicate_known = predicate is not None
             indexes.append({
                 "name": idx_name,
                 "unique": is_unique,
                 "column_names": columns,
+                "predicate": predicate,
+                "predicate_known": predicate_known,
+                "partial": partial_flag,
             })
         return indexes
-    else:
-        # Use standard inspector for PostgreSQL on the CONNECTION (not engine) to see uncommitted DDL
-        inspector = inspect(conn)
-        return [
-            {
-                "name": i["name"],
-                "unique": i.get("unique", False),
-                "column_names": i.get("column_names", []),
-            }
-            for i in inspector.get_indexes(table_name)
-        ]
+
+    # PostgreSQL (and others via inspector + PG catalog fallback for predicate)
+    inspector = inspect(conn)
+    schema = getattr(inspector, "default_schema_name", None) or "public"
+    indexes = []
+    for i in inspector.get_indexes(table_name):
+        name = i.get("name")
+        dialect_options = i.get("dialect_options") or {}
+        pg_opts = dialect_options.get("postgresql", {}) if isinstance(dialect_options, dict) else {}
+        predicate = None
+        predicate_known = True
+
+        if "where" in pg_opts and pg_opts.get("where") is not None:
+            predicate = _normalize_index_predicate(pg_opts.get("where"))
+        elif i.get("predicate") is not None:
+            predicate = _normalize_index_predicate(i.get("predicate"))
+        else:
+            predicate, predicate_known = _postgresql_index_predicate_info(conn, schema, table_name, name)
+
+        indexes.append({
+            "name": name,
+            "unique": bool(i.get("unique", False)),
+            "column_names": list(i.get("column_names") or []),
+            "predicate": predicate,
+            "predicate_known": predicate_known,
+        })
+    return indexes
+
 
 
 def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
     """Validate schema against canonical DDL using the given transaction connection.
-    
+
     This allows validation within the same transaction as DDL application.
     """
     # Use the connection directly for inspection to see uncommitted DDL
@@ -926,7 +1006,7 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
     existing_tables = set(inspector.get_table_names())
     dialect = "postgresql" if conn.engine.dialect.name == "postgresql" else "sqlite"
     expected_schema = get_expected_schema(dialect)
-    
+
     validation = {
         "valid": True,
         "missing_tables": [],
@@ -937,16 +1017,16 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
         "constraint_validation": {},
         "composite_unique_validation": {},
     }
-    
+
     for table_name in REQUIRED_NEW_TABLES:
         expected = expected_schema.get(table_name, {})
-        
+
         if table_name not in existing_tables:
             validation["valid"] = False
             validation["missing_tables"].append(table_name)
             validation["table_details"][table_name] = {"exists": False}
             continue
-        
+
         # Get actual schema using the SAME connection
         column_info = inspector.get_columns(table_name)
         actual_columns = {c["name"]: c for c in column_info}
@@ -954,14 +1034,14 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
         actual_indexes = get_all_indexes_with_pragma(conn, table_name)
         actual_foreign_keys = inspector.get_foreign_keys(table_name)
         actual_pk = inspector.get_pk_constraint(table_name)
-        
+
         expected_columns = expected.get("columns", {})
         expected_composite = expected.get("composite_constraints", [])
         expected_fks = expected.get("foreign_keys", [])
         expected_indexes = expected.get("indexes", [])
-        
+
         table_ok = True
-        
+
         # Column validation
         column_results = {}
         # Get primary key info once
@@ -972,52 +1052,86 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
                 column_results[col_name] = {"status": "MISSING", "expected": expected_col}
                 table_ok = False
                 continue
-            
+
             # Exact type matching (dialect-aware)
             actual_type = actual_col.get("type", "")
             type_ok = types_match(dialect, expected_col["type"], actual_type)
-            
+
             # Check nullable
             expected_nullable = expected_col["nullable"]
             actual_nullable = actual_col.get("nullable", True)
             nullable_ok = expected_nullable == actual_nullable
-            
+
             # Check primary key
             expected_pk = expected_col["primary_key"]
             actual_pk_bool = col_name in pk_info
             pk_ok = expected_pk == actual_pk_bool
-            
+
             # Primary key columns are implicitly NOT NULL
             if expected_pk:
                 nullable_ok = True
-            
+
             # Validate PostgreSQL GENERATED ALWAYS AS IDENTITY for canonical ID columns
             identity_ok = True
+            identity_actual = actual_col.get("identity")
             if dialect == "postgresql" and expected_pk and col_name == "id":
-                # For PostgreSQL, canonical ID columns must be GENERATED ALWAYS AS IDENTITY
-                # Check reflected identity metadata
-                identity_info = actual_col.get("identity")
-                if identity_info is None or identity_info == "NO":
-                    # Not an identity column - this is a mismatch for canonical ID
+                always = None
+                if identity_actual is None or identity_actual is False:
                     identity_ok = False
-                elif identity_info == "ALWAYS":
-                    identity_ok = True
-                elif identity_info == "BY DEFAULT":
-                    # BY DEFAULT is not GENERATED ALWAYS
-                    identity_ok = False
+                elif isinstance(identity_actual, str):
+                    upper = identity_actual.upper()
+                    identity_ok = upper == "ALWAYS"
+                    if upper == "BY DEFAULT":
+                        always = False
+                elif isinstance(identity_actual, dict):
+                    if "always" in identity_actual:
+                        always = identity_actual.get("always")
+                        identity_ok = bool(always) is True
+                    elif "generated" in identity_actual:
+                        gen = str(identity_actual.get("generated", "")).upper()
+                        identity_ok = gen == "ALWAYS"
+                        if gen == "BY DEFAULT":
+                            always = False
+                    else:
+                        identity_ok = False
                 else:
+                    # SQLAlchemy 2.x may reflect an Identity object
+                    if hasattr(identity_actual, "always"):
+                        try:
+                            always = getattr(identity_actual, "always")
+                        except Exception:
+                            always = None
+                        identity_ok = bool(always) is True
+                    elif hasattr(identity_actual, "get"):
+                        try:
+                            if "always" in identity_actual:
+                                always = identity_actual.get("always")
+                                identity_ok = bool(always) is True
+                            elif "generated" in identity_actual:
+                                gen = str(identity_actual.get("generated", "")).upper()
+                                identity_ok = gen == "ALWAYS"
+                                if gen == "BY DEFAULT":
+                                    always = False
+                            else:
+                                identity_ok = False
+                        except Exception:
+                            identity_ok = False
+                    else:
+                        identity_ok = False
+                # Reject missing identity, BY DEFAULT, or unrecognized metadata.
+                if always is False:
                     identity_ok = False
-            
+
             # Check unique (column-level)
             expected_unique = expected_col["unique"]
             actual_unique = actual_col.get("unique", False)
             unique_ok = expected_unique == actual_unique
-            
+
             # Check default value
             expected_default = expected_col.get("default")
             actual_default = actual_col.get("default")
             default_ok = True
-            
+
             # Default validation: both expected and actual must match exactly
             # If expected has a default, actual must have the same default
             # If expected has no default, actual must not have a default
@@ -1030,11 +1144,11 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
                 and getattr(actual_type, "timezone", False)
             ):
                 actual_type_label = "TIMESTAMP WITH TIME ZONE"
-            
+
             col_ok = type_ok and nullable_ok and pk_ok and unique_ok and default_ok and identity_ok
             if not col_ok:
                 table_ok = False
-            
+
             column_results[col_name] = {
                 "status": "OK" if col_ok else "MISMATCH",
                 "expected": expected_col,
@@ -1055,92 +1169,112 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
                     "identity": identity_ok,
                 },
             }
-        
+
         # Check for unexpected extra columns
         extra_columns = set(actual_columns.keys()) - set(expected_columns.keys())
         for col_name in extra_columns:
             if col_name not in ("id", "created_at", "updated_at"):
                 column_results[col_name] = {"status": "UNEXPECTED", "actual": actual_columns[col_name]}
                 table_ok = False
-        
+
         validation["column_validation"][table_name] = {
             "all_columns_ok": all(r.get("status") == "OK" for r in column_results.values()),
             "columns": column_results,
             "expected_count": len(expected_columns),
             "actual_count": len(actual_columns),
         }
-        
+
         # Composite unique constraint validation
         composite_results = []
         for expected_comp in expected.get("composite_constraints", []):
-            if expected_comp["type"] == "UNIQUE":
-                found = False
-                for idx in actual_indexes:
-                    if idx.get("unique") and list(idx["column_names"]) == expected_comp["columns"]:
-                        # Reject partial unique indexes when unrestricted UNIQUE constraint is required
-                        if idx.get("predicate"):
-                            # Partial unique index cannot satisfy required unrestricted UNIQUE constraint
-                            composite_results.append({
-                                "name": expected_comp["name"],
-                                "columns": expected_comp["columns"],
-                                "found": False,
-                                "reason": "partial_unique_index_rejected",
-                                "details": f"Found partial unique index with predicate: {idx['predicate']}; unrestricted UNIQUE constraint required"
-                            })
-                            table_ok = False
-                            break
-                        found = True
-                        break
-                if found:
+            if expected_comp.get("type") != "UNIQUE":
+                continue
+            found = False
+            rejected_partial = False
+            expected_cols = list(expected_comp.get("columns") or [])
+            for idx in actual_indexes:
+                if not bool(idx.get("unique")):
+                    continue
+                if list(idx.get("column_names") or []) != expected_cols:
+                    continue
+                predicate = _normalize_index_predicate(idx.get("predicate"))
+                predicate_known = bool(idx.get("predicate_known", True))
+                # An unrestricted UNIQUE constraint is required. Reject partial unique
+                # indexes and reject indeterminate indexes where partiality cannot be
+                # proven absent from authoritative metadata.
+                if predicate is not None or not predicate_known:
                     composite_results.append({
-                        "name": expected_comp["name"],
-                        "columns": expected_comp["columns"],
-                        "found": True,
-                    })
-                elif not any(r.get("reason") == "partial_unique_index_rejected" for r in composite_results if r.get("name") == expected_comp["name"]):
-                    composite_results.append({
-                        "name": expected_comp["name"],
-                        "columns": expected_comp["columns"],
+                        "name": expected_comp.get("name"),
+                        "columns": expected_cols,
                         "found": False,
+                        "reason": "partial_unique_index_rejected",
+                        "details": "partial or indeterminate unique index cannot satisfy required unrestricted UNIQUE constraint",
+                        "predicate": predicate,
+                        "predicate_known": predicate_known,
                     })
                     table_ok = False
-        
+                    rejected_partial = True
+                    break
+                found = True
+                break
+            if found:
+                composite_results.append({
+                    "name": expected_comp.get("name"),
+                    "columns": expected_cols,
+                    "found": True,
+                })
+            elif not rejected_partial:
+                composite_results.append({
+                    "name": expected_comp.get("name"),
+                    "columns": expected_cols,
+                    "found": False,
+                })
+                table_ok = False
+
         validation["composite_unique_validation"][table_name] = {
             "expected": expected.get("composite_constraints", []),
             "results": composite_results,
         }
-        
-        # Index validation - exact columns, order, uniqueness, and predicate
-        # Note: expected indexes are defined by their attributes in the canonical DDL
-        # We match by attributes, not just name, since names may differ
+
+        # Index validation - exact columns, order, uniqueness, and predicate.
+        # Match by attributes, not just name.
         missing_indexes = []
         index_details = {}
         expected_indexes_list = expected.get("indexes", [])
         for expected_idx in expected_indexes_list:
-            expected_cols = expected_idx.get("columns", [])
-            expected_unique = expected_idx.get("unique", False)
-            expected_predicate = expected_idx.get("predicate")
+            expected_cols = list(expected_idx.get("columns", []))
+            expected_unique = bool(expected_idx.get("unique", False))
+            expected_predicate = _normalize_index_predicate(expected_idx.get("predicate"))
             expected_name = expected_idx.get("name")
-            
+
             found = False
             for actual_idx in actual_indexes:
-                actual_cols = actual_idx.get("column_names", [])
-                actual_unique = actual_idx.get("unique", False)
-                actual_predicate = actual_idx.get("predicate")
-                
-                # Match by columns (order matters), uniqueness, and predicate
-                if (actual_cols == expected_cols and 
-                    actual_unique == expected_unique and
-                    actual_predicate == expected_predicate):
-                    found = True
-                    index_details[expected_name] = {
-                        "found": True,
-                        "unique": actual_unique,
-                        "columns": actual_cols,
-                        "predicate": actual_predicate,
-                    }
-                    break
-            
+                actual_cols = list(actual_idx.get("column_names") or [])
+                actual_unique = bool(actual_idx.get("unique", False))
+                actual_predicate = _normalize_index_predicate(actual_idx.get("predicate"))
+                actual_predicate_known = bool(actual_idx.get("predicate_known", True))
+
+                if actual_cols != expected_cols or actual_unique != expected_unique:
+                    continue
+
+                if expected_predicate is None:
+                    # Unrestricted index required: reject partial or indeterminate indexes.
+                    if actual_predicate is not None or not actual_predicate_known:
+                        continue
+                else:
+                    # Partial index required: predicate must be known and match (normalized).
+                    if not actual_predicate_known or actual_predicate != expected_predicate:
+                        continue
+
+                found = True
+                index_details[expected_name] = {
+                    "found": True,
+                    "unique": actual_unique,
+                    "columns": actual_cols,
+                    "predicate": actual_predicate,
+                }
+                break
+
             if not found:
                 missing_indexes.append(expected_name)
                 table_ok = False
@@ -1150,7 +1284,7 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
                     "expected_unique": expected_unique,
                     "expected_predicate": expected_predicate,
                 }
-        
+
         validation["index_validation"][table_name] = {
             "expected_count": len(expected.get("indexes", [])),
             "actual_count": len(actual_indexes),
@@ -1160,12 +1294,11 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
         }
         if missing_indexes:
             table_ok = False
-        
         # Foreign key validation with exact constrained/referred columns and ON DELETE
         fk_results = []
         actual_foreign_keys = inspector.get_foreign_keys(table_name)
         dialect = "postgresql" if conn.engine.dialect.name == "postgresql" else "sqlite"
-        
+
         for expected_fk in expected.get("foreign_keys", []):
             # Match by constrained columns AND referred table
             found = False
@@ -1177,13 +1310,13 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
                     found = True
                     actual_on_delete = normalize_on_delete(actual_fk.get("options", {}).get("ondelete", "NO ACTION"))
                     expected_on_delete = normalize_on_delete(expected_fk.get("on_delete", "NO ACTION"))
-                    
+
                     # For SQLite, RESTRICT in DDL maps to NO ACTION in actual (SQLite doesn't support ON DELETE RESTRICT)
                     if dialect == "sqlite" and expected_on_delete == "RESTRICT" and actual_on_delete == "NO ACTION":
                         on_delete_match = True
                     else:
                         on_delete_match = actual_on_delete == expected_on_delete
-                    
+
                     if not on_delete_match:
                         fk_results.append({
                             "constrained_columns": expected_cols,
@@ -1222,23 +1355,23 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
                     "status": "MISSING",
                 })
                 table_ok = False
-        
+
         validation["foreign_key_validation"][table_name] = {
             "expected_count": len(expected.get("foreign_keys", [])),
             "actual_count": len(actual_foreign_keys),
             "details": fk_results,
             "all_ok": all(fk.get("status") == "OK" for fk in fk_results),
         }
-        
+
         # Constraint validation (column-level unique + PK)
         unique_cols = [c for c, r in column_results.items() if r.get("status") == "OK" and r.get("expected", {}).get("unique")]
         pk_cols = [c for c, r in column_results.items() if r.get("status") == "OK" and r.get("expected", {}).get("primary_key")]
-        
+
         validation["constraint_validation"][table_name] = {
             "unique_columns": unique_cols,
             "primary_key_columns": pk_cols,
         }
-        
+
         validation["table_details"][table_name] = {
             "exists": True,
             "column_count": len(actual_columns),
@@ -1246,10 +1379,10 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
             "primary_key": inspector.get_pk_constraint(table_name).get("constrained_columns", []),
             "has_required_columns": table_ok,
         }
-        
+
         if not table_ok:
             validation["valid"] = False
-    
+
     return validation
 
 
@@ -1265,19 +1398,19 @@ def validate_schema(engine: Engine) -> dict[str, Any]:
 
 def main():
     parser = argparse.ArgumentParser(description="ScholarZone production schema migration")
-    
+
     # Mutually exclusive migration modes
     mode_group = parser.add_mutually_exclusive_group(required=True)
     mode_group.add_argument("--dry-run", action="store_true", help="Show what would be done without applying")
     mode_group.add_argument("--apply", action="store_true", help="Apply the migration (requires SCHOLARZONE_EXPECTED_DB_IDENTIFIER)")
     mode_group.add_argument("--validate-only", action="store_true", help="Only validate existing schema")
-    
+
     # Report options (can combine with modes)
     parser.add_argument("--report", action="store_true", help="Output JSON report to stdout")
     parser.add_argument("--output", type=str, help="Write JSON report to file")
-    
+
     args = parser.parse_args()
-    
+
     # Production apply needs both halves of the database identity. Requiring
     # only the database name allowed the endpoint check in
     # verify_database_identity() to become optional.
@@ -1296,13 +1429,13 @@ def main():
     if args.apply and is_production and not os.environ.get("SCHOLARZONE_EXPECTED_DB_HOST", "").strip():
         print("ERROR: production --apply requires SCHOLARZONE_EXPECTED_DB_HOST", file=sys.stderr)
         sys.exit(1)
-    
+
     try:
         engine = get_production_engine()
     except RuntimeError as e:
         print(f"ERROR: {e}", file=sys.stderr)
         sys.exit(1)
-    
+
     try:
         if args.validate_only:
             validation = validate_schema(engine)
@@ -1320,7 +1453,7 @@ def main():
         else:
             parser.print_help()
             sys.exit(1)
-        
+
         # Output report
         if args.output:
             with open(args.output, "w") as f:
@@ -1329,18 +1462,18 @@ def main():
         if args.report:
             json.dump(report, sys.stdout, indent=2, default=str)
             print()
-        
+
         # Exit with error code if validation fails
         if args.validate_only or args.apply:
             validation = report.get("validation", report.get("applied", {}).get("validation", {}))
             if not validation.get("valid", True):
                 print("VALIDATION FAILED: Schema does not match canonical DDL", file=sys.stderr)
                 sys.exit(1)
-        
+
         if args.apply and report.get("applied", {}).get("errors"):
             print("APPLICATION ERRORS OCCURRED", file=sys.stderr)
             sys.exit(1)
-            
+
     except Exception as e:
         print(f"ERROR: {e}", file=sys.stderr)
         import traceback
@@ -1352,3 +1485,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+

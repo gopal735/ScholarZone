@@ -278,3 +278,109 @@ async def test_browser_proxy_blocks_connect_to_loopback():
 
 # ============================================================
 # Regression Tests
+
+
+def test_configured_auth_preserved_only_on_same_origin_redirect():
+    sent = []
+
+    def mock_send(request):
+        sent.append((str(request.url), request.headers.get("authorization")))
+        if len(sent) == 1:
+            return httpx.Response(302, headers={"location": "https://public.example/next"}, request=request)
+        return httpx.Response(200, request=request)
+
+    policy = public_test_policy()
+    with SSRFSafeClient(
+        policy=policy,
+        follow_redirects=True,
+        transport=httpx.MockTransport(mock_send),
+    ) as client:
+        response = client.get("https://public.example/start", auth=("user", "pass"))
+        assert response.status_code == 200
+
+    assert sent[0][1] is not None
+    assert sent[1][1] == sent[0][1]
+
+
+@pytest.mark.parametrize(
+    "location",
+    [
+        "http://public.example/next",      # scheme change (https -> http rejected earlier, but cover same host logic separately)
+        "https://other.example/next",      # host change
+        "https://public.example:8443/next",  # port change
+    ],
+)
+def test_configured_auth_not_reapplied_cross_origin_redirect(location):
+    sent = []
+
+    def mock_send(request):
+        sent.append((str(request.url), request.headers.get("authorization")))
+        if len(sent) == 1:
+            return httpx.Response(302, headers={"location": location}, request=request)
+        return httpx.Response(200, request=request)
+
+    policy = DestinationPolicy(lambda host, port: ["8.8.8.8"])
+    with SSRFSafeClient(
+        policy=policy,
+        follow_redirects=True,
+        transport=httpx.MockTransport(mock_send),
+    ) as client:
+        if location.startswith("http://"):
+            with pytest.raises(UnsafeOutboundTarget, match="HTTPS-to-HTTP"):
+                client.get("https://public.example/start", auth=("user", "pass"))
+            return
+        response = client.get("https://public.example/start", auth=("user", "pass"))
+        assert response.status_code == 200
+
+    assert sent[0][1] is not None
+    assert sent[1][1] is None
+
+
+def test_request_authorization_header_stripped_on_cross_origin_redirect():
+    sent = []
+
+    def mock_send(request):
+        sent.append((str(request.url), request.headers.get("authorization")))
+        if len(sent) == 1:
+            return httpx.Response(302, headers={"location": "https://other.example/next"}, request=request)
+        return httpx.Response(200, request=request)
+
+    policy = DestinationPolicy(lambda host, port: ["8.8.8.8"])
+    with SSRFSafeClient(
+        policy=policy,
+        follow_redirects=True,
+        transport=httpx.MockTransport(mock_send),
+    ) as client:
+        response = client.get(
+            "https://public.example/start",
+            headers={"Authorization": "Bearer secret-token"},
+        )
+        assert response.status_code == 200
+
+    assert sent[0][1] == "Bearer secret-token"
+    assert sent[1][1] is None
+
+
+def test_request_authorization_header_preserved_on_same_origin_redirect():
+    sent = []
+
+    def mock_send(request):
+        sent.append((str(request.url), request.headers.get("authorization")))
+        if len(sent) == 1:
+            return httpx.Response(302, headers={"location": "https://public.example/next"}, request=request)
+        return httpx.Response(200, request=request)
+
+    policy = public_test_policy()
+    with SSRFSafeClient(
+        policy=policy,
+        follow_redirects=True,
+        transport=httpx.MockTransport(mock_send),
+    ) as client:
+        response = client.get(
+            "https://public.example/start",
+            headers={"Authorization": "Bearer secret-token"},
+        )
+        assert response.status_code == 200
+
+    assert sent[0][1] == "Bearer secret-token"
+    assert sent[1][1] == "Bearer secret-token"

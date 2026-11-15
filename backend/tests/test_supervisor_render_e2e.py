@@ -246,3 +246,4 @@ def test_missing_browser_driver_is_inconclusive_not_negative(server, db, renderi
 
     assert outcome.status == "source_requires_rendering"
     assert db.query(ProfessorProfile).count() == 0
+

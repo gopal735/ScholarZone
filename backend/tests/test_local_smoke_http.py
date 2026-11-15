@@ -45,3 +45,4 @@ def test_local_smoke_adapter_reaches_only_explicit_loopback_fixture_port():
         server.shutdown()
         server.server_close()
         worker.join(timeout=2)
+

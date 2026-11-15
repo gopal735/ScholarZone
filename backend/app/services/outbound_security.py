@@ -230,14 +230,14 @@ class SSRFSafeClient(httpx.Client):
         kwargs["follow_redirects"] = False
         kwargs["trust_env"] = False
         super().__init__(transport=transport or SSRFSafeTransport(policy), **kwargs)
-        # Verify the pinned network backend was installed (only for real transports)
-        if not isinstance(transport, httpx.MockTransport):
-            # The pool is created lazily on first request, so we can't check it here
-            # The PinnedSyncBackend will be verified on first use
-            pass
         self._outbound_policy = policy
         self._outbound_follow_redirects = requested_redirects
         self._outbound_max_redirects = max_redirects
+
+    @staticmethod
+    def _same_origin_for_auth(source: httpx.URL, target: httpx.URL) -> bool:
+        """Configured credentials are portable only within the same origin."""
+        return (source.scheme, source.host, source.port) == (target.scheme, target.host, target.port)
 
     def send(self, request: httpx.Request, *, stream: bool = False, auth=httpx.USE_CLIENT_DEFAULT, follow_redirects=httpx.USE_CLIENT_DEFAULT) -> httpx.Response:
         should_follow = (
@@ -247,9 +247,10 @@ class SSRFSafeClient(httpx.Client):
         )
         current = request
         history: list[httpx.Response] = []
+        request_auth = auth
         for hop in range(self._outbound_max_redirects + 1):
             self._outbound_policy.validate_url(current.url, request=current)
-            response = super().send(current, stream=True, auth=auth, follow_redirects=False)
+            response = super().send(current, stream=True, auth=request_auth, follow_redirects=False)
             if not should_follow or not response.is_redirect:
                 response.history = history
                 if not stream:
@@ -277,6 +278,14 @@ class SSRFSafeClient(httpx.Client):
                 response.close()
                 raise UnsafeOutboundTarget("HTTPS-to-HTTP redirect is not accepted", request=current)
             next_request = self._build_redirect_request(current, response)
+            # Prevent client-level/configured auth from being reapplied on a
+            # different origin after redirect (scheme, host, or port change).
+            if not self._same_origin_for_auth(current.url, next_request.url):
+                next_request.headers.pop("authorization", None)
+                next_request.headers.pop("proxy-authorization", None)
+                request_auth = None
+            else:
+                request_auth = auth
             response.close()
             history.append(response)
             current = next_request
@@ -370,3 +379,4 @@ __all__ = [
     "DEFAULT_POLICY", "DestinationPolicy", "PinnedSyncBackend", "SSRFSafeClient",
     "SSRFSafeTransport", "UnsafeOutboundTarget", "secure_client", "secure_get", "secure_head", "secure_urlopen",
 ]
+
