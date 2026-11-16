@@ -231,8 +231,10 @@ describe('staticScholarshipService', () => {
   })
 
   describe('fetchScholarshipsFromSnapshot query support', () => {
-    // Use future dates relative to test run time (2026-10-29)
+// Use fixed reference date (2026-10-29) for lifecycle status computation
     // to avoid statusOf() computing different statuses based on deadline_date
+    const REFERENCE_DATE = new Date('2026-10-29T12:00:00Z')
+    
     const extendedSnapshot = {
       meta: {
         generated_at: '2026-10-09T12:41:37.970162Z',
@@ -379,13 +381,16 @@ describe('staticScholarshipService', () => {
       ],
     }
 
-    beforeEach(() => {
+beforeEach(() => {
       clearSnapshotCache()
+      vi.useFakeTimers()
+      vi.setSystemTime(REFERENCE_DATE)
       const fetchMock = vi.fn(async () => ({ ok: true, json: async () => extendedSnapshot }))
       vi.stubGlobal('fetch', fetchMock)
     })
-
+    
     afterEach(() => {
+      vi.useRealTimers()
       vi.unstubAllGlobals()
     })
 
