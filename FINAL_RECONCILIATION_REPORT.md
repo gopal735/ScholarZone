@@ -11,9 +11,9 @@
 | Item | Value |
 |------|-------|
 | Final branch | `fix/final-integration` |
-| Final exact HEAD SHA | `19bacbd4535771b14941988a6369388e27e9df39` |
+| Final exact HEAD SHA | `2208854c86ef515d4879d85a1a851573b5a0c9b1` |
 | Base SHA | `464dcc9802be1bd3d628e651cd33e3ae80129170` |
-| Commit count ahead of base | 30 |
+| Commit count ahead of base | 32 |
 | Changed-file count | 8 modified |
 | Working-tree status | Clean (no uncommitted changes) |
 | Push confirmation | ✅ Pushed to origin/fix/final-integration |
@@ -26,12 +26,12 @@
 |------------|----------------|------------|-----------------|--------|
 | 1 | Reject credential-bearing HTTP requests (incl. client auth) | `outbound_security.py`: `effective_auth` check for `USE_CLIENT_DEFAULT` | `test_client_configured_auth_over_plaintext_http_rejected` | ✅ FIXED |
 | 2 | Never restore original auth after crossing origin | `outbound_security.py`: `have_left_origin` flag | `test_redirect_a_to_b_to_b_never_restores_auth` | ✅ FIXED |
-| 3 | Bound owned-driver cleanup | `supervisor_render.py`: `asyncio.gather` + per-resource 5s timeouts | `test_real_close_all_stalling_bounded_total_time` | ✅ FIXED |
-| 4 | Fix undefined scrolls variable | `supervisor_render.py`: `limits_used.get("scrolls", 0)` | Covered by render timeout tests | ✅ FIXED |
+| 3 | Bound owned-driver cleanup | `supervisor_render.py`: `asyncio.wait` + per-resource 5s timeouts | `test_real_close_all_stalling_bounded_total_time` | ✅ FIXED |
+| 4 | Fix undefined scrolls variable | `supervisor_render.py`: `limits_used.get("scrolls", 0)` | Covered by render tests | ✅ FIXED |
 | 5 | Continue searching after rejecting partial indexes | `migrate_schema.py`: loop continues after rejection | `test_composite_unique_partial_then_unrestricted_ordering` (+2) | ✅ FIXED |
-| 6 | Correct verify_api response field handling | `verify_api.py`: `_extract_items_and_total` handles 4 formats | `test_extract_items_and_total_handles_multiple_formats` | ✅ FIXED |
+| 6 | Correct verify_api response handling | `verify_api.py`: `_extract_items_and_total` handles 4 formats | `test_extract_items_and_total_handles_multiple_formats` | ✅ FIXED |
 | 7 | Fetch all pages in verify_final | `verify_final.py`: `_fetch_all_pages_once` with PaginationError | `test_verify_final_pagination_across_multiple_pages` (+6) | ✅ FIXED |
-| 8 | Handle empty web-search result percentages | `web_search_dry_run.py`: `pct()` with zero-check | `test_web_search_dry_run_zero_results_no_division_by_zero` | ✅ FIXED |
+| 8 | Handle empty web-search percentages | `web_search_dry_run.py`: `pct()` with zero-check | `test_web_search_dry_run_zero_results_no_division_by_zero` | ✅ FIXED |
 
 ---
 
@@ -39,7 +39,7 @@
 
 | Finding | Source Fix | Regression Test | Result |
 |---------|------------|-----------------|--------|
-| Cleanup cancellation safety | `supervisor_render.py`: `asyncio.gather` + `return_exceptions` | `test_real_close_cancellation_resistant_browser`, `test_real_close_stalling_browser_continues_with_other_resources`, `test_real_close_all_stalling_bounded_total_time` | ✅ FIXED |
+| Cleanup cancellation safety | `supervisor_render.py`: `asyncio.wait` + `ALL_COMPLETED` | `test_real_close_cancellation_resistant_browser`, `test_real_close_stalling_browser_continues_with_other_resources`, `test_real_close_all_stalling_bounded_total_time` | ✅ FIXED |
 | Pagination failure handling | `verify_final.py`: `PaginationError` + fetch-once reuse | 5 new pagination failure tests | ✅ FIXED |
 
 ---
@@ -60,11 +60,11 @@
 
 | Aspect | Implementation | Evidence |
 |--------|----------------|----------|
-| Browser cleanup | `asyncio.wait_for(browser.close(), 5s)` in `asyncio.gather` | `test_real_close_stalling_browser_continues_with_other_resources` |
-| Playwright stop | `asyncio.wait_for(playwright.stop(), 5s)` in `asyncio.gather` | `test_real_close_raising_resources_all_attempted` |
-| Proxy close | `asyncio.wait_for(proxy.close(), 5s)` in `asyncio.gather` | `test_real_close_all_stalling_bounded_total_time` |
-| Cancellation behavior | All 3 attempted concurrently; CancelledError doesn't skip others | `test_real_close_cancellation_resistant_browser` |
-| Timeout behavior | 5s per resource; gather with `return_exceptions=True` | `test_real_close_all_stalling_bounded_total_time` |
+| Browser cleanup | `asyncio.wait_for(browser.close(), 5s)` in task | `test_real_close_stalling_browser_continues_with_other_resources` |
+| Playwright stop | `asyncio.wait_for(playwright.stop(), 5s)` in task | `test_real_close_raising_resources_all_attempted` |
+| Proxy close | `asyncio.wait_for(proxy.close(), 5s)` in task | `test_real_close_all_stalling_bounded_total_time` |
+| Cancellation behavior | All 3 attempted independently; `asyncio.wait(ALL_COMPLETED)` | `test_real_close_cancellation_resistant_browser` |
+| Timeout behavior | 5s per resource; total buffer +2s | `test_real_close_all_stalling_bounded_total_time` |
 | Measured sync bound | `render_blocking()` returns within budget + cleanup | `test_render_blocking_returns_within_measured_bound` |
 
 ---
@@ -105,7 +105,7 @@
 | **Backend Full Collection** | 6,378 | — | — | 2 PG integration |
 
 ### Frontend
-| Check | PR Branch (19bacbd4) | Base Master (464dcc98) |
+| Check | PR Branch (2208854c) | Base Master (464dcc98) |
 |-------|---------------------|------------------------|
 | Tests (vitest) | 506 passed, 3 failed | 494 passed, 13 failed |
 | Lint (ESLint) | 0 errors ✅ | 0 errors ✅ |
@@ -117,28 +117,28 @@
 
 ## 10. CI RESULTS
 
-**Workflow Run**: #43834559262 (ScholarZone CI) on commit `19bacbd4`
+**Workflow Run**: #43846311752 (ScholarZone CI) on commit `2208854c`
 
 | Job | Status |
 |-----|--------|
+| backend-tests | ✅ success |
 | git-integrity | ✅ success |
-| frontend-lint | ✅ success |
 | import-smoke | ✅ success |
-| Snapshot ID Validation | ✅ success |
-| Preflight (PostgreSQL 18) | ✅ success |
-| env-config | ✅ success |
-| Schema Compatibility (PostgreSQL 16) | ✅ success |
-| **frontend-tests** | ❌ **FAILED** (3 pre-existing) |
-| PostgreSQL Migration Integration Test (PostgreSQL 18) | ✅ success |
 | build-and-smoke | ✅ success |
+| PostgreSQL Migration Integration Test (PostgreSQL 18) | ✅ success |
+| env-config | ✅ success |
+| Snapshot ID Validation | ✅ success |
+| **frontend-tests** | ❌ **FAILED** (3 pre-existing) |
 | PostgreSQL Migration Integration Test (PostgreSQL 16) | ✅ success |
+| frontend-lint | ✅ success |
 | Preflight (PostgreSQL 16) | ✅ success |
+| Schema Compatibility (PostgreSQL 16) | ✅ success |
 | Schema Compatibility (PostgreSQL 18) | ✅ success |
-| **backend-tests** | ✅ **success** |
-| Gate 2 - Identity Integration Test (PostgreSQL 16) | ✅ success |
+| Preflight (PostgreSQL 18) | ✅ success |
 | Gate 1 - Atomicity Integration Test (PostgreSQL 16) | ✅ success |
-| Gate 1 - Atomicity Integration Test (PostgreSQL 18) | ✅ success |
 | Gate 2 - Identity Integration Test (PostgreSQL 18) | ✅ success |
+| Gate 2 - Identity Integration Test (PostgreSQL 16) | ✅ success |
+| Gate 1 - Atomicity Integration Test (PostgreSQL 18) | ✅ success |
 
 **Total**: 16/17 jobs PASSED
 
@@ -151,9 +151,9 @@
 | Total review threads | 30 |
 | Resolved threads | 25 |
 | Unresolved threads | 5 |
-| Actionable on latest review (8040c4b3) | 2 (both FIXED in 19bacbd4) |
+| Actionable on latest review (8040c4b3) | 2 (both FIXED in 2208854c) |
 | Stale/out-of-scope | 3 |
-| Current commit (19bacbd4) reviewed | No (pending) |
+| Current commit (2208854c) reviewed | No (pending) |
 
 ---
 
@@ -161,9 +161,9 @@
 
 | Report | Path | Tested SHA | Publication SHA |
 |--------|------|------------|-----------------|
-| Final Acceptance Report | `FINAL_ACCEPTANCE_REPORT.md` | `19bacbd4535771b14941988a6369388e27e9df39` | `19bacbd4535771b14941988a6369388e27e9df39` |
-| Final Reconciliation Report | `FINAL_RECONCILIATION_REPORT.md` | `19bacbd4535771b14941988a6369388e27e9df39` | `19bacbd4535771b14941988a6369388e27e9df39` |
-| PR Description | GitHub PR #98 | `19bacbd4535771b14941988a6369388e27e9df39` | N/A |
+| Final Acceptance Report | `FINAL_ACCEPTANCE_REPORT.md` | `2208854c86ef515d4879d85a1a851573b5a0c9b1` | `2208854c86ef515d4879d85a1a851573b5a0c9b1` |
+| Final Reconciliation Report | `FINAL_RECONCILIATION_REPORT.md` | `2208854c86ef515d4879d85a1a851573b5a0c9b1` | `2208854c86ef515d4879d85a1a851573b5a0c9b1` |
+| PR Description | GitHub PR #98 | `2208854c86ef515d4879d85a1a851573b5a0c9b1` | N/A |
 
 ---
 
@@ -171,7 +171,7 @@
 
 | Blocker | Type | Resolution |
 |---------|------|------------|
-| CodeRabbit review on 19bacbd4 | Review | Pending automated review |
+| CodeRabbit review on 2208854c | Review | Pending automated review |
 | 3 frontend test failures | CI (pre-existing) | Not regressions; 13→3 improved |
 | USA Record ID 1381 | Production | Owner-approved DML or re-ingestion |
 | Backup/PITR evidence | Production | Pre-deployment prerequisite |
@@ -184,15 +184,15 @@
 **CONDITIONALLY MERGE-READY** ⚠️
 
 **Merge conditions**:
-1. CodeRabbit review completes on `19bacbd4` (both actionable findings fixed), OR human review approves
+1. CodeRabbit review completes on `2208854c` (both actionable findings fixed), OR human review approves
 2. No new regressions in subsequent CI runs
 3. Production deployment blocked by USA Record ID 1381 and backup/PITR prerequisites
 
-**All implementation work complete.** All 10 findings resolved with regression tests. All backend and PostgreSQL gates pass. Frontend failures are pre-existing and improved (13→3). CI is green except for the 3 pre-existing frontend failures.
+**All implementation work complete.** All 10 findings resolved with regression tests. All backend and PostgreSQL gates pass. Frontend failures are pre-existing and improved (13→3). CI is 16/17 green. Documentation updated with exact evidence.
 
 ---
 
-*Report generated: 2026-11-16T09:45:00Z*  
-*Final Implementation SHA: `19bacbd4535771b14941988a6369388e27e9df39`*  
+*Report generated: 2026-11-16T10:45:00Z*  
+*Final Implementation SHA: `2208854c86ef515d4879d85a1a851573b5a0c9b1`*  
 *Base SHA: `464dcc9802be1bd3d628e651cd33e3ae80129170`*  
-*CI Run: #43834559262 (ScholarZone CI)*
+*CI Run: #43846311752 (ScholarZone CI)*
