@@ -775,3 +775,35 @@ jobs:
       with:
         name: gate2-integration-failure-logs-pg18
         path: backend/gate2_integration_pg18_test.log
+
+  windows-e2e:
+    name: Windows E2E - Supervisor Render
+    runs-on: windows-latest
+    env:
+      SCHOLARZONE_ENVIRONMENT: test
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Install dependencies
+      shell: bash
+      run: |
+        cd backend
+        python -m pip install --upgrade pip
+        python -m pip install -r requirements.txt
+        python -m pip install playwright
+        python -m playwright install chromium
+    - name: Run supervisor render E2E
+      shell: bash
+      run: |
+        cd backend
+        python -m pytest tests/test_supervisor_render_e2e.py -q --tb=short 2>&1 | tee windows_e2e.log
+    - name: Upload Windows E2E logs
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: windows-e2e-logs
+        path: backend/windows_e2e.log
