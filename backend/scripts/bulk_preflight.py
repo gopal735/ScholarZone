@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import os
 import subprocess
 import sys
@@ -69,8 +70,40 @@ def check_scheduler(base_url: str) -> bool:
             if resp.status != 200:
                 print(f"[FAIL] Scheduler returned HTTP {resp.status}")
                 return False
-            data = resp.read().decode("utf-8", errors="replace")
-            print(f"[PASS] Scheduler available ({data[:120]})")
+            raw = resp.read().decode("utf-8", errors="replace")
+            if not raw.strip():
+                print("[FAIL] Scheduler returned an empty response")
+                return False
+            try:
+                data = json.loads(raw)
+            except (json.JSONDecodeError, UnicodeDecodeError):
+                # Accept a non-empty plain-text health response, but reject
+                # obviously non-health payloads.
+                lowered = raw.lower()
+                if not any(token in lowered for token in ("ok", "healthy", "running", "ready", "available")):
+                    print(f"[FAIL] Scheduler returned an invalid response: {raw[:120]}")
+                    return False
+                print(f"[PASS] Scheduler available ({raw[:120]})")
+                return True
+            if isinstance(data, dict):
+                status = (
+                    data.get("status")
+                    or data.get("health")
+                    or data.get("scheduler_status")
+                    or data.get("state")
+                )
+                if status is not None and str(status).lower() not in {
+                    "ok", "healthy", "running", "ready", "available", "true", "up",
+                }:
+                    print(f"[FAIL] Scheduler reported unhealthy status: {status}")
+                    return False
+                if data.get("healthy") is False or data.get("ok") is False:
+                    print(f"[FAIL] Scheduler reported unhealthy status")
+                    return False
+            else:
+                print(f"[FAIL] Scheduler returned a non-object response: {raw[:120]}")
+                return False
+            print(f"[PASS] Scheduler available ({raw[:120]})")
             return True
     except Exception as exc:
         print(f"[FAIL] Scheduler check failed: {exc}")

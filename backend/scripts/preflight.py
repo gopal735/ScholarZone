@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import json
 import os
 import subprocess
 import sys
@@ -72,6 +73,15 @@ def gate_readiness() -> tuple[bool, str | None]:
             timeout=5,
         ) as resp:
             if resp.status == 200:
+                try:
+                    data = json.loads(resp.read().decode())
+                except (json.JSONDecodeError, UnicodeDecodeError):
+                    data = None
+                if isinstance(data, dict):
+                    status = data.get("status")
+                    if status is not None and str(status).lower() not in {"ok", "healthy", "ready", "up"}:
+                        print(f"[FAIL] API reported unhealthy status {status} at {url}")
+                        return False, f"API reported unhealthy status {status}"
                 print(f"[PASS] API is ready at {url}")
                 return True, None
             else:
@@ -97,6 +107,17 @@ def gate_api_smoke_tests() -> tuple[bool, str | None]:
                 timeout=10,
             ) as resp:
                 if 200 <= resp.status < 300:
+                    if path == "/health":
+                        try:
+                            data = json.loads(resp.read().decode())
+                        except (json.JSONDecodeError, UnicodeDecodeError):
+                            data = None
+                        if isinstance(data, dict):
+                            status = data.get("status")
+                            if status is not None and str(status).lower() not in {"ok", "healthy", "ready", "up"}:
+                                print(f"[FAIL] {path} -> unhealthy status {status}")
+                                ok = False
+                                continue
                     print(f"[PASS] {path} -> {resp.status}")
                 else:
                     print(f"[FAIL] {path} -> {resp.status}")

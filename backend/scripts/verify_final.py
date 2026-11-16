@@ -75,6 +75,7 @@ def _fetch_all_pages(base_url: str, path: str, *, allowed_ports: set[int], timeo
     """
     all_items = []
     pagination_info = None
+    first_pagination = None
     page = 1
 
     while True:
@@ -86,7 +87,13 @@ def _fetch_all_pages(base_url: str, path: str, *, allowed_ports: set[int], timeo
                         f"Page {page} returned HTTP {resp.status}",
                         page=page
                     )
-                data = json.loads(resp.read().decode())
+                try:
+                    data = json.loads(resp.read().decode())
+                except (json.JSONDecodeError, UnicodeDecodeError) as exc:
+                    raise PaginationError(
+                        f"Page {page} returned malformed JSON: {exc}",
+                        page=page
+                    ) from exc
         except PaginationError:
             raise
         except Exception as e:
@@ -97,33 +104,60 @@ def _fetch_all_pages(base_url: str, path: str, *, allowed_ports: set[int], timeo
 
         items, pagination = _extract_items_and_pagination(data)
 
+        # Validate pagination metadata consistency across pages.
+        if pagination is not None:
+            if first_pagination is None:
+                first_pagination = pagination
+            else:
+                if pagination.get("total_pages") is not None and first_pagination.get("total_pages") is not None:
+                    if pagination.get("total_pages") != first_pagination.get("total_pages"):
+                        raise PaginationError(
+                            f"Page {page} total_pages {pagination.get('total_pages')} "
+                            f"differs from first page {first_pagination.get('total_pages')}",
+                            page=page
+                        )
+                if pagination.get("total") is not None and first_pagination.get("total") is not None:
+                    if pagination.get("total") != first_pagination.get("total"):
+                        raise PaginationError(
+                            f"Page {page} total {pagination.get('total')} "
+                            f"differs from first page {first_pagination.get('total')}",
+                            page=page
+                        )
+            if pagination.get("page") is not None and pagination.get("page") != page:
+                raise PaginationError(
+                    f"Page {page} response reports page {pagination.get('page')}",
+                    page=page
+                )
+
         # Check if we've fetched all pages FIRST (before checking for empty items)
         if pagination is None or pagination.get("total_pages") is None:
             # No pagination info, assume single page - add items and break
             if items:
                 if pagination_info is None:
-                    pagination_info = pagination
+                    pagination_info = first_pagination or pagination
                 all_items.extend(items)
             break
 
         total_pages = pagination.get("total_pages")
         if total_pages is not None and page >= total_pages:
             # Last page - add items and break
-            if items:
+            if items or total_pages == 1:
                 if pagination_info is None:
-                    pagination_info = pagination
+                    pagination_info = first_pagination or pagination
                 all_items.extend(items)
             break
 
         # Not the last page - add items and continue
         if items:
             if pagination_info is None:
-                pagination_info = pagination
+                pagination_info = first_pagination or pagination
             all_items.extend(items)
         # If items is empty but we haven't reached total_pages, continue to next page
 
         page += 1
 
+    if pagination_info is None:
+        pagination_info = first_pagination
     return all_items, pagination_info
 
 
@@ -157,8 +191,12 @@ def main() -> int:
     if pagination:
         print(f"Pagination info: total={pagination.get('total')}, total_pages={pagination.get('total_pages')}")
 
-    # Verify total count matches pagination metadata if available
     verification_failed = False
+    if not all_items:
+        print("FAILURE: Fetched empty dataset", file=sys.stderr)
+        verification_failed = True
+
+    # Verify total count matches pagination metadata if available
     if pagination and pagination.get("total") is not None:
         expected_total = pagination["total"]
         if len(all_items) != expected_total:

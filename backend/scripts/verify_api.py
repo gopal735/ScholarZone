@@ -65,6 +65,16 @@ def _extract_items_and_total(data: dict) -> tuple[list[dict], int | None]:
     return [], None
 
 
+def _is_valid_scholarship_response(data) -> bool:
+    """Return True when *data* is a dict containing a recognized list of records."""
+    if not isinstance(data, dict):
+        return False
+    for key in ("items", "scholarships", "results", "data"):
+        if isinstance(data.get(key), list):
+            return True
+    return False
+
+
 def main() -> int:
     base_url = os.environ.get("SCHOLARZONE_API_URL", "http://127.0.0.1:8000").rstrip("/")
     scholarships_url = _join_url(base_url, "/api/scholarships")
@@ -82,7 +92,18 @@ def main() -> int:
                 timeout=10,
             ) as resp:
                 if resp.status == 200:
-                    data = json.loads(resp.read().decode())
+                    try:
+                        data = json.loads(resp.read().decode())
+                    except (json.JSONDecodeError, UnicodeDecodeError) as exc:
+                        print(f"{country}: malformed JSON response - {exc}")
+                        failed_countries.append(country)
+                        failed_checks.append(f"{country}: malformed JSON")
+                        continue
+                    if not _is_valid_scholarship_response(data):
+                        print(f"{country}: malformed response (missing records list)")
+                        failed_countries.append(country)
+                        failed_checks.append(f"{country}: malformed response")
+                        continue
                     items, total = _extract_items_and_total(data)
                     count = len(items)
                     all_items.extend(items)
@@ -109,11 +130,21 @@ def main() -> int:
             timeout=10,
         ) as resp:
             if resp.status == 200:
-                data = json.loads(resp.read().decode())
-                items, total = _extract_items_and_total(data)
-                all_fetched = len(items)
-                full_dataset_total = total
-                print(f"\nTotal scholarships in API: {total if total is not None else 'N/A'} (fetched {len(items)} records)")
+                try:
+                    data = json.loads(resp.read().decode())
+                except (json.JSONDecodeError, UnicodeDecodeError) as exc:
+                    print(f"Failed to parse full dataset response: {exc}")
+                    full_dataset_failed = True
+                    data = None
+                if data is not None and not _is_valid_scholarship_response(data):
+                    print("Failed to parse full dataset response: malformed response")
+                    full_dataset_failed = True
+                    data = None
+                if data is not None:
+                    items, total = _extract_items_and_total(data)
+                    all_fetched = len(items)
+                    full_dataset_total = total
+                    print(f"\nTotal scholarships in API: {total if total is not None else 'N/A'} (fetched {len(items)} records)")
             else:
                 print(f"Failed to fetch all scholarships: HTTP {resp.status}")
                 full_dataset_failed = True
@@ -124,12 +155,10 @@ def main() -> int:
     # Verify totals match if we have a total from the full dataset
     total_mismatch = False
     if full_dataset_total is not None and all_items:
-        # We have items from country-specific fetches, compare with full dataset total
         if len(all_items) != full_dataset_total:
             print(f"\nWARNING: Country-specific fetches returned {len(all_items)} records but full dataset reports total={full_dataset_total}", file=sys.stderr)
             total_mismatch = True
 
-    # Return non-zero if any country failed, full dataset failed, or totals don't match
     if failed_countries:
         print(f"\nFAILED countries: {', '.join(failed_countries)}")
         return 1
@@ -144,4 +173,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
-
