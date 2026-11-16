@@ -148,23 +148,24 @@ def main() -> int:
             results.append(("Artifact Startup Test", True, "skipped"))
 
     if not failed:
-        ok, reason = gate_readiness()
-        results.append(("Readiness", ok, reason))
-        if not ok and reason and "skipped" not in reason:
-            failed = True
-
-    if not failed:
         api_url = os.environ.get("SCHOLARZONE_API_URL")
         if not api_url:
             print(
-                "\n[WARN] SCHOLARZONE_API_URL not set - skipping API smoke tests"
+                "\n[WARN] SCHOLARZONE_API_URL not set - skipping readiness check and API smoke tests"
             )
+            results.append(("Readiness", True, "skipped - no API URL configured"))
             results.append(("API Smoke Tests", True, "skipped - no API URL configured"))
         else:
-            ok, reason = gate_api_smoke_tests()
-            results.append(("API Smoke Tests", ok, reason))
-            if not ok:
+            ok, reason = gate_readiness()
+            results.append(("Readiness", ok, reason))
+            if not ok and reason and "skipped" not in reason:
                 failed = True
+
+            if not failed:
+                ok, reason = gate_api_smoke_tests()
+                results.append(("API Smoke Tests", ok, reason))
+                if not ok:
+                    failed = True
 
     skipped = [
         name for name, ok, reason in results if ok and reason and "skipped" in reason
