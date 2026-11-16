@@ -15,8 +15,10 @@ than a hope about the network.
 **It cannot defeat an access control.** A login wall or an anti-bot challenge is
 *detected* and reported as ``source_blocked``. There is no credential handling, no
 CAPTCHA solving, no stealth patching, no proxy rotation, and no retry against a
-barrier. A browser context is created without a storage state and without any
-cookie the user holds, so a request it makes is anonymous by construction.
+barrier. A browser context is Playwright's incognito-equivalent unit: separate cookies
+and storage per source, cheap to create. That matters for safety as well as
+hygiene - it guarantees no state, cookie or session can carry from one
+institution's directory into the next.
 
 **It is optional and off by default.** If the driver is not installed, if the
 configuration flag is off, or if the browser cannot start, the answer is
@@ -184,89 +186,86 @@ class PlaywrightRenderDriver:
 
         # Each cleanup step gets its own short deadline. We attempt all three
         # regardless of individual failures, and log any abandoned cleanup.
-        # We use asyncio.create_task + asyncio.wait to ensure all cleanup
-        # attempts are made even if some are cancelled.
+        # We use asyncio.wait with ALL_COMPLETED to ensure all cleanup
+        # attempts are made even if some are cancelled or fail.
+        # We shield each cleanup from external cancellation.
         cleanup_timeout = 5.0  # seconds per resource
 
-        # Track all cleanup tasks so we can wait for them even if some fail
-        cleanup_tasks = []
+        # Create tasks for each cleanup operation, shielded from external cancellation
+        tasks = []
 
-        async def _close_browser():
-            if browser is not None:
+        if browser is not None:
+            async def _close_browser():
                 try:
-                    await asyncio.wait_for(browser.close(), timeout=cleanup_timeout)
+                    await asyncio.wait_for(asyncio.shield(browser.close()), timeout=cleanup_timeout)
                 except asyncio.TimeoutError:
                     logger.warning("browser.close() timed out during cleanup; abandoned")
                 except asyncio.CancelledError:
-                    logger.warning("browser.close() cancelled during cleanup; marking for tracking")
-                    # Create a background task to attempt cleanup anyway
-                    asyncio.create_task(self._cleanup_browser_abandoned(browser, cleanup_timeout))
+                    logger.warning("browser.close() cancelled during cleanup; abandoned")
                     raise
                 except Exception as exc:  # noqa: BLE001
                     logger.debug("browser.close() failed during cleanup", exc_info=exc)
+            tasks.append(asyncio.create_task(_close_browser()))
 
-        async def _close_playwright():
-            if playwright is not None:
+        if playwright is not None:
+            async def _close_playwright():
                 try:
-                    await asyncio.wait_for(playwright.stop(), timeout=cleanup_timeout)
+                    await asyncio.wait_for(asyncio.shield(playwright.stop()), timeout=cleanup_timeout)
                 except asyncio.TimeoutError:
                     logger.warning("playwright.stop() timed out during cleanup; abandoned")
                 except asyncio.CancelledError:
-                    logger.warning("playwright.stop() cancelled during cleanup; marking for tracking")
-                    asyncio.create_task(self._cleanup_playwright_abandoned(playwright, cleanup_timeout))
+                    logger.warning("playwright.stop() cancelled during cleanup; abandoned")
                     raise
                 except Exception as exc:  # noqa: BLE001
                     logger.debug("playwright.stop() failed during cleanup", exc_info=exc)
+            tasks.append(asyncio.create_task(_close_playwright()))
 
-        async def _close_proxy():
-            if proxy is not None:
+        if proxy is not None:
+            async def _close_proxy():
                 try:
                     result = proxy.close()
                     if inspect.isawaitable(result):
-                        await asyncio.wait_for(result, timeout=cleanup_timeout)
+                        await asyncio.wait_for(asyncio.shield(result), timeout=cleanup_timeout)
                 except asyncio.TimeoutError:
                     logger.warning("proxy.close() timed out during cleanup; abandoned")
                 except asyncio.CancelledError:
-                    logger.warning("proxy.close() cancelled during cleanup; marking for tracking")
-                    result = proxy.close()
-                    if inspect.isawaitable(result):
-                        asyncio.create_task(self._cleanup_proxy_abandoned(result, cleanup_timeout))
+                    logger.warning("proxy.close() cancelled during cleanup; abandoned")
                     raise
                 except Exception as exc:  # noqa: BLE001
                     logger.debug("proxy.close() failed during cleanup", exc_info=exc)
+            tasks.append(asyncio.create_task(_close_proxy()))
 
-        # Run all cleanup operations concurrently, waiting for each to complete
-        # or timeout. We don't cancel the others if one fails.
-        await asyncio.gather(
-            _close_browser(),
-            _close_playwright(),
-            _close_proxy(),
-            return_exceptions=True
-        )
+        # Wait for all cleanup tasks with a combined timeout.
+        # We use asyncio.wait with ALL_COMPLETED to ensure all cleanup
+        # attempts are made even if some are cancelled or fail.
+        # We do not cancel other tasks if one fails.
+        if tasks:
+            total_cleanup_timeout = cleanup_timeout * len(tasks) + 2.0  # buffer
+            done, pending = await asyncio.wait(
+                tasks,
+                timeout=total_cleanup_timeout,
+                return_when=asyncio.ALL_COMPLETED
+            )
 
-    async def _cleanup_browser_abandoned(self, browser, timeout: float) -> None:
-        """Attempt to clean up browser after cancellation."""
-        try:
-            await asyncio.wait_for(browser.close(), timeout=timeout)
-            logger.info("Abandoned browser cleanup completed")
-        except Exception:
-            logger.debug("Abandoned browser cleanup failed")
+            # Handle completed tasks
+            for task in done:
+                try:
+                    task.result()
+                except asyncio.CancelledError:
+                    # Cancellation during cleanup - log but don't propagate yet
+                    logger.warning("Cleanup task was cancelled")
+                except Exception as exc:  # noqa: BLE001
+                    logger.debug("Cleanup task failed", exc_info=exc)
 
-    async def _cleanup_playwright_abandoned(self, playwright, timeout: float) -> None:
-        """Attempt to clean up playwright after cancellation."""
-        try:
-            await asyncio.wait_for(playwright.stop(), timeout=timeout)
-            logger.info("Abandoned playwright cleanup completed")
-        except Exception:
-            logger.debug("Abandoned playwright cleanup failed")
-
-    async def _cleanup_proxy_abandoned(self, result, timeout: float) -> None:
-        """Attempt to clean up proxy after cancellation."""
-        try:
-            await asyncio.wait_for(result, timeout=timeout)
-            logger.info("Abandoned proxy cleanup completed")
-        except Exception:
-            logger.debug("Abandoned proxy cleanup failed")
+            # Cancel any still-pending tasks (should be rare with proper timeouts)
+            for task in pending:
+                task.cancel()
+                try:
+                    await task
+                except asyncio.CancelledError:
+                    pass
+                except Exception as exc:  # noqa: BLE001
+                    logger.debug("Pending cleanup task failed after cancel", exc_info=exc)
 
     async def __aenter__(self) -> "PlaywrightRenderDriver":
         await self.start()
@@ -744,4 +743,3 @@ __all__ = [
     "render_blocking",
     "rendering_enabled",
 ]
-
