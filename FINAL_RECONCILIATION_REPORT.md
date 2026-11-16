@@ -11,7 +11,7 @@
 | Item | Value |
 |------|-------|
 | Final branch | `fix/final-integration` |
-| Final exact HEAD SHA | `a2dade6a` |
+| Final exact HEAD SHA | `9d510676` |
 | Base SHA | `464dcc9802be1bd3d628e651cd33e3ae80129170` |
 | Commit count ahead of base | 45 |
 | Changed-file count | 13 modified |
@@ -125,7 +125,7 @@
 | **Backend Full Collection** | 6,378 | — | — | 2 PG integration |
 
 ### Frontend
-| Check | PR Branch (a2dade6a) | Base Master (464dcc98) |
+| Check | PR Branch (9d510676) | Base Master (464dcc98) |
 |-------|---------------------|------------------------|
 | Tests (vitest) | 509 passed, 0 failed | 494 passed, 13 failed |
 | Lint (ESLint) | 0 errors ✅ | 0 errors ✅ |
@@ -137,7 +137,7 @@
 
 ## 10. CI RESULTS
 
-**Workflow Run**: #43928391241 (ScholarZone CI) on commit `a2dade6a`
+**Workflow Run**: #43930759016 (ScholarZone CI) on commit `9d510676`
 
 | Job | Status |
 |-----|--------|
@@ -171,9 +171,9 @@
 | Total review threads | 30 |
 | Resolved threads | 28 |
 | Unresolved threads | 2 (both actionable FIXED in source) |
-| Actionable on latest review (8040c4b3) | 2 (both FIXED in a2dade6a) |
+| Actionable on latest review (8040c4b3) | 2 (both FIXED in 9d510676) |
 | Stale/out-of-scope | 2 |
-| Current commit (a2dade6a) reviewed | No (pending) |
+| Current commit (9d510676) reviewed | No (pending) |
 
 ---
 
@@ -181,9 +181,9 @@
 
 | Report | Path | Tested SHA | Publication SHA |
 |--------|------|------------|-----------------|
-| Final Acceptance Report | `FINAL_ACCEPTANCE_REPORT.md` | `a2dade6a` | `a2dade6a` |
-| Final Reconciliation Report | `FINAL_RECONCILIATION_REPORT.md` | `a2dade6a` | `a2dade6a` |
-| PR Description | GitHub PR #98 | `a2dade6a` | N/A |
+| Final Acceptance Report | `FINAL_ACCEPTANCE_REPORT.md` | `9d510676` | `9d510676` |
+| Final Reconciliation Report | `FINAL_RECONCILIATION_REPORT.md` | `9d510676` | `9d510676` |
+| PR Description | GitHub PR #98 | `9d510676` | N/A |
 
 ---
 
@@ -191,7 +191,7 @@
 
 | Blocker | Type | Resolution |
 |---------|------|------------|
-| CodeRabbit review on a2dade6a | Review | Pending automated review |
+| CodeRabbit review on 9d510676 | Review | Pending automated review |
 | USA Record ID 1381 | Production | Owner-approved DML or re-ingestion |
 | Backup/PITR evidence | Production | Pre-deployment prerequisite |
 | Database identity gate | Production | `SCHOLARZONE_EXPECTED_DB_IDENTIFIER` |
@@ -211,15 +211,15 @@
 - ✅ Frontend 0 failures (previously 3 failing, now fixed)
 - ✅ Frontend lint (0 errors) and build (413ms) pass
 - ✅ Git diff clean (no whitespace errors)
-- ✅ All changes committed to `fix/final-integration` at `a2dade6a`
+- ✅ All changes committed to `fix/final-integration` at `9d510676`
 
 **Production deployment** requires separate approval for USA Record ID 1381 and backup/PITR evidence.
 
-**Action**: Merge when CodeRabbit review completes on `a2dade6a`, or merge with human review approval given all CI gates pass and all findings have source-level fixes with regression tests.
+**Action**: Merge when CodeRabbit review completes on `9d510676`, or merge with human review approval given all CI gates pass and all findings have source-level fixes with regression tests.
 
 ---
 
 *Report generated: 2026-11-16T23:30:00Z*  
-*Final Implementation SHA: `a2dade6a`*  
+*Final Implementation SHA: `9d510676`*  
 *Base SHA: `464dcc9802be1bd3d628e651cd33e3ae80129170`*  
-*CI Run: #43928391241 (ScholarZone CI)*
+*CI Run: #43930759016 (ScholarZone CI)*
