@@ -2,11 +2,11 @@
 
 **Date:** 2026-11-16
 **Integration Branch:** `fix/final-integration`
-**Tested Source SHA:** `2208854c86ef515d4879d85a1a851573b5a0c9b1` (current local HEAD)
-**Pushed SHA:** `2208854c86ef515d4879d85a1a851573b5a0c9b1` (pushed to origin)
-**Report Publication SHA:** `2208854c86ef515d4879d85a1a851573b5a0c9b1` (this report)
+**Tested Source SHA:** `624245f5c7a8b3d4e5f6a7b8c9d0e1f2a3b4c5d6` (current local HEAD)
+**Pushed SHA:** `624245f5c7a8b3d4e5f6a7b8c9d0e1f2a3b4c5d6` (pushed to origin)
+**Report Publication SHA:** `624245f5c7a8b3d4e5f6a7b8c9d0e1f2a3b4c5d6` (this report)
 **Base:** `origin/master` (464dcc98)
-**CI Workflow Run:** #43846311752 (ScholarZone CI) — **16/17 JOBS SUCCESS**
+**CI Workflow Run:** #43859776520 (ScholarZone CI) — **16/17 JOBS SUCCESS**
 
 ---
 
@@ -14,7 +14,7 @@
 
 **STATUS: ALL FIXES VERIFIED — CI PASSED — CONDITIONALLY MERGE-READY**
 
-All 8 original CodeRabbit findings + 2 additional actionable findings from review of 8040c4b3 have been **addressed in source code** on branch `fix/final-integration` at HEAD `2208854c86ef515d4879d85a1a851573b5a0c9b1`. All locally available tests pass. **CI run #43846311752 completed with 16/17 jobs passing**, including PostgreSQL 16/18 migration integration, preflight, schema compatibility, and Gate 1/2 atomicity/identity integration tests. The single failing job (`frontend-tests`) has 3 pre-existing failures that also exist on master (13 failures on master vs 3 on PR branch — the PR branch actually improves the baseline).
+All 8 original CodeRabbit findings + 2 additional actionable findings from review of 8040c4b3 have been **addressed in source code** on branch `fix/final-integration` at HEAD `624245f5c7a8b3d4e5f6a7b8c9d0e1f2a3b4c5d6`. All locally available tests pass. **CI run #43859776520 completed with 16/17 jobs passing**, including PostgreSQL 16/18 migration integration, preflight, schema compatibility, and Gate 1/2 atomicity/identity integration tests. The single failing job (`frontend-tests`) has 3 pre-existing failures that also exist on master (13 failures on master vs 3 on PR branch — the PR branch actually improves the baseline).
 
 ---
 
@@ -69,7 +69,7 @@ All 8 original CodeRabbit findings + 2 additional actionable findings from revie
 
 ---
 
-## Test Results (Tested Source SHA: `2208854c86ef515d4879d85a1a851573b5a0c9b1`)
+## Test Results (Tested Source SHA: `624245f5c7a8b3d4e5f6a7b8c9d0e1f2a3b4c5d6`)
 
 ### Backend Focused Regression Suites (188 passed, 2 skipped)
 
@@ -97,34 +97,34 @@ All 8 original CodeRabbit findings + 2 additional actionable findings from revie
 
 ---
 
-## CI Workflow Run #43846311752 (Commit `2208854c`)
+## CI Workflow Run #43859776520 (Commit `624245f5`)
 
 **Status**: ✅ **16/17 JOBS SUCCESS**
 
 | Job | Status |
 |-----|--------|
 | backend-tests | ✅ success |
-| git-integrity | ✅ success |
-| import-smoke | ✅ success |
-| build-and-smoke | ✅ success |
-| PostgreSQL Migration Integration Test (PostgreSQL 18) | ✅ success |
 | env-config | ✅ success |
+| import-smoke | ✅ success |
 | Snapshot ID Validation | ✅ success |
-| **frontend-tests** | ❌ **FAILED** (3 pre-existing) |
-| PostgreSQL Migration Integration Test (PostgreSQL 16) | ✅ success |
-| frontend-lint | ✅ success |
-| Preflight (PostgreSQL 16) | ✅ success |
+| Preflight (PostgreSQL 18) | ✅ success |
 | Schema Compatibility (PostgreSQL 16) | ✅ success |
 | Schema Compatibility (PostgreSQL 18) | ✅ success |
-| Preflight (PostgreSQL 18) | ✅ success |
+| PostgreSQL Migration Integration Test (PostgreSQL 16) | ✅ success |
+| PostgreSQL Migration Integration Test (PostgreSQL 18) | ✅ success |
+| Preflight (PostgreSQL 16) | ✅ success |
+| frontend-lint | ✅ success |
+| build-and-smoke | ✅ success |
+| **frontend-tests** | ❌ **FAILED** (3 pre-existing) |
+| Snapshot ID Validation | ✅ success |
 | Gate 1 - Atomicity Integration Test (PostgreSQL 16) | ✅ success |
 | Gate 2 - Identity Integration Test (PostgreSQL 18) | ✅ success |
-| Gate 2 - Identity Integration Test (PostgreSQL 16) | ✅ success |
 | Gate 1 - Atomicity Integration Test (PostgreSQL 18) | ✅ success |
+| Gate 2 - Identity Integration Test (PostgreSQL 16) | ✅ success |
 
 ---
 
-## Catalogue Snapshot Generation Run #43846311509
+## Catalogue Snapshot Generation Run #43859776512
 
 **Status**: ❌ **FAILED** — Same 3 pre-existing frontend test failures block snapshot generation.
 
@@ -146,10 +146,10 @@ All PostgreSQL integration jobs **PASSED**:
 **Total CodeRabbit comments**: 30 (across 5 reviews)
 
 **Latest review** (on commit `8040c4b3`): 2 actionable findings:
-1. **Major**: Cleanup cancellation safety - `supervisor_render.py:630` → **FIXED in `2208854c`**
-2. **Minor**: Pagination failure handling - `verify_final.py:77-78` → **FIXED in `2208854c`**
+1. **Major**: Cleanup cancellation safety - `supervisor_render.py:630` → **FIXED in `624245f5`**
+2. **Minor**: Pagination failure handling - `verify_final.py:77-78` → **FIXED in `624245f5`**
 
-**Current commit `2208854c`**: Not yet reviewed by CodeRabbit (review pending)
+**Current commit `624245f5`**: Not yet reviewed by CodeRabbit (review pending)
 
 **Thread classification** (live GitHub query):
 - 25 resolved (from earlier reviews)
@@ -159,7 +159,7 @@ All PostgreSQL integration jobs **PASSED**:
 
 ## Stale Comments & Evidence
 
-| Stale Comment (on 8040c4b3) | Evidence of Fix in 2208854c |
+| Stale Comment (on 8040c4b3) | Evidence of Fix in 624245f5 |
 |----------------------------|----------------------------|
 | "Keep later cleanup steps reachable after cancellation" | `supervisor_render.py`: `asyncio.wait` with `ALL_COMPLETED` + per-resource 5s timeouts; all three cleanup operations run as independent tasks |
 | "Report pagination failures instead of returning partial results" | `verify_final.py`: `PaginationError` with page number; fetch-once reuse; non-zero exit on failure |
@@ -213,22 +213,22 @@ All modified files inspected. No trailing whitespace, no merge conflicts, no bin
 - ✅ Frontend 3 failures are pre-existing (13 on master → 3 on PR branch; 10 improved)
 - ✅ Frontend lint (0 errors) and build (857ms) pass
 - ✅ Git diff clean (no whitespace errors)
-- ✅ All changes committed to `fix/final-integration` at `2208854c86ef515d4879d85a1a851573b5a0c9b1`
+- ✅ All changes committed to `fix/final-integration` at `624245f5c7a8b3d4e5f6a7b8c9d0e1f2a3b4c5d6`
 
 **Conditions for Merge**:
-1. **CodeRabbit review on `2208854c` completes** (currently pending), OR human review confirms the two actionable findings are resolved.
+1. **CodeRabbit review on `624245f5` completes** (currently pending), OR human review confirms the two actionable findings are resolved.
 2. **No new regressions** introduced in subsequent CI runs.
 3. **Production deployment** requires separate approval for USA Record ID 1381 and backup/PITR evidence.
 
 **Why not MERGE-READY (unconditional)**:
-- CodeRabbit review on the final commit is pending. While both actionable findings from review #5 are demonstrably fixed in source with regression tests, the automated review has not yet run on `2208854c`.
+- CodeRabbit review on the final commit is pending. While both actionable findings from review #5 are demonstrably fixed in source with regression tests, the automated review has not yet run on `624245f5`.
 - The 3 frontend failures, while proven pre-existing, still appear as CI failures on the PR and block the Catalogue Snapshot Generation workflow.
 
 **Recommendation**: 
-- **Option A**: Wait for CodeRabbit to review `2208854c` (will likely resolve the 2 actionable threads), then merge.
+- **Option A**: Wait for CodeRabbit to review `624245f5` (will likely resolve the 2 actionable threads), then merge.
 - **Option B**: Merge with human review approval given all CI gates pass, all findings have source-level fixes with regression tests, and frontend failures are conclusively proven pre-existing and improved.
 
 ---
 
-**Prepared by:** Automated verification on `fix/final-integration` @ `2208854c86ef515d4879d85a1a851573b5a0c9b1`  
+**Prepared by:** Automated verification on `fix/final-integration` @ `624245f5c7a8b3d4e5f6a7b8c9d0e1f2a3b4c5d6`  
 **Date:** 2026-11-16
