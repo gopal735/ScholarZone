@@ -80,7 +80,7 @@ def _fetch_all_pages(base_url: str, path: str, *, allowed_ports: set[int], timeo
     while True:
         url = f"{_join_url(base_url, path)}?page={page}"
         try:
-            with open_api_url(url, allowed_loopback_ports=ALLOWED_LOOPBACK_PORTS, timeout=timeout) as resp:
+            with open_api_url(url, allowed_loopback_ports=allowed_ports, timeout=timeout) as resp:
                 if resp.status != 200:
                     raise PaginationError(
                         f"Page {page} returned HTTP {resp.status}",
@@ -96,23 +96,32 @@ def _fetch_all_pages(base_url: str, path: str, *, allowed_ports: set[int], timeo
             ) from e
 
         items, pagination = _extract_items_and_pagination(data)
-        if not items:
-            break
-
-        if pagination_info is None:
-            pagination_info = pagination
-
-        all_items.extend(items)
-
-        # Check if we've fetched all pages
+        
+        # Check if we've fetched all pages FIRST (before checking for empty items)
         if pagination is None or pagination.get("total_pages") is None:
-            # No pagination info, assume single page
+            # No pagination info, assume single page - add items and break
+            if items:
+                if pagination_info is None:
+                    pagination_info = pagination
+                all_items.extend(items)
             break
-
+        
         total_pages = pagination.get("total_pages")
         if total_pages is not None and page >= total_pages:
+            # Last page - add items and break
+            if items:
+                if pagination_info is None:
+                    pagination_info = pagination
+                all_items.extend(items)
             break
-
+        
+        # Not the last page - add items and continue
+        if items:
+            if pagination_info is None:
+                pagination_info = pagination
+            all_items.extend(items)
+        # If items is empty but we haven't reached total_pages, continue to next page
+        
         page += 1
 
     return all_items, pagination_info

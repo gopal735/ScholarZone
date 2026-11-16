@@ -73,11 +73,12 @@ def gate_readiness() -> tuple[bool, str | None]:
             if resp.status == 200:
                 print(f"[PASS] API is ready at {url}")
                 return True, None
+            else:
+                print(f"[FAIL] API returned status {resp.status} at {url}")
+                return False, f"API returned status {resp.status}"
     except Exception as exc:
-        print(f"[WARN] API not reachable at {url}: {exc}")
-        return True, "skipped - API not reachable"
-    print("[WARN] API not reachable")
-    return True, "skipped - API not reachable"
+        print(f"[FAIL] API not reachable at {url}: {exc}")
+        return False, f"API not reachable: {exc}"
 
 
 def gate_api_smoke_tests() -> tuple[bool, str | None]:
@@ -93,7 +94,11 @@ def gate_api_smoke_tests() -> tuple[bool, str | None]:
                 allowed_loopback_ports=ALLOWED_LOOPBACK_PORTS,
                 timeout=10,
             ) as resp:
-                print(f"[PASS] {path} -> {resp.status}")
+                if 200 <= resp.status < 300:
+                    print(f"[PASS] {path} -> {resp.status}")
+                else:
+                    print(f"[FAIL] {path} -> {resp.status}")
+                    ok = False
         except Exception as exc:
             print(f"[FAIL] {path} -> {exc}")
             ok = False

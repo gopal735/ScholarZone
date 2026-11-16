@@ -71,6 +71,7 @@ def main() -> int:
 
     print("=== API VERIFICATION ===")
     all_items = []
+    failed_countries = []
     for country in COUNTRIES:
         try:
             with open_api_url(
@@ -88,10 +89,13 @@ def main() -> int:
                         print(f"  - {s.get('title', s.get('name', 'N/A'))}")
                 else:
                     print(f"{country}: HTTP {resp.status}")
+                    failed_countries.append(country)
         except Exception as e:
             print(f"{country}: Error - {e}")
+            failed_countries.append(country)
 
     # Also fetch all records to verify totals
+    all_fetched = 0
     try:
         with open_api_url(
             scholarships_url,
@@ -101,9 +105,17 @@ def main() -> int:
             if resp.status == 200:
                 data = json.loads(resp.read().decode())
                 items, total = _extract_items_and_total(data)
+                all_fetched = len(items)
                 print(f"\nTotal scholarships in API: {total if total is not None else 'N/A'} (fetched {len(items)} records)")
+            else:
+                print(f"Failed to fetch all scholarships: HTTP {resp.status}")
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"Error fetching all scholarships: {e}")
+
+    # Return non-zero if any country failed or if totals don't match
+    if failed_countries:
+        print(f"\nFAILED countries: {', '.join(failed_countries)}")
+        return 1
     return 0
 
 
