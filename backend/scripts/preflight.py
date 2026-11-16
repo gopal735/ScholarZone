@@ -17,7 +17,7 @@ if BACKEND_DIR not in sys.path:
 from scripts.local_smoke_http import open_api_url  # noqa: E402
 
 
-ALLOWED_LOOPBACK_PORTS = {8000}
+ALLOWED_LOOPBACK_PORTS = {8000, 8001}
 
 
 def run_script_gate(name: str, script_name: str, cwd: str) -> tuple[bool, str | None]:
