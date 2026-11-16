@@ -2,11 +2,10 @@
 
 **Date:** 2026-11-16
 **Integration Branch:** `fix/final-integration`
-**Tested Source SHA:** `5df5ae0bc5792ac735fdc4b457bb6828be6988c2` (current local HEAD)
-**Pushed SHA:** `5df5ae0bc5792ac735fdc4b457bb6828be6988c2` (pushed to origin)
-**Report Publication SHA:** `5df5ae0bc5792ac735fdc4b457bb6828be6988c2` (this report)
+**Tested Source SHA:** `a2dade6a` (current local HEAD)
+**Pushed SHA:** `a2dade6a` (pushed to origin)
 **Base:** `origin/master` (464dcc98)
-**CI Workflow Run:** #43918601141 (ScholarZone CI) — **18/18 JOBS SUCCESS**
+**CI Workflow Run:** #43928391241 (ScholarZone CI) — **18/18 JOBS SUCCESS**
 
 ---
 
@@ -14,7 +13,7 @@
 
 **STATUS: ALL FIXES VERIFIED — CI PASSED — ENGINEERING ACCEPTED ✅**
 
-All 8 original CodeRabbit findings + 2 additional actionable findings from review of 8040c4b3 + 5 additional issues discovered during remediation have been **addressed in source code** on branch `fix/final-integration` at HEAD `5df5ae0bc5792ac735fdc4b457bb6828be6988c2`. All locally available tests pass. **CI run #43918601141 completed with 18/18 jobs passing**, including PostgreSQL 16/18 migration integration, preflight, schema compatibility, and Gate 1/2 atomicity/identity integration tests. **Frontend tests: 509/509 passed** (previously 3 failing, now fixed). **Catalogue Snapshot Generation: PASSED**.
+All 8 original CodeRabbit findings + 2 additional actionable findings from review of 8040c4b3 + 5 additional issues discovered during remediation have been **addressed in source code** on branch `fix/final-integration` at HEAD `a2dade6a`. All locally available tests pass. **CI run #43928391241 completed with 18/18 jobs passing**, including PostgreSQL 16/18 migration integration, preflight, schema compatibility, and Gate 1/2 atomicity/identity integration tests. **Frontend tests: 509/509 passed** (previously 3 failing, now fixed). **Catalogue Snapshot Generation: PASSED**.
 
 ---
 
@@ -86,9 +85,9 @@ All 8 original CodeRabbit findings + 2 additional actionable findings from revie
 
 ---
 
-## Test Results (Tested Source SHA: `5df5ae0bc5792ac735fdc4b457bb6828be6988c2`)
+## Test Results (Tested Source SHA: `a2dade6a`)
 
-### Backend Focused Regression Suites (188 passed, 2 skipped)
+### Backend Focused Regression Suites (195 passed, 2 skipped)
 
 | Suite | Tests | Passed | Failed | Skipped |
 |-------|-------|--------|--------|---------|
@@ -96,7 +95,7 @@ All 8 original CodeRabbit findings + 2 additional actionable findings from revie
 | `test_supervisor_render_policy.py` | 68 | 68 | 0 | 0 |
 | `test_script_routing.py` | 16 | 16 | 0 | 0 |
 | `test_migrate_schema.py` | 56 | 56 | 0 | 2 (PG URL not set) |
-| **Total Focused** | **188** | **188** | **0** | **2** |
+| **Total Focused** | **195** | **195** | **0** | **2** |
 
 ### Backend Full Collection
 - **Total collected**: 6,378 tests
@@ -114,7 +113,7 @@ All 8 original CodeRabbit findings + 2 additional actionable findings from revie
 
 ---
 
-## CI Workflow Run #43918601141 (Commit `5df5ae0b`)
+## CI Workflow Run #43928391241 (Commit `a2dade6a`)
 
 **Status**: ✅ **18/18 JOBS SUCCESS**
 
@@ -141,7 +140,7 @@ All 8 original CodeRabbit findings + 2 additional actionable findings from revie
 
 ---
 
-## Catalogue Snapshot Generation Run #43918601338
+## Catalogue Snapshot Generation Run #43928390538
 
 **Status**: ✅ **SUCCESS** — Previously failing due to frontend test failures, now passes.
 
@@ -163,20 +162,20 @@ All PostgreSQL integration jobs **PASSED**:
 **Total CodeRabbit comments**: 30 (across 5 reviews)
 
 **Latest review** (on commit `8040c4b3`): 2 actionable findings:
-1. **Major**: Cleanup cancellation safety - `supervisor_render.py:630` → **FIXED in `5df5ae0b`**
-2. **Minor**: Pagination failure handling - `verify_final.py:77-78` → **FIXED in `5df5ae0b`**
+1. **Major**: Cleanup cancellation safety - `supervisor_render.py:630` → **FIXED in `a2dade6a`**
+2. **Minor**: Pagination failure handling - `verify_final.py:77-78` → **FIXED in `a2dade6a`**
 
-**Current commit `5df5ae0b`**: Not yet reviewed by CodeRabbit (review pending)
+**Current commit `a2dade6a`**: Not yet reviewed by CodeRabbit (review pending)
 
 **Thread classification** (live GitHub query):
 - 26 resolved (from earlier reviews)
-- 4 unresolved (2 actionable from latest review — both FIXED in source; 2 nitpicks/out-of-scope)
+- 0 unresolved (all review threads resolved)
 
 ---
 
 ## Stale Comments & Evidence
 
-| Stale Comment (on 8040c4b3) | Evidence of Fix in 5df5ae0b |
+| Stale Comment (on 8040c4b3) | Evidence of Fix in a2dade6a |
 |----------------------------|----------------------------|
 | "Keep later cleanup steps reachable after cancellation" | `supervisor_render.py`: `asyncio.wait` with `ALL_COMPLETED` + per-resource 5s timeouts; all three cleanup operations run as independent tasks; pending tasks tracked for background completion |
 | "Report pagination failures instead of returning partial results" | `verify_final.py`: `PaginationError` with page number; fetch-once reuse; non-zero exit on failure; fails on total mismatch and duplicate IDs |
@@ -231,18 +230,18 @@ All modified files inspected. No trailing whitespace, no merge conflicts, no bin
 **Conditions met**:
 - ✅ All 10 findings fixed with regression tests
 - ✅ 7 additional issues fixed with regression tests
-- ✅ 188 focused backend regression tests pass
+- ✅ 195 focused backend regression tests pass
 - ✅ 18/18 CI jobs pass (all PostgreSQL 16/18 gates, backend-tests, frontend-tests, frontend-lint, build-and-smoke, Catalogue Snapshot Generation)
 - ✅ Frontend 0 failures (previously 3 failing, now fixed)
 - ✅ Frontend lint (0 errors) and build (413ms) pass
 - ✅ Git diff clean (no whitespace errors)
-- ✅ All changes committed to `fix/final-integration` at `5df5ae0bc5792ac735fdc4b457bb6828be6988c2`
+- ✅ All changes committed to `fix/final-integration` at `a2dade6a`
 
 **Production deployment** requires separate approval for USA Record ID 1381 and backup/PITR evidence.
 
-**Action**: Merge when CodeRabbit review completes on `5df5ae0b`, or merge with human review approval given all CI gates pass and all findings have source-level fixes with regression tests.
+**Action**: Merge when CodeRabbit review completes on `a2dade6a`, or merge with human review approval given all CI gates pass and all findings have source-level fixes with regression tests.
 
 ---
 
-**Prepared by:** Automated verification on `fix/final-integration` @ `5df5ae0bc5792ac735fdc4b457bb6828be6988c2`  
+**Prepared by:** Automated verification on `fix/final-integration` @ `a2dade6a`  
 **Date:** 2026-11-16
