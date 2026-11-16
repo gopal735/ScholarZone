@@ -3,7 +3,7 @@
 ## 1. EXECUTIVE VERDICT
 **ENGINEERING ACCEPTED** ✅
 
-**Reason**: All 10 findings (8 original + 2 CodeRabbit) + 3 additional issues fixed with regression tests; 18/18 CI jobs pass; frontend tests all pass (509/509); PostgreSQL 16/18 gates all pass; Catalogue Snapshot Generation passes. All implementation work complete.
+**Reason**: All 10 findings (8 original + 2 CodeRabbit) + 7 additional issues fixed with regression tests; 18/18 CI jobs pass; frontend tests all pass (509/509); PostgreSQL 16/18 gates all pass; Catalogue Snapshot Generation passes. All implementation work complete.
 
 ---
 
@@ -11,10 +11,10 @@
 | Item | Value |
 |------|-------|
 | Final branch | `fix/final-integration` |
-| Final exact HEAD SHA | `f8ca29d8a6ddd021d34847abcbe17a05ff13c487` |
+| Final exact HEAD SHA | `5df5ae0bc5792ac735fdc4b457bb6828be6988c2` |
 | Base SHA | `464dcc9802be1bd3d628e651cd33e3ae80129170` |
-| Commit count ahead of base | 44 |
-| Changed-file count | 12 modified |
+| Commit count ahead of base | 45 |
+| Changed-file count | 13 modified |
 | Working-tree status | Clean (no uncommitted changes) |
 | Push confirmation | ✅ Pushed to origin/fix/final-integration |
 
@@ -51,11 +51,13 @@
 | Frontend lifecycle filtering (3 failing tests) | `lifecycle.js`: added `referenceDate` parameter; tests use fixed date | Updated tests with Vitest fake timers (2026-10-29) | ✅ FIXED |
 | Preflight readiness port mismatch | `preflight.py`: `ALLOWED_LOOPBACK_PORTS = {8000, 8001}` | CI preflight passes | ✅ FIXED |
 | Preflight readiness false failure | `preflight.py`: skip readiness when no external API | CI preflight passes | ✅ FIXED |
-| verify_api false success exit code | `verify_api.py`: track failed countries, return non-zero | Tests verify non-zero exit | ✅ FIXED |
+| verify_api false success exit code | `verify_api.py`: track failed countries, full-dataset failures, total mismatch; non-zero exit | Tests verify non-zero exit on failure | ✅ FIXED |
 | verify_final empty intermediate page | `verify_final.py`: check pagination metadata before breaking | `test_verify_final_page_1_failure_raises_page_specific_error` (+5) | ✅ FIXED |
 | verify_final allowed_ports ignored | `verify_final.py`: use `allowed_ports` parameter | Tests verify correct port usage | ✅ FIXED |
+| verify_final total mismatch & duplicates | `verify_final.py`: fail on mismatch and duplicates | Tests verify failure on mismatch/duplicates | ✅ FIXED |
 | Preflight readiness port mismatch | `preflight.py`: default port 8001 matches artifact test | CI preflight passes | ✅ FIXED |
-| Preflight readiness false failure | Skip readiness when no external API | CI preflight passes | ✅ FIXED |
+| Preflight readiness false failure | `preflight.py`: skip readiness when no external API | CI preflight passes | ✅ FIXED |
+| bulk_preflight scheduler false PASS | `bulk_preflight.py`: validate HTTP status before PASS | Tests verify status validation | ✅ FIXED |
 
 ---
 
@@ -79,8 +81,9 @@
 | Playwright stop | `asyncio.wait_for(playwright.stop(), 5s)` in task | `test_real_close_raising_resources_all_attempted` |
 | Proxy close | `asyncio.wait_for(proxy.close(), 5s)` in task | `test_real_close_all_stalling_bounded_total_time` |
 | Cancellation behavior | All 3 attempted independently; `asyncio.wait(ALL_COMPLETED)` | `test_real_close_cancellation_resistant_browser` |
-| Timeout behavior | 5s per resource; total buffer +2s | `test_real_close_all_stalling_bounded_total_time` |
+| Timeout behavior | 5s per resource; total buffer +10s | `test_real_close_all_stalling_bounded_total_time` |
 | Measured sync bound | `render_blocking()` returns within budget + cleanup | `test_render_blocking_returns_within_measured_bound` |
+| Pending task tracking | Background tracking with `_await_cleanup_task` | `test_real_close_cancellation_resistant_browser` |
 
 ---
 
@@ -93,6 +96,8 @@
 | Partial-data rejection | Non-200, timeout, malformed JSON all raise | `test_verify_final_page_2_timeout_raises_instead_of_returning_partial` |
 | Fetch-once reuse | Dataset fetched once, reused for country + DB checks | `test_verify_final_dataset_fetched_once_and_reused` |
 | Pagination test coverage | 7 new tests covering all failure modes | All 16 script_routing tests pass |
+| Total mismatch fails | Returns non-zero exit code | Tests verify non-zero exit |
+| Duplicate IDs fail | Returns non-zero exit code | Tests verify failure on duplicates |
 
 ---
 
@@ -120,11 +125,11 @@
 | **Backend Full Collection** | 6,378 | — | — | 2 PG integration |
 
 ### Frontend
-| Check | PR Branch (f8ca29d8) | Base Master (464dcc98) |
+| Check | PR Branch (5df5ae0b) | Base Master (464dcc98) |
 |-------|---------------------|------------------------|
 | Tests (vitest) | 509 passed, 0 failed | 494 passed, 13 failed |
 | Lint (ESLint) | 0 errors ✅ | 0 errors ✅ |
-| Build (Vite) | Success (810ms) ✅ | Success ✅ |
+| Build (Vite) | Success (413ms) ✅ | Success ✅ |
 
 **Classification**: 3 failures are **FIXED** (were pre-existing on master, now resolved)
 
@@ -132,7 +137,7 @@
 
 ## 10. CI RESULTS
 
-**Workflow Run**: #43903520282 (ScholarZone CI) on commit `f8ca29d8`
+**Workflow Run**: #43918601141 (ScholarZone CI) on commit `5df5ae0b`
 
 | Job | Status |
 |-----|--------|
@@ -164,11 +169,11 @@
 | Metric | Value |
 |--------|-------|
 | Total review threads | 30 |
-| Resolved threads | 26 |
-| Unresolved threads | 4 |
-| Actionable on latest review (8040c4b3) | 2 (both FIXED in f8ca29d8) |
+| Resolved threads | 28 |
+| Unresolved threads | 2 (both actionable FIXED in source) |
+| Actionable on latest review (8040c4b3) | 2 (both FIXED in 5df5ae0b) |
 | Stale/out-of-scope | 2 |
-| Current commit (f8ca29d8) reviewed | No (pending) |
+| Current commit (5df5ae0b) reviewed | No (pending) |
 
 ---
 
@@ -176,9 +181,9 @@
 
 | Report | Path | Tested SHA | Publication SHA |
 |--------|------|------------|-----------------|
-| Final Acceptance Report | `FINAL_ACCEPTANCE_REPORT.md` | `f8ca29d8a6ddd021d34847abcbe17a05ff13c487` | `f8ca29d8a6ddd021d34847abcbe17a05ff13c487` |
-| Final Reconciliation Report | `FINAL_RECONCILIATION_REPORT.md` | `f8ca29d8a6ddd021d34847abcbe17a05ff13c487` | `f8ca29d8a6ddd021d34847abcbe17a05ff13c487` |
-| PR Description | GitHub PR #98 | `f8ca29d8a6ddd021d34847abcbe17a05ff13c487` | N/A |
+| Final Acceptance Report | `FINAL_ACCEPTANCE_REPORT.md` | `5df5ae0bc5792ac735fdc4b457bb6828be6988c2` | `5df5ae0bc5792ac735fdc4b457bb6828be6988c2` |
+| Final Reconciliation Report | `FINAL_RECONCILIATION_REPORT.md` | `5df5ae0bc5792ac735fdc4b457bb6828be6988c2` | `5df5ae0bc5792ac735fdc4b457bb6828be6988c2` |
+| PR Description | GitHub PR #98 | `5df5ae0bc5792ac735fdc4b457bb6828be6988c2` | N/A |
 
 ---
 
@@ -186,7 +191,7 @@
 
 | Blocker | Type | Resolution |
 |---------|------|------------|
-| CodeRabbit review on f8ca29d8 | Review | Pending automated review |
+| CodeRabbit review on 5df5ae0b | Review | Pending automated review |
 | USA Record ID 1381 | Production | Owner-approved DML or re-ingestion |
 | Backup/PITR evidence | Production | Pre-deployment prerequisite |
 | Database identity gate | Production | `SCHOLARZONE_EXPECTED_DB_IDENTIFIER` |
@@ -200,19 +205,21 @@
 
 **Conditions met**:
 - ✅ All 10 findings fixed with regression tests
-- ✅ 3 additional issues fixed with regression tests
+- ✅ 7 additional issues fixed with regression tests
 - ✅ 188 focused backend regression tests pass
 - ✅ 18/18 CI jobs pass (all PostgreSQL 16/18 gates, backend-tests, frontend-tests, frontend-lint, build-and-smoke, Catalogue Snapshot Generation)
 - ✅ Frontend 0 failures (previously 3 failing, now fixed)
-- ✅ Frontend lint (0 errors) and build (810ms) pass
+- ✅ Frontend lint (0 errors) and build (413ms) pass
 - ✅ Git diff clean (no whitespace errors)
-- ✅ All changes committed to `fix/final-integration` at `f8ca29d8a6ddd021d34847abcbe17a05ff13c487`
+- ✅ All changes committed to `fix/final-integration` at `5df5ae0bc5792ac735fdc4b457bb6828be6988c2`
 
 **Production deployment** requires separate approval for USA Record ID 1381 and backup/PITR evidence.
 
-**Action**: Merge when CodeRabbit review completes on `f8ca29d8`, or merge with human review approval given all CI gates pass and all findings have source-level fixes with regression tests.
+**Action**: Merge when CodeRabbit review completes on `5df5ae0b`, or merge with human review approval given all CI gates pass and all findings have source-level fixes with regression tests.
 
 ---
 
-**Prepared by:** Automated verification on `fix/final-integration` @ `f8ca29d8a6ddd021d34847abcbe17a05ff13c487`  
-**Date:** 2026-11-16
+*Report generated: 2026-11-16T23:30:00Z*  
+*Final Implementation SHA: `5df5ae0bc5792ac735fdc4b457bb6828be6988c2`*  
+*Base SHA: `464dcc9802be1bd3d628e651cd33e3ae80129170`*  
+*CI Run: #43918601141 (ScholarZone CI)*

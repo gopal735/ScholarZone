@@ -2,9 +2,9 @@
 
 **Date:** 2026-11-16
 **Integration Branch:** `fix/final-integration`
-**HEAD SHA:** `f8ca29d8a6ddd021d34847abcbe17a05ff13c487`
+**HEAD SHA:** `5df5ae0bc5792ac735fdc4b457bb6828be6988c2`
 **Base:** `origin/master` (464dcc98)
-**CI Workflow Run:** #43903520282 (ScholarZone CI) — **18/18 JOBS SUCCESS**
+**CI Workflow Run:** #43918601141 (ScholarZone CI) — **18/18 JOBS SUCCESS**
 
 ---
 
@@ -12,7 +12,7 @@
 
 **STATUS: ENGINEERING ACCEPTED** ✅
 
-All 8 original CodeRabbit findings + 2 additional actionable findings from review of commit 8040c4b3 + 3 additional issues discovered during remediation have been **fixed in source code** with regression tests. CI run #43903520282 completed with **18/18 jobs passing**, including PostgreSQL 16/18 migration integration, preflight, schema compatibility, and Gate 1/2 atomicity/identity integration tests. **Frontend tests: 509/509 passed** (previously 3 failing, now fixed). **Catalogue Snapshot Generation: PASSED**.
+All 8 original CodeRabbit findings + 2 additional actionable findings from review of commit 8040c4b3 + 7 additional issues discovered during remediation have been **fixed in source code** with regression tests. CI run #43918601141 completed with **18/18 jobs passing**, including PostgreSQL 16/18 migration integration, preflight, schema compatibility, and Gate 1/2 atomicity/identity integration tests. **Frontend tests: 509/509 passed** (previously 3 failing, now fixed). **Catalogue Snapshot Generation: PASSED**.
 
 ---
 
@@ -39,7 +39,7 @@ All 8 original CodeRabbit findings + 2 additional actionable findings from revie
 **Fixed:** `backend/app/services/outbound_security.py` — `have_left_origin` flag tracks cross-origin state; A→B→B never restores credentials.
 
 ### 3. Bound owned-driver cleanup
-**Fixed:** `backend/app/services/supervisor_render.py` — Per-resource 5s timeouts, `asyncio.wait` with `ALL_COMPLETED`, independent concurrent cleanup attempts; abandoned cleanup tracking for cancelled operations.
+**Fixed:** `backend/app/services/supervisor_render.py` — Per-resource 5s timeouts, `asyncio.wait` with `ALL_COMPLETED`, independent concurrent cleanup attempts; pending tasks tracked for background completion.
 
 ### 4. Fix undefined `scrolls` variable
 **Fixed:** `backend/app/services/supervisor_render.py` — `limits_used.get("scrolls", 0)`.
@@ -48,10 +48,10 @@ All 8 original CodeRabbit findings + 2 additional actionable findings from revie
 **Fixed:** `backend/migrate_schema.py` — Loop continues after `partial_unique_index_rejected`; finds later unrestricted matching unique index.
 
 ### 6. Correct verify_api response field handling
-**Fixed:** `backend/scripts/verify_api.py` — `_extract_items_and_total` handles 4 response formats; returns non-zero exit code on failure.
+**Fixed:** `backend/scripts/verify_api.py` — `_extract_items_and_total` handles 4 response formats; tracks full-dataset failures, total mismatch; returns non-zero on any failure.
 
 ### 7. Fetch all pages in verify_final
-**Fixed:** `backend/scripts/verify_final.py` — `_fetch_all_pages_once` with pagination, fetch-once reuse, raises `PaginationError` with page number on any failure.
+**Fixed:** `backend/scripts/verify_final.py` — `_fetch_all_pages_once` with pagination, fetch-once reuse, raises `PaginationError` with page number on any failure; fails on total mismatch and duplicate IDs.
 
 ### 8. Handle empty web-search result percentages
 **Fixed:** `backend/scripts/web_search_dry_run.py` — `pct()` helper with zero-check.
@@ -74,15 +74,17 @@ All 8 original CodeRabbit findings + 2 additional actionable findings from revie
 | Frontend lifecycle filtering (3 failing tests) | ✅ **Fixed** | Added `referenceDate` parameter to lifecycle functions; tests use fixed reference date (2026-10-29) with Vitest fake timers |
 | Preflight readiness port mismatch | ✅ **Fixed** | Updated `ALLOWED_LOOPBACK_PORTS` to `{8000, 8001}` in `preflight.py` |
 | Preflight readiness false failure | ✅ **Fixed** | Skip readiness check when `SCHOLARZONE_API_URL` not set (CI has no external API) |
-| `verify_api.py` false success exit code | ✅ **Fixed** | Track failed countries, return non-zero on failure |
+| `verify_api.py` false success exit code | ✅ **Fixed** | Track failed countries, full-dataset failures, total mismatch; return non-zero on any failure |
 | `verify_final.py` empty intermediate page handling | ✅ **Fixed** | Check pagination metadata before breaking on empty items |
 | `verify_final.py` allowed_ports parameter ignored | ✅ **Fixed** | Use `allowed_ports` parameter instead of hardcoded constant |
+| `verify_final.py` total mismatch and duplicate IDs | ✅ **Fixed** | Fail on total mismatch and duplicate IDs, don't just warn |
+| `bulk_preflight.py` scheduler false PASS | ✅ **Fixed** | Validate HTTP status code before PASS |
 | `preflight.py` readiness check port mismatch | ✅ **Fixed** | Update default port to 8001 to match artifact smoke test |
 | `preflight.py` readiness check false failure | ✅ **Fixed** | Skip readiness check when `SCHOLARZONE_API_URL` not set (CI has no external API) |
 
 ---
 
-## Test Results (Tested Source SHA: `f8ca29d8a6ddd021d34847abcbe17a05ff13c487`)
+## Test Results (Tested Source SHA: `5df5ae0bc5792ac735fdc4b457bb6828be6988c2`)
 
 ### Backend Focused Regression Suites (188 passed, 2 skipped)
 
@@ -104,13 +106,13 @@ All 8 original CodeRabbit findings + 2 additional actionable findings from revie
 |-------|--------|
 | Tests (vitest) | 509 passed, 0 failed (previously 3 failing, now fixed) |
 | Lint (ESLint) | 0 errors ✅ |
-| Production build (Vite) | Success (810ms) ✅ |
+| Production build (Vite) | Success (413ms) ✅ |
 
 > **Note**: The 3 previously failing frontend tests (`closing-soon`, `upcoming`, `open` filters) were fixed by adding a `referenceDate` parameter to lifecycle functions and using a fixed reference date (2026-10-29) in tests with Vitest fake timers.
 
 ---
 
-## CI Workflow Run #43903520282 (Commit `f8ca29d8`)
+## CI Workflow Run #43918601141 (Commit `5df5ae0b`)
 
 **Status**: ✅ **18/18 JOBS SUCCESS**
 
@@ -137,7 +139,7 @@ All 8 original CodeRabbit findings + 2 additional actionable findings from revie
 
 ---
 
-## Catalogue Snapshot Generation Run #43903520386
+## Catalogue Snapshot Generation Run #43918601338
 
 **Status**: ✅ **SUCCESS** — Previously failing due to frontend test failures, now passes.
 
@@ -159,10 +161,10 @@ All PostgreSQL integration jobs **PASSED**:
 **Total CodeRabbit comments**: 30 (across 5 reviews)
 
 **Latest review** (on commit `8040c4b3`): 2 actionable findings:
-1. **Major**: Cleanup cancellation safety - `supervisor_render.py:630` → **FIXED in `f8ca29d8`**
-2. **Minor**: Pagination failure handling - `verify_final.py:77-78` → **FIXED in `f8ca29d8`**
+1. **Major**: Cleanup cancellation safety - `supervisor_render.py:630` → **FIXED in `5df5ae0b`**
+2. **Minor**: Pagination failure handling - `verify_final.py:77-78` → **FIXED in `5df5ae0b`**
 
-**Current commit `f8ca29d8`**: Not yet reviewed by CodeRabbit (review pending)
+**Current commit `5df5ae0b`**: Not yet reviewed by CodeRabbit (review pending)
 
 **Thread classification** (live GitHub query):
 - 26 resolved (from earlier reviews)
@@ -172,10 +174,10 @@ All PostgreSQL integration jobs **PASSED**:
 
 ## Stale Comments & Evidence
 
-| Stale Comment (on 8040c4b3) | Evidence of Fix in f8ca29d8 |
+| Stale Comment (on 8040c4b3) | Evidence of Fix in 5df5ae0b |
 |----------------------------|----------------------------|
-| "Keep later cleanup steps reachable after cancellation" | `supervisor_render.py`: `asyncio.wait` with `ALL_COMPLETED` + per-resource 5s timeouts; all three cleanup operations run as independent tasks |
-| "Report pagination failures instead of returning partial results" | `verify_final.py`: `PaginationError` with page number; fetch-once reuse; non-zero exit on failure |
+| "Keep later cleanup steps reachable after cancellation" | `supervisor_render.py`: `asyncio.wait` with `ALL_COMPLETED` + per-resource 5s timeouts; all three cleanup operations run as independent tasks; pending tasks tracked for background completion |
+| "Report pagination failures instead of returning partial results" | `verify_final.py`: `PaginationError` with page number; fetch-once reuse; non-zero exit on failure; fails on total mismatch and duplicate IDs |
 
 ---
 
@@ -209,6 +211,7 @@ All modified files inspected. No trailing whitespace, no merge conflicts, no bin
 | `backend/scripts/verify_final.py` | MODIFIED |
 | `backend/scripts/verify_api.py` | MODIFIED |
 | `backend/scripts/preflight.py` | MODIFIED |
+| `backend/scripts/bulk_preflight.py` | MODIFIED |
 | `backend/tests/test_outbound_security.py` | MODIFIED |
 | `backend/tests/test_script_routing.py` | MODIFIED |
 | `backend/tests/test_supervisor_render_policy.py` | MODIFIED |
@@ -225,18 +228,18 @@ All modified files inspected. No trailing whitespace, no merge conflicts, no bin
 
 **Conditions met**:
 - ✅ All 10 findings fixed with regression tests
-- ✅ 3 additional issues fixed with regression tests
+- ✅ 7 additional issues fixed with regression tests
 - ✅ 188 focused backend regression tests pass
 - ✅ 18/18 CI jobs pass (all PostgreSQL 16/18 gates, backend-tests, frontend-tests, frontend-lint, build-and-smoke, Catalogue Snapshot Generation)
 - ✅ Frontend 0 failures (previously 3 failing, now fixed)
-- ✅ Frontend lint (0 errors) and build (810ms) pass
+- ✅ Frontend lint (0 errors) and build (413ms) pass
 - ✅ Git diff clean (no whitespace errors)
-- ✅ All changes committed to `fix/final-integration` at `f8ca29d8a6ddd021d34847abcbe17a05ff13c487`
+- ✅ All changes committed to `fix/final-integration` at `5df5ae0bc5792ac735fdc4b457bb6828be6988c2`
 
 **Production deployment** requires separate approval for USA Record ID 1381 and backup/PITR evidence.
 
-**Action**: Merge when CodeRabbit review completes on `f8ca29d8`, or merge with human review approval given all CI gates pass and all findings have source-level fixes with regression tests.
+**Action**: Merge when CodeRabbit review completes on `5df5ae0b`, or merge with human review approval given all CI gates pass and all findings have source-level fixes with regression tests.
 
 ---
 
-*Report generated: 2026-11-16T22:20:00Z*
+*Report generated: 2026-11-16T23:30:00Z*
