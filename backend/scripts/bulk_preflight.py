@@ -66,6 +66,9 @@ def check_scheduler(base_url: str) -> bool:
             allowed_loopback_ports=ALLOWED_LOOPBACK_PORTS,
             timeout=10,
         ) as resp:
+            if resp.status != 200:
+                print(f"[FAIL] Scheduler returned HTTP {resp.status}")
+                return False
             data = resp.read().decode("utf-8", errors="replace")
             print(f"[PASS] Scheduler available ({data[:120]})")
             return True

@@ -186,39 +186,39 @@ class PlaywrightRenderDriver:
 
         # Each cleanup step gets its own short deadline. We attempt all three
         # regardless of individual failures, and log any abandoned cleanup.
-        # We use asyncio.wait with ALL_COMPLETED to ensure all cleanup
-        # attempts are made even if some are cancelled or fail.
-        # We shield each cleanup from external cancellation.
+        # We use asyncio.shield to protect cleanup from external cancellation.
+        # We do not cancel cleanup operations on timeout - they continue in
+        # the background and we track them to ensure completion.
         cleanup_timeout = 5.0  # seconds per resource
 
-        # Create tasks for each cleanup operation, shielded from external cancellation
-        tasks = []
+        # Track all cleanup tasks so we can await them even after timeout
+        cleanup_tasks = []
 
         if browser is not None:
             async def _close_browser():
                 try:
                     await asyncio.wait_for(asyncio.shield(browser.close()), timeout=cleanup_timeout)
                 except asyncio.TimeoutError:
-                    logger.warning("browser.close() timed out during cleanup; abandoned")
+                    logger.warning("browser.close() timed out during cleanup; continuing in background")
                 except asyncio.CancelledError:
-                    logger.warning("browser.close() cancelled during cleanup; abandoned")
+                    logger.warning("browser.close() cancelled during cleanup; continuing in background")
                     raise
                 except Exception as exc:  # noqa: BLE001
                     logger.debug("browser.close() failed during cleanup", exc_info=exc)
-            tasks.append(asyncio.create_task(_close_browser()))
+            cleanup_tasks.append(asyncio.create_task(_close_browser()))
 
         if playwright is not None:
             async def _close_playwright():
                 try:
                     await asyncio.wait_for(asyncio.shield(playwright.stop()), timeout=cleanup_timeout)
                 except asyncio.TimeoutError:
-                    logger.warning("playwright.stop() timed out during cleanup; abandoned")
+                    logger.warning("playwright.stop() timed out during cleanup; continuing in background")
                 except asyncio.CancelledError:
-                    logger.warning("playwright.stop() cancelled during cleanup; abandoned")
+                    logger.warning("playwright.stop() cancelled during cleanup; continuing in background")
                     raise
                 except Exception as exc:  # noqa: BLE001
                     logger.debug("playwright.stop() failed during cleanup", exc_info=exc)
-            tasks.append(asyncio.create_task(_close_playwright()))
+            cleanup_tasks.append(asyncio.create_task(_close_playwright()))
 
         if proxy is not None:
             async def _close_proxy():
@@ -227,22 +227,22 @@ class PlaywrightRenderDriver:
                     if inspect.isawaitable(result):
                         await asyncio.wait_for(asyncio.shield(result), timeout=cleanup_timeout)
                 except asyncio.TimeoutError:
-                    logger.warning("proxy.close() timed out during cleanup; abandoned")
+                    logger.warning("proxy.close() timed out during cleanup; continuing in background")
                 except asyncio.CancelledError:
-                    logger.warning("proxy.close() cancelled during cleanup; abandoned")
+                    logger.warning("proxy.close() cancelled during cleanup; continuing in background")
                     raise
                 except Exception as exc:  # noqa: BLE001
                     logger.debug("proxy.close() failed during cleanup", exc_info=exc)
-            tasks.append(asyncio.create_task(_close_proxy()))
+            cleanup_tasks.append(asyncio.create_task(_close_proxy()))
 
         # Wait for all cleanup tasks with a combined timeout.
         # We use asyncio.wait with ALL_COMPLETED to ensure all cleanup
         # attempts are made even if some are cancelled or fail.
-        # We do not cancel other tasks if one fails.
-        if tasks:
-            total_cleanup_timeout = cleanup_timeout * len(tasks) + 2.0  # buffer
+        # We do not cancel other tasks if one fails or times out.
+        if cleanup_tasks:
+            total_cleanup_timeout = cleanup_timeout * len(cleanup_tasks) + 10.0  # generous buffer
             done, pending = await asyncio.wait(
-                tasks,
+                cleanup_tasks,
                 timeout=total_cleanup_timeout,
                 return_when=asyncio.ALL_COMPLETED
             )
@@ -252,20 +252,35 @@ class PlaywrightRenderDriver:
                 try:
                     task.result()
                 except asyncio.CancelledError:
-                    # Cancellation during cleanup - log but don't propagate yet
-                    logger.warning("Cleanup task was cancelled")
+                    logger.warning("Cleanup task was cancelled externally")
+                except asyncio.TimeoutError:
+                    logger.warning("Cleanup task timed out but continues in background")
                 except Exception as exc:  # noqa: BLE001
                     logger.debug("Cleanup task failed", exc_info=exc)
 
-            # Cancel any still-pending tasks (should be rare with proper timeouts)
-            for task in pending:
-                task.cancel()
-                try:
-                    await task
-                except asyncio.CancelledError:
-                    pass
-                except Exception as exc:  # noqa: BLE001
-                    logger.debug("Pending cleanup task failed after cancel", exc_info=exc)
+            # For pending tasks, do NOT cancel them - they are shielded and continue in background.
+            # Track them for background completion.
+            if pending:
+                logger.warning(
+                    "%d cleanup tasks still pending after %ss; they continue in background",
+                    len(pending), total_cleanup_timeout
+                )
+                # Track pending tasks for background completion
+                for task in pending:
+                    # Create a background task to await completion
+                    asyncio.create_task(self._await_cleanup_task(task))
+
+    async def _await_cleanup_task(self, task: asyncio.Task) -> None:
+        """Await a cleanup task in the background, logging completion or failure."""
+        try:
+            await task
+            logger.debug("Background cleanup task completed successfully")
+        except asyncio.CancelledError:
+            logger.warning("Background cleanup task was cancelled")
+        except asyncio.TimeoutError:
+            logger.warning("Background cleanup task timed out")
+        except Exception as exc:  # noqa: BLE001
+            logger.debug("Background cleanup task failed", exc_info=exc)
 
     async def __aenter__(self) -> "PlaywrightRenderDriver":
         await self.start()

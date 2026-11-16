@@ -96,7 +96,7 @@ def _fetch_all_pages(base_url: str, path: str, *, allowed_ports: set[int], timeo
             ) from e
 
         items, pagination = _extract_items_and_pagination(data)
-        
+
         # Check if we've fetched all pages FIRST (before checking for empty items)
         if pagination is None or pagination.get("total_pages") is None:
             # No pagination info, assume single page - add items and break
@@ -105,7 +105,7 @@ def _fetch_all_pages(base_url: str, path: str, *, allowed_ports: set[int], timeo
                     pagination_info = pagination
                 all_items.extend(items)
             break
-        
+
         total_pages = pagination.get("total_pages")
         if total_pages is not None and page >= total_pages:
             # Last page - add items and break
@@ -114,14 +114,14 @@ def _fetch_all_pages(base_url: str, path: str, *, allowed_ports: set[int], timeo
                     pagination_info = pagination
                 all_items.extend(items)
             break
-        
+
         # Not the last page - add items and continue
         if items:
             if pagination_info is None:
                 pagination_info = pagination
             all_items.extend(items)
         # If items is empty but we haven't reached total_pages, continue to next page
-        
+
         page += 1
 
     return all_items, pagination_info
@@ -158,10 +158,12 @@ def main() -> int:
         print(f"Pagination info: total={pagination.get('total')}, total_pages={pagination.get('total_pages')}")
 
     # Verify total count matches pagination metadata if available
+    verification_failed = False
     if pagination and pagination.get("total") is not None:
         expected_total = pagination["total"]
         if len(all_items) != expected_total:
-            print(f"WARNING: Fetched {len(all_items)} records but pagination reports total={expected_total}", file=sys.stderr)
+            print(f"FAILURE: Fetched {len(all_items)} records but pagination reports total={expected_total}", file=sys.stderr)
+            verification_failed = True
 
     all_ids = []
     total = 0
@@ -181,14 +183,22 @@ def main() -> int:
     print("\n=== API SUMMARY ===")
     print(f"Total records across all 5 countries: {total}")
     print(f"Unique IDs: {len(set(all_ids))}")
-    print(f"Duplicate IDs: {len(all_ids) - len(set(all_ids))}")
+    duplicate_ids = len(all_ids) - len(set(all_ids))
+    print(f"Duplicate IDs: {duplicate_ids}")
+    if duplicate_ids > 0:
+        print("FAILURE: Duplicate IDs found in dataset", file=sys.stderr)
+        verification_failed = True
 
     print("\n=== DATABASE URL UNIQUENESS CHECK ===")
     all_db_ids = [s["id"] for s in all_items]
     print(f"Unique IDs in DB: {len(set(all_db_ids))}")
-    print(f"Duplicate IDs in DB: {len(all_db_ids) - len(set(all_db_ids))}")
+    duplicate_db_ids = len(all_db_ids) - len(set(all_db_ids))
+    print(f"Duplicate IDs in DB: {duplicate_db_ids}")
+    if duplicate_db_ids > 0:
+        print("FAILURE: Duplicate IDs found in database", file=sys.stderr)
+        verification_failed = True
 
-    return 0
+    return 1 if verification_failed else 0
 
 
 if __name__ == "__main__":

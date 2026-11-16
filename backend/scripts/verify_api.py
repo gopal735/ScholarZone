@@ -72,6 +72,8 @@ def main() -> int:
     print("=== API VERIFICATION ===")
     all_items = []
     failed_countries = []
+    failed_checks = []
+
     for country in COUNTRIES:
         try:
             with open_api_url(
@@ -90,12 +92,16 @@ def main() -> int:
                 else:
                     print(f"{country}: HTTP {resp.status}")
                     failed_countries.append(country)
+                    failed_checks.append(f"{country}: HTTP {resp.status}")
         except Exception as e:
             print(f"{country}: Error - {e}")
             failed_countries.append(country)
+            failed_checks.append(f"{country}: {e}")
 
     # Also fetch all records to verify totals
+    full_dataset_failed = False
     all_fetched = 0
+    full_dataset_total = None
     try:
         with open_api_url(
             scholarships_url,
@@ -106,15 +112,32 @@ def main() -> int:
                 data = json.loads(resp.read().decode())
                 items, total = _extract_items_and_total(data)
                 all_fetched = len(items)
+                full_dataset_total = total
                 print(f"\nTotal scholarships in API: {total if total is not None else 'N/A'} (fetched {len(items)} records)")
             else:
                 print(f"Failed to fetch all scholarships: HTTP {resp.status}")
+                full_dataset_failed = True
     except Exception as e:
         print(f"Error fetching all scholarships: {e}")
+        full_dataset_failed = True
 
-    # Return non-zero if any country failed or if totals don't match
+    # Verify totals match if we have a total from the full dataset
+    total_mismatch = False
+    if full_dataset_total is not None and all_items:
+        # We have items from country-specific fetches, compare with full dataset total
+        if len(all_items) != full_dataset_total:
+            print(f"\nWARNING: Country-specific fetches returned {len(all_items)} records but full dataset reports total={full_dataset_total}", file=sys.stderr)
+            total_mismatch = True
+
+    # Return non-zero if any country failed, full dataset failed, or totals don't match
     if failed_countries:
         print(f"\nFAILED countries: {', '.join(failed_countries)}")
+        return 1
+    if full_dataset_failed:
+        print("\nFAILED: Full dataset request failed")
+        return 1
+    if total_mismatch:
+        print("\nFAILED: Total mismatch between country-specific and full dataset fetches")
         return 1
     return 0
 
