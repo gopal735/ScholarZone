@@ -63,7 +63,8 @@ def gate_readiness() -> tuple[bool, str | None]:
     print(f"\n{'=' * 60}")
     print("GATE: Readiness")
     print(f"{'=' * 60}")
-    url = os.environ.get("SCHOLARZONE_API_URL", "http://127.0.0.1:8000")
+    # Use port 8001 to match artifact_smoke_test.py which runs the container on port 8001
+    url = os.environ.get("SCHOLARZONE_API_URL", "http://127.0.0.1:8001")
     try:
         with open_api_url(
             _join_url(url, "/health"),
@@ -85,7 +86,8 @@ def gate_api_smoke_tests() -> tuple[bool, str | None]:
     print(f"\n{'=' * 60}")
     print("GATE: Critical API Smoke Tests")
     print(f"{'=' * 60}")
-    url = os.environ.get("SCHOLARZONE_API_URL", "http://127.0.0.1:8000")
+    # Use port 8001 to match artifact_smoke_test.py which runs the container on port 8001
+    url = os.environ.get("SCHOLARZONE_API_URL", "http://127.0.0.1:8001")
     ok = True
     for path in ["/health", "/scholarships/stats"]:
         try:
