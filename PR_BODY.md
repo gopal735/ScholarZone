@@ -2,9 +2,9 @@
 
 **Date:** 2026-11-16
 **Integration Branch:** `fix/final-integration`
-**HEAD SHA:** `c1436baec215a91004aa084c76765890824cdf6b`
+**HEAD SHA:** `b3990ab1bff494a31d3aaf6cc6ba87e1801ba1aa`
 **Base:** `origin/master` (464dcc98)
-**CI Workflow Run:** #43832924703 (ScholarZone CI) — **16/17 JOBS SUCCESS**
+**CI Workflow Run:** #43861958923 (ScholarZone CI) — **16/17 JOBS SUCCESS**
 
 ---
 
@@ -12,7 +12,7 @@
 
 **STATUS: CONDITIONALLY MERGE-READY** ⚠️
 
-All 8 original CodeRabbit findings + 2 additional actionable findings from review of commit 8040c4b3 have been **fixed in source code** with regression tests. CI run #43832924703 completed with 16/17 jobs passing, including PostgreSQL 16/18 migration integration, preflight, schema compatibility, and Gate 1/2 atomicity/identity integration tests. The single failing job (`frontend-tests`) has 3 pre-existing failures that also exist on master (13 failures on master vs 3 on PR branch — the PR branch actually improves the baseline).
+All 8 original CodeRabbit findings + 2 additional actionable findings from review of commit 8040c4b3 have been **fixed in source code** with regression tests. CI run #43861958923 completed with 16/17 jobs passing, including PostgreSQL 16/18 migration integration, preflight, schema compatibility, and Gate 1/2 atomicity/identity integration tests. The single failing job (`frontend-tests`) has 3 pre-existing failures that also exist on master (13 failures on master vs 3 on PR branch — the PR branch actually improves the baseline).
 
 ---
 
@@ -39,7 +39,7 @@ All 8 original CodeRabbit findings + 2 additional actionable findings from revie
 **Fixed:** `backend/app/services/outbound_security.py` — `have_left_origin` flag tracks cross-origin state; A→B→B never restores credentials.
 
 ### 3. Bound owned-driver cleanup
-**Fixed:** `backend/app/services/supervisor_render.py` — Per-resource 5s timeouts, `asyncio.gather` with `return_exceptions`, independent concurrent cleanup attempts; abandoned cleanup tracking for cancelled operations.
+**Fixed:** `backend/app/services/supervisor_render.py` — Per-resource 5s timeouts, `asyncio.wait` with `ALL_COMPLETED`, independent concurrent cleanup attempts; abandoned cleanup tracking for cancelled operations.
 
 ### 4. Fix undefined `scrolls` variable
 **Fixed:** `backend/app/services/supervisor_render.py` — `limits_used.get("scrolls", 0)`.
@@ -67,7 +67,7 @@ All 8 original CodeRabbit findings + 2 additional actionable findings from revie
 
 ---
 
-## Test Results (Tested Source SHA: `c1436baec215a91004aa084c76765890824cdf6b`)
+## Test Results (Tested Source SHA: `b3990ab1bff494a31d3aaf6cc6ba87e1801ba1aa`)
 
 ### Backend Focused Regression Suites (188 passed, 2 skipped)
 
@@ -95,34 +95,34 @@ All 8 original CodeRabbit findings + 2 additional actionable findings from revie
 
 ---
 
-## CI Workflow Run #43832924703 (Commit `c1436bae`)
+## CI Workflow Run #43861958923 (Commit `b3990ab1`)
 
 **Status**: ✅ **16/17 JOBS SUCCESS**
 
 | Job | Status |
 |-----|--------|
+| backend-tests | ✅ success |
+| env-config | ✅ success |
+| import-smoke | ✅ success |
+| Snapshot ID Validation | ✅ success |
+| Preflight (PostgreSQL 18) | ✅ success |
+| Schema Compatibility (PostgreSQL 16) | ✅ success |
+| Schema Compatibility (PostgreSQL 18) | ✅ success |
+| PostgreSQL Migration Integration Test (PostgreSQL 16) | ✅ success |
+| PostgreSQL Migration Integration Test (PostgreSQL 18) | ✅ success |
+| Preflight (PostgreSQL 16) | ✅ success |
 | frontend-lint | ✅ success |
 | build-and-smoke | ✅ success |
-| git-integrity | ✅ success |
-| PostgreSQL Migration Integration Test (PostgreSQL 16) | ✅ success |
-| Schema Compatibility (PostgreSQL 18) | ✅ success |
-| Schema Compatibility (PostgreSQL 16) | ✅ success |
-| import-smoke | ✅ success |
 | **frontend-tests** | ❌ **FAILED** (3 pre-existing) |
 | Snapshot ID Validation | ✅ success |
-| env-config | ✅ success |
-| Preflight (PostgreSQL 18) | ✅ success |
-| **backend-tests** | ✅ **success** |
-| Preflight (PostgreSQL 16) | ✅ success |
-| PostgreSQL Migration Integration Test (PostgreSQL 18) | ✅ success |
-| Gate 2 - Identity Integration Test (PostgreSQL 18) | ✅ success |
-| Gate 2 - Identity Integration Test (PostgreSQL 16) | ✅ success |
 | Gate 1 - Atomicity Integration Test (PostgreSQL 16) | ✅ success |
+| Gate 2 - Identity Integration Test (PostgreSQL 18) | ✅ success |
 | Gate 1 - Atomicity Integration Test (PostgreSQL 18) | ✅ success |
+| Gate 2 - Identity Integration Test (PostgreSQL 16) | ✅ success |
 
 ---
 
-## Catalogue Snapshot Generation Run #43832924805
+## Catalogue Snapshot Generation Run #43861959914
 
 **Status**: ❌ **FAILED** — Same 3 pre-existing frontend test failures block snapshot generation.
 
@@ -144,10 +144,10 @@ All PostgreSQL integration jobs **PASSED**:
 **Total CodeRabbit comments**: 30 (across 5 reviews)
 
 **Latest review** (on commit `8040c4b3`): 2 actionable findings:
-1. **Major**: Cleanup cancellation safety - `supervisor_render.py:630` → **FIXED in `c1436bae`**
-2. **Minor**: Pagination failure handling - `verify_final.py:77-78` → **FIXED in `c1436bae`**
+1. **Major**: Cleanup cancellation safety - `supervisor_render.py:630` → **FIXED in `b3990ab1`**
+2. **Minor**: Pagination failure handling - `verify_final.py:77-78` → **FIXED in `b3990ab1`**
 
-**Current commit `c1436bae`**: Not yet reviewed by CodeRabbit (review pending)
+**Current commit `b3990ab1`**: Not yet reviewed by CodeRabbit (review pending)
 
 **Thread classification** (live GitHub query):
 - 25 resolved (from earlier reviews)
@@ -157,9 +157,9 @@ All PostgreSQL integration jobs **PASSED**:
 
 ## Stale Comments & Evidence
 
-| Stale Comment (on 8040c4b3) | Evidence of Fix in c1436bae |
+| Stale Comment (on 8040c4b3) | Evidence of Fix in b3990ab1 |
 |----------------------------|----------------------------|
-| "Keep later cleanup steps reachable after cancellation" | `supervisor_render.py`: `asyncio.gather` with `return_exceptions` + per-resource 5s timeouts; all three cleanup operations run concurrently |
+| "Keep later cleanup steps reachable after cancellation" | `supervisor_render.py`: `asyncio.wait` with `ALL_COMPLETED` + per-resource 5s timeouts; all three cleanup operations run as independent tasks |
 | "Report pagination failures instead of returning partial results" | `verify_final.py`: `PaginationError` with page number; fetch-once reuse; non-zero exit on failure |
 
 ---
@@ -211,21 +211,21 @@ All modified files inspected. No trailing whitespace, no merge conflicts, no bin
 - ✅ Frontend 3 failures are pre-existing (13 on master → 3 on PR branch; 10 improved)
 - ✅ Frontend lint (0 errors) and build (857ms) pass
 - ✅ Git diff clean (no whitespace errors)
-- ✅ All changes committed to `fix/final-integration` at `c1436baec215a91004aa084c76765890824cdf6b`
+- ✅ All changes committed to `fix/final-integration` at `b3990ab1bff494a31d3aaf6cc6ba87e1801ba1aa`
 
 **Conditions for Merge**:
-1. **CodeRabbit review on `c1436bae` completes** (currently pending), OR human review confirms the two actionable findings are resolved.
+1. **CodeRabbit review on `b3990ab1` completes** (currently pending), OR human review confirms the two actionable findings are resolved.
 2. **No new regressions** introduced in subsequent CI runs.
 3. **Production deployment** requires separate approval for USA Record ID 1381 and backup/PITR evidence.
 
 **Why not MERGE-READY (unconditional)**:
-- CodeRabbit review on the final commit is pending. While both actionable findings from review #5 are demonstrably fixed in source with regression tests, the automated review has not yet run on `c1436bae`.
+- CodeRabbit review on the final commit is pending. While both actionable findings from review #5 are demonstrably fixed in source with regression tests, the automated review has not yet run on `b3990ab1`.
 - The 3 frontend failures, while proven pre-existing, still appear as CI failures on the PR and block the Catalogue Snapshot Generation workflow.
 
 **Recommendation**: 
-- **Option A**: Wait for CodeRabbit to review `c1436bae` (will likely resolve the 2 actionable threads), then merge.
+- **Option A**: Wait for CodeRabbit to review `b3990ab1` (will likely resolve the 2 actionable threads), then merge.
 - **Option B**: Merge with human review approval given all CI gates pass, all findings have source-level fixes with regression tests, and frontend failures are conclusively proven pre-existing and improved.
 
 ---
 
-*Report generated: 2026-11-16T09:15:00Z*
+*Report generated: 2026-11-16T13:30:00Z*
