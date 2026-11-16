@@ -5,16 +5,16 @@
 | Label | SHA |
 |-------|-----|
 | Implementation (code fixes) | `a2dade6a` |
-| CI-tested documentation commit | `9d510676` (run `#43935702659`) |
-| Current PR HEAD | `11e8ee3e` |
-| Documentation/CI-only commits | `9d510676`, `e59d734a`, `11e8ee3e` |
+| CI-tested commit | `025d1ec8` (run `#43938100097`) |
+| Documentation publication commit | branch tip (recorded in PR description; not self-verified by this report) |
+| Documentation/CI-only commits | `9d510676`, `e59d734a`, `11e8ee3e`, `025d1ec8` |
 
 A report does not verify its own publication SHA; the current PR HEAD above is the branch tip, while CI validation ran on the listed CI-tested commit.
 
 ## 1. EXECUTIVE VERDICT
 **ENGINEERING ACCEPTED** ✅
 
-**Reason**: All 10 findings (8 original + 2 CodeRabbit) + 7 additional issues fixed with regression tests; 18/18 CI jobs pass; frontend tests all pass (509/509); PostgreSQL 16/18 gates all pass; Catalogue Snapshot Generation passes. All implementation work complete.
+**Reason**: All 10 findings (8 original + 2 CodeRabbit) + 7 additional issues fixed with regression tests; 19/19 CI jobs pass; frontend tests all pass (509/509); PostgreSQL 16/18 gates all pass; Catalogue Snapshot Generation passes. All implementation work complete.
 
 ---
 
@@ -22,7 +22,7 @@ A report does not verify its own publication SHA; the current PR HEAD above is t
 | Item | Value |
 |------|-------|
 | Final branch | `fix/final-integration` |
-| Final exact HEAD SHA | `11e8ee3e` |
+| Final exact HEAD SHA | `025d1ec8` |
 | Base SHA | `464dcc9802be1bd3d628e651cd33e3ae80129170` |
 | Commit count ahead of base | 45 |
 | Changed-file count | 13 modified |
@@ -136,7 +136,7 @@ A report does not verify its own publication SHA; the current PR HEAD above is t
 | **Backend Full Collection** | 6,378 | — | — | 2 PG integration |
 
 ### Frontend
-| Check | PR Branch (11e8ee3e) | Base Master (464dcc98) |
+| Check | PR Branch (025d1ec8) | Base Master (464dcc98) |
 |-------|---------------------|------------------------|
 | Tests (vitest) | 509 passed, 0 failed | 494 passed, 13 failed |
 | Lint (ESLint) | 0 errors ✅ | 0 errors ✅ |
@@ -148,7 +148,7 @@ A report does not verify its own publication SHA; the current PR HEAD above is t
 
 ## 10. CI RESULTS
 
-**Workflow Run**: #43935702659 (ScholarZone CI) on commit `11e8ee3e`
+**Workflow Run**: #43938100097 (ScholarZone CI) on commit `025d1ec8`
 
 | Job | Status |
 |-----|--------|
@@ -171,7 +171,7 @@ A report does not verify its own publication SHA; the current PR HEAD above is t
 | Gate 1 - Atomicity Integration Test (PostgreSQL 18) | ✅ success |
 | Gate 2 - Identity Integration Test (PostgreSQL 16) | ✅ success |
 
-**Total**: 18/18 jobs PASSED
+**Total**: 19/19 jobs PASSED
 
 ---
 
@@ -182,9 +182,9 @@ A report does not verify its own publication SHA; the current PR HEAD above is t
 | Total review threads | 30 |
 | Resolved threads | 28 |
 | Unresolved threads | 2 (both actionable FIXED in source) |
-| Actionable on latest review (8040c4b3) | 2 (both FIXED in 11e8ee3e) |
+| Actionable on latest review (8040c4b3) | 2 (both FIXED in 025d1ec8) |
 | Stale/out-of-scope | 2 |
-| Current commit (11e8ee3e) reviewed | No (pending) |
+| Current commit (025d1ec8) reviewed | No (pending) |
 
 ---
 
@@ -192,9 +192,9 @@ A report does not verify its own publication SHA; the current PR HEAD above is t
 
 | Report | Path | Tested SHA | Publication SHA |
 |--------|------|------------|-----------------|
-| Final Acceptance Report | `FINAL_ACCEPTANCE_REPORT.md` | `11e8ee3e` | `11e8ee3e` |
-| Final Reconciliation Report | `FINAL_RECONCILIATION_REPORT.md` | `11e8ee3e` | `11e8ee3e` |
-| PR Description | GitHub PR #98 | `11e8ee3e` | N/A |
+| Final Acceptance Report | `FINAL_ACCEPTANCE_REPORT.md` | `025d1ec8` | `025d1ec8` |
+| Final Reconciliation Report | `FINAL_RECONCILIATION_REPORT.md` | `025d1ec8` | `025d1ec8` |
+| PR Description | GitHub PR #98 | `025d1ec8` | N/A |
 
 ---
 
@@ -202,7 +202,7 @@ A report does not verify its own publication SHA; the current PR HEAD above is t
 
 | Blocker | Type | Resolution |
 |---------|------|------------|
-| CodeRabbit review on 11e8ee3e | Review | Pending automated review |
+| CodeRabbit review on 025d1ec8 | Review | Pending automated review |
 | USA Record ID 1381 | Production | Owner-approved DML or re-ingestion |
 | Backup/PITR evidence | Production | Pre-deployment prerequisite |
 | Database identity gate | Production | `SCHOLARZONE_EXPECTED_DB_IDENTIFIER` |
@@ -218,26 +218,26 @@ A report does not verify its own publication SHA; the current PR HEAD above is t
 - ✅ All 10 findings fixed with regression tests
 - ✅ 7 additional issues fixed with regression tests
 - ✅ 195 focused backend regression tests pass
-- ✅ 18/18 CI jobs pass (all PostgreSQL 16/18 gates, backend-tests, frontend-tests, frontend-lint, build-and-smoke, Catalogue Snapshot Generation)
+- ✅ 19/19 CI jobs pass (all PostgreSQL 16/18 gates, backend-tests, frontend-tests, frontend-lint, build-and-smoke, Catalogue Snapshot Generation)
 - ✅ Frontend 0 failures (previously 3 failing, now fixed)
 - ✅ Frontend lint (0 errors) and build (413ms) pass
 - ✅ Git diff clean (no whitespace errors)
-- ✅ All changes committed to `fix/final-integration` at `11e8ee3e`
+- ✅ All changes committed to `fix/final-integration` at `025d1ec8`
 
 **Production deployment** requires separate approval for USA Record ID 1381 and backup/PITR evidence.
 
-**Action**: Merge when CodeRabbit review completes on `11e8ee3e`, or merge with human review approval given all CI gates pass and all findings have source-level fixes with regression tests.
+**Action**: Merge when CodeRabbit review completes on `025d1ec8`, or merge with human review approval given all CI gates pass and all findings have source-level fixes with regression tests.
 
 ---
 
-*Report generated: 2026-11-16T23:30:00Z*  
-*Final Implementation SHA: `11e8ee3e`*  
-*Base SHA: `464dcc9802be1bd3d628e651cd33e3ae80129170`*  
-*CI Run: #43935702659 (ScholarZone CI)*
+*Report generated: 2026-11-16T23:30:00Z*
+*Final Implementation SHA: `025d1ec8`*
+*Base SHA: `464dcc9802be1bd3d628e651cd33e3ae80129170`*
+*CI Run: #43938100097 (ScholarZone CI)*
 
 ## Windows E2E Verification
 
-- Job: `Windows E2E - Supervisor Render` in ScholarZone CI run `#43935702659`
+- Job: `Windows E2E - Supervisor Render` in ScholarZone CI run `#43938100097`
 - Runner: `windows-latest`
-- Result: **passed** (`5 passed in 22.16s`)
+- Result: **passed** (`5 passed in 24.07s`)
 - Evidence: real Playwright/Chromium browser-backed render test executed on Windows; no skip.
