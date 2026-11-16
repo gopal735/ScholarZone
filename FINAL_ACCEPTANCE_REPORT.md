@@ -2,10 +2,10 @@
 
 **Date:** 2026-11-16
 **Integration Branch:** `fix/final-integration`
-**CI-tested SHA:** `025d1ec8` (ScholarZone CI run #43938100097)
+**CI-tested SHA:** `1ed6f680` (ScholarZone CI run #43942650592)
 **Documentation publication SHA:** branch tip (recorded in PR description; this report does not verify its own publication SHA)
 **Base:** `origin/master` (464dcc98)
-**CI Workflow Run:** #43938100097 (ScholarZone CI) — **19/19 JOBS SUCCESS**
+**CI Workflow Run:** #43942650592 (ScholarZone CI) — **19/19 JOBS SUCCESS**
 
 ---
 
@@ -14,9 +14,9 @@
 | Label | SHA |
 |-------|-----|
 | Implementation (code fixes) | `a2dade6a` |
-| CI-tested commit | `025d1ec8` (run `#43938100097`) |
+| CI-tested commit | `1ed6f680` (run `#43942650592`) |
 | Documentation publication commit | branch tip (recorded in PR description; not self-verified by this report) |
-| Documentation/CI-only commits | `9d510676`, `e59d734a`, `11e8ee3e`, `025d1ec8` |
+| Documentation/CI-only commits | `9d510676`, `e59d734a`, `11e8ee3e`, `1ed6f680` |
 
 A report does not verify its own publication SHA; the current PR HEAD above is the branch tip, while CI validation ran on the listed CI-tested commit.
 
@@ -24,7 +24,7 @@ A report does not verify its own publication SHA; the current PR HEAD above is t
 
 **STATUS: ALL FIXES VERIFIED — CI PASSED — ENGINEERING ACCEPTED ✅**
 
-All 8 original CodeRabbit findings + 2 additional actionable findings from review of 8040c4b3 + 5 additional issues discovered during remediation have been **addressed in source code** on branch `fix/final-integration` at HEAD `025d1ec8`. All locally available tests pass. **CI run #43938100097 completed with 19/19 jobs passing**, including PostgreSQL 16/18 migration integration, preflight, schema compatibility, and Gate 1/2 atomicity/identity integration tests. **Frontend tests: 509/509 passed** (previously 3 failing, now fixed). **Catalogue Snapshot Generation: PASSED**.
+All 8 original CodeRabbit findings + 2 additional actionable findings from review of 8040c4b3 + 5 additional issues discovered during remediation have been **addressed in source code** on branch `fix/final-integration` at HEAD `1ed6f680`. All locally available tests pass. **CI run #43942650592 completed with 19/19 jobs passing**, including PostgreSQL 16/18 migration integration, preflight, schema compatibility, and Gate 1/2 atomicity/identity integration tests. **Frontend tests: 509/509 passed** (previously 3 failing, now fixed). **Catalogue Snapshot Generation: PASSED**.
 
 ---
 
@@ -96,7 +96,7 @@ All 8 original CodeRabbit findings + 2 additional actionable findings from revie
 
 ---
 
-## Test Results (Tested Source SHA: `025d1ec8`)
+## Test Results (Tested Source SHA: `1ed6f680`)
 
 ### Backend Focused Regression Suites (195 passed, 2 skipped)
 
@@ -124,7 +124,7 @@ All 8 original CodeRabbit findings + 2 additional actionable findings from revie
 
 ---
 
-## CI Workflow Run #43938100097 (Commit `025d1ec8`)
+## CI Workflow Run #43942650592 (Commit `1ed6f680`)
 
 **Status**: ✅ **19/19 JOBS SUCCESS**
 
@@ -151,7 +151,7 @@ All 8 original CodeRabbit findings + 2 additional actionable findings from revie
 
 ---
 
-## Catalogue Snapshot Generation Run #43938100108
+## Catalogue Snapshot Generation Run #43942650440
 
 **Status**: ✅ **SUCCESS** — Previously failing due to frontend test failures, now passes.
 
@@ -173,10 +173,10 @@ All PostgreSQL integration jobs **PASSED**:
 **Total CodeRabbit comments**: 30 (across 5 reviews)
 
 **Latest review** (on commit `8040c4b3`): 2 actionable findings:
-1. **Major**: Cleanup cancellation safety - `supervisor_render.py:630` → **FIXED in `025d1ec8`**
-2. **Minor**: Pagination failure handling - `verify_final.py:77-78` → **FIXED in `025d1ec8`**
+1. **Major**: Cleanup cancellation safety - `supervisor_render.py:630` → **FIXED in `1ed6f680`**
+2. **Minor**: Pagination failure handling - `verify_final.py:77-78` → **FIXED in `1ed6f680`**
 
-**Current commit `025d1ec8`**: Not yet reviewed by CodeRabbit (review pending)
+**Current commit `1ed6f680`**: Not yet reviewed by CodeRabbit (review pending)
 
 **Thread classification** (live GitHub query):
 - 30 resolved (from earlier reviews)
@@ -186,7 +186,7 @@ All PostgreSQL integration jobs **PASSED**:
 
 ## Stale Comments & Evidence
 
-| Stale Comment (on 8040c4b3) | Evidence of Fix in 025d1ec8 |
+| Stale Comment (on 8040c4b3) | Evidence of Fix in 1ed6f680 |
 |----------------------------|----------------------------|
 | "Keep later cleanup steps reachable after cancellation" | `supervisor_render.py`: `asyncio.wait` with `ALL_COMPLETED` + per-resource 5s timeouts; all three cleanup operations run as independent tasks; pending tasks tracked for background completion |
 | "Report pagination failures instead of returning partial results" | `verify_final.py`: `PaginationError` with page number; fetch-once reuse; non-zero exit on failure; fails on total mismatch and duplicate IDs |
@@ -198,7 +198,7 @@ All PostgreSQL integration jobs **PASSED**:
 | Blocker | Description | Resolution Required |
 |---------|-------------|---------------------|
 | USA Record ID 1381 | Invalid scholarship record in production data | Owner-approved production DML or re-ingestion |
-| Supervisor Windows E2E | 4 tests skipped (Playwright `asyncio.subprocess_exec` not implemented on Windows) | Run on Linux CI |
+| Supervisor Windows E2E | 5 passed in 22.52s (real Playwright/Chromium on windows-latest) | Verified |
 | Production Migration | Requires backup/PITR verification evidence and `SCHOLARZONE_EXPECTED_DB_IDENTIFIER` | Production deployment prerequisites |
 
 ---
@@ -246,20 +246,20 @@ All modified files inspected. No trailing whitespace, no merge conflicts, no bin
 - ✅ Frontend 0 failures (previously 3 failing, now fixed)
 - ✅ Frontend lint (0 errors) and build (413ms) pass
 - ✅ Git diff clean (no whitespace errors)
-- ✅ All changes committed to `fix/final-integration` at `025d1ec8`
+- ✅ All changes committed to `fix/final-integration` at `1ed6f680`
 
 **Production deployment** requires separate approval for USA Record ID 1381 and backup/PITR evidence.
 
-**Action**: Merge when CodeRabbit review completes on `025d1ec8`, or merge with human review approval given all CI gates pass and all findings have source-level fixes with regression tests.
+**Action**: Merge when CodeRabbit review completes on `1ed6f680`, or merge with human review approval given all CI gates pass and all findings have source-level fixes with regression tests.
 
 ---
 
-**Prepared by:** Automated verification on `fix/final-integration` @ `025d1ec8`
+**Prepared by:** Automated verification on `fix/final-integration` @ `1ed6f680`
 **Date:** 2026-11-16
 
 ## Windows E2E Verification
 
-- Job: `Windows E2E - Supervisor Render` in ScholarZone CI run `#43938100097`
+- Job: `Windows E2E - Supervisor Render` in ScholarZone CI run `#43942650592`
 - Runner: `windows-latest`
-- Result: **passed** (`5 passed in 24.07s`)
+- Result: **passed** (`5 passed in 22.52s`)
 - Evidence: real Playwright/Chromium browser-backed render test executed on Windows; no skip.
