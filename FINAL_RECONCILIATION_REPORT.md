@@ -1,5 +1,16 @@
 # SCHOLARZONE PR #98 — FINAL RECONCILIATION REPORT
 
+## Commit Identity (verified)
+
+| Label | SHA |
+|-------|-----|
+| Implementation (code fixes) | `a2dade6a` |
+| CI-tested documentation commit | `9d510676` (run `#43935702659`) |
+| Current PR HEAD | `11e8ee3e` |
+| Documentation/CI-only commits | `9d510676`, `e59d734a`, `11e8ee3e` |
+
+A report does not verify its own publication SHA; the current PR HEAD above is the branch tip, while CI validation ran on the listed CI-tested commit.
+
 ## 1. EXECUTIVE VERDICT
 **ENGINEERING ACCEPTED** ✅
 
@@ -11,7 +22,7 @@
 | Item | Value |
 |------|-------|
 | Final branch | `fix/final-integration` |
-| Final exact HEAD SHA | `9d510676` |
+| Final exact HEAD SHA | `11e8ee3e` |
 | Base SHA | `464dcc9802be1bd3d628e651cd33e3ae80129170` |
 | Commit count ahead of base | 45 |
 | Changed-file count | 13 modified |
@@ -121,11 +132,11 @@
 | `test_supervisor_render_policy.py` | 68 | 68 | 0 | 0 |
 | `test_script_routing.py` | 16 | 16 | 0 | 0 |
 | `test_migrate_schema.py` | 56 | 56 | 0 | 2 (PG URL) |
-| **Backend Focused Total** | **188** | **188** | **0** | **2** |
+| **Backend Focused Total** | **195** | **195** | **0** | **2** |
 | **Backend Full Collection** | 6,378 | — | — | 2 PG integration |
 
 ### Frontend
-| Check | PR Branch (9d510676) | Base Master (464dcc98) |
+| Check | PR Branch (11e8ee3e) | Base Master (464dcc98) |
 |-------|---------------------|------------------------|
 | Tests (vitest) | 509 passed, 0 failed | 494 passed, 13 failed |
 | Lint (ESLint) | 0 errors ✅ | 0 errors ✅ |
@@ -137,7 +148,7 @@
 
 ## 10. CI RESULTS
 
-**Workflow Run**: #43930759016 (ScholarZone CI) on commit `9d510676`
+**Workflow Run**: #43935702659 (ScholarZone CI) on commit `11e8ee3e`
 
 | Job | Status |
 |-----|--------|
@@ -171,9 +182,9 @@
 | Total review threads | 30 |
 | Resolved threads | 28 |
 | Unresolved threads | 2 (both actionable FIXED in source) |
-| Actionable on latest review (8040c4b3) | 2 (both FIXED in 9d510676) |
+| Actionable on latest review (8040c4b3) | 2 (both FIXED in 11e8ee3e) |
 | Stale/out-of-scope | 2 |
-| Current commit (9d510676) reviewed | No (pending) |
+| Current commit (11e8ee3e) reviewed | No (pending) |
 
 ---
 
@@ -181,9 +192,9 @@
 
 | Report | Path | Tested SHA | Publication SHA |
 |--------|------|------------|-----------------|
-| Final Acceptance Report | `FINAL_ACCEPTANCE_REPORT.md` | `9d510676` | `9d510676` |
-| Final Reconciliation Report | `FINAL_RECONCILIATION_REPORT.md` | `9d510676` | `9d510676` |
-| PR Description | GitHub PR #98 | `9d510676` | N/A |
+| Final Acceptance Report | `FINAL_ACCEPTANCE_REPORT.md` | `11e8ee3e` | `11e8ee3e` |
+| Final Reconciliation Report | `FINAL_RECONCILIATION_REPORT.md` | `11e8ee3e` | `11e8ee3e` |
+| PR Description | GitHub PR #98 | `11e8ee3e` | N/A |
 
 ---
 
@@ -191,7 +202,7 @@
 
 | Blocker | Type | Resolution |
 |---------|------|------------|
-| CodeRabbit review on 9d510676 | Review | Pending automated review |
+| CodeRabbit review on 11e8ee3e | Review | Pending automated review |
 | USA Record ID 1381 | Production | Owner-approved DML or re-ingestion |
 | Backup/PITR evidence | Production | Pre-deployment prerequisite |
 | Database identity gate | Production | `SCHOLARZONE_EXPECTED_DB_IDENTIFIER` |
@@ -211,15 +222,22 @@
 - ✅ Frontend 0 failures (previously 3 failing, now fixed)
 - ✅ Frontend lint (0 errors) and build (413ms) pass
 - ✅ Git diff clean (no whitespace errors)
-- ✅ All changes committed to `fix/final-integration` at `9d510676`
+- ✅ All changes committed to `fix/final-integration` at `11e8ee3e`
 
 **Production deployment** requires separate approval for USA Record ID 1381 and backup/PITR evidence.
 
-**Action**: Merge when CodeRabbit review completes on `9d510676`, or merge with human review approval given all CI gates pass and all findings have source-level fixes with regression tests.
+**Action**: Merge when CodeRabbit review completes on `11e8ee3e`, or merge with human review approval given all CI gates pass and all findings have source-level fixes with regression tests.
 
 ---
 
 *Report generated: 2026-11-16T23:30:00Z*  
-*Final Implementation SHA: `9d510676`*  
+*Final Implementation SHA: `11e8ee3e`*  
 *Base SHA: `464dcc9802be1bd3d628e651cd33e3ae80129170`*  
-*CI Run: #43930759016 (ScholarZone CI)*
+*CI Run: #43935702659 (ScholarZone CI)*
+
+## Windows E2E Verification
+
+- Job: `Windows E2E - Supervisor Render` in ScholarZone CI run `#43935702659`
+- Runner: `windows-latest`
+- Result: **passed** (`5 passed in 22.16s`)
+- Evidence: real Playwright/Chromium browser-backed render test executed on Windows; no skip.
