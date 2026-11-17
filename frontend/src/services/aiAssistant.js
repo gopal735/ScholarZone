@@ -137,16 +137,22 @@ function parseDeadlineWindowDays(question) {
   const q = normalizeQuestion(question);
   if (!q) return null;
 
-  const explicit = q.match(/\b(?:within|in|next|coming)\s+(\d+)\s+days?\b/);
+  if (/\d,\d/.test(q)) return NaN;
+
+  const explicit = q.match(/\b(?:within|in|next|coming)\s+(-?\d+)\s+days?\b/);
   if (explicit) {
-    const days = Number(explicit[1]);
-    return Number.isFinite(days) && days > 0 ? days : null;
+    const raw = explicit[1];
+    if (raw.length > 10) return NaN;
+    const days = Number(raw);
+    return Number.isFinite(days) ? days : null;
   }
 
-  const reversed = q.match(/\b(\d+)\s+days?\b/);
+  const reversed = q.match(/\b(-?\d+)\s+days?\b/);
   if (reversed && (q.includes('deadline') || q.includes('closing') || q.includes('due'))) {
-    const days = Number(reversed[1]);
-    return Number.isFinite(days) && days > 0 ? days : null;
+    const raw = reversed[1];
+    if (raw.length > 10) return NaN;
+    const days = Number(raw);
+    return Number.isFinite(days) ? days : null;
   }
 
   if ((q.includes('next month') || q.includes('coming month')) && q.includes('deadline')) {
@@ -291,7 +297,16 @@ async function groundedFallback(question) {
     let scholarships = [];
 
     if (isDeadlineWindowQuestion(safeQuestion)) {
-      const days = parseDeadlineWindowDays(safeQuestion) ?? 30;
+      const parsed = parseDeadlineWindowDays(safeQuestion);
+      const hasExplicitDuration = parsed !== null;
+      const days = hasExplicitDuration ? parsed : 30;
+      if (!Number.isFinite(days) || days < 1) {
+        return {
+          answer: 'Invalid deadline window. Please use a value from 1 to 365 days.',
+          sources: [],
+          grounded: true,
+        };
+      }
       if (days > 365) {
         return {
           answer: 'Deadline windows above 365 days are not supported. Please use 365 days or fewer.',

@@ -807,3 +807,85 @@ jobs:
       with:
         name: windows-e2e-logs
         path: backend/windows_e2e.log
+
+  postgresql-deadline-integration:
+    name: PostgreSQL Deadline Integration Test (PostgreSQL ${{ matrix.pg-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        pg-version: ['16', '18']
+      fail-fast: false
+    services:
+      postgres:
+        image: postgres:${{ matrix.pg-version }}
+        env:
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: scholarzone_test
+        ports:
+          - 5439:5432
+        options: >-
+          --health-cmd="pg_isready -U test -d scholarzone_test"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+    env:
+      SCHOLARZONE_ENVIRONMENT: test
+      SCHOLARZONE_DATABASE_URL: postgresql://test:test@localhost:5439/scholarzone_test?sslmode=disable
+      TEST_POSTGRESQL_URL: postgresql://test:test@localhost:5439/scholarzone_test?sslmode=disable
+      SCHOLARZONE_TEST_ALLOW_EXTERNAL_DB: '1'
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: Install system dependencies
+      run: sudo apt-get update && sudo apt-get install -y libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7-dev libtiff5-dev libwebp-dev postgresql-client
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Cache pip dependencies
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+        restore-keys: |
+          Linux-pip-
+    - name: Install dependencies
+      run: cd backend && pip install -r requirements.txt
+    - name: Wait for PostgreSQL to be ready
+      run: |
+        for i in {1..30}; do
+          if pg_isready -h localhost -p 5439 -U test -d scholarzone_test; then
+            echo "PostgreSQL ${{ matrix.pg-version }} is ready"
+            break
+          fi
+          echo "Waiting for PostgreSQL... ($i/30)"
+          sleep 2
+        done
+    - name: Run deadline integration tests
+      run: |
+        cd backend
+        set -o pipefail
+        python -m pytest tests/test_deadline_postgresql_integration.py -q -ra --tb=short 2>&1 | tee deadline_pg_integration.log
+    - name: Verify deadline integration tests executed (not skipped)
+      run: |
+        cd backend
+        if grep -q "SKIPPED" deadline_pg_integration.log; then
+          echo "ERROR: deadline integration tests were SKIPPED"
+          cat deadline_pg_integration.log
+          exit 1
+        fi
+        if ! grep -q "passed" deadline_pg_integration.log; then
+          echo "ERROR: deadline integration tests did not pass"
+          cat deadline_pg_integration.log
+          exit 1
+        fi
+        echo "PostgreSQL deadline integration tests executed and passed"
+    - name: Upload deadline integration logs
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: postgresql-deadline-integration-logs-pg${{ matrix.pg-version }}
+        path: backend/deadline_pg_integration.log

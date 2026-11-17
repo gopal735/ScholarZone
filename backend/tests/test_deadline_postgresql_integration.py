@@ -39,6 +39,7 @@ class TestPostgreSQLDeadlineIntegration:
     def pg_session(self):
         from app.database import get_session_factory
 
+        uid = uuid.uuid4().hex
         session = get_session_factory()()
         records = [
             Scholarship(
@@ -50,7 +51,7 @@ class TestPostgreSQLDeadlineIntegration:
                 verification_status="active",
                 is_archived=False,
                 deadline_date=FIXED_TODAY - timedelta(days=1),
-                official_source_url="https://example.edu/yesterday",
+                official_source_url=f"https://example.edu/yesterday-{uid}",
             ),
             Scholarship(
                 title="Today",
@@ -61,7 +62,7 @@ class TestPostgreSQLDeadlineIntegration:
                 verification_status="active",
                 is_archived=False,
                 deadline_date=FIXED_TODAY,
-                official_source_url="https://example.edu/today",
+                official_source_url=f"https://example.edu/today-{uid}",
             ),
             Scholarship(
                 title="Day30",
@@ -72,7 +73,7 @@ class TestPostgreSQLDeadlineIntegration:
                 verification_status="active",
                 is_archived=False,
                 deadline_date=FIXED_TODAY + timedelta(days=30),
-                official_source_url="https://example.edu/day30",
+                official_source_url=f"https://example.edu/day30-{uid}",
             ),
             Scholarship(
                 title="Day31",
@@ -83,7 +84,7 @@ class TestPostgreSQLDeadlineIntegration:
                 verification_status="active",
                 is_archived=False,
                 deadline_date=FIXED_TODAY + timedelta(days=31),
-                official_source_url="https://example.edu/day31",
+                official_source_url=f"https://example.edu/day31-{uid}",
             ),
             Scholarship(
                 title="NullDeadline",
@@ -94,7 +95,7 @@ class TestPostgreSQLDeadlineIntegration:
                 verification_status="active",
                 is_archived=False,
                 deadline_date=None,
-                official_source_url="https://example.edu/null",
+                official_source_url=f"https://example.edu/null-{uid}",
             ),
             Scholarship(
                 title="Closed",
@@ -105,7 +106,7 @@ class TestPostgreSQLDeadlineIntegration:
                 verification_status="active",
                 is_archived=False,
                 deadline_date=FIXED_TODAY + timedelta(days=5),
-                official_source_url="https://example.edu/closed",
+                official_source_url=f"https://example.edu/closed-{uid}",
             ),
             Scholarship(
                 title="Archived",
@@ -116,13 +117,19 @@ class TestPostgreSQLDeadlineIntegration:
                 verification_status="active",
                 is_archived=True,
                 deadline_date=FIXED_TODAY + timedelta(days=5),
-                official_source_url="https://example.edu/archived",
+                official_source_url=f"https://example.edu/archived-{uid}",
             ),
         ]
         session.add_all(records)
         session.commit()
         yield session
-        session.close()
+        try:
+            session.query(Scholarship).filter(Scholarship.official_source_url.like(f'%-{uid}')).delete(synchronize_session=False)
+            session.commit()
+        except Exception:
+            session.rollback()
+        finally:
+            session.close()
 
     def test_deadline_window_boundaries(self, pg_session):
         from fastapi.testclient import TestClient

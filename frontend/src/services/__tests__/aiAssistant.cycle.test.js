@@ -89,9 +89,43 @@ describe('aiAssistant cycle-year preservation and duration boundaries', () => {
     expect(res.grounded).toBe(true)
   })
 
-  it('zero days is not silently converted to 30', async () => {
-    const res = await askAIAssistant({ question: 'Which scholarships have deadlines within 0 days?' })
-    // parseDeadlineWindowDays returns null for 0 (days > 0 check), so not a deadline-window question -> generic path
+  it('comma-separated duration is explicitly rejected', async () => {
+    const res = await askAIAssistant({ question: 'Which scholarships have deadlines within 1,000 days?' })
     expect(res.grounded).toBe(true)
+    expect(res.answer).toMatch(/Invalid deadline window/i)
+  })
+
+  it('oversized duration is explicitly rejected', async () => {
+    const res = await askAIAssistant({ question: 'Which scholarships have deadlines within 999999999999 days?' })
+    expect(res.grounded).toBe(true)
+    expect(res.answer).toMatch(/Invalid deadline window/i)
+  })
+
+  it('zero days is explicitly rejected (not converted to 30)', async () => {
+    const res = await askAIAssistant({ question: 'Which scholarships have deadlines within 0 days?' })
+    expect(res.grounded).toBe(true)
+    expect(res.answer).toMatch(/Invalid deadline window/i)
+  })
+
+  it('MEXT 2027 included, MEXT 2026 excluded (both in window)', async () => {
+    const snap = {
+      meta: { generated_at: '2026-11-17T00:00:00Z', public_record_count: 2 },
+      stats: { total: 2 },
+      scholarships: [
+        { id: 1, title: 'MEXT 2027 Scholarship', country: 'Japan', degree: 'Master', funding: 'F', deadline: '2026-11-20', deadline_date: '2026-11-20', deadline_precision: 'exact', status: 'open', verification_status: 'active', official_source_url: 'https://example.edu/mext2027' },
+        { id: 2, title: 'MEXT 2026 Scholarship', country: 'Japan', degree: 'Master', funding: 'F', deadline: '2026-11-20', deadline_date: '2026-11-20', deadline_precision: 'exact', status: 'open', verification_status: 'active', official_source_url: 'https://example.edu/mext2026' },
+      ],
+    }
+    vi.mocked(fetch).mockImplementation(async (url) => {
+      if (String(url).includes('scholarships-snapshot')) {
+        return { ok: true, json: async () => snap }
+      }
+      return { ok: false, status: 500, json: async () => ({}) }
+    })
+    clearSnapshotCache()
+    const res = await askAIAssistant({ question: 'Which 2027 MEXT scholarships have deadlines within 30 days?' })
+    expect(res.grounded).toBe(true)
+    expect(res.answer).toMatch(/MEXT 2027/)
+    expect(res.answer).not.toMatch(/MEXT 2026/)
   })
 })
