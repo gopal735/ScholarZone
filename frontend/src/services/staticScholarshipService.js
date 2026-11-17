@@ -354,14 +354,16 @@ export async function fetchScholarshipsFromSnapshot(query = {}) {
 
   let records = getPublicSnapshotRecords(snapshot)
 
-  const needle = String(search).trim().toLowerCase()
-  if (needle) {
-    records = records.filter((record) =>
-      [record.title, record.country, record.degree, record.description, record.funding,
+  const needles = String(search).trim().toLowerCase().split(/\s+/).filter(Boolean)
+  if (needles.length > 0) {
+    records = records.filter((record) => {
+      const haystack = [record.title, record.country, record.degree, record.description, record.funding,
         record.program_type, ...(record.departments || []), ...(record.eligible_fields || []), ...(record.eligible_programmes || [])]
         .filter(Boolean)
-        .some((field) => field.toLowerCase().includes(needle))
-    )
+        .map((field) => String(field).toLowerCase())
+        .join(' ')
+      return needles.every((needle) => haystack.includes(needle))
+    })
   }
 
   if (country && country !== 'All') {
