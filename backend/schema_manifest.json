@@ -1330,7 +1330,8 @@
       "columns": [
         "slot_id"
       ],
-      "unique": false
+      "unique": false,
+      "required": true
     },
     {
       "name": "ix_scholarships_is_archived",
@@ -1338,7 +1339,8 @@
       "columns": [
         "is_archived"
       ],
-      "unique": false
+      "unique": false,
+      "required": true
     }
   ],
   "additional_tables": [

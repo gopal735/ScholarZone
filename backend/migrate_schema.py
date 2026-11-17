@@ -319,6 +319,13 @@ def get_production_engine() -> Engine:
                 "Set this secret in the GitHub Actions environment (production) to the exact database identifier "
                 "(e.g., the Neon database name). Contact the repository owner to configure this secret."
             )
+        expected_host = os.environ.get("SCHOLARZONE_EXPECTED_DB_HOST")
+        if not expected_host:
+            raise RuntimeError(
+                "SCHOLARZONE_EXPECTED_DB_HOST environment variable must be set for production use. "
+                "This is a safety gate to prevent accidental migration to the wrong database. "
+                "Set this secret in the GitHub Actions environment (production) to the expected database host."
+            )
 
     # Rewrite postgresql:// to postgresql+psycopg:// for SQLAlchemy 2.0
     if database_url.startswith("postgresql://"):
@@ -373,25 +380,36 @@ def verify_database_identity(conn: Connection) -> dict[str, Any]:
                 db_identity["details"]["warning"] = "SCHOLARZONE_EXPECTED_DB_IDENTIFIER not set; database name not verified"
 
             if expected_host:
-                # SCHOLARZONE_EXPECTED_DB_HOST may be either the PostgreSQL server IP
-                # returned by inet_server_addr() or a resolvable hostname. Resolve
-                # hostnames safely so operators can use the Neon endpoint name
-                # without weakening the check.
-                resolved_expected = expected_host
-                if not re.fullmatch(r"\d{1,3}(?:\.\d{1,3}){3}", expected_host):
+                # SCHOLARZONE_EXPECTED_DB_HOST may be a hostname or IP. Resolve all
+                # addresses for a hostname (IPv4 and IPv6) instead of assuming a
+                # single DNS A record. Neon and other managed PostgreSQL endpoints
+                # can expose multiple addresses or route through proxies, so the
+                # server-reported address only has to match one resolved address.
+                resolved_addresses = set()
+                if re.fullmatch(r"\d{1,3}(?:\.\d{1,3}){3}", expected_host):
+                    resolved_addresses.add(expected_host)
+                elif ":" in expected_host and re.fullmatch(r"[0-9A-Fa-f:]+", expected_host):
+                    resolved_addresses.add(expected_host)
+                else:
                     try:
-                        resolved_expected = socket.gethostbyname(expected_host)
+                        resolved = socket.getaddrinfo(expected_host, None)
                     except (socket.gaierror, OSError) as exc:
                         raise RuntimeError(
                             f"Database host could not be resolved: {expected_host!r}: {exc}"
                         ) from exc
-                if resolved_expected == str(host_result):
+                    for entry in resolved:
+                        sockaddr = entry[4]
+                        if isinstance(sockaddr, tuple) and sockaddr:
+                            resolved_addresses.add(str(sockaddr[0]))
+                if not resolved_addresses:
+                    raise RuntimeError(f"Database host could not be resolved: {expected_host!r}")
+                if str(host_result) in resolved_addresses:
                     db_identity["details"]["host_match"] = True
-                    db_identity["details"]["resolved_expected_host"] = resolved_expected
+                    db_identity["details"]["resolved_expected_host"] = sorted(resolved_addresses)
                 else:
                     db_identity["details"]["host_match"] = False
                     raise RuntimeError(
-                        f"Database host mismatch. Expected '{expected_host}' (resolved to '{resolved_expected}'), "
+                        f"Database host mismatch. Expected '{expected_host}' (resolved to {sorted(resolved_addresses)}), "
                         f"got '{host_result}'. Set SCHOLARZONE_EXPECTED_DB_HOST to the expected database host or IP."
                     )
             else:
@@ -488,8 +506,7 @@ def verify_production_database(engine: Engine) -> dict[str, Any]:
             )
 
     return {
-        "database_url": str(engine.url).replace(str(engine.url.password), "***") if engine.url.password else str(engine.url),
-        "core_tables_present": list(required_core_tables),
+        "core_tables_present": sorted(required_core_tables),
         "scholarship_count": scholarship_count,
         "dialect": dialect,
         "identity": db_identity,
@@ -773,14 +790,55 @@ def check_existing_scholarship_columns(engine: Engine) -> dict[str, bool]:
     return {name: name in columns for name in SCHOLARSHIP_ADDITIONS}
 
 
-def generate_scholarship_column_statements(missing_columns: list[str]) -> list[str]:
-    """Generate ALTER TABLE statements for missing scholarship columns."""
-    return [
-        f"ALTER TABLE scholarships ADD COLUMN {name} {SCHOLARSHIP_ADDITIONS[name]}"
-        for name in missing_columns
-    ]
+def generate_scholarship_column_statements(missing_columns: list[str], dialect: str = "postgresql") -> list[str]:
+    """Generate ALTER TABLE statements for missing scholarship columns.
+
+    PostgreSQL supports ``ADD COLUMN IF NOT EXISTS``. SQLite does not, so callers
+    must recheck column existence inside the write transaction before executing
+    the plain ``ADD COLUMN`` statement.
+    """
+    is_sqlite = str(dialect).lower() == "sqlite"
+    statements = []
+    for name in missing_columns:
+        column_sql = f"{name} {SCHOLARSHIP_ADDITIONS[name]}"
+        if is_sqlite:
+            statements.append(f"ALTER TABLE scholarships ADD COLUMN {column_sql}")
+        else:
+            statements.append(f"ALTER TABLE scholarships ADD COLUMN IF NOT EXISTS {column_sql}")
+    return statements
 
 
+def detect_duplicate_legacy_ids(target: Any) -> list[dict[str, Any]]:
+    """Return non-null legacy_id values that occur more than once.
+
+    The check is read-only and never modifies scholarship records. It accepts
+    either an Engine or a Connection.
+    """
+    if isinstance(target, Connection):
+        conn = target
+        close = False
+    else:
+        conn = target.connect()
+        close = True
+    try:
+        if not conn.engine.dialect.has_table(conn, "scholarships"):
+            return []
+        rows = conn.execute(text(
+            "SELECT legacy_id, COUNT(*) AS duplicate_count "
+            "FROM scholarships WHERE legacy_id IS NOT NULL "
+            "GROUP BY legacy_id HAVING COUNT(*) > 1 "
+            "ORDER BY legacy_id"
+        )).fetchall()
+        return [{"legacy_id": row[0], "count": int(row[1])} for row in rows]
+    finally:
+        if close:
+            conn.close()
+
+
+# Backwards/alternate names used by tests and operators.
+check_duplicate_legacy_ids = detect_duplicate_legacy_ids
+find_duplicate_legacy_ids = detect_duplicate_legacy_ids
+get_duplicate_legacy_ids = detect_duplicate_legacy_ids
 def check_existing_image_reviews(engine: Engine) -> dict[str, Any]:
     """Inspect image_reviews table existence and indexes."""
     inspector = inspect(engine)
@@ -876,6 +934,7 @@ def dry_run(engine: Engine) -> dict[str, Any]:
         "missing_scholarship_columns": missing_scholarship_columns,
         "scholarship_column_statements": scholarship_column_stmts,
         "scholarship_unique_index_statements": scholarship_unique_index_stmts,
+        "duplicate_legacy_ids": detect_duplicate_legacy_ids(engine),
         "image_reviews": image_reviews_info,
         "missing_image_reviews_indexes": [idx.split(" ON ")[0] for idx in IMAGE_REVIEWS_INDEXES if idx.split(" ON ")[0] not in image_reviews_info["indexes"]],
         "image_reviews_create_statements": image_reviews_create_stmts,
@@ -891,13 +950,16 @@ def dry_run(engine: Engine) -> dict[str, Any]:
 
 
 
-def apply_migration(engine: Engine, report: dict[str, Any]) -> dict[str, Any]:
+def apply_migration(engine: Engine, report: dict[str, Any] | None = None) -> dict[str, Any]:
     """Apply the migration with full transactional validation.
 
-    All DDL and validation happen in a SINGLE transaction.
-    If validation fails, the entire transaction rolls back.
+    The reviewed dry-run report is intentionally not trusted as an execution plan.
+    After acquiring the migration lock, the schema is re-inspected and a fresh
+    plan is computed from the current database state. Only objects that are still
+    missing are applied, and validation runs in the same transaction.
     """
     dialect = "postgresql" if engine.dialect.name == "postgresql" else "sqlite"
+    is_sqlite = dialect == "sqlite"
 
     # PRE-APPLY SAFETY GATE: Verify production database identity immediately before mutation.
     db_info = verify_production_database(engine)
@@ -911,39 +973,31 @@ def apply_migration(engine: Engine, report: dict[str, Any]) -> dict[str, Any]:
             raise RuntimeError(f"Backup/PITR gate failed: {error_msg}")
         print(f"[INFO] Backup/PITR verification passed: {backup_status['details'].get('evidence_ref', 'unknown')}")
 
-    # Build the reviewed plan from the dry-run report when available, otherwise
-    # recompute it from the live schema. This keeps apply aligned with dry-run
-    # while remaining safe if a stale report is supplied.
-    missing_tables = report.get("missing_tables")
-    create_stmts = report.get("create_statements")
-    index_stmts = report.get("index_statements")
-    scholarship_column_stmts = report.get("scholarship_column_statements")
-    scholarship_unique_index_stmts = report.get("scholarship_unique_index_statements")
-    image_reviews_create_stmts = report.get("image_reviews_create_statements")
-    image_reviews_index_stmts = report.get("image_reviews_index_statements")
-    additional_index_stmts = report.get("additional_index_statements")
+    applied = {"tables_created": [], "indexes_created": [], "columns_added": [], "errors": []}
+    validation = None
 
-    if missing_tables is None:
+    def recompute_plan() -> tuple[list[str], list[str], list[str], list[str], list[str], list[str], list[str]]:
         table_info = check_existing_supervisor_tables(engine)
         missing_tables = [t for t, info in table_info["tables"].items() if not info["exists"]]
-    if create_stmts is None:
         create_stmts = generate_create_statements(dialect, missing_tables)
-    if index_stmts is None:
-        table_info = check_existing_supervisor_tables(engine)
         index_stmts = generate_index_statements(engine, missing_tables, table_info)
-    if scholarship_column_stmts is None:
-        missing_scholarship_columns = [name for name, present in check_existing_scholarship_columns(engine).items() if not present]
-        scholarship_column_stmts = generate_scholarship_column_statements(missing_scholarship_columns)
-    if scholarship_unique_index_stmts is None:
+
+        scholarship_columns = check_existing_scholarship_columns(engine)
+        missing_scholarship_columns = [name for name, present in scholarship_columns.items() if not present]
+        scholarship_column_stmts = generate_scholarship_column_statements(missing_scholarship_columns, dialect)
+
         inspector = inspect(engine)
         existing_scholarship_indexes = {i["name"] for i in inspector.get_indexes("scholarships")} if inspector.has_table("scholarships") else set()
-        scholarship_unique_index_stmts = [stmt for stmt in SCHOLARSHIP_UNIQUE_INDEXES if stmt.split("IF NOT EXISTS ")[1].split(" ON ")[0] not in existing_scholarship_indexes]
-    if image_reviews_create_stmts is None or image_reviews_index_stmts is None:
+        scholarship_unique_index_stmts = [
+            stmt for stmt in SCHOLARSHIP_UNIQUE_INDEXES
+            if stmt.split("IF NOT EXISTS ")[1].split(" ON ")[0] not in existing_scholarship_indexes
+        ]
+
         ir_info = check_existing_image_reviews(engine)
         image_reviews_create_stmts, image_reviews_index_stmts = generate_image_reviews_statements(
             dialect, ir_info["exists"], ir_info["indexes"]
         )
-    if additional_index_stmts is None:
+
         inspector = inspect(engine)
         additional_index_stmts = []
         for stmt in ADDITIONAL_INDEXES:
@@ -955,89 +1009,157 @@ def apply_migration(engine: Engine, report: dict[str, Any]) -> dict[str, Any]:
             if idx_name not in existing_indexes:
                 additional_index_stmts.append(stmt)
 
-    applied = {"tables_created": [], "indexes_created": [], "columns_added": [], "errors": []}
-    validation = None
+        return (
+            create_stmts,
+            index_stmts,
+            scholarship_column_stmts,
+            scholarship_unique_index_stmts,
+            image_reviews_create_stmts,
+            image_reviews_index_stmts,
+            additional_index_stmts,
+        )
 
-    # Use a single transaction for all DDL AND validation.
-    if dialect == "sqlite":
-        with engine.connect() as conn:
-            trans = conn.begin()
+    if is_sqlite:
+        conn = engine.connect().execution_options(isolation_level="AUTOCOMMIT")
+        try:
+            conn.execute(text("BEGIN IMMEDIATE"))
             try:
+                (
+                    create_stmts,
+                    index_stmts,
+                    scholarship_column_stmts,
+                    scholarship_unique_index_stmts,
+                    image_reviews_create_stmts,
+                    image_reviews_index_stmts,
+                    additional_index_stmts,
+                ) = recompute_plan()
+
                 for stmt in create_stmts:
-                    try:
-                        conn.execute(text(stmt))
-                        table_name = stmt.split()[2]
-                        applied["tables_created"].append(table_name)
-                        print(f"[APPLIED] CREATE TABLE {table_name}")
-                    except Exception as e:
-                        applied["errors"].append({"statement": stmt, "error": str(e)})
-                        print(f"[ERROR] CREATE TABLE failed: {e}")
-                        raise
+                    conn.execute(text(stmt))
+                    stmt_parts = stmt.split()
+                    if len(stmt_parts) > 5 and stmt_parts[2].upper() == "IF" and stmt_parts[3].upper() == "NOT" and stmt_parts[4].upper() == "EXISTS":
+                        table_name = stmt_parts[5]
+                    else:
+                        table_name = stmt_parts[2]
+                    applied["tables_created"].append(table_name)
+                    print(f"[APPLIED] CREATE TABLE {table_name}")
 
                 for stmt in index_stmts:
-                    try:
-                        conn.execute(text(stmt))
-                        applied["indexes_created"].append(stmt)
-                        print(f"[APPLIED] {stmt}")
-                    except Exception as e:
-                        applied["errors"].append({"statement": stmt, "error": str(e)})
-                        print(f"[ERROR] CREATE INDEX failed: {e}")
-                        raise
+                    conn.execute(text(stmt))
+                    applied["indexes_created"].append(stmt)
+                    print(f"[APPLIED] {stmt}")
 
                 for stmt in scholarship_column_stmts:
-                    try:
-                        conn.execute(text(stmt))
-                        applied["columns_added"].append(stmt)
-                        print(f"[APPLIED] {stmt}")
-                    except Exception as e:
-                        applied["errors"].append({"statement": stmt, "error": str(e)})
-                        print(f"[ERROR] ADD COLUMN failed: {e}")
-                        raise
+                    conn.execute(text(stmt))
+                    applied["columns_added"].append(stmt)
+                    print(f"[APPLIED] {stmt}")
+
+                duplicates = detect_duplicate_legacy_ids(conn)
+                if duplicates:
+                    detail = "; ".join(f"{row['legacy_id']} ({row['count']} rows)" for row in duplicates)
+                    raise RuntimeError(f"Duplicate non-null legacy_id values prevent unique index creation: {detail}")
 
                 for stmt in scholarship_unique_index_stmts:
-                    try:
-                        conn.execute(text(stmt))
-                        applied["indexes_created"].append(stmt)
-                        print(f"[APPLIED] {stmt}")
-                    except Exception as e:
-                        applied["errors"].append({"statement": stmt, "error": str(e)})
-                        print(f"[ERROR] CREATE INDEX failed: {e}")
-                        raise
+                    conn.execute(text(stmt))
+                    applied["indexes_created"].append(stmt)
+                    print(f"[APPLIED] {stmt}")
 
                 for stmt in image_reviews_create_stmts:
-                    try:
-                        conn.execute(text(stmt))
-                        applied["tables_created"].append("image_reviews")
-                        print(f"[APPLIED] {stmt}")
-                    except Exception as e:
-                        applied["errors"].append({"statement": stmt, "error": str(e)})
-                        print(f"[ERROR] CREATE TABLE failed: {e}")
-                        raise
+                    conn.execute(text(stmt))
+                    applied["tables_created"].append("image_reviews")
+                    print(f"[APPLIED] {stmt}")
                 for stmt in image_reviews_index_stmts:
-                    try:
-                        conn.execute(text(stmt))
-                        applied["indexes_created"].append(stmt)
-                        print(f"[APPLIED] {stmt}")
-                    except Exception as e:
-                        applied["errors"].append({"statement": stmt, "error": str(e)})
-                        print(f"[ERROR] CREATE INDEX failed: {e}")
-                        raise
+                    conn.execute(text(stmt))
+                    applied["indexes_created"].append(stmt)
+                    print(f"[APPLIED] {stmt}")
 
                 for stmt in additional_index_stmts:
-                    try:
-                        conn.execute(text(stmt))
-                        applied["indexes_created"].append(stmt)
-                        print(f"[APPLIED] {stmt}")
-                    except Exception as e:
-                        applied["errors"].append({"statement": stmt, "error": str(e)})
-                        print(f"[ERROR] CREATE INDEX failed: {e}")
-                        raise
+                    conn.execute(text(stmt))
+                    applied["indexes_created"].append(stmt)
+                    print(f"[APPLIED] {stmt}")
 
                 validation = validate_schema_with_connection(conn)
                 if not validation.get("valid", False):
                     error_msg = "SCHEMA VALIDATION FAILED: " + json.dumps(
                         {k: v for k, v in validation.items() if k != "table_details"},
-                        indent=2
+                        indent=2,
+                    )
+                    print(f"[ERROR] {error_msg}", file=sys.stderr)
+                    raise RuntimeError(error_msg)
+
+                conn.execute(text("COMMIT"))
+            except Exception:
+                try:
+                    conn.execute(text("ROLLBACK"))
+                except Exception:
+                    pass
+                raise
+        finally:
+            conn.close()
+    else:
+            conn = engine.connect()
+            trans = conn.begin()
+            try:
+                conn.execute(text("SELECT pg_advisory_xact_lock(991001)"))
+                (
+                    create_stmts,
+                    index_stmts,
+                    scholarship_column_stmts,
+                    scholarship_unique_index_stmts,
+                    image_reviews_create_stmts,
+                    image_reviews_index_stmts,
+                    additional_index_stmts,
+                ) = recompute_plan()
+
+                for stmt in create_stmts:
+                    conn.execute(text(stmt))
+                    stmt_parts = stmt.split()
+                    if len(stmt_parts) > 5 and stmt_parts[2].upper() == "IF" and stmt_parts[3].upper() == "NOT" and stmt_parts[4].upper() == "EXISTS":
+                        table_name = stmt_parts[5]
+                    else:
+                        table_name = stmt_parts[2]
+                    applied["tables_created"].append(table_name)
+                    print(f"[APPLIED] CREATE TABLE {table_name}")
+
+                for stmt in index_stmts:
+                    conn.execute(text(stmt))
+                    applied["indexes_created"].append(stmt)
+                    print(f"[APPLIED] {stmt}")
+
+                for stmt in scholarship_column_stmts:
+                    conn.execute(text(stmt))
+                    applied["columns_added"].append(stmt)
+                    print(f"[APPLIED] {stmt}")
+
+                duplicates = detect_duplicate_legacy_ids(conn)
+                if duplicates:
+                    detail = "; ".join(f"{row['legacy_id']} ({row['count']} rows)" for row in duplicates)
+                    raise RuntimeError(f"Duplicate non-null legacy_id values prevent unique index creation: {detail}")
+
+                for stmt in scholarship_unique_index_stmts:
+                    conn.execute(text(stmt))
+                    applied["indexes_created"].append(stmt)
+                    print(f"[APPLIED] {stmt}")
+
+                for stmt in image_reviews_create_stmts:
+                    conn.execute(text(stmt))
+                    applied["tables_created"].append("image_reviews")
+                    print(f"[APPLIED] {stmt}")
+                for stmt in image_reviews_index_stmts:
+                    conn.execute(text(stmt))
+                    applied["indexes_created"].append(stmt)
+                    print(f"[APPLIED] {stmt}")
+
+                for stmt in additional_index_stmts:
+                    conn.execute(text(stmt))
+                    applied["indexes_created"].append(stmt)
+                    print(f"[APPLIED] {stmt}")
+
+                validation = validate_schema_with_connection(conn)
+                if not validation.get("valid", False):
+                    error_msg = "SCHEMA VALIDATION FAILED: " + json.dumps(
+                        {k: v for k, v in validation.items() if k != "table_details"},
+                        indent=2,
                     )
                     print(f"[ERROR] {error_msg}", file=sys.stderr)
                     raise RuntimeError(error_msg)
@@ -1047,86 +1169,8 @@ def apply_migration(engine: Engine, report: dict[str, Any]) -> dict[str, Any]:
                 if trans.is_active:
                     trans.rollback()
                 raise
-    else:
-        with engine.begin() as conn:
-            for stmt in create_stmts:
-                try:
-                    conn.execute(text(stmt))
-                    table_name = stmt.split()[2]
-                    applied["tables_created"].append(table_name)
-                    print(f"[APPLIED] CREATE TABLE {table_name}")
-                except Exception as e:
-                    applied["errors"].append({"statement": stmt, "error": str(e)})
-                    print(f"[ERROR] CREATE TABLE failed: {e}")
-                    raise
-
-            for stmt in index_stmts:
-                try:
-                    conn.execute(text(stmt))
-                    applied["indexes_created"].append(stmt)
-                    print(f"[APPLIED] {stmt}")
-                except Exception as e:
-                    applied["errors"].append({"statement": stmt, "error": str(e)})
-                    print(f"[ERROR] CREATE INDEX failed: {e}")
-                    raise
-
-            for stmt in scholarship_column_stmts:
-                try:
-                    conn.execute(text(stmt))
-                    applied["columns_added"].append(stmt)
-                    print(f"[APPLIED] {stmt}")
-                except Exception as e:
-                    applied["errors"].append({"statement": stmt, "error": str(e)})
-                    print(f"[ERROR] ADD COLUMN failed: {e}")
-                    raise
-
-            for stmt in scholarship_unique_index_stmts:
-                try:
-                    conn.execute(text(stmt))
-                    applied["indexes_created"].append(stmt)
-                    print(f"[APPLIED] {stmt}")
-                except Exception as e:
-                    applied["errors"].append({"statement": stmt, "error": str(e)})
-                    print(f"[ERROR] CREATE INDEX failed: {e}")
-                    raise
-
-            for stmt in image_reviews_create_stmts:
-                try:
-                    conn.execute(text(stmt))
-                    applied["tables_created"].append("image_reviews")
-                    print(f"[APPLIED] {stmt}")
-                except Exception as e:
-                    applied["errors"].append({"statement": stmt, "error": str(e)})
-                    print(f"[ERROR] CREATE TABLE failed: {e}")
-                    raise
-            for stmt in image_reviews_index_stmts:
-                try:
-                    conn.execute(text(stmt))
-                    applied["indexes_created"].append(stmt)
-                    print(f"[APPLIED] {stmt}")
-                except Exception as e:
-                    applied["errors"].append({"statement": stmt, "error": str(e)})
-                    print(f"[ERROR] CREATE INDEX failed: {e}")
-                    raise
-
-            for stmt in additional_index_stmts:
-                try:
-                    conn.execute(text(stmt))
-                    applied["indexes_created"].append(stmt)
-                    print(f"[APPLIED] {stmt}")
-                except Exception as e:
-                    applied["errors"].append({"statement": stmt, "error": str(e)})
-                    print(f"[ERROR] CREATE INDEX failed: {e}")
-                    raise
-
-            validation = validate_schema_with_connection(conn)
-            if not validation.get("valid", False):
-                error_msg = "SCHEMA VALIDATION FAILED: " + json.dumps(
-                    {k: v for k, v in validation.items() if k != "table_details"},
-                    indent=2
-                )
-                print(f"[ERROR] {error_msg}", file=sys.stderr)
-                raise RuntimeError(error_msg)
+            finally:
+                conn.close()
 
     return {
         "mode": "apply",
@@ -1821,7 +1865,87 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
     if not scholarship_columns_ok:
         validation["valid"] = False
 
-    # Additional indexes validation (scholarships, maintenance_runs)
+    # Canonical required unique index on scholarships.legacy_id. This is validated
+    # as an index definition, not inferred from column-level UNIQUE metadata.
+    legacy_id_index_name = "uq_scholarships_legacy_id"
+    legacy_id_index_result = {"status": "MISSING", "required": True}
+    legacy_id_duplicates = []
+    legacy_id_index_ok = False
+    if not inspector.has_table("scholarships"):
+        legacy_id_index_result = {"status": "TABLE_MISSING", "required": True}
+    else:
+        try:
+            legacy_id_duplicates = detect_duplicate_legacy_ids(conn)
+        except Exception:
+            legacy_id_duplicates = []
+        actual_legacy_indexes = get_all_indexes_with_pragma(conn, "scholarships")
+        matching = [idx for idx in actual_legacy_indexes if idx.get("name") == legacy_id_index_name]
+        if not matching:
+            legacy_id_index_result = {
+                "status": "MISSING",
+                "required": True,
+                "expected_name": legacy_id_index_name,
+                "expected_unique": True,
+                "expected_columns": ["legacy_id"],
+                "expected_partial": False,
+            }
+        else:
+            actual = matching[0]
+            actual_cols = list(actual.get("column_names") or [])
+            actual_unique = bool(actual.get("unique", False))
+            actual_predicate = _normalize_index_predicate(actual.get("predicate"))
+            actual_predicate_known = bool(actual.get("predicate_known", True))
+            checks = {
+                "exists": True,
+                "unique": actual_unique,
+                "columns_exact": actual_cols == ["legacy_id"],
+                "not_partial": actual_predicate is None,
+                "predicate_known": actual_predicate_known,
+                "not_composite": len(actual_cols) == 1,
+            }
+            if all(checks.values()):
+                legacy_id_index_result = {
+                    "status": "OK",
+                    "required": True,
+                    "name": legacy_id_index_name,
+                    "unique": actual_unique,
+                    "columns": actual_cols,
+                    "partial": False,
+                }
+                legacy_id_index_ok = True
+            else:
+                legacy_id_index_result = {
+                    "status": "MISMATCH",
+                    "required": True,
+                    "expected_name": legacy_id_index_name,
+                    "actual_name": actual.get("name"),
+                    "checks": checks,
+                    "actual_unique": actual_unique,
+                    "actual_columns": actual_cols,
+                    "actual_predicate": actual_predicate,
+                    "actual_predicate_known": actual_predicate_known,
+                }
+    if legacy_id_duplicates:
+        legacy_id_index_result = dict(legacy_id_index_result)
+        legacy_id_index_result["duplicate_legacy_ids"] = legacy_id_duplicates
+        legacy_id_index_ok = False
+    if not legacy_id_index_ok:
+        validation["valid"] = False
+
+    validation["legacy_id_unique_index_validation"] = {
+        "index_name": legacy_id_index_name,
+        "required": True,
+        "result": legacy_id_index_result,
+        "all_ok": legacy_id_index_ok,
+        "duplicate_legacy_ids": legacy_id_duplicates,
+    }
+    validation["scholarship_unique_index_validation"] = validation["legacy_id_unique_index_validation"]
+    validation["unique_index_validation"] = validation["legacy_id_unique_index_validation"]
+
+    # Additional indexes validation (scholarships, maintenance_runs).
+    # Both parent tables are mandatory production tables. A missing parent table
+    # or missing/incorrect index is a validation failure; never silently skip a
+    # required object.
     additional_index_results = {}
     additional_indexes_ok = True
     for stmt in ADDITIONAL_INDEXES:
@@ -1829,12 +1953,17 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
         table_name = stmt.split(" ON ")[1].split(" (")[0]
         expected_cols = [c.strip() for c in stmt.split("(")[1].rstrip(")").split(",")]
         if not inspector.has_table(table_name):
-            additional_index_results[idx_name] = {"status": "TABLE_MISSING_SKIPPED"}
+            additional_index_results[idx_name] = {
+                "status": "TABLE_MISSING",
+                "table": table_name,
+                "required": True,
+            }
+            additional_indexes_ok = False
             continue
         actual_indexes = {i["name"]: i for i in inspector.get_indexes(table_name)}
         actual = actual_indexes.get(idx_name)
         if actual is None:
-            additional_index_results[idx_name] = {"status": "MISSING"}
+            additional_index_results[idx_name] = {"status": "MISSING", "required": True}
             additional_indexes_ok = False
             continue
         actual_cols = actual.get("column_names", [])
@@ -1849,10 +1978,11 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
                 "expected_unique": expected_unique,
                 "actual_unique": actual_unique,
                 "actual_partial": actual_partial,
+                "required": True,
             }
             additional_indexes_ok = False
         else:
-            additional_index_results[idx_name] = {"status": "OK"}
+            additional_index_results[idx_name] = {"status": "OK", "required": True}
 
     validation["additional_index_validation"] = {
         "expected_count": len(ADDITIONAL_INDEXES),

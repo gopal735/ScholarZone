@@ -1,11 +1,19 @@
 # ScholarZone Production Schema Migration Runbook
 
 ## Current missing objects
-- `public.official_contacts`
-- `scholarships.legacy_id`
-- `scholarships.image_kind` and the other 28 scholarship columns in `backend/schema_manifest.json`
-- `image_reviews` and its two indexes
-- Required indexes on `official_contacts`
+Production inventory: NOT VERIFIED.
+
+This runbook does not assert exact observed production object counts. Any
+missing/incorrect object list must come from a fresh read-only catalog
+inspection and comparison with `backend/schema_manifest.json`.
+
+## Status values emitted by the validator
+- `OK`
+- `MISSING`
+- `MISMATCH`
+- `UNEXPECTED`
+- `TABLE_MISSING` for a required parent table that is absent
+- `TABLE_MISSING_SKIPPED` only for an explicitly optional object contract
 
 ## Database target verification
 1. Confirm the Vercel production deployment SHA.
@@ -34,7 +42,18 @@ python backend/migrate_schema.py --dry-run --report
 ```
 
 ## Review
-Inspect the generated JSON report for missing tables, columns, indexes, and foreign keys. Stop if any object is `PRESENT_BUT_INCORRECT`.
+Inspect the generated JSON report. Stop if any required object is `MISSING`,
+`MISMATCH`, `UNEXPECTED`, or `TABLE_MISSING`. Do not treat inferred counts as
+exact observations.
+
+## Expected vs observed schema
+A. Expected schema: derived from `backend/schema_manifest.json`.
+B. Observed production schema: requires fresh read-only catalog inspection.
+C. Missing objects: derived by comparing A and B.
+D. Incorrect objects: derived from exact definition mismatches.
+
+If no verified read-only production catalog query was performed, production
+inventory remains NOT VERIFIED.
 
 ## Apply
 Only after owner authorization:

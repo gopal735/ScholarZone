@@ -82,7 +82,7 @@ def sqlite_engine():
             CREATE TABLE scholarships (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 title VARCHAR(255) NOT NULL,
-                legacy_id INTEGER UNIQUE,
+                legacy_id INTEGER,
                 image_url VARCHAR(2048),
                 image_source_url VARCHAR(2048),
                 image_source_type VARCHAR(32),
@@ -141,8 +141,16 @@ def sqlite_engine():
         """))
         conn.execute(text("CREATE INDEX IF NOT EXISTS ix_image_reviews_scholarship_decision ON image_reviews (scholarship_id, decision)"))
         conn.execute(text("CREATE INDEX IF NOT EXISTS ix_image_reviews_created_at ON image_reviews (created_at)"))
+        conn.execute(text("""
+            CREATE TABLE IF NOT EXISTS maintenance_runs (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                slot_id VARCHAR(255)
+            )
+        """))
+        conn.execute(text("CREATE INDEX IF NOT EXISTS ix_maintenance_runs_slot_id ON maintenance_runs (slot_id)"))
         conn.execute(text("CREATE INDEX IF NOT EXISTS ix_scholarships_is_archived ON scholarships (is_archived)"))
         conn.execute(text("CREATE INDEX IF NOT EXISTS ix_scholarships_is_archived ON scholarships (is_archived)"))
+        conn.execute(text("CREATE UNIQUE INDEX IF NOT EXISTS uq_scholarships_legacy_id ON scholarships (legacy_id)"))
 
     yield engine
 
@@ -593,16 +601,45 @@ class TestBackupPITRGate:
 class TestTransactionRollback:
     """Tests for transactional rollback on validation failure."""
 
-    def test_apply_validation_failure_rolls_back_transaction(self, sqlite_engine):
-        """Validation failure should roll back all DDL."""
-        from migrate_schema import apply_migration, dry_run
+def test_apply_validation_failure_rolls_back_transaction(sqlite_engine):
+    """Validation failure after DDL must roll back every created object."""
+    from migrate_schema import apply_migration, dry_run, validate_schema_with_connection
+    from sqlalchemy import inspect, text
+    import migrate_schema
 
-        # Create a dry run report
-        report = dry_run(sqlite_engine)
+    with sqlite_engine.begin() as conn:
+        conn.execute(text("INSERT INTO scholarships (title) VALUES ('existing-row')"))
 
-        # The dry run should show what would be applied
-        assert "create_statements" in report
-        assert "index_statements" in report
+    inspector = inspect(sqlite_engine)
+    initial_tables = set(inspector.get_table_names())
+    initial_columns = {c["name"] for c in inspector.get_columns("scholarships")}
+    initial_indexes = {i["name"] for i in inspector.get_indexes("scholarships")}
+    initial_count = None
+    with sqlite_engine.connect() as conn:
+        initial_count = conn.execute(text("SELECT COUNT(*) FROM scholarships")).scalar()
+
+    original_validate = migrate_schema.validate_schema_with_connection
+    migrate_schema.validate_schema_with_connection = lambda conn: {"valid": False, "reason": "injected validation failure"}
+    try:
+        with patch.dict(os.environ, {
+            "SCHOLARZONE_BACKUP_VERIFIED": "true",
+            "SCHOLARZONE_RESTORE_TEST_DATE": datetime.now(timezone.utc).date().isoformat(),
+            "SCHOLARZONE_BACKUP_EVIDENCE_REF": "test-backup",
+        }):
+            report = dry_run(sqlite_engine)
+            with pytest.raises(RuntimeError, match="SCHEMA VALIDATION FAILED|injected"):
+                apply_migration(sqlite_engine, report)
+    finally:
+        migrate_schema.validate_schema_with_connection = original_validate
+
+    inspector = inspect(sqlite_engine)
+    assert set(inspector.get_table_names()) == initial_tables
+    assert {c["name"] for c in inspector.get_columns("scholarships")} == initial_columns
+    assert {i["name"] for i in inspector.get_indexes("scholarships")} == initial_indexes
+    final_count = None
+    with sqlite_engine.connect() as conn:
+        final_count = conn.execute(text("SELECT COUNT(*) FROM scholarships")).scalar()
+    assert final_count == initial_count
 
     def test_idempotent_second_apply(self, sqlite_engine_with_supervisor):
         """Second apply should be idempotent (no-op)."""
@@ -1008,19 +1045,45 @@ def test_sqlite_partial_index_predicate_preserved_and_indeterminate_rejected(sql
             migrate_schema._extract_sqlite_index_predicate = original
 
 
-def test_failed_migration_rolls_back_all_created_objects():
-    """If validation/apply fails after DDL, the transaction must remove all earlier objects.
+def test_failed_migration_rolls_back_all_created_objects(sqlite_engine):
+    """A deterministic injected failure after DDL must leave no created objects."""
+    from migrate_schema import apply_migration, dry_run
+    from sqlalchemy import inspect, text
+    import migrate_schema
 
-    This test is verified to work in isolation (see manual verification).
-    The pytest fixture environment has fixture contamination issues that prevent
-    clean rollback verification in the test suite, but the implementation
-    uses explicit transaction management with rollback on validation failure.
-    """
-    # Verified manually - rollback works in isolation with fresh engine
-    # The existing test_apply_validation_failure_rolls_back_transaction covers
-    # the transactional behavior. The apply_migration function uses explicit
-    # transaction management with rollback on validation failure.
-    assert True
+    with sqlite_engine.begin() as conn:
+        conn.execute(text("INSERT INTO scholarships (title) VALUES ('existing-row')"))
+
+    inspector = inspect(sqlite_engine)
+    initial_tables = set(inspector.get_table_names())
+    initial_columns = {c["name"] for c in inspector.get_columns("scholarships")}
+    initial_indexes = {i["name"] for i in inspector.get_indexes("scholarships")}
+    initial_count = None
+    with sqlite_engine.connect() as conn:
+        initial_count = conn.execute(text("SELECT COUNT(*) FROM scholarships")).scalar()
+
+    original_validate = migrate_schema.validate_schema_with_connection
+    migrate_schema.validate_schema_with_connection = lambda conn: {"valid": False, "reason": "injected failure"}
+    try:
+        with patch.dict(os.environ, {
+            "SCHOLARZONE_BACKUP_VERIFIED": "true",
+            "SCHOLARZONE_RESTORE_TEST_DATE": datetime.now(timezone.utc).date().isoformat(),
+            "SCHOLARZONE_BACKUP_EVIDENCE_REF": "test-backup",
+        }):
+            report = dry_run(sqlite_engine)
+            with pytest.raises(RuntimeError):
+                apply_migration(sqlite_engine, report)
+    finally:
+        migrate_schema.validate_schema_with_connection = original_validate
+
+    inspector = inspect(sqlite_engine)
+    assert set(inspector.get_table_names()) == initial_tables
+    assert {c["name"] for c in inspector.get_columns("scholarships")} == initial_columns
+    assert {i["name"] for i in inspector.get_indexes("scholarships")} == initial_indexes
+    final_count = None
+    with sqlite_engine.connect() as conn:
+        final_count = conn.execute(text("SELECT COUNT(*) FROM scholarships")).scalar()
+    assert final_count == initial_count
 
 
 def test_idempotent_reapplication_succeeds_on_clean_database(sqlite_engine):
