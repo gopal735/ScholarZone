@@ -1,26 +1,28 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { authService } from '../services/authService'
 import { AuthContext } from './authContext'
 
 export function AuthProvider({ children }) {
   const [status, setStatus] = useState('checking')
   const [user, setUser] = useState(null)
+  const generationRef = useRef(0)
 
   useEffect(() => {
     let isActive = true
+    const gen = generationRef.current
 
     async function checkSession() {
       try {
         const session = await authService.checkSession()
 
-        if (!isActive) {
+        if (!isActive || gen !== generationRef.current) {
           return
         }
 
         setUser(session?.user ?? null)
         setStatus(session?.user ? 'authenticated' : 'unauthenticated')
       } catch {
-        if (isActive) {
+        if (isActive && gen === generationRef.current) {
           setUser(null)
           setStatus('unauthenticated')
         }
@@ -35,7 +37,9 @@ export function AuthProvider({ children }) {
   }, [])
 
   async function login(credentials) {
+    const gen = ++generationRef.current
     const session = await authService.login(credentials)
+    if (gen !== generationRef.current) return session
     setUser(session?.user ?? null)
     setStatus(session?.user ? 'authenticated' : 'unauthenticated')
     return session
@@ -46,20 +50,28 @@ export function AuthProvider({ children }) {
   }
 
   async function logout() {
+    const gen = ++generationRef.current
     await authService.logout()
+    if (gen !== generationRef.current) return
     setUser(null)
     setStatus('unauthenticated')
   }
 
   async function refreshSession() {
+    const gen = generationRef.current
     try {
       const session = await authService.checkSession()
+      if (gen !== generationRef.current) {
+        return session
+      }
       setUser(session?.user ?? null)
       setStatus(session?.user ? 'authenticated' : 'unauthenticated')
       return session
     } catch {
-      setUser(null)
-      setStatus('unauthenticated')
+      if (gen === generationRef.current) {
+        setUser(null)
+        setStatus('unauthenticated')
+      }
       return { user: null }
     }
   }

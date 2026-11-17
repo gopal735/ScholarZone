@@ -341,9 +341,14 @@ export default function UnifiedAIPage() {
   const [mentorOverview, setMentorOverview] = useState(null)
   const messagesEndRef = useRef(null)
   const inputRef = useRef(null)
+  const initGenerationRef = useRef(0)
 
   const initializeAI = useCallback(async () => {
+    const gen = ++initGenerationRef.current
+    setMentorOverview(null)
+
     const status = await getAIStatus({ isAuthenticated: auth.status === 'authenticated' })
+    if (gen !== initGenerationRef.current) return
     setAiStatus(status)
     setLocalAIEnabledState(isLocalAIEnabled())
 
@@ -351,12 +356,15 @@ export default function UnifiedAIPage() {
       try {
         const { fetchMentorOverview } = await import('../services/mentorService')
         const overview = await fetchMentorOverview()
+        if (gen !== initGenerationRef.current) return
         setMentorOverview(overview)
       } catch (err) {
         void err
+        if (gen !== initGenerationRef.current) return
         setMentorOverview(null)
       }
     } else {
+      if (gen !== initGenerationRef.current) return
       setMentorOverview(null)
     }
   }, [auth.status])
@@ -501,7 +509,9 @@ export default function UnifiedAIPage() {
   const handleLocalAIToggle = (enabled) => {
     setLocalAIEnabled(enabled)
     setLocalAIEnabledState(enabled)
-    getAIStatus().then(setAiStatus)
+    getAIStatus({ isAuthenticated: auth.status === 'authenticated' }).then((status) => {
+      setAiStatus(status)
+    })
   }
 
   const getModeBadge = () => {

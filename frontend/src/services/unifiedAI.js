@@ -50,11 +50,16 @@ export async function askUnifiedAI(message, options = {}) {
       return await askMentor(message, { signal })
     } catch (error) {
       if (error instanceof MentorUnauthenticatedError) {
-        const grounded = await askAIAssistant({
-          question: message,
-          context: { ...context, conversationHistory },
-        })
-        return { ...grounded, authExpired: true }
+        try {
+          const grounded = await askAIAssistant({
+            question: message,
+            context: { ...context, conversationHistory },
+          })
+          return { ...grounded, authExpired: true }
+        } catch (fallbackError) {
+          void fallbackError
+          throw error
+        }
       }
       if (error instanceof MentorRateLimitedError) throw error
       if (error instanceof MentorValidationError) throw error
