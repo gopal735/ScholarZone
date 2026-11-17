@@ -312,7 +312,12 @@ def get_production_engine() -> Engine:
     if not is_test:
         expected_db_id = os.environ.get("SCHOLARZONE_EXPECTED_DB_IDENTIFIER")
         if not expected_db_id:
-            raise RuntimeError("SCHOLARZONE_EXPECTED_DB_IDENTIFIER environment variable must be set for production use")
+            raise RuntimeError(
+                "SCHOLARZONE_EXPECTED_DB_IDENTIFIER environment variable must be set for production use. "
+                "This is a safety gate to prevent accidental migration to the wrong database. "
+                "Set this secret in the GitHub Actions environment (production) to the exact database identifier "
+                "(e.g., the Neon database name). Contact the repository owner to configure this secret."
+            )
 
     # Rewrite postgresql:// to postgresql+psycopg:// for SQLAlchemy 2.0
     if database_url.startswith("postgresql://"):

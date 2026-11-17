@@ -26,7 +26,13 @@ import logging
 from datetime import datetime, timezone
 
 from sqlalchemy import and_, func, select
+from sqlalchemy.exc import ProgrammingError
 from sqlalchemy.orm import Session
+
+try:
+    from psycopg2.errors import UndefinedTable
+except ImportError:
+    UndefinedTable = None
 
 from ..models import Scholarship
 from ..models_supervisor import (
@@ -47,6 +53,13 @@ from .supervisor_status import (
     OfficialContactVerificationStatus,
     PUBLIC_CONTACT_STATUSES,
 )
+
+# Custom exception for missing schema
+class SchemaNotReadyError(Exception):
+    """Raised when a required database table or column is missing."""
+    def __init__(self, missing_object: str):
+        self.missing_object = missing_object
+        super().__init__(f"Required schema object missing: {missing_object}")
 
 logger = logging.getLogger(__name__)
 
@@ -196,21 +209,31 @@ def _load_sources(
 def _load_official_contacts(
     db: Session, scholarship_id: int
 ) -> list[dict]:
-    """Load verified official contacts for a scholarship."""
-    rows = db.execute(
-        select(OfficialContact)
-        .where(
-            and_(
-                OfficialContact.scholarship_id == scholarship_id,
-                OfficialContact.verification_status.in_(PUBLIC_CONTACT_STATUSES),
+    """Load verified official contacts for a scholarship.
+
+    Raises SchemaNotReadyError if the official_contacts table is missing.
+    """
+    try:
+        rows = db.execute(
+            select(OfficialContact)
+            .where(
+                and_(
+                    OfficialContact.scholarship_id == scholarship_id,
+                    OfficialContact.verification_status.in_(PUBLIC_CONTACT_STATUSES),
+                )
             )
-        )
-        .order_by(
-            OfficialContact.verified_at.desc().nullslast(),
-            OfficialContact.retrieved_at.desc(),
-            OfficialContact.id.asc(),
-        )
-    ).scalars()
+            .order_by(
+                OfficialContact.verified_at.desc().nullslast(),
+                OfficialContact.retrieved_at.desc(),
+                OfficialContact.id.asc(),
+            )
+        ).scalars()
+    except ProgrammingError as exc:
+        # Check if the error is due to missing table
+        if UndefinedTable is not None and isinstance(exc.orig, UndefinedTable):
+            raise SchemaNotReadyError("official_contacts") from exc
+        # For other programming errors, re-raise
+        raise
 
     contacts = []
     for row in rows:
