@@ -136,8 +136,11 @@ def _filter_conditions(query: ScholarshipQuery):
     eligible_programme = _normalise_optional_filter(query.eligible_programme)
     programme_type = _normalise_optional_filter(query.programme_type)
 
-    if search:
-        pattern = f"%{_escape_like(search)}%"
+    search_terms = [term for term in search.split() if term] if search else []
+    if not search_terms and search:
+        search_terms = [search]
+    for term in search_terms:
+        pattern = f"%{_escape_like(term)}%"
         conditions.append(
             or_(
                 Scholarship.title.ilike(pattern, escape="\\"),
