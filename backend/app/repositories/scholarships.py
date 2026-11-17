@@ -1,5 +1,7 @@
 """Database queries for scholarship discovery."""
 
+from datetime import date, datetime, timedelta, timezone
+
 from sqlalchemy import String, case, cast, func, or_, select
 from sqlalchemy.orm import Session
 
@@ -165,6 +167,14 @@ def _filter_conditions(query: ScholarshipQuery):
         conditions.append(func.lower(Scholarship.program_type) == programme_type.casefold())
     if query.deadline_month is not None:
         conditions.append(func.extract("month", Scholarship.deadline_date) == query.deadline_month)
+    if query.deadline_within_days is not None:
+        # Calendar-day window relative to current UTC date, inclusive.
+        # Using UTC keeps API/snapshot/frontend window boundaries deterministic.
+        today = datetime.now(timezone.utc).date()
+        cutoff = today + timedelta(days=query.deadline_within_days)
+        conditions.append(Scholarship.deadline_date.is_not(None))
+        conditions.append(Scholarship.deadline_date >= today)
+        conditions.append(Scholarship.deadline_date <= cutoff)
     if query.status is not None:
         if query.status.value == "unknown":
             known = [status.value for status in ScholarshipStatus if status.value != "unknown"]

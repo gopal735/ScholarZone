@@ -28,6 +28,7 @@ from .routers.applications import router as applications_router
 from .routers.mentor import router as mentor_router
 from .routers.supervisors import router as supervisors_router
 from .routers.countries import router as countries_router
+from .routers.ai import router as ai_router
 from .services.application_workspace import WorkspaceError
 from .seed import seed_database
 
@@ -348,6 +349,9 @@ app.include_router(counts_router)
 app.include_router(supervisors_router)
 app.include_router(scholarships_router)
 app.include_router(admin_dashboard_router)
+# Public AI Assistant endpoints. No external provider is required; when
+# unavailable they return 503 so clients use grounded catalogue fallback.
+app.include_router(ai_router)
 # The student dashboard is registered last and behind a session dependency, so
 # it cannot shadow a public route and it resolves the caller from the session
 # cookie rather than from anything the browser sends.

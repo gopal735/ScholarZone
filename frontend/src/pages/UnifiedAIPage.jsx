@@ -441,7 +441,10 @@ export default function UnifiedAIPage() {
         }
       } else if (error?.error) {
         errorMessage = error.error
-        retryable = error.retryable
+        retryable = Boolean(error.retryable)
+      } else if (error?.code === 'UNAVAILABLE' || error?.code === 'TIMEOUT' || error?.code === 'QUOTA_EXCEEDED' || error?.code === 'SERVER_ERROR') {
+        errorMessage = error.error || 'AI service is unavailable. Please try again.'
+        retryable = Boolean(error.retryable)
       }
 
       setMessages(prev => [...prev, {

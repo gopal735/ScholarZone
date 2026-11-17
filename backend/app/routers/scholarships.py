@@ -4,7 +4,6 @@ from datetime import date
 from typing import Annotated
 
 from fastapi import APIRouter, Depends, HTTPException, Path, Query, status
-from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from ..core.admin_auth import require_admin_secret
@@ -39,6 +38,7 @@ def list_scholarships_endpoint(
     eligible_programme: Annotated[str | None, Query(max_length=160)] = None,
     programme_type: Annotated[str | None, Query(max_length=120)] = None,
     deadline_month: Annotated[int | None, Query(ge=1, le=12)] = None,
+    deadline_within_days: Annotated[int | None, Query(ge=1, le=365)] = None,
     listing_status: Annotated[ScholarshipStatus | None, Query(alias="status")] = None,
     sort: ScholarshipSort = ScholarshipSort.DEFAULT,
     page: Annotated[int, Query(ge=1, le=100_000)] = 1,
@@ -56,6 +56,7 @@ def list_scholarships_endpoint(
         eligible_programme=eligible_programme,
         programme_type=programme_type,
         deadline_month=deadline_month,
+        deadline_within_days=deadline_within_days,
         status=listing_status,
         sort=sort,
         page=page,

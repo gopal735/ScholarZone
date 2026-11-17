@@ -63,14 +63,15 @@ export async function askUnifiedAI(message, options = {}) {
     }
   }
 
-  // Use AI Assistant (grounded + optional AI)
+  // Use AI Assistant (grounded + optional AI). It handles remote
+  // unavailability/fallbacks internally and returns grounded answers when needed.
   return askAIAssistant({
     question: message,
     context: {
       ...context,
       conversationHistory,
     },
-  }, { signal })
+  })
 }
 
 /**

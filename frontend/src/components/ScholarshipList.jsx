@@ -236,15 +236,13 @@ export default function ScholarshipList({ items, initialCountry }) {
         }
 
         setApiDirectory(directory)
-        // A snapshot answer is still a fallback, not a live directory. The
-        // service tags it so the visitor is told which of the two they are
-        // looking at: a catalogue that silently changes its provenance is
-        // worse than one that announces it, and the honest label is what
-        // makes the rest of the page (pagination, "verified" counts) make
-        // sense while the API is down.
         setLoadState(directory.fromSnapshot ? 'fallback' : 'success')
       } catch (error) {
         if (controller.signal.aborted || requestId !== requestIdRef.current) {
+          return
+        }
+
+        if (error instanceof DOMException && error.name === 'AbortError') {
           return
         }
 
@@ -258,6 +256,28 @@ export default function ScholarshipList({ items, initialCountry }) {
       controller.abort()
     }
   }, [country, deadlineMonth, degree, funding, fullyFunded, department, eligibleField, eligibleProgramme, programmeType, isDirectory, lifecycleFilter, page, requestVersion, search, sortBy, status])
+
+  useEffect(() => {
+    if (!isDirectory || typeof window === 'undefined') return undefined
+    const syncFromLocation = () => {
+      setSearch(readQueryValue('search', ''))
+      setCountry(readQueryValue('country', initialCountry ?? 'All'))
+      setDegree(readQueryValue('degree'))
+      setFunding(readQueryValue('funding'))
+      setFullyFunded(readQueryValue('fully_funded'))
+      setDepartment(readQueryValue('department'))
+      setEligibleField(readQueryValue('eligible_field'))
+      setEligibleProgramme(readQueryValue('eligible_programme'))
+      setProgrammeType(readQueryValue('programme_type'))
+      setDeadlineMonth(readQueryValue('deadline_month'))
+      setStatus(readQueryValue('status'))
+      setLifecycleFilter(readQueryValue('lifecycle'))
+      setSortBy(readQueryValue('sort', 'recommended'))
+      setPage(Math.max(1, Number(readQueryValue('page', '1')) || 1))
+    }
+    window.addEventListener('popstate', syncFromLocation)
+    return () => window.removeEventListener('popstate', syncFromLocation)
+  }, [initialCountry, isDirectory])
 
   useEffect(() => {
     if (typeof window === 'undefined') return

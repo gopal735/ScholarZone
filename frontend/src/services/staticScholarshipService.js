@@ -342,6 +342,7 @@ export async function fetchScholarshipsFromSnapshot(query = {}) {
     eligible_programme = 'All',
     programme_type = 'All',
     deadline_month = 'All',
+    deadline_within_days = 'All',
     status = 'All',
     lifecycle = 'All',
     sort = 'default',
@@ -387,6 +388,25 @@ export async function fetchScholarshipsFromSnapshot(query = {}) {
   if (deadline_month && deadline_month !== 'All') {
     const targetMonth = Number(deadline_month)
     records = records.filter((record) => getDeadlineMonth(record) === targetMonth)
+  }
+  if (deadline_within_days && deadline_within_days !== 'All') {
+    const days = Number(deadline_within_days)
+    if (Number.isFinite(days) && days > 0) {
+      const now = new Date()
+      const todayUtc = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()))
+      const cutoff = new Date(todayUtc)
+      cutoff.setUTCDate(cutoff.getUTCDate() + days)
+      records = records.filter((record) => {
+        const parsedDeadline = parseDate(record, 'deadline').date
+        if (!parsedDeadline) return false
+        const deadlineUtc = new Date(Date.UTC(
+          parsedDeadline.getUTCFullYear(),
+          parsedDeadline.getUTCMonth(),
+          parsedDeadline.getUTCDate(),
+        ))
+        return deadlineUtc >= todayUtc && deadlineUtc <= cutoff
+      })
+    }
   }
   if (status && status !== 'All') {
     records = records.filter((record) => getStatusKey(record) === status)

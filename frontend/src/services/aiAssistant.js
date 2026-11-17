@@ -1,14 +1,19 @@
 /**
  * AI Assistant Service
- * 
- * Connects to the ScholarZone AI backend endpoint.
- * If no AI backend is configured, falls back to grounded retrieval from local data.
- * 
- * Backend API contract (when AI is enabled):
+ *
+ * Connects to the ScholarZone AI backend endpoint when configured.
+ * Falls back to deterministic, grounded retrieval from the public catalogue
+ * when no remote AI provider is available or when remote requests fail.
+ *
+ * Backend API contract (optional remote AI):
  * POST /api/ai/assistant
- * Body: { question: string, context?: { scholarships?: number[], userProfile?: object } }
- * Response: { answer: string, sources: Array<{ type: 'scholarship'|'general', id: string|number, title: string }>, grounded: boolean }
+ * Body: { question: string, context?: object }
+ * Response: { answer: string, sources: Array<{ type: string, id?: string|number, title: string, url?: string }>, grounded: boolean }
  */
+
+import { fetchScholarships } from './scholarshipService';
+import { fetchScholarshipsFromSnapshot } from './staticScholarshipService';
+import { parseDate } from '../utils/lifecycle';
 
 const AI_ENDPOINT = '/api/ai/assistant';
 
@@ -27,14 +32,15 @@ export function isAIEnabled() {
  */
 export function isLocalAIEnabled() {
   try {
-    return localStorage.getItem('sz-local-ai-enabled') === 'true'
+    return localStorage.getItem('sz-local-ai-enabled') === 'true';
   } catch {
-    return false
+    return false;
   }
 }
 
 /**
  * Check if AI backend is available by calling a health endpoint.
+ * Any non-2xx response (including 503 "not configured") means unavailable.
  */
 export async function checkAIAvailability() {
   try {
@@ -47,50 +53,47 @@ export async function checkAIAvailability() {
 
 /**
  * Send a question to the AI Assistant.
- * Falls back to grounded retrieval if AI is not available.
+ * Falls back to grounded retrieval when remote AI is unavailable/fails.
  */
 export async function askAIAssistant(request) {
-  // If AI is not enabled, use grounded fallback
+  const question = typeof request?.question === 'string' ? request.question : '';
+
   if (!aiEnabled) {
-    return groundedFallback(request.question);
+    return groundedFallback(question);
   }
 
   try {
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
+    const timeoutId = setTimeout(() => controller.abort(), 30000);
 
     const response = await fetch(AI_ENDPOINT, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(request),
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(request || {}),
       signal: controller.signal,
     });
 
     clearTimeout(timeoutId);
 
     if (!response.ok) {
+      // Provider/configuration unavailable or transient remote failures should
+      // not block the user from getting grounded catalogue answers.
+      if (response.status === 503 || response.status >= 500 || response.status === 429) {
+        return groundedFallback(question);
+      }
+
       const errorData = await response.json().catch(() => ({}));
-      
-      if (response.status === 429) {
-        throw { error: 'AI service quota exceeded. Please try again later.', code: 'QUOTA_EXCEEDED', retryable: true };
-      }
-      if (response.status === 503) {
-        throw { error: 'AI service temporarily unavailable.', code: 'UNAVAILABLE', retryable: true };
-      }
-      if (response.status >= 500) {
-        throw { error: 'AI service error. Please try again.', code: 'SERVER_ERROR', retryable: true };
-      }
-      
-      throw { error: errorData.error || 'AI request failed.', code: 'SERVER_ERROR', retryable: false };
+      throw {
+        error: errorData?.error || errorData?.detail || 'AI request failed.',
+        code: 'SERVER_ERROR',
+        retryable: false,
+      };
     }
 
-    const data = await response.json();
-    
-    // Validate response structure
-    if (!data.answer || !Array.isArray(data.sources)) {
-      throw { error: 'Invalid AI response format.', code: 'SERVER_ERROR', retryable: false };
+    const data = await response.json().catch(() => null);
+
+    if (!data || typeof data.answer !== 'string' || !Array.isArray(data.sources)) {
+      return groundedFallback(question);
     }
 
     return {
@@ -98,44 +101,171 @@ export async function askAIAssistant(request) {
       sources: data.sources,
       grounded: data.grounded ?? true,
       model: data.model,
-      tokensUsed: data.tokens_used,
+      tokensUsed: data.tokens_used ?? data.tokensUsed,
     };
   } catch (error) {
-    // If it's our structured error, rethrow
     if (error && typeof error === 'object' && 'code' in error) {
       throw error;
     }
-    
-    // Network error or timeout
+
     if (error instanceof DOMException && error.name === 'AbortError') {
-      throw { error: 'AI request timed out. Please try again.', code: 'TIMEOUT', retryable: true };
+      // Remote timeout: provide grounded answer instead of a dead end.
+      return groundedFallback(question);
     }
-    
-    // Network error - fall back to grounded
+
     console.warn('AI Assistant unavailable, falling back to grounded retrieval:', error);
-    return groundedFallback(request.question);
+    return groundedFallback(question);
   }
+}
+
+function normalizeQuestion(question) {
+  return typeof question === 'string' ? question.trim().toLowerCase() : '';
+}
+
+function parseDeadlineWindowDays(question) {
+  const q = normalizeQuestion(question);
+  if (!q) return null;
+
+  const explicit = q.match(/\b(?:within|in|next|coming)\s+(\d{1,3})\s+days?\b/);
+  if (explicit) {
+    const days = Number(explicit[1]);
+    return Number.isFinite(days) && days > 0 ? days : null;
+  }
+
+  const reversed = q.match(/\b(\d{1,3})\s+days?\b/);
+  if (reversed && (q.includes('deadline') || q.includes('closing') || q.includes('open'))) {
+    const days = Number(reversed[1]);
+    return Number.isFinite(days) && days > 0 ? days : null;
+  }
+
+  if ((q.includes('next month') || q.includes('coming month')) && q.includes('deadline')) {
+    return 30;
+  }
+
+  return null;
+}
+
+function isDeadlineWindowQuestion(question) {
+  const q = normalizeQuestion(question);
+  if (!q) return false;
+  if (parseDeadlineWindowDays(q) != null) return true;
+  return (
+    (q.includes('deadline') || q.includes('closing soon') || q.includes('closing') || q.includes('due')) &&
+    (q.includes('upcoming') || q.includes('soon') || q.includes('next') || q.includes('within') || q.includes('coming'))
+  );
+}
+
+function toUtcDateStart(date) {
+  return new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()));
+}
+
+function getDeadlineDateUtc(scholarship) {
+  const parsed = parseDate(scholarship, 'deadline')?.date;
+  if (!parsed) return null;
+  return toUtcDateStart(parsed);
+}
+
+function formatDeadline(scholarship) {
+  if (typeof scholarship?.deadline === 'string' && scholarship.deadline.trim()) return scholarship.deadline;
+  const parsed = getDeadlineDateUtc(scholarship);
+  if (!parsed) return 'Not specified';
+  return parsed.toISOString().slice(0, 10);
+}
+
+function compareByDeadlineThenTitle(a, b) {
+  const ad = getDeadlineDateUtc(a)?.getTime() ?? Number.POSITIVE_INFINITY;
+  const bd = getDeadlineDateUtc(b)?.getTime() ?? Number.POSITIVE_INFINITY;
+  if (ad !== bd) return ad - bd;
+  return String(a?.title || '').localeCompare(String(b?.title || ''), undefined, { sensitivity: 'base' });
+}
+
+async function fetchDeadlineWindowScholarships(days) {
+  // Prefer API contract with deadline_within_days (works for live DB and for
+  // static-first/snapshot-backed fetchScholarships implementations).
+  try {
+    const directory = await fetchScholarships({
+      deadline_within_days: days,
+      sort: 'deadline-soon',
+      page: 1,
+      limit: 20,
+    });
+    const items = Array.isArray(directory?.items) ? directory.items : [];
+    if (items.length > 0 || directory?.pagination) {
+      return items.sort(compareByDeadlineThenTitle);
+    }
+  } catch {
+    // fall through to deterministic snapshot scan
+  }
+
+  const snapshot = await fetchScholarshipsFromSnapshot({ page: 1, limit: 10000, sort: 'deadline-soon' });
+  const allItems = Array.isArray(snapshot?.items) ? snapshot.items : [];
+  const now = new Date();
+  const todayUtc = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
+  const cutoff = new Date(todayUtc);
+  cutoff.setUTCDate(cutoff.getUTCDate() + days);
+
+  return allItems
+    .filter((s) => {
+      const d = getDeadlineDateUtc(s);
+      return d && d >= todayUtc && d <= cutoff;
+    })
+    .sort(compareByDeadlineThenTitle);
 }
 
 /**
  * Grounded fallback - uses local scholarship data to answer questions.
- * This is NOT AI - it's a deterministic retrieval and composition.
+ * This is NOT AI - it is deterministic retrieval and composition.
  */
 async function groundedFallback(question) {
-  // Import dynamically to avoid circular dependencies
-  const { fetchScholarships } = await import('./scholarshipService');
-  
-  // Simple keyword extraction for scholarship search
-  const keywords = extractKeywords(question);
-  
+  const safeQuestion = typeof question === 'string' ? question : '';
+
   try {
+    let scholarships = [];
+
+    if (isDeadlineWindowQuestion(safeQuestion)) {
+      const days = parseDeadlineWindowDays(safeQuestion) ?? 30;
+      scholarships = (await fetchDeadlineWindowScholarships(days)).slice(0, 10);
+
+      if (scholarships.length === 0) {
+        return {
+          answer: `No scholarships with known deadlines in the next ${days} days were found in the public ScholarZone catalogue. Deadlines can change; check official provider pages for the latest updates.`,
+          sources: [],
+          grounded: true,
+        };
+      }
+
+      const lines = [
+        `Scholarships with deadlines in the next ${days} days (grounded in ScholarZone catalogue records):`,
+        '',
+      ];
+      scholarships.slice(0, 10).forEach((s, i) => {
+        lines.push(`${i + 1}. **${s.title}** (${s.country || 'Country not listed'}) — ${formatDeadline(s)}`);
+        if (s.funding) lines.push(`   Funding: ${s.funding}`);
+        if (s.degree) lines.push(`   Degree: ${s.degree}`);
+        if (s.official_source_url) lines.push(`   Official: ${s.official_source_url}`);
+        lines.push('');
+      });
+      lines.push('This answer is deterministic and grounded in catalogue data. Verify details on the official provider website before applying.');
+
+      return {
+        answer: lines.join('\n'),
+        sources: scholarships.map((s) => ({
+          type: 'scholarship',
+          id: s.id,
+          title: s.title,
+          url: s.official_source_url || s.official_url,
+        })),
+        grounded: true,
+      };
+    }
+
+    const keywords = extractKeywords(safeQuestion);
     const directory = await fetchScholarships({
       search: keywords.join(' '),
       limit: 5,
     });
-    
-    const scholarships = directory.items || [];
-    
+    scholarships = Array.isArray(directory?.items) ? directory.items : [];
+
     if (scholarships.length === 0) {
       return {
         answer: "I couldn't find specific scholarships matching your question in the ScholarZone catalogue. Try browsing the directory with broader filters, or ask about general application guidance.",
@@ -143,21 +273,16 @@ async function groundedFallback(question) {
         grounded: true,
       };
     }
-    
-    // Compose a grounded answer from scholarship data
-    const answer = composeGroundedAnswer(question, scholarships);
-    const sources = scholarships.map(s => ({
+
+    const answer = composeGroundedAnswer(safeQuestion, scholarships);
+    const sources = scholarships.map((s) => ({
       type: 'scholarship',
       id: s.id,
       title: s.title,
       url: s.official_source_url || s.official_url,
     }));
-    
-    return {
-      answer,
-      sources,
-      grounded: true,
-    };
+
+    return { answer, sources, grounded: true };
   } catch {
     return {
       answer: "I'm unable to search the scholarship catalogue right now. You can browse the directory directly at /scholarships or try again later.",

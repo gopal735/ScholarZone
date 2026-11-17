@@ -177,6 +177,8 @@ export async function fetchScholarships(query = {}, options) {
 
   // The key is the resolved query, so two callers asking for the same page
   // share a request and two callers asking for different pages do not.
+  // The shared request runs without a caller signal; dedupe handles per-caller
+  // cancellation so one aborted consumer cannot cancel another's in-flight read.
   const key = `list:${JSON.stringify(query, Object.keys(query).sort())}`
   const send = () =>
     request('/scholarships', query)
