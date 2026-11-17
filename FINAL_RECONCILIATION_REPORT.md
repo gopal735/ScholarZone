@@ -5,9 +5,10 @@
 | Label | SHA |
 |-------|-----|
 | Implementation (code fixes) | `a2dade6a` |
-| CI-tested commit | `4ba6ac3b` (run `#43948948556`) |
+| Previous validation baseline | `4ba6ac3b` (run `#43948948556`) |
+| Current exact-HEAD CI validation | `ccc02df0` (run `#44040780504`) |
 | Documentation publication commit | branch tip (recorded in PR description; not self-verified by this report) |
-| Documentation/CI-only commits | `9d510676`, `e59d734a`, `11e8ee3e`, `4ba6ac3b` |
+| Documentation/CI-only commits | `9d510676`, `e59d734a`, `11e8ee3e`, `4ba6ac3b`, `ccc02df0` |
 
 A report does not verify its own publication SHA; the current PR HEAD above is the branch tip, while CI validation ran on the listed CI-tested commit.
 
@@ -22,7 +23,8 @@ A report does not verify its own publication SHA; the current PR HEAD above is t
 | Item | Value |
 |------|-------|
 | Final branch | `fix/final-integration` |
-| Final exact HEAD SHA | `4ba6ac3b` |
+| Latest verified pre-publication HEAD | `4ba6ac3b` |
+| Current exact-HEAD CI validation | `ccc02df0` (run `#44040780504`) |
 | Base SHA | `464dcc9802be1bd3d628e651cd33e3ae80129170` |
 | Commit count ahead of base | 45 |
 | Changed-file count | 13 modified |
@@ -136,7 +138,7 @@ A report does not verify its own publication SHA; the current PR HEAD above is t
 | **Backend Full Collection** | 6,378 | — | — | 2 PG integration |
 
 ### Frontend
-| Check | PR Branch (4ba6ac3b) | Base Master (464dcc98) |
+| Check | PR Branch (ccc02df0) | Base Master (464dcc98) |
 |-------|---------------------|------------------------|
 | Tests (vitest) | 509 passed, 0 failed | 494 passed, 13 failed |
 | Lint (ESLint) | 0 errors ✅ | 0 errors ✅ |
@@ -148,7 +150,7 @@ A report does not verify its own publication SHA; the current PR HEAD above is t
 
 ## 10. CI RESULTS
 
-**Workflow Run**: #43948948556 (ScholarZone CI) on commit `4ba6ac3b`
+**Workflow Run**: #44040780504 (ScholarZone CI) on commit `ccc02df0`
 
 | Job | Status |
 |-----|--------|
@@ -180,11 +182,11 @@ A report does not verify its own publication SHA; the current PR HEAD above is t
 | Metric | Value |
 |--------|-------|
 | Total review threads | 30 |
-| Resolved threads | 28 |
-| Unresolved threads | 2 (both actionable FIXED in source) |
-| Actionable on latest review (8040c4b3) | 2 (both FIXED in 4ba6ac3b) |
+| Resolved threads | 30 |
+| Unresolved threads | 0 (30 resolved) |
+| Actionable on latest review (8040c4b3) | 2 (both FIXED in a2dade6a) |
 | Stale/out-of-scope | 2 |
-| Current commit (4ba6ac3b) reviewed | No (pending) |
+| Latest documentation commit (ccc02df0) reviewed | No (pending) |
 
 ---
 
@@ -192,9 +194,9 @@ A report does not verify its own publication SHA; the current PR HEAD above is t
 
 | Report | Path | Tested SHA | Publication SHA |
 |--------|------|------------|-----------------|
-| Final Acceptance Report | `FINAL_ACCEPTANCE_REPORT.md` | `4ba6ac3b` | `4ba6ac3b` |
-| Final Reconciliation Report | `FINAL_RECONCILIATION_REPORT.md` | `4ba6ac3b` | `4ba6ac3b` |
-| PR Description | GitHub PR #98 | `4ba6ac3b` | N/A |
+| Final Acceptance Report | `FINAL_ACCEPTANCE_REPORT.md` | `ccc02df0` | branch tip (not self-verified) |
+| Final Reconciliation Report | `FINAL_RECONCILIATION_REPORT.md` | `ccc02df0` | branch tip (not self-verified) |
+| PR Description | GitHub PR #98 | `ccc02df0` | N/A |
 
 ---
 
@@ -202,11 +204,11 @@ A report does not verify its own publication SHA; the current PR HEAD above is t
 
 | Blocker | Type | Resolution |
 |---------|------|------------|
-| CodeRabbit review on 4ba6ac3b | Review | Pending automated review |
+| CodeRabbit review on ccc02df0 | Review | Pending automated review |
 | USA Record ID 1381 | Production | Owner-approved DML or re-ingestion |
 | Backup/PITR evidence | Production | Pre-deployment prerequisite |
 | Database identity gate | Production | `SCHOLARZONE_EXPECTED_DB_IDENTIFIER` |
-| Supervisor Windows E2E | CI | Passed: 5 tests in 24.43s on windows-latest |
+| Supervisor Windows E2E | CI | Passed: 5 tests in 20.70s on windows-latest |
 
 ---
 
@@ -222,22 +224,22 @@ A report does not verify its own publication SHA; the current PR HEAD above is t
 - ✅ Frontend 0 failures (previously 3 failing, now fixed)
 - ✅ Frontend lint (0 errors) and build (413ms) pass
 - ✅ Git diff clean (no whitespace errors)
-- ✅ All changes committed to `fix/final-integration` at `4ba6ac3b`
+- ✅ All changes committed to `fix/final-integration` through current exact-HEAD CI run #44040780504
 
 **Production deployment** requires separate approval for USA Record ID 1381 and backup/PITR evidence.
 
-**Action**: Merge when CodeRabbit review completes on `4ba6ac3b`, or merge with human review approval given all CI gates pass and all findings have source-level fixes with regression tests.
+**Action**: Merge when CodeRabbit review completes on `ccc02df0`, or merge with human review approval given all CI gates pass and all findings have source-level fixes with regression tests.
 
 ---
 
 *Report generated: 2026-11-16T23:30:00Z*
-*Final Implementation SHA: `4ba6ac3b`*
+*Final Implementation SHA: `a2dade6a`*
 *Base SHA: `464dcc9802be1bd3d628e651cd33e3ae80129170`*
-*CI Run: #43948948556 (ScholarZone CI)*
+*CI Run: #44040780504 (ScholarZone CI)*
 
 ## Windows E2E Verification
 
-- Job: `Windows E2E - Supervisor Render` in ScholarZone CI run `#43948948556`
+- Job: `Windows E2E - Supervisor Render` in ScholarZone CI run `#44040780504`
 - Runner: `windows-latest`
-- Result: **passed** (`5 passed in 24.43s`)
+- Result: **passed** (`5 passed in 20.70s`)
 - Evidence: real Playwright/Chromium browser-backed render test executed on Windows; no skip.
