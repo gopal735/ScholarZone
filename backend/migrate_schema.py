@@ -813,6 +813,10 @@ def detect_duplicate_legacy_ids(target: Any) -> list[dict[str, Any]]:
 
     The check is read-only and never modifies scholarship records. It accepts
     either an Engine or a Connection.
+
+    If the scholarships table or the legacy_id column does not exist (pre-migration
+    state), duplicate detection is not applicable and an empty list is returned.
+    This is a deterministic schema-inspection result, not an error suppression.
     """
     if isinstance(target, Connection):
         conn = target
@@ -822,6 +826,13 @@ def detect_duplicate_legacy_ids(target: Any) -> list[dict[str, Any]]:
         close = True
     try:
         if not conn.engine.dialect.has_table(conn, "scholarships"):
+            return []
+        # Check if legacy_id column exists before querying it. On pre-migration
+        # databases the column may not exist yet; querying it would raise
+        # "column does not exist" which is expected and not an error.
+        inspector = inspect(conn)
+        columns = [col["name"] for col in inspector.get_columns("scholarships")]
+        if "legacy_id" not in columns:
             return []
         rows = conn.execute(text(
             "SELECT legacy_id, COUNT(*) AS duplicate_count "
@@ -1874,10 +1885,7 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
     if not inspector.has_table("scholarships"):
         legacy_id_index_result = {"status": "TABLE_MISSING", "required": True}
     else:
-        try:
-            legacy_id_duplicates = detect_duplicate_legacy_ids(conn)
-        except Exception:
-            legacy_id_duplicates = []
+        legacy_id_duplicates = detect_duplicate_legacy_ids(conn)
         actual_legacy_indexes = get_all_indexes_with_pragma(conn, "scholarships")
         matching = [idx for idx in actual_legacy_indexes if idx.get("name") == legacy_id_index_name]
         if not matching:
