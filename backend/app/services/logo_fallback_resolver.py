@@ -40,6 +40,8 @@ from pathlib import Path
 from typing import Any, Callable
 from urllib.parse import quote, urljoin, urlparse
 
+from .outbound_security import secure_get
+
 logger = logging.getLogger(__name__)
 
 USER_AGENT = (
@@ -387,11 +389,7 @@ def _is_image_url(url: str) -> bool:
 def _default_fetch_text(url: str) -> str | None:
     """Minimal text fetch. Injected in tests; never bypasses a block."""
     try:
-        import httpx
-    except ImportError:  # pragma: no cover
-        return None
-    try:
-        response = httpx.get(
+        response = secure_get(
             url,
             timeout=REQUEST_TIMEOUT,
             follow_redirects=True,

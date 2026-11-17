@@ -32,6 +32,8 @@ from urllib.parse import urlparse
 
 logger = logging.getLogger(__name__)
 
+from .outbound_proxy import SyncOutboundProxy
+
 #: Below this there is nothing worth parsing, so the fetch is treated as a
 #: refusal rather than a success with an empty body.
 MIN_HTML_CHARS = 400
@@ -83,6 +85,7 @@ class HeadlessSourceFetcher:
         self._playwright = None
         self._browser = None
         self._context = None
+        self._outbound_proxy: SyncOutboundProxy | None = None
         self._lock = threading.Lock()
         self._closed = False
 
@@ -105,19 +108,28 @@ class HeadlessSourceFetcher:
             try:
                 from playwright.sync_api import sync_playwright
 
+                self._outbound_proxy = SyncOutboundProxy()
+                proxy_server = self._outbound_proxy.start()
                 self._playwright = sync_playwright().start()
                 self._browser = self._playwright.chromium.launch(
                     headless=True,
+                    proxy={"server": proxy_server, "bypass": ""},
                     args=[
                         "--disable-dev-shm-usage",
                         "--no-sandbox",
                         "--disable-blink-features=AutomationControlled",
+                        "--disable-background-networking",
+                        "--disable-dns-prefetch",
+                        "--disable-quic",
+                        "--force-webrtc-ip-handling-policy=disable_non_proxied_udp",
+                        "--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE 127.0.0.1",
                     ],
                 )
                 self._context = self._browser.new_context(
                     user_agent=self.user_agent,
                     viewport={"width": 1366, "height": 900},
                     java_script_enabled=True,
+                    service_workers="block",
                 )
                 # Scholarship pages are mostly text. Skipping subresources cuts
                 # the render time dramatically and avoids pulling trackers.
@@ -192,6 +204,12 @@ class HeadlessSourceFetcher:
             except Exception:  # noqa: BLE001
                 pass
             self._playwright = None
+        if self._outbound_proxy is not None:
+            try:
+                self._outbound_proxy.close()
+            except Exception:  # noqa: BLE001 - teardown must release remaining browser resources
+                logger.exception("outbound proxy failed to close cleanly")
+            self._outbound_proxy = None
 
     def close(self) -> None:
         self._closed = True

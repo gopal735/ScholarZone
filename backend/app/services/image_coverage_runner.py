@@ -22,6 +22,8 @@ from urllib.parse import urlparse
 
 import httpx
 
+from .outbound_security import secure_get
+
 from sqlalchemy import select
 from sqlalchemy.orm import Session, sessionmaker
 
@@ -75,7 +77,7 @@ def preflight_check(url: str | None, timeout: float = PREFLIGHT_TIMEOUT_SECONDS)
     if not url:
         return PreflightResult(False, None, "no_source_url")
     try:
-        response = httpx.get(
+        response = secure_get(
             url,
             headers={"User-Agent": BROWSER_UA, "Accept": "text/html"},
             timeout=timeout,
@@ -559,9 +561,16 @@ class ImageCoverageRunner:
                         ),
                     )
 
-                    # Feed the breaker: only genuine access failures count.
-                    page_error = getattr(result.page_discovery, "error", None)
-                    if page_error or getattr(result.page_discovery, "timed_out", False) or result.requests_made == 0:
+                    # A record-level resolution error says nothing about the
+                    # provider's availability. In particular,
+                    # `no_official_source_url` must not combine with one later
+                    # timeout to classify the whole host as blocked and hide
+                    # subsequent records from this run.
+                    page_error = (getattr(result.page_discovery, "error", None) or "").strip().lower()
+                    resolution_errors = {"no_official_source_url", "cannot_build_root_url"}
+                    if page_error in resolution_errors:
+                        pass  # Neutral: no access result to add to the streak.
+                    elif page_error or getattr(result.page_discovery, "timed_out", False) or result.requests_made == 0:
                         if breaker.record_failure(source_url):
                             logger.info("domain %s opened as blocked", breaker.domain_of(source_url))
                     else:

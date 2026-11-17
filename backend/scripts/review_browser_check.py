@@ -15,6 +15,7 @@ import asyncio
 import json
 import sys
 from pathlib import Path
+from urllib.parse import urlsplit
 
 from playwright.async_api import async_playwright
 
@@ -49,7 +50,28 @@ async def main() -> None:
 
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True)
-        context = await browser.new_context(viewport={"width": 1280, "height": 1000})
+        context = await browser.new_context(
+            viewport={"width": 1280, "height": 1000},
+            service_workers="block",
+        )
+
+        # This review harness is intentionally limited to its local fixture
+        # stack. Browser pages can issue requests through redirects, images,
+        # scripts, iframes and service workers, so restricting only page.goto()
+        # would leave those requests free to reach arbitrary destinations.
+        async def local_fixture_only(route):
+            parsed = urlsplit(route.request.url)
+            allowed = (
+                parsed.scheme in {"http", "https"}
+                and parsed.hostname in {"127.0.0.1", "localhost"}
+                and parsed.port in {5173, 8000}
+            )
+            if allowed:
+                await route.continue_()
+            else:
+                await route.abort("blockedbyclient")
+
+        await context.route("**/*", local_fixture_only)
         page = await context.new_page()
 
         page.on(

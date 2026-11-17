@@ -518,6 +518,81 @@ def test_public_list_returns_verified_professors_with_provenance(client, db):
     assert entry["sources"][0]["source_host"] == "uni1.edu"
 
 
+def test_student_can_find_newly_ingested_award_and_reach_verified_supervisor(client, db):
+    """Exercise ingestion through the public filtered directory and detail APIs."""
+    from app.services.scholarship_ingestion import (
+        ScholarshipIngestionRecord,
+        upsert_verified_scholarships,
+    )
+
+    record = ScholarshipIngestionRecord(
+        name="Student Journey Research Award",
+        country="Germany",
+        degree_levels="Master",
+        funding_type="Fully Funded",
+        fully_funded=True,
+        official_source_url="https://uni1.edu/programmes/student-journey-award",
+        program_type="Research award",
+        departments=["Computer Science"],
+        eligible_fields=["Artificial Intelligence"],
+        eligible_programmes=["MSc Data Science"],
+        deadline_date=date(2027, 6, 30),
+    )
+    assert upsert_verified_scholarships(db, [record]) == (1, 0)
+    scholarship = db.query(Scholarship).filter_by(title=record.name).one()
+
+    professor = _seed_professor(db)
+    link = _seed_link(db, scholarship, professor)
+    db.add(
+        SupervisorSourceEvidence(
+            professor_id=professor.id,
+            scholarship_id=scholarship.id,
+            link_id=link.id,
+            source_url=link.evidence_source_url,
+            source_host="uni1.edu",
+            source_type="official_department_page",
+            retrieved_at=datetime.now(timezone.utc),
+            verified_at=datetime.now(timezone.utc),
+            verification_status=str(RelationshipVerificationStatus.VERIFIED),
+            evidence_summary="Listed on the faculty page.",
+        )
+    )
+    db.commit()
+
+    results = client.get(
+        "/scholarships",
+        params={
+            "country": "Germany",
+            "degree": "Master",
+            "fully_funded": "true",
+            "department": "Computer Science",
+            "eligible_field": "Artificial Intelligence",
+            "eligible_programme": "MSc Data Science",
+            "programme_type": "Research award",
+            "deadline_month": 6,
+            "search": "Student Journey Research Award",
+        },
+    )
+    assert results.status_code == 200
+    assert results.json()["pagination"]["total"] == 1
+    listing = results.json()["items"][0]
+    assert listing["id"] == scholarship.id
+
+    detail = client.get(f"/scholarships/{listing['id']}")
+    assert detail.status_code == 200
+    assert detail.json()["title"] == record.name
+    assert detail.json()["eligible_fields"] == ["Artificial Intelligence"]
+
+    supervisors = client.get(
+        f"/scholarships/{listing['id']}/supervisors",
+        params={"interests": "machine learning"},
+    )
+    assert supervisors.status_code == 200
+    assert supervisors.json()["coverage"]["verified_supervisor_count"] == 1
+    assert supervisors.json()["supervisors"][0]["name"] == "Dr Ada Lovelace"
+    assert supervisors.json()["supervisors"][0]["evidence_source_url"] == link.evidence_source_url
+
+
 def test_unverified_relationship_is_never_published(client, db):
     scholarship = _seed_public_scholarship(db)
     professor = _seed_professor(db)

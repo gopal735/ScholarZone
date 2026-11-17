@@ -140,8 +140,10 @@ function parseLifecycleDate(value, { monthOnly = false } = {}) {
  * Extract opening date from application_period text.
  * This is a heuristic for records without explicit opening_date.
  * Returns { date: Date | null, isExact: boolean }
+ * @param {Object} scholarship - The scholarship record
+ * @param {Date} [referenceDate] - Optional reference date for testing (defaults to current date)
  */
-export function parseOpeningDateFromPeriod(scholarship) {
+export function parseOpeningDateFromPeriod(scholarship, referenceDate = new Date()) {
   if (!scholarship.application_period || typeof scholarship.application_period !== 'string') {
     return { date: null, isExact: false };
   }
@@ -159,7 +161,7 @@ export function parseOpeningDateFromPeriod(scholarship) {
     }
   }
 
-// Pattern: "call opens Month YYYY" or "applications open Month YYYY"
+  // Pattern: "call opens Month YYYY" or "applications open Month YYYY"
   const monthYearPattern = /(?:call|applications?)\s+opens?\s+(\w+\s+\d{4})/i;
   const monthMatch = period.match(monthYearPattern);
   if (monthMatch) {
@@ -186,15 +188,15 @@ export function parseOpeningDateFromPeriod(scholarship) {
   const qualMatch = period.match(qualitativePattern);
   if (qualMatch) {
     const monthMap = { january: 0, february: 1, march: 2, april: 3, may: 4, june: 5,
-                       july: 6, august: 7, september: 8, october: 9, november: 10, december: 11 };
+                         july: 6, august: 7, september: 8, october: 9, november: 10, december: 11 };
     const month = monthMap[qualMatch[2].toLowerCase()];
     if (month !== undefined) {
-      const year = new Date().getFullYear();
+      const year = referenceDate.getFullYear();
       const day = qualMatch[1] === 'early' ? 5 : qualMatch[1] === 'mid' ? 15 : 25;
       // Create as UTC date
       const parsed = new Date(Date.UTC(year, month, day));
       // If the date is in the past, assume next year
-      if (parsed < new Date()) {
+      if (parsed < referenceDate) {
         parsed.setUTCFullYear(year + 1);
       }
       return { date: parsed, isExact: false };
@@ -207,12 +209,16 @@ export function parseOpeningDateFromPeriod(scholarship) {
 /**
  * Calculate days between two dates (ignoring time component).
  * Positive = target is in future, Negative = target is in past.
+ * Uses an optional reference date for testing (defaults to current date).
  */
-export function getDaysDifference(targetDate) {
+export function getDaysDifference(targetDate, referenceDate = new Date()) {
   if (!targetDate) return null;
   
-  const today = new Date();
-  const todayStart = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate());
+  const today = referenceDate;
+  // Date-only scholarship deadlines are compared by calendar day in the
+  // visitor's local timezone. Using UTC getters for "today" shifts the
+  // baseline by one day for users east or west of UTC around midnight.
+  const todayStart = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
   const target = new Date(targetDate);
   const targetStart = Date.UTC(target.getUTCFullYear(), target.getUTCMonth(), target.getUTCDate());
   const diffMs = targetStart - todayStart;
@@ -222,14 +228,16 @@ export function getDaysDifference(targetDate) {
 /**
  * Check if a scholarship has a verified future cycle that supersedes a closed one.
  * This prevents marking a scholarship as CLOSED if a future cycle exists.
+ * @param {Object} scholarship - The scholarship record
+ * @param {Date} [referenceDate] - Optional reference date for testing (defaults to current date)
  */
-export function hasVerifiedFutureCycle(scholarship) {
-  const now = new Date();
+export function hasVerifiedFutureCycle(scholarship, referenceDate = new Date()) {
+  const now = referenceDate;
   now.setHours(0, 0, 0, 0);
   
   // Check for explicit opening_date in future
   if (scholarship.opening_date) {
-    const openingDays = getDaysDifference(scholarship.opening_date);
+    const openingDays = getDaysDifference(scholarship.opening_date, referenceDate);
     if (openingDays !== null && openingDays > 0) {
       return true;
     }
@@ -274,7 +282,7 @@ export function hasVerifiedFutureCycle(scholarship) {
     const qualMatch = period.match(qualitativePattern);
     if (qualMatch) {
       const monthMap = { january: 0, february: 1, march: 2, april: 3, may: 4, june: 5,
-                         july: 6, august: 7, september: 8, october: 9, november: 10, december: 11 };
+                           july: 6, august: 7, september: 8, october: 9, november: 10, december: 11 };
       const month = monthMap[qualMatch[2].toLowerCase()];
       if (month !== undefined) {
         const year = new Date().getFullYear();
@@ -286,7 +294,8 @@ export function hasVerifiedFutureCycle(scholarship) {
       }
     }
   }
-
+  
+  // Check for recurring cycle indicators
   const cycleText = [
     scholarship.application_period,
     scholarship.deadline_display,
@@ -316,8 +325,11 @@ export function hasVerifiedFutureCycle(scholarship) {
  * 4. OPENING (opening_date within OPENING_WINDOW_DAYS)
  * 5. OPEN (default for active scholarships with valid deadline)
  * 6. UNKNOWN (missing critical dates)
+ * 
+ * @param {Object} scholarship - The scholarship record
+ * @param {Date} [referenceDate] - Optional reference date for testing (defaults to current date)
  */
-export function classifyLifecycle(scholarship) {
+export function classifyLifecycle(scholarship, referenceDate = new Date()) {
   // Parse dates
   const { date: deadlineDate, isExact: deadlineExact } = parseDate(scholarship, 'deadline');
   const { date: openingDate, isExact: openingExact } = parseDate(scholarship, 'opening');
@@ -326,16 +338,16 @@ export function classifyLifecycle(scholarship) {
   let effectiveOpeningDate = openingDate;
   let effectiveOpeningExact = openingExact;
   if (!effectiveOpeningDate) {
-    const extracted = parseOpeningDateFromPeriod(scholarship);
+    const extracted = parseOpeningDateFromPeriod(scholarship, referenceDate);
     effectiveOpeningDate = extracted.date;
     effectiveOpeningExact = extracted.isExact;
   }
 
-  const daysUntilDeadline = getDaysDifference(deadlineDate);
-  const daysUntilOpening = getDaysDifference(effectiveOpeningDate);
+  const daysUntilDeadline = getDaysDifference(deadlineDate, referenceDate);
+  const daysUntilOpening = getDaysDifference(effectiveOpeningDate, referenceDate);
 
   // Check if there's a verified future cycle that supersedes current cycle
-  const hasFutureCycle = hasVerifiedFutureCycle(scholarship);
+  const hasFutureCycle = hasVerifiedFutureCycle(scholarship, referenceDate);
 
   // Check if we have ANY date information
   const hasAnyDate = deadlineDate !== null || effectiveOpeningDate !== null;
@@ -557,9 +569,11 @@ export function classifyLifecycle(scholarship) {
 
 /**
  * Get lifecycle badge component props for a scholarship.
+ * @param {Object} scholarship - The scholarship record
+ * @param {Date} [referenceDate] - Optional reference date for testing (defaults to current date)
  */
-export function getLifecycleBadge(scholarship) {
-  const lifecycle = classifyLifecycle(scholarship);
+export function getLifecycleBadge(scholarship, referenceDate = new Date()) {
+  const lifecycle = classifyLifecycle(scholarship, referenceDate);
   return {
     label: lifecycle.label,
     className: `lifecycle-badge ${lifecycle.className}`,

@@ -29,6 +29,7 @@ when they produce no non-content signals.
 
 import io
 import re
+from contextlib import contextmanager
 from dataclasses import dataclass, field
 from datetime import datetime, timezone, timedelta
 from enum import Enum
@@ -37,6 +38,46 @@ import time
 
 import httpx
 from PIL import Image
+
+from .outbound_security import DEFAULT_POLICY, UnsafeOutboundTarget, secure_client
+
+
+_httpx = httpx
+
+
+class _SafeHttpxFacade:
+    """Compatibility surface whose network methods always use the shared policy."""
+
+    def __getattr__(self, name):
+        return getattr(_httpx, name)
+
+    @staticmethod
+    def get(url, **kwargs):
+        with secure_client(
+            timeout=kwargs.pop("timeout", 10.0),
+            follow_redirects=kwargs.pop("follow_redirects", False),
+        ) as client:
+            return client.get(url, **kwargs)
+
+    @staticmethod
+    def head(url, **kwargs):
+        with secure_client(
+            timeout=kwargs.pop("timeout", 10.0),
+            follow_redirects=kwargs.pop("follow_redirects", False),
+        ) as client:
+            return client.head(url, **kwargs)
+
+    @staticmethod
+    @contextmanager
+    def stream(method, url, **kwargs):
+        timeout = kwargs.pop("timeout", 10.0)
+        follow_redirects = kwargs.pop("follow_redirects", False)
+        with secure_client(timeout=timeout, follow_redirects=follow_redirects) as client:
+            with client.stream(method, url, **kwargs) as response:
+                yield response
+
+
+httpx = _SafeHttpxFacade()
 
 from ..services.image_analysis import analyze_image, ImageAnalysisResult, ImageClassification
 from ..services.image_discovery import ImageCandidate, ImageDiscoveryService, PageFetchResult
@@ -111,14 +152,10 @@ def _validate_url_scheme(image_url: str) -> tuple[bool, str]:
     Returns (is_valid, rejection_reason).
     """
     try:
-        parsed = urlparse(image_url)
-        if parsed.scheme.lower() not in VALID_URL_SCHEMES:
-            return False, f"Invalid URL scheme: {parsed.scheme or 'none'} — only http/https allowed"
-        if not parsed.netloc:
-            return False, "Invalid URL: no host specified"
+        DEFAULT_POLICY.validate_url(image_url)
         return True, ""
-    except Exception:
-        return False, "Malformed URL"
+    except (ValueError, UnsafeOutboundTarget) as exc:
+        return False, str(exc) or "Malformed or unsafe URL"
 
 
 _AVIF_MAGIC = b"ftypavif"

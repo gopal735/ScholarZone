@@ -42,6 +42,8 @@ from urllib.robotparser import RobotFileParser
 
 import httpx
 
+from .outbound_security import secure_client
+
 from ..models import Scholarship
 from ..models_supervisor import (
     ProfessorAvailability,
@@ -229,7 +231,7 @@ def _robots_allows(url: str) -> bool:
     parser: RobotFileParser | None = None
     robots_url = origin + "/robots.txt"
     try:
-        with httpx.Client(timeout=httpx.Timeout(connect=5.0, read=10.0, write=5.0, pool=5.0)) as client:
+        with secure_client(timeout=httpx.Timeout(connect=5.0, read=10.0, write=5.0, pool=5.0), follow_redirects=True) as client:
             response = client.get(robots_url, headers=DEFAULT_HEADERS, follow_redirects=True)
         if response.status_code == 200:
             parser = RobotFileParser()

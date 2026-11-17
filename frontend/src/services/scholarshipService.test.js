@@ -57,4 +57,30 @@ describe('fetchScholarshipsByLifecycle', () => {
     expect(result.items.map((item) => item.id)).toEqual([2])
     expect(result.pagination.total).toBe(1)
   })
+
+  it('sends academic and tri-state filters through the list API contract', async () => {
+    window.localStorage.setItem('scholarzone.staticCatalogue', 'false')
+    const fetchMock = vi.fn(async () => ({
+      ok: true,
+      json: async () => ({ items: [], pagination: { page: 1, limit: 12, total: 0, total_pages: 0 } }),
+    }))
+    vi.stubGlobal('fetch', fetchMock)
+
+    await fetchScholarshipsByLifecycle({
+      page: 1,
+      limit: 12,
+      fully_funded: 'unknown',
+      department: 'Computer Science',
+      eligible_field: 'Artificial Intelligence',
+      eligible_programme: 'MSc Data Science',
+      programme_type: 'Research award',
+    }, 'All')
+
+    const query = new URL(fetchMock.mock.calls[0][0]).searchParams
+    expect(query.get('fully_funded')).toBe('unknown')
+    expect(query.get('department')).toBe('Computer Science')
+    expect(query.get('eligible_field')).toBe('Artificial Intelligence')
+    expect(query.get('eligible_programme')).toBe('MSc Data Science')
+    expect(query.get('programme_type')).toBe('Research award')
+  })
 })

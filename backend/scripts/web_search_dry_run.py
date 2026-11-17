@@ -23,7 +23,6 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import quote_plus, urljoin, urlparse
 
-import requests
 from bs4 import BeautifulSoup
 
 _BACKEND_DIR = Path(__file__).resolve().parents[1]
@@ -35,6 +34,7 @@ from sqlalchemy.orm import sessionmaker
 
 from app.database import get_engine
 from app.models import Scholarship
+from app.services.outbound_security import secure_client, secure_get
 from app.services.image_discovery import ImageCandidate
 from app.services.image_validator import (
     ImageValidator,
@@ -161,16 +161,15 @@ def _web_search_images(query: str, max_results: int = 5) -> list[str]:
     """
     results = []
     try:
-        session = requests.Session()
-        session.headers.update(DDG_HEADERS)
-        
+        session = secure_client(headers=DDG_HEADERS)
+
         params = {"q": query, "b": "", "kl": "us-en"}
         response = session.get(DDG_SEARCH_URL, params=params, timeout=15)
         if response.status_code != 200:
             return results
-        
+
         soup = BeautifulSoup(response.text, "html.parser")
-        
+
         for result in soup.select(".result__a")[:max_results]:
             href = result.get("href", "")
             if href:
@@ -185,16 +184,18 @@ def _web_search_images(query: str, max_results: int = 5) -> list[str]:
                     results.append(href)
     except Exception as exc:
         logger.debug("Web search failed for query '%s': %s", query, exc)
-    
+
     return results
 
 
 def _fetch_page(url: str, timeout: float = DEFAULT_TIMEOUT) -> tuple[int | None, str | None, str | None]:
     try:
-        response = requests.get(
+        response = secure_get(
             url,
             headers={"User-Agent": BROWSER_UA, "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"},
             timeout=timeout,
+            follow_redirects=True,
+            max_redirects=5,
         )
         if response.status_code == 200:
             ct = response.headers.get("content-type", "")
@@ -210,23 +211,23 @@ def _extract_images_from_html(content: str, page_url: str) -> list[ImageCandidat
     candidates = []
     if not content:
         return candidates
-    
+
     soup = BeautifulSoup(content, "html.parser")
-    
+
     og_image = soup.find("meta", attrs={"property": "og:image"})
     if og_image and og_image.get("content"):
         img_url = urljoin(page_url, og_image["content"].strip())
         candidates.append(ImageCandidate(
             image_url=img_url, page_url=page_url, discovery_method="og:image"
         ))
-    
+
     twitter_image = soup.find("meta", attrs={"name": "twitter:image"})
     if twitter_image and twitter_image.get("content"):
         img_url = urljoin(page_url, twitter_image["content"].strip())
         candidates.append(ImageCandidate(
             image_url=img_url, page_url=page_url, discovery_method="twitter:image"
         ))
-    
+
     for img in soup.find_all("img"):
         src = img.get("src") or img.get("data-src") or img.get("data-lazy-src")
         if not src or src.startswith("data:"):
@@ -239,7 +240,7 @@ def _extract_images_from_html(content: str, page_url: str) -> list[ImageCandidat
             image_url=img_url, page_url=page_url, discovery_method="html-img",
             alt_text=alt, width=_to_int(width), height=_to_int(height),
         ))
-    
+
     return candidates
 
 
@@ -259,20 +260,20 @@ def _process_single_web_search(ctx: ScholarshipContext, timeout: float) -> WebSe
     all_candidates: list[ImageCandidate] = []
     web_search_query = None
     web_pages_fetched = 0
-    
+
     # Build search query
     domain_hint = ""
     if official_source_url:
         parsed = urlparse(official_source_url)
         domain_hint = f" site:{parsed.netloc}"
-    
+
     title_terms = " ".join([w for w in ctx.title.split() if len(w) > 3][:5])
     query = f"{title_terms} scholarship{domain_hint}"
     web_search_query = query
-    
+
     # Search for pages
     web_urls = _web_search_images(query, max_results=5)
-    
+
     # Fetch pages and extract images
     for page_url in web_urls[:3]:
         status, content, error = _fetch_page(page_url, timeout)
@@ -280,7 +281,7 @@ def _process_single_web_search(ctx: ScholarshipContext, timeout: float) -> WebSe
             page_candidates = _extract_images_from_html(content, page_url)
             all_candidates.extend(page_candidates)
             web_pages_fetched += 1
-    
+
     # Deduplicate
     seen_urls = set()
     unique_candidates = []
@@ -289,7 +290,7 @@ def _process_single_web_search(ctx: ScholarshipContext, timeout: float) -> WebSe
             seen_urls.add(c.image_url)
             unique_candidates.append(c)
     all_candidates = unique_candidates[:30]
-    
+
     # Validate
     best_candidate = None
     source_type = None
@@ -300,7 +301,7 @@ def _process_single_web_search(ctx: ScholarshipContext, timeout: float) -> WebSe
     decision = "rejected"
     rejection_reasons = []
     hr_reason = None
-    
+
     if all_candidates:
         try:
             validator = ImageValidator(seen_images={}, timeout=timeout)
@@ -310,7 +311,7 @@ def _process_single_web_search(ctx: ScholarshipContext, timeout: float) -> WebSe
                 official_source_url=official_source_url,
             )
             best_candidate = validator.find_best_result(results)
-            
+
             if best_candidate:
                 source_type = _classify_source_type(
                     best_candidate.candidate.image_url,
@@ -325,14 +326,14 @@ def _process_single_web_search(ctx: ScholarshipContext, timeout: float) -> WebSe
                 hr_reason = best_candidate.human_review_reason
         except Exception as exc:
             logger.warning("Scholarship %d: validation failed: %s", ctx.id, exc)
-    
+
     if not all_candidates:
         rejection_reasons = ["No valid image candidate found"]
-    
+
     if ctx.id % 50 == 0:
         logger.info("Web search %d [%s]: decision=%s confidence=%s candidates=%d",
                     ctx.id, ctx.title[:40], decision, confidence, len(all_candidates))
-    
+
     return WebSearchResult(
         scholarship_id=ctx.id,
         scholarship_title=ctx.title,
@@ -380,13 +381,13 @@ def run_web_search(
     Session = _connect_production_db()
     all_contexts = _load_all_scholarships(Session)
     logger.info("Loaded %d scholarships for web search", len(all_contexts))
-    
+
     if scholarship_ids:
         contexts = [c for c in all_contexts if c.id in scholarship_ids]
         logger.info("Filtered to %d specified scholarships", len(contexts))
     else:
         contexts = all_contexts
-    
+
     results: list[WebSearchResult] = []
 
     with ThreadPoolExecutor(max_workers=max_concurrency) as executor:
@@ -437,7 +438,7 @@ def run_web_search(
 def _write_report(results: list[WebSearchResult], label: str = "") -> tuple[Path, Path]:
     REPORT_DIR.mkdir(exist_ok=True)
     ts = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
-    
+
     suffix = f"_{label}" if label else ""
     json_path = REPORT_DIR / f"web_search_dry_run{suffix}_{ts}.json"
     csv_path = REPORT_DIR / f"web_search_dry_run{suffix}_{ts}.csv"
@@ -482,7 +483,7 @@ def _print_summary(results: list[WebSearchResult]) -> None:
     human_review = sum(1 for r in results if r.decision == "human_review")
     rejected = sum(1 for r in results if r.decision == "rejected")
     errors = sum(1 for r in results if r.error is not None)
-    
+
     pages_fetched = sum(r.web_pages_fetched for r in results)
 
     source_type_counts: Counter = Counter()
@@ -497,12 +498,13 @@ def _print_summary(results: list[WebSearchResult]) -> None:
     print("WEB SEARCH IMAGE DRY-RUN SUMMARY")
     print("=" * 80)
     print(f"Total scholarships processed : {total}")
-    print(f"APPROVED                     : {approved} ({approved/total*100:.1f}%)")
-    print(f"HUMAN_REVIEW                 : {human_review} ({human_review/total*100:.1f}%)")
-    print(f"REJECTED                     : {rejected} ({rejected/total*100:.1f}%)")
+    pct = lambda num: f"{(num/total*100):.1f}%" if total else "N/A"
+    print(f"APPROVED                     : {approved} ({pct(approved)})")
+    print(f"HUMAN_REVIEW                 : {human_review} ({pct(human_review)})")
+    print(f"REJECTED                     : {rejected} ({pct(rejected)})")
     print(f"Pipeline errors              : {errors}")
-    print(f"With discovered image        : {with_image} ({with_image/total*100:.1f}%)")
-    print(f"Reachable images             : {reachable} ({reachable/total*100:.1f}%)")
+    print(f"With discovered image        : {with_image} ({pct(with_image)})")
+    print(f"Reachable images             : {reachable} ({pct(reachable)})")
     print(f"Web pages fetched            : {pages_fetched}")
     print()
     print("Source type distribution (best candidate domain):")
@@ -563,3 +565,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+

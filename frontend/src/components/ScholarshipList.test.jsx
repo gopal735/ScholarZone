@@ -24,6 +24,11 @@ const scholarships = [
     deadline_precision: 'month',
     status: 'open',
     verification_status: 'active',
+    fully_funded: true,
+    departments: ['Computer Science'],
+    eligible_fields: ['Artificial Intelligence'],
+    eligible_programmes: ['MSc Data Science'],
+    program_type: 'Research award',
     created_at: '2026-01-01T00:00:00',
     updated_at: '2026-04-01T00:00:00',
   },
@@ -38,6 +43,8 @@ const scholarships = [
     deadline_precision: 'exact',
     status: 'open',
     verification_status: 'active',
+    fully_funded: false,
+    departments: ['Physics'],
     created_at: '2026-04-01T00:00:00',
     updated_at: '2026-02-01T00:00:00',
   },
@@ -52,6 +59,7 @@ const scholarships = [
     deadline_precision: 'exact',
     status: 'open',
     verification_status: 'active',
+    fully_funded: null,
     created_at: '2026-03-01T00:00:00',
     updated_at: '2026-03-01T00:00:00',
   },
@@ -147,5 +155,28 @@ describe('ScholarshipList filters and sorting', () => {
     fireEvent.change(sort, { target: { value: 'name-asc' } })
     expect(cardTitles()[0]).toBe('Alpha Grant')
     expect(cardTitles()[2]).toBe('Delta Grant')
+  })
+
+  it('combines academic and tri-state funding filters and restores them from a shareable URL', () => {
+    const { container, unmount } = render(<ScholarshipList items={scholarships} />)
+    const resultCount = () => Number(container.querySelector('.scholarship-list__summary strong').textContent)
+
+    fireEvent.change(screen.getByLabelText('Fully funded evidence'), { target: { value: 'true' } })
+    fireEvent.change(screen.getByLabelText('Department'), { target: { value: 'Computer Science' } })
+    fireEvent.change(screen.getByLabelText('Eligible subject'), { target: { value: 'Artificial Intelligence' } })
+    fireEvent.change(screen.getByLabelText('Eligible programme'), { target: { value: 'MSc Data Science' } })
+    fireEvent.change(screen.getByLabelText('Programme type'), { target: { value: 'Research award' } })
+    expect(resultCount()).toBe(1)
+
+    fireEvent.change(screen.getByLabelText('Fully funded evidence'), { target: { value: 'unknown' } })
+    expect(resultCount()).toBe(0)
+    unmount()
+
+    window.history.replaceState({}, '', '/scholarships?country=Germany&fully_funded=true&department=Computer+Science')
+    render(<ScholarshipList items={scholarships} />)
+    expect(screen.getByLabelText('Country')).toHaveValue('Germany')
+    expect(screen.getByLabelText('Fully funded evidence')).toHaveValue('true')
+    expect(screen.getByLabelText('Department')).toHaveValue('Computer Science')
+    expect(window.location.search).toContain('fully_funded=true')
   })
 })

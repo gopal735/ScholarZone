@@ -33,6 +33,10 @@ import uuid
 from dataclasses import dataclass, field
 from typing import Callable, Iterable
 
+import httpx
+
+from .outbound_security import secure_client
+
 from app.maintenance_slots import (
     LogicalSource,
     SlotState,
@@ -136,28 +140,20 @@ Transport = Callable[[str, str, dict, int], tuple[int, dict]]
 
 def github_transport(url: str, token: str, body: dict, timeout: int) -> tuple[int, dict]:
     """Real HTTP call to GitHub. Only used outside tests."""
-    request = urllib.request.Request(
-        url,
-        data=json.dumps(body).encode("utf-8"),
-        method="POST",
-        headers={
+    headers = {
             "Accept": "application/vnd.github+json",
             "Authorization": f"Bearer {token}",
             "Content-Type": "application/json",
             "User-Agent": "scholarzone-maintenance-dispatcher/1",
-        },
-    )
+        }
     try:
-        with urllib.request.urlopen(request, timeout=timeout) as response:
-            raw = response.read().decode("utf-8")
-            return response.status, (json.loads(raw) if raw.strip() else {})
-    except urllib.error.HTTPError as exc:
-        raw = exc.read().decode("utf-8", errors="replace")
+        with secure_client(timeout=timeout) as client:
+            response = client.post(url, json=body, headers=headers)
         try:
-            return exc.code, json.loads(raw)
+            return response.status_code, response.json() if response.content else {}
         except ValueError:
-            return exc.code, {}
-    except (urllib.error.URLError, TimeoutError, OSError):
+            return response.status_code, {}
+    except (httpx.HTTPError, TimeoutError, OSError):
         # Network-level failure: retryable, but bounded by the caller.
         return 0, {}
 

@@ -539,6 +539,17 @@ class TestTerminalStates:
             claim_slot(session, SLOT, "late-comer", LEASE, DUE + timedelta(days=1))
         assert read_slot(session, SLOT).state == SlotState.SUCCEEDED.value
 
+    def test_dispatched_slot_is_a_lost_claim_not_an_invalid_transition(self, session):
+        ensure_slot(session, DUE, as_of=DUE)
+        claim_slot(session, SLOT, "worker-a", LEASE, DUE)
+        transition_slot(session, SLOT, SlotState.DISPATCHED, as_of=DUE, workflow_run_id="gh-1")
+
+        outcome = claim_slot(session, SLOT, "late-scheduler", LEASE, DUE)
+
+        assert not outcome.claimed
+        assert outcome.reason == "already dispatched"
+        assert read_slot(session, SLOT).state == SlotState.DISPATCHED.value
+
     def test_succeeded_slot_cannot_be_recovered(self, session):
         self._succeeded_slot(session)
         with pytest.raises(InvalidTransition):

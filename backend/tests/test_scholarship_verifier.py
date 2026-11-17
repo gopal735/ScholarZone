@@ -312,7 +312,7 @@ class OfficialSourceFetcherTests(unittest.TestCase):
         mock_client.__enter__ = MagicMock(return_value=mock_client)
         mock_client.__exit__ = MagicMock(return_value=False)
 
-        with patch("app.services.official_source_fetcher.httpx.Client", return_value=mock_client):
+        with patch("app.services.official_source_fetcher.secure_client", return_value=mock_client):
             result = fetch_official_source("https://example.com/success")
 
         self.assertTrue(result.success)
@@ -336,7 +336,7 @@ class OfficialSourceFetcherTests(unittest.TestCase):
         mock_client.__enter__ = MagicMock(return_value=mock_client)
         mock_client.__exit__ = MagicMock(return_value=False)
 
-        with patch("app.services.official_source_fetcher.httpx.Client", return_value=mock_client):
+        with patch("app.services.official_source_fetcher.secure_client", return_value=mock_client):
             result = fetch_official_source("https://example.com/old")
 
         self.assertTrue(result.success)
@@ -353,7 +353,7 @@ class OfficialSourceFetcherTests(unittest.TestCase):
         mock_client.__enter__ = MagicMock(return_value=mock_client)
         mock_client.__exit__ = MagicMock(return_value=False)
 
-        with patch("app.services.official_source_fetcher.httpx.Client", return_value=mock_client):
+        with patch("app.services.official_source_fetcher.secure_client", return_value=mock_client):
             result = fetch_official_source("https://example.com/missing")
 
         self.assertFalse(result.success)
@@ -372,7 +372,7 @@ class OfficialSourceFetcherTests(unittest.TestCase):
         mock_client.__enter__ = MagicMock(return_value=mock_client)
         mock_client.__exit__ = MagicMock(return_value=False)
 
-        with patch("app.services.official_source_fetcher.httpx.Client", return_value=mock_client):
+        with patch("app.services.official_source_fetcher.secure_client", return_value=mock_client):
             result = fetch_official_source("https://example.com/denied")
 
         self.assertFalse(result.success)
@@ -391,7 +391,7 @@ class OfficialSourceFetcherTests(unittest.TestCase):
         mock_client.__enter__ = MagicMock(return_value=mock_client)
         mock_client.__exit__ = MagicMock(return_value=False)
 
-        with patch("app.services.official_source_fetcher.httpx.Client", return_value=mock_client):
+        with patch("app.services.official_source_fetcher.secure_client", return_value=mock_client):
             result = fetch_official_source("https://example.com/limited")
 
         self.assertFalse(result.success)
@@ -410,7 +410,7 @@ class OfficialSourceFetcherTests(unittest.TestCase):
         mock_client.__enter__ = MagicMock(return_value=mock_client)
         mock_client.__exit__ = MagicMock(return_value=False)
 
-        with patch("app.services.official_source_fetcher.httpx.Client", return_value=mock_client):
+        with patch("app.services.official_source_fetcher.secure_client", return_value=mock_client):
             result = fetch_official_source("https://example.com/error")
 
         self.assertFalse(result.success)
@@ -424,7 +424,7 @@ class OfficialSourceFetcherTests(unittest.TestCase):
         mock_client.__enter__ = MagicMock(return_value=mock_client)
         mock_client.__exit__ = MagicMock(return_value=False)
 
-        with patch("app.services.official_source_fetcher.httpx.Client", return_value=mock_client):
+        with patch("app.services.official_source_fetcher.secure_client", return_value=mock_client):
             result = fetch_official_source("https://example.com/slow")
 
         self.assertFalse(result.success)
@@ -438,7 +438,7 @@ class OfficialSourceFetcherTests(unittest.TestCase):
         mock_client.__enter__ = MagicMock(return_value=mock_client)
         mock_client.__exit__ = MagicMock(return_value=False)
 
-        with patch("app.services.official_source_fetcher.httpx.Client", return_value=mock_client):
+        with patch("app.services.official_source_fetcher.secure_client", return_value=mock_client):
             result = fetch_official_source("https://example.com/unreachable")
 
         self.assertFalse(result.success)
@@ -459,7 +459,7 @@ class OfficialSourceFetcherTests(unittest.TestCase):
         mock_client.__enter__ = MagicMock(return_value=mock_client)
         mock_client.__exit__ = MagicMock(return_value=False)
 
-        with patch("app.services.official_source_fetcher.httpx.Client", return_value=mock_client):
+        with patch("app.services.official_source_fetcher.secure_client", return_value=mock_client):
             result = fetch_official_source("https://example.com/doc.pdf")
 
         self.assertFalse(result.success)
@@ -480,7 +480,7 @@ class OfficialSourceFetcherTests(unittest.TestCase):
         mock_client.__enter__ = MagicMock(return_value=mock_client)
         mock_client.__exit__ = MagicMock(return_value=False)
 
-        with patch("app.services.official_source_fetcher.httpx.Client", return_value=mock_client):
+        with patch("app.services.official_source_fetcher.secure_client", return_value=mock_client):
             result = fetch_official_source("https://example.com/start")
 
         self.assertTrue(result.success)
@@ -498,7 +498,7 @@ class OfficialSourceFetcherTests(unittest.TestCase):
         mock_client.__enter__ = MagicMock(return_value=mock_client)
         mock_client.__exit__ = MagicMock(return_value=False)
 
-        with patch("app.services.official_source_fetcher.httpx.Client", return_value=mock_client):
+        with patch("app.services.official_source_fetcher.secure_client", return_value=mock_client):
             result = fetch_official_source("https://example.com/crash")
 
         self.assertFalse(result.success)

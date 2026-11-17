@@ -283,6 +283,52 @@ class ScholarshipApiTests(unittest.TestCase):
             self.assertEqual(response.status_code, 422)
             self.assertEqual(response.json(), {"detail": "Invalid request parameters."})
 
+    def test_academic_and_fully_funded_filters_use_exact_tri_state_data(self):
+        from app.database import get_session_factory
+
+        session = get_session_factory()()
+        marker = f"filter-fixture-{uuid4_module().hex}"
+        rows = [
+            self.Scholarship(
+                title=f"{marker}-{funding}", country="Testland", degree="Master",
+                funding="Award", status="open", verification_status="active",
+                is_archived=False, fully_funded=funding,
+                departments=["Computer Science" if funding is True else "Physics"],
+                eligible_fields=["Artificial Intelligence"],
+                eligible_programmes=["MSc Data Science"], program_type="Research award",
+                official_source_url=f"https://example.edu/{marker}-{funding}",
+            )
+            for funding in (True, False, None)
+        ]
+        try:
+            session.add_all(rows)
+            session.commit()
+            combined = self.client.get("/scholarships", params={
+                "department": "computer science",
+                "eligible_field": "Artificial Intelligence",
+                "eligible_programme": "MSc Data Science",
+                "programme_type": "Research award",
+                "fully_funded": "true",
+                "search": marker,
+                "sort": "name-asc",
+            })
+            unknown = self.client.get("/scholarships", params={"search": marker, "fully_funded": "unknown"})
+            false = self.client.get("/scholarships", params={"search": marker, "fully_funded": "false"})
+
+            self.assertEqual(combined.status_code, 200)
+            self.assertEqual(combined.json()["pagination"]["total"], 1)
+            self.assertEqual(combined.json()["items"][0]["title"], rows[0].title)
+            self.assertEqual(unknown.json()["pagination"]["total"], 1)
+            self.assertIsNone(unknown.json()["items"][0]["fully_funded"])
+            self.assertEqual(false.json()["pagination"]["total"], 1)
+            self.assertIs(false.json()["items"][0]["fully_funded"], False)
+        finally:
+            for row in rows:
+                if row in session:
+                    session.delete(row)
+            session.commit()
+            session.close()
+
     def test_cors_allows_the_configured_frontend_origin_only(self):
         response = self.client.options(
             "/scholarships",

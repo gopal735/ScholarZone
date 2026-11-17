@@ -41,7 +41,7 @@ from sqlalchemy.orm import Session
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from app.database import get_engine, get_session_factory, init_database  # noqa: E402
+from app.database import get_engine, get_session_factory  # noqa: E402
 from app.models import Scholarship  # noqa: E402
 from app.models_supervisor import (  # noqa: E402
     ProfessorAvailability,
@@ -293,7 +293,7 @@ def main() -> None:
     args = parser.parse_args()
 
     if not args.report_only:
-        init_database()
+        pass  # Schema migration is handled separately via migrate_schema.py / production workflow
     engine = get_engine()
     session = get_session_factory()()
 

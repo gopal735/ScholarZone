@@ -15,7 +15,6 @@ import re
 import sys
 from urllib.parse import urljoin, urlparse
 
-import httpx
 from sqlalchemy import select
 
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -23,6 +22,7 @@ sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 from app.database import get_session_factory
 from app.models import Scholarship
 from app.services.image_evaluation_status import ImageEvaluationStatus
+from app.services.outbound_security import secure_get
 
 UA = {
     "User-Agent": (
@@ -114,7 +114,7 @@ def main() -> None:
             if not official:
                 continue
             try:
-                response = httpx.get(
+                response = secure_get(
                     row.official_source_url,
                     headers=UA,
                     timeout=15.0,

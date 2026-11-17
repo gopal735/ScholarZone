@@ -1,14 +1,24 @@
 #!/usr/bin/env python3
 """Master deployment preflight command that runs all gates in sequence."""
 
+from __future__ import annotations
+
+import json
 import os
 import subprocess
 import sys
-import urllib.request
+from urllib.parse import urljoin
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 BACKEND_DIR = os.path.join(REPO_ROOT, "backend")
 SCRIPTS_DIR = os.path.join(BACKEND_DIR, "scripts")
+if BACKEND_DIR not in sys.path:
+    sys.path.insert(0, BACKEND_DIR)
+
+from scripts.local_smoke_http import open_api_url  # noqa: E402
+
+
+ALLOWED_LOOPBACK_PORTS = {8000, 8001}
 
 
 def run_script_gate(name: str, script_name: str, cwd: str) -> tuple[bool, str | None]:
@@ -45,33 +55,73 @@ def docker_available() -> bool:
         return False
 
 
+def _join_url(base_url: str, path: str) -> str:
+    base = base_url.rstrip("/") + "/"
+    return urljoin(base, path.lstrip("/"))
+
+
 def gate_readiness() -> tuple[bool, str | None]:
     print(f"\n{'=' * 60}")
     print("GATE: Readiness")
     print(f"{'=' * 60}")
-    url = os.environ.get("SCHOLARZONE_API_URL", "http://127.0.0.1:8000")
+    # Use port 8001 to match artifact_smoke_test.py which runs the container on port 8001
+    url = os.environ.get("SCHOLARZONE_API_URL", "http://127.0.0.1:8001")
     try:
-        with urllib.request.urlopen(f"{url}/health", timeout=5) as resp:
+        with open_api_url(
+            _join_url(url, "/health"),
+            allowed_loopback_ports=ALLOWED_LOOPBACK_PORTS,
+            timeout=5,
+        ) as resp:
             if resp.status == 200:
+                try:
+                    data = json.loads(resp.read().decode())
+                except (json.JSONDecodeError, UnicodeDecodeError):
+                    data = None
+                if isinstance(data, dict):
+                    status = data.get("status")
+                    if status is not None and str(status).lower() not in {"ok", "healthy", "ready", "up"}:
+                        print(f"[FAIL] API reported unhealthy status {status} at {url}")
+                        return False, f"API reported unhealthy status {status}"
                 print(f"[PASS] API is ready at {url}")
                 return True, None
+            else:
+                print(f"[FAIL] API returned status {resp.status} at {url}")
+                return False, f"API returned status {resp.status}"
     except Exception as exc:
-        print(f"[WARN] API not reachable at {url}: {exc}")
-        return True, "skipped - API not reachable"
-    print("[WARN] API not reachable")
-    return True, "skipped - API not reachable"
+        print(f"[FAIL] API not reachable at {url}: {exc}")
+        return False, f"API not reachable: {exc}"
 
 
 def gate_api_smoke_tests() -> tuple[bool, str | None]:
     print(f"\n{'=' * 60}")
     print("GATE: Critical API Smoke Tests")
     print(f"{'=' * 60}")
-    url = os.environ.get("SCHOLARZONE_API_URL", "http://127.0.0.1:8000")
+    # Use port 8001 to match artifact_smoke_test.py which runs the container on port 8001
+    url = os.environ.get("SCHOLARZONE_API_URL", "http://127.0.0.1:8001")
     ok = True
     for path in ["/health", "/scholarships/stats"]:
         try:
-            with urllib.request.urlopen(f"{url}{path}", timeout=10) as resp:
-                print(f"[PASS] {path} -> {resp.status}")
+            with open_api_url(
+                _join_url(url, path),
+                allowed_loopback_ports=ALLOWED_LOOPBACK_PORTS,
+                timeout=10,
+            ) as resp:
+                if 200 <= resp.status < 300:
+                    if path == "/health":
+                        try:
+                            data = json.loads(resp.read().decode())
+                        except (json.JSONDecodeError, UnicodeDecodeError):
+                            data = None
+                        if isinstance(data, dict):
+                            status = data.get("status")
+                            if status is not None and str(status).lower() not in {"ok", "healthy", "ready", "up"}:
+                                print(f"[FAIL] {path} -> unhealthy status {status}")
+                                ok = False
+                                continue
+                    print(f"[PASS] {path} -> {resp.status}")
+                else:
+                    print(f"[FAIL] {path} -> {resp.status}")
+                    ok = False
         except Exception as exc:
             print(f"[FAIL] {path} -> {exc}")
             ok = False
@@ -119,23 +169,24 @@ def main() -> int:
             results.append(("Artifact Startup Test", True, "skipped"))
 
     if not failed:
-        ok, reason = gate_readiness()
-        results.append(("Readiness", ok, reason))
-        if not ok and reason and "skipped" not in reason:
-            failed = True
-
-    if not failed:
         api_url = os.environ.get("SCHOLARZONE_API_URL")
         if not api_url:
             print(
-                "\n[WARN] SCHOLARZONE_API_URL not set - skipping API smoke tests"
+                "\n[WARN] SCHOLARZONE_API_URL not set - skipping readiness check and API smoke tests"
             )
+            results.append(("Readiness", True, "skipped - no API URL configured"))
             results.append(("API Smoke Tests", True, "skipped - no API URL configured"))
         else:
-            ok, reason = gate_api_smoke_tests()
-            results.append(("API Smoke Tests", ok, reason))
-            if not ok:
+            ok, reason = gate_readiness()
+            results.append(("Readiness", ok, reason))
+            if not ok and reason and "skipped" not in reason:
                 failed = True
+
+            if not failed:
+                ok, reason = gate_api_smoke_tests()
+                results.append(("API Smoke Tests", ok, reason))
+                if not ok:
+                    failed = True
 
     skipped = [
         name for name, ok, reason in results if ok and reason and "skipped" in reason
@@ -159,3 +210,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
+

@@ -352,18 +352,27 @@ class TestScheduleVersusBackstopRace:
         transport = fake_transport(204)
         when = at("2026-10-04T12:07:00")
         outcomes: list[dict] = []
+        errors: list[Exception] = []
         lock = threading.Lock()
 
         def from_schedule():
-            outcome = {"claim": claim(factory, SLOT_1207, "github-schedule",
-                                      lease_seconds=900, as_of=when)}
-            with lock:
-                outcomes.append(outcome)
+            try:
+                outcome = {"claim": claim(factory, SLOT_1207, "github-schedule",
+                                          lease_seconds=900, as_of=when)}
+                with lock:
+                    outcomes.append(outcome)
+            except Exception as exc:
+                with lock:
+                    errors.append(exc)
 
         def from_backstop():
-            report = run_backstop_once(factory, as_of=when, transport=transport)
-            with lock:
-                outcomes.append({"report": report})
+            try:
+                report = run_backstop_once(factory, as_of=when, transport=transport)
+                with lock:
+                    outcomes.append({"report": report})
+            except Exception as exc:
+                with lock:
+                    errors.append(exc)
 
         threads = [threading.Thread(target=from_schedule),
                    threading.Thread(target=from_backstop)]
@@ -372,6 +381,7 @@ class TestScheduleVersusBackstopRace:
         for t in threads:
             t.join()
 
+        assert not errors, f"competing dispatch path failed: {errors}"
         shared = SLOT_1207
         claims = [o["claim"].claimed for o in outcomes if "claim" in o]
         dispatched = [

@@ -92,8 +92,14 @@ def test_bounded_image_fetch_uses_supported_httpx_kwargs():
     response.__enter__.return_value = response
     response.__exit__.return_value = False
     stream = MagicMock(return_value=response)
+    client = MagicMock()
+    client.stream.return_value = response
+    safe_client_context = MagicMock()
+    safe_client_context.__enter__.return_value = client
+    safe_client_context.__exit__.return_value = False
+    safe_client_factory = MagicMock(return_value=safe_client_context)
 
-    with patch("app.services.image_validator.httpx.stream", stream):
+    with patch("app.services.image_validator.secure_client", safe_client_factory):
         status_code, headers, content, exceeded = _fetch_bounded_image(
             "https://example.com/image.png", 30.0
         )
@@ -102,12 +108,9 @@ def test_bounded_image_fetch_uses_supported_httpx_kwargs():
     assert headers["content-type"] == "image/png"
     assert content == b"test"
     assert exceeded is False
-    assert stream.call_args.kwargs == {
-        "headers": {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"},
-        "timeout": 30.0,
-        "follow_redirects": True,
-    }
-    assert "max_redirects" not in stream.call_args.kwargs
+    assert safe_client_factory.call_args.kwargs == {"timeout": 30.0, "follow_redirects": True}
+    assert client.stream.call_args.args == ("GET", "https://example.com/image.png")
+    assert "max_redirects" not in client.stream.call_args.kwargs
 
 
 class TestUnreachableImage:
@@ -115,11 +118,7 @@ class TestUnreachableImage:
         candidate = _make_candidate(image_url="https://daad.de/image.jpg")
         validator = ImageValidator()
 
-        mock_httpx_module = MagicMock()
-        mock_httpx_module.head.return_value = _mock_head(404, "text/html")
-        mock_httpx_module.RequestError = type("E", (), {})
-
-        with patch("app.services.image_validator.httpx", mock_httpx_module):
+        with patch("app.services.image_validator.httpx.head", return_value=_mock_head(404, "text/html")):
             result = validator.validate_candidate(candidate, scholarship_title="DAAD")
 
         assert result.is_reachable is False
@@ -136,11 +135,7 @@ class TestInvalidImage:
         )
         validator = ImageValidator()
 
-        mock_httpx_module = MagicMock()
-        mock_httpx_module.head.return_value = _mock_head(200, "text/html")
-        mock_httpx_module.RequestError = type("E", (), {})
-
-        with patch("app.services.image_validator.httpx", mock_httpx_module):
+        with patch("app.services.image_validator.httpx.head", return_value=_mock_head(200, "text/html")):
             with patch.object(ImageValidator, "_check_licensing") as mock_lic:
                 mock_lic.side_effect = lambda result: result
                 result = validator.validate_candidate(candidate, scholarship_title="DAAD")
@@ -859,7 +854,7 @@ class TestDiscoveryService:
             return response
 
         mock_get.side_effect = get_response
-        with patch("app.services.image_discovery.httpx.get", mock_get):
+        with patch("app.services.image_discovery.secure_get", mock_get):
             service = ImageDiscoveryService(max_retries=0, max_candidates=100)
             candidates = service.discover_from_scholarship(original_url)
 
@@ -890,7 +885,7 @@ class TestDiscoveryService:
         response.text = html_content
         response.url = "https://www.daad.de/en/scholarships"
         mock_get.return_value = response
-        with patch("app.services.image_discovery.httpx.get", mock_get):
+        with patch("app.services.image_discovery.secure_get", mock_get):
             service = ImageDiscoveryService(max_retries=0, max_candidates=100)
             candidates = service.discover_from_scholarship(
                 "https://www.daad.de/en/scholarships"
@@ -1488,23 +1483,25 @@ class TestOgImageDimensionFetching:
                          licensing_status="licensing_known", stream_mock=None):
         validator = ImageValidator()
 
-        mock_httpx_module = MagicMock()
-        mock_httpx_module.head.return_value = _mock_head(200, "image/jpeg")
-        mock_httpx_module.RequestError = type("E", (), {})
-        mock_httpx_module.stream.return_value = stream_mock or self._make_stream_mock(1200, 800)
+        fake_client = MagicMock()
+        fake_client.stream.return_value = stream_mock or self._make_stream_mock(1200, 800)
+        fake_client_context = MagicMock()
+        fake_client_context.__enter__.return_value = fake_client
+        fake_client_context.__exit__.return_value = False
 
         def mock_check_licensing(self, result):
             result.licensing_status = licensing_status
             result.licensing_evidence = "CC BY 4.0" if licensing_status == "licensing_known" else None
             return result
 
-        with patch("app.services.image_validator.httpx", mock_httpx_module):
-            with patch.object(ImageValidator, "_check_licensing", mock_check_licensing):
-                return validator.validate_candidate(
-                    candidate,
-                    scholarship_title=scholarship_title,
-                    official_source_url=official_source_url,
-                )
+        with patch("app.services.image_validator.httpx.head", return_value=_mock_head(200, "image/jpeg")):
+            with patch("app.services.image_validator.secure_client", return_value=fake_client_context):
+                with patch.object(ImageValidator, "_check_licensing", mock_check_licensing):
+                    return validator.validate_candidate(
+                        candidate,
+                        scholarship_title=scholarship_title,
+                        official_source_url=official_source_url,
+                    )
 
     def test_og_image_without_dimensions_small_rejected(self):
         """OG images missing HTML dimensions must be fetched and rejected if < 500px."""
@@ -1977,14 +1974,10 @@ class TestDiscoveryTiers:
 
     def test_common_asset_path_probing(self):
         """Tier 7: Common asset paths should be probed on official domain."""
-        mock_httpx_module = MagicMock()
-        mock_httpx_module.get.return_value = MagicMock(
+        with patch("app.services.image_discovery.secure_get", return_value=MagicMock(
             status_code=404,
             headers={"content-type": "text/html"},
-        )
-        mock_httpx_module.RequestError = type("E", (), {})
-
-        with patch("app.services.image_discovery.httpx", mock_httpx_module):
+        )):
             service = ImageDiscoveryService(timeout=30.0)
             candidates = service.discover_from_scholarship("https://www.daad.de/en/scholarships")
             # Should include candidates from common asset paths even if they return 404
@@ -2057,11 +2050,7 @@ class TestDiscoveryTiers:
             resp.text = ""
             return resp
 
-        mock_httpx_module = MagicMock()
-        mock_httpx_module.get = mock_get
-        mock_httpx_module.RequestError = type("E", (), {})
-
-        with patch("app.services.image_discovery.httpx", mock_httpx_module):
+        with patch("app.services.image_discovery.secure_get", side_effect=mock_get):
             with patch("app.services.image_discovery.MAX_PAGES_PER_SOURCE", 30):
                 service = ImageDiscoveryService(timeout=30.0)
                 candidates = service.discover_from_scholarship("https://www.daad.de/en/scholarships")

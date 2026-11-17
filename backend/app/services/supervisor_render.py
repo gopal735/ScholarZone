@@ -15,8 +15,10 @@ than a hope about the network.
 **It cannot defeat an access control.** A login wall or an anti-bot challenge is
 *detected* and reported as ``source_blocked``. There is no credential handling, no
 CAPTCHA solving, no stealth patching, no proxy rotation, and no retry against a
-barrier. A browser context is created without a storage state and without any
-cookie the user holds, so a request it makes is anonymous by construction.
+barrier. A browser context is Playwright's incognito-equivalent unit: separate cookies
+and storage per source, cheap to create. That matters for safety as well as
+hygiene - it guarantees no state, cookie or session can carry from one
+institution's directory into the next.
 
 **It is optional and off by default.** If the driver is not installed, if the
 configuration flag is off, or if the browser cannot start, the answer is
@@ -32,8 +34,10 @@ cost time and memory without carrying evidence.
 from __future__ import annotations
 
 import asyncio
+import inspect
 import logging
 import os
+import sys
 import time
 from typing import Protocol
 
@@ -44,6 +48,7 @@ from .supervisor_source import (
     SourceOutcome,
     detect_access_barrier,
 )
+from .outbound_proxy import OutboundProxy
 
 logger = logging.getLogger(__name__)
 
@@ -77,6 +82,7 @@ class RenderDriver(Protocol):
         budget: RenderBudget,
         seed_host: str,
         max_scroll_iterations: int = 0,
+        deadline_monotonic: float | None = None,
     ) -> SourceObservation:
         ...
 
@@ -110,6 +116,28 @@ def _map_http_status(status: int | None) -> str | None:
     return None
 
 
+def _timeout_observation(url: str, budget: RenderBudget, started: float, scrolls: int = 0) -> SourceObservation:
+    return SourceObservation(
+        url=url,
+        outcome=SourceOutcome.ERROR,
+        error_kind=str(RenderErrorKind.PAGE_TIMEOUT),
+        detail=f"Exceeded the {budget.total_seconds}s source budget.",
+        elapsed_ms=int((time.monotonic() - started) * 1000),
+        limits_used={"scrolls": scrolls} if scrolls else {},
+    )
+
+
+def _remaining_seconds(deadline: float) -> float:
+    return max(0.0, deadline - time.monotonic())
+
+
+async def _await_with_deadline(coro, deadline: float):
+    remaining = _remaining_seconds(deadline)
+    if remaining <= 0:
+        raise asyncio.TimeoutError()
+    return await asyncio.wait_for(coro, timeout=remaining)
+
+
 class PlaywrightRenderDriver:
     """One browser, one isolated context per source, hard-bounded.
 
@@ -123,27 +151,67 @@ class PlaywrightRenderDriver:
         self._headless = headless
         self._playwright = None
         self._browser = None
+        self._outbound_proxy: OutboundProxy | None = None
         self._lock = asyncio.Lock()
         self._contexts_open = 0
 
     async def start(self) -> None:
         from playwright.async_api import async_playwright
 
+        self._outbound_proxy = OutboundProxy()
+        proxy_server = await self._outbound_proxy.start()
         self._playwright = await async_playwright().start()
         self._browser = await self._playwright.chromium.launch(
             headless=self._headless,
+            proxy={"server": proxy_server, "bypass": "<-loopback>"},
             # Resource ceilings so a pathological page cannot consume the host.
-            args=["--disable-dev-shm-usage", "--no-sandbox", "--disable-gpu"],
+            args=[
+                "--disable-dev-shm-usage", "--no-sandbox", "--disable-gpu",
+                "--disable-background-networking", "--disable-dns-prefetch", "--disable-quic",
+                "--force-webrtc-ip-handling-policy=disable_non_proxied_udp",
+                "--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE 127.0.0.1",
+            ],
         )
 
     async def close(self) -> None:
-        if self._browser is not None:
-            await self._browser.close()
-            self._browser = None
-        if self._playwright is not None:
-            await self._playwright.stop()
-            self._playwright = None
+        browser = getattr(self, "_browser", None)
+        playwright = getattr(self, "_playwright", None)
+        proxy = getattr(self, "_outbound_proxy", None)
+        self._browser = None
+        self._playwright = None
+        self._outbound_proxy = None
 
+        cleanup_timeout = 5.0
+        cancelled = False
+
+        async def _close_one(label, obj, close_coro_factory):
+            nonlocal cancelled
+            if obj is None:
+                return
+            try:
+                coro = close_coro_factory()
+                if inspect.isawaitable(coro):
+                    await asyncio.wait_for(asyncio.shield(coro), timeout=cleanup_timeout)
+            except asyncio.CancelledError:
+                cancelled = True
+                logger.warning("%s cancelled during cleanup; continuing with remaining resources", label)
+            except asyncio.TimeoutError:
+                logger.warning("%s timed out during cleanup; continuing in background", label)
+            except Exception as exc:
+                logger.debug("%s failed during cleanup", label, exc_info=exc)
+
+        await _close_one("browser.close()", browser, lambda: browser.close())
+        await _close_one("playwright.stop()", playwright, lambda: playwright.stop())
+
+        if proxy is not None:
+            async def _proxy_close():
+                result = proxy.close()
+                if inspect.isawaitable(result):
+                    await result
+            await _close_one("proxy.close()", proxy, _proxy_close)
+
+        if cancelled:
+            raise asyncio.CancelledError()
     async def __aenter__(self) -> "PlaywrightRenderDriver":
         await self.start()
         return self
@@ -158,6 +226,7 @@ class PlaywrightRenderDriver:
         budget: RenderBudget,
         seed_host: str,
         max_scroll_iterations: int = 0,
+        deadline_monotonic: float | None = None,
     ) -> SourceObservation:
         """Render one URL within ``budget`` and return what was observed."""
         if not rendering_enabled():
@@ -183,8 +252,13 @@ class PlaywrightRenderDriver:
             )
 
         started = time.monotonic()
+        deadline = deadline_monotonic if deadline_monotonic is not None else (started + budget.total_seconds)
         context = None
+        scrolls = 0
         try:
+            if _remaining_seconds(deadline) <= 0:
+                return _timeout_observation(url, budget, started, scrolls)
+
             async with self._lock:
                 # Concurrency ceiling on live contexts, not just a convention.
                 if self._contexts_open >= budget.max_concurrent_contexts:
@@ -194,53 +268,77 @@ class PlaywrightRenderDriver:
                         error_kind=str(RenderErrorKind.BUDGET_EXHAUSTED),
                         detail="Too many concurrent browser contexts.",
                     )
-                context = await self._browser.new_context(
-                    # Anonymous by construction: no storage state, no user cookies.
-                    storage_state=None,
-                    service_workers="block",
+                context = await _await_with_deadline(
+                    self._browser.new_context(
+                        # Anonymous by construction: no storage state, no user cookies.
+                        storage_state=None,
+                        service_workers="block",
+                        java_script_enabled=True,
+                    ),
+                    deadline,
                 )
                 self._contexts_open += 1
 
-            await context.route(
-                "**/*",
-                lambda route: (
-                    route.abort()
-                    if route.request.resource_type in BLOCKED_RESOURCE_TYPES
-                    else route.continue_()
+            await _await_with_deadline(
+                context.route(
+                    "**/*",
+                    lambda route: (
+                        route.abort()
+                        if route.request.resource_type in BLOCKED_RESOURCE_TYPES
+                        else route.continue_()
+                    ),
                 ),
+                deadline,
             )
-            page = await context.new_page()
-            page.set_default_timeout(budget.navigation_timeout_ms)
-            page.set_default_navigation_timeout(budget.navigation_timeout_ms)
+            page = await _await_with_deadline(context.new_page(), deadline)
 
-            response = await page.goto(
-                url,
-                wait_until="domcontentloaded",
-                timeout=budget.navigation_timeout_ms,
+            nav_timeout_ms = budget.navigation_timeout_ms
+            remaining_ms = int(_remaining_seconds(deadline) * 1000)
+            if remaining_ms <= 0:
+                return _timeout_observation(url, budget, started, scrolls)
+            effective_timeout_ms = max(1, min(nav_timeout_ms, remaining_ms))
+            page.set_default_timeout(effective_timeout_ms)
+            page.set_default_navigation_timeout(effective_timeout_ms)
+
+            response = await _await_with_deadline(
+                page.goto(
+                    url,
+                    wait_until="domcontentloaded",
+                    timeout=effective_timeout_ms,
+                ),
+                deadline,
             )
 
             # A deterministic condition first, then a capped settle. Fixed sleeps
             # are avoided because real SPAs vary by an order of magnitude.
+            idle_timeout_ms = max(1, min(8_000, effective_timeout_ms, int(_remaining_seconds(deadline) * 1000) or 1))
             try:
-                await page.wait_for_load_state(
-                    "networkidle", timeout=min(8_000, budget.navigation_timeout_ms)
+                await _await_with_deadline(
+                    page.wait_for_load_state("networkidle", timeout=idle_timeout_ms),
+                    deadline,
                 )
+            except asyncio.TimeoutError:
+                # Budget/deadline exhaustion is a hard timeout outcome.
+                if _remaining_seconds(deadline) <= 0:
+                    raise
+                logger.debug("networkidle did not settle within budget cap for %s; continuing", url)
             except Exception:  # noqa: BLE001 - a page that never idles is normal
                 logger.debug("networkidle did not settle for %s; continuing", url)
 
             # Bounded scroll for infinite-scroll directories. Each iteration is
             # counted, so termination does not depend on the site cooperating.
-            scrolls = 0
             if max_scroll_iterations:
-                scrolls = await self._bounded_scroll(page, max_scroll_iterations)
+                scrolls = await self._bounded_scroll(page, max_scroll_iterations, deadline=deadline)
 
-            html = await page.content()
+            if _remaining_seconds(deadline) <= 0:
+                return _timeout_observation(url, budget, started, scrolls)
+
+            html = await _await_with_deadline(page.content(), deadline)
             if len(html) > budget.max_content_bytes:
                 html = html[: budget.max_content_bytes]
                 logger.info("Truncated rendered content for %s at %s bytes", url, budget.max_content_bytes)
 
             elapsed_ms = int((time.monotonic() - started) * 1000)
-            elapsed_seconds = time.monotonic() - started
             status = response.status if response is not None else None
 
             barrier = detect_access_barrier(html)
@@ -269,14 +367,8 @@ class PlaywrightRenderDriver:
                     elapsed_ms=elapsed_ms,
                 )
 
-            if elapsed_seconds > budget.total_seconds:
-                return SourceObservation(
-                    url=url,
-                    outcome=SourceOutcome.ERROR,
-                    error_kind=str(RenderErrorKind.PAGE_TIMEOUT),
-                    detail=f"Exceeded the {budget.total_seconds}s source budget.",
-                    elapsed_ms=elapsed_ms,
-                )
+            if _remaining_seconds(deadline) <= 0:
+                return _timeout_observation(url, budget, started, scrolls)
 
             return SourceObservation(
                 url=url,
@@ -287,7 +379,11 @@ class PlaywrightRenderDriver:
                 limits_used={"scrolls": scrolls},
             )
 
+        except asyncio.TimeoutError:
+            return _timeout_observation(url, budget, started, scrolls)
         except Exception as exc:  # noqa: BLE001 - every failure must be classified
+            if _remaining_seconds(deadline) <= 0:
+                return _timeout_observation(url, budget, started, scrolls)
             return self._classify_exception(url, exc, started)
         finally:
             if context is not None:
@@ -298,21 +394,41 @@ class PlaywrightRenderDriver:
                 except Exception:  # noqa: BLE001 - closing must never mask a result
                     pass
 
-    async def _bounded_scroll(self, page, max_iterations: int) -> int:
+    async def _bounded_scroll(self, page, max_iterations: int, *, deadline: float | None = None) -> int:
         """Scroll in fixed increments, stopping as soon as nothing new appears.
 
         Counts its own iterations and stops on the first one that adds no profile
         links, so a site that never stops loading still terminates.
         """
-        previous = await page.eval_on_selector_all("a[href]", "els => els.length")
+        if deadline is not None and _remaining_seconds(deadline) <= 0:
+            raise asyncio.TimeoutError()
+
+        previous = await (_await_with_deadline(page.eval_on_selector_all("a[href]", "els => els.length"), deadline) if deadline is not None else page.eval_on_selector_all("a[href]", "els => els.length"))
         for iteration in range(max_iterations):
-            await page.evaluate("window.scrollBy(0, window.innerHeight * 2)")
-            await page.wait_for_timeout(250)
-            try:
-                await page.wait_for_load_state("networkidle", timeout=3_000)
-            except Exception:  # noqa: BLE001
-                pass
-            current = await page.eval_on_selector_all("a[href]", "els => els.length")
+            if deadline is not None and _remaining_seconds(deadline) <= 0:
+                raise asyncio.TimeoutError()
+            await (_await_with_deadline(page.evaluate("window.scrollBy(0, window.innerHeight * 2)"), deadline) if deadline is not None else page.evaluate("window.scrollBy(0, window.innerHeight * 2)"))
+
+            if deadline is not None:
+                wait_ms = max(1, min(250, int(_remaining_seconds(deadline) * 1000)))
+                await _await_with_deadline(page.wait_for_timeout(wait_ms), deadline)
+                network_idle_timeout = max(1, min(3_000, int(_remaining_seconds(deadline) * 1000)))
+                try:
+                    await _await_with_deadline(page.wait_for_load_state("networkidle", timeout=network_idle_timeout), deadline)
+                except asyncio.TimeoutError:
+                    if _remaining_seconds(deadline) <= 0:
+                        raise
+                except Exception:  # noqa: BLE001
+                    pass
+                current = await _await_with_deadline(page.eval_on_selector_all("a[href]", "els => els.length"), deadline)
+            else:
+                await page.wait_for_timeout(250)
+                try:
+                    await page.wait_for_load_state("networkidle", timeout=3_000)
+                except Exception:  # noqa: BLE001
+                    pass
+                current = await page.eval_on_selector_all("a[href]", "els => els.length")
+
             if current <= previous:
                 return iteration + 1
             previous = current
@@ -367,6 +483,7 @@ class NullRenderDriver:
         budget: RenderBudget,
         seed_host: str,
         max_scroll_iterations: int = 0,
+        deadline_monotonic: float | None = None,
     ) -> SourceObservation:
         return SourceObservation(
             url=url,
@@ -395,15 +512,52 @@ def _run_coroutine(coroutine):
     raising, so a render degrades into an inconclusive outcome instead of an
     exception.
     """
+    def run_in_fresh_loop(awaitable):
+        # Playwright starts its driver with asyncio subprocess APIs. Windows'
+        # selector loop does not implement subprocess transports, so its loop
+        # must be a Proactor even if the test harness changed global policy.
+        loop_factory = asyncio.ProactorEventLoop if sys.platform == "win32" else None
+        with asyncio.Runner(loop_factory=loop_factory) as runner:
+            return runner.run(awaitable)
+
     try:
         asyncio.get_running_loop()
     except RuntimeError:
-        return asyncio.run(coroutine)
+        return run_in_fresh_loop(coroutine)
 
     import concurrent.futures
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=1) as pool:
-        return pool.submit(asyncio.run, coroutine).result()
+        return pool.submit(run_in_fresh_loop, coroutine).result()
+
+
+async def _call_render_with_optional_deadline(
+    driver: RenderDriver,
+    url: str,
+    *,
+    budget: RenderBudget,
+    seed_host: str,
+    max_scroll_iterations: int,
+    deadline_monotonic: float | None,
+) -> SourceObservation:
+    try:
+        signature = inspect.signature(driver.render)
+        if "deadline_monotonic" in signature.parameters:
+            return await driver.render(
+                url,
+                budget=budget,
+                seed_host=seed_host,
+                max_scroll_iterations=max_scroll_iterations,
+                deadline_monotonic=deadline_monotonic,
+            )
+    except (TypeError, ValueError):
+        pass
+    return await driver.render(
+        url,
+        budget=budget,
+        seed_host=seed_host,
+        max_scroll_iterations=max_scroll_iterations,
+    )
 
 
 def render_blocking(
@@ -430,29 +584,107 @@ def render_blocking(
         # would hand the second call a browser attached to a dead loop - which
         # surfaces as a baffling AttributeError rather than a lifecycle error.
         async def _session() -> SourceObservation:
-            if isinstance(active, PlaywrightRenderDriver):
-                await active.start()
+            started = time.monotonic()
+            deadline = started + budget.total_seconds
+            primary: SourceObservation | None = None
             try:
-                return await active.render(
+                if isinstance(active, PlaywrightRenderDriver):
+                    try:
+                        await _await_with_deadline(active.start(), deadline)
+                    except asyncio.TimeoutError:
+                        primary = _timeout_observation(url, budget, started)
+                    except Exception as exc:  # noqa: BLE001 - startup failures are inconclusive
+                        logger.exception("Browser startup failed for %s", url)
+                        primary = SourceObservation(
+                            url=url,
+                            outcome=SourceOutcome.ERROR,
+                            error_kind=str(RenderErrorKind.BROWSER_UNAVAILABLE),
+                            detail=type(exc).__name__,
+                            elapsed_ms=int((time.monotonic() - started) * 1000),
+                        )
+
+                if primary is None:
+                    try:
+                        primary = await _call_render_with_optional_deadline(
+                            active,
+                            url,
+                            budget=budget,
+                            seed_host=seed_host,
+                            max_scroll_iterations=max_scroll_iterations,
+                            deadline_monotonic=deadline,
+                        )
+                    except asyncio.TimeoutError:
+                        primary = _timeout_observation(url, budget, started)
+                    except Exception as exc:  # noqa: BLE001 - startup failures are inconclusive
+                        if isinstance(active, PlaywrightRenderDriver):
+                            logger.exception("Browser startup failed for %s", url)
+                            primary = SourceObservation(
+                                url=url,
+                                outcome=SourceOutcome.ERROR,
+                                error_kind=str(RenderErrorKind.BROWSER_UNAVAILABLE),
+                                detail=type(exc).__name__,
+                                elapsed_ms=int((time.monotonic() - started) * 1000),
+                            )
+                        else:
+                            raise
+
+                if _remaining_seconds(deadline) <= 0 and primary.outcome != SourceOutcome.ERROR:
+                    primary = _timeout_observation(url, budget, started, primary.limits_used.get("scrolls", 0))
+                return primary
+            finally:
+                if isinstance(active, PlaywrightRenderDriver):
+                    # Bound cleanup by the remaining render deadline. Use
+                    # asyncio.wait (not wait_for) so a stalled close() is
+                    # abandoned rather than awaited to completion.
+                    close_task = asyncio.create_task(active.close())
+                    remaining = _remaining_seconds(deadline)
+                    timeout = max(0.0, remaining)
+                    try:
+                        done, pending = await asyncio.wait({close_task}, timeout=timeout)
+                    except asyncio.CancelledError:
+                        logger.warning("Owned-driver cleanup cancelled externally for %s", url)
+                        raise
+                    if pending:
+                        logger.warning("Owned-driver cleanup abandoned after deadline for %s", url)
+                    else:
+                        try:
+                            close_task.result()
+                        except asyncio.CancelledError:
+                            logger.warning("Owned-driver cleanup cancelled for %s", url)
+                        except asyncio.TimeoutError:
+                            logger.warning("Owned-driver cleanup timed out for %s", url)
+                        except Exception as exc:  # noqa: BLE001
+                            logger.debug("Owned-driver cleanup failed for %s", url, exc_info=exc)
+
+        return _run_coroutine(_session())
+
+    async def _shared() -> SourceObservation:
+        started = time.monotonic()
+        deadline = started + budget.total_seconds
+        try:
+            remaining = _remaining_seconds(deadline)
+            if remaining <= 0:
+                return _timeout_observation(url, budget, started)
+            observation = await asyncio.wait_for(
+                _call_render_with_optional_deadline(
+                    active,
                     url,
                     budget=budget,
                     seed_host=seed_host,
                     max_scroll_iterations=max_scroll_iterations,
+                    deadline_monotonic=deadline,
+                ),
+                timeout=remaining,
+            )
+            if _remaining_seconds(deadline) <= 0 and observation.outcome != SourceOutcome.ERROR:
+                return _timeout_observation(
+                    url, budget, started, observation.limits_used.get("scrolls", 0)
                 )
-            finally:
-                if isinstance(active, PlaywrightRenderDriver):
-                    await active.close()
+            return observation
+        except asyncio.TimeoutError:
+            return _timeout_observation(url, budget, started)
 
-        return _run_coroutine(_session())
-
-    return _run_coroutine(
-        active.render(
-            url,
-            budget=budget,
-            seed_host=seed_host,
-            max_scroll_iterations=max_scroll_iterations,
-        )
-    )
+    return _run_coroutine(_shared())
 
 
 __all__ = [

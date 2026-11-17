@@ -21,6 +21,8 @@ from dataclasses import dataclass, field
 from typing import Literal
 
 import httpx
+
+from .outbound_security import secure_client
 from PIL import Image
 
 ImageClassification = Literal[
@@ -88,13 +90,8 @@ def analyze_image(
                 "AppleWebKit/537.36 (KHTML, like Gecko) "
                 "Chrome/120.0.0.0 Safari/537.36"
             )}
-            with httpx.stream(
-                "GET",
-                image_url,
-                headers=headers,
-                timeout=timeout,
-                follow_redirects=True,
-            ) as response:
+            with secure_client(timeout=timeout, follow_redirects=True) as client:
+              with client.stream("GET", image_url, headers=headers) as response:
                 if response.status_code != 200:
                     result.analysis_error = f"HTTP {response.status_code}"
                     return result

@@ -49,6 +49,7 @@ from .manifest import CANONICAL_TARGET_IDS, TARGET_ID_SET
 from .database import DatabaseAccessor, create_accessor, DatabaseIdentity
 from .config import DatabaseConfig, GPGConfig, PreflightConfig, DurableStorageConfig, load_config
 from .metadata import save_result_with_metadata
+from ..outbound_security import secure_urlopen
 
 
 def is_test_mode() -> bool:
@@ -1261,7 +1262,7 @@ def _query_neon_api_for_pitr(api_key: str, project_id: str, branch_id: str) -> d
         req.add_header("Authorization", f"Bearer {api_key}")
         req.add_header("Accept", "application/json")
         
-        with urllib.request.urlopen(req, timeout=30) as response:
+        with secure_urlopen(req, timeout=30) as response:
             if response.status == 200:
                 import json
                 data = json.loads(response.read().decode())
@@ -1290,7 +1291,7 @@ def _query_neon_api_for_pitr(api_key: str, project_id: str, branch_id: str) -> d
                     branches_req.add_header("Authorization", f"Bearer {api_key}")
                     branches_req.add_header("Accept", "application/json")
                     
-                    with urllib.request.urlopen(branches_req, timeout=30) as branches_response:
+                    with secure_urlopen(branches_req, timeout=30) as branches_response:
                         if branches_response.status == 200:
                             branches_data = json.loads(branches_response.read().decode())
                             branches = branches_data.get("branches", [])

@@ -12,7 +12,7 @@ import sys
 
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
-import httpx
+from app.services.outbound_security import secure_client
 
 UA = {
     "User-Agent": (
@@ -40,7 +40,7 @@ TARGETS = [
 
 
 def main() -> None:
-    client = httpx.Client(timeout=20.0, follow_redirects=True, headers=UA)
+    client = secure_client(timeout=20.0, follow_redirects=True, headers=UA)
     try:
         for url in TARGETS:
             try:

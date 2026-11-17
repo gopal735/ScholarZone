@@ -569,7 +569,24 @@ def test_robots_disallow_prevents_the_request(monkeypatch):
             request=httpx.Request("GET", url),
         )
 
-    monkeypatch.setattr(httpx.Client, "get", fake_get)
+    def fake_secure_client(*args, **kwargs):
+        class MockClient:
+            def __init__(self, *args, **kwargs):
+                pass
+            def __enter__(self):
+                return self
+            def __exit__(self, *args):
+                pass
+            def get(self, url, **kwargs):
+                return fake_get(self, url, **kwargs)
+        return MockClient()
+
+    # Mock secure_client in all modules that import it
+    from app.services import outbound_security, supervisor_discovery, official_source_fetcher
+    monkeypatch.setattr(outbound_security, "secure_client", fake_secure_client)
+    monkeypatch.setattr(supervisor_discovery, "secure_client", fake_secure_client)
+    monkeypatch.setattr(official_source_fetcher, "secure_client", fake_secure_client)
+
     worker.clear_robots_cache()
 
     allowed = worker.polite_fetch("https://uni1.edu/programmes/msc")
@@ -586,12 +603,24 @@ def test_robots_disallow_prevents_the_request(monkeypatch):
 def test_an_unreadable_robots_file_fails_closed(monkeypatch):
     import httpx
 
-    def fake_get(self, url, **kwargs):
-        if url.endswith("/robots.txt"):
-            raise httpx.ConnectError("no route to host")
-        return httpx.Response(200, text="<html></html>", request=httpx.Request("GET", url))
+    def fake_secure_client(*args, **kwargs):
+        class MockClient:
+            def __init__(self, *args, **kwargs):
+                pass
+            def __enter__(self):
+                return self
+            def __exit__(self, *args):
+                pass
+            def get(self, url, **kwargs):
+                if url.endswith("/robots.txt"):
+                    raise httpx.ConnectError("no route to host")
+                return httpx.Response(200, text="<html></html>", request=httpx.Request("GET", url))
+        return MockClient()
 
-    monkeypatch.setattr(httpx.Client, "get", fake_get)
+    from app.services import outbound_security, supervisor_discovery, official_source_fetcher
+    monkeypatch.setattr(outbound_security, "secure_client", fake_secure_client)
+    monkeypatch.setattr(supervisor_discovery, "secure_client", fake_secure_client)
+    monkeypatch.setattr(official_source_fetcher, "secure_client", fake_secure_client)
     worker.clear_robots_cache()
 
     # Deciding that an unreadable policy permits everything is how a crawler ends
@@ -643,3 +672,6 @@ def test_an_empty_batch_returns_nothing(db):
 def test_robots_cache_can_be_cleared():
     worker.clear_robots_cache()
     assert worker._ROBOTS_CACHE == {}
+
+
+

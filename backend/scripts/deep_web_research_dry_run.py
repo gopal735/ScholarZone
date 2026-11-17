@@ -26,8 +26,9 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import urljoin, urlparse
 
-import httpx
 from bs4 import BeautifulSoup
+
+from app.services.outbound_security import secure_get
 
 _BACKEND_DIR = Path(__file__).resolve().parents[1]
 if str(_BACKEND_DIR) not in sys.path:
@@ -194,7 +195,7 @@ def _retry_with_backoff(func, *args, max_retries: int = MAX_RETRIES,
 def _fetch_page(url: str, timeout: float = DEFAULT_TIMEOUT) -> tuple[int | None, str | None, str | None]:
     """Fetch a page, returning (status, content, error)."""
     try:
-        response = httpx.get(
+        response = secure_get(
             url,
             headers={"User-Agent": BROWSER_UA, "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"},
             timeout=timeout,
