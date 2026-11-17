@@ -216,9 +216,11 @@ function compareByDeadlineThenTitle(a, b) {
 async function fetchDeadlineWindowScholarships(days, question = '') {
   const constraintKeywords = extractKeywords(question || '').filter((word) => {
     const lower = String(word).toLowerCase();
+    if (/^\d+$/.test(lower)) return false;
     return ![
       'deadline', 'deadlines', 'closing', 'close', 'due', 'expires', 'expiry',
-      'days', 'day', 'within', 'next', 'upcoming', 'soon', 'coming', 'scholarship', 'scholarships',
+      'days', 'day', 'within', 'next', 'upcoming', 'soon', 'coming',
+      'scholarship', 'scholarships', 'month', 'months', 'week', 'weeks',
     ].includes(lower);
   });
   const search = constraintKeywords.length > 0 ? constraintKeywords.join(' ') : undefined;
@@ -243,7 +245,13 @@ async function fetchDeadlineWindowScholarships(days, question = '') {
     // fall through to deterministic snapshot scan
   }
 
-  const snapshot = await fetchScholarshipsFromSnapshot({ page: 1, limit: 10000, sort: 'deadline-soon' });
+  const snapshot = await fetchScholarshipsFromSnapshot({
+    ...(search ? { search } : {}),
+    deadline_within_days: boundedDays,
+    page: 1,
+    limit: 10000,
+    sort: 'deadline-soon',
+  });
   const allItems = Array.isArray(snapshot?.items) ? snapshot.items : [];
   const now = new Date();
   const todayUtc = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
@@ -270,6 +278,13 @@ async function groundedFallback(question) {
 
     if (isDeadlineWindowQuestion(safeQuestion)) {
       const days = parseDeadlineWindowDays(safeQuestion) ?? 30;
+      if (days > 365) {
+        return {
+          answer: 'Deadline windows above 365 days are not supported. Please use 365 days or fewer.',
+          sources: [],
+          grounded: true,
+        };
+      }
       scholarships = (await fetchDeadlineWindowScholarships(days, safeQuestion)).slice(0, 10);
 
       if (scholarships.length === 0) {
