@@ -791,6 +791,11 @@ class TestPostgreSQLIntegration:
             with engine.begin() as conn:
                 conn.execute(text("CREATE TABLE scholarships (id INTEGER PRIMARY KEY)"))
                 conn.execute(text("CREATE TABLE users (id INTEGER PRIMARY KEY)"))
+                conn.execute(text("""CREATE TABLE maintenance_runs (
+                    id INTEGER PRIMARY KEY,
+                    slot_id VARCHAR(255)
+                )"""))
+                conn.execute(text("CREATE INDEX IF NOT EXISTS ix_maintenance_runs_slot_id ON maintenance_runs (slot_id)"))
             yield engine
         finally:
             if engine is not None:
