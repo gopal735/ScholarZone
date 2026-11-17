@@ -391,7 +391,7 @@ export async function fetchScholarshipsFromSnapshot(query = {}) {
   }
   if (deadline_within_days && deadline_within_days !== 'All') {
     const days = Number(deadline_within_days)
-    if (Number.isFinite(days) && days > 0) {
+    if (Number.isFinite(days) && days >= 1 && days <= 365) {
       const now = new Date()
       const todayUtc = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()))
       const cutoff = new Date(todayUtc)

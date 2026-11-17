@@ -79,6 +79,11 @@ def _degree_conditions(column, requested: str) -> list:
     return [or_(*[lowered.like(f"%{_escape_like(word)}%") for word in bucket])]
 
 
+def _utc_today() -> date:
+    """Current UTC date. Isolated so tests can freeze the clock."""
+    return datetime.now(timezone.utc).date()
+
+
 def public_visibility_conditions() -> list:
     """The single definition of "this record may be shown publicly".
 
@@ -170,7 +175,7 @@ def _filter_conditions(query: ScholarshipQuery):
     if query.deadline_within_days is not None:
         # Calendar-day window relative to current UTC date, inclusive.
         # Using UTC keeps API/snapshot/frontend window boundaries deterministic.
-        today = datetime.now(timezone.utc).date()
+        today = _utc_today()
         cutoff = today + timedelta(days=query.deadline_within_days)
         conditions.append(Scholarship.deadline_date.is_not(None))
         conditions.append(Scholarship.deadline_date >= today)

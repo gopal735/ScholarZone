@@ -76,9 +76,11 @@ export async function askAIAssistant(request) {
     clearTimeout(timeoutId);
 
     if (!response.ok) {
-      // Provider/configuration unavailable or transient remote failures should
-      // not block the user from getting grounded catalogue answers.
-      if (response.status === 503 || response.status >= 500 || response.status === 429) {
+      // Fallback is reserved for explicitly transient/provider-unavailable
+      // failures. A generic 500 (internal/database error) is surfaced as a
+      // structured error so it is never misclassified as "AI unavailable".
+      const transientProviderStatuses = new Set([429, 502, 503, 504]);
+      if (transientProviderStatuses.has(response.status)) {
         return groundedFallback(question);
       }
 
@@ -86,7 +88,8 @@ export async function askAIAssistant(request) {
       throw {
         error: errorData?.error || errorData?.detail || 'AI request failed.',
         code: 'SERVER_ERROR',
-        retryable: false,
+        retryable: response.status >= 500,
+        status: response.status,
       };
     }
 

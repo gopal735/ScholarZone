@@ -254,24 +254,45 @@ export async function fetchScholarshipsByLifecycle(query = {}, lifecycle = 'All'
   }
 
   const totalPages = firstPage.pagination?.total_pages || 1
-  const remainingPages = await Promise.all(
-    Array.from({ length: Math.max(0, totalPages - 1) }, (_, index) =>
-      fetchScholarships({ ...apiFilters, page: index + 2, limit: 100 }, options),
-    ),
-  )
+  const pageNumbers = Array.from({ length: Math.max(0, totalPages - 1) }, (_, index) => index + 2)
 
-  if (remainingPages.some((result) => result.fromSnapshot)) {
-    const snapshot = await fetchScholarshipsFromSnapshot({
-      ...apiFilters,
-      lifecycle: targetLifecycle,
-      page,
-      limit,
-    })
-    return { ...snapshot, fromSnapshot: true }
+  const remainingPages = []
+  const CONCURRENCY = 4
+  for (let i = 0; i < pageNumbers.length; i += CONCURRENCY) {
+  if (options?.signal?.aborted) break
+    const chunk = pageNumbers.slice(i, i + CONCURRENCY)
+    const chunkResults = await Promise.all(
+      chunk.map((pageNumber) =>
+        fetchScholarships({ ...apiFilters, page: pageNumber, limit: 100 }, options),
+      ),
+    )
+    remainingPages.push(...chunkResults)
+    if (chunkResults.some((result) => result.fromSnapshot)) {
+      // Stop fetching further pages; fall back to snapshot for exact parity.
+      const snapshot = await fetchScholarshipsFromSnapshot({
+        ...apiFilters,
+        lifecycle: targetLifecycle,
+        page,
+        limit,
+      })
+      return { ...snapshot, fromSnapshot: true }
+    }
+  }
+
+  if (options?.signal?.aborted) {
+    throw new DOMException('The operation was aborted.', 'AbortError')
   }
 
   const allItems = [firstPage, ...remainingPages].flatMap((result) => result.items)
-  const matches = allItems.filter((scholarship) => classifyLifecycle(scholarship).status === targetLifecycle)
+  // Remove duplicate records (by id) that can appear across overlapping pages.
+  const seen = new Set()
+  const uniqueItems = allItems.filter((item) => {
+    const key = item?.id ?? item?.title
+    if (seen.has(key)) return false
+    seen.add(key)
+    return true
+  })
+  const matches = uniqueItems.filter((scholarship) => classifyLifecycle(scholarship).status === targetLifecycle)
   const total = matches.length
 
   return {
