@@ -1634,6 +1634,9 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
 
         if not table_ok:
             validation["valid"] = False
+            print(f"DEBUG VALIDATION FAIL table={table_name}", file=sys.stderr)
+            import json
+            print(json.dumps(validation, default=str, indent=2), file=sys.stderr)
 
     # Scholarship additional columns validation
     scholarship_column_results = {}
