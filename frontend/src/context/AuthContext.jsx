@@ -51,12 +51,26 @@ export function AuthProvider({ children }) {
     setStatus('unauthenticated')
   }
 
+  async function refreshSession() {
+    try {
+      const session = await authService.checkSession()
+      setUser(session?.user ?? null)
+      setStatus(session?.user ? 'authenticated' : 'unauthenticated')
+      return session
+    } catch {
+      setUser(null)
+      setStatus('unauthenticated')
+      return { user: null }
+    }
+  }
+
   const value = {
     status,
     user,
     login,
     register,
     logout,
+    refreshSession,
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
