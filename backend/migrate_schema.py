@@ -1916,6 +1916,7 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
             fk.get("constrained_columns") == ["scholarship_id"]
             and fk.get("referred_table") == "scholarships"
             and fk.get("referred_columns") == ["id"]
+            and (fk.get("options", {}).get("ondelete") or "NO ACTION").upper().replace("_", " ") == "NO ACTION"
             for fk in actual_fks
         )
         image_reviews_fk_ok = fk_ok
@@ -1934,9 +1935,18 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
             expected_cols = idx.split("(")[1].rstrip(")").split(",")
             expected_cols = [c.strip() for c in expected_cols]
             actual_cols = actual_idx.get("column_names", [])
-            if actual_cols != expected_cols:
+            actual_unique = bool(actual_idx.get("unique", False))
+            actual_partial = _index_has_predicate(actual_idx)
+            if actual_cols != expected_cols or actual_unique or actual_partial:
                 image_reviews_ok = False
-                image_reviews_index_results[idx_name] = {"status": "MISMATCH", "expected": expected_cols, "actual": actual_cols}
+                image_reviews_index_results[idx_name] = {
+                    "status": "MISMATCH",
+                    "expected_columns": expected_cols,
+                    "actual_columns": actual_cols,
+                    "expected_unique": False,
+                    "actual_unique": actual_unique,
+                    "actual_partial": actual_partial,
+                }
             else:
                 image_reviews_index_results[idx_name] = {"status": "OK"}
 
