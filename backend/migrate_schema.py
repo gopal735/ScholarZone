@@ -644,6 +644,18 @@ def generate_index_statements(engine: Engine, missing_tables: list[str], existin
     return statements
 
 
+
+def _index_has_predicate(index_info: dict) -> bool:
+    """Return True when an index is partial/restricted."""
+    if index_info.get("predicate") is not None:
+        return True
+    options = index_info.get("dialect_options") or {}
+    for key, value in options.items():
+        if value is not None and ("where" in key or "predicate" in key):
+            return True
+    return False
+
+
 # ============================================================
 # Full-schema reconciliation: scholarships columns, image_reviews
 # ============================================================
@@ -1769,7 +1781,7 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
                     actual_unique = any(
                         idx.get("unique")
                         and idx.get("column_names") == [col_name]
-                        and not idx.get("predicate")
+                        and not _index_has_predicate(idx)
                         for idx in inspector.get_indexes("scholarships")
                     )
                 except Exception:
@@ -1828,13 +1840,15 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
         actual_cols = actual.get("column_names", [])
         actual_unique = bool(actual.get("unique", False))
         expected_unique = "UNIQUE" in stmt.upper()
-        if actual_cols != expected_cols or actual_unique != expected_unique:
+        actual_partial = _index_has_predicate(actual)
+        if actual_cols != expected_cols or actual_unique != expected_unique or actual_partial:
             additional_index_results[idx_name] = {
                 "status": "MISMATCH",
                 "expected_columns": expected_cols,
                 "actual_columns": actual_cols,
                 "expected_unique": expected_unique,
                 "actual_unique": actual_unique,
+                "actual_partial": actual_partial,
             }
             additional_indexes_ok = False
         else:
