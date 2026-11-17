@@ -137,13 +137,13 @@ function parseDeadlineWindowDays(question) {
   const q = normalizeQuestion(question);
   if (!q) return null;
 
-  const explicit = q.match(/\b(?:within|in|next|coming)\s+(\d{1,3})\s+days?\b/);
+  const explicit = q.match(/\b(?:within|in|next|coming)\s+(\d+)\s+days?\b/);
   if (explicit) {
     const days = Number(explicit[1]);
     return Number.isFinite(days) && days > 0 ? days : null;
   }
 
-  const reversed = q.match(/\b(\d{1,3})\s+days?\b/);
+  const reversed = q.match(/\b(\d+)\s+days?\b/);
   if (reversed && (q.includes('deadline') || q.includes('closing') || q.includes('due'))) {
     const days = Number(reversed[1]);
     return Number.isFinite(days) && days > 0 ? days : null;
@@ -199,6 +199,14 @@ function getDeadlineDateUtc(scholarship) {
   return toUtcDateStart(parsed);
 }
 
+function getRawDeadlineDateUtc(scholarship) {
+  const raw = scholarship?.deadline_date;
+  if (!raw) return null;
+  const parsed = new Date(`${raw}T00:00:00Z`);
+  if (isNaN(parsed.getTime())) return null;
+  return toUtcDateStart(parsed);
+}
+
 function formatDeadline(scholarship) {
   if (typeof scholarship?.deadline === 'string' && scholarship.deadline.trim()) return scholarship.deadline;
   const parsed = getDeadlineDateUtc(scholarship);
@@ -214,9 +222,10 @@ function compareByDeadlineThenTitle(a, b) {
 }
 
 async function fetchDeadlineWindowScholarships(days, question = '') {
+  const timeframeNumber = String(days);
   const constraintKeywords = extractKeywords(question || '').filter((word) => {
     const lower = String(word).toLowerCase();
-    if (/^\d+$/.test(lower)) return false;
+    if (/^\d+$/.test(lower) && lower === timeframeNumber) return false;
     return ![
       'deadline', 'deadlines', 'closing', 'close', 'due', 'expires', 'expiry',
       'days', 'day', 'within', 'next', 'upcoming', 'soon', 'coming',
@@ -260,10 +269,15 @@ async function fetchDeadlineWindowScholarships(days, question = '') {
 
   return allItems
     .filter((s) => {
-      const d = getDeadlineDateUtc(s);
+      const d = getRawDeadlineDateUtc(s);
       return d && d >= todayUtc && d <= cutoff;
     })
-    .sort(compareByDeadlineThenTitle);
+    .sort((a, b) => {
+      const ad = getRawDeadlineDateUtc(a)?.getTime() ?? Number.POSITIVE_INFINITY;
+      const bd = getRawDeadlineDateUtc(b)?.getTime() ?? Number.POSITIVE_INFINITY;
+      if (ad !== bd) return ad - bd;
+      return String(a?.title || '').localeCompare(String(b?.title || ''), undefined, { sensitivity: 'base' });
+    });
 }
 
 /**
