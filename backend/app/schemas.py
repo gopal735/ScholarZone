@@ -67,6 +67,12 @@ class ScholarshipQuery(BaseModel):
     eligible_programme: str | None = Field(default=None, max_length=160)
     programme_type: str | None = Field(default=None, max_length=120)
     deadline_month: int | None = Field(default=None, ge=1, le=12)
+    deadline_within_days: int | None = Field(
+        default=None,
+        ge=1,
+        le=365,
+        description="Only scholarships with a known deadline on or after the current UTC date and within N days from that date (inclusive).",
+    )
     status: ScholarshipStatus | None = None
     sort: ScholarshipSort = ScholarshipSort.DEFAULT
     page: int = Field(default=1, ge=1, le=100_000)

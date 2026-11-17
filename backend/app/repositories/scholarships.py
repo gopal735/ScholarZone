@@ -1,5 +1,7 @@
 """Database queries for scholarship discovery."""
 
+from datetime import date, datetime, timedelta, timezone
+
 from sqlalchemy import String, case, cast, func, or_, select
 from sqlalchemy.orm import Session
 
@@ -77,6 +79,11 @@ def _degree_conditions(column, requested: str) -> list:
     return [or_(*[lowered.like(f"%{_escape_like(word)}%") for word in bucket])]
 
 
+def _utc_today() -> date:
+    """Current UTC date. Isolated so tests can freeze the clock."""
+    return datetime.now(timezone.utc).date()
+
+
 def public_visibility_conditions() -> list:
     """The single definition of "this record may be shown publicly".
 
@@ -129,8 +136,11 @@ def _filter_conditions(query: ScholarshipQuery):
     eligible_programme = _normalise_optional_filter(query.eligible_programme)
     programme_type = _normalise_optional_filter(query.programme_type)
 
-    if search:
-        pattern = f"%{_escape_like(search)}%"
+    search_terms = [term for term in search.split() if term] if search else []
+    if not search_terms and search:
+        search_terms = [search]
+    for term in search_terms:
+        pattern = f"%{_escape_like(term)}%"
         conditions.append(
             or_(
                 Scholarship.title.ilike(pattern, escape="\\"),
@@ -165,6 +175,14 @@ def _filter_conditions(query: ScholarshipQuery):
         conditions.append(func.lower(Scholarship.program_type) == programme_type.casefold())
     if query.deadline_month is not None:
         conditions.append(func.extract("month", Scholarship.deadline_date) == query.deadline_month)
+    if query.deadline_within_days is not None:
+        # Calendar-day window relative to current UTC date, inclusive.
+        # Using UTC keeps API/snapshot/frontend window boundaries deterministic.
+        today = _utc_today()
+        cutoff = today + timedelta(days=query.deadline_within_days)
+        conditions.append(Scholarship.deadline_date.is_not(None))
+        conditions.append(Scholarship.deadline_date >= today)
+        conditions.append(Scholarship.deadline_date <= cutoff)
     if query.status is not None:
         if query.status.value == "unknown":
             known = [status.value for status in ScholarshipStatus if status.value != "unknown"]

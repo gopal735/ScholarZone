@@ -259,9 +259,11 @@ export function toScholarship(record) {
     degree: record.degree,
     funding: record.funding,
     description: record.description,
-    deadline: record.deadline || record.deadline_display,
-    deadline_date: record.deadline_date,
-    deadline_precision: record.deadline_precision,
+      deadline: record.deadline || record.deadline_display,
+      deadline_date: record.deadline_date,
+      deadline_precision: record.deadline_precision,
+      opening_date: record.opening_date,
+      opening_display: record.opening_display,
     status: record.status,
     verification_status: record.verification_status,
     verified: record.verification_status === 'active',
@@ -342,6 +344,7 @@ export async function fetchScholarshipsFromSnapshot(query = {}) {
     eligible_programme = 'All',
     programme_type = 'All',
     deadline_month = 'All',
+    deadline_within_days = 'All',
     status = 'All',
     lifecycle = 'All',
     sort = 'default',
@@ -351,14 +354,16 @@ export async function fetchScholarshipsFromSnapshot(query = {}) {
 
   let records = getPublicSnapshotRecords(snapshot)
 
-  const needle = String(search).trim().toLowerCase()
-  if (needle) {
-    records = records.filter((record) =>
-      [record.title, record.country, record.degree, record.description, record.funding,
+  const needles = String(search).trim().toLowerCase().split(/\s+/).filter(Boolean)
+  if (needles.length > 0) {
+    records = records.filter((record) => {
+      const haystack = [record.title, record.country, record.degree, record.description, record.funding,
         record.program_type, ...(record.departments || []), ...(record.eligible_fields || []), ...(record.eligible_programmes || [])]
         .filter(Boolean)
-        .some((field) => field.toLowerCase().includes(needle))
-    )
+        .map((field) => String(field).toLowerCase())
+        .join(' ')
+      return needles.every((needle) => haystack.includes(needle))
+    })
   }
 
   if (country && country !== 'All') {
@@ -387,6 +392,32 @@ export async function fetchScholarshipsFromSnapshot(query = {}) {
   if (deadline_month && deadline_month !== 'All') {
     const targetMonth = Number(deadline_month)
     records = records.filter((record) => getDeadlineMonth(record) === targetMonth)
+  }
+  if (deadline_within_days && deadline_within_days !== 'All') {
+    const days = Number(deadline_within_days)
+    if (Number.isFinite(days) && days > 365) {
+      // Unsupported window: do not silently return unfiltered records.
+      records = []
+    } else if (Number.isFinite(days) && days >= 1 && days <= 365) {
+      const now = new Date()
+      const todayUtc = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()))
+      const cutoff = new Date(todayUtc)
+      cutoff.setUTCDate(cutoff.getUTCDate() + days)
+      records = records.filter((record) => {
+        const structuredDeadline = record?.deadline_date
+        if (!structuredDeadline) return false
+        // Use the raw structured date without month-end adjustment so a
+        // month-precision date (e.g. 2026-12-01) stays comparable to the API.
+        const parsed = new Date(`${structuredDeadline}T00:00:00Z`)
+        if (isNaN(parsed.getTime())) return false
+        const deadlineUtc = new Date(Date.UTC(
+          parsed.getUTCFullYear(),
+          parsed.getUTCMonth(),
+          parsed.getUTCDate(),
+        ))
+        return deadlineUtc >= todayUtc && deadlineUtc <= cutoff
+      })
+    }
   }
   if (status && status !== 'All') {
     records = records.filter((record) => getStatusKey(record) === status)
