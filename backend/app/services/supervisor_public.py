@@ -26,13 +26,46 @@ import logging
 from datetime import datetime, timezone
 
 from sqlalchemy import and_, func, select
-from sqlalchemy.exc import ProgrammingError
+from sqlalchemy.exc import DBAPIError, ProgrammingError
 from sqlalchemy.orm import Session
 
 try:
-    from psycopg2.errors import UndefinedTable
-except ImportError:
-    UndefinedTable = None
+    from psycopg.errors import UndefinedTable as PsycopgUndefinedTable
+except ImportError:  # pragma: no cover - psycopg2 fallback
+    try:
+        from psycopg2.errors import UndefinedTable as PsycopgUndefinedTable
+    except ImportError:
+        PsycopgUndefinedTable = None
+
+try:
+    from psycopg.errors import UndefinedColumn as PsycopgUndefinedColumn
+except ImportError:  # pragma: no cover - psycopg2 fallback
+    try:
+        from psycopg2.errors import UndefinedColumn as PsycopgUndefinedColumn
+    except ImportError:
+        PsycopgUndefinedColumn = None
+
+
+def _missing_schema_error(exc: BaseException) -> bool:
+    """Return True when *exc* is a PostgreSQL missing-table/column error."""
+    current: BaseException | None = exc
+    seen: set[int] = set()
+    while current is not None and id(current) not in seen:
+        seen.add(id(current))
+        pgcode = getattr(current, "pgcode", None) or getattr(current, "sqlstate", None) or getattr(current, "code", None)
+        if pgcode in {"42P01", "42703"}:
+            return True
+        if PsycopgUndefinedTable is not None and isinstance(current, PsycopgUndefinedTable):
+            return True
+        if PsycopgUndefinedColumn is not None and isinstance(current, PsycopgUndefinedColumn):
+            return True
+        if type(current).__name__ in {"UndefinedTable", "UndefinedColumn"}:
+            return True
+        text = str(current).lower()
+        if "does not exist" in text and ("relation" in text or "column" in text):
+            return True
+        current = getattr(current, "orig", None) or getattr(current, "__cause__", None) or getattr(current, "__context__", None)
+    return False
 
 from ..models import Scholarship
 from ..models_supervisor import (
@@ -228,11 +261,9 @@ def _load_official_contacts(
                 OfficialContact.id.asc(),
             )
         ).scalars()
-    except ProgrammingError as exc:
-        # Check if the error is due to missing table
-        if UndefinedTable is not None and isinstance(exc.orig, UndefinedTable):
+    except (ProgrammingError, DBAPIError) as exc:
+        if _missing_schema_error(exc):
             raise SchemaNotReadyError("official_contacts") from exc
-        # For other programming errors, re-raise
         raise
 
     contacts = []

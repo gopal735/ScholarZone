@@ -81,7 +81,36 @@ def sqlite_engine():
         conn.execute(text("""
             CREATE TABLE scholarships (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                title VARCHAR(255) NOT NULL
+                title VARCHAR(255) NOT NULL,
+                legacy_id INTEGER UNIQUE,
+                image_url VARCHAR(2048),
+                image_source_url VARCHAR(2048),
+                image_source_type VARCHAR(32),
+                image_kind VARCHAR(32),
+                image_verified_at DATETIME,
+                image_alt_text VARCHAR(512),
+                image_evaluation_status VARCHAR(32),
+                image_evaluated_at DATETIME,
+                is_archived BOOLEAN NOT NULL DEFAULT 0,
+                archived_at DATETIME,
+                archived_reason VARCHAR(120),
+                funding_amount NUMERIC(12, 2),
+                funding_currency VARCHAR(8),
+                funding_period VARCHAR(64),
+                tuition_coverage BOOLEAN,
+                living_cost_coverage BOOLEAN,
+                travel_coverage BOOLEAN,
+                fully_funded BOOLEAN,
+                funding_details JSON,
+                official_details JSON,
+                applicant_utility JSON,
+                programme_verification JSON,
+                auto_delete_candidate_since DATETIME,
+                deletion_protected BOOLEAN NOT NULL DEFAULT 0,
+                departments JSON,
+                eligible_fields JSON,
+                eligible_programmes JSON,
+                academic_provenance JSON
             )
         """))
         conn.execute(text("""
@@ -90,6 +119,28 @@ def sqlite_engine():
                 email VARCHAR(255) NOT NULL
             )
         """))
+        conn.execute(text("""
+            CREATE TABLE image_reviews (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                scholarship_id INTEGER NOT NULL REFERENCES scholarships(id),
+                image_url VARCHAR(2048) NOT NULL,
+                image_kind VARCHAR(32) NOT NULL,
+                source_page VARCHAR(2048),
+                source_type VARCHAR(32),
+                relevance_evidence TEXT,
+                licensing_status VARCHAR(32),
+                licensing_evidence TEXT,
+                confidence VARCHAR(32) NOT NULL,
+                reason_for_review VARCHAR(255),
+                decision VARCHAR(16) NOT NULL DEFAULT 'pending',
+                reviewed_by VARCHAR(120),
+                reviewed_at DATETIME,
+                reviewer_note TEXT,
+                created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+            )
+        """))
+        conn.execute(text("CREATE INDEX IF NOT EXISTS ix_image_reviews_scholarship_decision ON image_reviews (scholarship_id, decision)"))
+        conn.execute(text("CREATE INDEX IF NOT EXISTS ix_image_reviews_created_at ON image_reviews (created_at)"))
 
     yield engine
 
@@ -358,6 +409,12 @@ class TestIndexValidation:
 
         result = validate_schema(sqlite_engine_with_supervisor)
         print('DEBUG: valid=', result["valid"])
+        print('DEBUG: scholarship all_ok=', result.get("scholarship_column_validation", {}).get("all_ok"))
+        print('DEBUG: image_reviews all_ok=', result.get("image_reviews_validation", {}).get("all_ok"))
+        sc=result.get('scholarship_column_validation',{}).get('columns',{})
+        sc=result.get('scholarship_column_validation',{}).get('columns',{})
+        for k in ['legacy_id','image_verified_at','is_archived','deletion_protected']:
+            print('DEBUG', k, sc.get(k))
         if not result["valid"]:
             for table, detail in result["table_details"].items():
                 if not detail.get('has_required_columns', True):

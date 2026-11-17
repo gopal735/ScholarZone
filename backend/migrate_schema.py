@@ -631,6 +631,129 @@ def generate_index_statements(engine: Engine, missing_tables: list[str], existin
 
 
 # ============================================================
+# Full-schema reconciliation: scholarships columns, image_reviews
+# ============================================================
+
+SCHOLARSHIP_ADDITIONS: dict[str, str] = {
+    "legacy_id": "INTEGER",
+    "image_url": "VARCHAR(2048)",
+    "image_source_url": "VARCHAR(2048)",
+    "image_source_type": "VARCHAR(32)",
+    "image_kind": "VARCHAR(32)",
+    "image_verified_at": "TIMESTAMPTZ",
+    "image_alt_text": "VARCHAR(512)",
+    "image_evaluation_status": "VARCHAR(32)",
+    "image_evaluated_at": "TIMESTAMPTZ",
+    "is_archived": "BOOLEAN",
+    "archived_at": "TIMESTAMPTZ",
+    "archived_reason": "VARCHAR(120)",
+    "funding_amount": "NUMERIC(12, 2)",
+    "funding_currency": "VARCHAR(8)",
+    "funding_period": "VARCHAR(64)",
+    "tuition_coverage": "BOOLEAN",
+    "living_cost_coverage": "BOOLEAN",
+    "travel_coverage": "BOOLEAN",
+    "fully_funded": "BOOLEAN",
+    "funding_details": "JSON",
+    "official_details": "JSON",
+    "applicant_utility": "JSON",
+    "programme_verification": "JSON",
+    "auto_delete_candidate_since": "TIMESTAMPTZ",
+    "deletion_protected": "BOOLEAN",
+    "departments": "JSON",
+    "eligible_fields": "JSON",
+    "eligible_programmes": "JSON",
+    "academic_provenance": "JSON",
+}
+
+IMAGE_REVIEWS_DDL: dict[str, str] = {
+    "postgresql": """
+        id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+        scholarship_id INTEGER NOT NULL REFERENCES scholarships(id),
+        image_url VARCHAR(2048) NOT NULL,
+        image_kind VARCHAR(32) NOT NULL,
+        source_page VARCHAR(2048),
+        source_type VARCHAR(32),
+        relevance_evidence TEXT,
+        licensing_status VARCHAR(32),
+        licensing_evidence TEXT,
+        confidence VARCHAR(32) NOT NULL,
+        reason_for_review VARCHAR(255),
+        decision VARCHAR(16) NOT NULL DEFAULT 'pending',
+        reviewed_by VARCHAR(120),
+        reviewed_at TIMESTAMPTZ,
+        reviewer_note TEXT,
+        created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    """,
+    "sqlite": """
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        scholarship_id INTEGER NOT NULL REFERENCES scholarships(id),
+        image_url VARCHAR(2048) NOT NULL,
+        image_kind VARCHAR(32) NOT NULL,
+        source_page VARCHAR(2048),
+        source_type VARCHAR(32),
+        relevance_evidence TEXT,
+        licensing_status VARCHAR(32),
+        licensing_evidence TEXT,
+        confidence VARCHAR(32) NOT NULL,
+        reason_for_review VARCHAR(255),
+        decision VARCHAR(16) NOT NULL DEFAULT 'pending',
+        reviewed_by VARCHAR(120),
+        reviewed_at DATETIME,
+        reviewer_note TEXT,
+        created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    """,
+}
+
+IMAGE_REVIEWS_INDEXES: list[str] = [
+    "ix_image_reviews_scholarship_decision ON image_reviews (scholarship_id, decision)",
+    "ix_image_reviews_created_at ON image_reviews (created_at)",
+]
+
+
+def check_existing_scholarship_columns(engine: Engine) -> dict[str, bool]:
+    """Return presence of each scholarship additional column."""
+    inspector = inspect(engine)
+    columns = {c["name"] for c in inspector.get_columns("scholarships")}
+    return {name: name in columns for name in SCHOLARSHIP_ADDITIONS}
+
+
+def generate_scholarship_column_statements(missing_columns: list[str]) -> list[str]:
+    """Generate ALTER TABLE statements for missing scholarship columns."""
+    return [
+        f"ALTER TABLE scholarships ADD COLUMN {name} {SCHOLARSHIP_ADDITIONS[name]}"
+        for name in missing_columns
+    ]
+
+
+def check_existing_image_reviews(engine: Engine) -> dict[str, Any]:
+    """Inspect image_reviews table existence and indexes."""
+    inspector = inspect(engine)
+    exists = inspector.has_table("image_reviews")
+    indexes = set()
+    if exists:
+        indexes = {i["name"] for i in inspector.get_indexes("image_reviews")}
+    return {"exists": exists, "indexes": indexes}
+
+
+def generate_image_reviews_statements(dialect: str, exists: bool, existing_indexes: set[str]) -> tuple[list[str], list[str]]:
+    """Generate image_reviews create/index statements."""
+    create_stmts = []
+    index_stmts = []
+    if not exists:
+        ddl = IMAGE_REVIEWS_DDL[dialect]
+        create_stmts.append(f"CREATE TABLE IF NOT EXISTS image_reviews ({ddl})")
+    for idx in IMAGE_REVIEWS_INDEXES:
+        idx_name = idx.split(" ON ")[0]
+        if idx_name not in existing_indexes:
+            index_stmts.append(f"CREATE INDEX IF NOT EXISTS {idx}")
+    return create_stmts, index_stmts
+
+
+# ============================================================
+# Dry Run
+# ============================================================
+# ============================================================
 # Dry Run
 # ============================================================
 
@@ -649,6 +772,17 @@ def dry_run(engine: Engine) -> dict[str, Any]:
     create_stmts = generate_create_statements(dialect, missing_tables)
     index_stmts = generate_index_statements(engine, missing_tables, table_info)
 
+    # Scholarship column reconciliation
+    scholarship_columns = check_existing_scholarship_columns(engine)
+    missing_scholarship_columns = [name for name, present in scholarship_columns.items() if not present]
+    scholarship_column_stmts = generate_scholarship_column_statements(missing_scholarship_columns)
+
+    # image_reviews reconciliation
+    image_reviews_info = check_existing_image_reviews(engine)
+    image_reviews_create_stmts, image_reviews_index_stmts = generate_image_reviews_statements(
+        dialect, image_reviews_info["exists"], image_reviews_info["indexes"]
+    )
+
     return {
         "mode": "dry-run",
         "timestamp": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
@@ -657,7 +791,14 @@ def dry_run(engine: Engine) -> dict[str, Any]:
         "missing_tables": missing_tables,
         "create_statements": create_stmts,
         "index_statements": index_stmts,
-        "total_statements": len(create_stmts) + len(index_stmts),
+        "scholarship_columns": scholarship_columns,
+        "missing_scholarship_columns": missing_scholarship_columns,
+        "scholarship_column_statements": scholarship_column_stmts,
+        "image_reviews": image_reviews_info,
+        "missing_image_reviews_indexes": [idx.split(" ON ")[0] for idx in IMAGE_REVIEWS_INDEXES if idx.split(" ON ")[0] not in image_reviews_info["indexes"]],
+        "image_reviews_create_statements": image_reviews_create_stmts,
+        "image_reviews_index_statements": image_reviews_index_stmts,
+        "total_statements": len(create_stmts) + len(index_stmts) + len(scholarship_column_stmts) + len(image_reviews_create_stmts) + len(image_reviews_index_stmts),
     }
 
 
@@ -674,12 +815,9 @@ def apply_migration(engine: Engine, report: dict[str, Any]) -> dict[str, Any]:
     If validation fails, the entire transaction rolls back.
     """
     dialect = "postgresql" if engine.dialect.name == "postgresql" else "sqlite"
-    missing_tables = report["missing_tables"]
-    create_stmts = report["create_statements"]
-    index_stmts = report["index_statements"]
 
-    applied = {"tables_created": [], "indexes_created": [], "errors": []}
-    validation = None
+    # PRE-APPLY SAFETY GATE: Verify production database identity immediately before mutation.
+    db_info = verify_production_database(engine)
 
     # PRE-APPLY SAFETY GATE: Verify backup/PITR status before any DDL
     with engine.connect() as conn:
@@ -690,17 +828,41 @@ def apply_migration(engine: Engine, report: dict[str, Any]) -> dict[str, Any]:
             raise RuntimeError(f"Backup/PITR gate failed: {error_msg}")
         print(f"[INFO] Backup/PITR verification passed: {backup_status['details'].get('evidence_ref', 'unknown')}")
 
-    applied = {"tables_created": [], "indexes_created": [], "errors": []}
+    # Build the reviewed plan from the dry-run report when available, otherwise
+    # recompute it from the live schema. This keeps apply aligned with dry-run
+    # while remaining safe if a stale report is supplied.
+    missing_tables = report.get("missing_tables")
+    create_stmts = report.get("create_statements")
+    index_stmts = report.get("index_statements")
+    scholarship_column_stmts = report.get("scholarship_column_statements")
+    image_reviews_create_stmts = report.get("image_reviews_create_statements")
+    image_reviews_index_stmts = report.get("image_reviews_index_statements")
+
+    if missing_tables is None:
+        table_info = check_existing_supervisor_tables(engine)
+        missing_tables = [t for t, info in table_info["tables"].items() if not info["exists"]]
+    if create_stmts is None:
+        create_stmts = generate_create_statements(dialect, missing_tables)
+    if index_stmts is None:
+        table_info = check_existing_supervisor_tables(engine)
+        index_stmts = generate_index_statements(engine, missing_tables, table_info)
+    if scholarship_column_stmts is None:
+        missing_scholarship_columns = [name for name, present in check_existing_scholarship_columns(engine).items() if not present]
+        scholarship_column_stmts = generate_scholarship_column_statements(missing_scholarship_columns)
+    if image_reviews_create_stmts is None or image_reviews_index_stmts is None:
+        ir_info = check_existing_image_reviews(engine)
+        image_reviews_create_stmts, image_reviews_index_stmts = generate_image_reviews_statements(
+            dialect, ir_info["exists"], ir_info["indexes"]
+        )
+
+    applied = {"tables_created": [], "indexes_created": [], "columns_added": [], "errors": []}
     validation = None
 
     # Use a single transaction for all DDL AND validation.
-    # SQLite DDL is transactional in supported configurations; keep apply+validate
-    # in one explicit transaction so a validation failure rolls back every created object.
     if dialect == "sqlite":
         with engine.connect() as conn:
             trans = conn.begin()
             try:
-                # Create tables
                 for stmt in create_stmts:
                     try:
                         conn.execute(text(stmt))
@@ -710,9 +872,8 @@ def apply_migration(engine: Engine, report: dict[str, Any]) -> dict[str, Any]:
                     except Exception as e:
                         applied["errors"].append({"statement": stmt, "error": str(e)})
                         print(f"[ERROR] CREATE TABLE failed: {e}")
-                        raise  # Rollback the transaction
+                        raise
 
-                # Create indexes
                 for stmt in index_stmts:
                     try:
                         conn.execute(text(stmt))
@@ -721,12 +882,38 @@ def apply_migration(engine: Engine, report: dict[str, Any]) -> dict[str, Any]:
                     except Exception as e:
                         applied["errors"].append({"statement": stmt, "error": str(e)})
                         print(f"[ERROR] CREATE INDEX failed: {e}")
-                        raise  # Rollback the transaction
+                        raise
 
-                # VALIDATE WITHIN THE SAME TRANSACTION
+                for stmt in scholarship_column_stmts:
+                    try:
+                        conn.execute(text(stmt))
+                        applied["columns_added"].append(stmt)
+                        print(f"[APPLIED] {stmt}")
+                    except Exception as e:
+                        applied["errors"].append({"statement": stmt, "error": str(e)})
+                        print(f"[ERROR] ADD COLUMN failed: {e}")
+                        raise
+
+                for stmt in image_reviews_create_stmts:
+                    try:
+                        conn.execute(text(stmt))
+                        applied["tables_created"].append("image_reviews")
+                        print(f"[APPLIED] {stmt}")
+                    except Exception as e:
+                        applied["errors"].append({"statement": stmt, "error": str(e)})
+                        print(f"[ERROR] CREATE TABLE failed: {e}")
+                        raise
+                for stmt in image_reviews_index_stmts:
+                    try:
+                        conn.execute(text(stmt))
+                        applied["indexes_created"].append(stmt)
+                        print(f"[APPLIED] {stmt}")
+                    except Exception as e:
+                        applied["errors"].append({"statement": stmt, "error": str(e)})
+                        print(f"[ERROR] CREATE INDEX failed: {e}")
+                        raise
+
                 validation = validate_schema_with_connection(conn)
-
-                # If validation fails, raise to trigger rollback
                 if not validation.get("valid", False):
                     error_msg = "SCHEMA VALIDATION FAILED: " + json.dumps(
                         {k: v for k, v in validation.items() if k != "table_details"},
@@ -741,9 +928,7 @@ def apply_migration(engine: Engine, report: dict[str, Any]) -> dict[str, Any]:
                     trans.rollback()
                 raise
     else:
-        # PostgreSQL: use engine.begin() for transaction management
         with engine.begin() as conn:
-            # Create tables
             for stmt in create_stmts:
                 try:
                     conn.execute(text(stmt))
@@ -753,9 +938,8 @@ def apply_migration(engine: Engine, report: dict[str, Any]) -> dict[str, Any]:
                 except Exception as e:
                     applied["errors"].append({"statement": stmt, "error": str(e)})
                     print(f"[ERROR] CREATE TABLE failed: {e}")
-                    raise  # Rollback the transaction
+                    raise
 
-            # Create indexes
             for stmt in index_stmts:
                 try:
                     conn.execute(text(stmt))
@@ -764,12 +948,38 @@ def apply_migration(engine: Engine, report: dict[str, Any]) -> dict[str, Any]:
                 except Exception as e:
                     applied["errors"].append({"statement": stmt, "error": str(e)})
                     print(f"[ERROR] CREATE INDEX failed: {e}")
-                    raise  # Rollback the transaction
+                    raise
 
-            # VALIDATE WITHIN THE SAME TRANSACTION
+            for stmt in scholarship_column_stmts:
+                try:
+                    conn.execute(text(stmt))
+                    applied["columns_added"].append(stmt)
+                    print(f"[APPLIED] {stmt}")
+                except Exception as e:
+                    applied["errors"].append({"statement": stmt, "error": str(e)})
+                    print(f"[ERROR] ADD COLUMN failed: {e}")
+                    raise
+
+            for stmt in image_reviews_create_stmts:
+                try:
+                    conn.execute(text(stmt))
+                    applied["tables_created"].append("image_reviews")
+                    print(f"[APPLIED] {stmt}")
+                except Exception as e:
+                    applied["errors"].append({"statement": stmt, "error": str(e)})
+                    print(f"[ERROR] CREATE TABLE failed: {e}")
+                    raise
+            for stmt in image_reviews_index_stmts:
+                try:
+                    conn.execute(text(stmt))
+                    applied["indexes_created"].append(stmt)
+                    print(f"[APPLIED] {stmt}")
+                except Exception as e:
+                    applied["errors"].append({"statement": stmt, "error": str(e)})
+                    print(f"[ERROR] CREATE INDEX failed: {e}")
+                    raise
+
             validation = validate_schema_with_connection(conn)
-
-            # If validation fails, raise to trigger rollback
             if not validation.get("valid", False):
                 error_msg = "SCHEMA VALIDATION FAILED: " + json.dumps(
                     {k: v for k, v in validation.items() if k != "table_details"},
@@ -781,6 +991,7 @@ def apply_migration(engine: Engine, report: dict[str, Any]) -> dict[str, Any]:
     return {
         "mode": "apply",
         "timestamp": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+        "database": db_info,
         "applied": applied,
         "validation": validation,
     }
@@ -1385,6 +1596,60 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
         if not table_ok:
             validation["valid"] = False
 
+    # Scholarship additional columns validation
+    scholarship_column_results = {}
+    scholarship_columns_ok = True
+    try:
+        actual_scholarship_columns = {c["name"]: c for c in inspector.get_columns("scholarships")}
+    except Exception:
+        actual_scholarship_columns = {}
+    for col_name, col_type in SCHOLARSHIP_ADDITIONS.items():
+        actual = actual_scholarship_columns.get(col_name)
+        if actual is None:
+            scholarship_column_results[col_name] = {"status": "MISSING"}
+            scholarship_columns_ok = False
+            continue
+        if dialect == "postgresql":
+            type_ok = types_match(dialect, col_type, actual.get("type", ""))
+        else:
+            type_ok = True
+        if not type_ok:
+            scholarship_columns_ok = False
+        scholarship_column_results[col_name] = {
+            "status": "OK" if type_ok else "MISMATCH",
+            "expected_type": col_type,
+            "actual_type": str(actual.get("type", "")),
+        }
+    validation["scholarship_column_validation"] = {
+        "all_ok": scholarship_columns_ok,
+        "columns": scholarship_column_results,
+        "expected_count": len(SCHOLARSHIP_ADDITIONS),
+        "actual_count": len(actual_scholarship_columns),
+    }
+    if not scholarship_columns_ok:
+        validation["valid"] = False
+
+    # image_reviews validation
+    image_reviews_exists = inspector.has_table("image_reviews")
+    image_reviews_ok = image_reviews_exists
+    image_reviews_index_results = {}
+    if image_reviews_exists:
+        actual_ir_indexes = {i["name"] for i in inspector.get_indexes("image_reviews")}
+        for idx in IMAGE_REVIEWS_INDEXES:
+            idx_name = idx.split(" ON ")[0]
+            if idx_name not in actual_ir_indexes:
+                image_reviews_ok = False
+                image_reviews_index_results[idx_name] = {"status": "MISSING"}
+            else:
+                image_reviews_index_results[idx_name] = {"status": "OK"}
+    validation["image_reviews_validation"] = {
+        "exists": image_reviews_exists,
+        "indexes": image_reviews_index_results,
+        "all_ok": image_reviews_ok,
+    }
+    if not image_reviews_ok:
+        validation["valid"] = False
+
     return validation
 
 
@@ -1432,6 +1697,14 @@ def main():
         print("ERROR: production --apply requires SCHOLARZONE_EXPECTED_DB_HOST", file=sys.stderr)
         sys.exit(1)
 
+    # All production modes require and verify database identity before proceeding.
+    if is_production:
+        for env_name in ("SCHOLARZONE_EXPECTED_DB_IDENTIFIER", "SCHOLARZONE_EXPECTED_DB_HOST"):
+            if not os.environ.get(env_name, "").strip():
+                print(f"ERROR: production mode requires {env_name} environment variable to be set", file=sys.stderr)
+                print("This is a safety gate to prevent accidental migration to the wrong database.", file=sys.stderr)
+                sys.exit(1)
+
     try:
         engine = get_production_engine()
     except RuntimeError as e:
@@ -1440,6 +1713,8 @@ def main():
 
     try:
         if args.validate_only:
+            # Verify identity before any schema inspection.
+            verify_production_database(engine)
             validation = validate_schema(engine)
             report = {
                 "mode": "validate-only",
@@ -1447,9 +1722,13 @@ def main():
                 "validation": validation,
             }
         elif args.dry_run:
+            # Verify identity before generating a migration plan.
+            verify_production_database(engine)
             report = dry_run(engine)
         elif args.apply:
-            # Apply mode: run dry-run first to get the plan, then apply with transactional validation
+            # Verify identity before generating the plan and again immediately
+            # before mutation (apply_migration re-verifies).
+            verify_production_database(engine)
             dry_run_report = dry_run(engine)
             report = apply_migration(engine, dry_run_report)
         else:
