@@ -17,6 +17,7 @@ import argparse
 import json
 import os
 import re
+import socket
 import sys
 from datetime import date, datetime, timezone
 from pathlib import Path
@@ -372,13 +373,26 @@ def verify_database_identity(conn: Connection) -> dict[str, Any]:
                 db_identity["details"]["warning"] = "SCHOLARZONE_EXPECTED_DB_IDENTIFIER not set; database name not verified"
 
             if expected_host:
-                if expected_host == str(host_result):
+                # SCHOLARZONE_EXPECTED_DB_HOST may be either the PostgreSQL server IP
+                # returned by inet_server_addr() or a resolvable hostname. Resolve
+                # hostnames safely so operators can use the Neon endpoint name
+                # without weakening the check.
+                resolved_expected = expected_host
+                if not re.fullmatch(r"\d{1,3}(?:\.\d{1,3}){3}", expected_host):
+                    try:
+                        resolved_expected = socket.gethostbyname(expected_host)
+                    except (socket.gaierror, OSError) as exc:
+                        raise RuntimeError(
+                            f"Database host could not be resolved: {expected_host!r}: {exc}"
+                        ) from exc
+                if resolved_expected == str(host_result):
                     db_identity["details"]["host_match"] = True
+                    db_identity["details"]["resolved_expected_host"] = resolved_expected
                 else:
                     db_identity["details"]["host_match"] = False
                     raise RuntimeError(
-                        f"Database host mismatch. Expected '{expected_host}', got '{host_result}'. "
-                        f"Set SCHOLARZONE_EXPECTED_DB_HOST to the expected database host/endpoint."
+                        f"Database host mismatch. Expected '{expected_host}' (resolved to '{resolved_expected}'), "
+                        f"got '{host_result}'. Set SCHOLARZONE_EXPECTED_DB_HOST to the expected database host or IP."
                     )
             else:
                 db_identity["details"]["warning"] = (db_identity["details"].get("warning", "") +
@@ -635,7 +649,7 @@ def generate_index_statements(engine: Engine, missing_tables: list[str], existin
 # ============================================================
 
 SCHOLARSHIP_ADDITIONS: dict[str, str] = {
-    "legacy_id": "INTEGER",
+    "legacy_id": "INTEGER UNIQUE",
     "image_url": "VARCHAR(2048)",
     "image_source_url": "VARCHAR(2048)",
     "image_source_type": "VARCHAR(32)",
@@ -644,7 +658,7 @@ SCHOLARSHIP_ADDITIONS: dict[str, str] = {
     "image_alt_text": "VARCHAR(512)",
     "image_evaluation_status": "VARCHAR(32)",
     "image_evaluated_at": "TIMESTAMPTZ",
-    "is_archived": "BOOLEAN",
+    "is_archived": "BOOLEAN NOT NULL DEFAULT FALSE",
     "archived_at": "TIMESTAMPTZ",
     "archived_reason": "VARCHAR(120)",
     "funding_amount": "NUMERIC(12, 2)",
@@ -659,7 +673,7 @@ SCHOLARSHIP_ADDITIONS: dict[str, str] = {
     "applicant_utility": "JSON",
     "programme_verification": "JSON",
     "auto_delete_candidate_since": "TIMESTAMPTZ",
-    "deletion_protected": "BOOLEAN",
+    "deletion_protected": "BOOLEAN NOT NULL DEFAULT FALSE",
     "departments": "JSON",
     "eligible_fields": "JSON",
     "eligible_programmes": "JSON",
@@ -709,6 +723,25 @@ IMAGE_REVIEWS_INDEXES: list[str] = [
     "ix_image_reviews_scholarship_decision ON image_reviews (scholarship_id, decision)",
     "ix_image_reviews_created_at ON image_reviews (created_at)",
 ]
+
+IMAGE_REVIEWS_COLUMNS: dict[str, str] = {
+    "id": "INTEGER PRIMARY KEY",
+    "scholarship_id": "INTEGER NOT NULL",
+    "image_url": "VARCHAR(2048) NOT NULL",
+    "image_kind": "VARCHAR(32) NOT NULL",
+    "source_page": "VARCHAR(2048)",
+    "source_type": "VARCHAR(32)",
+    "relevance_evidence": "TEXT",
+    "licensing_status": "VARCHAR(32)",
+    "licensing_evidence": "TEXT",
+    "confidence": "VARCHAR(32) NOT NULL",
+    "reason_for_review": "VARCHAR(255)",
+    "decision": "VARCHAR(16) NOT NULL DEFAULT 'pending'",
+    "reviewed_by": "VARCHAR(120)",
+    "reviewed_at": "TIMESTAMPTZ",
+    "reviewer_note": "TEXT",
+    "created_at": "TIMESTAMPTZ NOT NULL DEFAULT NOW()",
+}
 
 
 def check_existing_scholarship_columns(engine: Engine) -> dict[str, bool]:
@@ -1077,9 +1110,15 @@ def defaults_match(expected: Any, actual: Any) -> bool:
         if isinstance(value, bool):
             return "TRUE" if value else "FALSE"
         rendered = re.sub(r"\s+", " ", str(value).strip())
+        if rendered == "0":
+            return "FALSE"
+        if rendered == "1":
+            return "TRUE"
         if rendered.lower() in {"true", "false"}:
             return rendered.upper()
         if re.fullmatch(r"now\(\)(?:::timestamp(?: with time zone)?)?", rendered, re.IGNORECASE):
+            return "NOW()"
+        if rendered.lower() == "current_timestamp":
             return "NOW()"
         literal = re.fullmatch(
             r"('(?:''|[^'])*')(?:\s*::\s*[a-z_][a-z_ ]*(?:\(\d+(?:,\s*\d+)?\))?)?",
@@ -1609,16 +1648,55 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
             scholarship_column_results[col_name] = {"status": "MISSING"}
             scholarship_columns_ok = False
             continue
+        expected_type_match = re.match(r"^([A-Za-z_]+(?:\([^)]*\))?)", col_type.strip())
+        expected_type = expected_type_match.group(1) if expected_type_match else col_type.split()[0]
+        expected_nullable = "NOT NULL" not in col_type.upper()
+        expected_unique = "UNIQUE" in col_type.upper()
+        default_match = re.search(r"DEFAULT\s+(.+)", col_type, re.IGNORECASE)
+        expected_default = default_match.group(1).strip() if default_match else None
+
+        actual_type = str(actual.get("type", ""))
         if dialect == "postgresql":
-            type_ok = types_match(dialect, col_type, actual.get("type", ""))
+            type_ok = types_match(dialect, expected_type, actual_type)
         else:
-            type_ok = True
-        if not type_ok:
+            # SQLite reflects TIMESTAMPTZ columns as DATETIME in this schema.
+            if expected_type == "TIMESTAMPTZ" and actual_type.upper() in {"DATETIME", "TIMESTAMP", "NUMERIC"}:
+                type_ok = True
+            else:
+                type_ok = types_match(dialect, expected_type, actual_type)
+        nullable_ok = (expected_nullable == actual.get("nullable", True))
+
+        actual_unique = bool(actual.get("unique", False))
+        if expected_unique and not actual_unique:
+            try:
+                actual_unique = any(
+                    idx.get("unique") and idx.get("column_names") == [col_name]
+                    for idx in inspector.get_indexes("scholarships")
+                )
+            except Exception:
+                actual_unique = False
+            if not actual_unique:
+                try:
+                    actual_unique = any(
+                        col_name in (uc.get("column_names") or [])
+                        for uc in inspector.get_unique_constraints("scholarships")
+                    )
+                except Exception:
+                    actual_unique = False
+        unique_ok = (expected_unique == actual_unique)
+
+        default_ok = defaults_match(expected_default, actual.get("default"))
+        col_ok = type_ok and nullable_ok and unique_ok and default_ok
+        if not col_ok:
             scholarship_columns_ok = False
         scholarship_column_results[col_name] = {
-            "status": "OK" if type_ok else "MISMATCH",
+            "status": "OK" if col_ok else "MISMATCH",
             "expected_type": col_type,
             "actual_type": str(actual.get("type", "")),
+            "type_ok": type_ok,
+            "nullable_ok": nullable_ok,
+            "unique_ok": unique_ok,
+            "default_ok": default_ok,
         }
     validation["scholarship_column_validation"] = {
         "all_ok": scholarship_columns_ok,
@@ -1629,21 +1707,88 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
     if not scholarship_columns_ok:
         validation["valid"] = False
 
-    # image_reviews validation
+    # image_reviews validation: columns, PK, FK, indexes
     image_reviews_exists = inspector.has_table("image_reviews")
     image_reviews_ok = image_reviews_exists
+    image_reviews_column_results = {}
+    image_reviews_pk_ok = False
+    image_reviews_fk_ok = False
     image_reviews_index_results = {}
+
     if image_reviews_exists:
-        actual_ir_indexes = {i["name"] for i in inspector.get_indexes("image_reviews")}
+        actual_ir_columns = {c["name"]: c for c in inspector.get_columns("image_reviews")}
+        for col_name, col_type in IMAGE_REVIEWS_COLUMNS.items():
+            actual = actual_ir_columns.get(col_name)
+            if actual is None:
+                image_reviews_column_results[col_name] = {"status": "MISSING"}
+                image_reviews_ok = False
+                continue
+            expected_type_match = re.match(r"^([A-Za-z_]+(?:\([^)]*\))?)", col_type.strip())
+            expected_type = expected_type_match.group(1) if expected_type_match else col_type.split()[0]
+            expected_nullable = "NOT NULL" not in col_type.upper()
+            default_match = re.search(r"DEFAULT\s+(.+)", col_type, re.IGNORECASE)
+            expected_default = default_match.group(1).strip() if default_match else None
+            actual_type = str(actual.get("type", ""))
+            if dialect == "postgresql":
+                type_ok = types_match(dialect, expected_type, actual_type)
+            elif expected_type == "TIMESTAMPTZ" and actual_type.upper() in {"DATETIME", "TIMESTAMP", "NUMERIC"}:
+                type_ok = True
+            else:
+                type_ok = types_match(dialect, expected_type, actual_type)
+            nullable_ok = (expected_nullable == actual.get("nullable", True))
+            default_ok = defaults_match(expected_default, actual.get("default"))
+            col_ok = type_ok and nullable_ok and default_ok
+            if not col_ok:
+                image_reviews_ok = False
+            image_reviews_column_results[col_name] = {
+                "status": "OK" if col_ok else "MISMATCH",
+                "type_ok": type_ok,
+                "nullable_ok": nullable_ok,
+                "default_ok": default_ok,
+            }
+
+        # PK
+        pk = inspector.get_pk_constraint("image_reviews")
+        pk_cols = pk.get("constrained_columns", []) if pk else []
+        image_reviews_pk_ok = (pk_cols == ["id"])
+        if not image_reviews_pk_ok:
+            image_reviews_ok = False
+
+        # FK
+        actual_fks = inspector.get_foreign_keys("image_reviews")
+        fk_ok = any(
+            fk.get("constrained_columns") == ["scholarship_id"]
+            and fk.get("referred_table") == "scholarships"
+            and fk.get("referred_columns") == ["id"]
+            for fk in actual_fks
+        )
+        image_reviews_fk_ok = fk_ok
+        if not fk_ok:
+            image_reviews_ok = False
+
+        # Indexes
+        actual_ir_indexes = {i["name"]: i for i in inspector.get_indexes("image_reviews")}
         for idx in IMAGE_REVIEWS_INDEXES:
             idx_name = idx.split(" ON ")[0]
             if idx_name not in actual_ir_indexes:
                 image_reviews_ok = False
                 image_reviews_index_results[idx_name] = {"status": "MISSING"}
+                continue
+            actual_idx = actual_ir_indexes[idx_name]
+            expected_cols = idx.split("(")[1].rstrip(")").split(",")
+            expected_cols = [c.strip() for c in expected_cols]
+            actual_cols = actual_idx.get("column_names", [])
+            if actual_cols != expected_cols:
+                image_reviews_ok = False
+                image_reviews_index_results[idx_name] = {"status": "MISMATCH", "expected": expected_cols, "actual": actual_cols}
             else:
                 image_reviews_index_results[idx_name] = {"status": "OK"}
+
     validation["image_reviews_validation"] = {
         "exists": image_reviews_exists,
+        "columns": image_reviews_column_results,
+        "primary_key_ok": image_reviews_pk_ok,
+        "foreign_key_ok": image_reviews_fk_ok,
         "indexes": image_reviews_index_results,
         "all_ok": image_reviews_ok,
     }
@@ -1713,12 +1858,14 @@ def main():
 
     try:
         if args.validate_only:
-            # Verify identity before any schema inspection.
-            verify_production_database(engine)
+            # Verify identity before any schema inspection and retain the
+            # non-secret verification result in the JSON report.
+            db_info = verify_production_database(engine)
             validation = validate_schema(engine)
             report = {
                 "mode": "validate-only",
                 "timestamp": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+                "database": db_info,
                 "validation": validation,
             }
         elif args.dry_run:
