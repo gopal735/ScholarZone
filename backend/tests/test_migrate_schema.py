@@ -141,6 +141,8 @@ def sqlite_engine():
         """))
         conn.execute(text("CREATE INDEX IF NOT EXISTS ix_image_reviews_scholarship_decision ON image_reviews (scholarship_id, decision)"))
         conn.execute(text("CREATE INDEX IF NOT EXISTS ix_image_reviews_created_at ON image_reviews (created_at)"))
+        conn.execute(text("CREATE INDEX IF NOT EXISTS ix_scholarships_is_archived ON scholarships (is_archived)"))
+        conn.execute(text("CREATE INDEX IF NOT EXISTS ix_scholarships_is_archived ON scholarships (is_archived)"))
 
     yield engine
 
@@ -408,20 +410,10 @@ class TestIndexValidation:
         from migrate_schema import validate_schema
 
         result = validate_schema(sqlite_engine_with_supervisor)
-        print('DEBUG: valid=', result["valid"])
-        print('DEBUG: scholarship all_ok=', result.get("scholarship_column_validation", {}).get("all_ok"))
-        print('DEBUG: image_reviews all_ok=', result.get("image_reviews_validation", {}).get("all_ok"))
-        sc=result.get('scholarship_column_validation',{}).get('columns',{})
-        sc=result.get('scholarship_column_validation',{}).get('columns',{})
-        for k in ['legacy_id','image_verified_at','is_archived','deletion_protected']:
-            print('DEBUG', k, sc.get(k))
         if not result["valid"]:
             for table, detail in result["table_details"].items():
                 if not detail.get('has_required_columns', True):
                     print(table + ': has_required_columns=' + str(detail.get('has_required_columns')))
-            for table, fk_val in result["foreign_key_validation"].items():
-                if not fk_val.get('all_ok', True):
-                    print(table + ': FK all_ok=' + str(fk_val.get('all_ok')))
                     for fk in fk_val["details"]:
                         if fk.get("status") != "OK":
                             print("  ", fk)
