@@ -847,10 +847,15 @@ def dry_run(engine: Engine) -> dict[str, Any]:
         if idx_name not in existing_indexes:
             additional_index_stmts.append(stmt)
 
+    # Read-only validation result, so operators can review incorrect existing
+    # objects before apply.
+    validation = validate_schema(engine)
+
     return {
         "mode": "dry-run",
         "timestamp": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
         "database": db_info,
+        "validation": validation,
         "supervisor_tables": table_info,
         "missing_tables": missing_tables,
         "create_statements": create_stmts,
@@ -1802,6 +1807,45 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
         "actual_count": len(actual_scholarship_columns),
     }
     if not scholarship_columns_ok:
+        validation["valid"] = False
+
+    # Additional indexes validation (scholarships, maintenance_runs)
+    additional_index_results = {}
+    additional_indexes_ok = True
+    for stmt in ADDITIONAL_INDEXES:
+        idx_name = stmt.split("IF NOT EXISTS ")[1].split(" ON ")[0]
+        table_name = stmt.split(" ON ")[1].split(" (")[0]
+        expected_cols = [c.strip() for c in stmt.split("(")[1].rstrip(")").split(",")]
+        if not inspector.has_table(table_name):
+            additional_index_results[idx_name] = {"status": "TABLE_MISSING_SKIPPED"}
+            continue
+        actual_indexes = {i["name"]: i for i in inspector.get_indexes(table_name)}
+        actual = actual_indexes.get(idx_name)
+        if actual is None:
+            additional_index_results[idx_name] = {"status": "MISSING"}
+            additional_indexes_ok = False
+            continue
+        actual_cols = actual.get("column_names", [])
+        actual_unique = bool(actual.get("unique", False))
+        expected_unique = "UNIQUE" in stmt.upper()
+        if actual_cols != expected_cols or actual_unique != expected_unique:
+            additional_index_results[idx_name] = {
+                "status": "MISMATCH",
+                "expected_columns": expected_cols,
+                "actual_columns": actual_cols,
+                "expected_unique": expected_unique,
+                "actual_unique": actual_unique,
+            }
+            additional_indexes_ok = False
+        else:
+            additional_index_results[idx_name] = {"status": "OK"}
+
+    validation["additional_index_validation"] = {
+        "expected_count": len(ADDITIONAL_INDEXES),
+        "indexes": additional_index_results,
+        "all_ok": additional_indexes_ok,
+    }
+    if not additional_indexes_ok:
         validation["valid"] = False
 
     # image_reviews validation: columns, PK, FK, indexes
