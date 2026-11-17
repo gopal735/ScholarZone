@@ -649,7 +649,7 @@ def generate_index_statements(engine: Engine, missing_tables: list[str], existin
 # ============================================================
 
 SCHOLARSHIP_ADDITIONS: dict[str, str] = {
-    "legacy_id": "INTEGER UNIQUE",
+    "legacy_id": "INTEGER",
     "image_url": "VARCHAR(2048)",
     "image_source_url": "VARCHAR(2048)",
     "image_source_type": "VARCHAR(32)",
@@ -679,6 +679,11 @@ SCHOLARSHIP_ADDITIONS: dict[str, str] = {
     "eligible_programmes": "JSON",
     "academic_provenance": "JSON",
 }
+
+SCHOLARSHIP_UNIQUE_INDEXES: list[str] = [
+    "CREATE UNIQUE INDEX IF NOT EXISTS uq_scholarships_legacy_id ON scholarships (legacy_id)",
+]
+
 
 IMAGE_REVIEWS_DDL: dict[str, str] = {
     "postgresql": """
@@ -722,6 +727,11 @@ IMAGE_REVIEWS_DDL: dict[str, str] = {
 IMAGE_REVIEWS_INDEXES: list[str] = [
     "ix_image_reviews_scholarship_decision ON image_reviews (scholarship_id, decision)",
     "ix_image_reviews_created_at ON image_reviews (created_at)",
+]
+
+ADDITIONAL_INDEXES: list[str] = [
+    "CREATE INDEX IF NOT EXISTS ix_scholarships_is_archived ON scholarships (is_archived)",
+    "CREATE INDEX IF NOT EXISTS ix_maintenance_runs_slot_id ON maintenance_runs (slot_id)",
 ]
 
 IMAGE_REVIEWS_COLUMNS: dict[str, str] = {
@@ -810,11 +820,32 @@ def dry_run(engine: Engine) -> dict[str, Any]:
     missing_scholarship_columns = [name for name, present in scholarship_columns.items() if not present]
     scholarship_column_stmts = generate_scholarship_column_statements(missing_scholarship_columns)
 
+    # Scholarship unique indexes (legacy_id)
+    scholarship_unique_index_stmts = []
+    inspector = inspect(engine)
+    existing_scholarship_indexes = {i["name"] for i in inspector.get_indexes("scholarships")} if inspector.has_table("scholarships") else set()
+    for stmt in SCHOLARSHIP_UNIQUE_INDEXES:
+        idx_name = stmt.split("IF NOT EXISTS ")[1].split(" ON ")[0]
+        if idx_name not in existing_scholarship_indexes:
+            scholarship_unique_index_stmts.append(stmt)
+
     # image_reviews reconciliation
     image_reviews_info = check_existing_image_reviews(engine)
     image_reviews_create_stmts, image_reviews_index_stmts = generate_image_reviews_statements(
         dialect, image_reviews_info["exists"], image_reviews_info["indexes"]
     )
+
+    # Additional required indexes (scholarships, maintenance_runs)
+    inspector = inspect(engine)
+    additional_index_stmts = []
+    for stmt in ADDITIONAL_INDEXES:
+        idx_name = stmt.split("IF NOT EXISTS ")[1].split(" ON ")[0]
+        table_name = stmt.split(" ON ")[1].split(" (")[0]
+        if not inspector.has_table(table_name):
+            continue
+        existing_indexes = {i["name"] for i in inspector.get_indexes(table_name)}
+        if idx_name not in existing_indexes:
+            additional_index_stmts.append(stmt)
 
     return {
         "mode": "dry-run",
@@ -827,11 +858,13 @@ def dry_run(engine: Engine) -> dict[str, Any]:
         "scholarship_columns": scholarship_columns,
         "missing_scholarship_columns": missing_scholarship_columns,
         "scholarship_column_statements": scholarship_column_stmts,
+        "scholarship_unique_index_statements": scholarship_unique_index_stmts,
         "image_reviews": image_reviews_info,
         "missing_image_reviews_indexes": [idx.split(" ON ")[0] for idx in IMAGE_REVIEWS_INDEXES if idx.split(" ON ")[0] not in image_reviews_info["indexes"]],
         "image_reviews_create_statements": image_reviews_create_stmts,
         "image_reviews_index_statements": image_reviews_index_stmts,
-        "total_statements": len(create_stmts) + len(index_stmts) + len(scholarship_column_stmts) + len(image_reviews_create_stmts) + len(image_reviews_index_stmts),
+        "additional_index_statements": additional_index_stmts,
+        "total_statements": len(create_stmts) + len(index_stmts) + len(scholarship_column_stmts) + len(scholarship_unique_index_stmts) + len(image_reviews_create_stmts) + len(image_reviews_index_stmts) + len(additional_index_stmts),
     }
 
 
@@ -868,8 +901,10 @@ def apply_migration(engine: Engine, report: dict[str, Any]) -> dict[str, Any]:
     create_stmts = report.get("create_statements")
     index_stmts = report.get("index_statements")
     scholarship_column_stmts = report.get("scholarship_column_statements")
+    scholarship_unique_index_stmts = report.get("scholarship_unique_index_statements")
     image_reviews_create_stmts = report.get("image_reviews_create_statements")
     image_reviews_index_stmts = report.get("image_reviews_index_statements")
+    additional_index_stmts = report.get("additional_index_statements")
 
     if missing_tables is None:
         table_info = check_existing_supervisor_tables(engine)
@@ -882,11 +917,26 @@ def apply_migration(engine: Engine, report: dict[str, Any]) -> dict[str, Any]:
     if scholarship_column_stmts is None:
         missing_scholarship_columns = [name for name, present in check_existing_scholarship_columns(engine).items() if not present]
         scholarship_column_stmts = generate_scholarship_column_statements(missing_scholarship_columns)
+    if scholarship_unique_index_stmts is None:
+        inspector = inspect(engine)
+        existing_scholarship_indexes = {i["name"] for i in inspector.get_indexes("scholarships")} if inspector.has_table("scholarships") else set()
+        scholarship_unique_index_stmts = [stmt for stmt in SCHOLARSHIP_UNIQUE_INDEXES if stmt.split("IF NOT EXISTS ")[1].split(" ON ")[0] not in existing_scholarship_indexes]
     if image_reviews_create_stmts is None or image_reviews_index_stmts is None:
         ir_info = check_existing_image_reviews(engine)
         image_reviews_create_stmts, image_reviews_index_stmts = generate_image_reviews_statements(
             dialect, ir_info["exists"], ir_info["indexes"]
         )
+    if additional_index_stmts is None:
+        inspector = inspect(engine)
+        additional_index_stmts = []
+        for stmt in ADDITIONAL_INDEXES:
+            idx_name = stmt.split("IF NOT EXISTS ")[1].split(" ON ")[0]
+            table_name = stmt.split(" ON ")[1].split(" (")[0]
+            if not inspector.has_table(table_name):
+                continue
+            existing_indexes = {i["name"] for i in inspector.get_indexes(table_name)}
+            if idx_name not in existing_indexes:
+                additional_index_stmts.append(stmt)
 
     applied = {"tables_created": [], "indexes_created": [], "columns_added": [], "errors": []}
     validation = None
@@ -927,6 +977,16 @@ def apply_migration(engine: Engine, report: dict[str, Any]) -> dict[str, Any]:
                         print(f"[ERROR] ADD COLUMN failed: {e}")
                         raise
 
+                for stmt in scholarship_unique_index_stmts:
+                    try:
+                        conn.execute(text(stmt))
+                        applied["indexes_created"].append(stmt)
+                        print(f"[APPLIED] {stmt}")
+                    except Exception as e:
+                        applied["errors"].append({"statement": stmt, "error": str(e)})
+                        print(f"[ERROR] CREATE INDEX failed: {e}")
+                        raise
+
                 for stmt in image_reviews_create_stmts:
                     try:
                         conn.execute(text(stmt))
@@ -937,6 +997,16 @@ def apply_migration(engine: Engine, report: dict[str, Any]) -> dict[str, Any]:
                         print(f"[ERROR] CREATE TABLE failed: {e}")
                         raise
                 for stmt in image_reviews_index_stmts:
+                    try:
+                        conn.execute(text(stmt))
+                        applied["indexes_created"].append(stmt)
+                        print(f"[APPLIED] {stmt}")
+                    except Exception as e:
+                        applied["errors"].append({"statement": stmt, "error": str(e)})
+                        print(f"[ERROR] CREATE INDEX failed: {e}")
+                        raise
+
+                for stmt in additional_index_stmts:
                     try:
                         conn.execute(text(stmt))
                         applied["indexes_created"].append(stmt)
@@ -993,6 +1063,16 @@ def apply_migration(engine: Engine, report: dict[str, Any]) -> dict[str, Any]:
                     print(f"[ERROR] ADD COLUMN failed: {e}")
                     raise
 
+            for stmt in scholarship_unique_index_stmts:
+                try:
+                    conn.execute(text(stmt))
+                    applied["indexes_created"].append(stmt)
+                    print(f"[APPLIED] {stmt}")
+                except Exception as e:
+                    applied["errors"].append({"statement": stmt, "error": str(e)})
+                    print(f"[ERROR] CREATE INDEX failed: {e}")
+                    raise
+
             for stmt in image_reviews_create_stmts:
                 try:
                     conn.execute(text(stmt))
@@ -1003,6 +1083,16 @@ def apply_migration(engine: Engine, report: dict[str, Any]) -> dict[str, Any]:
                     print(f"[ERROR] CREATE TABLE failed: {e}")
                     raise
             for stmt in image_reviews_index_stmts:
+                try:
+                    conn.execute(text(stmt))
+                    applied["indexes_created"].append(stmt)
+                    print(f"[APPLIED] {stmt}")
+                except Exception as e:
+                    applied["errors"].append({"statement": stmt, "error": str(e)})
+                    print(f"[ERROR] CREATE INDEX failed: {e}")
+                    raise
+
+            for stmt in additional_index_stmts:
                 try:
                     conn.execute(text(stmt))
                     applied["indexes_created"].append(stmt)
@@ -1634,9 +1724,6 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
 
         if not table_ok:
             validation["valid"] = False
-            print(f"DEBUG VALIDATION FAIL table={table_name}", file=sys.stderr)
-            import json
-            print(json.dumps(validation, default=str, indent=2), file=sys.stderr)
 
     # Scholarship additional columns validation
     scholarship_column_results = {}
@@ -1653,39 +1740,46 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
             continue
         expected_type_match = re.match(r"^([A-Za-z_]+(?:\([^)]*\))?)", col_type.strip())
         expected_type = expected_type_match.group(1) if expected_type_match else col_type.split()[0]
-        expected_nullable = "NOT NULL" not in col_type.upper()
+        expected_nullable = "NOT NULL" not in col_type.upper() and "PRIMARY KEY" not in col_type.upper()
         expected_unique = "UNIQUE" in col_type.upper()
         default_match = re.search(r"DEFAULT\s+(.+)", col_type, re.IGNORECASE)
         expected_default = default_match.group(1).strip() if default_match else None
 
-        actual_type = str(actual.get("type", ""))
+        actual_type_obj = actual.get("type", "")
+        actual_type = str(actual_type_obj)
         if dialect == "postgresql":
-            type_ok = types_match(dialect, expected_type, actual_type)
+            type_ok = types_match(dialect, expected_type, actual_type_obj)
         else:
             # SQLite reflects TIMESTAMPTZ columns as DATETIME in this schema.
             if expected_type == "TIMESTAMPTZ" and actual_type.upper() in {"DATETIME", "TIMESTAMP", "NUMERIC"}:
                 type_ok = True
             else:
-                type_ok = types_match(dialect, expected_type, actual_type)
-        nullable_ok = (expected_nullable == actual.get("nullable", True))
+                type_ok = types_match(dialect, expected_type, actual_type_obj)
+        nullable_ok = (expected_nullable == actual.get("nullable", True)) or ("PRIMARY KEY" in col_type.upper())
 
         actual_unique = bool(actual.get("unique", False))
-        if expected_unique and not actual_unique:
-            try:
-                actual_unique = any(
-                    idx.get("unique") and idx.get("column_names") == [col_name]
-                    for idx in inspector.get_indexes("scholarships")
-                )
-            except Exception:
-                actual_unique = False
+        if expected_unique:
             if not actual_unique:
                 try:
                     actual_unique = any(
-                        col_name in (uc.get("column_names") or [])
+                        idx.get("unique")
+                        and idx.get("column_names") == [col_name]
+                        and not idx.get("predicate")
+                        for idx in inspector.get_indexes("scholarships")
+                    )
+                except Exception:
+                    actual_unique = False
+            if not actual_unique:
+                try:
+                    actual_unique = any(
+                        (uc.get("column_names") or []) == [col_name]
                         for uc in inspector.get_unique_constraints("scholarships")
                     )
                 except Exception:
                     actual_unique = False
+        else:
+            # Do not accept an unexpected uniqueness constraint as a match.
+            pass
         unique_ok = (expected_unique == actual_unique)
 
         default_ok = defaults_match(expected_default, actual.get("default"))
@@ -1728,17 +1822,18 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
                 continue
             expected_type_match = re.match(r"^([A-Za-z_]+(?:\([^)]*\))?)", col_type.strip())
             expected_type = expected_type_match.group(1) if expected_type_match else col_type.split()[0]
-            expected_nullable = "NOT NULL" not in col_type.upper()
+            expected_nullable = "NOT NULL" not in col_type.upper() and "PRIMARY KEY" not in col_type.upper()
             default_match = re.search(r"DEFAULT\s+(.+)", col_type, re.IGNORECASE)
             expected_default = default_match.group(1).strip() if default_match else None
-            actual_type = str(actual.get("type", ""))
+            actual_type_obj = actual.get("type", "")
+            actual_type = str(actual_type_obj)
             if dialect == "postgresql":
-                type_ok = types_match(dialect, expected_type, actual_type)
+                type_ok = types_match(dialect, expected_type, actual_type_obj)
             elif expected_type == "TIMESTAMPTZ" and actual_type.upper() in {"DATETIME", "TIMESTAMP", "NUMERIC"}:
                 type_ok = True
             else:
-                type_ok = types_match(dialect, expected_type, actual_type)
-            nullable_ok = (expected_nullable == actual.get("nullable", True))
+                type_ok = types_match(dialect, expected_type, actual_type_obj)
+            nullable_ok = (expected_nullable == actual.get("nullable", True)) or ("PRIMARY KEY" in col_type.upper())
             default_ok = defaults_match(expected_default, actual.get("default"))
             col_ok = type_ok and nullable_ok and default_ok
             if not col_ok:
