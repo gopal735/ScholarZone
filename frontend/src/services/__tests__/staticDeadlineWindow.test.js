@@ -12,6 +12,8 @@ const snap = {
     { id: 3, title: 'Day30', country: 'X', degree: 'Master', funding: 'F', deadline: '2026-12-17', deadline_date: '2026-12-17', deadline_precision: 'exact', status: 'open', verification_status: 'active' },
     { id: 4, title: 'Day31', country: 'X', degree: 'Master', funding: 'F', deadline: '2026-12-18', deadline_date: '2026-12-18', deadline_precision: 'exact', status: 'open', verification_status: 'active' },
     { id: 5, title: 'NoDeadline', country: 'X', degree: 'Master', funding: 'F', deadline: '', status: 'open', verification_status: 'active' },
+    { id: 6, title: 'DisplayOnly', country: 'X', degree: 'Master', funding: 'F', deadline: '2026-11-20', deadline_display: '2026-11-20', deadline_date: null, deadline_precision: 'exact', status: 'open', verification_status: 'active' },
+    { id: 7, title: 'MonthPrecision', country: 'X', degree: 'Master', funding: 'F', deadline: '2026-12-01', deadline_date: '2026-12-01', deadline_precision: 'month', status: 'open', verification_status: 'active' },
   ],
 }
 
@@ -35,13 +37,13 @@ describe('static deadline_within_days parity', () => {
     expect(titles).not.toContain('Expired')
     expect(titles).not.toContain('Day31')
     expect(titles).not.toContain('NoDeadline')
+    expect(titles).not.toContain('DisplayOnly')
+    expect(titles).toContain('MonthPrecision')
   })
 
   it('ignores unsupported values above 365 (no silent wider window)', async () => {
     const res = await fetchScholarshipsFromSnapshot({ deadline_within_days: 400, limit: 50 })
-    const titles = res.items.map((i) => i.title)
-    // Invalid value is ignored -> records are not narrowed by a deadline window.
-    expect(titles).toContain('Day31')
-    expect(titles).toContain('NoDeadline')
+    // Unsupported window returns no unfiltered records (not a silent wider window).
+    expect(res.items).toHaveLength(0)
   })
 })

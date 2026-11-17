@@ -17,14 +17,10 @@ FIXED_TODAY = date(2026, 11, 17)
 
 
 @pytest.fixture
-def boundary_db(monkeypatch):
-    db_path = Path(tempfile.gettempdir()) / "scholarzone-dwd-boundary.db"
-    try:
-        db_path.unlink()
-    except FileNotFoundError:
-        pass
-    os.environ["SCHOLARZONE_DATABASE_URL"] = f"sqlite:///{db_path.as_posix()}"
-    os.environ["SCHOLARZONE_ENVIRONMENT"] = "test"
+def boundary_db(monkeypatch, tmp_path):
+    db_path = tmp_path / "scholarzone-dwd-boundary.db"
+    monkeypatch.setenv("SCHOLARZONE_DATABASE_URL", f"sqlite:///{db_path.as_posix()}")
+    monkeypatch.setenv("SCHOLARZONE_ENVIRONMENT", "test")
     reset_database_connections()
     init_database()
 

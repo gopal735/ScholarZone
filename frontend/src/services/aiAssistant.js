@@ -107,13 +107,21 @@ export async function askAIAssistant(request) {
       tokensUsed: data.tokens_used ?? data.tokensUsed,
     };
   } catch (error) {
-    if (error && typeof error === 'object' && 'code' in error) {
-      throw error;
+    // AbortError (including timeouts) must reach grounded fallback before the
+    // generic structured-error guard, because AbortError may carry a legacy
+    // numeric `code` property that would otherwise be rethrown.
+    if (error instanceof DOMException && error.name === 'AbortError') {
+      return groundedFallback(question);
     }
 
-    if (error instanceof DOMException && error.name === 'AbortError') {
-      // Remote timeout: provide grounded answer instead of a dead end.
-      return groundedFallback(question);
+    // Only rethrow genuine structured service errors with a string code.
+    if (
+      error &&
+      typeof error === 'object' &&
+      'code' in error &&
+      typeof error.code === 'string'
+    ) {
+      throw error;
     }
 
     console.warn('AI Assistant unavailable, falling back to grounded retrieval:', error);
@@ -136,7 +144,7 @@ function parseDeadlineWindowDays(question) {
   }
 
   const reversed = q.match(/\b(\d{1,3})\s+days?\b/);
-  if (reversed && (q.includes('deadline') || q.includes('closing') || q.includes('open'))) {
+  if (reversed && (q.includes('deadline') || q.includes('closing') || q.includes('due'))) {
     const days = Number(reversed[1]);
     return Number.isFinite(days) && days > 0 ? days : null;
   }
@@ -151,10 +159,33 @@ function parseDeadlineWindowDays(question) {
 function isDeadlineWindowQuestion(question) {
   const q = normalizeQuestion(question);
   if (!q) return false;
+
+  // Deadline intent must be explicit. A bare duration ("in the next 30 days")
+  // is not enough, otherwise application/document/eligibility questions that
+  // happen to mention a timeframe get misrouted to deadline retrieval.
+  const hasDeadlineIntent =
+    q.includes('deadline') ||
+    q.includes('closing') ||
+    q.includes('due') ||
+    q.includes('expires') ||
+    q.includes('expiry') ||
+    q.includes('last date') ||
+    q.includes('final date') ||
+    q.includes('submission date') ||
+    q.includes('apply by');
+
+  if (!hasDeadlineIntent) return false;
+
   if (parseDeadlineWindowDays(q) != null) return true;
+
   return (
-    (q.includes('deadline') || q.includes('closing soon') || q.includes('closing') || q.includes('due')) &&
-    (q.includes('upcoming') || q.includes('soon') || q.includes('next') || q.includes('within') || q.includes('coming'))
+    q.includes('upcoming') ||
+    q.includes('soon') ||
+    q.includes('next') ||
+    q.includes('within') ||
+    q.includes('coming') ||
+    q.includes('this month') ||
+    q.includes('next month')
   );
 }
 
@@ -182,12 +213,24 @@ function compareByDeadlineThenTitle(a, b) {
   return String(a?.title || '').localeCompare(String(b?.title || ''), undefined, { sensitivity: 'base' });
 }
 
-async function fetchDeadlineWindowScholarships(days) {
+async function fetchDeadlineWindowScholarships(days, question = '') {
+  const constraintKeywords = extractKeywords(question || '').filter((word) => {
+    const lower = String(word).toLowerCase();
+    return ![
+      'deadline', 'deadlines', 'closing', 'close', 'due', 'expires', 'expiry',
+      'days', 'day', 'within', 'next', 'upcoming', 'soon', 'coming', 'scholarship', 'scholarships',
+    ].includes(lower);
+  });
+  const search = constraintKeywords.length > 0 ? constraintKeywords.join(' ') : undefined;
+
+  const boundedDays = Math.min(Math.max(days, 1), 365);
+
   // Prefer API contract with deadline_within_days (works for live DB and for
   // static-first/snapshot-backed fetchScholarships implementations).
   try {
     const directory = await fetchScholarships({
-      deadline_within_days: days,
+      ...(search ? { search } : {}),
+      deadline_within_days: boundedDays,
       sort: 'deadline-soon',
       page: 1,
       limit: 20,
@@ -205,7 +248,7 @@ async function fetchDeadlineWindowScholarships(days) {
   const now = new Date();
   const todayUtc = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
   const cutoff = new Date(todayUtc);
-  cutoff.setUTCDate(cutoff.getUTCDate() + days);
+  cutoff.setUTCDate(cutoff.getUTCDate() + boundedDays);
 
   return allItems
     .filter((s) => {
@@ -227,7 +270,7 @@ async function groundedFallback(question) {
 
     if (isDeadlineWindowQuestion(safeQuestion)) {
       const days = parseDeadlineWindowDays(safeQuestion) ?? 30;
-      scholarships = (await fetchDeadlineWindowScholarships(days)).slice(0, 10);
+      scholarships = (await fetchDeadlineWindowScholarships(days, safeQuestion)).slice(0, 10);
 
       if (scholarships.length === 0) {
         return {
