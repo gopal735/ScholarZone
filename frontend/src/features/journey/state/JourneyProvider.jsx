@@ -61,6 +61,10 @@ export function JourneyProvider({ children }) {
   /** Tracks unpersisted edits that must be flushed on unmount/pagehide. */
   const isDirtyRef = useRef(false)
 
+  /** True while applying a programmatic hydration (initial, reset, or cross-tab),
+   *  so the persistence effect does not treat it as a user edit. */
+  const isHydratingRef = useRef(false)
+
   /** Timestamp of most recent write by this tab, for cross-tab ordering. */
   const lastWriteRef = useRef(null)
   const pendingTimerRef = useRef(null)
@@ -111,6 +115,12 @@ export function JourneyProvider({ children }) {
      that. Actual unmount and page-lifecycle flushes are handled separately. */
   useEffect(() => {
     if (state === bootstrap.state) return undefined
+
+    if (isHydratingRef.current) {
+      // Programmatic hydration (initial/reset/cross-tab): never persist.
+      isHydratingRef.current = false
+      return undefined
+    }
 
     if (suppressPersistRef.current) {
       // The state change is the deliberate result of a reset: storage was
@@ -216,6 +226,10 @@ export function JourneyProvider({ children }) {
       if (event.newValue === null || event.newValue === undefined) {
         // Another tab reset this feature. Reload our own view of it.
         const reloaded = loadJourneyState()
+        isDirtyRef.current = false
+        suppressPersistRef.current = true
+        resetOccurredRef.current = true
+        isHydratingRef.current = true
         dispatch({ type: ACTIONS.HYDRATE, payload: reloaded.state })
         setStorageProblem(reloaded.problem)
         return
@@ -229,6 +243,7 @@ export function JourneyProvider({ children }) {
       const incoming = new Date(parsed?.exportedAt ?? 0).getTime()
       const mine = new Date(lastWriteRef.current ?? 0).getTime()
       if (!Number.isFinite(incoming) || incoming <= mine) return
+      isHydratingRef.current = true
       dispatch({ type: ACTIONS.HYDRATE, payload: parsed })
     }
 
@@ -267,6 +282,7 @@ export function JourneyProvider({ children }) {
     }
     isDirtyRef.current = false
     suppressPersistRef.current = false
+    isHydratingRef.current = true
     const next = normalizeJourneyDocument(document)
     dispatch({ type: ACTIONS.HYDRATE, payload: next })
     return next
