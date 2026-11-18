@@ -51,6 +51,9 @@ export function JourneyProvider({ children }) {
   /** Always holds the latest state reference to prevent persisting stale closures. */
   const latestStateRef = useRef(state)
 
+  /** Immutable initial state captured once, used in unmount comparisons. */
+  const initialStateRef = useRef(bootstrap.state)
+
   useLayoutEffect(() => {
     latestStateRef.current = state
   }, [state])
@@ -292,6 +295,7 @@ export function JourneyProvider({ children }) {
   // This cleanup runs when the provider unmounts, not on state changes.
   useEffect(() => {
     isMountedRef.current = true
+    const initialState = initialStateRef.current
     return () => {
       isMountedRef.current = false
       if (pendingTimerRef.current) {
@@ -300,7 +304,7 @@ export function JourneyProvider({ children }) {
       }
       // Flush the latest state on unmount if there are unsaved changes.
       // Never flush after an explicit reset (would recreate deleted data).
-      if (!suppressPersistRef.current && !resetOccurredRef.current && latestStateRef.current && latestStateRef.current !== bootstrap.state) {
+      if (!suppressPersistRef.current && !resetOccurredRef.current && latestStateRef.current && latestStateRef.current !== initialState) {
         try {
           saveJourneyState(latestStateRef.current)
           isDirtyRef.current = false
