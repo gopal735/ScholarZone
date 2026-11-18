@@ -16,14 +16,14 @@ export function AuthProvider({ children }) {
       try {
         const session = await authService.checkSession()
 
-        if (!isActive || gen !== authGenRef.current) {
+        if (!isActive || gen !== authGenRef.current || refreshGenRef.current !== 0) {
           return
         }
 
         setUser(session?.user ?? null)
         setStatus(session?.user ? 'authenticated' : 'unauthenticated')
       } catch {
-        if (isActive && gen === authGenRef.current) {
+        if (isActive && gen === authGenRef.current && refreshGenRef.current === 0) {
           setUser(null)
           setStatus('unauthenticated')
         }
