@@ -288,7 +288,10 @@ export function JourneyProvider({ children }) {
         window.clearTimeout(pendingTimerRef.current)
         pendingTimerRef.current = null
       }
-      if (isDirtyRef.current && !suppressPersistRef.current) {
+      // Flush the latest state on unmount if there are unsaved changes.
+      // Always attempt to save, regardless of dirty flag, to handle timing
+      // edge cases where the debounce timer hasn't been set up yet.
+      if (!suppressPersistRef.current && latestStateRef.current && latestStateRef.current !== bootstrap.state) {
         try {
           saveJourneyState(latestStateRef.current)
           isDirtyRef.current = false
