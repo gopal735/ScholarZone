@@ -342,13 +342,14 @@ export default function UnifiedAIPage() {
   const messagesEndRef = useRef(null)
   const inputRef = useRef(null)
   const initGenerationRef = useRef(0)
+  const isMountedRef = useRef(true)
 
   const initializeAI = useCallback(async () => {
     const gen = ++initGenerationRef.current
     setMentorOverview(null)
 
     const status = await getAIStatus({ isAuthenticated: auth.status === 'authenticated' })
-    if (gen !== initGenerationRef.current) return
+    if (gen !== initGenerationRef.current || !isMountedRef.current) return
     setAiStatus(status)
     setLocalAIEnabledState(isLocalAIEnabled())
 
@@ -356,11 +357,11 @@ export default function UnifiedAIPage() {
       try {
         const { fetchMentorOverview } = await import('../services/mentorService')
         const overview = await fetchMentorOverview()
-        if (gen !== initGenerationRef.current) return
+        if (gen !== initGenerationRef.current || !isMountedRef.current) return
         setMentorOverview(overview)
       } catch (err) {
         void err
-        if (gen !== initGenerationRef.current) return
+        if (gen !== initGenerationRef.current || !isMountedRef.current) return
         setMentorOverview(null)
       }
     } else {
@@ -378,6 +379,11 @@ export default function UnifiedAIPage() {
     init()
     return () => { mounted.current = false }
   }, [auth.status, initializeAI])
+
+  useEffect(() => {
+    isMountedRef.current = true
+    return () => { isMountedRef.current = false }
+  }, [])
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView?.({ behavior: 'smooth' })

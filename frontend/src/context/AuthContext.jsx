@@ -38,11 +38,19 @@ export function AuthProvider({ children }) {
 
   async function login(credentials) {
     const gen = ++generationRef.current
-    const session = await authService.login(credentials)
-    if (gen !== generationRef.current) return session
-    setUser(session?.user ?? null)
-    setStatus(session?.user ? 'authenticated' : 'unauthenticated')
-    return session
+    try {
+      const session = await authService.login(credentials)
+      if (gen !== generationRef.current) return session
+      setUser(session?.user ?? null)
+      setStatus(session?.user ? 'authenticated' : 'unauthenticated')
+      return session
+    } catch (error) {
+      if (gen === generationRef.current) {
+        setUser(null)
+        setStatus('unauthenticated')
+      }
+      throw error
+    }
   }
 
   async function register(credentials) {
@@ -58,7 +66,7 @@ export function AuthProvider({ children }) {
   }
 
   async function refreshSession() {
-    const gen = generationRef.current
+    const gen = ++generationRef.current
     try {
       const session = await authService.checkSession()
       if (gen !== generationRef.current) {
