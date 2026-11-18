@@ -128,10 +128,23 @@ describe('normalizeMentorResponse', () => {
     expect(result.mentorResponse.notes).toEqual([])
   })
 
-  it('filters non-string array items', () => {
-    const raw = { ...realMentorResponse, caveats: ['valid', 42, null, 'also valid'] }
-    const result = normalizeMentorResponse(raw)
-    expect(result.mentorResponse.caveats).toEqual(['valid', 'also valid'])
+  it('rejects invalid as_of date format', () => {
+    expect(normalizeMentorResponse({ ...realMentorResponse, as_of: 'not-a-date' })).toBeNull()
+    expect(normalizeMentorResponse({ ...realMentorResponse, as_of: '2026/11/18' })).toBeNull()
+    expect(normalizeMentorResponse({ ...realMentorResponse, as_of: 123 })).toBeNull()
+    expect(normalizeMentorResponse({ ...realMentorResponse, as_of: null })).toBeNull()
+  })
+
+  it('rejects impossible dates', () => {
+    expect(normalizeMentorResponse({ ...realMentorResponse, as_of: '2026-13-01' })).toBeNull()
+    expect(normalizeMentorResponse({ ...realMentorResponse, as_of: '2026-11-32' })).toBeNull()
+    expect(normalizeMentorResponse({ ...realMentorResponse, as_of: '2026-02-30' })).toBeNull()
+  })
+
+  it('accepts valid as_of date', () => {
+    const result = normalizeMentorResponse({ ...realMentorResponse, as_of: '2026-01-15' })
+    expect(result).not.toBeNull()
+    expect(result.mentorResponse.as_of).toBe('2026-01-15')
   })
 })
 

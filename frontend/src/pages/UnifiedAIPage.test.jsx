@@ -42,6 +42,7 @@ function renderPage(authStatus = 'unauthenticated') {
 describe('UnifiedAIPage crash safety', () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    vi.mocked(getAIStatus).mockResolvedValue({ mentor: false, remoteAI: false, localAI: false, grounded: true, activeMode: 'grounded' })
   })
 
   it('does not crash when message.content is undefined', async () => {
@@ -107,6 +108,7 @@ describe('UnifiedAIPage crash safety', () => {
 describe('UnifiedAIPage auth routing', () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    vi.mocked(getAIStatus).mockResolvedValue({ mentor: false, remoteAI: false, localAI: false, grounded: true, activeMode: 'grounded' })
   })
 
   it('shows Grounded Search badge for anonymous user', async () => {

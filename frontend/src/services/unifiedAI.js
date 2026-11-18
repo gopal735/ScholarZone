@@ -49,6 +49,13 @@ export function normalizeMentorResponse(raw) {
     if (typeof raw.intent_label !== 'string') return null
     if (typeof raw.supported !== 'boolean') return null
     if (typeof raw.why !== 'string') return null
+    // Validate as_of as ISO YYYY-MM-DD date
+    if (typeof raw.as_of !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(raw.as_of)) return null
+    const parsedDate = new Date(raw.as_of + 'T00:00:00Z')
+    if (isNaN(parsedDate.getTime())) return null
+    // Verify round-trip (e.g., reject 2026-13-45)
+    const [y, m, d] = raw.as_of.split('-').map(Number)
+    if (parsedDate.getUTCFullYear() !== y || parsedDate.getUTCMonth() + 1 !== m || parsedDate.getUTCDate() !== d) return null
     if (typeof raw.general_guidance_only !== 'boolean') return null
 
     // Validate arrays
@@ -159,7 +166,7 @@ export async function askUnifiedAI(message, options = {}) {
       }
       // Legacy Mentor response with answer field
       if (raw && typeof raw.answer === 'string' && raw.answer.trim() !== '') {
-        return { ...raw, kind: 'mentor-legacy' }
+        return { ...raw, kind: 'mentor-legacy', sources: Array.isArray(raw.sources) ? raw.sources : [] }
       }
       // Malformed response - throw
       throw new MentorUnavailableError('Mentor returned an invalid response.', 500)
@@ -256,7 +263,7 @@ export function formatUnifiedResponse(response, mode) {
   if (response.kind === 'mentor-legacy' && typeof response.answer === 'string' && response.answer.trim() !== '') {
     return {
       answer: response.answer,
-      sources: response.sources || [],
+      sources: Array.isArray(response.sources) ? response.sources : [],
       grounded: response.grounded ?? true,
       model: response.model,
       tokensUsed: response.tokensUsed,

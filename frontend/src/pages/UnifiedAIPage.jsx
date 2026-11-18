@@ -108,8 +108,20 @@ function MentorResponseCard({ mentorResponse }) {
 
   const safeHref = (href) => {
     if (typeof href !== 'string' || !href) return null
-    if (href.startsWith('/') || href.startsWith('#')) return href
+    // Reject protocol-relative paths
+    if (href.startsWith('//')) return null
+    // Reject backslash ambiguity
+    if (href.includes('\\')) return null
+    // Fragment links
+    if (href.startsWith('#')) return href
+    // Internal paths (single leading slash)
+    if (href.startsWith('/') && !href.startsWith('//')) return href
+    // Absolute URLs - strictly HTTP/HTTPS
     return safeUrl(href)
+  }
+
+  const isInternalPath = (href) => {
+    return typeof href === 'string' && href.startsWith('/') && !href.startsWith('//') && !href.includes('\\')
   }
 
   return (
@@ -171,7 +183,11 @@ function MentorResponseCard({ mentorResponse }) {
                     <span className="mentor-step-priority">Priority: {step.priority}</span>
                   )}
                   {href && (
-                    <a href={href} className="mentor-step-link">{step.action_label || 'Go'}</a>
+                    isInternalPath(href) ? (
+                      <Link to={href} className="mentor-step-link">{step.action_label || 'Go'}</Link>
+                    ) : (
+                      <a href={href} className="mentor-step-link" target="_blank" rel="noopener noreferrer">{step.action_label || 'Go'}</a>
+                    )
                   )}
                 </li>
               )
@@ -226,8 +242,8 @@ function MentorResponseCard({ mentorResponse }) {
 function MessageList({ messages, messagesEndRef }) {
   return (
     <>
-      {messages.map((message, index) => (
-        <div key={index} className={`message message--${message.role}`}>
+      {messages.map((message) => (
+        <div key={message.id ?? message.timestamp} className={`message message--${message.role}`}>
           <div className="message-content">
             {message.role === 'assistant' && message.label && (
               <span className={`grounded-badge ${message.grounded ? 'grounded' : 'ai-generated'}`}>
@@ -241,7 +257,7 @@ function MessageList({ messages, messagesEndRef }) {
               <div className="message-text">
                 {typeof message.content === 'string' && message.content.trim() !== ''
                   ? message.content
-                  : (message.content != null ? String(message.content) : 'No response available.')}
+                  : 'No response available.'}
               </div>
             )}
 
@@ -497,6 +513,27 @@ export default function UnifiedAIPage() {
   const initGenerationRef = useRef(0)
   const statusGenerationRef = useRef(0)
   const isMountedRef = useRef(true)
+  const messageIdRef = useRef(0)
+  const sessionKeyRef = useRef(null)
+  const prevSessionKeyRef = useRef(null)
+
+  // Derive session key from auth state
+  const sessionKey = auth.status === 'authenticated' ? `auth:${auth.user?.id ?? 'unknown'}` : 'anon'
+
+  // Track session changes and clear private Mentor messages
+  useEffect(() => {
+    const prev = prevSessionKeyRef.current
+    prevSessionKeyRef.current = sessionKey
+    sessionKeyRef.current = sessionKey
+
+    if (prev !== null && prev !== sessionKey) {
+      // Session changed - remove private Mentor messages from previous session
+      setMessages(prevMsgs => prevMsgs.filter(m => {
+        if (m.private && m.sessionId !== sessionKey) return false
+        return true
+      }))
+    }
+  }, [sessionKey])
 
   const initializeAI = useCallback(async () => {
     const initGen = ++initGenerationRef.current
@@ -549,11 +586,14 @@ export default function UnifiedAIPage() {
     if (!input.trim() || isLoading) return
 
     const userMessage = input.trim()
+    const requestSessionKey = sessionKeyRef.current
     setInput('')
     setIsLoading(true)
 
-    setMessages(prev => [...prev, { 
-      role: 'user', 
+    const userMsgId = ++messageIdRef.current
+    setMessages(prev => [...prev, {
+      id: userMsgId,
+      role: 'user',
       content: userMessage,
       timestamp: Date.now()
     }])
@@ -570,6 +610,13 @@ export default function UnifiedAIPage() {
         }
       })
 
+      // Guard: discard if session changed during request
+      if (sessionKeyRef.current !== requestSessionKey) {
+        setIsLoading(false)
+        inputRef.current?.focus()
+        return
+      }
+
       let responseMode = aiStatus.activeMode
       if (response.grounded) responseMode = 'grounded'
 
@@ -579,7 +626,12 @@ export default function UnifiedAIPage() {
 
       const formatted = formatUnifiedResponse(response, responseMode)
 
+      // Determine if this is a private Mentor response
+      const isPrivate = formatted.sourceType === 'mentor' && requestSessionKey.startsWith('auth:')
+
+      const assistantMsgId = ++messageIdRef.current
       setMessages(prev => [...prev, {
+        id: assistantMsgId,
         role: 'assistant',
         content: formatted.answer,
         mentorResponse: formatted.mentorResponse || null,
@@ -589,8 +641,10 @@ export default function UnifiedAIPage() {
         tokensUsed: formatted.tokensUsed,
         sourceType: formatted.sourceType,
         label: formatted.label,
+        private: isPrivate,
+        sessionId: isPrivate ? requestSessionKey : null,
         timestamp: Date.now()
-      }])
+      }]) 
     } catch (error) {
       let errorMessage = 'An unexpected error occurred.'
       let retryable = false
@@ -610,6 +664,8 @@ export default function UnifiedAIPage() {
             grounded: formatted.grounded,
             sourceType: 'grounded',
             label: 'Grounded Search (sign in for personalized Mentor)',
+            private: false,
+            sessionId: null,
             timestamp: Date.now()
           }])
           setIsLoading(false)
@@ -637,6 +693,8 @@ export default function UnifiedAIPage() {
             grounded: formatted.grounded,
             sourceType: 'grounded',
             label: '📋 Grounded Search (fallback)',
+            private: false,
+            sessionId: null,
             timestamp: Date.now()
           }])
           setIsLoading(false)
@@ -657,6 +715,8 @@ export default function UnifiedAIPage() {
         role: 'assistant',
         content: errorMessage,
         error: { message: errorMessage, retryable },
+        private: false,
+        sessionId: null,
         timestamp: Date.now()
       }])
     } finally {
