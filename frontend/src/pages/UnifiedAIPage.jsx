@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import DOMPurify from 'dompurify'
 import { 
   askUnifiedAI, 
   getAIStatus, 
@@ -79,6 +78,151 @@ function WelcomeScreen({ onSuggestionClick }) {
   )
 }
 
+function MentorResponseCard({ mentorResponse }) {
+  if (!mentorResponse || typeof mentorResponse !== 'object') return null
+
+  const {
+    headline,
+    why,
+    known = [],
+    unknown = [],
+    next_steps = [],
+    caveats = [],
+    notes = [],
+    as_of,
+    general_guidance_only = false,
+    provider_mode,
+    provider_used,
+  } = mentorResponse
+
+  const safeUrl = (url) => {
+    if (typeof url !== 'string' || !url) return null
+    try {
+      const parsed = new URL(url)
+      if (parsed.protocol === 'http:' || parsed.protocol === 'https:') return url
+    } catch {
+      // not a valid URL
+    }
+    return null
+  }
+
+  const safeHref = (href) => {
+    if (typeof href !== 'string' || !href) return null
+    if (href.startsWith('/') || href.startsWith('#')) return href
+    return safeUrl(href)
+  }
+
+  return (
+    <div className="mentor-response-card" role="article" aria-label="Mentor response">
+      {headline && (
+        <h3 className="mentor-headline">{headline}</h3>
+      )}
+
+      {why && (
+        <section className="mentor-section">
+          <h4>Why this matters</h4>
+          <p>{why}</p>
+        </section>
+      )}
+
+      {Array.isArray(known) && known.length > 0 && (
+        <section className="mentor-section">
+          <h4>What ScholarZone knows</h4>
+          <ul className="mentor-evidence-list">
+            {known.map((item, i) => (
+              <li key={i} className="mentor-evidence-item">
+                <strong>{item.label}</strong>: {item.value}
+                {item.field && <span className="mentor-evidence-field"> ({item.field})</span>}
+                {item.basis && <span className="mentor-evidence-basis"> — {item.basis}</span>}
+                {item.verification && <span className="mentor-evidence-verification"> [{item.verification}]</span>}
+                {item.source_url && safeUrl(item.source_url) && (
+                  <a href={safeUrl(item.source_url)} target="_blank" rel="noopener noreferrer" className="mentor-source-link">
+                    Source
+                  </a>
+                )}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {Array.isArray(unknown) && unknown.length > 0 && (
+        <section className="mentor-section">
+          <h4>What remains unknown</h4>
+          <ul className="mentor-unknown-list">
+            {unknown.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {Array.isArray(next_steps) && next_steps.length > 0 && (
+        <section className="mentor-section">
+          <h4>Recommended next steps</h4>
+          <ul className="mentor-next-steps">
+            {next_steps.map((step, i) => {
+              const href = safeHref(step.href)
+              return (
+                <li key={i} className="mentor-next-step">
+                  <div className="mentor-step-title">{step.title}</div>
+                  <div className="mentor-step-detail">{step.detail}</div>
+                  {step.priority != null && (
+                    <span className="mentor-step-priority">Priority: {step.priority}</span>
+                  )}
+                  {href && (
+                    <a href={href} className="mentor-step-link">{step.action_label || 'Go'}</a>
+                  )}
+                </li>
+              )
+            })}
+          </ul>
+        </section>
+      )}
+
+      {Array.isArray(caveats) && caveats.length > 0 && (
+        <section className="mentor-section mentor-caveats">
+          <h4>Caveats</h4>
+          <ul>
+            {caveats.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {Array.isArray(notes) && notes.length > 0 && (
+        <section className="mentor-section mentor-notes">
+          <h4>Notes</h4>
+          <ul>
+            {notes.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {as_of && (
+        <div className="mentor-as-of">
+          <small>Measured as of: {String(as_of)}</small>
+        </div>
+      )}
+
+      {general_guidance_only && (
+        <div className="mentor-general-guidance" role="note">
+          <small>This answer provides general guidance only and is not based on your personal profile or catalogue data.</small>
+        </div>
+      )}
+
+      {provider_used && provider_mode && provider_mode !== 'disabled' && (
+        <div className="mentor-provider-info">
+          <small>Provider: {provider_mode}</small>
+        </div>
+      )}
+    </div>
+  )
+}
+
 function MessageList({ messages, messagesEndRef }) {
   return (
     <>
@@ -90,8 +234,17 @@ function MessageList({ messages, messagesEndRef }) {
                 {message.label}
               </span>
             )}
-            <div className="message-text" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(message.content.replace(/\n/g, '<br>')) }} />
-            
+
+            {message.role === 'assistant' && message.mentorResponse ? (
+              <MentorResponseCard mentorResponse={message.mentorResponse} />
+            ) : (
+              <div className="message-text">
+                {typeof message.content === 'string' && message.content.trim() !== ''
+                  ? message.content
+                  : (message.content != null ? String(message.content) : 'No response available.')}
+              </div>
+            )}
+
             {message.sources && message.sources.length > 0 && (
               <div className="message-sources">
                 <strong>Sources:</strong>
@@ -111,7 +264,7 @@ function MessageList({ messages, messagesEndRef }) {
                 </ul>
               </div>
             )}
-            
+
             {message.error && (
               <div className="message-error">
                 <p>{message.error.message}</p>
@@ -429,6 +582,7 @@ export default function UnifiedAIPage() {
       setMessages(prev => [...prev, {
         role: 'assistant',
         content: formatted.answer,
+        mentorResponse: formatted.mentorResponse || null,
         sources: formatted.sources,
         grounded: formatted.grounded,
         model: formatted.model,
@@ -451,6 +605,7 @@ export default function UnifiedAIPage() {
           setMessages(prev => [...prev, {
             role: 'assistant',
             content: formatted.answer,
+            mentorResponse: formatted.mentorResponse || null,
             sources: formatted.sources,
             grounded: formatted.grounded,
             sourceType: 'grounded',
@@ -477,6 +632,7 @@ export default function UnifiedAIPage() {
           setMessages(prev => [...prev, {
             role: 'assistant',
             content: formatted.answer,
+            mentorResponse: formatted.mentorResponse || null,
             sources: formatted.sources,
             grounded: formatted.grounded,
             sourceType: 'grounded',
