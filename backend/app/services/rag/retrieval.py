@@ -186,9 +186,9 @@ def retrieve(
             continue
 
         matched_fields: list[str] = []
-        if country and country.lower() in _normalize(row_dict.get("country")):
+        if country:
             matched_fields.append("country")
-        if degree and degree.lower() in _normalize(row_dict.get("degree")):
+        if degree:
             matched_fields.append("degree")
 
         for chunk_id, chunk_text in _build_chunks(row_dict):
