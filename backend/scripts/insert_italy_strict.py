@@ -170,15 +170,24 @@ def _validate_lifecycle(candidate: dict[str, Any]) -> tuple[bool, str]:
         deadline_str = candidate.get("application_deadline")
         if deadline_str:
             try:
-                deadline = datetime.fromisoformat(deadline_str).replace(tzinfo=timezone(timedelta(hours=1)))
-                # Add time if only date
-                if deadline.hour == 0 and deadline.minute == 0:
-                    deadline_display = candidate.get("deadline_display", "")
-                    # Try to parse time from deadline_display
-                    if "12:00" in deadline_display:
-                        deadline = deadline.replace(hour=12, minute=0)
-                if now > deadline:
-                    return False, f"Deadline {deadline} has passed (now: {now}). Cannot insert as OPEN."
+                # Parse deadline date
+                deadline_date = date.fromisoformat(deadline_str)
+                # Determine time from deadline_display or default to end of day
+                deadline_display = candidate.get("deadline_display", "")
+                hour, minute = 23, 59
+                if "12:00" in deadline_display:
+                    hour, minute = 12, 0
+                elif "14:00" in deadline_display:
+                    hour, minute = 14, 0
+                # Use Europe/Rome timezone (CET/CEST)
+                from zoneinfo import ZoneInfo
+                rome = ZoneInfo("Europe/Rome")
+                deadline = datetime(deadline_date.year, deadline_date.month, deadline_date.day,
+                                    hour, minute, 0, tzinfo=rome)
+                # Convert to UTC for comparison
+                deadline_utc = deadline.astimezone(timezone.utc)
+                if now > deadline_utc:
+                    return False, f"Deadline {deadline} (CET) has passed (now: {now}). Cannot insert as OPEN."
             except ValueError:
                 return False, f"Invalid deadline format: {deadline_str}"
 
@@ -186,12 +195,23 @@ def _validate_lifecycle(candidate: dict[str, Any]) -> tuple[bool, str]:
         open_date_str = candidate.get("application_open_date")
         if open_date_str:
             try:
-                open_date = datetime.fromisoformat(open_date_str).replace(tzinfo=timezone.utc)
-                if now > open_date:
-                    # It might already be open; check deadline
-                    pass
+                open_date = date.fromisoformat(open_date_str)
+                from zoneinfo import ZoneInfo
+                rome = ZoneInfo("Europe/Rome")
+                open_dt = datetime(open_date.year, open_date.month, open_date.day,
+                                   0, 0, 0, tzinfo=rome)
+                open_utc = open_dt.astimezone(timezone.utc)
+                # If already past open date, check if deadline has passed too
+                deadline_str = candidate.get("application_deadline")
+                if deadline_str and now > open_utc:
+                    deadline_date = date.fromisoformat(deadline_str)
+                    deadline = datetime(deadline_date.year, deadline_date.month, deadline_date.day,
+                                        23, 59, 0, tzinfo=rome)
+                    deadline_utc = deadline.astimezone(timezone.utc)
+                    if now > deadline_utc:
+                        return False, f"UPCOMING record's window has closed (deadline: {deadline})."
             except ValueError:
-                return False, f"Invalid open date format: {open_date_str}"
+                return False, f"Invalid date format: {open_date_str}"
 
     return True, "Lifecycle valid."
 
@@ -626,4 +646,3 @@ if __name__ == "__main__":
     dry_run = not args.execute
     exit_code = main(dry_run=dry_run)
     sys.exit(exit_code)
-PYEOF
