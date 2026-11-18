@@ -59,7 +59,7 @@
 .home-features__title {
   font-family: var(--font-display);
   font-size: clamp(1.75rem, 3vw, 2.5rem);
-  font-weight: 400;
+  font-weight: var(--weight-display, 700);
   line-height: 1.15;
   letter-spacing: -0.02em;
   color: var(--text-primary);

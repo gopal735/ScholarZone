@@ -111,7 +111,7 @@
 
 .jpage__title {
   margin: 0;
-  font-family: var(--font-display, Georgia, serif);
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
   font-size: var(--text-2xl, 1.75rem);
   font-weight: 430;
   line-height: var(--text-2xl-lh, 1.14);
@@ -377,7 +377,7 @@
 
 .jmodule__title {
   margin: 0;
-  font-family: var(--font-display, Georgia, serif);
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
   font-size: var(--text-xl, 1.25rem);
   font-weight: 430;
   line-height: var(--text-xl-lh, 1.32);
@@ -793,7 +793,7 @@
 .jcard__title {
   margin: 0;
   flex: 1 1 auto;
-  font-family: var(--font-display, Georgia, serif);
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
   font-size: var(--text-lg, 1.1875rem);
   font-weight: 430;
   line-height: var(--text-lg-lh, 1.7);
@@ -1196,7 +1196,7 @@
 
 .jdialog__title {
   margin: 0;
-  font-family: var(--font-display, Georgia, serif);
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
   font-size: var(--text-lg, 1.1875rem);
   line-height: var(--text-lg-lh, 1.7);
   color: var(--text-primary, #14130f);
@@ -1347,7 +1347,7 @@
 
 .jerror__title {
   margin: 0;
-  font-family: var(--font-display, Georgia, serif);
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
   font-size: var(--text-xl, 1.25rem);
   color: var(--text-primary, #14130f);
 }
@@ -1417,7 +1417,7 @@
 
 .jdisclaimer__title {
   margin: 0;
-  font-family: var(--font-display, Georgia, serif);
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
   font-size: var(--text-lg, 1.1875rem);
   line-height: var(--text-lg-lh, 1.7);
   color: var(--text-primary, #14130f);
