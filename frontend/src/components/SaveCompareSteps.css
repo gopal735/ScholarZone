@@ -65,7 +65,7 @@
 .sz-decision__index {
   font-family: var(--font-display);
   font-size: 2.4rem;
-  font-weight: 400;
+  font-weight: var(--weight-display, 700);
   font-variant-numeric: tabular-nums;
   color: var(--text-faint);
   letter-spacing: -0.01em;

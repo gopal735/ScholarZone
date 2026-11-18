@@ -21,9 +21,20 @@
   min-height: 100%;
   overflow: hidden;
   background: var(--surface);
-  border: 1px solid transparent;
+  border: 1px solid var(--border);
   border-radius: var(--radius-card);
   box-shadow: var(--p-drop), inset 0 1px 0 var(--p-edge1), inset 0 -1px 0 var(--p-edge3);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.28s ease;
+  will-change: transform, box-shadow;
+}
+
+.scholarship-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--p-drop), 0 20px 36px -12px rgba(37, 99, 235, 0.14),
+              0 6px 14px -3px rgba(15, 23, 42, 0.06);
+  border-color: rgba(37, 99, 235, 0.26);
 }
 
 /* Urgency edge. The reference carries no status rule on its cards
@@ -124,9 +135,9 @@
   max-width: 100%;
   padding: 3px var(--space-2);
   overflow: hidden;
-  font-size: var(--schol-card-badge-fs);
-  font-weight: var(--schol-card-badge-weight);
-  line-height: var(--schol-card-badge-lh);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  line-height: 1.3;
   text-overflow: ellipsis;
   white-space: nowrap;
   border-radius: var(--radius-pill);
@@ -169,11 +180,11 @@
 .scholarship-card h2 {
   margin: 0;
   color: var(--text-primary);
-  font-family: var(--schol-card-title-family);
-  font-size: var(--schol-card-title-fs);
-  font-weight: var(--schol-card-title-weight);
-  line-height: var(--schol-card-title-lh);
-  letter-spacing: var(--schol-card-title-track);
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: var(--weight-title, 650);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
   text-wrap: balance;
 }
 
@@ -233,7 +244,7 @@
 }
 
 .scholarship-card__mono-fallback {
-  font-family: var(--schol-card-title-family);
+  font-family: Newsreader, Georgia, serif;
   font-size: 1.3rem;
   font-weight: 500;
   color: var(--ink, #1b2320);
@@ -274,21 +285,21 @@
 
 .scholarship-card__where {
   margin: 2px 0 0;
-  color: var(--schol-card-location-color);
-  font-size: var(--schol-card-location-fs);
-  line-height: var(--schol-card-location-lh);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.4;
 }
 
 .scholarship-card__summary {
   display: -webkit-box;
   margin: var(--space-3) 0 0;
   overflow: hidden;
-  color: var(--schol-card-summary-color);
-  font-size: var(--schol-card-summary-fs);
-  line-height: var(--schol-card-summary-lh);
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  line-height: 1.55;
   overflow-wrap: anywhere;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: var(--schol-card-summary-clamp);
+  -webkit-line-clamp: 3;
 }
 
 /* ── Application checks ─────────────────────────────────────────── */
@@ -312,15 +323,15 @@
 }
 
 .scholarship-card__check span {
-  color: var(--schol-card-check-label-color);
-  font-size: var(--schol-card-check-label-fs);
-  line-height: var(--schol-card-check-label-lh);
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+  line-height: 1.3;
 }
 
 .scholarship-card__check strong {
   color: var(--sz-warning-text);
-  font-size: var(--schol-card-check-value-fs);
-  font-weight: var(--schol-card-check-value-weight);
+  font-size: var(--text-sm);
+  font-weight: 600;
   line-height: 1.3;
 }
 
@@ -331,9 +342,9 @@
 .scholarship-card__provider {
   margin: var(--space-1) 0 0;
   color: var(--text-secondary);
-  font-size: var(--schol-card-provider-fs);
-  font-weight: var(--schol-card-provider-weight);
-  line-height: var(--schol-card-provider-lh);
+  font-size: var(--text-base);
+  font-weight: 600;
+  line-height: 1.4;
 }
 
 .scholarship-card__signals {
@@ -367,14 +378,9 @@
 
 .scholarship-card__verification-date {
   color: var(--text-muted);
-  font-size: var(--schol-card-verification-date-fs);
-  font-weight: var(--schol-card-verification-date-weight);
-  font-variant-numeric: var(--schol-card-verification-date-variant);
-}
-
-.scholarship-card__citation {
-  color: var(--schol-card-citation-color);
-  font-size: var(--schol-card-citation-fs);
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
 }
 
 /* ── Facts ─────────────────────────────────────────────────────── */
@@ -403,21 +409,21 @@
    the card. */
 .scholarship-card__details dt {
   flex: 0 0 auto;
-  color: var(--schol-card-fact-label-color);
-  font-size: var(--schol-card-fact-label-fs);
-  font-weight: var(--schol-card-fact-label-weight);
-  letter-spacing: var(--schol-card-fact-label-track);
-  line-height: var(--schol-card-fact-label-lh);
-  text-transform: var(--schol-card-fact-label-transform);
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  text-transform: uppercase;
 }
 
 .scholarship-card__details dd {
   min-width: 0;
   margin: 0;
-  color: var(--schol-card-fact-value-color);
-  font-size: var(--schol-card-fact-value-fs);
-  font-weight: var(--schol-card-fact-value-weight);
-  line-height: var(--schol-card-fact-value-lh);
+  color: var(--text-primary);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  line-height: 1.35;
   text-align: right;
   overflow-wrap: anywhere;
 }
@@ -438,9 +444,9 @@
 }
 
 .scholarship-card__academic-label {
-  color: var(--schol-card-academic-label-color);
-  font-size: var(--schol-card-academic-label-fs);
-  font-weight: var(--schol-card-academic-label-weight);
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+  font-weight: 600;
 }
 
 .scholarship-card__academic-values {
@@ -454,9 +460,9 @@
   display: inline-flex;
   max-width: 100%;
   padding: 3px 8px;
-  color: var(--schol-card-academic-value-color);
-  font-size: var(--schol-card-academic-value-fs);
-  font-weight: var(--schol-card-academic-value-weight);
+  color: var(--text-secondary);
+  font-size: var(--text-xs);
+  font-weight: 600;
   line-height: 1.4;
   overflow-wrap: anywhere;
   background: var(--surface-subtle);
@@ -495,14 +501,16 @@
 
 .scholarship-card__deadline-label {
   overflow-wrap: anywhere;
+  font-weight: 700;
+  color: var(--text-primary);
 }
 
 /* Deadline countdown */
 .scholarship-card__countdown {
   display: inline-block;
-  font-size: var(--schol-card-countdown-fs);
-  font-weight: var(--schol-card-countdown-weight);
-  font-variant-numeric: var(--schol-card-countdown-variant);
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
 }
 
 .scholarship-card__countdown.lifecycle-closing-soon {
@@ -520,9 +528,9 @@
 /* Opening countdown */
 .scholarship-card__opening-countdown {
   display: inline-block;
-  font-size: var(--schol-card-countdown-fs);
-  font-weight: var(--schol-card-countdown-weight);
-  font-variant-numeric: var(--schol-card-countdown-variant);
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
   color: var(--accent);
 }
 
@@ -531,9 +539,9 @@
 .scholarship-card__upcoming-hint,
 .scholarship-card__closed-hint {
   display: inline-block;
-  font-size: var(--schol-card-hint-fs);
-  font-weight: var(--schol-card-hint-weight);
-  color: var(--schol-card-hint-color);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-muted);
 }
 
 .scholarship-card__opening-hint {
@@ -597,8 +605,8 @@
   min-height: 44px;
   padding: var(--space-3) var(--space-4);
   color: var(--sz-ink);
-  font-size: var(--schol-card-button-fs);
-  font-weight: var(--schol-card-button-weight);
+  font-size: var(--text-sm);
+  font-weight: 600;
   text-decoration: none;
   background: transparent;
   border: 1px solid var(--border-strong);
@@ -657,8 +665,8 @@
   margin: 0 auto var(--space-4);
   padding: var(--space-2) var(--space-4);
   color: var(--text-secondary);
-  font-size: var(--schol-card-expand-btn-fs);
-  font-weight: var(--schol-card-expand-btn-weight);
+  font-size: var(--text-sm);
+  font-weight: 500;
   background: var(--surface-subtle);
   border: 1px solid var(--sz-glass-edge-soft);
   border-radius: var(--radius-pill);
@@ -713,17 +721,17 @@
 .scholarship-card__expanded-title {
   margin: 0 0 var(--space-3);
   color: var(--text-primary);
-  font-family: var(--schol-card-expanded-title-family);
-  font-size: var(--schol-card-expanded-title-fs);
-  font-weight: var(--schol-card-expanded-title-weight);
-  letter-spacing: -0.01em;
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: var(--weight-title, 650);
+  letter-spacing: -0.015em;
 }
 
 .scholarship-card__expanded-text {
   margin: 0;
-  color: var(--schol-card-expanded-text-color);
-  font-size: var(--schol-card-expanded-text-fs);
-  line-height: var(--schol-card-expanded-text-lh);
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  line-height: 1.6;
   overflow-wrap: anywhere;
 }
 
@@ -735,29 +743,29 @@
 }
 
 .scholarship-card__expanded-facts dt {
-  color: var(--schol-card-expanded-fact-label-color);
-  font-size: var(--schol-card-expanded-fact-label-fs);
-  font-weight: var(--schol-card-expanded-fact-label-weight);
-  letter-spacing: var(--schol-card-expanded-fact-label-track);
-  text-transform: var(--schol-card-expanded-fact-label-transform);
-  line-height: var(--schol-card-expanded-fact-label-lh);
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.5;
 }
 
 .scholarship-card__expanded-facts dd {
   margin: 0;
-  color: var(--schol-card-expanded-fact-value-color);
-  font-size: var(--schol-card-expanded-fact-value-fs);
-  font-weight: var(--schol-card-expanded-fact-value-weight);
-  line-height: var(--schol-card-expanded-fact-value-lh);
+  color: var(--text-primary);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  line-height: 1.5;
   overflow-wrap: anywhere;
 }
 
 .scholarship-card__expanded-list {
   margin: 0;
   padding-left: var(--space-5);
-  color: var(--schol-card-expanded-list-color);
-  font-size: var(--schol-card-expanded-list-fs);
-  line-height: var(--schol-card-expanded-list-lh);
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  line-height: 1.7;
 }
 
 .scholarship-card__expanded-list--ordered {
@@ -779,11 +787,11 @@
 
 .scholarship-card__expanded-subsection h5 {
   margin: 0 0 var(--space-2);
-  color: var(--schol-card-expanded-subtitle-color);
-  font-size: var(--schol-card-expanded-subtitle-fs);
-  font-weight: var(--schol-card-expanded-subtitle-weight);
-  letter-spacing: var(--schol-card-expanded-subtitle-track);
-  text-transform: var(--schol-card-expanded-subtitle-transform);
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .scholarship-card__expanded-links {
@@ -834,22 +842,22 @@
 }
 
 .scholarship-card__link-body strong {
-  font-size: var(--schol-card-link-fs);
-  font-weight: var(--schol-card-link-weight);
+  font-size: var(--text-sm);
+  font-weight: 600;
   line-height: 1.3;
 }
 
 .scholarship-card__link-body em {
-  font-size: var(--fs-xs);
+  font-size: var(--text-xs);
   color: var(--text-muted);
   font-style: normal;
 }
 
 .scholarship-card__link-host {
   flex: none;
-  color: var(--schol-card-link-host-color);
-  font-size: var(--schol-card-link-host-fs);
-  font-weight: var(--schol-card-link-host-weight);
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+  font-weight: 500;
 }
 
 .scholarship-card__expanded-subsection {

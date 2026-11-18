@@ -1,7 +1,7 @@
 /* Supervisor discovery panel.
  *
  * Same token vocabulary as the rest of ScholarZone — steel-blue accent on
- * off-white, hairline borders, Instrument Serif for headings, Inter for text.
+ * off-white, hairline borders, Plus Jakarta Sans for headings, Inter for text.
  * Nothing here introduces a new colour: an unfamiliar palette on one card would
  * read as a different product.
  *
@@ -36,9 +36,9 @@
 
 .sz-supervisor-panel__header h3 {
   margin: 0;
-  font-family: 'Instrument Serif', Georgia, serif;
+  font-family: var(--font-display);
   font-size: clamp(1.375rem, 1.1rem + 1vw, 1.75rem);
-  font-weight: 400;
+  font-weight: var(--weight-display, 700);
   color: var(--text-primary, #14130f);
 }
 
@@ -145,9 +145,9 @@
 
 .sz-supervisor__name {
   margin: 0;
-  font-family: 'Instrument Serif', Georgia, serif;
+  font-family: var(--font-display);
   font-size: 1.25rem;
-  font-weight: 400;
+  font-weight: var(--weight-title, 600);
   color: var(--text-primary, #14130f);
 }
 
@@ -451,9 +451,9 @@
 
 .sz-supervisor-panel__section-heading {
   margin: 1.5rem 0 0.5rem;
-  font-family: 'Instrument Serif', Georgia, serif;
+  font-family: var(--font-display);
   font-size: 1.125rem;
-  font-weight: 400;
+  font-weight: var(--weight-title, 600);
   color: var(--text-primary, #14130f);
 }
 
@@ -478,9 +478,9 @@
 
 .sz-official-contact__name {
   margin: 0;
-  font-family: 'Instrument Serif', Georgia, serif;
+  font-family: var(--font-display);
   font-size: 1.125rem;
-  font-weight: 400;
+  font-weight: var(--weight-title, 600);
   color: var(--text-primary, #14130f);
 }
 
@@ -568,9 +568,9 @@
 
 .sz-supervisor-panel__tracker h4 {
   margin: 0 0 0.75rem;
-  font-family: 'Instrument Serif', Georgia, serif;
+  font-family: var(--font-display);
   font-size: 1.125rem;
-  font-weight: 400;
+  font-weight: var(--weight-title, 600);
 }
 
 .sz-supervisor-panel__tracker ul {

@@ -86,8 +86,7 @@
     var(--mesh-2),
     var(--mesh-3);
   color: var(--text-primary);
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display',
-    'Inter', sans-serif;
+  font-family: var(--font-body, 'Inter', 'Hind Siliguri', sans-serif);
   -webkit-font-smoothing: antialiased;
 }
 
