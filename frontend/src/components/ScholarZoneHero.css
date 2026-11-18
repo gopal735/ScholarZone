@@ -98,7 +98,7 @@
   color: var(--sz-ink);
   font-family: var(--font-display);
   font-size: var(--text-display);
-  font-weight: 400;
+  font-weight: var(--weight-display, 700);
   line-height: var(--text-display-lh);
   letter-spacing: var(--track-display);
   text-wrap: balance;

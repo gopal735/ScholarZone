@@ -1,4 +1,4 @@
-﻿/* ═══════════════════════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════════════════════════
    Bangladesh Applicant Journey
    ---------------------------------------------------------------------
    Every value comes from design tokens. The vocabulary used here is the
@@ -25,7 +25,7 @@
      Each prefers a tracked token when one exists, so the feature renders
      identically whether or not a richer token sheet is later added. */
   --j-bangla:
-    'Noto Sans Bengali', 'Nirmala UI', 'Hind Siliguri', Vrinda, 'Noto Sans',
+    'Hind Siliguri', 'Noto Sans Bengali', 'Nirmala UI', Vrinda, 'Noto Sans',
     Inter, ui-sans-serif, system-ui, sans-serif;
   --j-surface-subtle: var(--surface-subtle, rgba(20, 19, 15, 0.035));
   --j-surface-sunken: var(--surface-sunken, rgba(20, 19, 15, 0.07));
