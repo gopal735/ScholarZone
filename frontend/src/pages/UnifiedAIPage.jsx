@@ -342,14 +342,16 @@ export default function UnifiedAIPage() {
   const messagesEndRef = useRef(null)
   const inputRef = useRef(null)
   const initGenerationRef = useRef(0)
+  const statusGenerationRef = useRef(0)
   const isMountedRef = useRef(true)
 
   const initializeAI = useCallback(async () => {
-    const gen = ++initGenerationRef.current
+    const initGen = ++initGenerationRef.current
+    const statusGen = ++statusGenerationRef.current
     setMentorOverview(null)
 
     const status = await getAIStatus({ isAuthenticated: auth.status === 'authenticated' })
-    if (gen !== initGenerationRef.current || !isMountedRef.current) return
+    if (statusGen !== statusGenerationRef.current || !isMountedRef.current) return
     setAiStatus(status)
     setLocalAIEnabledState(isLocalAIEnabled())
 
@@ -357,15 +359,15 @@ export default function UnifiedAIPage() {
       try {
         const { fetchMentorOverview } = await import('../services/mentorService')
         const overview = await fetchMentorOverview()
-        if (gen !== initGenerationRef.current || !isMountedRef.current) return
+        if (initGen !== initGenerationRef.current || !isMountedRef.current) return
         setMentorOverview(overview)
       } catch (err) {
         void err
-        if (gen !== initGenerationRef.current || !isMountedRef.current) return
+        if (initGen !== initGenerationRef.current || !isMountedRef.current) return
         setMentorOverview(null)
       }
     } else {
-      if (gen !== initGenerationRef.current) return
+      if (initGen !== initGenerationRef.current) return
       setMentorOverview(null)
     }
   }, [auth.status])
@@ -515,9 +517,9 @@ export default function UnifiedAIPage() {
   const handleLocalAIToggle = (enabled) => {
     setLocalAIEnabled(enabled)
     setLocalAIEnabledState(enabled)
-    const gen = ++initGenerationRef.current
+    const statusGen = ++statusGenerationRef.current
     getAIStatus({ isAuthenticated: auth.status === 'authenticated' }).then((status) => {
-      if (gen !== initGenerationRef.current) return
+      if (statusGen !== statusGenerationRef.current) return
       setAiStatus(status)
     }).catch(() => {})
   }
