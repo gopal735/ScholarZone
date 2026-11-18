@@ -343,23 +343,65 @@ def build_supervisor_list(
     """Return ``(coverage, professors, official_contacts)`` for a publicly visible scholarship.
 
     Raises :class:`ScholarshipNotPublic` when the scholarship may not be read.
+    Raises :class:`SchemaNotReadyError` when a required database table or column is missing.
     """
     get_public_scholarship_or_404(db, scholarship_id)
 
     limit = max(1, min(int(limit or DEFAULT_SUPERVISOR_LIMIT), MAX_SUPERVISOR_LIMIT))
     now = datetime.now(timezone.utc)
-    coverage = get_coverage(db, scholarship_id)
 
-    links = _load_publishable_links(db, scholarship_id, limit)
+    try:
+        coverage = get_coverage(db, scholarship_id)
+    except (ProgrammingError, DBAPIError) as exc:
+        if _missing_schema_error(exc):
+            raise SchemaNotReadyError("scholarship_supervisor_coverage") from exc
+        raise
+
+    try:
+        links = _load_publishable_links(db, scholarship_id, limit)
+    except (ProgrammingError, DBAPIError) as exc:
+        if _missing_schema_error(exc):
+            raise SchemaNotReadyError("scholarship_professor_links") from exc
+        raise
+
     professor_ids = [link.professor_id for link in links]
-    profiles = _load_profiles(db, professor_ids)
-    availability = _load_availability(db, professor_ids, now)
-    sources = _load_sources(db, professor_ids, [link.id for link in links])
-    official_contacts = _load_official_contacts(db, scholarship_id)
+
+    try:
+        profiles = _load_profiles(db, professor_ids)
+    except (ProgrammingError, DBAPIError) as exc:
+        if _missing_schema_error(exc):
+            raise SchemaNotReadyError("professor_profiles") from exc
+        raise
+
+    try:
+        availability = _load_availability(db, professor_ids, now)
+    except (ProgrammingError, DBAPIError) as exc:
+        if _missing_schema_error(exc):
+            raise SchemaNotReadyError("professor_availability") from exc
+        raise
+
+    try:
+        sources = _load_sources(db, professor_ids, [link.id for link in links])
+    except (ProgrammingError, DBAPIError) as exc:
+        if _missing_schema_error(exc):
+            raise SchemaNotReadyError("supervisor_source_evidence") from exc
+        raise
+
+    try:
+        official_contacts = _load_official_contacts(db, scholarship_id)
+    except (ProgrammingError, DBAPIError) as exc:
+        if _missing_schema_error(exc):
+            raise SchemaNotReadyError("official_contacts") from exc
+        raise
 
     # The count is the total number of publishable relationships, not the length
     # of this page, so a capped list still reports the honest total.
-    publishable_count = count_publishable_links(db, scholarship_id)
+    try:
+        publishable_count = count_publishable_links(db, scholarship_id)
+    except (ProgrammingError, DBAPIError) as exc:
+        if _missing_schema_error(exc):
+            raise SchemaNotReadyError("scholarship_professor_links") from exc
+        raise
 
     professors: list[dict] = []
     for link in links:
@@ -409,14 +451,619 @@ def coverage_requires_discovery(coverage: ScholarshipSupervisorCoverage | None) 
         return True
     return coverage.status in NON_PUBLISHING_COVERAGE_STATUSES
 
+
+# ============================================================
+# Global Supervisor Search
+# ============================================================
+
+from dataclasses import dataclass
+from typing import Optional
+
+from sqlalchemy import and_, func, select
+from sqlalchemy.orm import Session
+
+from ..models import Scholarship
+from ..repositories.scholarships import public_visibility_conditions
+from .supervisor_status import (
+    PUBLIC_RELATIONSHIP_STATUSES,
+    SupervisorCoverageStatus,
+)
+
+
+@dataclass
+class GlobalSupervisorSearchRequest:
+    """Request parameters for global supervisor search."""
+    research_interests: list[str] | None = None
+    degree_levels: list[str] | None = None  # BACHELOR, MASTER, PHD
+    lifecycle: list[str] | None = None  # OPEN, UPCOMING
+    country: str | None = None
+    subject: str | None = None
+    institution: str | None = None
+    contact_types: list[str] | None = None
+    verified_email_only: bool = False
+    scholarship_id: int | None = None
+    page: int = 1
+    page_size: int = 20
+
+
+@dataclass
+class GlobalSupervisorSearchResult:
+    """A single search result combining scholarship and professor info."""
+    scholarship_id: int
+    scholarship_title: str
+    country: str
+    degree_level: str
+    original_degree_text: str
+    effective_lifecycle: str
+    opening_date: str | None
+    deadline: str | None
+    awarding_institution: str | None
+    host_institution: str | None
+    professor_id: int
+    official_name: str
+    academic_title: str | None
+    institution: str
+    department: str | None
+    official_profile_url: str
+    research_areas: list[str]
+    relationship_type: str
+    relationship_verification_status: str
+    research_alignment: dict
+    official_email: str | None
+    official_email_verified: bool
+    official_contact_url: str | None
+    official_department_page: str | None
+    research_group_url: str | None
+    source_url: str
+    last_verified_at: str | None
+
+
+@dataclass
+class GlobalSupervisorSearchResponse:
+    """Response for global supervisor search."""
+    items: list[GlobalSupervisorSearchResult]
+    total: int
+    page: int
+    page_size: int
+    total_pages: int
+
+
+def _normalize_degree_level(degree_text: str) -> str:
+    """Normalize degree text into canonical degree level."""
+    if not degree_text:
+        return "UNKNOWN"
+    degree_lower = degree_text.lower()
+    if any(term in degree_lower for term in ["phd", "doctoral", "dphil"]):
+        return "PHD"
+    if any(term in degree_lower for term in ["master", "msc", "ma", "meng", "mphil"]):
+        return "MASTER"
+    if any(term in degree_lower for term in ["bachelor", "bsc", "ba", "beng", "undergraduate"]):
+        return "BACHELOR"
+    return "OTHER"
+
+
+def _get_effective_lifecycle(scholarship: Scholarship) -> str:
+    """Determine effective lifecycle from scholarship data."""
+    # This mirrors the canonical lifecycle logic
+    status = (scholarship.status or "").lower()
+    if status in ("open", "opening", "closing_soon"):
+        return "OPEN"
+    if status in ("upcoming",):
+        return "UPCOMING"
+    if status in ("closed",):
+        return "CLOSED"
+    return "UNKNOWN"
+
+
+def global_supervisor_search(
+    db: Session,
+    request: GlobalSupervisorSearchRequest,
+) -> GlobalSupervisorSearchResponse:
+    """Search supervisors across all eligible OPEN and UPCOMING scholarships.
+
+    This performs a global search across the supervisor discovery catalogue,
+    returning paginated results with scholarship and professor information.
+    """
+    # Validate and clean request
+    page = max(1, request.page)
+    page_size = max(1, min(request.page_size or 20, 100))
+    offset = (page - 1) * page_size
+
+    interests = [
+        value.strip()[:120]
+        for value in (request.research_interests or [])
+        if isinstance(value, str) and value.strip()
+    ][:20]
+
+    degree_levels = [d.upper() for d in (request.degree_levels or []) if d.upper() in ("BACHELOR", "MASTER", "PHD", "OTHER")]
+    lifecycle_filters = [l.upper() for l in (request.lifecycle or []) if l.upper() in ("OPEN", "UPCOMING", "CLOSED", "UNKNOWN")]
+    contact_types = [c.upper() for c in (request.contact_types or [])]
+    verified_email_only = request.verified_email_only
+
+    # Build base query: only publicly visible scholarships with verified supervisor relationships
+    base_query = (
+        select(
+            Scholarship.id,
+            Scholarship.title,
+            Scholarship.country,
+            Scholarship.degree,
+            Scholarship.status,
+            Scholarship.deadline_date,
+            Scholarship.official_source,
+            Scholarship.official_source_url,
+            ProfessorProfile.id.label("professor_id"),
+            ProfessorProfile.canonical_name,
+            ProfessorProfile.title.label("academic_title"),
+            ProfessorProfile.institution_name,
+            ProfessorProfile.department_name,
+            ProfessorProfile.official_profile_url,
+            ProfessorProfile.research_areas,
+            ProfessorProfile.official_email,
+            ProfessorProfile.official_email_verified,
+            ProfessorProfile.lab_url,
+            ScholarshipProfessorLink.relationship_type,
+            ScholarshipProfessorLink.verification_status,
+            ScholarshipProfessorLink.evidence_source_url,
+            ScholarshipProfessorLink.verified_at,
+        )
+        .join(ScholarshipProfessorLink, ScholarshipProfessorLink.scholarship_id == Scholarship.id)
+        .join(ProfessorProfile, ProfessorProfile.id == ScholarshipProfessorLink.professor_id)
+        .where(
+            and_(
+                *public_visibility_conditions(),
+                ScholarshipProfessorLink.verification_status.in_(PUBLIC_RELATIONSHIP_STATUSES),
+                ProfessorProfile.profile_status == "active",
+            )
+        )
+    )
+
+    # Apply filters
+    if degree_levels:
+        # We need to filter by normalized degree level
+        # This is a simple in-Python filter for now since degree normalization is not in DB
+        pass
+
+    if lifecycle_filters:
+        # Filter by effective lifecycle
+        # For now we'll filter in Python since it requires computation
+        pass
+
+    if request.country:
+        base_query = base_query.where(Scholarship.country.ilike(f"%{request.country}%"))
+
+    if request.institution:
+        base_query = base_query.where(ProfessorProfile.institution_name.ilike(f"%{request.institution}%"))
+
+    if request.scholarship_id:
+        base_query = base_query.where(Scholarship.id == request.scholarship_id)
+
+    if contact_types:
+        base_query = base_query.where(ScholarshipProfessorLink.relationship_type.in_(contact_types))
+
+    if verified_email_only:
+        base_query = base_query.where(
+            and_(
+                ProfessorProfile.official_email_verified == True,
+                ProfessorProfile.official_email.isnot(None),
+            )
+        )
+
+    # Order by verified_at desc (most recently verified first)
+    base_query = base_query.order_by(ScholarshipProfessorLink.verified_at.desc().nullslast())
+
+    # Get total count
+    count_query = select(func.count()).select_from(base_query.subquery())
+    total = db.execute(count_query).scalar_one()
+
+    # Apply pagination
+    paginated_query = base_query.offset(offset).limit(page_size)
+    rows = db.execute(paginated_query).all()
+
+    # Process results
+    items: list[GlobalSupervisorSearchResult] = []
+    for row in rows:
+        # Apply degree and lifecycle filters in Python
+        degree_level = _normalize_degree_level(row.degree or "")
+        if degree_levels and degree_level not in degree_levels:
+            continue
+
+        effective_lifecycle = _get_effective_lifecycle_from_row(row)
+        if lifecycle_filters and effective_lifecycle not in lifecycle_filters:
+            continue
+
+        # Compute research alignment
+        from .supervisor_alignment import ResearchAlignment, align_research
+        alignment: ResearchAlignment = align_research(
+            interests, row.research_areas, []
+        )
+
+        items.append(GlobalSupervisorSearchResult(
+            scholarship_id=row.id,
+            scholarship_title=row.title,
+            country=row.country,
+            degree_level=degree_level,
+            original_degree_text=row.degree or "",
+            effective_lifecycle=effective_lifecycle,
+            opening_date=None,  # Not available in current model
+            deadline=row.deadline_date.isoformat() if row.deadline_date else None,
+            awarding_institution=row.official_source,
+            host_institution=row.institution_name,
+            professor_id=row.professor_id,
+            official_name=row.canonical_name,
+            academic_title=row.academic_title,
+            institution=row.institution_name,
+            department=row.department_name,
+            official_profile_url=row.official_profile_url,
+            research_areas=list(row.research_areas or []),
+            relationship_type=row.relationship_type,
+            relationship_verification_status=row.verification_status,
+            research_alignment=alignment.as_dict(),
+            official_email=row.official_email if row.official_email_verified else None,
+            official_email_verified=bool(row.official_email_verified),
+            official_contact_url=None,  # Would need separate query
+            official_department_page=None,
+            research_group_url=row.lab_url,
+            source_url=row.evidence_source_url,
+            last_verified_at=_iso(row.verified_at),
+        ))
+
+    return GlobalSupervisorSearchResponse(
+        items=items,
+        total=total,
+        page=page,
+        page_size=page_size,
+        total_pages=(total + page_size - 1) // page_size,
+    )
+
+
+def _get_effective_lifecycle_from_row(row) -> str:
+    """Determine effective lifecycle from a query result row."""
+    status = (row.status or "").lower()
+    if status in ("open", "opening", "closing_soon"):
+        return "OPEN"
+    if status in ("upcoming",):
+        return "UPCOMING"
+    if status in ("closed",):
+        return "CLOSED"
+    return "UNKNOWN"
+
+
+# ============================================================
+# Coverage Reporting
+# ============================================================
+
+from dataclasses import dataclass, field
+from typing import List
+
+
+@dataclass
+class ScholarshipCoverageSummary:
+    """Summary of coverage for a single scholarship."""
+    scholarship_id: int
+    title: str
+    country: str
+    degree: str
+    status: str
+    coverage_status: str
+    existing_contacts: int
+    verified_contacts: int
+    has_verified_email: bool
+    research_supervisors: int
+    course_instructors: int
+    programme_faculty: int
+    department_contacts: int
+    university_leadership: int
+    programme_office: int
+    last_checked: str | None
+    next_check: str | None
+    error_summary: str | None
+
+
+@dataclass
+class CoverageReport:
+    """Complete coverage report for all eligible scholarships."""
+    total_eligible: int
+    open_count: int
+    upcoming_count: int
+    closed_excluded: int
+    unknown_lifecycle: int
+    
+    # Coverage states
+    not_started: int
+    existing_contacts_audited: int
+    host_mapping_pending: int
+    research_in_progress: int
+    partially_researched: int
+    research_completed: int
+    source_blocked: int
+    no_public_contact_found: int
+    needs_review: int
+    not_applicable: int
+    
+    # Contact counts
+    total_existing_contacts: int
+    total_verified_contacts: int
+    total_verified_emails: int
+    total_research_supervisors: int
+    total_course_instructors: int
+    total_programme_faculty: int
+    total_department_contacts: int
+    total_university_leadership: int
+    total_programme_office: int
+    
+    # Institutional coverage
+    unique_institutions: int
+    unique_departments: int
+    
+    # Per-scholarship details
+    scholarships: List[ScholarshipCoverageSummary]
+
+
+def _normalize_degree_level_for_report(degree_text: str) -> str:
+    """Normalize degree text for reporting."""
+    if not degree_text:
+        return "UNKNOWN"
+    degree_lower = degree_text.lower()
+    if any(term in degree_lower for term in ["phd", "doctoral", "dphil"]):
+        return "PHD"
+    if any(term in degree_lower for term in ["master", "msc", "ma", "meng", "mphil"]):
+        return "MASTER"
+    if any(term in degree_lower for term in ["bachelor", "bsc", "ba", "beng", "undergraduate"]):
+        return "BACHELOR"
+    return "OTHER"
+
+
+def _get_effective_lifecycle_for_report(scholarship: Scholarship) -> str:
+    """Get effective lifecycle for a scholarship."""
+    status = (scholarship.status or "").lower()
+    if status in ("open", "opening", "closing_soon"):
+        return "OPEN"
+    if status in ("upcoming",):
+        return "UPCOMING"
+    if status in ("closed",):
+        return "CLOSED"
+    return "UNKNOWN"
+
+
+def get_coverage_report(db: Session) -> CoverageReport:
+    """Generate a comprehensive coverage report for all eligible scholarships.
+    
+    Eligible = publicly visible, not archived, not quarantined, lifecycle OPEN or UPCOMING.
+    """
+    from sqlalchemy import select, func, and_, case
+    from ..models import Scholarship
+    from ..repositories.scholarships import public_visibility_conditions
+    from ..models_supervisor import (
+        ScholarshipSupervisorCoverage,
+        ScholarshipProfessorLink,
+        ProfessorProfile,
+    )
+    from .supervisor_status import (
+        PUBLIC_RELATIONSHIP_STATUSES,
+        ProfessorRelationshipType,
+    )
+    
+    # Get all eligible scholarships
+    eligible_scholarships = db.execute(select(Scholarship).where(
+        *public_visibility_conditions(),
+        Scholarship.status.in_(['open', 'upcoming', 'opening', 'closing_soon'])
+    )).scalars().all()
+    
+    total_eligible = len(eligible_scholarships)
+    
+    # Counters
+    open_count = 0
+    upcoming_count = 0
+    
+    # Coverage state counters
+    not_started = 0
+    existing_contacts_audited = 0
+    host_mapping_pending = 0
+    research_in_progress = 0
+    partially_researched = 0
+    research_completed = 0
+    source_blocked = 0
+    no_public_contact_found = 0
+    needs_review = 0
+    not_applicable_count = 0
+    
+    # Contact counters
+    total_existing_contacts = 0
+    total_verified_contacts = 0
+    total_verified_emails = 0
+    total_research_supervisors = 0
+    total_course_instructors = 0
+    total_programme_faculty = 0
+    total_department_contacts = 0
+    total_university_leadership = 0
+    total_programme_office = 0
+    
+    # Institution tracking
+    institutions = set()
+    departments = set()
+    
+    # Per-scholarship details
+    scholarships_details: List[ScholarshipCoverageSummary] = []
+    
+    for schol in eligible_scholarships:
+        lifecycle = _get_effective_lifecycle_for_report(schol)
+        if lifecycle == "OPEN":
+            open_count += 1
+        elif lifecycle == "UPCOMING":
+            upcoming_count += 1
+        
+        # Get coverage row
+        coverage = db.execute(
+            select(ScholarshipSupervisorCoverage).where(
+                ScholarshipSupervisorCoverage.scholarship_id == schol.id
+            )
+        ).scalar_one_or_none()
+        
+        # Get links
+        links = db.execute(
+            select(ScholarshipProfessorLink).where(
+                ScholarshipProfessorLink.scholarship_id == schol.id
+            )
+        ).scalars().all()
+        
+        existing_contacts = len(links)
+        total_existing_contacts += existing_contacts
+        
+        # Count by relationship type
+        research_supervisors = 0
+        course_instructors = 0
+        programme_faculty = 0
+        department_contacts = 0
+        university_leadership = 0
+        programme_office = 0
+        verified_count = 0
+        has_verified_email = False
+        
+        for link in links:
+                if link.verification_status in PUBLIC_RELATIONSHIP_STATUSES:
+                    verified_count += 1
+                
+                rel_type = link.relationship_type
+                if rel_type == "potential_supervisor" or rel_type == "RESEARCH_SUPERVISOR":
+                    research_supervisors += 1
+                elif rel_type == "course_instructor" or rel_type == "COURSE_INSTRUCTOR":
+                    course_instructors += 1
+                elif rel_type == "program_faculty" or rel_type == "PROGRAMME_FACULTY":
+                    programme_faculty += 1
+                elif rel_type == "department_contact" or rel_type == "DEPARTMENT_CONTACT":
+                    department_contacts += 1
+                elif rel_type == "university_leadership" or rel_type == "UNIVERSITY_LEADERSHIP":
+                    university_leadership += 1
+                elif rel_type == "programme_office" or rel_type == "PROGRAMME_OFFICE":
+                    programme_office += 1
+        
+        total_verified_contacts += verified_count
+        total_research_supervisors += research_supervisors
+        total_course_instructors += course_instructors
+        total_programme_faculty += programme_faculty
+        total_department_contacts += department_contacts
+        total_university_leadership += university_leadership
+        total_programme_office += programme_office
+        
+        # Check for verified emails
+        for link in links:
+            if link.verification_status in PUBLIC_RELATIONSHIP_STATUSES:
+                prof = db.execute(
+                    select(ProfessorProfile).where(ProfessorProfile.id == link.professor_id)
+                ).scalar_one_or_none()
+                if prof and prof.official_email_verified and prof.official_email:
+                    has_verified_email = True
+                    total_verified_emails += 1
+                    break
+        
+        # Track institutions
+        for link in links:
+            prof = db.execute(
+                select(ProfessorProfile).where(ProfessorProfile.id == link.professor_id)
+            ).scalar_one_or_none()
+            if prof and prof.institution_name:
+                institutions.add(prof.institution_name)
+            if prof and prof.department_name:
+                departments.add(f"{prof.institution_name}:{prof.department_name}")
+        
+        # Determine coverage state
+        coverage_status = coverage.status if coverage else "not_started"
+        
+        if coverage_status == "search_pending":
+            not_started += 1
+        elif coverage_status == "verified_supervisors":
+            research_completed += 1
+        elif coverage_status == "no_verified_supervisor_found":
+            no_public_contact_found += 1
+        elif coverage_status == "source_blocked":
+            source_blocked += 1
+        elif coverage_status == "source_requires_rendering":
+            research_in_progress += 1
+        elif coverage_status == "needs_verification":
+            needs_review += 1
+        elif coverage_status == "not_applicable":
+            not_applicable_count += 1
+        else:
+            # Default
+            not_started += 1
+        
+        # Last/next check
+        last_checked = None
+        next_check = None
+        if coverage:
+            if coverage.last_checked_at:
+                last_checked = coverage.last_checked_at.isoformat()
+            if coverage.next_check_at:
+                next_check = coverage.next_check_at.isoformat()
+        
+        scholarships_details.append(ScholarshipCoverageSummary(
+            scholarship_id=schol.id,
+            title=schol.title,
+            country=schol.country,
+            degree=schol.degree,
+            status=schol.status,
+            coverage_status=coverage_status,
+            existing_contacts=existing_contacts,
+            verified_contacts=verified_count,
+            has_verified_email=has_verified_email,
+            research_supervisors=research_supervisors,
+            course_instructors=course_instructors,
+            programme_faculty=programme_faculty,
+            department_contacts=department_contacts,
+            university_leadership=university_leadership,
+            programme_office=programme_office,
+            last_checked=last_checked,
+            next_check=next_check,
+            error_summary=coverage.last_error_summary if coverage else None,
+        ))
+    
+    return CoverageReport(
+        total_eligible=total_eligible,
+        open_count=open_count,
+        upcoming_count=upcoming_count,
+        closed_excluded=0,  # Not tracked in this query
+        unknown_lifecycle=0,
+        not_started=not_started,
+        existing_contacts_audited=existing_contacts_audited,
+        host_mapping_pending=host_mapping_pending,
+        research_in_progress=research_in_progress,
+        partially_researched=partially_researched,
+        research_completed=research_completed,
+        source_blocked=source_blocked,
+        no_public_contact_found=no_public_contact_found,
+        needs_review=needs_review,
+        not_applicable=not_applicable_count,
+        total_existing_contacts=total_existing_contacts,
+        total_verified_contacts=total_verified_contacts,
+        total_verified_emails=total_verified_emails,
+        total_research_supervisors=total_research_supervisors,
+        total_course_instructors=total_course_instructors,
+        total_programme_faculty=total_programme_faculty,
+        total_department_contacts=total_department_contacts,
+        total_university_leadership=total_university_leadership,
+        total_programme_office=total_programme_office,
+        unique_institutions=len(institutions),
+        unique_departments=len(departments),
+        scholarships=scholarships_details,
+    )
+
+
 __all__ = [
     "DEFAULT_SUPERVISOR_LIMIT",
     "MAX_SUPERVISOR_LIMIT",
     "ScholarshipNotPublic",
+    "SchemaNotReadyError",
     "build_supervisor_list",
     "coverage_public_state",
     "coverage_requires_discovery",
     "count_publishable_links",
     "get_coverage",
     "get_public_scholarship_or_404",
+    "global_supervisor_search",
+    "GlobalSupervisorSearchRequest",
+    "GlobalSupervisorSearchResult",
+    "GlobalSupervisorSearchResponse",
+    "get_coverage_report",
+    "CoverageReport",
+    "ScholarshipCoverageSummary",
 ]
