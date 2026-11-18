@@ -6,6 +6,13 @@ function parseDeadlineToDate(deadlineStr) {
 
   const normalized = deadlineStr.replace(/[()/]/g, ' ').replace(/\s+/g, ' ').trim()
 
+  const monthMap = {
+    jan: 0, january: 0, feb: 1, february: 1, mar: 2, march: 2,
+    apr: 3, april: 3, may: 4, jun: 5, june: 5, jul: 6, july: 6,
+    aug: 7, august: 7, sep: 8, september: 8, oct: 9, october: 9,
+    nov: 10, november: 10, dec: 11, december: 11
+  }
+
   const patterns = [
     { regex: /^(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})/, format: 'dd MMM yyyy' },
     { regex: /^([A-Za-z]+)\s+(\d{1,2}),?\s+(\d{4})/, format: 'MMM dd yyyy' },
@@ -40,11 +47,38 @@ function parseDeadlineToDate(deadlineStr) {
     }
   }
 
-  const monthMap = {
-    jan: 0, january: 0, feb: 1, february: 1, mar: 2, march: 2,
-    apr: 3, april: 3, may: 4, jun: 5, june: 5, jul: 6, july: 6,
-    aug: 7, august: 7, sep: 8, september: 8, oct: 9, october: 9,
-    nov: 10, november: 10, dec: 11, december: 11
+  const dateMatches = [...normalized.matchAll(/([A-Za-z]{3,9})[\s-]+(\d{1,2}),?\s+(\d{4})/gi)]
+  if (dateMatches.length > 0) {
+    let latestDate = null
+    for (const match of dateMatches) {
+      const month = monthMap[match[1].toLowerCase()]
+      const day = parseInt(match[2], 10)
+      const year = parseInt(match[3], 10)
+      if (!isNaN(month) && !isNaN(day) && !isNaN(year)) {
+        const date = new Date(Date.UTC(year, month, day, 23, 59, 59))
+        if (!latestDate || date > latestDate) {
+          latestDate = date
+        }
+      }
+    }
+    if (latestDate) return latestDate
+  }
+
+  const dayFirstMatches = [...normalized.matchAll(/(\d{1,2})[\s-]+([A-Za-z]{3,9})[\s-]+(\d{4})/gi)]
+  if (dayFirstMatches.length > 0) {
+    let latestDate = null
+    for (const match of dayFirstMatches) {
+      const day = parseInt(match[1], 10)
+      const month = monthMap[match[2].toLowerCase()]
+      const year = parseInt(match[3], 10)
+      if (!isNaN(month) && !isNaN(day) && !isNaN(year)) {
+        const date = new Date(Date.UTC(year, month, day, 23, 59, 59))
+        if (!latestDate || date > latestDate) {
+          latestDate = date
+        }
+      }
+    }
+    if (latestDate) return latestDate
   }
 
   const rangeMatch = normalized.match(/([A-Za-z]+)[\s-]*(\d{1,2})?\s*[–-]\s*([A-Za-z]+)?\s*(\d{1,2})?,?\s*(\d{4})/i)
@@ -75,18 +109,6 @@ function getCurrentRomeTime() {
   const romeOffset = 2 * 60 * 60 * 1000
   const romeTime = new Date(now.getTime() + romeOffset - (now.getTimezoneOffset() * 60 * 1000))
   return romeTime
-}
-
-function calculateStatus(deadline2026) {
-  if (!deadline2026) return 'closed'
-
-  const deadlineDate = parseDeadlineToDate(deadline2026)
-  if (!deadlineDate) return 'closed'
-
-  const now = getCurrentRomeTime()
-
-  if (deadlineDate < now) return 'closed'
-  return 'open'
 }
 
 const REGIONS = [
@@ -265,10 +287,10 @@ const REGIONS = [
     id: 'valle-aosta',
     name: "Valle d'Aosta",
     agencies: ["Regione Autonoma Valle d'Aosta (direct)"],
-    universities: ["Università della Valle d'Aosta", "Conservatoire de la Vallée d'Aoste", 'Corso Infermieristica UniTo Aosta (VDA2 only)'],
+    universities: ["Università della Valle d'Aosta", "Conservatoire de la Vallée d'Aoste", 'Corso Infermieristica UniTo Aosta'],
     deadline2026: '4 Dec 2026, 12:00',
-    iseeLimit: 'VDA1: ISEE ≤ €28,339.88 + ISPE ≤ €61,608.48 / VDA2: ISEE ≤ €44,968 (no ISPE)',
-    note: 'TWO SEPARATE BANDI: VDA1 (more generous) for ISEE ≤28,339.88 AND ISPE ≤61,608.48; VDA2 for ISEE ≤44,968 (no ISPE). Nursing students at UniTo Aosta ONLY VDA2 (apply to EDISU Piemonte). Non-cumulative. Grants vary by ISEE band + residence status.',
+    iseeLimit: 'VDA1: €28,339.88 / VDA2: €44,968',
+    note: null,
   },
   {
     id: 'veneto',
@@ -281,10 +303,24 @@ const REGIONS = [
   },
 ]
 
-const REGIONS_WITH_STATUS = REGIONS.map(region => ({
-  ...region,
-  status: calculateStatus(region.deadline2026),
-}))
+function getRegionsWithStatus(currentTime) {
+  return REGIONS.map(region => ({
+    ...region,
+    status: calculateStatus(region.deadline2026, currentTime),
+  }))
+}
+
+function calculateStatus(deadline2026, currentTime) {
+  if (!deadline2026) return 'closed'
+
+  const deadlineDate = parseDeadlineToDate(deadline2026)
+  if (!deadlineDate) return 'closed'
+
+  const now = currentTime || getCurrentRomeTime()
+
+  if (deadlineDate < now) return 'closed'
+  return 'open'
+}
 
 const DSU_SECTIONS = [
   {
@@ -350,16 +386,6 @@ const DSU_SECTIONS = [
       </ul>
       <h4>ISPE (Indicatore Situazione Patrimoniale Equivalente)</h4>
       <p>Asset indicator = ISP / equivalence scale. Most regions set both ISEE and ISPE limits; both must be satisfied.</p>
-      <h4>Valle d'Aosta Specifics</h4>
-      <ul>
-        <li><strong>VDA1:</strong> BOTH ISEE-Universitario ≤ €28,339.88 AND ISPE ≤ €61,608.48 required</li>
-        <li><strong>VDA2:</strong> ONLY ISEE-Universitario ≤ €44,968 required; NO ISPE limit</li>
-        <li><strong>Disability exceptions:</strong> Adjustments to ISEE/ISPE thresholds for students with disability ≥66% (per bando Art. 3.3)</li>
-        <li><strong>CAF-confirmed ISEE exception:</strong> If grave/documented impediments prevent obtaining ISEE-Universitario, ordinary ISEE accepted with explicit request in application notes (Art. 3.3)</li>
-        <li><strong>Foreign non-resident temporary credentials:</strong> Accepted for portal access (SPID/CIE not required for non-residents)</li>
-        <li><strong>ISEE Corrente accepted:</strong> Valid if includes ISEE-Universitario indicator and student name</li>
-        <li><strong>Scholarship deduction:</strong> 2024 scholarship amounts declared in DSU (quadro FC4) can be deducted from ISEE-Universitario if declared in application</li>
-      </ul>
       <h4>Independent Student Status</h4>
       <p>Student living outside family home ≥2 years in non-family-owned housing + declared taxable income ≥€9,000/year for 2 years. Treated as <em>fuori sede</em> (off-site) for scholarship amount.</p>
     `,
@@ -379,14 +405,6 @@ const DSU_SECTIONS = [
       </table>
       <p><strong>International students:</strong> Most regions classify non-resident international students as <strong>fuori sede</strong> automatically (family abroad), regardless of Italian address. However, family residence abroad does not guarantee the higher fuori sede payment. Applicants may need to submit a paid-accommodation declaration by the deadline. Check your regional call for the applicable requirements.</p>
       <p><strong>Proof for fuori sede:</strong> Registered rental contract ≥10 months (Sep–Jul), rent ≥€150–200/month, property within 15–26 km of campus.</p>
-      <h4>Valle d'Aosta (VDA1/VDA2) Specifics</h4>
-      <ul>
-        <li><strong>Column A (Resident/Housing beneficiary):</strong> Resident <24 km from university OR housing contribution beneficiary → lower grant</li>
-        <li><strong>Column B (Fuori sede):</strong> Resident ≥24 km from university AND (no housing request / not eligible / eligible but no funds / family abroad & 1st year fuori corso) → higher grant</li>
-        <li><strong>Housing-aid request BEFORE supporting proof:</strong> Must request contributo alloggio in application; proof of accommodation can be submitted later</li>
-        <li><strong>Acceptable later residence documentation:</strong> Proof of accommodation can be provided after application submission</li>
-        <li><strong>Students with family abroad:</strong> Classified as fuori sede (Column B) if in 1st year fuori corso, regardless of distance, if not receiving housing contribution</li>
-      </ul>
     `,
   },
   {
@@ -414,43 +432,6 @@ const DSU_SECTIONS = [
         </tbody>
       </table>
       <p><em>Increases:</em> +15% for ISEE ≤50% threshold; +20% for female STEM students; +20% for dual enrolment; +20–40% for disability ≥66%.</p>
-      <h4>Valle d'Aosta (VDA1) — a.a. 2026/27 Official Amounts</h4>
-      <table>
-        <thead><tr><th>ISEE Band</th><th>ISEE Range</th><th>Column A (Resident/Housing)</th><th>Column B (Fuori sede ≥24km)</th></tr></thead>
-        <tbody>
-          <tr><td>1ª</td><td>€0 – €14,169.94</td><td>€3,476</td><td>€4,972</td></tr>
-          <tr><td>2ª</td><td>€14,169.95 – €18,893.25</td><td>€3,042</td><td>€4,343</td></tr>
-          <tr><td>3ª</td><td>€18,893.26 – €25,452.43</td><td>€2,598</td><td>€3,762</td></tr>
-          <tr><td>4ª</td><td>€25,452.44 – €28,339.88</td><td>€2,248</td><td>€3,063</td></tr>
-        </tbody>
-      </table>
-      <ul>
-        <li><strong>Housing contribution (contributo alloggio):</strong> €3,145 – €4,924</li>
-        <li><strong>Tuition refund:</strong> YES — full reimbursement of university fees if already paid (VDA1 only)</li>
-        <li><strong>Meal allowance:</strong> NO free canteen; replaced by lump-sum included in study grant for eligible students (buoni pasto discontinued)</li>
-        <li><strong>International mobility:</strong> Separate daily rates (VDA1-specific)</li>
-        <li><strong>Travel reimbursement:</strong> Up to official limit (VDA1 only)</li>
-        <li><strong>Degree bonus:</strong> Yes</li>
-        <li><strong>Ranking-by-merit exception:</strong> VDA1-specific provision</li>
-      </ul>
-      <h4>Valle d'Aosta (VDA2) — a.a. 2026/27 Official Amounts</h4>
-      <table>
-        <thead><tr><th>ISEE Band</th><th>ISEE Range</th><th>Grant Range</th></tr></thead>
-        <tbody>
-          <tr><td>1ª</td><td>€0 – €14,169.94</td><td>€1,502 – €2,524</td></tr>
-          <tr><td>2ª</td><td>€14,169.95 – €18,893.25</td><td>€1,502 – €2,524</td></tr>
-          <tr><td>3ª</td><td>€18,893.26 – €25,452.43</td><td>€1,502 – €2,524</td></tr>
-          <tr><td>4ª</td><td>€25,452.44 – €32,992.00</td><td>€1,502 – €2,524</td></tr>
-          <tr><td>5ª</td><td>€32,992.01 – €44,968.00</td><td>€1,502 – €2,524</td></tr>
-        </tbody>
-      </table>
-      <ul>
-        <li><strong>Housing contribution (contributo alloggio):</strong> €2,013 – €2,933</li>
-        <li><strong>Tuition refund:</strong> NO (VDA2 only)</li>
-        <li><strong>International mobility:</strong> Separate daily rates (VDA2-specific, different from VDA1)</li>
-        <li><strong>Meal allowance:</strong> Not provided</li>
-        <li><strong>Degree bonus:</strong> Yes</li>
-      </ul>
     `,
   },
   {
@@ -466,20 +447,9 @@ const DSU_SECTIONS = [
         <li><strong>Accommodation request</strong> — Indicate housing preference in application; confirm/accept place if assigned.</li>
         <li><strong>Provisional ranking</strong> — Published ~1–2 months after deadline. Check for errors; submit appeals within 3–10 days.</li>
         <li><strong>Final ranking</strong> — Confirms beneficiaries (winners) and eligible non-winners (idonei non beneficiari).</li>
-        <li><strong>Enrolment confirmation</strong> — Must complete university enrolment by university deadline (check with your university; the March 31 date is NOT in the VDA bando).</li>
+        <li><strong>Enrolment confirmation</strong> — Must complete university enrolment by deadline (often 31 Mar 2027 for 2026/27).</li>
         <li><strong>Payment</strong> — IBAN + PEC required. Instalments: 1st (20–50%) by Nov–Dec 2026; balance after merit verification (Aug–Nov 2027).</li>
       </ol>
-      <h4>Valle d'Aosta (VDA1/VDA2) Specific Requirements</h4>
-      <ul>
-        <li><strong>IBAN required BEFORE submission:</strong> Must provide Italian IBAN in the application form</li>
-        <li><strong>Housing-aid request BEFORE supporting proof:</strong> Must request contributo alloggio in application; proof of accommodation can be submitted later</li>
-        <li><strong>Acceptable later residence documentation:</strong> Proof of accommodation (rental contract, etc.) can be provided after application submission</li>
-        <li><strong>Foreign non-resident temporary credentials:</strong> Accepted for portal access (no SPID/CIE needed)</li>
-        <li><strong>ISEE-Universitario mandatory:</strong> Must have valid ISEE with Universitario indicator at submission (or DSU receipt); name must appear in ISEE section</li>
-        <li><strong>ISEE Corrente accepted:</strong> If valid and includes Universitario indicator</li>
-        <li><strong>Ordinary ISEE exception:</strong> Only for grave/documented impediments; must request explicitly in application notes</li>
-        <li><strong>Scholarship deduction:</strong> 2024 scholarship amounts in DSU (quadro FC4) can be deducted from ISEE-Universitario if declared</li>
-      </ul>
     `,
   },
   {
@@ -504,13 +474,6 @@ const DSU_SECTIONS = [
         <li>First-year Bachelor/Single-cycle: 20 CFU by Aug 10 2027 (30 Nov 2027 = 50% grant)</li>
         <li>First-year Master's: 20–23 CFU by Aug 10 2027</li>
         <li>Subsequent years: Varies by year/course (e.g., 2nd year Bachelor: 35 CFU; 3rd year: 80 CFU)</li>
-      </ul>
-      <h4>Valle d'Aosta (VDA1/VDA2) Specific Merit Requirements</h4>
-      <ul>
-        <li><strong>Programme-specific CFU requirements:</strong> Minimum CFU thresholds vary by course/year (consult bando for your specific programme)</li>
-        <li><strong>No grade requirement:</strong> Only CFU count matters, not exam scores</li>
-        <li><strong>VDA1 Ranking-by-merit exception:</strong> Specific provision for merit-based ranking in VDA1 (consult bando Art. 6)</li>
-        <li><strong>Merit deadline:</strong> CFU must be acquired by the date specified in the bando</li>
       </ul>
       <h4>Renewal</h4>
       <p>Not automatic. Must reapply each year. Must meet merit requirements for previous year to renew.</p>
@@ -539,59 +502,6 @@ const DSU_SECTIONS = [
     `,
   },
   {
-    id: 'vda-detail',
-    title: 'Valle d'Aosta (VDA1 / VDA2) — Complete Official Details',
-    content: `
-      <p>Valle d'Aosta runs <strong>two separate, non-cumulative bandi</strong> for a.a. 2026/27. Both published at the start of the academic year with a single deadline: <strong>4 December 2026, 12:00</strong>.</p>
-      <h4>VDA1 — Bando per studenti iscritti agli Atenei valdostani</h4>
-      <ul>
-        <li><strong>Eligible institutions:</strong> Università della Valle d'Aosta, Conservatoire de la Vallée d'Aoste</li>
-        <li><strong>EXCLUDED:</strong> Corso Infermieristica UniTo sede Aosta (apply to EDISU Piemonte)</li>
-        <li><strong>Economic requirements (BOTH required):</strong> ISEE-Universitario ≤ €28,339.88 AND ISPE ≤ €61,608.48</li>
-        <li><strong>Grant amounts (Assegno di studio):</strong> 4 ISEE bands, two columns (A: resident/housing beneficiary; B: fuori sede ≥24km)</li>
-        <li><strong>Housing contribution:</strong> €3,145 – €4,924</li>
-        <li><strong>Tuition refund:</strong> YES — full reimbursement if already paid</li>
-        <li><strong>Meal allowance:</strong> NO free canteen; lump-sum included in grant for eligible students (buoni pasto discontinued)</li>
-        <li><strong>International mobility:</strong> VDA1-specific daily rates</li>
-        <li><strong>Travel reimbursement:</strong> Up to official limit</li>
-        <li><strong>Degree bonus:</strong> Yes</li>
-        <li><strong>Ranking-by-merit exception:</strong> VDA1-specific provision</li>
-        <li><strong>Nursing students:</strong> EXCLUDED from VDA1</li>
-      </ul>
-      <h4>VDA2 — Bando per studenti fuori regione / telematiche / non-VA1</h4>
-      <ul>
-        <li><strong>Eligible:</strong> Students NOT meeting VDA1 economic criteria but with ISEE-Universitario ≤ €44,968 (NO ISPE limit)</li>
-        <li><strong>Also includes:</strong> Nursing students at UniTo Aosta</li>
-        <li><strong>Grant amounts:</strong> 5 ISEE bands, €1,502 – €2,524 (no resident/fuori sede split)</li>
-        <li><strong>Housing contribution:</strong> €2,013 – €2,933</li>
-        <li><strong>Tuition refund:</strong> NO</li>
-        <li><strong>International mobility:</strong> VDA2-specific daily rates (different from VDA1)</li>
-        <li><strong>Meal allowance:</strong> Not provided</li>
-        <li><strong>Degree bonus:</strong> Yes</li>
-      </ul>
-      <h4>Common Requirements (Both Bandi)</h4>
-      <ul>
-        <li><strong>Application deadline:</strong> 4 December 2026, 12:00</li>
-        <li><strong>Online only:</strong> SPID/CIE or temporary credentials (non-residents)</li>
-        <li><strong>IBAN required at submission</strong></li>
-        <li><strong>Housing request in application; proof later acceptable</strong></li>
-        <li><strong>ISEE-Universitario mandatory</strong> (or DSU receipt); name must be in ISEE section</li>
-        <li><strong>ISEE Corrente accepted</strong> (if valid + includes Universitario)</li>
-        <li><strong>Ordinary ISEE exception</strong> only for grave/documented impediments (explicit request in notes)</li>
-        <li><strong>Disability ISEE/ISPE adjustments</strong> (≥66%)</li>
-        <li><strong>Scholarship deduction:</strong> 2024 scholarship in DSU (quadro FC4) deductible from ISEE if declared</li>
-        <li><strong>Programme-specific CFU merit requirements</strong></li>
-        <li><strong>Annual reapplication required</strong></li>
-      </ul>
-      <h4>Official Sources</h4>
-      <ul>
-        <li><a href="https://www.regione.vda.it/allegato.aspx?pk=97584" target="_blank" rel="noopener">Bando VDA1 (Atenei valdostani) — PDF</a></li>
-        <li><a href="https://www.regione.vda.it/allegato.aspx?pk=97595" target="_blank" rel="noopener">Bando VDA2 (Fuori regione / Telematiche) — PDF</a></li>
-        <li><a href="https://www.regione.vda.it/istruzione/dirittostudio/borse_universita_valdostane/default_i.aspx" target="_blank" rel="noopener">Regione VdA DSU Portal</a></li>
-      </ul>
-    `,
-  },
-  {
     id: 'visa',
     title: 'Admission, DSU & Student Visa',
     content: `
@@ -601,7 +511,7 @@ const DSU_SECTIONS = [
         <li><strong>Visa application</strong> — DSU award letter (or provisional ranking) supports visa as proof of financial means.</li>
         <li><strong>Minimum means for visa</strong> — For 2026/27 university-enrolment visas, the Italian Foreign Ministry lists €10,179.85 per year. A DSU fuori sede award (max ~€7,171) may not meet this threshold alone. Consult your consulate for acceptable proof and any additional requirements.</li>
         <li><strong>Arrival in Italy</strong> — Non-EU students on long-stay study visas must apply for a residence permit (permesso di soggiorno) within eight working days of arrival. The application receipt comes before the permit; check which document your agency accepts for upload.</li>
-        <li><strong>Enrolment confirmation</strong> — Complete by university deadline (check with your university; the March 31 date is NOT in the VDA bando).</li>
+        <li><strong>Enrolment confirmation</strong> — Complete by university deadline (often 31 Mar 2027).</li>
         <li><strong>Payment activation</strong> — Provide Italian IBAN + PEC; first instalment after enrolment verified.</li>
       </ol>
       <p><strong>Critical:</strong> DSU eligibility does not guarantee a scholarship. Budget limits mean eligible non-winners receive services only. Visa requires proof of sufficient means — DSU provisional ranking helps but final award is not guaranteed.</p>
@@ -661,10 +571,6 @@ const DSU_SECTIONS = [
         <li><strong>Incompatibility is enforced.</strong> Cannot hold DSU + MAECI + university merit simultaneously. Choose within 10 days.</li>
         <li><strong>Eligible ≠ Winner.</strong> Budget caps mean many eligible students get services only (no cash).</li>
         <li><strong>Trentino (Trento) excludes non-resident non-EU.</strong> Only EU citizens + non-EU residents in Italy may apply to Opera Universitaria call. Alto Adige (Bolzano) has a separate provincial call with its own rules.</li>
-        <li><strong>Valle d'Aosta: VDA1 & VDA2 are mutually exclusive.</strong> Choose based on ISEE/ISPE. VDA1 more generous (higher grants, tuition refund) but stricter (ISPE limit). VDA2 no ISPE but lower grants, no tuition refund.</li>
-        <li><strong>Nursing students at UniTo Aosta:</strong> ONLY eligible for VDA2 (must apply to EDISU Piemonte).</li>
-        <li><strong>No March 31 enrolment deadline in VDA bando.</strong> Check university-specific enrolment deadlines.</li>
-        <li><strong>Meal vouchers (buoni pasto) discontinued for VDA1.</strong> Replaced by lump-sum in study grant for eligible students.</li>
       </ul>
     `,
   },
@@ -712,8 +618,10 @@ export default function ItalyDsuGuidePage() {
     return () => clearInterval(interval)
   }, [])
 
+  const regionsWithStatus = useMemo(() => getRegionsWithStatus(currentRomeTime), [currentRomeTime])
+
   const filteredRegions = useMemo(() => {
-    return REGIONS_WITH_STATUS.filter(r => {
+    return regionsWithStatus.filter(r => {
       const searchLower = searchTerm.toLowerCase()
       const matchesSearch = !searchTerm ||
         r.name.toLowerCase().includes(searchLower) ||
@@ -722,10 +630,10 @@ export default function ItalyDsuGuidePage() {
       const matchesFilter = regionFilter === 'all' || regionFilter === r.status
       return matchesSearch && matchesFilter
     })
-  }, [searchTerm, regionFilter])
+  }, [searchTerm, regionFilter, regionsWithStatus])
 
-  const openRegions = useMemo(() => REGIONS_WITH_STATUS.filter(r => r.status === 'open').length, [])
-  const closedRegions = useMemo(() => REGIONS_WITH_STATUS.filter(r => r.status === 'closed').length, [])
+  const openRegions = useMemo(() => regionsWithStatus.filter(r => r.status === 'open').length, [regionsWithStatus])
+  const closedRegions = useMemo(() => regionsWithStatus.filter(r => r.status === 'closed').length, [regionsWithStatus])
 
   const getMatchingUniversities = (region) => {
     if (!searchTerm) return region.universities
@@ -733,13 +641,7 @@ export default function ItalyDsuGuidePage() {
     return region.universities.filter(u => u.toLowerCase().includes(searchLower))
   }
 
-  const getMatchingAgencies = (region) => {
-    if (!searchTerm) return region.agencies
-    const searchLower = searchTerm.toLowerCase()
-    return region.agencies.filter(a => a.toLowerCase().includes(searchLower))
-  }
-
-  const formatRomeDate = (date) => {
+const formatRomeDate = (date) => {
     return new Intl.DateTimeFormat('en-GB', {
       timeZone: 'Europe/Rome',
       weekday: 'short',
@@ -793,13 +695,13 @@ export default function ItalyDsuGuidePage() {
               <option value="closed">Closed (2026/27)</option>
             </select>
             <span id="search-hint" className="sr-only">
-              {filteredRegions.length} of {REGIONS_WITH_STATUS.length} regions match
+              {filteredRegions.length} of {regionsWithStatus.length} regions match
             </span>
           </div>
 
-          <ul className="italy-dsu-guide__region-list" role="list">
+          <ul className="italy-dsu-guide__region-list" role="list" data-testid="region-list">
             {filteredRegions.map(region => (
-              <li key={region.id} className="italy-dsu-guide__region-item">
+              <li key={region.id} className="italy-dsu-guide__region-item" role="listitem">
                 <a
                   href={`#${region.id}`}
                   className={`italy-dsu-guide__region-btn ${region.status}`}
@@ -848,7 +750,7 @@ export default function ItalyDsuGuidePage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {REGIONS_WITH_STATUS.map(region => (
+                  {regionsWithStatus.map(region => (
                     <tr key={region.id} id={region.id} className={`region-row status-${region.status}`}>
                       <td className="region-name"><strong>{region.name}</strong></td>
                       <td className="region-agencies">{region.agencies.join(', ')}</td>

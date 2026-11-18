@@ -400,6 +400,16 @@
   padding: 0 var(--space-4);
 }
 
+.italy-dsu-guide__region-note {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-top: var(--space-1);
+  padding: var(--space-1) var(--space-2);
+  background: var(--color-neutral-100);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--color-primary);
+}
+
 @media (max-width: 768px) {
   .italy-dsu-guide {
     padding: var(--space-4) var(--space-3);
@@ -412,4 +422,16 @@
   .italy-dsu-guide__section h2 {
     font-size: var(--text-xl);
   }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
