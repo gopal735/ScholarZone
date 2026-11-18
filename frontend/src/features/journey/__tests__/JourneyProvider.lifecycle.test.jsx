@@ -7,7 +7,7 @@
  * to exercise the same boundaries as production.
  */
 
-import { describe, expect, it, beforeEach, afterEach, vi } from 'vitest'
+import { describe, expect, it, beforeEach, afterEach } from 'vitest'
 import { render, screen, waitFor, act, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { MemoryRouter, Routes, Route, Outlet, useNavigate } from 'react-router-dom'
@@ -400,7 +400,6 @@ describe('JourneyProvider lifecycle: beforeunload flush', () => {
 
 describe('JourneyProvider lifecycle: cross-tab storage sync', () => {
   it('applies newer state from another tab via storage event', async () => {
-    const user = userEvent.setup()
     // Start directly on costs route to avoid navigation issues
     renderTestApp({ initialEntries: ['/bangladesh-journey/costs'] })
 
