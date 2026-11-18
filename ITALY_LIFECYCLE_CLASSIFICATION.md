@@ -96,7 +96,7 @@
 | Invest Your Talent 12th ed. | ~Apr–May 2027 | **NO** | Mention in DSU guide only |
 | Regional DSU 2027/28 (all) | ~Jun–Sep 2027 | **NO** | Mention in DSU guide only |
 | Padua Excellence 2027/28 | ~Nov 2026–May 2027 | **NO** | Mention in DSU guide only |
-| PoliMi Merit 2027/28 | ~Oct–Dec 2026 | **NO** | Mention in DSU guide only |
+| PoliMi Merit 2027/28 | Early Bird admission + fee payment by 1 Dec 2026; scholarship application until 12:00 CET on 15 Dec 2026 | **YES** | Officially announced (published call) |
 | PhD 43rd Cycle | ~Mar–Apr 2027 | **NO** | Mention in DSU guide only |
 
 ---

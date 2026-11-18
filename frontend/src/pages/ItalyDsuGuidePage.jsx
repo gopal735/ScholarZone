@@ -106,9 +106,9 @@ const REGIONS = [
     name: 'Piemonte',
     agencies: ['EDISU Piemonte'],
     universities: ['Università di Torino', 'Politecnico di Torino', 'Università del Piemonte Orientale', 'Università di Scienze Gastronomiche'],
-    deadline2026: '4 Sep / 27 Nov 2026 (CLOSED)',
+    deadline2026: 'PhD/Specialisation: 27 Nov 2026 (OPEN); Undergrad/Master: 4 Sep 2026 (CLOSED)',
     iseeLimit: '€28,339.88',
-    status: 'closed',
+    status: 'open',
   },
   {
     id: 'puglia',
@@ -147,14 +147,24 @@ const REGIONS = [
     status: 'closed',
   },
   {
-    id: 'trentino',
-    name: 'Trentino-Alto Adige / Südtirol',
+    id: 'trentino-trento',
+    name: 'Trentino (Trento)',
     agencies: ['Opera Universitaria Trento'],
     universities: ['Università di Trento', 'Conservatorio Bonporti', 'Accademia d\'Arte Trentino'],
-    deadline2026: '5 Aug / 7 Sep / 30 Nov 2026 (CLOSED)',
+    deadline2026: 'PhD: 30 Nov 2026 (OPEN); earlier windows closed',
     iseeLimit: '€26,000',
+    status: 'open',
+    note: 'Non-EU non-residents EXCLUDED (Opera Universitaria call only)',
+  },
+  {
+    id: 'trentino-bolzano',
+    name: 'Alto Adige (Bolzano)',
+    agencies: ['Province of Bolzano (separate call)'],
+    universities: ['Free University of Bozen-Bolzano'],
+    deadline2026: '3 Nov 2026 (CLOSED)',
+    iseeLimit: 'DURP / VSE assessment',
     status: 'closed',
-    note: 'Non-EU non-residents EXCLUDED',
+    note: 'Separate provincial call; uses DURP and VSE financial assessment',
   },
   {
     id: 'umbria',
@@ -266,7 +276,7 @@ const DSU_SECTIONS = [
           <tr><td><strong>Fuori sede</strong> (off-site)</td><td>Resides far from university; rents accommodation near campus ≥10 months/year</td><td>Highest (≈€7,170 base)</td></tr>
         </tbody>
       </table>
-      <p><strong>International students:</strong> Most regions classify non-resident international students as <strong>fuori sede</strong> automatically (family abroad), regardless of Italian address. Exceptions: family resides in Italy.</p>
+      <p><strong>International students:</strong> Most regions classify non-resident international students as <strong>fuori sede</strong> automatically (family abroad), regardless of Italian address. However, family residence abroad does not guarantee the higher fuori sede payment. Applicants may need to submit a paid-accommodation declaration by the deadline. Check your regional call for the applicable requirements.</p>
       <p><strong>Proof for fuori sede:</strong> Registered rental contract ≥10 months (Sep–Jul), rent ≥€150–200/month, property within 15–26 km of campus.</p>
     `,
   },
@@ -372,8 +382,8 @@ const DSU_SECTIONS = [
         <li><strong>University admission</strong> → Get admission letter / pre-enrolment confirmation.</li>
         <li><strong>DSU application</strong> — Can apply before visa; use temporary credentials if no SPID/CIE.</li>
         <li><strong>Visa application</strong> — DSU award letter (or provisional ranking) supports visa as proof of financial means.</li>
-        <li><strong>Minimum means for visa</strong> — €6,000–7,000/year (varies by consulate). DSU fuori sede grant (€7,171) meets this.</li>
-        <li><strong>Arrival in Italy</strong> — Activate residence permit within 8 days; upload to agency portal.</li>
+        <li><strong>Minimum means for visa</strong> — For 2026/27 university-enrolment visas, the Italian Foreign Ministry lists €10,179.85 per year. An applicant relying on the DSU fuori sede award alone (€7,171) would be €3,008.85 short even if the award were confirmed. Remove the claim that the award meets the minimum. Direct readers to their consulate for acceptable proof and any additional requirements.</li>
+        <li><strong>Arrival in Italy</strong> — Non-EU students on long-stay study visas must apply for a residence permit (permesso di soggiorno) within eight working days of arrival. The application receipt comes before the permit; check which document your agency accepts for upload.</li>
         <li><strong>Enrolment confirmation</strong> — Complete by university deadline (often 31 Mar 2027).</li>
         <li><strong>Payment activation</strong> — Provide Italian IBAN + PEC; first instalment after enrolment verified.</li>
       </ol>
@@ -533,16 +543,16 @@ export default function ItalyDsuGuidePage() {
           <ul className="italy-dsu-guide__region-list" role="listbox">
             {filteredRegions.map(region => (
               <li key={region.id} className="italy-dsu-guide__region-item">
-                <button
+                <a
+                  href={`#${region.id}`}
                   className={`italy-dsu-guide__region-btn ${region.status}`}
-                  onClick={() => window.location.hash = `#${region.id}`}
                   aria-label={`${region.name} — ${region.status}`}
                 >
                   <span className="italy-dsu-guide__region-name">{region.name}</span>
                   <span className={`italy-dsu-guide__region-status status-${region.status}`}>
                     {region.status === 'open' ? 'OPEN' : region.status === 'upcoming' ? 'UPCOMING' : 'CLOSED'}
                   </span>
-                </button>
+                </a>
               </li>
             ))}
           </ul>
@@ -577,7 +587,7 @@ export default function ItalyDsuGuidePage() {
                 </thead>
                 <tbody>
                   {REGIONS.map(region => (
-                    <tr key={region.id} className={`region-row status-${region.status}`}>
+                    <tr key={region.id} id={region.id} className={`region-row status-${region.status}`}>
                       <td className="region-name"><strong>{region.name}</strong></td>
                       <td className="region-agencies">{region.agencies.join(', ')}</td>
                       <td className="region-universities">{region.universities.slice(0, 3).join(', ')}{region.universities.length > 3 ? ' +' : ''}</td>

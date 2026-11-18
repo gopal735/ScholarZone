@@ -60,12 +60,15 @@
 
 ## C. Database Records Audit
 
-### Current Database State (2 records)
+### Current Database State (773 records)
 
 | ID | Title | Country | Status | Deadline | Visibility |
 |----|-------|---------|--------|----------|------------|
-| 1 | Valle d'Aosta Regional Right-to-Study Scholarships (VDA1 & VDA2) | Italy | open | 4 Dec 2026 | ✅ PUBLIC |
-| 2 | Politecnico di Torino PhD Scholarships — 42nd Cycle, 3rd Session | Italy | upcoming | 15 Feb 2027 | ✅ PUBLIC |
+| 1 | Erasmus Mundus Joint Masters (EMJM) | EU (multiple) | open | — | ✅ PUBLIC |
+| 2 | ICCR Scholarship (Suborno Jayanti Scheme) | India | open | 22 Apr 2026 | ✅ PUBLIC |
+| ... | (769 additional master records) | various | various | various | ✅ PUBLIC |
+| 1337 | Valle d'Aosta Regional Right-to-Study Scholarships (VDA1 & VDA2) | Italy | open | 4 Dec 2026 | ✅ PUBLIC |
+| 1338 | Politecnico di Torino PhD Scholarships — 42nd Cycle, 3rd Session | Italy | upcoming | 15 Feb 2027 | ✅ PUBLIC |
 
 ### Visibility Contract Enforcement
 - **Public iff:** `verification_status != "quarantined"` AND `is_archived == False` AND `status != "closed"`

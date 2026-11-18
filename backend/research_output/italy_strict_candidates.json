@@ -12,10 +12,16 @@
     "university": "Università della Valle d'Aosta; Conservatoire de la Vallée d'Aoste; Corso di Infermieristica UniTo Aosta",
     "academic_year": "2026/2027",
     "degree": "Bachelor's, Master's, Single-cycle Master's",
-    "degree_levels": ["bachelor", "master", "single_cycle"],
+    "degree_levels": [
+      "bachelor",
+      "master",
+      "single_cycle"
+    ],
     "study_fields": [],
     "eligible_programmes": [],
-    "eligible_countries": ["All"],
+    "eligible_countries": [
+      "All"
+    ],
     "citizenship_restrictions": "Open to Italian, EU, and non-EU international students",
     "international_student_eligibility": true,
     "non_eu_eligibility": true,
@@ -26,7 +32,7 @@
     "age_requirements": "None specified",
     "enrollment_requirements": "Must complete enrolment by 31 March 2027; provisional ranking check required",
     "merit_requirements": "First year: ex-post (20 CFU by 10 Aug 2027); Subsequent years: varies by year/programme per bando",
-    "funding_amount": 4972,
+    "funding_amount": null,
     "funding_currency": "EUR",
     "funding_period": "academic_year",
     "tuition_coverage": true,
@@ -80,6 +86,7 @@
     "renewal_conditions": "Reapply each year; must meet merit requirements for previous year (20 CFU for first-year by 10 Aug; subsequent years per bando)",
     "compatibility_rules": "Incompatible with MAECI scholarships, other regional DSU, university merit awards; must choose one within 10 days of latest award",
     "eligibility": [
+      "VDA1: All eligible students EXCEPT UniTo Aosta Nursing students (directed to VDA2 or EDISU Piemonte)",
       "Italian citizens",
       "EU citizens (equal treatment)",
       "Non-EU international students with valid residence permit",
@@ -182,7 +189,9 @@
         "Exact number of scholarships available",
         "Accommodation capacity for 2026/27"
       ]
-    }
+    },
+    "funding": "Regional Right-to-Study Grant (DSU)",
+    "preferred_id": 1337
   },
   {
     "title": "Politecnico di Torino PhD Scholarships — 42nd Cycle, 3rd Session",
@@ -197,7 +206,9 @@
     "university": "Politecnico di Torino",
     "academic_year": "2026/2027",
     "degree": "PhD",
-    "degree_levels": ["phd"],
+    "degree_levels": [
+      "phd"
+    ],
     "study_fields": [
       "Architecture",
       "Bioengineering",
@@ -233,7 +244,9 @@
       "Mathematical Sciences",
       "Urban and Regional Development"
     ],
-    "eligible_countries": ["All"],
+    "eligible_countries": [
+      "All"
+    ],
     "citizenship_restrictions": "Open to Italian and foreign citizens without nationality restrictions",
     "international_student_eligibility": true,
     "non_eu_eligibility": true,
@@ -331,7 +344,7 @@
       "Declaration of Value / Diploma Supplement (foreign degrees)",
       "Any programme-specific documents"
     ],
-    "english_requirement": "Required per programme (typically TOEFL iBT ≥90, IELTS ≥6.5, or equivalent); some programmes may accept Italian",
+    "english_requirement": "Required per programme (Annex 4): IELTS 5.5 minimum, TOEFL thresholds vary by test date. Exemptions per call specifications.",
     "application_method": [
       "Register on Apply@PoliTo portal",
       "Select PhD programme and session (3rd session: 14 Jan – 15 Feb 2027)",
@@ -392,6 +405,27 @@
         "Exact positions per programme for 3rd session",
         "Specific research topics available"
       ]
-    }
+    },
+    "funding": "Fully Funded PhD Scholarship",
+    "preferred_id": 1338,
+    "eligible_fields": [
+      "Architecture",
+      "Bioengineering",
+      "Design",
+      "Energetics",
+      "Physics",
+      "Aerospace Engineering",
+      "Chemical Engineering",
+      "Civil and Environmental Engineering",
+      "Electrical, Electronic and Communications Engineering",
+      "Management and Production Engineering",
+      "Computer and Control Engineering",
+      "Mechanical Engineering",
+      "Materials Science and Technology",
+      "Mathematical Sciences",
+      "Urban and Regional Development"
+    ],
+    "opening_date": "2027-01-14",
+    "opening_display": "14 January 2027"
   }
 ]
