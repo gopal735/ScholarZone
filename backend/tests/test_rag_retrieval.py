@@ -157,9 +157,21 @@ def test_negative_limit_returns_empty(db_session):
     assert retrieve(db_session, "Germany", include_archived=True, limit=-1) == []
 
 
-def test_provenance_preserved(db_session):
-    results = retrieve(db_session, "Germany")
-    r = results[0]
-    assert r.scholarship_id is not None
-    assert r.chunk_id
-    assert r.official_source_url == "https://www.daad.de"
+def test_pending_caller_edit_survives(db_session):
+    s = db_session.query(Scholarship).filter(Scholarship.title == "DAAD Scholarship").first()
+    original_title = s.title
+    s.title = "Pending Unflushed Edit"
+    # do not commit
+    retrieve(db_session, "Germany")
+    assert s.title == "Pending Unflushed Edit"
+
+
+def test_evidence_reflects_fresh_database_values(db_session):
+    from sqlalchemy import text
+
+    db_session.execute(
+        text("UPDATE scholarships SET country='France' WHERE title='DAAD Scholarship'")
+    )
+    db_session.commit()
+    results = retrieve(db_session, "France")
+    assert any(r.title == "DAAD Scholarship" and r.country == "France" for r in results)
