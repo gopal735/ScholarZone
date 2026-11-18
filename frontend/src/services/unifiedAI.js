@@ -148,6 +148,18 @@ export function isMentorResponse(raw) {
  * Unified ask function that routes to the appropriate provider
  * based on authentication state and AI availability.
  */
+function isPrivateMessage(m) {
+  if (!m || typeof m !== 'object') return false
+  if (m.private === true) return true
+  if (m.sourceType === 'mentor') return true
+  return false
+}
+
+function sanitizePublicHistory(history) {
+  if (!Array.isArray(history)) return []
+  return history.filter((m) => !isPrivateMessage(m))
+}
+
 export async function askUnifiedAI(message, options = {}) {
   const {
     mode = 'auto',
@@ -156,6 +168,12 @@ export async function askUnifiedAI(message, options = {}) {
     conversationHistory = [],
     isAuthenticated = false,
   } = options
+
+  // Resolve conversation history without letting an unintended empty array
+  // override a non-empty history provided via context.
+  const resolvedHistory = Array.isArray(conversationHistory) && conversationHistory.length > 0
+    ? conversationHistory
+    : (Array.isArray(context?.conversationHistory) ? context.conversationHistory : [])
 
   if (mode === 'auto' && isAuthenticated) {
     try {
@@ -166,7 +184,7 @@ export async function askUnifiedAI(message, options = {}) {
       }
       // Legacy Mentor response with answer field
       if (raw && typeof raw.answer === 'string' && raw.answer.trim() !== '') {
-        return { ...raw, kind: 'mentor-legacy', sources: Array.isArray(raw.sources) ? raw.sources : [] }
+        return { ...raw, kind: 'mentor-legacy', sources: Array.isArray(raw.sources) ? raw.sources.filter((s) => s && typeof s === 'object' && !Array.isArray(s)) : [] }
       }
       // Malformed response - throw
       throw new MentorUnavailableError('Mentor returned an invalid response.', 500)
@@ -175,7 +193,7 @@ export async function askUnifiedAI(message, options = {}) {
         try {
           const grounded = await askAIAssistant({
             question: message,
-            context: { ...context, conversationHistory },
+            context: { ...context, conversationHistory: sanitizePublicHistory(resolvedHistory) },
           })
           return { ...grounded, authExpired: true, kind: 'grounded' }
         } catch (fallbackError) {
@@ -193,7 +211,7 @@ export async function askUnifiedAI(message, options = {}) {
     question: message,
     context: {
       ...context,
-      conversationHistory,
+      conversationHistory: sanitizePublicHistory(resolvedHistory),
     },
   })
   return { ...grounded, kind: 'grounded' }
@@ -263,7 +281,9 @@ export function formatUnifiedResponse(response, mode) {
   if (response.kind === 'mentor-legacy' && typeof response.answer === 'string' && response.answer.trim() !== '') {
     return {
       answer: response.answer,
-      sources: Array.isArray(response.sources) ? response.sources : [],
+      sources: Array.isArray(response.sources)
+        ? response.sources.filter((s) => s && typeof s === 'object' && !Array.isArray(s))
+        : [],
       grounded: response.grounded ?? true,
       model: response.model,
       tokensUsed: response.tokensUsed,
@@ -272,9 +292,25 @@ export function formatUnifiedResponse(response, mode) {
     }
   }
 
+  // Grounded Search responses must be identified by kind, not by mode.
+  if (response.kind === 'grounded') {
+    const base = {
+      answer: typeof response.answer === 'string' ? response.answer : null,
+      sources: Array.isArray(response.sources)
+        ? response.sources.filter((s) => s && typeof s === 'object' && !Array.isArray(s))
+        : [],
+      grounded: response.grounded ?? true,
+      model: response.model,
+      tokensUsed: response.tokensUsed,
+    }
+    return { ...base, sourceType: 'grounded', label: '📋 Grounded Search' }
+  }
+
   const base = {
     answer: typeof response.answer === 'string' ? response.answer : null,
-    sources: Array.isArray(response.sources) ? response.sources : [],
+    sources: Array.isArray(response.sources)
+      ? response.sources.filter((s) => s && typeof s === 'object' && !Array.isArray(s))
+      : [],
     grounded: response.grounded ?? true,
     model: response.model,
     tokensUsed: response.tokensUsed,

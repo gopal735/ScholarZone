@@ -5,13 +5,16 @@ import { MemoryRouter } from 'react-router-dom'
 import { AuthContext } from '../context/authContext'
 import UnifiedAIPage from './UnifiedAIPage'
 
-vi.mock('../services/unifiedAI', () => ({
-  askUnifiedAI: vi.fn(),
-  getAIStatus: vi.fn(async () => ({ mentor: false, remoteAI: false, localAI: false, grounded: true, activeMode: 'grounded' })),
-  formatUnifiedResponse: (r, mode) => ({ answer: r.answer, mentorResponse: r.mentorResponse || null, sources: r.sources || [], grounded: r.grounded ?? true, model: r.model, tokensUsed: r.tokensUsed, sourceType: mode === 'mentor' ? 'mentor' : 'grounded', label: mode === 'mentor' ? 'Grounded Mentor' : 'Grounded Search' }),
-  setLocalAIEnabled: vi.fn(),
-  isLocalAIEnabled: vi.fn(() => false),
-}))
+vi.mock('../services/unifiedAI', async () => {
+  const actual = await vi.importActual('../services/unifiedAI')
+  return {
+    askUnifiedAI: vi.fn(),
+    getAIStatus: vi.fn(async () => ({ mentor: false, remoteAI: false, localAI: false, grounded: true, activeMode: 'grounded' })),
+    formatUnifiedResponse: actual.formatUnifiedResponse,
+    setLocalAIEnabled: vi.fn(),
+    isLocalAIEnabled: vi.fn(() => false),
+  }
+})
 vi.mock('../services/aiAssistant', () => ({
   askAIAssistant: vi.fn(async () => ({ answer: 'grounded answer', sources: [], grounded: true })),
   checkAIAvailability: vi.fn(async () => false),
@@ -103,6 +106,7 @@ describe('UnifiedAIPage crash safety', () => {
     expect(screen.getByText(/Submit DAAD/i)).toBeInTheDocument()
     expect(screen.getByText(/Dates may change/i)).toBeInTheDocument()
     expect(screen.getByText(/Based on profile/i)).toBeInTheDocument()
+    expect(screen.getAllByText(/Grounded Mentor/i).length).toBeGreaterThan(0)
   })
 })
 describe('UnifiedAIPage auth routing', () => {
