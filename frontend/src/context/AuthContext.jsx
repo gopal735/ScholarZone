@@ -5,26 +5,25 @@ import { AuthContext } from './authContext'
 export function AuthProvider({ children }) {
   const [status, setStatus] = useState('checking')
   const [user, setUser] = useState(null)
-  const mutationRef = useRef(0)
-  const sessionRef = useRef(0)
+  const authGenRef = useRef(0)
+  const refreshGenRef = useRef(0)
 
   useEffect(() => {
     let isActive = true
-    const mutationGen = mutationRef.current
-    const sessionGen = ++sessionRef.current
+    const gen = authGenRef.current
 
     async function checkSession() {
       try {
         const session = await authService.checkSession()
 
-        if (!isActive || mutationGen !== mutationRef.current || sessionGen !== sessionRef.current) {
+        if (!isActive || gen !== authGenRef.current) {
           return
         }
 
         setUser(session?.user ?? null)
         setStatus(session?.user ? 'authenticated' : 'unauthenticated')
       } catch {
-        if (isActive && mutationGen === mutationRef.current && sessionGen === sessionRef.current) {
+        if (isActive && gen === authGenRef.current) {
           setUser(null)
           setStatus('unauthenticated')
         }
@@ -39,15 +38,15 @@ export function AuthProvider({ children }) {
   }, [])
 
   async function login(credentials) {
-    const mutationGen = ++mutationRef.current
+    const gen = ++authGenRef.current
     try {
       const session = await authService.login(credentials)
-      if (mutationGen !== mutationRef.current) return session
+      if (gen !== authGenRef.current) return session
       setUser(session?.user ?? null)
       setStatus(session?.user ? 'authenticated' : 'unauthenticated')
       return session
     } catch (error) {
-      if (mutationGen === mutationRef.current) {
+      if (gen === authGenRef.current) {
         setUser(null)
         setStatus('unauthenticated')
       }
@@ -60,26 +59,29 @@ export function AuthProvider({ children }) {
   }
 
   async function logout() {
-    const mutationGen = ++mutationRef.current
+    const gen = ++authGenRef.current
     await authService.logout()
-    if (mutationGen !== mutationRef.current) return
+    if (gen !== authGenRef.current) return
     setUser(null)
     setStatus('unauthenticated')
   }
 
   async function refreshSession() {
-    const mutationGen = mutationRef.current
-    const sessionGen = ++sessionRef.current
+    const rgen = ++refreshGenRef.current
+    const authGenAtStart = authGenRef.current
     try {
       const session = await authService.checkSession()
-      if (mutationGen !== mutationRef.current || sessionGen !== sessionRef.current) {
+      if (rgen !== refreshGenRef.current) {
+        return session
+      }
+      if (authGenAtStart !== authGenRef.current) {
         return session
       }
       setUser(session?.user ?? null)
       setStatus(session?.user ? 'authenticated' : 'unauthenticated')
       return session
     } catch {
-      if (mutationGen === mutationRef.current && sessionGen === sessionRef.current) {
+      if (rgen === refreshGenRef.current && authGenAtStart === authGenRef.current) {
         setUser(null)
         setStatus('unauthenticated')
       }
