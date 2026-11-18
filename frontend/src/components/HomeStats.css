@@ -39,7 +39,7 @@
   display: block;
   font-family: var(--font-display);
   font-size: clamp(2.25rem, 4.5vw, 3.5rem);
-  font-weight: 400;
+  font-weight: var(--weight-display, 700);
   color: #ffffff;
   letter-spacing: -0.03em;
   line-height: 1;

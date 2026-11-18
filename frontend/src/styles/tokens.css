@@ -111,6 +111,28 @@
   --info-border: rgba(74, 91, 184, 0.28);
   --info-text: #3f4ea3;
 
+  /* ── Educational Vibrant Tones ─────────────────────────────────
+     Meaningful color tokens for scholarship achievements, verified status,
+     deadlines, AI guidance, and friendly learning accents. */
+  --edu-navy: #0f172a;
+  --edu-navy-soft: #f8fafc;
+  --edu-blue: #2563eb;
+  --edu-blue-hover: #1d4ed8;
+  --edu-blue-soft: #eff6ff;
+  --edu-blue-border: rgba(37, 99, 235, 0.25);
+  --edu-emerald: #059669;
+  --edu-emerald-hover: #047857;
+  --edu-emerald-soft: #ecfdf5;
+  --edu-emerald-border: rgba(5, 150, 105, 0.28);
+  --edu-amber: #d97706;
+  --edu-amber-hover: #b45309;
+  --edu-amber-soft: #fffbeb;
+  --edu-amber-border: rgba(217, 119, 6, 0.3);
+  --edu-violet: #7c3aed;
+  --edu-violet-hover: #6d28d9;
+  --edu-violet-soft: #f5f3ff;
+  --edu-violet-border: rgba(124, 58, 237, 0.28);
+
   /* ── Colour: focus ─────────────────────────────────────────────
       Two-tone ring per W3C C40: an inner band that contrasts with the
       component, and an outer band that contrasts with the page. The
@@ -149,38 +171,29 @@
     0 24px 48px -20px rgba(14, 26, 51, 0.16);
 
   /* ── Typography: families ────────────────────────────────────
-     Newsreader for anything a person reads as a statement: the hero,
-     page titles, section heads, card titles, large figures. Inter for
-     everything that has to be scanned or compared — tables, amounts,
-     deadlines, percentages, badges, buttons, nav.
-
-     The split is not decorative. Newsreader is an optical serif with
-     real italics: a hero line set in it reads editorial, which is the
-     register the reference establishes, and the italic carries the one
-     emphasised word in a headline. Inter has the disambiguated 1/l/I
-     and dotted zero that data columns need, and its 0.746 x-height
-     keeps dense 13px metadata legible where a serif would not. */
-  --font-display: 'Newsreader', 'Newsreader Fallback', 'Iowan Old Style', Georgia,
-    'Times New Roman', serif;
-  --font-body: 'Inter', 'Inter Fallback', ui-sans-serif, system-ui, -apple-system,
+     Plus Jakarta Sans carries every headline, hero statement and card
+     title with geometric clarity, energy and friendliness. Inter carries
+     every scanned data row, amount, badge, button and navigation item.
+     Hind Siliguri provides seamless bilingual Bengali support without
+     clipping character conjuncts or vowel signs. Newsreader is retained
+     as a prestigious academic editorial fallback. */
+  --font-display: 'Plus Jakarta Sans', 'Inter', 'Hind Siliguri', 'Newsreader', 'Iowan Old Style', Georgia,
+    sans-serif;
+  --font-body: 'Inter', 'Hind Siliguri', ui-sans-serif, system-ui, -apple-system,
     BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-bangla: 'Hind Siliguri', 'Inter', sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace;
 
   /* ── Typography: weight ───────────────────────────────────────
-     Non-round weights, and a ~7% reduction in dark mode. Light text
-     on a dark field blooms into its own counters and reads heavier
-     than it is; stepping the weight down is what keeps dark mode
-     looking like the same typeface rather than a bolder one.
-     Every rule in the codebase sets --weight, never font-weight
-     directly, so this multiplier reaches all of them. */
+     Optimized weights for crisp, modern educational interfaces. */
   --weight-multiplier: 1;
-  --weight-display: 330;
-  --weight-title: 430;
-  --weight-section: 430;
-  --weight-lede: 400;
+  --weight-display: 700;
+  --weight-title: 600;
+  --weight-section: 600;
+  --weight-lede: 450;
   --weight-body: 400;
-  --weight-label: 500;
-  --weight-strong: 580;
+  --weight-label: 550;
+  --weight-strong: 650;
   --weight: var(--weight-body);
 
   /* ── Typography: fluid scale ──────────────────────────────────

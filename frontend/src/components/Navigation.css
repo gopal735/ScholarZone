@@ -37,10 +37,10 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: Newsreader, "Iowan Old Style", Georgia, serif;
-  font-weight: 500;
-  font-size: 1.25rem;
-  letter-spacing: -0.015em;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-weight: 700;
+  font-size: 1.28rem;
+  letter-spacing: -0.025em;
   text-decoration: none;
   color: var(--ink, #1b2a4a);
   flex: none;
@@ -297,10 +297,11 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: Newsreader, Georgia, serif;
-  font-size: 1.25rem;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 1.28rem;
   color: var(--ink, #1b2a4a);
-  font-weight: 500;
+  font-weight: 700;
+  letter-spacing: -0.025em;
 }
 
 .sz-mobile-drawer__logo i {
