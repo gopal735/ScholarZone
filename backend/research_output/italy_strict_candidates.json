@@ -1,1 +1,259 @@
-[{"title": "VDA Test Scholarship", "country": "Italy", "provider": "Regione Valle d'Aosta", "academic_year": "2026/2027", "status": "open", "application_deadline": "2026-12-18", "deadline_display": "2026-12-04, 12:00", "official_source_url": "https://www.regione.vda.it/test", "preferred_id": 1337, "is_verified": true, "last_verified_at": "2026-11-18", "verification_status": "active"}]
+{
+  "country": "IT",
+  "region": "VDA",
+  "source": "Regione Autonoma Valle d'Aosta - Bandi ufficiali a.a. 2026/2027",
+  "source_urls": [
+    "https://www.regione.vda.it/allegato.aspx?pk=97584",
+    "https://www.regione.vda.it/allegato.aspx?pk=97595",
+    "https://www.regione.vda.it/istruzione/dirittostudio/borse_universita_valdostane/default_i.aspx"
+  ],
+  "last_verified": "2026-11-18",
+  "academic_year": "2026/2027",
+  "vda1": {
+    "name": "Bando VDA1",
+    "target": "Studenti iscritti a corsi universitari presso Atenei valdostani (Università della Valle d'Aosta, Conservatoire, Infermieristica Torino sede Aosta - questi ultimi ESCLUSI da VDA1)",
+    "economic_requirements": {
+      "isee_universitario_max": 28339.88,
+      "ispe_max": 61608.48,
+      "both_required": true
+    },
+    "exclusions": {
+      "nursing_students_torino_aosta": true,
+      "reason": "Possono presentare domanda a EDISU PIEMONTE"
+    },
+    "grant_amounts": {
+      "assegno_di_studio": {
+        "description": "Varia in base all'ISEE-Universitario e alla condizione di residenza (colonna A: pendolari/residenti entro 24km o beneficiari alloggio; colonna B: fuori sede oltre 24km senza alloggio)",
+        "bands": [
+          {
+            "fascia": 1,
+            "isee_min": 0,
+            "isee_max": 14169.94,
+            "column_a_resident_or_housing": 3476.00,
+            "column_b_fuori_sede": 4972.00
+          },
+          {
+            "fascia": 2,
+            "isee_min": 14169.95,
+            "isee_max": 18893.25,
+            "column_a_resident_or_housing": 3042.00,
+            "column_b_fuori_sede": 4343.00
+          },
+          {
+            "fascia": 3,
+            "isee_min": 18893.26,
+            "isee_max": 25452.43,
+            "column_a_resident_or_housing": 2598.00,
+            "column_b_fuori_sede": 3762.00
+          },
+          {
+            "fascia": 4,
+            "isee_min": 25452.44,
+            "isee_max": 28339.88,
+            "column_a_resident_or_housing": 2248.00,
+            "column_b_fuori_sede": 3063.00
+          }
+        ],
+        "column_a_conditions": [
+          "Residente a distanza < 24 km dalla sede universitaria",
+          "Beneficiario del contributo alloggio"
+        ],
+        "column_b_conditions": [
+          "Residente a distanza >= 24 km dalla sede universitaria",
+          "Non aver richiesto contributo alloggio",
+          "Non risultare idoneo al contributo alloggio",
+          "Idoneo ma non beneficiario per esaurimento fondi",
+          "Studenti cui nucleo familiare non risiede in Italia, iscritti al primo anno fuori corso, indipendentemente dalla distanza"
+        ]
+      },
+      "contributo_alloggio": {
+        "description": "Per studenti che pagano servizio abitativo (affitto/locazione/collegio)",
+        "min": 3145.00,
+        "max": 4924.00
+      },
+      "tuition_refund": {
+        "available": true,
+        "description": "Esonero dal pagamento tasse universitarie per l'anno accademico di riferimento. Se già pagate, rimborso da parte dell'università."
+      },
+      "mobility_grants": {
+        "available": true,
+        "description": "Assegni per partecipazione a programmi di mobilità internazionale",
+        "daily_rates": {
+          "description": "Rate giornaliere differenziate per VDA1 e VDA2 - consultare bando per importi specifici"
+        }
+      },
+      "meal_allowance": {
+        "description": "Servizio sostitutivo mensa (buoni pasto) NON PIU' ATTIVO. Sostituito da quota forfettaria inclusa nell'Assegno di studio per studenti idonei."
+      },
+      "degree_bonus": {
+        "available": true,
+        "description": "Premi di laurea previsti"
+      }
+    },
+    "merit_requirements": {
+      "description": "Possesso di un determinato numero minimo di crediti formativi (CFU) entro una determinata data. Non rileva la votazione degli esami.",
+      "programme_specific": true,
+      "ranking_by_merit_exception": {
+        "available": true,
+        "description": "Eccezione per ranking per merito - consultare bando per dettagli"
+      }
+    },
+    "application": {
+      "deadline": "2026-12-04T12:00:00",
+      "method": "Online tramite identità digitale (SPID, CIE, TS-CNS)",
+      "iban_required_before_submission": true,
+      "housing_aid_request_before_proof": true,
+      "residence_documentation_later_acceptable": true,
+      "isee_requirements": {
+        "valid_isee_with_universitario_indicator": true,
+        "student_name_in_isee_section": true,
+        "isee_corrente_accepted": true,
+        "ordinary_isee_exception": {
+          "condition": "Gravi e documentabili impedimenti nella produzione DSU per ISEE-Universitario",
+          "requires_explicit_request_in_notes": true
+        },
+        "caf_confirmed_exception": true,
+        "foreign_nonresident_temporary_credentials": {
+          "accepted": true,
+          "description": "Credenziali temporanee per non residenti stranieri"
+        }
+      }
+    },
+    "disability_exceptions": {
+      "isee_ispe_adjustments": true,
+      "description": "Eccezioni per disabilità su ISEE/ISPE - consultare bando per dettagli"
+    }
+  },
+  "vda2": {
+    "name": "Bando VDA2",
+    "target": "Studenti che non rientrano nei requisiti economici VDA1 ma con ISEE-Universitario <= € 44.968,00. Nessun limite ISPE.",
+    "economic_requirements": {
+      "isee_universitario_max": 44968.00,
+      "ispe_max": null,
+      "ispe_required": false
+    },
+    "exclusions": {
+      "nursing_students_torino_aosta": false
+    },
+    "grant_amounts": {
+      "assegno_di_studio": {
+        "description": "Varia in base all'ISEE-Universitario. NON previsto rimborso tasse universitarie.",
+        "bands": [
+          {
+            "fascia": 1,
+            "isee_min": 0,
+            "isee_max": 14169.94,
+            "amount_min": 1502.00,
+            "amount_max": 2524.00
+          },
+          {
+            "fascia": 2,
+            "isee_min": 14169.95,
+            "isee_max": 18893.25,
+            "amount_min": 1502.00,
+            "amount_max": 2524.00
+          },
+          {
+            "fascia": 3,
+            "isee_min": 18893.26,
+            "isee_max": 25452.43,
+            "amount_min": 1502.00,
+            "amount_max": 2524.00
+          },
+          {
+            "fascia": 4,
+            "isee_min": 25452.44,
+            "isee_max": 32992.00,
+            "amount_min": 1502.00,
+            "amount_max": 2524.00
+          },
+          {
+            "fascia": 5,
+            "isee_min": 32992.01,
+            "isee_max": 44968.00,
+            "amount_min": 1502.00,
+            "amount_max": 2524.00
+          }
+        ]
+      },
+      "contributo_alloggio": {
+        "description": "Per studenti che pagano servizio abitativo",
+        "min": 2013.00,
+        "max": 2933.00
+      },
+      "tuition_refund": {
+        "available": false,
+        "description": "NON previsto rimborso tasse universitarie"
+      },
+      "mobility_grants": {
+        "available": true,
+        "description": "Assegni per mobilità internazionale (importi diversi da VDA1)",
+        "daily_rates": {
+          "description": "Rate giornaliere differenziate per VDA2 - consultare bando per importi specifici"
+        }
+      },
+      "meal_allowance": {
+        "description": "Non prevista quota mensa/buoni pasto"
+      },
+      "degree_bonus": {
+        "available": true,
+        "description": "Premi di laurea previsti"
+      }
+    },
+    "merit_requirements": {
+      "description": "Possesso di un determinato numero minimo di crediti formativi (CFU) entro una determinata data. Non rileva la votazione degli esami.",
+      "programme_specific": true
+    },
+    "application": {
+      "deadline": "2026-12-04T12:00:00",
+      "method": "Online tramite identità digitale (SPID, CIE, TS-CNS)",
+      "iban_required_before_submission": true,
+      "housing_aid_request_before_proof": true,
+      "residence_documentation_later_acceptable": true,
+      "isee_requirements": {
+        "valid_isee_with_universitario_indicator": true,
+        "student_name_in_isee_section": true,
+        "isee_corrente_accepted": true,
+        "ordinary_isee_exception": {
+          "condition": "Gravi e documentabili impedimenti nella produzione DSU per ISEE-Universitario",
+          "requires_explicit_request_in_notes": true
+        },
+        "caf_confirmed_exception": true,
+        "foreign_nonresident_temporary_credentials": {
+          "accepted": true,
+          "description": "Credenziali temporanee per non residenti stranieri"
+        }
+      }
+    },
+    "disability_exceptions": {
+      "isee_ispe_adjustments": true,
+      "description": "Eccezioni per disabilità su ISEE - consultare bando per dettagli (ISPE non applicabile a VDA2)"
+    }
+  },
+  "common": {
+    "non_cumulative": "I benefici VDA1 e VDA2 non sono cumulabili",
+    "annual_renewal": "La domanda va ripresentata ogni anno accademico",
+    "application_deadline": "2026-12-04T12:00:00",
+    "fuelle_sede_conditions": {
+      "definition": "Residenza a distanza >= 24 km dalla sede universitaria frequentata",
+      "column_b_eligible": true,
+      "requires_either": [
+        "Non aver richiesto contributo alloggio",
+        "Non risultare idoneo al contributo alloggio",
+        "Idoneo ma non beneficiario per esaurimento fondi"
+      ]
+    },
+    "travel_reimbursement": {
+      "vda1": {
+        "available": true,
+        "max_limit": "Consultare bando per limite ufficiale"
+      },
+      "vda2": {
+        "available": false
+      }
+    }
+  },
+  "removed_unsupported": {
+    "march_31_enrolment_deadline": "REMOVED - Non supportato dai bandi ufficiali. La scadenza ufficiale è 4 dicembre 2026 ore 12:00."
+  }
+}
