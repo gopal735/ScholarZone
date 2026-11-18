@@ -726,7 +726,7 @@ beforeEach(() => {
       expect(result.id).toBe(1)
     })
 
-    it('does not return records classified as closed', async () => {
+    it('returns records classified as closed for historical access', async () => {
       clearSnapshotCache()
       const closedSnapshot = {
         ...mockSnapshot,
@@ -736,12 +736,55 @@ beforeEach(() => {
             ...mockSnapshot.scholarships[0],
             id: 3,
             status: 'closed',
+            is_archived: false,
+            verification_status: 'active',
           },
         ],
       }
       vi.stubGlobal('fetch', vi.fn(async () => ({ ok: true, json: async () => closedSnapshot })))
 
-      await expect(fetchScholarshipByIdFromSnapshot(3)).resolves.toBeNull()
+      const result = await fetchScholarshipByIdFromSnapshot(3)
+      expect(result).not.toBeNull()
+      expect(result.id).toBe(3)
+      expect(result.status).toBe('closed')
+    })
+
+    it('does not return archived records', async () => {
+      clearSnapshotCache()
+      const archivedSnapshot = {
+        ...mockSnapshot,
+        scholarships: [
+          ...mockSnapshot.scholarships,
+          {
+            ...mockSnapshot.scholarships[0],
+            id: 4,
+            is_archived: true,
+            status: 'closed',
+          },
+        ],
+      }
+      vi.stubGlobal('fetch', vi.fn(async () => ({ ok: true, json: async () => archivedSnapshot })))
+
+      await expect(fetchScholarshipByIdFromSnapshot(4)).resolves.toBeNull()
+    })
+
+    it('does not return quarantined records', async () => {
+      clearSnapshotCache()
+      const quarantinedSnapshot = {
+        ...mockSnapshot,
+        scholarships: [
+          ...mockSnapshot.scholarships,
+          {
+            ...mockSnapshot.scholarships[0],
+            id: 5,
+            verification_status: 'quarantined',
+            status: 'open',
+          },
+        ],
+      }
+      vi.stubGlobal('fetch', vi.fn(async () => ({ ok: true, json: async () => quarantinedSnapshot })))
+
+      await expect(fetchScholarshipByIdFromSnapshot(5)).resolves.toBeNull()
     })
   })
 

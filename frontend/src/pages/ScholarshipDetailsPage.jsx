@@ -255,10 +255,14 @@ export default function ScholarshipDetailsPage() {
          (the initial index.html carries index,follow and removing it without
          a replacement would leave no signal; default is index,follow).
        - fallback: valid scholarship loaded from the version-controlled snapshot.
-         This is real public data and must be indexable.
+         This is real public data and must be indexable (including closed records).
        - success: valid scholarship loaded from the API. Indexable.
        - missing: genuinely not found (404). Emit noindex.
-       - error: failed to load AND no fallback data available. Emit noindex. */
+       - error: failed to load AND no fallback data available. Emit noindex.
+       
+       Note: Closed scholarships ARE indexable for historical reference and
+       programme identity preservation. Only archived/quarantined/missing records
+       get noindex. */
     document.querySelectorAll('[data-sz-seo]').forEach(el => el.remove())
     const isGenuinelyMissing = loadState === 'missing' || (loadState === 'error' && !scholarship)
     if (isGenuinelyMissing) {
