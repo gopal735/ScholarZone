@@ -17,7 +17,7 @@ def db_session(tmp_path):
     db_path = tmp_path / "rag-test.db"
     engine = create_engine(f"sqlite:///{db_path.as_posix()}")
     Base.metadata.create_all(engine)
-    Session = sessionmaker(bind=engine)
+    Session = sessionmaker(bind=engine, autoflush=False, expire_on_commit=False)
     session = Session()
     s1 = Scholarship(
         title="DAAD Scholarship",
@@ -167,11 +167,27 @@ def test_pending_caller_edit_survives(db_session):
 
 
 def test_evidence_reflects_fresh_database_values(db_session):
-    from sqlalchemy import text
+    from sqlalchemy import create_engine, text
+    from sqlalchemy.orm import sessionmaker
 
-    db_session.execute(
+    # Retain ORM instance without expiring
+    retained = db_session.query(Scholarship).filter(Scholarship.title == "DAAD Scholarship").first()
+    retained_country = retained.country
+    assert retained_country == "Germany"
+    retained.country = "Germany"  # pending edit, not flushed
+    sid = retained.id
+
+    # Separate session updates DB row
+    engine = db_session.bind
+    other_session = sessionmaker(bind=engine, autoflush=False, expire_on_commit=False)()
+    other_session.execute(
         text("UPDATE scholarships SET country='France' WHERE title='DAAD Scholarship'")
     )
-    db_session.commit()
-    results = retrieve(db_session, "France")
-    assert any(r.title == "DAAD Scholarship" and r.country == "France" for r in results)
+    other_session.commit()
+    other_session.close()
+
+    # Retrieval should reflect fresh DB value, not retained instance
+    results = retrieve(db_session, "France", country="France")
+    ev = [r for r in results if r.scholarship_id == sid][0]
+    assert ev.country == "France"
+    assert retained.country == "Germany"  # pending edit preserved
