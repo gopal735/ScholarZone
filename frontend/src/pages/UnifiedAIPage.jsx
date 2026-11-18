@@ -515,9 +515,11 @@ export default function UnifiedAIPage() {
   const handleLocalAIToggle = (enabled) => {
     setLocalAIEnabled(enabled)
     setLocalAIEnabledState(enabled)
+    const gen = ++initGenerationRef.current
     getAIStatus({ isAuthenticated: auth.status === 'authenticated' }).then((status) => {
+      if (gen !== initGenerationRef.current) return
       setAiStatus(status)
-    })
+    }).catch(() => {})
   }
 
   const getModeBadge = () => {
