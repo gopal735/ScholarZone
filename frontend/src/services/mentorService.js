@@ -159,6 +159,10 @@ export function setMentorSessionScope(scope) {
     for (const key of Array.from(inFlightRequests.keys())) {
       if (key.startsWith(prevKey + '\u0000')) inFlightRequests.delete(key)
     }
+    // Keep compatibility export honest.
+    if (inFlightAsk && scopeKey(inFlightAsk.scope) === prevKey) {
+      inFlightAsk = null
+    }
   }
   currentSessionScope = scope
 }
@@ -176,10 +180,14 @@ export const resetSession = resetMentorSession
 export function clearInFlightAsk(scope) {
   if (scope == null) {
     inFlightRequests.clear()
+    inFlightAsk = null
   } else {
     const key = scopeKey(scope)
     for (const k of Array.from(inFlightRequests.keys())) {
       if (k.startsWith(key + '\u0000')) inFlightRequests.delete(k)
+    }
+    if (inFlightAsk && scopeKey(inFlightAsk.scope) === key) {
+      inFlightAsk = null
     }
   }
 }
@@ -214,6 +222,9 @@ export function askMentor(message, { signal, sessionScope, sessionId, sessionKey
   }).finally(() => {
     if (inFlightRequests.get(composite) === promise) {
       inFlightRequests.delete(composite)
+    }
+    if (inFlightAsk && inFlightAsk.promise === promise) {
+      inFlightAsk = null
     }
   })
 

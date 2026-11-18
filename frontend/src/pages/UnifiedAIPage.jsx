@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { 
   askUnifiedAI, 
@@ -11,6 +11,12 @@ import { MentorRateLimitedError, MentorValidationError, MentorUnavailableError, 
 import { setMentorSessionScope } from '../services/mentorService'
 import './UnifiedAIPage.css'
 import { useAuth } from '../hooks/useAuth'
+
+let scopeCounter = 0
+function createScopeId() {
+  scopeCounter += 1
+  return `scope-${scopeCounter}-${Date.now()}`
+}
 
 const SUGGESTED_PROMPTS = [
   { category: 'Discovery', prompt: 'Find fully funded Master\'s scholarships in Germany', icon: '🔍' },
@@ -262,11 +268,11 @@ function MessageList({ messages, messagesEndRef }) {
               </div>
             )}
 
-            {message.sources && Array.isArray(message.sources) && message.sources.filter((s) => s && typeof s === 'object' && !Array.isArray(s)).length > 0 && (
+            {message.sources && Array.isArray(message.sources) && message.sources.filter((s) => s && typeof s === 'object' && !Array.isArray(s) && typeof s.title === 'string' && (s.type === undefined || typeof s.type === 'string')).length > 0 && (
               <div className="message-sources">
                 <strong>Sources:</strong>
                 <ul>
-                  {message.sources.filter((s) => s && typeof s === 'object' && !Array.isArray(s)).map((source, i) => (
+                  {message.sources.filter((s) => s && typeof s === 'object' && !Array.isArray(s) && typeof s.title === 'string' && (s.type === undefined || typeof s.type === 'string')).map((source, i) => (
                     <li key={i}>
                       {source.type === 'scholarship' && source.url ? (
                         <a href={source.url} target="_blank" rel="noopener noreferrer">
@@ -518,12 +524,15 @@ export default function UnifiedAIPage() {
   const sessionKeyRef = useRef(null)
   const prevSessionKeyRef = useRef(null)
   const sessionGenerationRef = useRef(0)
+  const requestScopeRef = useRef(createScopeId())
+  const activeRequestIdRef = useRef(null)
+  const requestIdRef = useRef(0)
 
   // Derive session key from auth state
   const sessionKey = auth.status === 'authenticated' ? `auth:${auth.user?.id ?? 'unknown'}` : 'anon'
 
   // Track session changes and clear private Mentor messages
-  useEffect(() => {
+  useLayoutEffect(() => {
     const prev = prevSessionKeyRef.current
     prevSessionKeyRef.current = sessionKey
     sessionKeyRef.current = sessionKey
@@ -532,7 +541,12 @@ export default function UnifiedAIPage() {
     if (sessionChanged) {
       // Increment generation on every effective session change.
       sessionGenerationRef.current = sessionGenerationRef.current + 1
-      try { setMentorSessionScope?.(sessionGenerationRef.current) } catch { /* noop */ }
+      // Create a unique ephemeral scope for this session.
+      requestScopeRef.current = createScopeId()
+      try { setMentorSessionScope?.(requestScopeRef.current) } catch { /* noop */ }
+      // Invalidate any in-flight request owner and release loading state.
+      activeRequestIdRef.current = null
+      setIsLoading(false)
       // Session changed - remove private Mentor messages from previous session
       setMessages(prevMsgs => prevMsgs.filter(m => {
         if (m.private && m.sessionId !== sessionKey) return false
@@ -594,6 +608,12 @@ export default function UnifiedAIPage() {
     const userMessage = input.trim()
     const requestSessionKey = sessionKeyRef.current
     const requestSessionGeneration = sessionGenerationRef.current
+    const requestScope = requestScopeRef.current
+    const requestId = ++requestIdRef.current
+    activeRequestIdRef.current = requestId
+
+    const isMentorMode = auth.status === 'authenticated'
+
     setInput('')
     setIsLoading(true)
 
@@ -603,28 +623,37 @@ export default function UnifiedAIPage() {
       role: 'user',
       content: userMessage,
       timestamp: Date.now(),
-      private: false,
-      sessionId: null,
+      private: isMentorMode,
+      sessionId: isMentorMode ? requestSessionKey : null,
+      sessionScope: isMentorMode ? requestScope : null,
     }])
+
+    const isRequestCurrent = () => (
+      activeRequestIdRef.current === requestId &&
+      sessionKeyRef.current === requestSessionKey &&
+      sessionGenerationRef.current === requestSessionGeneration &&
+      requestScopeRef.current === requestScope
+    )
 
     try {
       const response = await askUnifiedAI(userMessage, {
         isAuthenticated: auth.status === 'authenticated',
+        sessionScope: requestScope,
+        isRequestCurrent,
         context: {
           conversationHistory: messages.slice(-6).map(m => ({
             role: m.role,
             content: m.content,
             private: m.private,
             sourceType: m.sourceType,
+            sessionScope: m.sessionScope,
           })),
           mentorOverview,
         }
       })
 
-      // Guard: discard if session changed during request
-      if (sessionKeyRef.current !== requestSessionKey || sessionGenerationRef.current !== requestSessionGeneration) {
-        setIsLoading(false)
-        inputRef.current?.focus()
+      // Guard: discard if request/session no longer current
+      if (!isRequestCurrent()) {
         return
       }
 
@@ -632,7 +661,7 @@ export default function UnifiedAIPage() {
       if (response.grounded) responseMode = 'grounded'
 
       if (response.authExpired) {
-        if (sessionKeyRef.current === requestSessionKey && sessionGenerationRef.current === requestSessionGeneration) {
+        if (isRequestCurrent()) {
           auth.refreshSession?.()
         }
       }
@@ -656,20 +685,20 @@ export default function UnifiedAIPage() {
         label: formatted.label,
         private: isPrivate,
         sessionId: isPrivate ? requestSessionKey : null,
+        sessionScope: isPrivate ? requestScope : null,
         timestamp: Date.now()
       }
 
+      if (!isRequestCurrent()) return
       setMessages(prev => {
         const updated = isPrivate
-          ? prev.map(m => m.id === userMsgId ? { ...m, private: true, sessionId: requestSessionKey } : m)
+          ? prev.map(m => m.id === userMsgId ? { ...m, private: true, sessionId: requestSessionKey, sessionScope: requestScope } : m)
           : prev
         return [...updated, assistantMsg]
       })
     } catch (error) {
       // Stale request guard at start of catch
-      if (sessionKeyRef.current !== requestSessionKey || sessionGenerationRef.current !== requestSessionGeneration) {
-        setIsLoading(false)
-        inputRef.current?.focus()
+      if (!isRequestCurrent()) {
         return
       }
 
@@ -677,24 +706,17 @@ export default function UnifiedAIPage() {
       let retryable = false
 
       if (error instanceof MentorUnauthenticatedError) {
-        if (sessionKeyRef.current === requestSessionKey && sessionGenerationRef.current === requestSessionGeneration) {
+        if (isRequestCurrent()) {
           auth.refreshSession?.()
         }
         errorMessage = 'Your session has expired. Please sign in again for personalized Mentor guidance. Public scholarship questions are still answered below.'
         try {
           const { askAIAssistant } = await import('../services/aiAssistant')
-          if (sessionKeyRef.current !== requestSessionKey || sessionGenerationRef.current !== requestSessionGeneration) {
-            setIsLoading(false)
-            inputRef.current?.focus()
-            return
-          }
+          if (!isRequestCurrent()) return
           const fallback = await askAIAssistant({ question: userMessage })
-          if (sessionKeyRef.current !== requestSessionKey || sessionGenerationRef.current !== requestSessionGeneration) {
-            setIsLoading(false)
-            inputRef.current?.focus()
-            return
-          }
+          if (!isRequestCurrent()) return
           const formatted = formatUnifiedResponse(fallback, 'grounded')
+          if (!isRequestCurrent()) return
           setMessages(prev => [...prev, {
             role: 'assistant',
             content: formatted.answer,
@@ -705,10 +727,9 @@ export default function UnifiedAIPage() {
             label: 'Grounded Search (sign in for personalized Mentor)',
             private: false,
             sessionId: null,
+            sessionScope: null,
             timestamp: Date.now()
           }])
-          setIsLoading(false)
-          inputRef.current?.focus()
           return
         } catch (fallbackErr) {
           void fallbackErr
@@ -722,18 +743,11 @@ export default function UnifiedAIPage() {
         errorMessage = 'Mentor service is temporarily unavailable. Using grounded search instead.'
         try {
           const { askAIAssistant } = await import('../services/aiAssistant')
-          if (sessionKeyRef.current !== requestSessionKey || sessionGenerationRef.current !== requestSessionGeneration) {
-            setIsLoading(false)
-            inputRef.current?.focus()
-            return
-          }
+          if (!isRequestCurrent()) return
           const fallback = await askAIAssistant({ question: userMessage })
-          if (sessionKeyRef.current !== requestSessionKey || sessionGenerationRef.current !== requestSessionGeneration) {
-            setIsLoading(false)
-            inputRef.current?.focus()
-            return
-          }
+          if (!isRequestCurrent()) return
           const formatted = formatUnifiedResponse(fallback, 'grounded')
+          if (!isRequestCurrent()) return
           setMessages(prev => [...prev, {
             role: 'assistant',
             content: formatted.answer,
@@ -744,10 +758,9 @@ export default function UnifiedAIPage() {
             label: '📋 Grounded Search (fallback)',
             private: false,
             sessionId: null,
+            sessionScope: null,
             timestamp: Date.now()
           }])
-          setIsLoading(false)
-          inputRef.current?.focus()
           return
         } catch (fallbackErr) {
           void fallbackErr
@@ -761,11 +774,7 @@ export default function UnifiedAIPage() {
       }
 
       // Final stale guard before error insertion
-      if (sessionKeyRef.current !== requestSessionKey || sessionGenerationRef.current !== requestSessionGeneration) {
-        setIsLoading(false)
-        inputRef.current?.focus()
-        return
-      }
+      if (!isRequestCurrent()) return
 
       setMessages(prev => [...prev, {
         role: 'assistant',
@@ -773,11 +782,14 @@ export default function UnifiedAIPage() {
         error: { message: errorMessage, retryable },
         private: false,
         sessionId: null,
+        sessionScope: null,
         timestamp: Date.now()
       }])
     } finally {
-      setIsLoading(false)
-      inputRef.current?.focus()
+      if (activeRequestIdRef.current === requestId) {
+        setIsLoading(false)
+        inputRef.current?.focus()
+      }
     }
   }
 
@@ -803,6 +815,12 @@ export default function UnifiedAIPage() {
     return { text: '📋 Grounded Search', class: 'mode-grounded' }
   }
 
+  // eslint-disable-next-line react-hooks/refs
+  const visibleMessages = messages.filter((m) => {
+    if (!m || !m.private) return true
+    return m.sessionId === sessionKey && m.sessionScope === requestScopeRef.current
+  })
+
   return (
     <div className="unified-ai-page">
       <Header 
@@ -824,7 +842,7 @@ export default function UnifiedAIPage() {
       )}
       <Disclaimer activeMode={aiStatus.activeMode} />
       <ChatArea 
-        messages={messages} 
+        messages={visibleMessages} 
         isLoading={isLoading} 
         activeMode={aiStatus.activeMode}
         messagesEndRef={messagesEndRef}

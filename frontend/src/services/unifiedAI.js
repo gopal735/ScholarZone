@@ -167,6 +167,8 @@ export async function askUnifiedAI(message, options = {}) {
     context = {},
     conversationHistory = [],
     isAuthenticated = false,
+    sessionScope,
+    isRequestCurrent,
   } = options
 
   // Resolve conversation history without letting an unintended empty array
@@ -177,24 +179,30 @@ export async function askUnifiedAI(message, options = {}) {
 
   if (mode === 'auto' && isAuthenticated) {
     try {
-      const raw = await askMentor(message, { signal })
+      const raw = await askMentor(message, { signal, sessionScope })
       const normalized = normalizeMentorResponse(raw)
       if (normalized) {
         return normalized
       }
       // Legacy Mentor response with answer field
       if (raw && typeof raw.answer === 'string' && raw.answer.trim() !== '') {
-        return { ...raw, kind: 'mentor-legacy', sources: Array.isArray(raw.sources) ? raw.sources.filter((s) => s && typeof s === 'object' && !Array.isArray(s)) : [] }
+        return { ...raw, kind: 'mentor-legacy', sources: Array.isArray(raw.sources) ? raw.sources.filter((s) => s && typeof s === 'object' && !Array.isArray(s) && typeof s.title === 'string' && (s.type === undefined || typeof s.type === 'string')) : [] }
       }
       // Malformed response - throw
       throw new MentorUnavailableError('Mentor returned an invalid response.', 500)
     } catch (error) {
       if (error instanceof MentorUnauthenticatedError) {
+        if (typeof isRequestCurrent === 'function' && !isRequestCurrent()) {
+          throw error
+        }
         try {
           const grounded = await askAIAssistant({
             question: message,
             context: { ...context, conversationHistory: sanitizePublicHistory(resolvedHistory) },
           })
+          if (typeof isRequestCurrent === 'function' && !isRequestCurrent()) {
+            throw error
+          }
           return { ...grounded, authExpired: true, kind: 'grounded' }
         } catch (fallbackError) {
           void fallbackError
@@ -282,7 +290,7 @@ export function formatUnifiedResponse(response, mode) {
     return {
       answer: response.answer,
       sources: Array.isArray(response.sources)
-        ? response.sources.filter((s) => s && typeof s === 'object' && !Array.isArray(s))
+        ? response.sources.filter((s) => s && typeof s === 'object' && !Array.isArray(s) && typeof s.title === 'string' && (s.type === undefined || typeof s.type === 'string'))
         : [],
       grounded: response.grounded ?? true,
       model: response.model,
@@ -297,7 +305,7 @@ export function formatUnifiedResponse(response, mode) {
     const base = {
       answer: typeof response.answer === 'string' ? response.answer : null,
       sources: Array.isArray(response.sources)
-        ? response.sources.filter((s) => s && typeof s === 'object' && !Array.isArray(s))
+        ? response.sources.filter((s) => s && typeof s === 'object' && !Array.isArray(s) && typeof s.title === 'string' && (s.type === undefined || typeof s.type === 'string'))
         : [],
       grounded: response.grounded ?? true,
       model: response.model,
@@ -308,9 +316,9 @@ export function formatUnifiedResponse(response, mode) {
 
   const base = {
     answer: typeof response.answer === 'string' ? response.answer : null,
-    sources: Array.isArray(response.sources)
-      ? response.sources.filter((s) => s && typeof s === 'object' && !Array.isArray(s))
-      : [],
+sources: Array.isArray(response.sources)
+        ? response.sources.filter((s) => s && typeof s === 'object' && !Array.isArray(s) && typeof s.title === 'string' && (s.type === undefined || typeof s.type === 'string'))
+        : [],
     grounded: response.grounded ?? true,
     model: response.model,
     tokensUsed: response.tokensUsed,
