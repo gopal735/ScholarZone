@@ -69,6 +69,12 @@ export function JourneyProvider({ children }) {
   const suppressPersistRef = useRef(false)
 
   /**
+   * Set when a deliberate reset has occurred and no new user edit has happened
+   * since. Prevents unmount/pagehide from recreating deleted storage.
+   */
+  const resetOccurredRef = useRef(false)
+
+  /**
    * Synchronously persists a document to storage and updates state/ref metadata.
    * Safe to call during unmount (bypasses setState when unmounted).
    */
@@ -116,6 +122,9 @@ export function JourneyProvider({ children }) {
       return undefined
     }
 
+    // A real user edit after reset: allow persistence again.
+    resetOccurredRef.current = false
+
     if (pendingTimerRef.current) {
       window.clearTimeout(pendingTimerRef.current)
       pendingTimerRef.current = null
@@ -145,7 +154,7 @@ export function JourneyProvider({ children }) {
       window.clearTimeout(pendingTimerRef.current)
       pendingTimerRef.current = null
     }
-    if (!isDirtyRef.current || suppressPersistRef.current) return false
+    if (!isDirtyRef.current || suppressPersistRef.current || resetOccurredRef.current) return false
     return performSave(latestStateRef.current)
   }, [performSave])
 
@@ -239,6 +248,7 @@ export function JourneyProvider({ children }) {
     // flush can recreate the deleted key.
     isDirtyRef.current = false
     suppressPersistRef.current = true
+    resetOccurredRef.current = true
     dispatch({ type: ACTIONS.RESET })
     if (!result.ok && result.reason === 'unavailable') {
       setStorageAvailable(false)
@@ -289,9 +299,8 @@ export function JourneyProvider({ children }) {
         pendingTimerRef.current = null
       }
       // Flush the latest state on unmount if there are unsaved changes.
-      // Always attempt to save, regardless of dirty flag, to handle timing
-      // edge cases where the debounce timer hasn't been set up yet.
-      if (!suppressPersistRef.current && latestStateRef.current && latestStateRef.current !== bootstrap.state) {
+      // Never flush after an explicit reset (would recreate deleted data).
+      if (!suppressPersistRef.current && !resetOccurredRef.current && latestStateRef.current && latestStateRef.current !== bootstrap.state) {
         try {
           saveJourneyState(latestStateRef.current)
           isDirtyRef.current = false
