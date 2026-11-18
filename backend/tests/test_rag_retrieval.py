@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pytest
 
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker
 
 from app.models import Base, Scholarship
@@ -154,7 +154,7 @@ def test_zero_limit_returns_empty(db_session):
 
 
 def test_negative_limit_returns_empty(db_session):
-    assert retrieve(db_session, "Germany", limit=-3) == []
+    assert retrieve(db_session, "Germany", include_archived=True, limit=-1) == []
 
 
 def test_provenance_preserved(db_session):

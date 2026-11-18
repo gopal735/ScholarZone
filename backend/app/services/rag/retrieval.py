@@ -106,7 +106,7 @@ def _score_chunk(query_tokens: Sequence[str], chunk_text: str, matched_fields: l
         )
     phrase_bonus = 2.0 if has_phrase else 0.0
     field_bonus = 0.5 * len(matched_fields)
-    base = hits / max(1, len(set(query_tokens)))
+    base = len(set(query_tokens) & set(chunk_tokens)) / max(1, len(set(query_tokens)))
     return base + phrase_bonus + field_bonus
 
 
@@ -124,7 +124,7 @@ def retrieve(
     if limit is None or limit <= 0:
         return []
     query_tokens = _tokens(query)
-    stmt = db.query(Scholarship)
+    stmt = db.query(Scholarship).execution_options(populate_existing=True)
 
     if not include_archived:
         stmt = stmt.filter(Scholarship.is_archived.is_(False))
