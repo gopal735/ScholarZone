@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
 import './ItalyDsuGuidePage.css'
 
 const REGIONS = [
@@ -471,7 +470,6 @@ const DSU_SECTIONS = [
 ]
 
 export default function ItalyDsuGuidePage() {
-  const [activeSection, setActiveSection] = useState('overview')
   const [searchTerm, setSearchTerm] = useState('')
   const [regionFilter, setRegionFilter] = useState('all')
 
