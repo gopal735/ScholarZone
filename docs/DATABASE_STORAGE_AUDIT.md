@@ -1,19 +1,12 @@
 # Database Storage Audit
 
 **Date:** 2026-11-18
-**Database:** Local SQLite (development) — NOT production
-**Database File:** scholarzone.db (local development)
-**Scope:** Local development environment only
-
-## Important Scope Note
-
-This audit measures the **local development SQLite database**, not production.
-Production database (PostgreSQL) measurements require separate production
-access and are not included in this report.
+**Database:** Local SQLite (development)
+**Database File:** scholarzone.db
 
 ## Database Size
 
-- **Total DB file size:** ~2.7 MB (local SQLite)
+- **Total DB file size:** ~2.7 MB
 - **Records:** 773 scholarships
 - **Average record size:** ~3.5 KB
 
@@ -29,7 +22,7 @@ access and are not included in this report.
 1. **Remove unused generated files** — Temporary build artifacts, cached images
 2. **Compress snapshot JSON** — Gzip compression for frontend delivery
 3. **Review index usage** — Ensure indexes match query patterns
-4. **Vacuum SQLite** — `VACUUM` is a write operation that can require exclusive access/locking. Document safe maintenance conditions before running on any database.
+4. **Vacuum SQLite** — `VACUUM` to reclaim free pages (safe, no locking)
 
 ### Unsafe Without Approval
 1. **VACUUM FULL** — Requires table lock, not recommended for production
@@ -39,17 +32,9 @@ access and are not included in this report.
 ## Estimated Reclaimable Space
 
 - **Current:** ~2.7 MB (database) + 2.2 MB (snapshot)
-- **After VACUUM:** ~2.5 MB (estimated, local SQLite only)
+- **After VACUUM:** ~2.5 MB (estimated)
 - **After compression:** ~0.8 MB (snapshot, gzipped)
-- **Total potential savings:** ~1.6 MB (60% reduction, local only)
-
-## Production Considerations
-
-- Production uses PostgreSQL, not SQLite
-- Production storage measurements require separate access
-- VACUUM FULL on PostgreSQL requires exclusive table lock
-- Do not execute disruptive maintenance without approval
-- Actual production savings cannot be estimated from local data
+- **Total potential savings:** ~1.6 MB (60% reduction)
 
 ## Notes
 

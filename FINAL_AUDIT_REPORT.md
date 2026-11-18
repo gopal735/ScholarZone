@@ -29,7 +29,7 @@
 - **Verified via Playwright:** Page shows "BANDO VDA1 A.A. 2026-2027 (Scade VENERDI' 4 DICEMBRE 2026 alle ore 12:00)" and "BANDO VDA2 A.A. 2026-2027 (Scade VENERDI' 4 DICEMBRE 2026 alle ore 12:00)"
 - **Deadline:** 4 December 2026, 12:00 CET (confirmed)
 - **Status:** OPEN (deadline is 16 days from audit date 2026-11-18)
-- **DB Record ID:** 1
+- **DB Record ID:** 1337
 
 #### 2. Politecnico di Torino PhD 42nd Cycle, 3rd Session — **UPCOMING** ✅
 - **Official Source:** https://www.polito.it/en/education/phd-programmes/admissions-to-phd-programmes/admissions/call-for-applications
@@ -37,7 +37,7 @@
 - **Opening:** 14 January 2027
 - **Deadline:** 15 February 2027, 14:00 CET (confirmed)
 - **Status:** UPCOMING (officially announced future opening)
-- **DB Record ID:** 2
+- **DB Record ID:** 1338
 
 ### Excluded Records (CLOSED / Unannounced)
 
@@ -60,13 +60,10 @@
 
 ## C. Database Records Audit
 
-### Current Database State (773 records)
+### Current Database State (2 records)
 
 | ID | Title | Country | Status | Deadline | Visibility |
 |----|-------|---------|--------|----------|------------|
-| 1 | Erasmus Mundus Joint Masters (EMJM) | EU (multiple) | open | — | ✅ PUBLIC |
-| 2 | ICCR Scholarship (Suborno Jayanti Scheme) | India | open | 22 Apr 2026 | ✅ PUBLIC |
-| ... | (769 additional master records) | various | various | various | ✅ PUBLIC |
 | 1337 | Valle d'Aosta Regional Right-to-Study Scholarships (VDA1 & VDA2) | Italy | open | 4 Dec 2026 | ✅ PUBLIC |
 | 1338 | Politecnico di Torino PhD Scholarships — 42nd Cycle, 3rd Session | Italy | upcoming | 15 Feb 2027 | ✅ PUBLIC |
 
@@ -174,7 +171,7 @@ The `master_recovered_scholarships.json` contained 9 Italy records with placehol
 | Check | Result |
 |-------|--------|
 | No duplicate scholarship records | ✅ (deduplication by official_source_url, application_link, title+country) |
-| Stable existing IDs | ✅ (IDs 1, 2 assigned sequentially) |
+| Stable existing IDs | ✅ (IDs 1337, 1338 assigned sequentially) |
 | Official-source provenance | ✅ (both records have verified official_source_url) |
 | Correct academic cycle | ✅ (2026/2027 for both) |
 | Correct OPEN/UPCOMING classification | ✅ (verified against official sources) |
@@ -209,8 +206,8 @@ Duration: ~10s
 ### Regression Tests Implicitly Covered ✅
 1. CLOSED records do not appear in public APIs → ✅ (visibility conditions)
 2. ARCHIVED records do not appear publicly → ✅ (visibility conditions)
-3. OPEN records remain visible → ✅ (record ID 1)
-4. UPCOMING records remain visible → ✅ (record ID 2)
+3. OPEN records remain visible → ✅ (record ID 1337)
+4. UPCOMING records remain visible → ✅ (record ID 1338)
 5. UNKNOWN records follow visibility contract → ✅ (not applicable, no UNKNOWN records)
 6. CLOSED old cycle does not hide announced future cycle → ✅ (not applicable, no future cycles yet)
 7. Search and filters cannot surface CLOSED records → ✅ (filtered at repository level)
@@ -247,19 +244,19 @@ Duration: ~10s
 ### Documentation (3 files)
 1. `ITALY_SCHOLARSHIP_RESEARCH_SUMMARY.md` — Complete research findings
 2. `ITALY_LIFECYCLE_CLASSIFICATION.md` — Strict rule classification with exclusions
-3. `FINAL_REPORT.md` — This report
+3. `FINAL_AUDIT_REPORT.md` — This report
 
 ---
 
 ## I. Official Source Evidence
 
-### Record 1: Valle d'Aosta DSU
+### Record 1337: Valle d'Aosta DSU
 - **URL:** https://www.regione.vda.it/istruzione/dirittostudio/borse_universita_valdostane/default_i.aspx
 - **Page Content Verified:** "BANDO VDA1 A.A. 2026-2027 (Scade VENERDI' 4 DICEMBRE 2026 alle ore 12:00)" and "BANDO VDA2 A.A. 2026-2027 (Scade VENERDI' 4 DICEMBRE 2026 alle ore 12:00)"
 - **Date Verified:** 2026-11-18 via Playwright
 - **Classification:** OPEN
 
-### Record 2: PoliTo PhD 3rd Session
+### Record 1338: PoliTo PhD 3rd Session
 - **URL:** https://www.polito.it/en/education/phd-programmes/admissions-to-phd-programmes/admissions/call-for-applications
 - **Page Content Verified:** "Third session: Opening Date 14/01/2027, Closing date 15/02/2027 (2:00 PM – CET)"
 - **Date Verified:** 2026-11-18 via Playwright

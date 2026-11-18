@@ -16,6 +16,7 @@
 - **ISEE Limits:** VDA1: €28,339.88 / €61,608.48; VDA2: €44,968 (no ISPE)
 - **International Students:** Credentials provided if no SPID/CIE
 - **Action:** ADD as new record (status: "open")
+- **DB Record ID:** 1337
 
 ---
 
@@ -28,6 +29,7 @@
 - **Positions:** Part of minimum 110 funded positions across all sessions
 - **Scholarship:** €18,854.52/year gross
 - **Action:** ADD as new record (status: "upcoming")
+- **DB Record ID:** 1338
 
 ---
 
@@ -96,7 +98,7 @@
 | Invest Your Talent 12th ed. | ~Apr–May 2027 | **NO** | Mention in DSU guide only |
 | Regional DSU 2027/28 (all) | ~Jun–Sep 2027 | **NO** | Mention in DSU guide only |
 | Padua Excellence 2027/28 | ~Nov 2026–May 2027 | **NO** | Mention in DSU guide only |
-| PoliMi Merit 2027/28 | Early Bird admission + fee payment by 1 Dec 2026; scholarship application until 12:00 CET on 15 Dec 2026 | **YES** | Officially announced (published call) |
+| PoliMi Merit 2027/28 | ~Oct–Dec 2026 | **NO** | Mention in DSU guide only |
 | PhD 43rd Cycle | ~Mar–Apr 2027 | **NO** | Mention in DSU guide only |
 
 ---
@@ -114,7 +116,7 @@
 
 ## 🎯 Records to Actually Insert
 
-### Record 1: Valle d'Aosta Regional DSU (VDA1 & VDA2)
+### Record 1337: Valle d'Aosta Regional DSU (VDA1 & VDA2)
 - **title:** "Valle d'Aosta Regional Right-to-Study Scholarships (VDA1 & VDA2)"
 - **official_title:** "Bando di concorso per l'attribuzione di assegni di studio e contributi alloggio a favore di studenti iscritti a corsi universitari presso Atenei valdostani"
 - **provider:** "Regione Autonoma Valle d'Aosta"
@@ -149,7 +151,7 @@
 - **last_verified_at:** "2026-11-18"
 - **verification_notes:** "Official call published; deadline 4 Dec 2026 12:00; two bands VDA1 (ISEE≤28,339.88, ISPE≤61,608.48) and VDA2 (ISEE≤44,968, no ISPE); international students without SPID/CIE get temporary credentials"
 
-### Record 2: Politecnico di Torino PhD 42nd Cycle — 3rd Session
+### Record 1338: Politecnico di Torino PhD 42nd Cycle — 3rd Session
 - **title:** "Politecnico di Torino PhD Scholarships — 42nd Cycle, 3rd Session"
 - **official_title:** "Call for applications for admissions to the PhD programmes of Politecnico di Torino for the 42nd cycle — 3rd session"
 - **provider:** "Politecnico di Torino"
@@ -183,7 +185,7 @@
 - **required_documents:** ["Master's degree", "Research proposal", "Language certificates", "References"]
 - **verification_status:** "active"
 - **last_verified_at:** "2026-11-18"
-- **verification_notes": "Official call published; 3rd session opens 14 Jan 2027, closes 15 Feb 2027 14:00 CET; part of min 110 funded positions; €18,854.52/year gross; research budget 10%; 50% increase for abroad periods; tuition waiver (regional tax €140 due)"
+- **verification_notes:** "Official call published; 3rd session opens 14 Jan 2027, closes 15 Feb 2027 14:00 CET; part of min 110 funded positions; €18,854.52/year gross; research budget 10%; 50% increase for abroad periods; tuition waiver (regional tax €140 due)"
 
 ---
 
