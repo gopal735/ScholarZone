@@ -306,8 +306,17 @@ export function JourneyProvider({ children }) {
     pendingOriginRef.current = StateOrigin.REPLACE_DOCUMENT
     const next = normalizeJourneyDocument(document)
     dispatch({ type: ACTIONS.HYDRATE, payload: next })
+    // Schedule a debounced save for the imported document.
+    // The persistence effect skips REPLACE_DOCUMENT origin, so we
+    // schedule the save here. This is a programmatic save, not a
+    // user edit, but the document should still be persisted.
+    isDirtyRef.current = true
+    pendingTimerRef.current = window.setTimeout(() => {
+      pendingTimerRef.current = null
+      performSave(latestStateRef.current)
+    }, PERSIST_DEBOUNCE_MS)
     return next
-  }, [])
+  }, [performSave])
 
   const value = useMemo(
     () => ({
