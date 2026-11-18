@@ -5,6 +5,11 @@ It does NOT generate text. It only retrieves and ranks evidence from the
 canonical scholarship catalogue. External LLM generation remains disabled until
 the privacy boundary in PR #102 is verified and a policy-compliant provider is
 configured.
+
+Note: chunk_id values are synthesized from canonical scholarship fields
+("{scholarship_id}:{section}") rather than persisted chunk rows. This is a
+retrieval-only foundation; persistent indexing, embeddings, and vector search
+are not implemented in this PR.
 """
 
 from __future__ import annotations
@@ -46,23 +51,19 @@ def _normalize(text: str | None) -> str:
 
 def _tokens(text: str | None) -> list[str]:
     normalized = _normalize(text)
-    # Keep Bengali and Latin characters; split on non-word boundaries.
     return [t for t in re.split(r"[^\w\u0980-\u09FF]+", normalized) if t]
 
 
 def _is_publicly_visible(scholarship: Scholarship) -> bool:
-    """Respect ScholarZone public visibility policy."""
     if getattr(scholarship, "is_archived", False):
         return False
     status = (scholarship.status or "").lower()
-    # CLOSED records are excluded from normal current-opportunity discovery.
     if status == "closed":
         return False
     return True
 
 
 def _build_chunks(scholarship: Scholarship) -> list[tuple[str, str]]:
-    """Build (chunk_id, chunk_text) pairs from a scholarship record."""
     chunks: list[tuple[str, str]] = []
     sid = scholarship.id
 
@@ -71,6 +72,8 @@ def _build_chunks(scholarship: Scholarship) -> list[tuple[str, str]]:
             chunks.append((f"{sid}:{section}", str(text).strip()))
 
     add("title", scholarship.title)
+    add("country", scholarship.country)
+    add("degree", scholarship.degree)
     add("description", scholarship.description)
     add("eligibility", " ".join(scholarship.eligibility or []))
     add("eligibility_summary", scholarship.eligibility_summary)
@@ -91,10 +94,17 @@ def _score_chunk(query_tokens: Sequence[str], chunk_text: str, matched_fields: l
         return 0.0
     chunk_set = set(chunk_tokens)
     hits = sum(1 for t in query_tokens if t in chunk_set)
-    # Exact phrase bonus
-    phrase = " ".join(query_tokens)
-    phrase_bonus = 2.0 if phrase and phrase in _normalize(chunk_text) else 0.0
-    # Field bonus
+    if hits == 0:
+        return 0.0
+    width = len(query_tokens)
+    has_phrase = False
+    if width <= len(chunk_tokens):
+        query_list = list(query_tokens)
+        has_phrase = any(
+            chunk_tokens[i:i + width] == query_list
+            for i in range(len(chunk_tokens) - width + 1)
+        )
+    phrase_bonus = 2.0 if has_phrase else 0.0
     field_bonus = 0.5 * len(matched_fields)
     base = hits / max(1, len(set(query_tokens)))
     return base + phrase_bonus + field_bonus
@@ -111,25 +121,23 @@ def retrieve(
     include_archived: bool = False,
     limit: int = 10,
 ) -> list[RagEvidence]:
-    """Hybrid structured + lexical retrieval over the scholarship catalogue.
-
-    Returns a bounded, deterministic list of evidence items. Retrieval works
-    without any LLM provider.
-    """
+    if limit is None or limit <= 0:
+        return []
     query_tokens = _tokens(query)
     stmt = db.query(Scholarship)
 
-    # Structured filters (Layer A)
+    if not include_archived:
+        stmt = stmt.filter(Scholarship.is_archived.is_(False))
     if country:
-        stmt = stmt.filter(Scholarship.country.ilike(f"%{country}%"))
+        stmt = stmt.filter(Scholarship.country.icontains(country, autoescape=True))
     if degree:
-        stmt = stmt.filter(Scholarship.degree.ilike(f"%{degree}%"))
+        stmt = stmt.filter(Scholarship.degree.icontains(degree, autoescape=True))
     if subject:
         stmt = stmt.filter(
             or_(
-                Scholarship.title.ilike(f"%{subject}%"),
-                Scholarship.description.ilike(f"%{subject}%"),
-                Scholarship.eligibility_summary.ilike(f"%{subject}%"),
+                Scholarship.title.icontains(subject, autoescape=True),
+                Scholarship.description.icontains(subject, autoescape=True),
+                Scholarship.eligibility_summary.icontains(subject, autoescape=True),
             )
         )
 
@@ -174,7 +182,6 @@ def retrieve(
                 )
             )
 
-    # Deduplicate by scholarship (keep best chunk per scholarship)
     best_by_scholarship: dict[int, RagEvidence] = {}
     for ev in results:
         existing = best_by_scholarship.get(ev.scholarship_id)
