@@ -26,7 +26,46 @@ import logging
 from datetime import datetime, timezone
 
 from sqlalchemy import and_, func, select
+from sqlalchemy.exc import DBAPIError, ProgrammingError
 from sqlalchemy.orm import Session
+
+try:
+    from psycopg.errors import UndefinedTable as PsycopgUndefinedTable
+except ImportError:  # pragma: no cover - psycopg2 fallback
+    try:
+        from psycopg2.errors import UndefinedTable as PsycopgUndefinedTable
+    except ImportError:
+        PsycopgUndefinedTable = None
+
+try:
+    from psycopg.errors import UndefinedColumn as PsycopgUndefinedColumn
+except ImportError:  # pragma: no cover - psycopg2 fallback
+    try:
+        from psycopg2.errors import UndefinedColumn as PsycopgUndefinedColumn
+    except ImportError:
+        PsycopgUndefinedColumn = None
+
+
+def _missing_schema_error(exc: BaseException) -> bool:
+    """Return True when *exc* is a PostgreSQL missing-table/column error."""
+    current: BaseException | None = exc
+    seen: set[int] = set()
+    while current is not None and id(current) not in seen:
+        seen.add(id(current))
+        pgcode = getattr(current, "pgcode", None) or getattr(current, "sqlstate", None) or getattr(current, "code", None)
+        if pgcode in {"42P01", "42703"}:
+            return True
+        if PsycopgUndefinedTable is not None and isinstance(current, PsycopgUndefinedTable):
+            return True
+        if PsycopgUndefinedColumn is not None and isinstance(current, PsycopgUndefinedColumn):
+            return True
+        if type(current).__name__ in {"UndefinedTable", "UndefinedColumn"}:
+            return True
+        text = str(current).lower()
+        if "does not exist" in text and ("relation" in text or "column" in text):
+            return True
+        current = getattr(current, "orig", None) or getattr(current, "__cause__", None) or getattr(current, "__context__", None)
+    return False
 
 from ..models import Scholarship
 from ..models_supervisor import (
@@ -47,6 +86,13 @@ from .supervisor_status import (
     OfficialContactVerificationStatus,
     PUBLIC_CONTACT_STATUSES,
 )
+
+# Custom exception for missing schema
+class SchemaNotReadyError(Exception):
+    """Raised when a required database table or column is missing."""
+    def __init__(self, missing_object: str):
+        self.missing_object = missing_object
+        super().__init__(f"Required schema object missing: {missing_object}")
 
 logger = logging.getLogger(__name__)
 
@@ -196,21 +242,29 @@ def _load_sources(
 def _load_official_contacts(
     db: Session, scholarship_id: int
 ) -> list[dict]:
-    """Load verified official contacts for a scholarship."""
-    rows = db.execute(
-        select(OfficialContact)
-        .where(
-            and_(
-                OfficialContact.scholarship_id == scholarship_id,
-                OfficialContact.verification_status.in_(PUBLIC_CONTACT_STATUSES),
+    """Load verified official contacts for a scholarship.
+
+    Raises SchemaNotReadyError if the official_contacts table is missing.
+    """
+    try:
+        rows = db.execute(
+            select(OfficialContact)
+            .where(
+                and_(
+                    OfficialContact.scholarship_id == scholarship_id,
+                    OfficialContact.verification_status.in_(PUBLIC_CONTACT_STATUSES),
+                )
             )
-        )
-        .order_by(
-            OfficialContact.verified_at.desc().nullslast(),
-            OfficialContact.retrieved_at.desc(),
-            OfficialContact.id.asc(),
-        )
-    ).scalars()
+            .order_by(
+                OfficialContact.verified_at.desc().nullslast(),
+                OfficialContact.retrieved_at.desc(),
+                OfficialContact.id.asc(),
+            )
+        ).scalars()
+    except (ProgrammingError, DBAPIError) as exc:
+        if _missing_schema_error(exc):
+            raise SchemaNotReadyError("official_contacts") from exc
+        raise
 
     contacts = []
     for row in rows:

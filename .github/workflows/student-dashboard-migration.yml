@@ -18,7 +18,7 @@ on:
         default: false
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: student-dashboard-migration-production
   cancel-in-progress: false
 
 # `shell: bash` adds `-o pipefail`, which GitHub's default Linux shell omits.
@@ -121,7 +121,7 @@ jobs:
           SCHOLARZONE_EXPECTED_DB_HOST: ${{ secrets.SCHOLARZONE_EXPECTED_DB_HOST }}
         run: |
           cd backend
-          python migrate_schema.py --dry-run 2>&1 | tee migrate_dry_run.log
+          python migrate_schema.py --dry-run --report 2>&1 | tee migrate_dry_run.log
 
       - name: Apply
         if: ${{ inputs.apply }}
@@ -146,7 +146,7 @@ jobs:
           SCHOLARZONE_EXPECTED_DB_HOST: ${{ secrets.SCHOLARZONE_EXPECTED_DB_HOST }}
         run: |
           cd backend
-          python migrate_schema.py --validate-only
+          python migrate_schema.py --validate-only --report
 
       - name: Upload migration logs
         if: always()
