@@ -37,34 +37,36 @@ export function getAIMode() {
  * based on authentication state and AI availability.
  */
 export async function askUnifiedAI(message, options = {}) {
-  const { 
-    mode = 'auto', 
-    signal, 
+  const {
+    mode = 'auto',
+    signal,
     context = {},
-    conversationHistory = [] 
+    conversationHistory = [],
+    isAuthenticated = false,
   } = options
 
-  // Auto-detect best mode
-  if (mode === 'auto') {
-    // Check if user is authenticated and has mentor access
+  if (mode === 'auto' && isAuthenticated) {
     try {
-      await fetchMentorOverview({ signal: AbortSignal.timeout(2000) })
-      // If we get here, user is authenticated - use mentor for personalized guidance
-      return askMentor(message, { signal })
+      return await askMentor(message, { signal })
     } catch (error) {
       if (error instanceof MentorUnauthenticatedError) {
-        // Not authenticated - fall through to AI Assistant
-      } else if (error instanceof MentorRateLimitedError) {
-        throw error
-      } else if (error instanceof MentorValidationError) {
-        throw error
+        try {
+          const grounded = await askAIAssistant({
+            question: message,
+            context: { ...context, conversationHistory },
+          })
+          return { ...grounded, authExpired: true }
+        } catch (fallbackError) {
+          void fallbackError
+          throw error
+        }
       }
-      // Network or other error - fall through
+      if (error instanceof MentorRateLimitedError) throw error
+      if (error instanceof MentorValidationError) throw error
+      if (error instanceof MentorUnavailableError) throw error
     }
   }
 
-  // Use AI Assistant (grounded + optional AI). It handles remote
-  // unavailability/fallbacks internally and returns grounded answers when needed.
   return askAIAssistant({
     question: message,
     context: {
@@ -77,22 +79,20 @@ export async function askUnifiedAI(message, options = {}) {
 /**
  * Get AI status for UI display
  */
-export async function getAIStatus() {
-  const mentorAvailable = await checkMentorAccess()
+export async function getAIStatus({ isAuthenticated = false } = {}) {
+  const mentorAvailable = Boolean(isAuthenticated)
   const aiAvailable = await checkAIAvailability()
   const localAIEnabled = isLocalAIEnabled()
-  
-  // Local AI requires actual model loading capability (Transformers.js)
-  // Currently not implemented - returns false until Transformers.js is integrated
+
   const localAIModelReady = await checkLocalAIModelReady()
-  
+
   return {
     mentor: mentorAvailable,
     remoteAI: aiAvailable,
     localAI: localAIEnabled && localAIModelReady,
     localAIEnabled: localAIEnabled,
     localAIModelReady,
-    grounded: true, // Always available
+    grounded: true,
     activeMode: mentorAvailable ? 'mentor' : (localAIEnabled && localAIModelReady ? 'local_ai' : (aiAvailable ? 'remote_ai' : 'grounded')),
   }
 }
@@ -101,15 +101,6 @@ async function checkLocalAIModelReady() {
   // Transformers.js not yet implemented - returns false
   // When implemented, this would check if the model is actually loaded
   return false
-}
-
-async function checkMentorAccess() {
-  try {
-    await fetchMentorOverview({ signal: AbortSignal.timeout(2000) })
-    return true
-  } catch {
-    return false
-  }
 }
 
 function isLocalAIEnabled() {

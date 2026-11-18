@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import DOMPurify from 'dompurify'
 import { 
@@ -8,8 +8,9 @@ import {
   setLocalAIEnabled,
   isLocalAIEnabled 
 } from '../services/unifiedAI'
-import { MentorRateLimitedError, MentorValidationError, MentorUnavailableError } from '../services/mentorService'
+import { MentorRateLimitedError, MentorValidationError, MentorUnavailableError, MentorUnauthenticatedError } from '../services/mentorService'
 import './UnifiedAIPage.css'
+import { useAuth } from '../hooks/useAuth'
 
 const SUGGESTED_PROMPTS = [
   { category: 'Discovery', prompt: 'Find fully funded Master\'s scholarships in Germany', icon: '🔍' },
@@ -330,6 +331,7 @@ function Footer() {
 }
 
 export default function UnifiedAIPage() {
+  const auth = useAuth()
   const [messages, setMessages] = useState([])
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -339,20 +341,36 @@ export default function UnifiedAIPage() {
   const [mentorOverview, setMentorOverview] = useState(null)
   const messagesEndRef = useRef(null)
   const inputRef = useRef(null)
+  const initGenerationRef = useRef(0)
+  const statusGenerationRef = useRef(0)
+  const isMountedRef = useRef(true)
 
-  const initializeAI = async () => {
-    const status = await getAIStatus()
+  const initializeAI = useCallback(async () => {
+    const initGen = ++initGenerationRef.current
+    const statusGen = ++statusGenerationRef.current
+    setMentorOverview(null)
+
+    const status = await getAIStatus({ isAuthenticated: auth.status === 'authenticated' })
+    if (statusGen !== statusGenerationRef.current || !isMountedRef.current) return
     setAiStatus(status)
     setLocalAIEnabledState(isLocalAIEnabled())
-    
-    try {
-      const { fetchMentorOverview } = await import('../services/mentorService')
-      const overview = await fetchMentorOverview()
-      setMentorOverview(overview)
-    } catch (err) {
-      void err
+
+    if (auth.status === 'authenticated') {
+      try {
+        const { fetchMentorOverview } = await import('../services/mentorService')
+        const overview = await fetchMentorOverview()
+        if (initGen !== initGenerationRef.current || !isMountedRef.current) return
+        setMentorOverview(overview)
+      } catch (err) {
+        void err
+        if (initGen !== initGenerationRef.current || !isMountedRef.current) return
+        setMentorOverview(null)
+      }
+    } else {
+      if (initGen !== initGenerationRef.current) return
+      setMentorOverview(null)
     }
-  }
+  }, [auth.status])
 
   useEffect(() => {
     const mounted = { current: true }
@@ -362,10 +380,15 @@ export default function UnifiedAIPage() {
     }
     init()
     return () => { mounted.current = false }
+  }, [auth.status, initializeAI])
+
+  useEffect(() => {
+    isMountedRef.current = true
+    return () => { isMountedRef.current = false }
   }, [])
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+    messagesEndRef.current?.scrollIntoView?.({ behavior: 'smooth' })
   }, [messages])
 
   const handleSubmit = async (e) => {
@@ -384,6 +407,7 @@ export default function UnifiedAIPage() {
 
     try {
       const response = await askUnifiedAI(userMessage, {
+        isAuthenticated: auth.status === 'authenticated',
         context: {
           conversationHistory: messages.slice(-6).map(m => ({
             role: m.role,
@@ -395,6 +419,10 @@ export default function UnifiedAIPage() {
 
       let responseMode = aiStatus.activeMode
       if (response.grounded) responseMode = 'grounded'
+
+      if (response.authExpired) {
+        auth.refreshSession?.()
+      }
 
       const formatted = formatUnifiedResponse(response, responseMode)
 
@@ -413,7 +441,29 @@ export default function UnifiedAIPage() {
       let errorMessage = 'An unexpected error occurred.'
       let retryable = false
 
-      if (error instanceof MentorRateLimitedError) {
+      if (error instanceof MentorUnauthenticatedError) {
+        auth.refreshSession?.()
+        errorMessage = 'Your session has expired. Please sign in again for personalized Mentor guidance. Public scholarship questions are still answered below.'
+        try {
+          const { askAIAssistant } = await import('../services/aiAssistant')
+          const fallback = await askAIAssistant({ question: userMessage })
+          const formatted = formatUnifiedResponse(fallback, 'grounded')
+          setMessages(prev => [...prev, {
+            role: 'assistant',
+            content: formatted.answer,
+            sources: formatted.sources,
+            grounded: formatted.grounded,
+            sourceType: 'grounded',
+            label: 'Grounded Search (sign in for personalized Mentor)',
+            timestamp: Date.now()
+          }])
+          setIsLoading(false)
+          inputRef.current?.focus()
+          return
+        } catch (fallbackErr) {
+          void fallbackErr
+        }
+      } else if (error instanceof MentorRateLimitedError) {
         errorMessage = `Rate limited. Please wait ${error.retryAfterSeconds} seconds before asking again.`
         retryable = true
       } else if (error instanceof MentorValidationError) {
@@ -467,7 +517,11 @@ export default function UnifiedAIPage() {
   const handleLocalAIToggle = (enabled) => {
     setLocalAIEnabled(enabled)
     setLocalAIEnabledState(enabled)
-    getAIStatus().then(setAiStatus)
+    const statusGen = ++statusGenerationRef.current
+    getAIStatus({ isAuthenticated: auth.status === 'authenticated' }).then((status) => {
+      if (statusGen !== statusGenerationRef.current) return
+      setAiStatus(status)
+    }).catch(() => {})
   }
 
   const getModeBadge = () => {
@@ -480,7 +534,7 @@ export default function UnifiedAIPage() {
   return (
     <div className="unified-ai-page">
       <Header 
-        mentorOverview={mentorOverview} 
+        mentorOverview={auth.status === 'authenticated' ? mentorOverview : null} 
         aiStatus={aiStatus} 
         getModeBadge={getModeBadge}
         showSettings={showSettings}
