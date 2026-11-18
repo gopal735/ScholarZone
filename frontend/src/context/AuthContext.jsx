@@ -5,24 +5,25 @@ import { AuthContext } from './authContext'
 export function AuthProvider({ children }) {
   const [status, setStatus] = useState('checking')
   const [user, setUser] = useState(null)
-  const generationRef = useRef(0)
+  const authGenRef = useRef(0)
+  const refreshGenRef = useRef(0)
 
   useEffect(() => {
     let isActive = true
-    const gen = generationRef.current
+    const gen = authGenRef.current
 
     async function checkSession() {
       try {
         const session = await authService.checkSession()
 
-        if (!isActive || gen !== generationRef.current) {
+        if (!isActive || gen !== authGenRef.current) {
           return
         }
 
         setUser(session?.user ?? null)
         setStatus(session?.user ? 'authenticated' : 'unauthenticated')
       } catch {
-        if (isActive && gen === generationRef.current) {
+        if (isActive && gen === authGenRef.current) {
           setUser(null)
           setStatus('unauthenticated')
         }
@@ -37,15 +38,15 @@ export function AuthProvider({ children }) {
   }, [])
 
   async function login(credentials) {
-    const gen = ++generationRef.current
+    const gen = ++authGenRef.current
     try {
       const session = await authService.login(credentials)
-      if (gen !== generationRef.current) return session
+      if (gen !== authGenRef.current) return session
       setUser(session?.user ?? null)
       setStatus(session?.user ? 'authenticated' : 'unauthenticated')
       return session
     } catch (error) {
-      if (gen === generationRef.current) {
+      if (gen === authGenRef.current) {
         setUser(null)
         setStatus('unauthenticated')
       }
@@ -58,25 +59,29 @@ export function AuthProvider({ children }) {
   }
 
   async function logout() {
-    const gen = ++generationRef.current
+    const gen = ++authGenRef.current
     await authService.logout()
-    if (gen !== generationRef.current) return
+    if (gen !== authGenRef.current) return
     setUser(null)
     setStatus('unauthenticated')
   }
 
   async function refreshSession() {
-    const gen = ++generationRef.current
+    const rgen = ++refreshGenRef.current
+    const authGenAtStart = authGenRef.current
     try {
       const session = await authService.checkSession()
-      if (gen !== generationRef.current) {
+      if (rgen !== refreshGenRef.current) {
+        return session
+      }
+      if (authGenAtStart !== authGenRef.current) {
         return session
       }
       setUser(session?.user ?? null)
       setStatus(session?.user ? 'authenticated' : 'unauthenticated')
       return session
     } catch {
-      if (gen === generationRef.current) {
+      if (rgen === refreshGenRef.current && authGenAtStart === authGenRef.current) {
         setUser(null)
         setStatus('unauthenticated')
       }
