@@ -16,6 +16,21 @@ import { LANGUAGE_MODES } from '../i18n/strings.js'
 const PERSIST_DEBOUNCE_MS = 400
 
 /**
+ * Origin of a state transition. Used by the persistence effect to decide
+ * whether a state change represents a real user edit that should be persisted.
+ * - 'user': Genuine user interaction (typing, clicking, etc.) -> PERSIST
+ * - 'hydrate': Initial load or cross-tab normal hydration -> DO NOT PERSIST
+ * - 'reset': Local explicit reset or cross-tab reset -> DO NOT PERSIST
+ * - 'replace-document': Programmatic replaceDocument call -> DO NOT PERSIST
+ */
+const StateOrigin = {
+  USER: 'user',
+  HYDRATE: 'hydrate',
+  RESET: 'reset',
+  REPLACE_DOCUMENT: 'replace-document',
+}
+
+/**
  * Provider for the Bangladesh Applicant Journey.
  *
  * Responsibilities:
@@ -26,6 +41,15 @@ const PERSIST_DEBOUNCE_MS = 400
  * 4. Visibility/pagehide persistence: flushes latest state when page is hidden
  *    or about to unload.
  * 5. Cross-tab coherence via storage events.
+ *
+ * Lifecycle Model:
+ * - Each state change is tagged with its origin via `pendingOriginRef`.
+ * - The persistence effect ONLY persists changes with origin === 'user'.
+ * - All programmatic transitions (hydrate, reset, replace-document) are
+ *   explicitly marked and never persisted.
+ * - After a reset, the first user edit gets origin 'user' and persists normally.
+ * - Cross-tab reset is treated as a 'reset' origin hydration.
+ * - replaceDocument is treated as 'replace-document' origin hydration.
  */
 export function JourneyProvider({ children }) {
   /**
@@ -61,23 +85,22 @@ export function JourneyProvider({ children }) {
   /** Tracks unpersisted edits that must be flushed on unmount/pagehide. */
   const isDirtyRef = useRef(false)
 
-  /** True while applying a programmatic hydration (initial, reset, or cross-tab),
-   *  so the persistence effect does not treat it as a user edit. */
-  const isHydratingRef = useRef(false)
-
   /** Timestamp of most recent write by this tab, for cross-tab ordering. */
   const lastWriteRef = useRef(null)
   const pendingTimerRef = useRef(null)
 
   /**
-   * Set when a deliberate action (reset) has just removed the stored data, so
-   * subsequent effects/unmount do not recreate the emptied key.
+   * Origin of the pending state transition. Set before dispatching an action
+   * that will cause a state change. Read by the persistence effect to decide
+   * whether to persist. Cleared after the effect processes the change.
+   * Null means no pending transition (steady state).
    */
-  const suppressPersistRef = useRef(false)
+  const pendingOriginRef = useRef(null)
 
   /**
-   * Set when a deliberate reset has occurred and no new user edit has happened
-   * since. Prevents unmount/pagehide from recreating deleted storage.
+   * Tracks whether a reset has occurred and no user edit has happened since.
+   * Prevents unmount/pagehide from recreating deleted storage.
+   * Cleared when a user edit occurs.
    */
   const resetOccurredRef = useRef(false)
 
@@ -87,7 +110,7 @@ export function JourneyProvider({ children }) {
    */
   const performSave = useCallback((stateToSave) => {
     if (!stateToSave) return false
-    if (suppressPersistRef.current) return false
+    if (resetOccurredRef.current) return false
     try {
       saveJourneyState(stateToSave)
       lastWriteRef.current = new Date().toISOString()
@@ -110,32 +133,30 @@ export function JourneyProvider({ children }) {
   /* Persist, debounced. A failed write leaves the state on screen and raises a
      notice; it never reverts what the student just entered.
 
-     State-change cleanup cancels only the replaced timer. It must not flush
-     merely because state dependencies changed; debounce coalescing depends on
-     that. Actual unmount and page-lifecycle flushes are handled separately. */
+     The effect runs on every state change. It reads `pendingOriginRef.current`
+     to determine the origin of the transition:
+     - 'user': real user edit -> persist (debounced)
+     - 'hydrate', 'reset', 'replace-document': programmatic -> never persist
+     - null: no explicit origin set -> treat as user edit (default for dispatch from UI)
+     
+     After processing, pendingOriginRef is cleared. */
+
   useEffect(() => {
     if (state === bootstrap.state) return undefined
 
-    if (isHydratingRef.current) {
-      // Programmatic hydration (initial/reset/cross-tab): never persist.
-      isHydratingRef.current = false
+    const origin = pendingOriginRef.current
+    pendingOriginRef.current = null
+
+    // Programmatic transitions never persist
+    if (origin === StateOrigin.HYDRATE || origin === StateOrigin.RESET || origin === StateOrigin.REPLACE_DOCUMENT) {
+      // After a reset hydration, the first user edit should persist.
+      // resetOccurredRef stays true until a user edit occurs.
+      // Cross-tab normal hydration does not set resetOccurredRef.
       return undefined
     }
 
-    if (suppressPersistRef.current) {
-      // The state change is the deliberate result of a reset: storage was
-      // already emptied. Consume suppression, clear dirty state, cancel any
-      // pending timer, and do not persist this transition.
-      suppressPersistRef.current = false
-      isDirtyRef.current = false
-      if (pendingTimerRef.current) {
-        window.clearTimeout(pendingTimerRef.current)
-        pendingTimerRef.current = null
-      }
-      return undefined
-    }
-
-    // A real user edit after reset: allow persistence again.
+    // Real user edit (origin === 'user' or null/undefined meaning dispatched from UI)
+    // A real user edit after reset: clear reset flag so future unmount/pagehide can flush
     resetOccurredRef.current = false
 
     if (pendingTimerRef.current) {
@@ -161,13 +182,14 @@ export function JourneyProvider({ children }) {
   /**
    * Flush any pending write immediately. Returns true on success.
    * Safe to call multiple times. Does not recreate storage after reset.
+   * Only flushes if the current dirty state originated from a user edit.
    */
   const doFlush = useCallback(() => {
     if (pendingTimerRef.current) {
       window.clearTimeout(pendingTimerRef.current)
       pendingTimerRef.current = null
     }
-    if (!isDirtyRef.current || suppressPersistRef.current || resetOccurredRef.current) return false
+    if (!isDirtyRef.current || resetOccurredRef.current) return false
     return performSave(latestStateRef.current)
   }, [performSave])
 
@@ -227,9 +249,8 @@ export function JourneyProvider({ children }) {
         // Another tab reset this feature. Reload our own view of it.
         const reloaded = loadJourneyState()
         isDirtyRef.current = false
-        suppressPersistRef.current = true
         resetOccurredRef.current = true
-        isHydratingRef.current = true
+        pendingOriginRef.current = StateOrigin.RESET
         dispatch({ type: ACTIONS.HYDRATE, payload: reloaded.state })
         setStorageProblem(reloaded.problem)
         return
@@ -243,7 +264,8 @@ export function JourneyProvider({ children }) {
       const incoming = new Date(parsed?.exportedAt ?? 0).getTime()
       const mine = new Date(lastWriteRef.current ?? 0).getTime()
       if (!Number.isFinite(incoming) || incoming <= mine) return
-      isHydratingRef.current = true
+      // Cross-tab normal hydration (not a reset): treat as programmatic hydration
+      pendingOriginRef.current = StateOrigin.HYDRATE
       dispatch({ type: ACTIONS.HYDRATE, payload: parsed })
     }
 
@@ -265,8 +287,8 @@ export function JourneyProvider({ children }) {
     // Mark clean/suppressed before dispatch so no pending or subsequent lifecycle
     // flush can recreate the deleted key.
     isDirtyRef.current = false
-    suppressPersistRef.current = true
     resetOccurredRef.current = true
+    pendingOriginRef.current = StateOrigin.RESET
     dispatch({ type: ACTIONS.RESET })
     if (!result.ok && result.reason === 'unavailable') {
       setStorageAvailable(false)
@@ -281,8 +303,7 @@ export function JourneyProvider({ children }) {
       pendingTimerRef.current = null
     }
     isDirtyRef.current = false
-    suppressPersistRef.current = false
-    isHydratingRef.current = true
+    pendingOriginRef.current = StateOrigin.REPLACE_DOCUMENT
     const next = normalizeJourneyDocument(document)
     dispatch({ type: ACTIONS.HYDRATE, payload: next })
     return next
@@ -320,7 +341,7 @@ export function JourneyProvider({ children }) {
       }
       // Flush the latest state on unmount if there are unsaved changes.
       // Never flush after an explicit reset (would recreate deleted data).
-      if (!suppressPersistRef.current && !resetOccurredRef.current && latestStateRef.current && latestStateRef.current !== initialState) {
+      if (!resetOccurredRef.current && latestStateRef.current && latestStateRef.current !== initialState) {
         try {
           saveJourneyState(latestStateRef.current)
           isDirtyRef.current = false
