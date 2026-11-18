@@ -1,0 +1,1357 @@
+{
+  "version": "1.0",
+  "description": "Canonical expected schema for ScholarZone production database. Generated from authoritative DDL in app.supervisor_ddl and app.database._upgrade_postgresql_schema.",
+  "tables": {
+    "contact_templates": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": "GENERATED ALWAYS AS IDENTITY",
+          "primary_key": true
+        },
+        {
+          "name": "template_key",
+          "type": "VARCHAR(64)",
+          "nullable": false
+        },
+        {
+          "name": "title",
+          "type": "VARCHAR(160)",
+          "nullable": false
+        },
+        {
+          "name": "degree_level",
+          "type": "VARCHAR(32)",
+          "nullable": true
+        },
+        {
+          "name": "subject_hint",
+          "type": "VARCHAR(255)",
+          "nullable": true
+        },
+        {
+          "name": "body_text",
+          "type": "TEXT",
+          "nullable": false
+        },
+        {
+          "name": "is_active",
+          "type": "BOOLEAN",
+          "nullable": false,
+          "default": "TRUE"
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMPTZ",
+          "nullable": false,
+          "default": "NOW()"
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMPTZ",
+          "nullable": false,
+          "default": "NOW()"
+        }
+      ],
+      "primary_key": [
+        "id"
+      ],
+      "unique_constraints": [
+        {
+          "name": "uq_contact_templates_key",
+          "columns": [
+            "template_key"
+          ]
+        }
+      ],
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "name": "ix_contact_templates_active",
+          "columns": [
+            "is_active"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "scholarship_supervisor_coverage": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": "GENERATED ALWAYS AS IDENTITY",
+          "primary_key": true
+        },
+        {
+          "name": "scholarship_id",
+          "type": "INTEGER",
+          "nullable": false
+        },
+        {
+          "name": "status",
+          "type": "VARCHAR(32)",
+          "nullable": false,
+          "default": "'search_pending'"
+        },
+        {
+          "name": "verified_supervisor_count",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": "0"
+        },
+        {
+          "name": "evidence_state",
+          "type": "VARCHAR(32)",
+          "nullable": false,
+          "default": "'not_collected'"
+        },
+        {
+          "name": "last_checked_at",
+          "type": "TIMESTAMPTZ",
+          "nullable": true
+        },
+        {
+          "name": "next_check_at",
+          "type": "TIMESTAMPTZ",
+          "nullable": true
+        },
+        {
+          "name": "last_error_summary",
+          "type": "TEXT",
+          "nullable": true
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMPTZ",
+          "nullable": false,
+          "default": "NOW()"
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMPTZ",
+          "nullable": false,
+          "default": "NOW()"
+        }
+      ],
+      "primary_key": [
+        "id"
+      ],
+      "unique_constraints": [
+        {
+          "name": "uq_supervisor_coverage_scholarship",
+          "columns": [
+            "scholarship_id"
+          ]
+        }
+      ],
+      "foreign_keys": [
+        {
+          "name": null,
+          "constrained_columns": [
+            "scholarship_id"
+          ],
+          "referred_table": "scholarships",
+          "referred_columns": [
+            "id"
+          ],
+          "on_delete": "NO ACTION"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_supervisor_coverage_status",
+          "columns": [
+            "status"
+          ],
+          "unique": false
+        },
+        {
+          "name": "ix_supervisor_coverage_next_check_at",
+          "columns": [
+            "next_check_at"
+          ],
+          "unique": false
+        },
+        {
+          "name": "ix_supervisor_coverage_scholarship_id",
+          "columns": [
+            "scholarship_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "professor_profiles": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": "GENERATED ALWAYS AS IDENTITY",
+          "primary_key": true
+        },
+        {
+          "name": "canonical_name",
+          "type": "VARCHAR(255)",
+          "nullable": false
+        },
+        {
+          "name": "title",
+          "type": "VARCHAR(120)",
+          "nullable": true
+        },
+        {
+          "name": "institution_name",
+          "type": "VARCHAR(255)",
+          "nullable": false
+        },
+        {
+          "name": "department_name",
+          "type": "VARCHAR(255)",
+          "nullable": true
+        },
+        {
+          "name": "official_profile_url",
+          "type": "VARCHAR(2048)",
+          "nullable": false
+        },
+        {
+          "name": "official_email",
+          "type": "VARCHAR(320)",
+          "nullable": true
+        },
+        {
+          "name": "official_email_verified",
+          "type": "BOOLEAN",
+          "nullable": false,
+          "default": "FALSE"
+        },
+        {
+          "name": "lab_url",
+          "type": "VARCHAR(2048)",
+          "nullable": true
+        },
+        {
+          "name": "personal_academic_url",
+          "type": "VARCHAR(2048)",
+          "nullable": true
+        },
+        {
+          "name": "research_areas",
+          "type": "JSON",
+          "nullable": false,
+          "default": "'[]'"
+        },
+        {
+          "name": "research_keywords",
+          "type": "JSON",
+          "nullable": false,
+          "default": "'[]'"
+        },
+        {
+          "name": "profile_status",
+          "type": "VARCHAR(32)",
+          "nullable": false,
+          "default": "'active'"
+        },
+        {
+          "name": "last_verified_at",
+          "type": "TIMESTAMPTZ",
+          "nullable": true
+        },
+        {
+          "name": "next_verification_at",
+          "type": "TIMESTAMPTZ",
+          "nullable": true
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMPTZ",
+          "nullable": false,
+          "default": "NOW()"
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMPTZ",
+          "nullable": false,
+          "default": "NOW()"
+        }
+      ],
+      "primary_key": [
+        "id"
+      ],
+      "unique_constraints": [
+        {
+          "name": "uq_professor_official_profile_url",
+          "columns": [
+            "official_profile_url"
+          ]
+        }
+      ],
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "name": "ix_professor_institution_name",
+          "columns": [
+            "institution_name"
+          ],
+          "unique": false
+        },
+        {
+          "name": "ix_professor_institution_department",
+          "columns": [
+            "institution_name",
+            "department_name"
+          ],
+          "unique": false
+        },
+        {
+          "name": "ix_professor_canonical_name",
+          "columns": [
+            "canonical_name"
+          ],
+          "unique": false
+        },
+        {
+          "name": "ix_professor_profile_status",
+          "columns": [
+            "profile_status"
+          ],
+          "unique": false
+        },
+        {
+          "name": "ix_professor_next_verification_at",
+          "columns": [
+            "next_verification_at"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "scholarship_professor_links": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": "GENERATED ALWAYS AS IDENTITY",
+          "primary_key": true
+        },
+        {
+          "name": "scholarship_id",
+          "type": "INTEGER",
+          "nullable": false
+        },
+        {
+          "name": "professor_id",
+          "type": "INTEGER",
+          "nullable": false
+        },
+        {
+          "name": "relationship_type",
+          "type": "VARCHAR(40)",
+          "nullable": false
+        },
+        {
+          "name": "evidence_source_url",
+          "type": "VARCHAR(2048)",
+          "nullable": false
+        },
+        {
+          "name": "evidence_source_type",
+          "type": "VARCHAR(32)",
+          "nullable": false
+        },
+        {
+          "name": "evidence_quote_or_summary",
+          "type": "TEXT",
+          "nullable": true
+        },
+        {
+          "name": "retrieved_at",
+          "type": "TIMESTAMPTZ",
+          "nullable": true
+        },
+        {
+          "name": "verified_at",
+          "type": "TIMESTAMPTZ",
+          "nullable": true
+        },
+        {
+          "name": "verification_status",
+          "type": "VARCHAR(24)",
+          "nullable": false,
+          "default": "'unverified'"
+        },
+        {
+          "name": "confidence",
+          "type": "INTEGER",
+          "nullable": true
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMPTZ",
+          "nullable": false,
+          "default": "NOW()"
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMPTZ",
+          "nullable": false,
+          "default": "NOW()"
+        }
+      ],
+      "primary_key": [
+        "id"
+      ],
+      "unique_constraints": [
+        {
+          "name": "uq_scholarship_professor_relationship",
+          "columns": [
+            "scholarship_id",
+            "professor_id",
+            "relationship_type"
+          ]
+        }
+      ],
+      "foreign_keys": [
+        {
+          "name": null,
+          "constrained_columns": [
+            "scholarship_id"
+          ],
+          "referred_table": "scholarships",
+          "referred_columns": [
+            "id"
+          ],
+          "on_delete": "NO ACTION"
+        },
+        {
+          "name": null,
+          "constrained_columns": [
+            "professor_id"
+          ],
+          "referred_table": "professor_profiles",
+          "referred_columns": [
+            "id"
+          ],
+          "on_delete": "NO ACTION"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_professor_links_scholarship_status",
+          "columns": [
+            "scholarship_id",
+            "verification_status"
+          ],
+          "unique": false
+        },
+        {
+          "name": "ix_professor_links_scholarship_id",
+          "columns": [
+            "scholarship_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "ix_professor_links_professor_id",
+          "columns": [
+            "professor_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "ix_professor_links_verification_status",
+          "columns": [
+            "verification_status"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "supervisor_source_evidence": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": "GENERATED ALWAYS AS IDENTITY",
+          "primary_key": true
+        },
+        {
+          "name": "professor_id",
+          "type": "INTEGER",
+          "nullable": false
+        },
+        {
+          "name": "scholarship_id",
+          "type": "INTEGER",
+          "nullable": true
+        },
+        {
+          "name": "link_id",
+          "type": "INTEGER",
+          "nullable": true
+        },
+        {
+          "name": "source_url",
+          "type": "VARCHAR(2048)",
+          "nullable": false
+        },
+        {
+          "name": "source_host",
+          "type": "VARCHAR(255)",
+          "nullable": false
+        },
+        {
+          "name": "source_type",
+          "type": "VARCHAR(32)",
+          "nullable": false
+        },
+        {
+          "name": "retrieved_at",
+          "type": "TIMESTAMPTZ",
+          "nullable": false
+        },
+        {
+          "name": "verified_at",
+          "type": "TIMESTAMPTZ",
+          "nullable": true
+        },
+        {
+          "name": "verification_status",
+          "type": "VARCHAR(24)",
+          "nullable": false,
+          "default": "'unverified'"
+        },
+        {
+          "name": "evidence_summary",
+          "type": "TEXT",
+          "nullable": true
+        },
+        {
+          "name": "http_status",
+          "type": "INTEGER",
+          "nullable": true
+        },
+        {
+          "name": "content_hash",
+          "type": "VARCHAR(64)",
+          "nullable": true
+        }
+      ],
+      "primary_key": [
+        "id"
+      ],
+      "unique_constraints": [
+        {
+          "name": "uq_supervisor_evidence_professor_source",
+          "columns": [
+            "professor_id",
+            "source_url",
+            "source_type"
+          ]
+        }
+      ],
+      "foreign_keys": [
+        {
+          "name": null,
+          "constrained_columns": [
+            "professor_id"
+          ],
+          "referred_table": "professor_profiles",
+          "referred_columns": [
+            "id"
+          ],
+          "on_delete": "NO ACTION"
+        },
+        {
+          "name": null,
+          "constrained_columns": [
+            "scholarship_id"
+          ],
+          "referred_table": "scholarships",
+          "referred_columns": [
+            "id"
+          ],
+          "on_delete": "NO ACTION"
+        },
+        {
+          "name": null,
+          "constrained_columns": [
+            "link_id"
+          ],
+          "referred_table": "scholarship_professor_links",
+          "referred_columns": [
+            "id"
+          ],
+          "on_delete": "NO ACTION"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_supervisor_evidence_professor_id",
+          "columns": [
+            "professor_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "ix_supervisor_evidence_scholarship_id",
+          "columns": [
+            "scholarship_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "ix_supervisor_evidence_source_host",
+          "columns": [
+            "source_host"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "professor_availability": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": "GENERATED ALWAYS AS IDENTITY",
+          "primary_key": true
+        },
+        {
+          "name": "professor_id",
+          "type": "INTEGER",
+          "nullable": false
+        },
+        {
+          "name": "scope",
+          "type": "VARCHAR(32)",
+          "nullable": false
+        },
+        {
+          "name": "state",
+          "type": "VARCHAR(24)",
+          "nullable": false,
+          "default": "'unknown'"
+        },
+        {
+          "name": "source_url",
+          "type": "VARCHAR(2048)",
+          "nullable": false
+        },
+        {
+          "name": "verified_at",
+          "type": "TIMESTAMPTZ",
+          "nullable": false
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMPTZ",
+          "nullable": false,
+          "default": "NOW()"
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMPTZ",
+          "nullable": false,
+          "default": "NOW()"
+        }
+      ],
+      "primary_key": [
+        "id"
+      ],
+      "unique_constraints": [
+        {
+          "name": "uq_professor_availability_scope",
+          "columns": [
+            "professor_id",
+            "scope"
+          ]
+        }
+      ],
+      "foreign_keys": [
+        {
+          "name": null,
+          "constrained_columns": [
+            "professor_id"
+          ],
+          "referred_table": "professor_profiles",
+          "referred_columns": [
+            "id"
+          ],
+          "on_delete": "NO ACTION"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_professor_availability_professor_id",
+          "columns": [
+            "professor_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "professor_outreach_records": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": "GENERATED ALWAYS AS IDENTITY",
+          "primary_key": true
+        },
+        {
+          "name": "user_id",
+          "type": "INTEGER",
+          "nullable": false
+        },
+        {
+          "name": "scholarship_id",
+          "type": "INTEGER",
+          "nullable": false
+        },
+        {
+          "name": "professor_id",
+          "type": "INTEGER",
+          "nullable": false
+        },
+        {
+          "name": "application_id",
+          "type": "INTEGER",
+          "nullable": true
+        },
+        {
+          "name": "status",
+          "type": "VARCHAR(24)",
+          "nullable": false,
+          "default": "'not_contacted'"
+        },
+        {
+          "name": "draft_subject",
+          "type": "VARCHAR(255)",
+          "nullable": true
+        },
+        {
+          "name": "draft_body",
+          "type": "TEXT",
+          "nullable": true
+        },
+        {
+          "name": "first_contacted_at",
+          "type": "TIMESTAMPTZ",
+          "nullable": true
+        },
+        {
+          "name": "last_contacted_at",
+          "type": "TIMESTAMPTZ",
+          "nullable": true
+        },
+        {
+          "name": "follow_up_due_at",
+          "type": "TIMESTAMPTZ",
+          "nullable": true
+        },
+        {
+          "name": "response_status",
+          "type": "VARCHAR(24)",
+          "nullable": true
+        },
+        {
+          "name": "response_at",
+          "type": "TIMESTAMPTZ",
+          "nullable": true
+        },
+        {
+          "name": "next_action",
+          "type": "VARCHAR(255)",
+          "nullable": true
+        },
+        {
+          "name": "notes",
+          "type": "TEXT",
+          "nullable": true
+        },
+        {
+          "name": "template_id",
+          "type": "INTEGER",
+          "nullable": true
+        },
+        {
+          "name": "version",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": "1"
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMPTZ",
+          "nullable": false,
+          "default": "NOW()"
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMPTZ",
+          "nullable": false,
+          "default": "NOW()"
+        }
+      ],
+      "primary_key": [
+        "id"
+      ],
+      "unique_constraints": [
+        {
+          "name": "uq_outreach_user_scholarship_professor",
+          "columns": [
+            "user_id",
+            "scholarship_id",
+            "professor_id"
+          ]
+        }
+      ],
+      "foreign_keys": [
+        {
+          "name": null,
+          "constrained_columns": [
+            "user_id"
+          ],
+          "referred_table": "users",
+          "referred_columns": [
+            "id"
+          ],
+          "on_delete": "NO ACTION"
+        },
+        {
+          "name": null,
+          "constrained_columns": [
+            "scholarship_id"
+          ],
+          "referred_table": "scholarships",
+          "referred_columns": [
+            "id"
+          ],
+          "on_delete": "NO ACTION"
+        },
+        {
+          "name": null,
+          "constrained_columns": [
+            "professor_id"
+          ],
+          "referred_table": "professor_profiles",
+          "referred_columns": [
+            "id"
+          ],
+          "on_delete": "NO ACTION"
+        },
+        {
+          "name": null,
+          "constrained_columns": [
+            "template_id"
+          ],
+          "referred_table": "contact_templates",
+          "referred_columns": [
+            "id"
+          ],
+          "on_delete": "NO ACTION"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_outreach_user_status",
+          "columns": [
+            "user_id",
+            "status"
+          ],
+          "unique": false
+        },
+        {
+          "name": "ix_outreach_user_follow_up",
+          "columns": [
+            "user_id",
+            "follow_up_due_at"
+          ],
+          "unique": false
+        },
+        {
+          "name": "ix_outreach_professor_id",
+          "columns": [
+            "professor_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "ix_outreach_scholarship_id",
+          "columns": [
+            "scholarship_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "official_contacts": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": "GENERATED ALWAYS AS IDENTITY",
+          "primary_key": true
+        },
+        {
+          "name": "scholarship_id",
+          "type": "INTEGER",
+          "nullable": false
+        },
+        {
+          "name": "institution_name",
+          "type": "VARCHAR(255)",
+          "nullable": false
+        },
+        {
+          "name": "department_name",
+          "type": "VARCHAR(255)",
+          "nullable": true
+        },
+        {
+          "name": "programme_name",
+          "type": "VARCHAR(255)",
+          "nullable": true
+        },
+        {
+          "name": "contact_type",
+          "type": "VARCHAR(64)",
+          "nullable": false,
+          "default": "'programme_office'"
+        },
+        {
+          "name": "contact_role",
+          "type": "VARCHAR(120)",
+          "nullable": true
+        },
+        {
+          "name": "published_contact_name",
+          "type": "VARCHAR(255)",
+          "nullable": true
+        },
+        {
+          "name": "official_email",
+          "type": "VARCHAR(320)",
+          "nullable": true
+        },
+        {
+          "name": "email_verified",
+          "type": "BOOLEAN",
+          "nullable": false,
+          "default": "FALSE"
+        },
+        {
+          "name": "official_contact_url",
+          "type": "VARCHAR(2048)",
+          "nullable": false
+        },
+        {
+          "name": "evidence_source_url",
+          "type": "VARCHAR(2048)",
+          "nullable": false
+        },
+        {
+          "name": "evidence_source_type",
+          "type": "VARCHAR(32)",
+          "nullable": false
+        },
+        {
+          "name": "evidence_summary",
+          "type": "TEXT",
+          "nullable": true
+        },
+        {
+          "name": "retrieved_at",
+          "type": "TIMESTAMPTZ",
+          "nullable": false
+        },
+        {
+          "name": "verified_at",
+          "type": "TIMESTAMPTZ",
+          "nullable": true
+        },
+        {
+          "name": "verification_status",
+          "type": "VARCHAR(24)",
+          "nullable": false,
+          "default": "'unverified'"
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMPTZ",
+          "nullable": false,
+          "default": "NOW()"
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMPTZ",
+          "nullable": false,
+          "default": "NOW()"
+        }
+      ],
+      "primary_key": [
+        "id"
+      ],
+      "unique_constraints": [
+        {
+          "name": "uq_official_contact_scholarship_url",
+          "columns": [
+            "scholarship_id",
+            "official_contact_url"
+          ]
+        }
+      ],
+      "foreign_keys": [
+        {
+          "name": null,
+          "constrained_columns": [
+            "scholarship_id"
+          ],
+          "referred_table": "scholarships",
+          "referred_columns": [
+            "id"
+          ],
+          "on_delete": "RESTRICT"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_official_contacts_scholarship_id",
+          "columns": [
+            "scholarship_id"
+          ],
+          "unique": false
+        },
+        {
+          "name": "ix_official_contacts_institution",
+          "columns": [
+            "institution_name"
+          ],
+          "unique": false
+        },
+        {
+          "name": "ix_official_contacts_verification",
+          "columns": [
+            "verification_status"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "image_reviews": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": "GENERATED ALWAYS AS IDENTITY",
+          "primary_key": true
+        },
+        {
+          "name": "scholarship_id",
+          "type": "INTEGER",
+          "nullable": false
+        },
+        {
+          "name": "image_url",
+          "type": "VARCHAR(2048)",
+          "nullable": false
+        },
+        {
+          "name": "image_kind",
+          "type": "VARCHAR(32)",
+          "nullable": false
+        },
+        {
+          "name": "source_page",
+          "type": "VARCHAR(2048)",
+          "nullable": true
+        },
+        {
+          "name": "source_type",
+          "type": "VARCHAR(32)",
+          "nullable": true
+        },
+        {
+          "name": "relevance_evidence",
+          "type": "TEXT",
+          "nullable": true
+        },
+        {
+          "name": "licensing_status",
+          "type": "VARCHAR(32)",
+          "nullable": true
+        },
+        {
+          "name": "licensing_evidence",
+          "type": "TEXT",
+          "nullable": true
+        },
+        {
+          "name": "confidence",
+          "type": "VARCHAR(32)",
+          "nullable": false
+        },
+        {
+          "name": "reason_for_review",
+          "type": "VARCHAR(255)",
+          "nullable": true
+        },
+        {
+          "name": "decision",
+          "type": "VARCHAR(16)",
+          "nullable": false,
+          "default": "'pending'"
+        },
+        {
+          "name": "reviewed_by",
+          "type": "VARCHAR(120)",
+          "nullable": true
+        },
+        {
+          "name": "reviewed_at",
+          "type": "TIMESTAMPTZ",
+          "nullable": true
+        },
+        {
+          "name": "reviewer_note",
+          "type": "TEXT",
+          "nullable": true
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMPTZ",
+          "nullable": false,
+          "default": "NOW()"
+        }
+      ],
+      "primary_key": [
+        "id"
+      ],
+      "unique_constraints": [],
+      "foreign_keys": [
+        {
+          "name": null,
+          "constrained_columns": [
+            "scholarship_id"
+          ],
+          "referred_table": "scholarships",
+          "referred_columns": [
+            "id"
+          ],
+          "on_delete": "NO ACTION"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_image_reviews_scholarship_decision",
+          "columns": [
+            "scholarship_id",
+            "decision"
+          ],
+          "unique": false
+        },
+        {
+          "name": "ix_image_reviews_created_at",
+          "columns": [
+            "created_at"
+          ],
+          "unique": false
+        }
+      ]
+    }
+  },
+  "scholarships_additional_columns": [
+    {
+      "name": "legacy_id",
+      "type": "INTEGER",
+      "nullable": true,
+      "unique": true
+    },
+    {
+      "name": "image_url",
+      "type": "VARCHAR(2048)",
+      "nullable": true
+    },
+    {
+      "name": "image_source_url",
+      "type": "VARCHAR(2048)",
+      "nullable": true
+    },
+    {
+      "name": "image_source_type",
+      "type": "VARCHAR(32)",
+      "nullable": true
+    },
+    {
+      "name": "image_kind",
+      "type": "VARCHAR(32)",
+      "nullable": true
+    },
+    {
+      "name": "image_verified_at",
+      "type": "TIMESTAMPTZ",
+      "nullable": true
+    },
+    {
+      "name": "image_alt_text",
+      "type": "VARCHAR(512)",
+      "nullable": true
+    },
+    {
+      "name": "image_evaluation_status",
+      "type": "VARCHAR(32)",
+      "nullable": true
+    },
+    {
+      "name": "image_evaluated_at",
+      "type": "TIMESTAMPTZ",
+      "nullable": true
+    },
+    {
+      "name": "is_archived",
+      "type": "BOOLEAN",
+      "nullable": false,
+      "default": "FALSE"
+    },
+    {
+      "name": "archived_at",
+      "type": "TIMESTAMPTZ",
+      "nullable": true
+    },
+    {
+      "name": "archived_reason",
+      "type": "VARCHAR(120)",
+      "nullable": true
+    },
+    {
+      "name": "funding_amount",
+      "type": "NUMERIC(12, 2)",
+      "nullable": true
+    },
+    {
+      "name": "funding_currency",
+      "type": "VARCHAR(8)",
+      "nullable": true
+    },
+    {
+      "name": "funding_period",
+      "type": "VARCHAR(64)",
+      "nullable": true
+    },
+    {
+      "name": "tuition_coverage",
+      "type": "BOOLEAN",
+      "nullable": true
+    },
+    {
+      "name": "living_cost_coverage",
+      "type": "BOOLEAN",
+      "nullable": true
+    },
+    {
+      "name": "travel_coverage",
+      "type": "BOOLEAN",
+      "nullable": true
+    },
+    {
+      "name": "fully_funded",
+      "type": "BOOLEAN",
+      "nullable": true
+    },
+    {
+      "name": "funding_details",
+      "type": "JSON",
+      "nullable": true
+    },
+    {
+      "name": "official_details",
+      "type": "JSON",
+      "nullable": true
+    },
+    {
+      "name": "applicant_utility",
+      "type": "JSON",
+      "nullable": true
+    },
+    {
+      "name": "programme_verification",
+      "type": "JSON",
+      "nullable": true
+    },
+    {
+      "name": "auto_delete_candidate_since",
+      "type": "TIMESTAMPTZ",
+      "nullable": true
+    },
+    {
+      "name": "deletion_protected",
+      "type": "BOOLEAN",
+      "nullable": false,
+      "default": "FALSE"
+    },
+    {
+      "name": "departments",
+      "type": "JSON",
+      "nullable": true
+    },
+    {
+      "name": "eligible_fields",
+      "type": "JSON",
+      "nullable": true
+    },
+    {
+      "name": "eligible_programmes",
+      "type": "JSON",
+      "nullable": true
+    },
+    {
+      "name": "academic_provenance",
+      "type": "JSON",
+      "nullable": true
+    }
+  ],
+  "additional_indexes": [
+    {
+      "name": "ix_maintenance_runs_slot_id",
+      "table": "maintenance_runs",
+      "columns": [
+        "slot_id"
+      ],
+      "unique": false,
+      "required": true
+    },
+    {
+      "name": "ix_scholarships_is_archived",
+      "table": "scholarships",
+      "columns": [
+        "is_archived"
+      ],
+      "unique": false,
+      "required": true
+    }
+  ],
+  "additional_tables": [
+    "image_reviews",
+    "scholarship_image_audit"
+  ],
+  "separately_managed": [
+    {
+      "name": "scholarship_image_audit",
+      "managed_by": "app.image_audit / scripts/install_image_audit.py",
+      "reason": "Forensic audit structure; lifecycle documented separately."
+    }
+  ]
+}

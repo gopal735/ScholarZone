@@ -29,6 +29,7 @@ from ..schemas import (
 )
 from ..services.supervisor_public import (
     ScholarshipNotPublic,
+    SchemaNotReadyError,
     build_supervisor_list,
     coverage_public_state,
     count_publishable_links,
@@ -79,6 +80,20 @@ def list_supervisors(
         # One answer for "absent" and "not publicly visible". A 403 here would
         # confirm that an archived or quarantined record exists at this id.
         raise HTTPException(status.HTTP_404_NOT_FOUND, "Scholarship not found.")
+    except SchemaNotReadyError as exc:
+        # Required schema (e.g. official_contacts table) is missing.
+        # Return 503 with a structured error so the frontend can show a
+        # specific "schema not ready" state instead of a generic 500.
+        raise HTTPException(
+            status.HTTP_503_SERVICE_UNAVAILABLE,
+            {
+                "error_code": "schema_not_ready",
+                "message": "Supervisor discovery schema is not ready. Missing required database object.",
+                "missing_object": exc.missing_object,
+                "retry_after_seconds": 300,
+            },
+            headers={"Retry-After": "300"},
+        )
 
     return SupervisorListResponse(
         scholarship_id=scholarship_id,
