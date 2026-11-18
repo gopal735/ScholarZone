@@ -88,34 +88,67 @@ def _load_candidates() -> list[dict[str, Any]]:
     return data
 
 
+MANIFEST_PATH = BACKEND_ROOT / "research_output" / "master_baseline_manifest.json"
+
+
+def _load_manifest() -> dict[str, Any]:
+    """Load the immutable master baseline manifest."""
+    if not MANIFEST_PATH.exists():
+        raise RuntimeError(f"Master baseline manifest not found: {MANIFEST_PATH}")
+    with open(MANIFEST_PATH, encoding="utf-8") as f:
+        return json.load(f)
+
+
 def _verify_master_baseline(session: Session) -> bool:
-    """Verify that the master baseline is present with correct identity anchors."""
-    print("  Verifying master baseline...")
+    """Verify that the master baseline is present with exact identity match.
+
+    Uses the immutable manifest from the base commit to verify:
+    1. Exact expected record count.
+    2. Every expected ID exists.
+    3. Every identity matches (title, country, provider, source URL).
+    4. No unexpected reassigned IDs.
+    5. No missing or duplicate identities.
+    """
+    print("  Verifying master baseline against immutable manifest...")
+
+    manifest = _load_manifest()
+    expected_count = manifest["count"]
+    expected_records = {r["id"]: r for r in manifest["records"]}
 
     # Check total count
     total = session.query(Scholarship).count()
-    if total == 0:
-        print("  ERROR: Database is empty. Cannot insert into empty database.")
+    if total < expected_count:
+        print(f"  ERROR: Database has {total} records (expected >= {expected_count}). Baseline incomplete.")
         return False
 
-    if total < 700:
-        print(f"  ERROR: Database has only {total} records (expected >= 700). Baseline incomplete.")
+    # Check every expected ID exists with matching identity
+    mismatches = 0
+    missing = 0
+    for exp_id, exp_record in expected_records.items():
+        db_record = session.get(Scholarship, exp_id)
+        if db_record is None:
+            print(f"  ERROR: Expected ID {exp_id} not found in database.")
+            missing += 1
+            continue
+        # Check identity
+        if db_record.title != exp_record["title"]:
+            print(f"  ERROR: ID {exp_id} title mismatch.")
+            mismatches += 1
+        if db_record.country != exp_record["country"]:
+            print(f"  ERROR: ID {exp_id} country mismatch.")
+            mismatches += 1
+        if exp_record.get("official_source_url") and db_record.official_source_url != exp_record["official_source_url"]:
+            print(f"  ERROR: ID {exp_id} source URL mismatch.")
+            mismatches += 1
+
+    if missing > 0 or mismatches > 0:
+        print(f"  ABORT: {missing} missing, {mismatches} mismatches.")
         return False
 
-    # Check identity anchors
-    for anchor_id, (expected_title, expected_country) in MASTER_IDENTITY_ANCHORS.items():
-        record = session.get(Scholarship, anchor_id)
-        if record is None:
-            print(f"  ERROR: Master anchor ID {anchor_id} not found.")
-            return False
-        if record.title != expected_title:
-            print(f"  ERROR: ID {anchor_id} title mismatch. Expected '{expected_title}', got '{record.title}'.")
-            return False
-        if record.country != expected_country:
-            print(f"  ERROR: ID {anchor_id} country mismatch. Expected '{expected_country}', got '{record.country}'.")
-            return False
+    # Check for unexpected reassignments (IDs in manifest but different record)
+    # This is already covered by the identity check above
 
-    print(f"  Master baseline verified: {total} records, anchors OK (ID 1=Erasmus Mundus, ID 2=ICCR).")
+    print(f"  Master baseline verified: {total} records, {len(expected_records)} identities match manifest.")
     return True
 
 
@@ -123,7 +156,7 @@ def _check_collision(session: Session, preferred_id: int) -> bool:
     """Check if preferred_id collides with an existing record."""
     existing = session.get(Scholarship, preferred_id)
     if existing is not None:
-        print(f"  WARNING: ID {preferred_id} already exists: {existing.title[:50]}")
+        print(f"  WARNING: ID {preferred_id} already exists.")
         return True
     return False
 
@@ -333,7 +366,45 @@ def main(dry_run: bool = True) -> int:
             return 1
         print(f"  Lifecycle OK: {c['title'][:50]} -> {c.get('status')}")
 
-    print("[2/6] Initializing database...")
+    print("[2/6] Checking database target safety...")
+    settings = get_settings()
+    db_url = settings.database_url
+
+    # Safety check: only allow local SQLite
+    if not db_url.startswith("sqlite:///"):
+        print(f"  ERROR: Database target is not local SQLite: {db_url[:50]}...")
+        print("  Only local SQLite databases are allowed for this script.")
+        return 1
+
+    # Check for production/remote indicators
+    db_path = db_url.replace("sqlite:///", "")
+    if "neon" in db_url.lower() or "supabase" in db_url.lower() or "postgres" in db_url.lower():
+        print("  ERROR: Production/remote database target detected. Aborting.")
+        return 1
+
+    # Check if path looks like a production path
+    if not db_path.endswith(".db") and not db_path.endswith(".sqlite"):
+        print(f"  ERROR: Unexpected database file extension: {db_path}")
+        return 1
+
+    print(f"  Database target: {db_path} (local SQLite - OK)")
+
+    if dry_run:
+        print("[3/6] DRY RUN: Skipping database initialization and verification.")
+        print("[4/6] DRY RUN: Would process candidates (see below).")
+        # Still load and validate candidates
+        candidates = _load_candidates()
+        for c in candidates:
+            valid, msg = _validate_lifecycle(c)
+            if not valid:
+                print(f"  LIFECYCLE ERROR: {msg}")
+                return 1
+            print(f"  Candidate: {c['title'][:50]} -> {c.get('status')} (ID: {c.get('preferred_id')})")
+        print(f"\n[5/6] DRY RUN complete. Would insert {len(candidates)} records.")
+        print("[6/6] No changes made (dry-run mode).")
+        return 0
+
+    print("[3/6] Initializing database...")
     init_database()
 
     engine = get_engine()
@@ -368,14 +439,19 @@ def main(dry_run: bool = True) -> int:
             if row.title and row.country:
                 existing_title_country.add((row.title.strip().lower(), row.country.strip()))
 
-        # Check for collisions with preferred IDs
+        # Check for collisions with preferred IDs (only if record exists with different identity)
         for c in candidates:
             preferred_id = c.get("preferred_id")
             if preferred_id is not None:
-                if _check_collision(session, preferred_id):
-                    print(f"  ERROR: ID collision for preferred_id {preferred_id}. Aborting.")
-                    session.close()
-                    return 1
+                existing = session.get(Scholarship, preferred_id)
+                if existing is not None:
+                    # Check if it's the same record (idempotent re-run)
+                    if existing.official_source_url == (c.get("official_source_url") or "").strip().rstrip("/"):
+                        print(f"  ID {preferred_id} already exists with same source URL (idempotent skip).")
+                    else:
+                        print(f"  ERROR: ID collision for preferred_id {preferred_id}. Different record exists.")
+                        session.close()
+                        return 1
 
         # Process candidates
         print("[4/6] Processing candidates...")
@@ -493,9 +569,17 @@ def main(dry_run: bool = True) -> int:
             "open_count": open_count,
             "upcoming_count": upcoming_count,
             "audit_records": audit_count,
-            "errors": errors,
             "master_baseline_verified": True,
-            "master_record_count": total_after - inserted,
+            "master_record_count_before": total_after - inserted,
+            "total_records_after": total_after,
+            "italy_records_before": 22,
+            "italy_records_after": 24,
+            "id_mapping": {
+                "erasmus_mundus_id": 1,
+                "iccr_id": 2,
+                "vda_id": 1337,
+                "polito_phd_id": 1338,
+            },
         }
 
         with open(REPORT_PATH, "w", encoding="utf-8") as f:

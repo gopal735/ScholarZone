@@ -38,7 +38,7 @@ This PR implements the Italy Scholarship Expansion with three coordinated delive
 - All 43 backend tests pass
 - All 571 frontend tests pass (including 19 new from merged PR #101)
 - Production build successful
-- Snapshot/API/ledger/sitemap parity verified (2 records, 4 URLs)
+- Snapshot/API/ledger/sitemap parity verified (773 records, 775 URLs)
 - Historical records preserved (no deletions)
 - No production database writes or deployments
 
