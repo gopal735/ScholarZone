@@ -226,16 +226,143 @@
   --track-3xl: -0.028em;
   --track-display: -0.038em;
 
-  /* ── Measure ──────────────────────────────────────────────────
-     66ch is not 66 characters. 1ch is the advance width of a zero,
-     so for a proportional face 66ch lands at roughly 50-56 real
-     characters, which is the optimum. Cards are narrower because a
-     card title is scanned as an index line, not read as prose. */
+/* ── Measure ──────────────────────────────────────────────────
+      66ch is not 66 characters. 1ch is the advance width of a zero,
+      so for a proportional face 66ch lands at roughly 50-56 real
+      characters, which is the optimum. Cards are narrower because a
+      card title is scanned as an index line, not read as prose. */
   --measure: 66ch;
   --measure-card: 54ch;
   --measure-listing: 46ch;
   --measure-facet: 34ch;
   --measure-num: 22ch;
+
+  /* ── Scholarship Card Typography Tokens ─────────────────────────
+      Centralised token set so every card variant (directory, search,
+      featured, related, compare, saved) shares one scale. Changing a
+      value here updates all cards simultaneously. */
+  --schol-card-title-fs: var(--fs-lg);
+  --schol-card-title-lh: var(--lh-lg);
+  --schol-card-title-weight: var(--weight-display);
+  --schol-card-title-track: var(--track-lg);
+  --schol-card-title-family: var(--font-display);
+
+  --schol-card-provider-fs: var(--fs-base);
+  --schol-card-provider-lh: var(--lh-base);
+  --schol-card-provider-weight: var(--weight-strong);
+  --schol-card-provider-track: var(--track-base);
+
+  --schol-card-location-fs: var(--fs-sm);
+  --schol-card-location-lh: 1.4;
+  --schol-card-location-weight: 400;
+  --schol-card-location-color: var(--text-muted);
+
+  --schol-card-badge-fs: var(--fs-xs);
+  --schol-card-badge-lh: 1.3;
+  --schol-card-badge-weight: 700;
+  --schol-card-badge-track: var(--track-xs);
+
+  --schol-card-fact-label-fs: 0.75rem;
+  --schol-card-fact-label-lh: 1.5;
+  --schol-card-fact-label-weight: 700;
+  --schol-card-fact-label-track: 0.04em;
+  --schol-card-fact-label-color: var(--text-muted);
+  --schol-card-fact-label-transform: uppercase;
+
+  --schol-card-fact-value-fs: var(--fs-sm);
+  --schol-card-fact-value-lh: 1.35;
+  --schol-card-fact-value-weight: 700;
+  --schol-card-fact-value-color: var(--text-primary);
+
+  --schol-card-deadline-fs: var(--fs-sm);
+  --schol-card-deadline-lh: 1.35;
+  --schol-card-deadline-weight: 700;
+  --schol-card-deadline-color: var(--text-primary);
+
+  --schol-card-countdown-fs: 0.75rem;
+  --schol-card-countdown-weight: 600;
+  --schol-card-countdown-variant: tabular-nums;
+
+  --schol-card-hint-fs: 0.75rem;
+  --schol-card-hint-weight: 500;
+  --schol-card-hint-color: var(--text-muted);
+
+  --schol-card-summary-fs: var(--fs-sm);
+  --schol-card-summary-lh: 1.55;
+  --schol-card-summary-color: var(--text-secondary);
+  --schol-card-summary-clamp: 3;
+
+  --schol-card-check-label-fs: var(--fs-xs);
+  --schol-card-check-label-lh: 1.3;
+  --schol-card-check-label-color: var(--text-muted);
+
+  --schol-card-check-value-fs: var(--fs-sm);
+  --schol-card-check-value-weight: 600;
+
+  --schol-card-expand-btn-fs: var(--fs-sm);
+  --schol-card-expand-btn-weight: 500;
+
+  --schol-card-expanded-title-fs: var(--fs-base);
+  --schol-card-expanded-title-lh: 1.3;
+  --schol-card-expanded-title-weight: var(--weight-display);
+  --schol-card-expanded-title-family: var(--font-display);
+
+  --schol-card-expanded-text-fs: var(--fs-sm);
+  --schol-card-expanded-text-lh: 1.6;
+  --schol-card-expanded-text-color: var(--text-secondary);
+
+  --schol-card-expanded-fact-label-fs: var(--fs-xs);
+  --schol-card-expanded-fact-label-lh: 1.5;
+  --schol-card-expanded-fact-label-weight: 700;
+  --schol-card-expanded-fact-label-track: 0.04em;
+  --schol-card-expanded-fact-label-color: var(--text-muted);
+  --schol-card-expanded-fact-label-transform: uppercase;
+
+  --schol-card-expanded-fact-value-fs: var(--fs-sm);
+  --schol-card-expanded-fact-value-lh: 1.5;
+  --schol-card-expanded-fact-value-weight: 500;
+  --schol-card-expanded-fact-value-color: var(--text-primary);
+
+  --schol-card-expanded-list-fs: var(--fs-sm);
+  --schol-card-expanded-list-lh: 1.7;
+  --schol-card-expanded-list-color: var(--text-secondary);
+
+  --schol-card-expanded-subtitle-fs: var(--fs-xs);
+  --schol-card-expanded-subtitle-weight: 700;
+  --schol-card-expanded-subtitle-track: 0.04em;
+  --schol-card-expanded-subtitle-color: var(--text-muted);
+  --schol-card-expanded-subtitle-transform: uppercase;
+
+  --schol-card-link-fs: var(--fs-sm);
+  --schol-card-link-weight: 600;
+
+  --schol-card-link-host-fs: var(--fs-xs);
+  --schol-card-link-host-weight: 500;
+  --schol-card-link-host-color: var(--text-muted);
+
+  --schol-card-academic-label-fs: var(--fs-xs);
+  --schol-card-academic-label-weight: 600;
+  --schol-card-academic-label-color: var(--text-muted);
+
+  --schol-card-academic-value-fs: var(--fs-xs);
+  --schol-card-academic-value-weight: 600;
+  --schol-card-academic-value-color: var(--text-secondary);
+
+  --schol-card-citation-fs: var(--fs-xs);
+  --schol-card-citation-color: var(--text-muted);
+
+  --schol-card-verification-date-fs: 0.75rem;
+  --schol-card-verification-date-weight: 700;
+  --schol-card-verification-date-variant: tabular-nums;
+
+  --schol-card-button-fs: var(--fs-sm);
+  --schol-card-button-weight: 600;
+
+  /* Responsive title scale */
+  --schol-card-title-fs-max: clamp(1.125rem, 1.062rem + 0.313vw, 1.3125rem);
+  --schol-card-title-fs-md: 1.1875rem;
+  --schol-card-title-fs-sm: 1.125rem;
+  --schol-card-title-fs-xs: 1.0625rem;
 
   /* ── Spacing: 4px base ──────────────────────────────────────── */
   --space-1: 4px;

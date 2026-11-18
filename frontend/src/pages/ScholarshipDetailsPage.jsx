@@ -553,6 +553,17 @@ const description = readText(scholarship.description)
             </p>
           ) : null}
 
+          {/* Italy DSU guide link for Italian scholarships */}
+          {scholarship.country === 'Italy' && (
+            <div className="sz-detail-hero__dsu-link">
+              <Link to="/scholarships/italy-dsu" className="sz-detail__text-link sz-detail-hero__dsu-link">
+                <span aria-hidden="true">🇮🇹</span>
+                <strong>Italy DSU Guide</strong> — Regional right-to-study funding explained
+                <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+          )}
+
           <div className="sz-detail-hero__actions">
             {applyUrl ? (
               <a

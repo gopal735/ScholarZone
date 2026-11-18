@@ -18,6 +18,7 @@ const UnifiedAIPage = lazy(() => import('./pages/UnifiedAIPage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 const BangladeshJourneyPage = lazy(() => import('./features/journey/components/JourneyPage'))
 const JourneyRoutes = lazy(() => import('./features/journey/components/JourneyRoutes'))
+const ItalyDsuGuidePage = lazy(() => import('./pages/ItalyDsuGuidePage'))
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/countries" element={<CountryPage />} />
         <Route path="/scholarships" element={<ScholarshipsPage />} />
+        <Route path="/scholarships/italy-dsu" element={<ItalyDsuGuidePage />} />
         <Route path="/match" element={<MatchPage />} />
         <Route path="/scholarships/:id" element={<ScholarshipDetailsPage />} />
         <Route path="/login" element={<LoginPage />} />
