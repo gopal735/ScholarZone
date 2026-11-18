@@ -151,7 +151,7 @@
     "selection_notes": "Ranking by ISEE (lower = better). Budget determines number of winners; eligible non-winners receive services only (meals, tuition exemption, tax refund) but no cash grant.",
     "program_type": "Regional right-to-study (DSU)",
     "best_fit": "International students enrolling at Valle d'Aosta universities (UniVdA, Conservatoire, Nursing) who meet ISEE thresholds. Only OPEN regional DSU call as of Nov 2026.",
-    "notes": "Two tracks: VDA1 (standard DSU thresholds) and VDA2 (higher ISEE, no ISPE, no tuition coverage). Non-resident international students without SPID/CIE receive temporary credentials. International students classified as fuori sede unless family resides in Italy. First instalment ~Nov 2026; balance after merit verification Aug/Nov 2027.",
+    "notes": "Two tracks: VDA1 (standard DSU thresholds) and VDA2 (higher ISEE, no ISPE, no tuition coverage). Non-resident international students without SPID/CIE receive temporary credentials via regional office request. IBAN required before final submission. Fuori sede: registered rental contract >=10 months (Sep-Jul), residence within published distance limits, no minimum rent threshold. Mobility exceptions apply. Non-EU family-residence exceptions per official call. CAF exception: applicants unable to produce DSU/ISEE may submit alternative evidence per official call. First instalment ~Nov 2026; balance after merit verification Aug/Nov 2027.",
     "status": "open",
     "is_verified": true,
     "last_verified_at": "2026-11-18",
@@ -183,7 +183,24 @@
         "in_sede_VDA2": "~€1,445"
       },
       "isee_parificato_timeline": "Start 6-8 weeks before deadline; CAF processing + legalisation can take 4-8 weeks",
-      "fuori_sede_proof": "Registered rental contract ≥10 months (Sep-Jul), rent ≥€150/mo, within km limit of campus"
+      "fuori_sede_proof": "Registered rental contract ≥10 months (Sep-Jul), rent ≥€150/mo, within km limit of campus",
+      "fuori_sede_rules": {
+        "rental_contract": "Registered rental contract >= 10 months (September-July)",
+        "distance_limits": "Per published VDA call distance limits",
+        "rent_minimum": "None (removed unsupported 150 EUR threshold)",
+        "mobility_exceptions": "Applicable per official call",
+        "non_eu_family_residence": "Exceptions per official call for non-EU family residence",
+        "residence_certificate_alternatives": "Qualifying residence-certificate alternatives accepted per call"
+      },
+      "temporary_credentials": {
+        "process": "Foreign non-residents unable to obtain SPID/CIE/TS-CNS may request temporary credentials from regional office",
+        "contact": "Regional DSU office",
+        "iban_requirement": "IBAN required before final submission"
+      },
+      "caf_exception": {
+        "description": "Applicants unable to produce DSU/ISEE may submit alternative evidence",
+        "evidence_required": "Per official call requirements"
+      }
     },
     "programme_verification": {
       "official_source_confirmed": true,
@@ -256,7 +273,7 @@
     "citizenship_restrictions": "Open to Italian and foreign citizens without nationality restrictions",
     "international_student_eligibility": true,
     "non_eu_eligibility": true,
-    "academic_requirements": "Master's degree (Laurea Magistrale), Specialist degree (Laurea Specialistica), or pre-reform degree qualifying for PhD admission; or equivalent foreign qualification obtained by 31 Oct 2026",
+    "academic_requirements": "Master degree (Laurea Magistrale), Specialist degree (Laurea Specialistica), or pre-reform degree qualifying for PhD admission; or equivalent foreign qualification. Third session: qualifying candidates may apply conditionally and obtain degree by 15 May 2027. English certification: IELTS 5.5 minimum (Annex 4), TOEFL thresholds vary by test date. Declaration of Value/Diploma Supplement recommended (not mandatory at application per Article 8).",
     "language_requirements": "English proficiency (programme-dependent; typically TOEFL/IELTS or equivalent); Italian not required for most programmes",
     "income_requirements": "None (merit-based)",
     "asset_requirements": "None",
@@ -272,7 +289,7 @@
     "meal_coverage": false,
     "travel_coverage": true,
     "insurance_coverage": false,
-    "additional_benefits": "Research budget (10% of grant = €1,885.45/year); 50% stipend increase for research abroad (up to 12 months, 18 for cotutelle); tuition waiver (regional tax €140/year due); INPS separate management (2/3 university, 1/3 recipient)",
+    "additional_benefits": "Research budget (10% of grant = EUR 1,885.45/year); 50% stipend increase for research periods abroad (up to 12 months, 18 for cotutelle); tuition fee waiver (regional tax EUR 140/year + stamp duty EUR 16 + accident insurance due); INPS separate management (2/3 university, 1/3 recipient)",
     "fully_funded": true,
     "funding_details": [
       {
@@ -353,8 +370,10 @@
     "english_requirement": "Required per programme (Annex 4): IELTS 5.5 minimum, TOEFL thresholds vary by test date. Exemptions per call specifications.",
     "application_method": [
       "Register on Apply@PoliTo portal",
-      "Select PhD programme and session (3rd session: 14 Jan – 15 Feb 2027)",
-      "Upload all required documents",
+      "Pay non-refundable EUR 30 per doctoral programme before evaluation",
+      "Select PhD programme and session (3rd session: 14 Jan - 15 Feb 2027)",
+      "Upload mandatory documents: CV, research proposal, degree, transcript, language certificates, two referees names and institutional emails, English thesis abstract, motivation statement",
+      "Optional: recommendation letters, Declaration of Value/Diploma Supplement",
       "Submit application by 15 Feb 2027, 14:00 CET",
       "Await evaluation results",
       "If selected: accept position and complete enrollment",
@@ -364,7 +383,7 @@
     "selection_notes": "Minimum 110 funded positions across 3 sessions for 42nd cycle. Selection by programme committee. Reserved positions for foreign government scholarships, POLITO FOR REFUGEES, CONFLICT ZONES. Gross annual amount set by Ministerial Decree 247/2022.",
     "program_type": "PhD Programme (42nd cycle, 3rd session)",
     "best_fit": "International PhD candidates in engineering, science, architecture, design, management. Fully funded 3-year position with research budget and abroad mobility. Application opens 14 Jan 2027.",
-    "notes": "3rd session of 42nd cycle. Programme starts 1 June 2027. Part of minimum 110 funded positions across all sessions. Some programmes have inter-university agreements (Bioengineering with UniTo, Urban Development with UniTo, Electronics with INFN). Check programme tables for specific research topics and available positions.",
+    "notes": "3rd session of 42nd cycle. Programme starts 1 June 2027. Part of minimum 110 funded positions across all sessions (cycle-wide count). Second-session reserved positions (1 for foreign government scholarships, 2 for POLITO FOR REFUGEES, 1 for CONFLICT ZONES) are second-session only - not promised for third session. Application fee: EUR 30 per programme (non-refundable). Restricted: applicants who previously received an Italian PhD scholarship are ineligible, even if ended. Check programme tables for specific research topics and available positions.",
     "status": "upcoming",
     "is_verified": true,
     "last_verified_at": "2026-11-18",

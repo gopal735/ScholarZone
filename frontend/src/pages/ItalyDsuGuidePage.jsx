@@ -597,6 +597,7 @@ export default function ItalyDsuGuidePage() {
                         <span className={`status-badge status-${region.status}`}>
                           {region.status === 'open' ? 'OPEN' : region.status === 'upcoming' ? 'UPCOMING' : 'CLOSED'}
                         </span>
+                        {region.note && <div className="region-note">{region.note}</div>}
                       </td>
                     </tr>
                   ))}
