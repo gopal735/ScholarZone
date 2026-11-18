@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { askMentor, setMentorSessionScope, resetMentorSession, clearInFlightAsk } from '../mentorService'
+import { askMentor, setMentorSessionScope, clearInFlightAsk } from '../mentorService'
 
 function deferred() {
   let resolve, reject
