@@ -6,13 +6,13 @@ TEST_POSTGRESQL_URL is set.
 
 import os
 import uuid
-from datetime import date
+from datetime import date, timedelta
 
 import pytest
 
 from app.database import init_database, reset_database_connections
 from app.models import Scholarship, ApplicationRecord, User
-from app.services.closed_deletion import build_deletion_manifest, execute_deletion
+from app.services.closed_deletion import build_deletion_manifest, execute_deletion, get_effective_lifecycle_status
 
 
 @pytest.mark.skipif(
@@ -108,15 +108,26 @@ class TestPostgreSQLDeletionRace:
         manifest = build_deletion_manifest(s1)
         assert any(m.scholarship_id == sid for m in manifest)
 
-        # Add future cycle in s2
+        # Add future cycle in s2 - use a date 60 days in the future to ensure it's always future
+        future_opening = date.today() + timedelta(days=60)
         sch2 = s2.get(Scholarship, sid)
-        sch2.application_period = "opens 2026-06-01"
+        sch2.application_period = f"opens {future_opening.isoformat()}"
         sch2.status = "closed"
         s2.commit()
+
+        # Verify the updated scholarship is classified as UPCOMING before deletion
+        s1.expire_all()
+        updated_sch = s1.get(Scholarship, sid)
+        assert get_effective_lifecycle_status(updated_sch, date.today()) == "UPCOMING"
 
         report = execute_deletion(s1, manifest, dry_run=False)
         assert report.deleted_scholarships == 0
         assert sid in report.skipped_scholarship_ids
+
+        # Verify the row still exists
+        s1.expire_all()
+        remaining = s1.get(Scholarship, sid)
+        assert remaining is not None
 
         # Cleanup
         s1.query(Scholarship).filter(Scholarship.id == sid).delete()

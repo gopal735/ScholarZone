@@ -868,7 +868,7 @@ jobs:
       run: |
         cd backend
         set -o pipefail
-        python -m pytest tests/test_deadline_postgresql_integration.py tests/test_closed_deletion_postgresql.py -q -ra --tb=short 2>&1 | tee pg_integration.log
+        python -m pytest tests/test_deadline_postgresql_integration.py tests/test_closed_deletion_postgresql.py -v --tb=short 2>&1 | tee pg_integration.log
     - name: Verify integration tests executed (not skipped)
       run: |
         cd backend
@@ -877,14 +877,14 @@ jobs:
           cat pg_integration.log
           exit 1
         fi
-        if ! grep -q "passed" pg_integration.log; then
-          echo "ERROR: PostgreSQL integration tests did not pass"
+        # Verify both race tests passed
+        if ! grep -q "test_reopened_scholarship_skipped_with_row_lock.*PASSED" pg_integration.log; then
+          echo "ERROR: test_reopened_scholarship_skipped_with_row_lock did not pass"
           cat pg_integration.log
           exit 1
         fi
-        # Verify closed-deletion race tests specifically ran
-        if ! grep -q "test_closed_deletion_postgresql" pg_integration.log; then
-          echo "ERROR: closed-deletion PostgreSQL tests were not collected"
+        if ! grep -q "test_future_cycle_added_skips_deletion.*PASSED" pg_integration.log; then
+          echo "ERROR: test_future_cycle_added_skips_deletion did not pass"
           cat pg_integration.log
           exit 1
         fi
