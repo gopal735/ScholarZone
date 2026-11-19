@@ -1,0 +1,437 @@
+.italy-dsu-guide {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-4);
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.italy-dsu-guide__header {
+  margin-bottom: var(--space-8);
+  text-align: center;
+}
+
+.italy-dsu-guide__kicker {
+  display: inline-block;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-primary);
+  margin-bottom: var(--space-2);
+}
+
+.italy-dsu-guide__title {
+  font-family: var(--font-serif);
+  font-size: clamp(var(--text-3xl), 4vw, var(--text-5xl));
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--color-heading);
+  margin: 0 0 var(--space-3);
+}
+
+.italy-dsu-guide__subtitle {
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+  margin: 0;
+  max-width: 70ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.italy-dsu-guide__status-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.status-pill--open {
+  background: var(--color-success-light);
+  color: var(--color-success-dark);
+}
+
+.status-pill--upcoming {
+  background: var(--color-warning-light);
+  color: var(--color-warning-dark);
+}
+
+.status-pill--closed {
+  background: var(--color-neutral-200);
+  color: var(--color-neutral-600);
+}
+
+.status-pill--note {
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+}
+
+.italy-dsu-guide__layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .italy-dsu-guide__layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.italy-dsu-guide__sidebar {
+  position: sticky;
+  top: var(--space-6);
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  border-right: 1px solid var(--color-border);
+  padding-right: var(--space-4);
+}
+
+@media (max-width: 1024px) {
+  .italy-dsu-guide__sidebar {
+    position: static;
+    max-height: none;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+    padding-right: 0;
+    padding-bottom: var(--space-4);
+  }
+}
+
+.italy-dsu-guide__search {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.italy-dsu-guide__search input {
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.italy-dsu-guide__search input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+.italy-dsu-guide__search select {
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.italy-dsu-guide__region-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.italy-dsu-guide__region-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: var(--text-sm);
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.italy-dsu-guide__region-btn:hover {
+  border-color: var(--color-primary);
+  background: var(--color-primary-light);
+}
+
+.italy-dsu-guide__region-btn.status-open {
+  border-color: var(--color-success);
+  background: var(--color-success-light);
+}
+
+.italy-dsu-guide__region-btn.status-upcoming {
+  border-color: var(--color-warning);
+  background: var(--color-warning-light);
+}
+
+.italy-dsu-guide__region-name {
+  font-weight: 500;
+}
+
+.italy-dsu-guide__region-status {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+}
+
+.status-open .italy-dsu-guide__region-status {
+  background: var(--color-success);
+  color: white;
+}
+
+.status-upcoming .italy-dsu-guide__region-status {
+  background: var(--color-warning);
+  color: var(--color-warning-dark);
+}
+
+.status-closed .italy-dsu-guide__region-status {
+  background: var(--color-neutral-300);
+  color: var(--color-neutral-700);
+}
+
+.italy-dsu-guide__sidebar-footer {
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+.italy-dsu-guide__disclaimer {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.italy-dsu-guide__content {
+  min-width: 0;
+}
+
+.italy-dsu-guide__section {
+  margin-bottom: var(--space-10);
+  padding-bottom: var(--space-8);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.italy-dsu-guide__section:last-child {
+  border-bottom: none;
+}
+
+.italy-dsu-guide__section h2 {
+  font-family: var(--font-serif);
+  font-size: var(--text-2xl);
+  font-weight: 400;
+  color: var(--color-heading);
+  margin: 0 0 var(--space-4);
+  padding-bottom: var(--space-2);
+  border-bottom: 2px solid var(--color-primary);
+  display: inline-block;
+}
+
+.italy-dsu-guide__section-content {
+  font-size: var(--text-base);
+  line-height: 1.7;
+}
+
+.italy-dsu-guide__section-content h3 {
+  font-family: var(--font-serif);
+  font-size: var(--text-lg);
+  font-weight: 400;
+  color: var(--color-heading);
+  margin: var(--space-5) 0 var(--space-2);
+}
+
+.italy-dsu-guide__section-content p {
+  margin: 0 0 var(--space-3);
+}
+
+.italy-dsu-guide__section-content ul,
+.italy-dsu-guide__section-content ol {
+  margin: 0 0 var(--space-3) var(--space-4);
+  padding-left: var(--space-4);
+}
+
+.italy-dsu-guide__section-content li {
+  margin-bottom: var(--space-1);
+}
+
+.italy-dsu-guide__section-content strong {
+  color: var(--color-heading);
+}
+
+.italy-dsu-guide__section-content em {
+  color: var(--color-text-muted);
+}
+
+.italy-dsu-guide__section-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-4) 0;
+  font-size: var(--text-sm);
+}
+
+.italy-dsu-guide__section-content th,
+.italy-dsu-guide__section-content td {
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  text-align: left;
+}
+
+.italy-dsu-guide__section-content th {
+  background: var(--color-neutral-100);
+  font-weight: 600;
+  color: var(--color-heading);
+}
+
+.italy-dsu-guide__section-content tr:nth-child(even) td {
+  background: var(--color-neutral-50);
+}
+
+.italy-dsu-guide__region-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+
+.italy-dsu-guide__region-table th {
+  padding: var(--space-3) var(--space-2);
+  background: var(--color-neutral-100);
+  font-weight: 600;
+  color: var(--color-heading);
+  text-align: left;
+  border-bottom: 2px solid var(--color-border);
+  white-space: nowrap;
+}
+
+.italy-dsu-guide__region-table td {
+  padding: var(--space-3) var(--space-2);
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: top;
+}
+
+.italy-dsu-guide__region-table tr:hover td {
+  background: var(--color-neutral-50);
+}
+
+.region-row.status-open td {
+  background: var(--color-success-light);
+}
+
+.region-row.status-upcoming td {
+  background: var(--color-warning-light);
+}
+
+.region-name {
+  min-width: 140px;
+}
+
+.region-agencies {
+  min-width: 180px;
+}
+
+.region-universities {
+  min-width: 200px;
+}
+
+.region-deadline {
+  min-width: 160px;
+  font-family: var(--font-mono);
+}
+
+.region-isee {
+  min-width: 120px;
+  font-family: var(--font-mono);
+}
+
+.region-status {
+  min-width: 80px;
+  text-align: center;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+}
+
+.status-badge.status-open {
+  background: var(--color-success);
+  color: white;
+}
+
+.status-badge.status-upcoming {
+  background: var(--color-warning);
+  color: var(--color-warning-dark);
+}
+
+.status-badge.status-closed {
+  background: var(--color-neutral-300);
+  color: var(--color-neutral-700);
+}
+
+.italy-dsu-guide__table-wrap {
+  overflow-x: auto;
+  margin: var(--space-4) calc(var(--space-4) * -1);
+  padding: 0 var(--space-4);
+}
+
+.italy-dsu-guide__region-note {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-top: var(--space-1);
+  padding: var(--space-1) var(--space-2);
+  background: var(--color-neutral-100);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--color-primary);
+}
+
+@media (max-width: 768px) {
+  .italy-dsu-guide {
+    padding: var(--space-4) var(--space-3);
+  }
+
+  .italy-dsu-guide__title {
+    font-size: var(--text-2xl);
+  }
+
+  .italy-dsu-guide__section h2 {
+    font-size: var(--text-xl);
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

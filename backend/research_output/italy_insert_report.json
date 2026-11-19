@@ -1,0 +1,28 @@
+{
+  "generated_at": "2026-11-18T17:49:22.772732+00:00",
+  "verification_at": "2026-11-18T17:49:22.772730+00:00",
+  "total_candidates": 1,
+  "inserted": 1,
+  "skipped_duplicate": 0,
+  "failed": 0,
+  "inserted_ids": [
+    1337
+  ],
+  "matched_ids": [],
+  "matched_details": [],
+  "open_count": 1,
+  "upcoming_count": 0,
+  "audit_records": 1,
+  "master_baseline_verified": true,
+  "total_records_before": 2,
+  "total_records_after": 3,
+  "italy_records_before": 0,
+  "italy_records_after": 1,
+  "id_mapping": {
+    "erasmus_mundus_id": 1,
+    "iccr_id": 2,
+    "vda_id": 1337,
+    "polito_phd_id": 1338
+  },
+  "errors": []
+}
