@@ -153,7 +153,13 @@ const PRIVATE_ELIGIBILITY_PATTERNS = [
 // These indicate private mentor intent even when discovery words are present.
 const PERSONAL_DISCLOSURE_PATTERNS = [
   /\bmy\s+(hiv|aids|cancer|diagnosis|disability|illness|disease|condition|health|medical|depression|anxiety|mental health)\b/i,
+  /\bi\s+have\s+(hiv|aids|cancer|a disability|an illness|a disease|a condition|depression|anxiety)\b/i,
+  /\bi\s+am\s+(hiv|disabled|ill|sick|diagnosed)\b/i,
+  /\bi'm\s+(hiv|disabled|ill|sick)\b/i,
+  /\bi'm\s+hiv[-\s]?positive\b/i,
+  /\bhiv[-\s]?positive\b/i,
   /\bmy\s+(income|financial|poverty|family income|economic)\b/i,
+  /\bi\s+have\s+(low income|financial hardship|poverty)\b/i,
   /\bmy\s+(visa|immigration|refugee|asylum|criminal record|conviction)\b/i,
   /\bmy\s+(pregnancy|pregnant)\b/i,
   /\bi\s+am\s+pregnant\b/i,
