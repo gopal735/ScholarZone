@@ -555,7 +555,7 @@ const DSU_SECTIONS = [
         <li>[ ] Submit appeals within deadline if errors found</li>
         <li>[ ] Complete university enrolment by deadline</li>
         <li>[ ] Provide IBAN + PEC for payments</li>
-        <li>[ ] Upload residence permit receipt (permesso di soggiorno receipt) as interim proof if the permit is not yet issued</li>
+        <li>[ ] Upload residence permit receipt (permesso di soggiorno receipt) as interim proof if the permit is not yet issued, or the permit itself — whichever your agency requires by its deadline</li>
         <li>[ ] Upload residence permit (non-EU) within agency deadline once issued</li>
       </ul>
     `,

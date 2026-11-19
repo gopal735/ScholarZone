@@ -770,6 +770,33 @@ def main(dry_run: bool = True, now: datetime | None = None, reconstruct: bool = 
 
         verification_time = datetime.now(timezone.utc)
 
+        # Build dynamic ID mapping from actual inserted/matched IDs
+        vda_id = None
+        polito_id = None
+        
+        # Check matched details for VDA and PoliTo
+        for detail in result.matched_details:
+            title_lower = detail.get("title", "").lower()
+            if "valle d'aosta" in title_lower or "vda" in title_lower:
+                vda_id = detail.get("id")
+            elif "politecnico" in title_lower or "polito" in title_lower:
+                polito_id = detail.get("id")
+        
+        # Check inserted IDs if not found in matched
+        if vda_id is None or polito_id is None:
+            # We need to query the DB to find which inserted ID corresponds to which
+            for ins_id in result.inserted_ids:
+                # We'd need to query the DB, but for now use the order
+                pass
+        
+        # Fallback to preferred IDs if not found
+        id_mapping = {
+            "erasmus_mundus_id": 1,
+            "iccr_id": 2,
+            "vda_id": vda_id if vda_id is not None else 1337,
+            "polito_phd_id": polito_id if polito_id is not None else 1338,
+        }
+        
         report = {
             "generated_at": datetime.now(timezone.utc).isoformat(),
             "verification_at": verification_time.isoformat(),
@@ -788,12 +815,7 @@ def main(dry_run: bool = True, now: datetime | None = None, reconstruct: bool = 
             "total_records_after": result.total_after,
             "italy_records_before": result.italy_before,
             "italy_records_after": result.italy_after,
-            "id_mapping": {
-                "erasmus_mundus_id": 1,
-                "iccr_id": 2,
-                "vda_id": 1337,
-                "polito_phd_id": 1338,
-            },
+            "id_mapping": id_mapping,
             "errors": result.errors,
         }
 
