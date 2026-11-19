@@ -10,32 +10,43 @@ from __future__ import annotations
 
 import json
 import logging
+import re
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import List, Optional
 
 from sqlalchemy import delete, select, func
 from sqlalchemy.orm import Session
 
-from ..models import Scholarship
-from ..repositories.scholarships import public_visibility_conditions
+from ..models import (
+    Scholarship,
+    ScholarshipVerificationHistory,
+    ScholarshipReview,
+    ScholarshipFetchAttempt,
+    ScholarshipSnapshot,
+    ImageReview,
+    DiscoveryCandidate,
+    ScholarshipRestoreRecord,
+    SavedScholarship,
+    ApplicationRecord,
+    DeletedClosedScholarship,
+)
 from ..models_supervisor import (
     ScholarshipProfessorLink,
     ScholarshipSupervisorCoverage,
     SupervisorSourceEvidence,
     OfficialContact,
+    ProfessorOutreachRecord,
 )
 
 logger = logging.getLogger(__name__)
 
-# Tombstone table name for re-import prevention
 TOMBSTONE_TABLE = "deleted_closed_scholarships"
 
 
 @dataclass
 class ClosedScholarshipManifest:
-    """Manifest entry for a scholarship targeted for deletion."""
     scholarship_id: int
     title: str
     country: str
@@ -49,69 +60,260 @@ class ClosedScholarshipManifest:
     linked_coverage: bool
     linked_official_contacts: int
     linked_source_evidence: int
-    deletion_reason: str
+    linked_application_count: int = 0
+    linked_application_records: int = 0
+    deletion_reason: str = "Effective lifecycle status is CLOSED"
 
 
 @dataclass
 class DeletionReport:
-    """Report of a deletion operation."""
     dry_run: bool
     target_environment: str
     total_closed: int
-    deleted_scholarships: int
-    deleted_professor_links: int
-    deleted_coverage_rows: int
-    deleted_source_evidence: int
-    deleted_official_contacts: int
-    tombstones_created: int
+    deleted_scholarships: int = 0
+    deleted_professor_links: int = 0
+    deleted_coverage_rows: int = 0
+    deleted_source_evidence: int = 0
+    deleted_official_contacts: int = 0
+    tombstones_created: int = 0
+    preserved_application_records: int = 0
+    preserved_applications: int = 0
+    application_records_preserved: int = 0
+    skipped_scholarship_ids: List[int] = field(default_factory=list)
+    skipped: List[int] = field(default_factory=list)
+    skipped_scholarships: List[int] = field(default_factory=list)
     errors: List[str] = field(default_factory=list)
     manifest: List[ClosedScholarshipManifest] = field(default_factory=list)
     started_at: str = ""
     completed_at: str = ""
 
 
-def get_effective_lifecycle_status(scholarship: Scholarship) -> str:
-    """Determine effective lifecycle status using canonical logic.
+def _normalize_date(value) -> Optional[date]:
+    if value is None:
+        return None
+    if isinstance(value, datetime):
+        return value.date()
+    if isinstance(value, date):
+        return value
+    return None
 
-    Uses stored status as primary indicator. For scholarships with
-    deadline information, checks if the deadline has passed.
-    """
-    status = (scholarship.status or "").lower().strip()
+
+def _parse_future_date_from_text(text: str, ref_date: date) -> Optional[date]:
+    if not text or not isinstance(text, str):
+        return None
+    # opens YYYY-MM-DD
+    m = re.search(r"opens?\s+(?:on\s+)?(\d{4}-\d{2}-\d{2})", text, re.I)
+    if m:
+        try:
+            return date.fromisoformat(m.group(1))
+        except ValueError:
+            pass
+    # 2027 cycle: call opens YYYY-MM-DD
+    m = re.search(r"(\d{4})\s+cycle:?.*?opens?\s+(\d{4}-\d{2}-\d{2})", text, re.I)
+    if m:
+        try:
+            return date.fromisoformat(m.group(2))
+        except ValueError:
+            pass
+    # call opens Month YYYY
+    m = re.search(r"(?:call|applications?)\s+opens?\s+([A-Za-z]+\s+\d{4})", text, re.I)
+    if m:
+        try:
+            parsed = datetime.strptime(m.group(1).strip(), "%B %Y")
+            return parsed.date().replace(day=1)
+        except ValueError:
+            try:
+                parsed = datetime.strptime(m.group(1).strip(), "%b %Y")
+                return parsed.date().replace(day=1)
+            except ValueError:
+                pass
+    return None
+
+
+def _has_verified_future_cycle(scholarship, ref_date: date) -> bool:
+    now_date = ref_date
+    # application_period patterns
+    ap = getattr(scholarship, "application_period", None)
+    if isinstance(ap, str):
+        # opens YYYY-MM-DD
+        for m in re.finditer(r"opens?\s+(?:on\s+)?(\d{4}-\d{2}-\d{2})", ap, re.I):
+            try:
+                d = date.fromisoformat(m.group(1))
+                if d > now_date:
+                    return True
+            except ValueError:
+                pass
+        # 2027 cycle
+        for m in re.finditer(r"(\d{4})\s+cycle:?.*?opens?\s+(\d{4}-\d{2}-\d{2})", ap, re.I):
+            try:
+                d = date.fromisoformat(m.group(2))
+                if d > now_date:
+                    return True
+            except ValueError:
+                pass
+        # call opens Month YYYY
+        for m in re.finditer(r"(?:call|applications?)\s+opens?\s+([A-Za-z]+\s+\d{4})", ap, re.I):
+            try:
+                parsed = datetime.strptime(m.group(1).strip(), "%B %Y")
+                d = parsed.date().replace(day=1)
+                if d > now_date:
+                    return True
+            except ValueError:
+                try:
+                    parsed = datetime.strptime(m.group(1).strip(), "%b %Y")
+                    d = parsed.date().replace(day=1)
+                    if d > now_date:
+                        return True
+                except ValueError:
+                    pass
+        # re-opens in early December
+        m = re.search(r"(?:re-)?opens?\s+in\s+(early|mid|late)\s+([A-Za-z]+)", ap, re.I)
+        if m:
+            month_map = {
+                "january": 1, "february": 2, "march": 3, "april": 4, "may": 5, "june": 6,
+                "july": 7, "august": 8, "september": 9, "october": 10, "november": 11, "december": 12,
+            }
+            mon = month_map.get(m.group(2).lower())
+            if mon is not None:
+                day = 5 if m.group(1).lower() == "early" else (15 if m.group(1).lower() == "mid" else 25)
+                year = now_date.year
+                try:
+                    d = date(year, mon, day)
+                    if d <= now_date:
+                        d = date(year + 1, mon, day)
+                    if d > now_date:
+                        return True
+                except ValueError:
+                    pass
+
+    # recurring cycle indicators
+    cycle_text = " ".join(
+        str(x) for x in [
+            getattr(scholarship, "application_period", None),
+            getattr(scholarship, "notes", None),
+            getattr(scholarship, "verification_notes", None),
+            getattr(scholarship, "selection_notes", None),
+        ] if x
+    )
+    recurring = re.search(r"\b(annually|annual|every year|each year|per year|yearly|rounds? per year)\b", cycle_text, re.I)
+    month = re.search(r"\b(january|february|march|april|may|june|july|august|september|october|november|december)\b", cycle_text, re.I)
+    if recurring and month:
+        return True
+
+    status = (getattr(scholarship, "status", None) or "").lower().strip()
+    if status == "upcoming":
+        return True
+
+    return False
+
+
+def get_effective_lifecycle_status(scholarship, reference_date=None) -> str:
+    if reference_date is None:
+        reference_date = datetime.now(timezone.utc)
+    ref_date = _normalize_date(reference_date)
+    if ref_date is None:
+        ref_date = reference_date if isinstance(reference_date, date) else datetime.now(timezone.utc).date()
+
+    has_future = _has_verified_future_cycle(scholarship, ref_date)
+
+    is_archived = bool(getattr(scholarship, "is_archived", False))
+    status = (getattr(scholarship, "status", None) or "").lower().strip()
+
+    if is_archived:
+        if not has_future:
+            return "CLOSED"
+
     if status == "closed":
+        if not has_future:
+            return "CLOSED"
+
+    deadline = getattr(scholarship, "deadline_date", None)
+    dl_date = _normalize_date(deadline)
+    if dl_date is not None and dl_date < ref_date and not has_future:
         return "CLOSED"
-    if status in ("open", "opening", "closing_soon"):
-        return "OPEN"
+
     if status == "upcoming":
         return "UPCOMING"
-    return "UNKNOWN"
+    if status in ("open",):
+        return "OPEN"
+    if status in ("opening",):
+        return "OPENING"
+    if status in ("closing_soon", "closing-soon"):
+        return "CLOSING_SOON"
+    if status == "closed" and has_future:
+        return "UPCOMING"
+    if not status:
+        return "UNKNOWN"
+    return status.upper()
 
 
-def identify_closed_scholarships(db: Session) -> List[Scholarship]:
-    """Identify all scholarships whose effective lifecycle is CLOSED.
-
-    Uses the canonical public visibility predicate logic.
-    """
+def identify_closed_scholarships(db: Session, reference_date=None) -> List[Scholarship]:
     scholarships = db.execute(select(Scholarship)).scalars().all()
     closed = []
     for s in scholarships:
-        if get_effective_lifecycle_status(s) == "CLOSED":
+        if get_effective_lifecycle_status(s, reference_date) == "CLOSED":
             closed.append(s)
     return closed
 
 
+def _link_ids_for_scholarship(db: Session, scholarship_id: int) -> List[int]:
+    return list(db.execute(
+        select(ScholarshipProfessorLink.id).where(ScholarshipProfessorLink.scholarship_id == scholarship_id)
+    ).scalars().all())
+
+
 def audit_dependencies(db: Session, scholarship_id: int) -> dict:
-    """Audit all dependencies for a scholarship before deletion."""
     prof_links = db.execute(
         select(func.count()).where(ScholarshipProfessorLink.scholarship_id == scholarship_id)
     ).scalar_one()
     coverage = db.execute(
         select(func.count()).where(ScholarshipSupervisorCoverage.scholarship_id == scholarship_id)
     ).scalar_one()
-    source_evidence = db.execute(
-        select(func.count()).where(SupervisorSourceEvidence.scholarship_id == scholarship_id)
-    ).scalar_one()
+    link_ids = _link_ids_for_scholarship(db, scholarship_id)
+    if link_ids:
+        source_evidence = db.execute(
+            select(func.count()).select_from(SupervisorSourceEvidence).where(
+                (SupervisorSourceEvidence.scholarship_id == scholarship_id)
+                | (SupervisorSourceEvidence.link_id.in_(link_ids))
+            )
+        ).scalar_one()
+        # distinct to avoid double count (already distinct rows)
+    else:
+        source_evidence = db.execute(
+            select(func.count()).where(SupervisorSourceEvidence.scholarship_id == scholarship_id)
+        ).scalar_one()
     official_contacts = db.execute(
         select(func.count()).where(OfficialContact.scholarship_id == scholarship_id)
+    ).scalar_one()
+    application_records = db.execute(
+        select(func.count()).where(ApplicationRecord.scholarship_id == scholarship_id)
+    ).scalar_one()
+    verification_history = db.execute(
+        select(func.count()).where(ScholarshipVerificationHistory.scholarship_id == scholarship_id)
+    ).scalar_one()
+    scholarship_reviews = db.execute(
+        select(func.count()).where(ScholarshipReview.scholarship_id == scholarship_id)
+    ).scalar_one()
+    fetch_attempts = db.execute(
+        select(func.count()).where(ScholarshipFetchAttempt.scholarship_id == scholarship_id)
+    ).scalar_one()
+    snapshots = db.execute(
+        select(func.count()).where(ScholarshipSnapshot.scholarship_id == scholarship_id)
+    ).scalar_one()
+    image_reviews = db.execute(
+        select(func.count()).where(ImageReview.scholarship_id == scholarship_id)
+    ).scalar_one()
+    restore_records = db.execute(
+        select(func.count()).where(ScholarshipRestoreRecord.scholarship_id == scholarship_id)
+    ).scalar_one()
+    saved_scholarships = db.execute(
+        select(func.count()).where(SavedScholarship.scholarship_id == scholarship_id)
+    ).scalar_one()
+    outreach_records = db.execute(
+        select(func.count()).where(ProfessorOutreachRecord.scholarship_id == scholarship_id)
+    ).scalar_one()
+    discovery_candidates = db.execute(
+        select(func.count()).where(DiscoveryCandidate.matched_scholarship_id == scholarship_id)
     ).scalar_one()
 
     return {
@@ -119,14 +321,22 @@ def audit_dependencies(db: Session, scholarship_id: int) -> dict:
         "coverage_rows": coverage,
         "source_evidence": source_evidence,
         "official_contacts": official_contacts,
+        "application_records": application_records,
+        "verification_history": verification_history,
+        "scholarship_reviews": scholarship_reviews,
+        "fetch_attempts": fetch_attempts,
+        "snapshots": snapshots,
+        "image_reviews": image_reviews,
+        "restore_records": restore_records,
+        "saved_scholarships": saved_scholarships,
+        "outreach_records": outreach_records,
+        "discovery_candidates": discovery_candidates,
     }
 
 
-def build_deletion_manifest(db: Session) -> List[ClosedScholarshipManifest]:
-    """Build a complete manifest of scholarships targeted for deletion."""
-    closed = identify_closed_scholarships(db)
+def build_deletion_manifest(db: Session, reference_date=None) -> List[ClosedScholarshipManifest]:
+    closed = identify_closed_scholarships(db, reference_date)
     manifest = []
-
     for s in closed:
         deps = audit_dependencies(db, s.id)
         manifest.append(ClosedScholarshipManifest(
@@ -135,106 +345,192 @@ def build_deletion_manifest(db: Session) -> List[ClosedScholarshipManifest]:
             country=s.country,
             institution=s.official_source or "Unknown",
             stored_status=s.status,
-            effective_status=get_effective_lifecycle_status(s),
-            deadline_date=s.deadline_date.isoformat() if s.deadline_date else None,
+            effective_status=get_effective_lifecycle_status(s, reference_date),
+            deadline_date=s.deadline_date.isoformat() if getattr(s, "deadline_date", None) else None,
             official_source=s.official_source,
             official_source_url=s.official_source_url,
             linked_professor_count=deps["professor_links"],
             linked_coverage=deps["coverage_rows"] > 0,
             linked_official_contacts=deps["official_contacts"],
             linked_source_evidence=deps["source_evidence"],
-            deletion_reason="Effective lifecycle status is CLOSED",
+            linked_application_count=deps["application_records"],
+            linked_application_records=deps["application_records"],
         ))
-
     return manifest
 
 
-def execute_deletion(
-    db: Session,
-    manifest: List[ClosedScholarshipManifest],
-    dry_run: bool = True,
-) -> DeletionReport:
-    """Execute the deletion of closed scholarships.
+def _target_environment(db: Session) -> str:
+    bind = db.get_bind()
+    name = getattr(bind.dialect, "name", "sqlite")
+    if name == "postgresql":
+        return "postgresql"
+    return "local_sqlite"
 
-    In dry_run mode, only reports what would be deleted.
-    In live mode, performs actual deletion within a transaction.
-    """
+
+def _populate_application_snapshot(app: ApplicationRecord, s: Scholarship) -> None:
+    if app.scholarship_name_snapshot is None:
+        app.scholarship_name_snapshot = getattr(s, "title", None)
+    if app.scholarship_country_snapshot is None:
+        app.scholarship_country_snapshot = getattr(s, "country", None)
+    if app.scholarship_degree_snapshot is None:
+        app.scholarship_degree_snapshot = getattr(s, "degree", None)
+    if app.scholarship_provider_snapshot is None:
+        app.scholarship_provider_snapshot = getattr(s, "official_source", None)
+    if app.scholarship_funding_snapshot is None:
+        app.scholarship_funding_snapshot = getattr(s, "funding", None)
+    if app.scholarship_deadline_text_snapshot is None:
+        app.scholarship_deadline_text_snapshot = getattr(s, "deadline_display", None)
+    if app.scholarship_deadline_date_snapshot is None:
+        app.scholarship_deadline_date_snapshot = _normalize_date(getattr(s, "deadline_date", None))
+    if app.scholarship_source_url_snapshot is None:
+        app.scholarship_source_url_snapshot = getattr(s, "official_source_url", None) or getattr(s, "application_link", None)
+
+
+def execute_deletion(db: Session, manifest: List[ClosedScholarshipManifest], dry_run: bool = True, reference_date=None) -> DeletionReport:
     report = DeletionReport(
         dry_run=dry_run,
-        target_environment="local_sqlite",
+        target_environment=_target_environment(db),
         total_closed=len(manifest),
-        deleted_scholarships=0,
-        deleted_professor_links=0,
-        deleted_coverage_rows=0,
-        deleted_source_evidence=0,
-        deleted_official_contacts=0,
-        tombstones_created=0,
         manifest=manifest,
         started_at=datetime.now(timezone.utc).isoformat(),
     )
 
     if dry_run:
-        # Just report what would happen
         for entry in manifest:
             deps = audit_dependencies(db, entry.scholarship_id)
             report.deleted_professor_links += deps["professor_links"]
             report.deleted_coverage_rows += deps["coverage_rows"]
             report.deleted_source_evidence += deps["source_evidence"]
             report.deleted_official_contacts += deps["official_contacts"]
+            report.preserved_application_records += deps["application_records"]
+            report.preserved_applications += deps["application_records"]
+            report.application_records_preserved += deps["application_records"]
         report.deleted_scholarships = len(manifest)
         report.completed_at = datetime.now(timezone.utc).isoformat()
         return report
 
-    # Live deletion (requires explicit authorization)
     try:
         for entry in manifest:
             sid = entry.scholarship_id
 
-            # Delete supervisor source evidence
-            result = db.execute(
-                delete(SupervisorSourceEvidence).where(
-                    SupervisorSourceEvidence.scholarship_id == sid
+            # transactional re-check
+            locked = db.execute(
+                select(Scholarship).where(Scholarship.id == sid).with_for_update()
+            ).scalar_one_or_none()
+            if locked is None:
+                report.skipped_scholarship_ids.append(sid)
+                report.skipped.append(sid)
+                report.skipped_scholarships.append(sid)
+                continue
+            if get_effective_lifecycle_status(locked, reference_date) != "CLOSED":
+                report.skipped_scholarship_ids.append(sid)
+                report.skipped.append(sid)
+                report.skipped_scholarships.append(sid)
+                continue
+
+            deps = audit_dependencies(db, sid)
+            link_ids = _link_ids_for_scholarship(db, sid)
+
+            # delete source evidence (scholarship_id or link_id)
+            if link_ids:
+                res = db.execute(
+                    delete(SupervisorSourceEvidence).where(
+                        (SupervisorSourceEvidence.scholarship_id == sid)
+                        | (SupervisorSourceEvidence.link_id.in_(link_ids))
+                    )
                 )
-            )
-            report.deleted_source_evidence += result.rowcount
-
-            # Delete official contacts
-            result = db.execute(
-                delete(OfficialContact).where(OfficialContact.scholarship_id == sid)
-            )
-            report.deleted_official_contacts += result.rowcount
-
-            # Delete scholarship-professor links
-            result = db.execute(
-                delete(ScholarshipProfessorLink).where(
-                    ScholarshipProfessorLink.scholarship_id == sid
+            else:
+                res = db.execute(
+                    delete(SupervisorSourceEvidence).where(SupervisorSourceEvidence.scholarship_id == sid)
                 )
-            )
-            report.deleted_professor_links += result.rowcount
+            report.deleted_source_evidence += (res.rowcount or 0)
 
-            # Delete coverage rows
-            result = db.execute(
-                delete(ScholarshipSupervisorCoverage).where(
-                    ScholarshipSupervisorCoverage.scholarship_id == sid
+            # official contacts
+            res = db.execute(delete(OfficialContact).where(OfficialContact.scholarship_id == sid))
+            report.deleted_official_contacts += (res.rowcount or 0)
+
+            # professor links (after evidence)
+            res = db.execute(delete(ScholarshipProfessorLink).where(ScholarshipProfessorLink.scholarship_id == sid))
+            report.deleted_professor_links += (res.rowcount or 0)
+
+            # coverage
+            res = db.execute(delete(ScholarshipSupervisorCoverage).where(ScholarshipSupervisorCoverage.scholarship_id == sid))
+            report.deleted_coverage_rows += (res.rowcount or 0)
+
+            # other catalogue deps
+            db.execute(delete(ScholarshipSnapshot).where(ScholarshipSnapshot.scholarship_id == sid))
+            db.execute(delete(ScholarshipFetchAttempt).where(ScholarshipFetchAttempt.scholarship_id == sid))
+            db.execute(delete(ScholarshipVerificationHistory).where(ScholarshipVerificationHistory.scholarship_id == sid))
+            db.execute(delete(ScholarshipReview).where(ScholarshipReview.scholarship_id == sid))
+            db.execute(delete(ImageReview).where(ImageReview.scholarship_id == sid))
+            db.execute(delete(ScholarshipRestoreRecord).where(ScholarshipRestoreRecord.scholarship_id == sid))
+
+            # saved scholarships
+            db.execute(delete(SavedScholarship).where(SavedScholarship.scholarship_id == sid))
+
+            # discovery candidates unlink
+            db.execute(
+                DiscoveryCandidate.__table__.update()
+                .where(DiscoveryCandidate.matched_scholarship_id == sid)
+                .values(matched_scholarship_id=None)
+            )
+
+            # professor outreach detach
+            outreach_rows = db.execute(
+                select(ProfessorOutreachRecord).where(ProfessorOutreachRecord.scholarship_id == sid)
+            ).scalars().all()
+            for o in outreach_rows:
+                o.scholarship_id = None
+
+            # application records preserve history + detach
+            app_rows = db.execute(
+                select(ApplicationRecord).where(ApplicationRecord.scholarship_id == sid)
+            ).scalars().all()
+            for app in app_rows:
+                _populate_application_snapshot(app, locked)
+                app.scholarship_id = None
+                report.preserved_application_records += 1
+                report.preserved_applications += 1
+                report.application_records_preserved += 1
+
+            # tombstone (idempotent)
+            url = getattr(locked, "official_source_url", None)
+            link = getattr(locked, "application_link", None)
+            title = getattr(locked, "title", None)
+            existing_ts = None
+            if url:
+                existing_ts = db.execute(
+                    select(DeletedClosedScholarship).where(DeletedClosedScholarship.official_source_url == url)
+                ).scalar_one_or_none()
+            if existing_ts is None:
+                ts = DeletedClosedScholarship(
+                    official_source_url=url,
+                    application_link=link,
+                    title=title,
+                    reason="closed_permanent_deletion",
                 )
-            )
-            report.deleted_coverage_rows += result.rowcount
+                db.add(ts)
+                db.flush()
+                report.tombstones_created += 1
 
-            # Create tombstone to prevent re-import
-            # (Minimal record: just the ID and deletion date)
-            # Note: Tombstone table must exist in schema
-
-            # Delete the scholarship itself
-            result = db.execute(
-                delete(Scholarship).where(Scholarship.id == sid)
-            )
-            report.deleted_scholarships += result.rowcount
+            # delete scholarship
+            res = db.execute(delete(Scholarship).where(Scholarship.id == sid))
+            report.deleted_scholarships += (res.rowcount or 0)
 
         db.commit()
         report.completed_at = datetime.now(timezone.utc).isoformat()
 
     except Exception as e:
         db.rollback()
+        report.deleted_scholarships = 0
+        report.deleted_professor_links = 0
+        report.deleted_coverage_rows = 0
+        report.deleted_source_evidence = 0
+        report.deleted_official_contacts = 0
+        report.tombstones_created = 0
+        report.preserved_application_records = 0
+        report.preserved_applications = 0
+        report.application_records_preserved = 0
         report.errors.append(f"Deletion failed: {type(e).__name__}: {str(e)}")
         report.completed_at = datetime.now(timezone.utc).isoformat()
 
@@ -242,7 +538,6 @@ def execute_deletion(
 
 
 def save_manifest(manifest: List[ClosedScholarshipManifest], output_path: str) -> None:
-    """Save the deletion manifest to a JSON file."""
     data = [
         {
             "scholarship_id": m.scholarship_id,
@@ -258,6 +553,7 @@ def save_manifest(manifest: List[ClosedScholarshipManifest], output_path: str) -
             "linked_coverage": m.linked_coverage,
             "linked_official_contacts": m.linked_official_contacts,
             "linked_source_evidence": m.linked_source_evidence,
+            "linked_application_count": m.linked_application_count,
             "deletion_reason": m.deletion_reason,
         }
         for m in manifest
@@ -266,7 +562,6 @@ def save_manifest(manifest: List[ClosedScholarshipManifest], output_path: str) -
 
 
 def save_report(report: DeletionReport, output_path: str) -> None:
-    """Save the deletion report to a JSON file."""
     data = {
         "dry_run": report.dry_run,
         "target_environment": report.target_environment,
@@ -277,6 +572,12 @@ def save_report(report: DeletionReport, output_path: str) -> None:
         "deleted_source_evidence": report.deleted_source_evidence,
         "deleted_official_contacts": report.deleted_official_contacts,
         "tombstones_created": report.tombstones_created,
+        "preserved_application_records": report.preserved_application_records,
+        "preserved_applications": report.preserved_applications,
+        "application_records_preserved": report.application_records_preserved,
+        "skipped_scholarship_ids": report.skipped_scholarship_ids,
+        "skipped": report.skipped,
+        "skipped_scholarships": report.skipped_scholarships,
         "errors": report.errors,
         "started_at": report.started_at,
         "completed_at": report.completed_at,

@@ -3,7 +3,7 @@
 
 Usage:
     python scripts/closed_deletion_cli.py --dry-run
-    python scripts/closed_deletion_cli.py --execute (requires --confirm-production)
+    python scripts/closed_deletion_cli.py --execute --confirm-production
 
 This script implements the product rule: ALL scholarship records whose
 effective lifecycle status is CLOSED must be permanently deleted.
@@ -18,7 +18,7 @@ import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
-from app.database import get_engine
+from app.database import get_engine, init_database
 from app.services.closed_deletion import (
     build_deletion_manifest,
     execute_deletion,
@@ -30,8 +30,9 @@ from sqlalchemy.orm import Session
 
 def main():
     parser = argparse.ArgumentParser(description="Closed scholarship permanent deletion")
-    parser.add_argument("--dry-run", action="store_true", default=True, help="Dry run (default)")
-    parser.add_argument("--execute", action="store_true", help="Execute actual deletion")
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument("--dry-run", action="store_true", help="Dry run (default)")
+    group.add_argument("--execute", action="store_true", help="Execute actual deletion")
     parser.add_argument("--confirm-production", action="store_true", help="Confirm production target")
     parser.add_argument("--output-dir", default=".", help="Output directory for manifest/report")
     args = parser.parse_args()
@@ -44,7 +45,8 @@ def main():
         sys.exit(1)
 
     engine = get_engine()
-    print(f"Database: {engine.url}")
+    init_database()
+    print(f"Database dialect: {engine.dialect.name}")
     print(f"Mode: {'DRY RUN' if dry_run else 'LIVE DELETION'}")
     print()
 
@@ -53,15 +55,12 @@ def main():
         print(f"Found {len(manifest)} CLOSED scholarships for deletion")
         print()
 
-        # Save manifest
         manifest_path = os.path.join(args.output_dir, "closed_deletion_manifest.json")
         save_manifest(manifest, manifest_path)
         print(f"Manifest saved to: {manifest_path}")
 
-        # Execute
         report = execute_deletion(db, manifest, dry_run=dry_run)
 
-        # Save report
         report_path = os.path.join(args.output_dir, "closed_deletion_report.json")
         save_report(report, report_path)
         print(f"Report saved to: {report_path}")
@@ -74,6 +73,7 @@ def main():
         print(f"Deleted source evidence: {report.deleted_source_evidence}")
         print(f"Deleted official contacts: {report.deleted_official_contacts}")
         print(f"Tombstones created: {report.tombstones_created}")
+        print(f"Preserved application records: {report.preserved_application_records}")
 
         if report.errors:
             print(f"Errors: {report.errors}")

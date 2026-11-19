@@ -168,6 +168,7 @@ def init_database() -> None:
                 migration_engine.dispose()
     elif engine.dialect.name == "postgresql":
         _upgrade_postgresql_schema(engine)
+        _upgrade_application_outreach_nullable(engine)
         _validate_postgresql_schema(engine)
 
 
@@ -383,6 +384,18 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
         # actor that never runs application code, so it is installed here in
         # the same idempotent startup migration as everything else.
         create_image_audit_schema(connection)
+
+
+def _upgrade_application_outreach_nullable(engine: Engine) -> None:
+    """Make application/outreach scholarship_id nullable for history preservation."""
+    with engine.begin() as connection:
+        inspector = inspect(engine)
+        for table in ("application_records", "professor_outreach_records"):
+            if not inspector.has_table(table):
+                continue
+            cols = {c["name"]: c for c in inspector.get_columns(table)}
+            if "scholarship_id" in cols and not cols["scholarship_id"].get("nullable", True):
+                connection.execute(text(f"ALTER TABLE {table} ALTER COLUMN scholarship_id DROP NOT NULL"))
 
 
 def _validate_postgresql_schema(engine: Engine) -> None:
