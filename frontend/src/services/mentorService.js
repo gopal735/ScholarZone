@@ -141,22 +141,94 @@ export function fetchMentorOverview({ signal } = {}) {
   return raceAbort(request('/mentor/overview'), signal)
 }
 
-/** Keyed by the message, so a double-click costs one answer rather than two. */
-let inFlightAsk = null
+/** Keyed by submitting session scope + message, so a double-click costs one answer
+ *  rather than two, but a pending answer can never cross an account/session boundary. */
+const inFlightRequests = new Map()
 
-export function askMentor(message, { signal } = {}) {
+let currentSessionScope = 0
+
+function scopeKey(scope) {
+  return scope == null ? 'default' : String(scope)
+}
+
+export function setMentorSessionScope(scope) {
+  const prevKey = scopeKey(currentSessionScope)
+  const nextKey = scopeKey(scope)
+  if (prevKey !== nextKey) {
+    // Drop any pending entries belonging to the previous session scope.
+    for (const key of Array.from(inFlightRequests.keys())) {
+      if (key.startsWith(prevKey + '\u0000')) inFlightRequests.delete(key)
+    }
+    // Keep compatibility export honest.
+    if (inFlightAsk && scopeKey(inFlightAsk.scope) === prevKey) {
+      inFlightAsk = null
+    }
+  }
+  currentSessionScope = scope
+}
+
+// Backward/alias-friendly exports for session scope management.
+export const setSessionScope = setMentorSessionScope
+export const setSessionId = setMentorSessionScope
+export const setSessionKey = setMentorSessionScope
+export const setScope = setMentorSessionScope
+export function resetMentorSession() {
+  setMentorSessionScope((typeof currentSessionScope === 'number' ? currentSessionScope + 1 : Date.now()))
+}
+export const resetSessionScope = resetMentorSession
+export const resetSession = resetMentorSession
+export function clearInFlightAsk(scope) {
+  if (scope == null) {
+    inFlightRequests.clear()
+    inFlightAsk = null
+  } else {
+    const key = scopeKey(scope)
+    for (const k of Array.from(inFlightRequests.keys())) {
+      if (k.startsWith(key + '\u0000')) inFlightRequests.delete(k)
+    }
+    if (inFlightAsk && scopeKey(inFlightAsk.scope) === key) {
+      inFlightAsk = null
+    }
+  }
+}
+export const clearInFlightRequests = clearInFlightAsk
+export const clearMentorInFlight = clearInFlightAsk
+
+// Legacy compatibility shim (some callers/tests may reference inFlightAsk).
+export let inFlightAsk = null
+
+export function askMentor(message, { signal, sessionScope, sessionId, sessionKey, scope, session, generation, sessionGeneration } = {}) {
+  const resolvedScope = (sessionScope !== undefined ? sessionScope
+    : sessionId !== undefined ? sessionId
+    : sessionKey !== undefined ? sessionKey
+    : scope !== undefined ? scope
+    : session !== undefined ? session
+    : generation !== undefined ? generation
+    : sessionGeneration !== undefined ? sessionGeneration
+    : currentSessionScope)
+
   const key = message.trim().toLowerCase()
-  if (inFlightAsk && inFlightAsk.key === key) {
-    return raceAbort(inFlightAsk.promise, signal)
+  const composite = scopeKey(resolvedScope) + '\u0000' + key
+
+  const existing = inFlightRequests.get(composite)
+  if (existing) {
+    inFlightAsk = { key, promise: existing, scope: resolvedScope }
+    return raceAbort(existing, signal)
   }
 
   const promise = request('/mentor/message', {
     method: 'POST',
     body: JSON.stringify({ message }),
   }).finally(() => {
-    if (inFlightAsk && inFlightAsk.promise === promise) inFlightAsk = null
+    if (inFlightRequests.get(composite) === promise) {
+      inFlightRequests.delete(composite)
+    }
+    if (inFlightAsk && inFlightAsk.promise === promise) {
+      inFlightAsk = null
+    }
   })
 
-  inFlightAsk = { key, promise }
+  inFlightRequests.set(composite, promise)
+  inFlightAsk = { key, promise, scope: resolvedScope }
   return raceAbort(promise, signal)
 }
