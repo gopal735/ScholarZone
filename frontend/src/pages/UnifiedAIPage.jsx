@@ -1,6 +1,17 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
+
+/** Validate a URL is a safe HTTP/HTTPS URL. Returns null for invalid. */
+function safeUrl(url) {
+  if (typeof url !== 'string' || !url) return null
+  try {
+    const parsed = new URL(url)
+    if (parsed.protocol === 'http:' || parsed.protocol === 'https:') return url
+  } catch {
+    // not a valid URL
+  }
+  return null
+}
 import { Link } from 'react-router-dom'
-import DOMPurify from 'dompurify'
 import { 
   askUnifiedAI, 
   getAIStatus, 
@@ -9,8 +20,15 @@ import {
   isLocalAIEnabled 
 } from '../services/unifiedAI'
 import { MentorRateLimitedError, MentorValidationError, MentorUnavailableError, MentorUnauthenticatedError } from '../services/mentorService'
+import { setMentorSessionScope } from '../services/mentorService'
 import './UnifiedAIPage.css'
 import { useAuth } from '../hooks/useAuth'
+
+let scopeCounter = 0
+function createScopeId() {
+  scopeCounter += 1
+  return `scope-${scopeCounter}-${Date.now()}`
+}
 
 const SUGGESTED_PROMPTS = [
   { category: 'Discovery', prompt: 'Find fully funded Master\'s scholarships in Germany', icon: '🔍' },
@@ -79,27 +97,186 @@ function WelcomeScreen({ onSuggestionClick }) {
   )
 }
 
+function MentorResponseCard({ mentorResponse }) {
+  if (!mentorResponse || typeof mentorResponse !== 'object') return null
+
+  const {
+    headline,
+    why,
+    known = [],
+    unknown = [],
+    next_steps = [],
+    caveats = [],
+    notes = [],
+    as_of,
+    general_guidance_only = false,
+    provider_mode,
+    provider_used,
+  } = mentorResponse
+
+  const safeHref = (href) => {
+    if (typeof href !== 'string' || !href) return null
+    // Reject protocol-relative paths
+    if (href.startsWith('//')) return null
+    // Reject backslash ambiguity
+    if (href.includes('\\')) return null
+    // Fragment links
+    if (href.startsWith('#')) return href
+    // Internal paths (single leading slash)
+    if (href.startsWith('/') && !href.startsWith('//')) return href
+    // Absolute URLs - strictly HTTP/HTTPS
+    return safeUrl(href)
+  }
+
+  const isInternalPath = (href) => {
+    return typeof href === 'string' && href.startsWith('/') && !href.startsWith('//') && !href.includes('\\')
+  }
+
+  return (
+    <div className="mentor-response-card" role="article" aria-label="Mentor response">
+      {headline && (
+        <h3 className="mentor-headline">{headline}</h3>
+      )}
+
+      {why && (
+        <section className="mentor-section">
+          <h4>Why this matters</h4>
+          <p>{why}</p>
+        </section>
+      )}
+
+      {Array.isArray(known) && known.length > 0 && (
+        <section className="mentor-section">
+          <h4>What ScholarZone knows</h4>
+          <ul className="mentor-evidence-list">
+            {known.map((item, i) => (
+              <li key={i} className="mentor-evidence-item">
+                <strong>{item.label}</strong>: {item.value}
+                {item.field && <span className="mentor-evidence-field"> ({item.field})</span>}
+                {item.basis && <span className="mentor-evidence-basis"> — {item.basis}</span>}
+                {item.verification && <span className="mentor-evidence-verification"> [{item.verification}]</span>}
+                {item.source_url && safeUrl(item.source_url) && (
+                  <a href={safeUrl(item.source_url)} target="_blank" rel="noopener noreferrer" className="mentor-source-link">
+                    Source
+                  </a>
+                )}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {Array.isArray(unknown) && unknown.length > 0 && (
+        <section className="mentor-section">
+          <h4>What remains unknown</h4>
+          <ul className="mentor-unknown-list">
+            {unknown.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {Array.isArray(next_steps) && next_steps.length > 0 && (
+        <section className="mentor-section">
+          <h4>Recommended next steps</h4>
+          <ul className="mentor-next-steps">
+            {next_steps.map((step, i) => {
+              const href = safeHref(step.href)
+              return (
+                <li key={i} className="mentor-next-step">
+                  <div className="mentor-step-title">{step.title}</div>
+                  <div className="mentor-step-detail">{step.detail}</div>
+                  {step.priority != null && (
+                    <span className="mentor-step-priority">Priority: {step.priority}</span>
+                  )}
+                  {href && (
+                    isInternalPath(href) ? (
+                      <Link to={href} className="mentor-step-link">{step.action_label || 'Go'}</Link>
+                    ) : (
+                      <a href={href} className="mentor-step-link" target="_blank" rel="noopener noreferrer">{step.action_label || 'Go'}</a>
+                    )
+                  )}
+                </li>
+              )
+            })}
+          </ul>
+        </section>
+      )}
+
+      {Array.isArray(caveats) && caveats.length > 0 && (
+        <section className="mentor-section mentor-caveats">
+          <h4>Caveats</h4>
+          <ul>
+            {caveats.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {Array.isArray(notes) && notes.length > 0 && (
+        <section className="mentor-section mentor-notes">
+          <h4>Notes</h4>
+          <ul>
+            {notes.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {as_of && (
+        <div className="mentor-as-of">
+          <small>Measured as of: {String(as_of)}</small>
+        </div>
+      )}
+
+      {general_guidance_only && (
+        <div className="mentor-general-guidance" role="note">
+          <small>This answer provides general guidance only and is not based on your personal profile or catalogue data.</small>
+        </div>
+      )}
+
+      {provider_used && provider_mode && provider_mode !== 'disabled' && (
+        <div className="mentor-provider-info">
+          <small>Provider: {provider_mode}</small>
+        </div>
+      )}
+    </div>
+  )
+}
+
 function MessageList({ messages, messagesEndRef }) {
   return (
     <>
-      {messages.map((message, index) => (
-        <div key={index} className={`message message--${message.role}`}>
+      {messages.map((message) => (
+        <div key={message.id ?? message.timestamp} className={`message message--${message.role}`}>
           <div className="message-content">
             {message.role === 'assistant' && message.label && (
               <span className={`grounded-badge ${message.grounded ? 'grounded' : 'ai-generated'}`}>
                 {message.label}
               </span>
             )}
-            <div className="message-text" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(message.content.replace(/\n/g, '<br>')) }} />
-            
-            {message.sources && message.sources.length > 0 && (
+
+            {message.role === 'assistant' && message.mentorResponse ? (
+              <MentorResponseCard mentorResponse={message.mentorResponse} />
+            ) : (
+              <div className="message-text">
+                {typeof message.content === 'string' && message.content.trim() !== ''
+                  ? message.content
+                  : 'No response available.'}
+              </div>
+            )}
+
+            {message.sources && Array.isArray(message.sources) && message.sources.filter((s) => s && typeof s === 'object' && !Array.isArray(s) && typeof s.title === 'string' && (s.type === undefined || typeof s.type === 'string')).length > 0 && (
               <div className="message-sources">
                 <strong>Sources:</strong>
                 <ul>
-                  {message.sources.map((source, i) => (
+                  {message.sources.filter((s) => s && typeof s === 'object' && !Array.isArray(s) && typeof s.title === 'string' && (s.type === undefined || typeof s.type === 'string')).map((source, i) => (
                     <li key={i}>
-                      {source.type === 'scholarship' && source.url ? (
-                        <a href={source.url} target="_blank" rel="noopener noreferrer">
+                      {source.type === 'scholarship' && safeUrl(source.url) ? (
+                        <a href={safeUrl(source.url)} target="_blank" rel="noopener noreferrer">
                           {source.title}
                         </a>
                       ) : (
@@ -111,7 +288,7 @@ function MessageList({ messages, messagesEndRef }) {
                 </ul>
               </div>
             )}
-            
+
             {message.error && (
               <div className="message-error">
                 <p>{message.error.message}</p>
@@ -344,6 +521,42 @@ export default function UnifiedAIPage() {
   const initGenerationRef = useRef(0)
   const statusGenerationRef = useRef(0)
   const isMountedRef = useRef(true)
+  const messageIdRef = useRef(0)
+  const sessionKeyRef = useRef(null)
+  const prevSessionKeyRef = useRef(null)
+  const sessionGenerationRef = useRef(0)
+  const requestScopeRef = useRef(createScopeId())
+  const activeRequestIdRef = useRef(null)
+  const requestIdRef = useRef(0)
+
+  // Derive session key from auth state
+  const sessionKey = auth.status === 'authenticated' ? `auth:${auth.user?.id ?? 'unknown'}` : 'anon'
+
+  // Track session changes and clear private Mentor messages
+  useLayoutEffect(() => {
+    const prev = prevSessionKeyRef.current
+    prevSessionKeyRef.current = sessionKey
+    sessionKeyRef.current = sessionKey
+
+    const sessionChanged = prev !== null && prev !== sessionKey
+    if (sessionChanged) {
+      // Increment generation on every effective session change.
+      sessionGenerationRef.current = sessionGenerationRef.current + 1
+      // Create a unique ephemeral scope for this session.
+      requestScopeRef.current = createScopeId()
+      try { setMentorSessionScope?.(requestScopeRef.current) } catch { /* noop */ }
+      // Invalidate any in-flight request owner and release loading state.
+      activeRequestIdRef.current = null
+      setIsLoading(false)
+      // Session changed - remove private Mentor messages from previous session
+      setMessages(prevMsgs => prevMsgs.filter(m => {
+        if (m.private && m.sessionId !== sessionKey) return false
+        return true
+      }))
+      // Clear private composer draft on effective session change
+      setInput('')
+    }
+  }, [sessionKey])
 
   const initializeAI = useCallback(async () => {
     const initGen = ++initGenerationRef.current
@@ -384,7 +597,12 @@ export default function UnifiedAIPage() {
 
   useEffect(() => {
     isMountedRef.current = true
-    return () => { isMountedRef.current = false }
+    return () => {
+      isMountedRef.current = false
+      // Invalidate any in-flight request on unmount so abandoned requests
+      // cannot start public fallback or trigger refreshSession.
+      activeRequestIdRef.current = null
+    }
   }, [])
 
   useEffect(() => {
@@ -396,69 +614,131 @@ export default function UnifiedAIPage() {
     if (!input.trim() || isLoading) return
 
     const userMessage = input.trim()
+    const requestSessionKey = sessionKeyRef.current
+    const requestSessionGeneration = sessionGenerationRef.current
+    const requestScope = requestScopeRef.current
+    const requestId = ++requestIdRef.current
+    activeRequestIdRef.current = requestId
+
+    const isMentorMode = auth.status === 'authenticated'
+
     setInput('')
     setIsLoading(true)
 
-    setMessages(prev => [...prev, { 
-      role: 'user', 
+    const userMsgId = ++messageIdRef.current
+    setMessages(prev => [...prev, {
+      id: userMsgId,
+      role: 'user',
       content: userMessage,
-      timestamp: Date.now()
+      timestamp: Date.now(),
+      private: isMentorMode,
+      sessionId: isMentorMode ? requestSessionKey : null,
+      sessionScope: isMentorMode ? requestScope : null,
     }])
+
+    const isRequestCurrent = () => (
+      activeRequestIdRef.current === requestId &&
+      sessionKeyRef.current === requestSessionKey &&
+      sessionGenerationRef.current === requestSessionGeneration &&
+      requestScopeRef.current === requestScope
+    )
 
     try {
       const response = await askUnifiedAI(userMessage, {
         isAuthenticated: auth.status === 'authenticated',
+        sessionScope: requestScope,
+        isRequestCurrent,
+        private: isMentorMode,
         context: {
           conversationHistory: messages.slice(-6).map(m => ({
             role: m.role,
-            content: m.content
+            content: m.content,
+            private: m.private,
+            sourceType: m.sourceType,
+            sessionScope: m.sessionScope,
           })),
           mentorOverview,
         }
       })
 
+      // Guard: discard if request/session no longer current
+      if (!isRequestCurrent()) {
+        return
+      }
+
       let responseMode = aiStatus.activeMode
       if (response.grounded) responseMode = 'grounded'
 
       if (response.authExpired) {
-        auth.refreshSession?.()
+        if (isRequestCurrent()) {
+          auth.refreshSession?.()
+        }
       }
 
       const formatted = formatUnifiedResponse(response, responseMode)
 
-      setMessages(prev => [...prev, {
+      // Determine if this is a private Mentor response
+      const isPrivate = formatted.sourceType === 'mentor' && requestSessionKey.startsWith('auth:')
+
+      const assistantMsgId = ++messageIdRef.current
+      const assistantMsg = {
+        id: assistantMsgId,
         role: 'assistant',
         content: formatted.answer,
+        mentorResponse: formatted.mentorResponse || null,
         sources: formatted.sources,
         grounded: formatted.grounded,
         model: formatted.model,
         tokensUsed: formatted.tokensUsed,
         sourceType: formatted.sourceType,
         label: formatted.label,
+        private: isPrivate,
+        sessionId: isPrivate ? requestSessionKey : null,
+        sessionScope: isPrivate ? requestScope : null,
         timestamp: Date.now()
-      }])
+      }
+
+      if (!isRequestCurrent()) return
+      setMessages(prev => {
+        const updated = isPrivate
+          ? prev.map(m => m.id === userMsgId ? { ...m, private: true, sessionId: requestSessionKey, sessionScope: requestScope } : m)
+          : prev
+        return [...updated, assistantMsg]
+      })
     } catch (error) {
+      // Stale request guard at start of catch
+      if (!isRequestCurrent()) {
+        return
+      }
+
       let errorMessage = 'An unexpected error occurred.'
       let retryable = false
 
       if (error instanceof MentorUnauthenticatedError) {
-        auth.refreshSession?.()
+        if (isRequestCurrent()) {
+          auth.refreshSession?.()
+        }
         errorMessage = 'Your session has expired. Please sign in again for personalized Mentor guidance. Public scholarship questions are still answered below.'
         try {
           const { askAIAssistant } = await import('../services/aiAssistant')
+          if (!isRequestCurrent()) return
           const fallback = await askAIAssistant({ question: userMessage })
+          if (!isRequestCurrent()) return
           const formatted = formatUnifiedResponse(fallback, 'grounded')
+          if (!isRequestCurrent()) return
           setMessages(prev => [...prev, {
             role: 'assistant',
             content: formatted.answer,
+            mentorResponse: formatted.mentorResponse || null,
             sources: formatted.sources,
             grounded: formatted.grounded,
             sourceType: 'grounded',
             label: 'Grounded Search (sign in for personalized Mentor)',
+            private: false,
+            sessionId: null,
+            sessionScope: null,
             timestamp: Date.now()
           }])
-          setIsLoading(false)
-          inputRef.current?.focus()
           return
         } catch (fallbackErr) {
           void fallbackErr
@@ -472,19 +752,24 @@ export default function UnifiedAIPage() {
         errorMessage = 'Mentor service is temporarily unavailable. Using grounded search instead.'
         try {
           const { askAIAssistant } = await import('../services/aiAssistant')
+          if (!isRequestCurrent()) return
           const fallback = await askAIAssistant({ question: userMessage })
+          if (!isRequestCurrent()) return
           const formatted = formatUnifiedResponse(fallback, 'grounded')
+          if (!isRequestCurrent()) return
           setMessages(prev => [...prev, {
             role: 'assistant',
             content: formatted.answer,
+            mentorResponse: formatted.mentorResponse || null,
             sources: formatted.sources,
             grounded: formatted.grounded,
             sourceType: 'grounded',
             label: '📋 Grounded Search (fallback)',
+            private: false,
+            sessionId: null,
+            sessionScope: null,
             timestamp: Date.now()
           }])
-          setIsLoading(false)
-          inputRef.current?.focus()
           return
         } catch (fallbackErr) {
           void fallbackErr
@@ -497,15 +782,23 @@ export default function UnifiedAIPage() {
         retryable = Boolean(error.retryable)
       }
 
+      // Final stale guard before error insertion
+      if (!isRequestCurrent()) return
+
       setMessages(prev => [...prev, {
         role: 'assistant',
         content: errorMessage,
         error: { message: errorMessage, retryable },
+        private: false,
+        sessionId: null,
+        sessionScope: null,
         timestamp: Date.now()
       }])
     } finally {
-      setIsLoading(false)
-      inputRef.current?.focus()
+      if (activeRequestIdRef.current === requestId) {
+        setIsLoading(false)
+        inputRef.current?.focus()
+      }
     }
   }
 
@@ -531,6 +824,12 @@ export default function UnifiedAIPage() {
     return { text: '📋 Grounded Search', class: 'mode-grounded' }
   }
 
+  // eslint-disable-next-line react-hooks/refs
+  const visibleMessages = messages.filter((m) => {
+    if (!m || !m.private) return true
+    return m.sessionId === sessionKey && m.sessionScope === requestScopeRef.current
+  })
+
   return (
     <div className="unified-ai-page">
       <Header 
@@ -552,7 +851,7 @@ export default function UnifiedAIPage() {
       )}
       <Disclaimer activeMode={aiStatus.activeMode} />
       <ChatArea 
-        messages={messages} 
+        messages={visibleMessages} 
         isLoading={isLoading} 
         activeMode={aiStatus.activeMode}
         messagesEndRef={messagesEndRef}
