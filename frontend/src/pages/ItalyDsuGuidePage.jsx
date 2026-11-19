@@ -259,6 +259,7 @@ const REGIONS = [
   {
     id: 'trentino-trento',
     name: 'Trentino (Trento)',
+    aliases: ['Trentino-Alto Adige', 'Trentino Alto Adige', 'Trentino'],
     agencies: ['Opera Universitaria Trento'],
     universities: ['Università di Trento', 'Conservatorio Bonporti', "Accademia d'Arte Trentino"],
     deadline2026: 'PhD: 30 Nov 2026; earlier windows closed',
@@ -268,6 +269,7 @@ const REGIONS = [
   {
     id: 'trentino-bolzano',
     name: 'Alto Adige (Bolzano)',
+    aliases: ['Trentino-Alto Adige', 'Trentino Alto Adige', 'Alto Adige', 'Bolzano'],
     agencies: ['Province of Bolzano (separate call)'],
     universities: ['Free University of Bozen-Bolzano'],
     deadline2026: '3 Nov 2026',
@@ -553,7 +555,8 @@ const DSU_SECTIONS = [
         <li>[ ] Submit appeals within deadline if errors found</li>
         <li>[ ] Complete university enrolment by deadline</li>
         <li>[ ] Provide IBAN + PEC for payments</li>
-        <li>[ ] Upload residence permit (non-EU) within agency deadline</li>
+        <li>[ ] Upload residence permit receipt (permesso di soggiorno receipt) as interim proof if the permit is not yet issued</li>
+        <li>[ ] Upload residence permit (non-EU) within agency deadline once issued</li>
       </ul>
     `,
   },
@@ -626,7 +629,8 @@ export default function ItalyDsuGuidePage() {
       const matchesSearch = !searchTerm ||
         r.name.toLowerCase().includes(searchLower) ||
         r.agencies.some(a => a.toLowerCase().includes(searchLower)) ||
-        r.universities.some(u => u.toLowerCase().includes(searchLower))
+        r.universities.some(u => u.toLowerCase().includes(searchLower)) ||
+        (r.aliases || []).some(a => a.toLowerCase().includes(searchLower))
       const matchesFilter = regionFilter === 'all' || regionFilter === r.status
       return matchesSearch && matchesFilter
     })
