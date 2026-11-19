@@ -206,7 +206,9 @@ export async function askUnifiedAI(message, options = {}) {
           throw error
         }
         // Never forward private prompts to public fallback search.
-        if (isPrivate) {
+        // Mentor routes are always private.
+        const isPrivateIntent = isPrivate || route === 'mentor'
+        if (isPrivateIntent && !isDiscovery) {
           throw error
         }
         try {
@@ -230,8 +232,9 @@ export async function askUnifiedAI(message, options = {}) {
   }
 
   // Never forward private prompts to public search.
-  // Discovery routes are never private.
-  if (isPrivate && !isDiscovery) {
+  // Discovery routes are never private. Mentor routes are always private.
+  const isPrivateIntent = isPrivate || route === 'mentor'
+  if (isPrivateIntent && !isDiscovery) {
     throw new Error('Private mentor prompt cannot be forwarded to public search.')
   }
   // For discovery, whitelist only safe context fields (no private data)

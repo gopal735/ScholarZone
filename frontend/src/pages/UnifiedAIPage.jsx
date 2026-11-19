@@ -623,6 +623,7 @@ export default function UnifiedAIPage() {
     const route = classifyRoute(userMessage)
     const isDiscovery = route === 'discovery'
     const isMentorMode = auth.status === 'authenticated' && !isDiscovery
+    const isAnonymousPrivate = auth.status !== 'authenticated' && route === 'mentor'
 
     setInput('')
     setIsLoading(true)
@@ -644,6 +645,22 @@ export default function UnifiedAIPage() {
       sessionGenerationRef.current === requestSessionGeneration &&
       requestScopeRef.current === requestScope
     )
+
+    if (isAnonymousPrivate) {
+      // Anonymous user asking a personal question: never forward to public search
+      const anonMsgId = ++messageIdRef.current
+      setMessages(prev => [...prev, {
+        id: anonMsgId,
+        role: 'assistant',
+        content: 'This is a personalized question. Please sign in to get Mentor guidance tailored to your profile and applications.',
+        private: false,
+        sessionId: null,
+        sessionScope: null,
+        timestamp: Date.now()
+      }])
+      setIsLoading(false)
+      return
+    }
 
     try {
       const response = await askUnifiedAI(userMessage, {
@@ -723,30 +740,36 @@ export default function UnifiedAIPage() {
         if (isRequestCurrent()) {
           auth.refreshSession?.()
         }
-        errorMessage = 'Your session has expired. Please sign in again for personalized Mentor guidance. Public scholarship questions are still answered below.'
-        try {
-          const { askAIAssistant } = await import('../services/aiAssistant')
-          if (!isRequestCurrent()) return
-          const fallback = await askAIAssistant({ question: userMessage })
-          if (!isRequestCurrent()) return
-          const formatted = formatUnifiedResponse(fallback, 'grounded')
-          if (!isRequestCurrent()) return
-          setMessages(prev => [...prev, {
-            role: 'assistant',
-            content: formatted.answer,
-            mentorResponse: formatted.mentorResponse || null,
-            sources: formatted.sources,
-            grounded: formatted.grounded,
-            sourceType: 'grounded',
-            label: 'Grounded Search (sign in for personalized Mentor)',
-            private: false,
-            sessionId: null,
-            sessionScope: null,
-            timestamp: Date.now()
-          }])
-          return
-        } catch (fallbackErr) {
-          void fallbackErr
+        if (isMentorMode) {
+          // Private Mentor request: never fall back to public search
+          errorMessage = 'Your session has expired. Please sign in again for personalized Mentor guidance.'
+        } else {
+          // Public discovery request: safe to use public fallback
+          errorMessage = 'Your session has expired. Public scholarship search is still available.'
+          try {
+            const { askAIAssistant } = await import('../services/aiAssistant')
+            if (!isRequestCurrent()) return
+            const fallback = await askAIAssistant({ question: userMessage })
+            if (!isRequestCurrent()) return
+            const formatted = formatUnifiedResponse(fallback, 'grounded')
+            if (!isRequestCurrent()) return
+            setMessages(prev => [...prev, {
+              role: 'assistant',
+              content: formatted.answer,
+              mentorResponse: formatted.mentorResponse || null,
+              sources: formatted.sources,
+              grounded: formatted.grounded,
+              sourceType: 'grounded',
+              label: 'Grounded Search (sign in for personalized Mentor)',
+              private: false,
+              sessionId: null,
+              sessionScope: null,
+              timestamp: Date.now()
+            }])
+            return
+          } catch (fallbackErr) {
+            void fallbackErr
+          }
         }
       } else if (error instanceof MentorRateLimitedError) {
         errorMessage = `Rate limited. Please wait ${error.retryAfterSeconds} seconds before asking again.`
@@ -754,30 +777,36 @@ export default function UnifiedAIPage() {
       } else if (error instanceof MentorValidationError) {
         errorMessage = error.message
       } else if (error instanceof MentorUnavailableError) {
-        errorMessage = 'Mentor service is temporarily unavailable. Using grounded search instead.'
-        try {
-          const { askAIAssistant } = await import('../services/aiAssistant')
-          if (!isRequestCurrent()) return
-          const fallback = await askAIAssistant({ question: userMessage })
-          if (!isRequestCurrent()) return
-          const formatted = formatUnifiedResponse(fallback, 'grounded')
-          if (!isRequestCurrent()) return
-          setMessages(prev => [...prev, {
-            role: 'assistant',
-            content: formatted.answer,
-            mentorResponse: formatted.mentorResponse || null,
-            sources: formatted.sources,
-            grounded: formatted.grounded,
-            sourceType: 'grounded',
-            label: '📋 Grounded Search (fallback)',
-            private: false,
-            sessionId: null,
-            sessionScope: null,
-            timestamp: Date.now()
-          }])
-          return
-        } catch (fallbackErr) {
-          void fallbackErr
+        if (isMentorMode) {
+          // Private Mentor request: never fall back to public search
+          errorMessage = 'Mentor service is temporarily unavailable. Please try again later.'
+        } else {
+          // Public discovery request: safe to use public fallback
+          errorMessage = 'Mentor service is temporarily unavailable. Using grounded search instead.'
+          try {
+            const { askAIAssistant } = await import('../services/aiAssistant')
+            if (!isRequestCurrent()) return
+            const fallback = await askAIAssistant({ question: userMessage })
+            if (!isRequestCurrent()) return
+            const formatted = formatUnifiedResponse(fallback, 'grounded')
+            if (!isRequestCurrent()) return
+            setMessages(prev => [...prev, {
+              role: 'assistant',
+              content: formatted.answer,
+              mentorResponse: formatted.mentorResponse || null,
+              sources: formatted.sources,
+              grounded: formatted.grounded,
+              sourceType: 'grounded',
+              label: 'Grounded Search (fallback)',
+              private: false,
+              sessionId: null,
+              sessionScope: null,
+              timestamp: Date.now()
+            }])
+            return
+          } catch (fallbackErr) {
+            void fallbackErr
+          }
         }
       } else if (error?.error) {
         errorMessage = error.error
@@ -854,7 +883,7 @@ export default function UnifiedAIPage() {
           mentorOverview={mentorOverview}
         />
       )}
-      <Disclaimer providerUsed={messages.length > 0 ? messages[messages.length - 1]?.mentorResponse?.provider_used ?? messages[messages.length - 1]?.providerUsed ?? false : false} />
+      <Disclaimer providerUsed={(() => { const lastAssistant = [...messages].reverse().find(m => m.role === 'assistant'); return lastAssistant?.mentorResponse?.provider_used ?? lastAssistant?.providerUsed ?? false; })()} />
       <ChatArea 
         messages={visibleMessages} 
         isLoading={isLoading} 

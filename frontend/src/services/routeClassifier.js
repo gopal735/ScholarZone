@@ -145,7 +145,8 @@ const PRIVATE_ELIGIBILITY_PATTERNS = [
   /\bqualify\s+with\s+my\b/i,
   /\bmatch\s+my\s+profile\b/i,
   /\bscholarships?\s+match\s+my\b/i,
-  /\bwhich\s+scholarships?\s+match\b/i,
+  /\bwhich\s+scholarships?\s+match\s+(my|me)\b/i,
+  /\bwhich\s+scholarships?\s+fit\s+(my|me)\b/i,
 ];
 
 export function classifyRoute(message) {
