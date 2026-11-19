@@ -712,8 +712,7 @@ def build_dashboard(db: Session, user: User, as_of: date | None = None) -> Dashb
         db.execute(
             select(ApplicationRecord)
             .where(ApplicationRecord.user_id == user.id)
-            .where(ApplicationRecord.scholarship_id.is_not(None))
-            .order_by(ApplicationRecord.scholarship_id.asc())
+            .order_by(ApplicationRecord.scholarship_id.asc().nullsfirst())
             .limit(MAX_APPLICATION_ITEMS)
         ).scalars()
     )
@@ -776,13 +775,13 @@ def build_dashboard(db: Session, user: User, as_of: date | None = None) -> Dashb
 
     match_by_id = {item.scholarship_id: item for item in recommendations}
     saved_by_id = {row.scholarship_id: row for row in saved_rows}
-    application_by_id = {row.scholarship_id: row for row in application_rows}
-
+    application_by_id = {row.scholarship_id: row for row in application_rows if row.scholarship_id is not None}
+    
     # Applications whose scholarship has since left the public universe. The
     # student created these rows, so they are shown from the snapshot taken at
     # that moment rather than dropped: a round closing must not make an
     # application count quietly shrink.
-    snapshot_by_id = {row.scholarship_id: row for row in application_rows}
+    snapshot_by_id = {row.scholarship_id: row for row in application_rows if row.scholarship_id is not None}
 
     def _reference(scholarship_id: int) -> ScholarshipReference | None:
         row = rows_by_id.get(scholarship_id)
@@ -844,10 +843,26 @@ def build_dashboard(db: Session, user: User, as_of: date | None = None) -> Dashb
 
     application_items: list[ApplicationItem] = []
     for row in application_rows:
-        reference = _reference(row.scholarship_id)
-        if reference is None:
-            continue
-        match_item = match_by_id.get(row.scholarship_id)
+        if row.scholarship_id is None:
+            # Detached application: build reference from snapshot
+            reference = ScholarshipReference(
+                scholarship_id=0,
+                name=row.scholarship_name_snapshot or "Scholarship (no longer listed)",
+                country=row.scholarship_country_snapshot or "",
+                degree=row.scholarship_degree_snapshot or "",
+                funding=row.scholarship_funding_snapshot,
+                detail_url="",
+                official_source_url=row.scholarship_source_url_snapshot,
+                verification_status="not_listed",
+                verified=False,
+                verification_display="No longer listed",
+                is_listed=False,
+            )
+        else:
+            reference = _reference(row.scholarship_id)
+            if reference is None:
+                continue
+        match_item = match_by_id.get(row.scholarship_id) if row.scholarship_id is not None else None
         application_items.append(
             ApplicationItem(
                 scholarship=reference,

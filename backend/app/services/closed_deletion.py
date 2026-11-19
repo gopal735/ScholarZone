@@ -435,9 +435,12 @@ def execute_deletion(db: Session, manifest: List[ClosedScholarshipManifest], dry
                     Scholarship.notes, Scholarship.verification_notes,
                     Scholarship.selection_notes,
                     Scholarship.official_source_url, Scholarship.application_link,
-                    Scholarship.title
+                    Scholarship.title,
+                    Scholarship.country, Scholarship.degree,
+                    Scholarship.official_source, Scholarship.funding
                 )
                 .where(Scholarship.id == sid)
+                .with_for_update()
             ).first()
             if locked_row is None:
                 report.skipped_scholarship_ids.append(sid)
@@ -461,6 +464,10 @@ def execute_deletion(db: Session, manifest: List[ClosedScholarshipManifest], dry
                     self.official_source_url = row.official_source_url
                     self.application_link = row.application_link
                     self.title = row.title
+                    self.country = row.country
+                    self.degree = row.degree
+                    self.official_source = row.official_source
+                    self.funding = row.funding
             
             locked = _LockedScholarship(locked_row)
             if locked is None:
