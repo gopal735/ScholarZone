@@ -551,6 +551,18 @@ def _reconstruct_report_from_db(inserted_ids: list[int], matched_ids: list[int],
             ScholarshipVerificationHistory.field_name == "record_insertion",
         ).count() if inserted_ids else 0
 
+        # Build dynamic ID mapping from actual DB records
+        vda_id = None
+        polito_id = None
+        for sch in session.query(Scholarship).filter(
+            Scholarship.country == "Italy"
+        ).all():
+            title_lower = (sch.title or "").lower()
+            if vda_id is None and ("valle d'aosta" in title_lower or "vda" in title_lower):
+                vda_id = sch.id
+            elif polito_id is None and ("politecnico" in title_lower or "polito" in title_lower):
+                polito_id = sch.id
+
         return {
             "generated_at": datetime.now(timezone.utc).isoformat(),
             "verification_at": datetime.now(timezone.utc).isoformat(),
@@ -571,8 +583,8 @@ def _reconstruct_report_from_db(inserted_ids: list[int], matched_ids: list[int],
             "id_mapping": {
                 "erasmus_mundus_id": 1,
                 "iccr_id": 2,
-                "vda_id": 1337,
-                "polito_phd_id": 1338,
+                "vda_id": vda_id,
+                "polito_phd_id": polito_id,
             },
             "reconstructed": True,
         }
@@ -770,11 +782,12 @@ def main(dry_run: bool = True, now: datetime | None = None, reconstruct: bool = 
 
         verification_time = datetime.now(timezone.utc)
 
-        # Build dynamic ID mapping from actual inserted/matched IDs
+        # Build dynamic ID mapping from actual inserted/matched IDs.
+        # Query the DB to find actual IDs for VDA and PoliTo records.
         vda_id = None
         polito_id = None
         
-        # Check matched details for VDA and PoliTo
+        # Check matched details first (existing records)
         for detail in result.matched_details:
             title_lower = detail.get("title", "").lower()
             if "valle d'aosta" in title_lower or "vda" in title_lower:
@@ -782,19 +795,23 @@ def main(dry_run: bool = True, now: datetime | None = None, reconstruct: bool = 
             elif "politecnico" in title_lower or "polito" in title_lower:
                 polito_id = detail.get("id")
         
-        # Check inserted IDs if not found in matched
+        # For newly inserted or unmatched records, query the DB
         if vda_id is None or polito_id is None:
-            # We need to query the DB to find which inserted ID corresponds to which
-            for ins_id in result.inserted_ids:
-                # We'd need to query the DB, but for now use the order
-                pass
+            for sch in session.query(Scholarship).filter(
+                Scholarship.country == "Italy"
+            ).all():
+                title_lower = (sch.title or "").lower()
+                if vda_id is None and ("valle d'aosta" in title_lower or "vda" in title_lower):
+                    vda_id = sch.id
+                elif polito_id is None and ("politecnico" in title_lower or "polito" in title_lower):
+                    polito_id = sch.id
         
-        # Fallback to preferred IDs if not found
+        # Build mapping with None for unresolved (no fallback to hardcoded IDs)
         id_mapping = {
             "erasmus_mundus_id": 1,
             "iccr_id": 2,
-            "vda_id": vda_id if vda_id is not None else 1337,
-            "polito_phd_id": polito_id if polito_id is not None else 1338,
+            "vda_id": vda_id,
+            "polito_phd_id": polito_id,
         }
         
         report = {
