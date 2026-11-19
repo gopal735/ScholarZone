@@ -1,0 +1,43 @@
+{
+  "audit_date": "2026-11-18",
+  "database": "scholarzone.db",
+  "database_type": "SQLite (development)",
+  "total_records": 773,
+  "closed_records": 1,
+  "archived_records": 0,
+  "quarantined_records": 0,
+  "open_records": 771,
+  "upcoming_records": 1,
+  "classification_summary": {
+    "A_expired_cycle": 1,
+    "B_permanently_discontinued": 0,
+    "C_temporarily_suspended": 0,
+    "D_unknown_unverified": 0,
+    "E_invalid_duplicate": 0
+  },
+  "candidate_manifest": [
+    {
+      "id": 135,
+      "title": "Politecnico di Milano Merit Based International Scholarships",
+      "stored_status": "open",
+      "effective_status": "closed",
+      "reason": "Application deadline 15 Dec 2025 12:00 Europe/Rome has passed; historical record preserved, not deleted."
+    }
+  ],
+  "retained_records": "all",
+  "foreign_key_dependencies": [],
+  "storage_impact": {
+    "current_db_size_mb": 2.7,
+    "reclaimable_mb": 0.0,
+    "notes": "1 CLOSED record identified; no deletion performed (out of scope for PR #103)."
+  },
+  "recommended_actions": [
+    "No deletion required - record 135 corrected to CLOSED effective status and retained historically",
+    "Stored OPEN status is not proof of an active application window; lifecycle validation is separate from this status audit",
+    "Monitor lifecycle as deadlines pass",
+    "Implement automated lifecycle classification",
+    "Design purge workflow for future use"
+  ],
+  "production_purge_approved": false,
+  "production_purge_executed": false
+}

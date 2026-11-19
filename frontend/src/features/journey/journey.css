@@ -1,4 +1,4 @@
-﻿/* ═══════════════════════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════════════════════════
    Bangladesh Applicant Journey
    ---------------------------------------------------------------------
    Every value comes from design tokens. The vocabulary used here is the
@@ -25,7 +25,7 @@
      Each prefers a tracked token when one exists, so the feature renders
      identically whether or not a richer token sheet is later added. */
   --j-bangla:
-    'Noto Sans Bengali', 'Nirmala UI', 'Hind Siliguri', Vrinda, 'Noto Sans',
+    'Hind Siliguri', 'Noto Sans Bengali', 'Nirmala UI', Vrinda, 'Noto Sans',
     Inter, ui-sans-serif, system-ui, sans-serif;
   --j-surface-subtle: var(--surface-subtle, rgba(20, 19, 15, 0.035));
   --j-surface-sunken: var(--surface-sunken, rgba(20, 19, 15, 0.07));
@@ -111,7 +111,7 @@
 
 .jpage__title {
   margin: 0;
-  font-family: var(--font-display, Georgia, serif);
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
   font-size: var(--text-2xl, 1.75rem);
   font-weight: 430;
   line-height: var(--text-2xl-lh, 1.14);
@@ -377,7 +377,7 @@
 
 .jmodule__title {
   margin: 0;
-  font-family: var(--font-display, Georgia, serif);
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
   font-size: var(--text-xl, 1.25rem);
   font-weight: 430;
   line-height: var(--text-xl-lh, 1.32);
@@ -793,7 +793,7 @@
 .jcard__title {
   margin: 0;
   flex: 1 1 auto;
-  font-family: var(--font-display, Georgia, serif);
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
   font-size: var(--text-lg, 1.1875rem);
   font-weight: 430;
   line-height: var(--text-lg-lh, 1.7);
@@ -1196,7 +1196,7 @@
 
 .jdialog__title {
   margin: 0;
-  font-family: var(--font-display, Georgia, serif);
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
   font-size: var(--text-lg, 1.1875rem);
   line-height: var(--text-lg-lh, 1.7);
   color: var(--text-primary, #14130f);
@@ -1347,7 +1347,7 @@
 
 .jerror__title {
   margin: 0;
-  font-family: var(--font-display, Georgia, serif);
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
   font-size: var(--text-xl, 1.25rem);
   color: var(--text-primary, #14130f);
 }
@@ -1417,7 +1417,7 @@
 
 .jdisclaimer__title {
   margin: 0;
-  font-family: var(--font-display, Georgia, serif);
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
   font-size: var(--text-lg, 1.1875rem);
   line-height: var(--text-lg-lh, 1.7);
   color: var(--text-primary, #14130f);

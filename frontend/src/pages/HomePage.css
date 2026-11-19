@@ -158,11 +158,11 @@ h2 {
   max-width: 20ch;
   margin: 0;
   color: var(--ink);
-  font-family: Newsreader, Georgia, serif;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
   font-size: clamp(1.55rem, 2.5vw, 2.1rem);
-  font-weight: 500;
-  line-height: 1.13;
-  letter-spacing: -0.035em;
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.025em;
 }
 
 .hero-learning__intro {
@@ -1113,11 +1113,11 @@ button.pill:active {
 
 .sc h3 {
   margin: 0;
-  font-family: Newsreader, Georgia, serif;
-  font-weight: 500;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-weight: 650;
   font-size: 1.25rem;
   letter-spacing: -0.015em;
-  line-height: 1.2;
+  line-height: 1.25;
   color: var(--ink);
 }
 
@@ -1481,11 +1481,11 @@ button.pill:active {
 }
 
 .sh3 {
-  font-family: Newsreader, Georgia, serif;
-  font-weight: 400;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-weight: 700;
   font-size: 2rem;
-  line-height: 1.1;
-  letter-spacing: -0.018em;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
   margin: 0 0 14px;
   padding-right: 40px;
 }
@@ -1632,9 +1632,10 @@ button.pill:active {
 
 .tl h3 {
   margin: 0 0 6px;
-  font-family: Newsreader, Georgia, serif;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-weight: 650;
   font-size: 1.32rem;
-  letter-spacing: -0.012em;
+  letter-spacing: -0.015em;
 }
 
 .tl p {
@@ -1749,8 +1750,8 @@ button.pill:active {
 }
 
 .pp h3, .pp h4 {
-  font-family: Newsreader, Georgia, serif;
-  font-weight: 500;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-weight: 650;
   color: #2a2a24;
   margin: 0;
 }
@@ -1924,11 +1925,11 @@ button.pill:active {
 }
 
 .h3s {
-  font-family: Newsreader, Georgia, serif;
-  font-weight: 500;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-weight: 650;
   font-size: 1.45rem;
   margin: 0 0 4px;
-  letter-spacing: -0.012em;
+  letter-spacing: -0.015em;
   color: var(--ink);
 }
 
@@ -2393,8 +2394,10 @@ button.pill:active {
 }
 
 .ft .fb {
-  font-family: Newsreader, Georgia, serif;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
   font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   color: var(--ink);
   display: block;
   margin-bottom: 6px;

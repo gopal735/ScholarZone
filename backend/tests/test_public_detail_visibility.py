@@ -463,17 +463,24 @@ class TestCanonicalPredicateIsTheOneUsed:
     def test_the_detail_query_applies_the_canonical_conditions(self):
         """A structural check, so a hand-rolled filter cannot pass the suite.
 
-        The public read must go through ``public_visibility_conditions()``. Asserted
-        on the source because a behavioural test cannot distinguish the canonical
-        predicate from a faithful copy of it - and a copy is exactly the drift this
-        codebase has already been bitten by.
+        The public detail read must go through ``detail_visibility_conditions()`` (which
+        allows closed records for historical access but excludes archived/quarantined).
+        The directory list uses ``public_visibility_conditions()`` (which excludes
+        closed, archived, and quarantined). Asserted on the source because a
+        behavioural test cannot distinguish the canonical predicate from a faithful
+        copy of it - and a copy is exactly the drift this codebase has already been
+        bitten by.
         """
         import inspect
 
         from app.services import scholarships as service
 
         source = inspect.getsource(service.get_scholarship_details)
-        assert "public_visibility_conditions" in source
+        # The detail endpoint should use detail_visibility_conditions for historical access
+        assert "detail_visibility_conditions" in source
+        # It should NOT use public_visibility_conditions in the query (only imported)
+        # The import is OK but the query must call detail_visibility_conditions
+        assert "detail_visibility_conditions()" in source
 
     def test_the_shared_loader_is_left_untouched_for_internal_callers(self):
         """The permissive loader must stay permissive.
@@ -488,6 +495,7 @@ class TestCanonicalPredicateIsTheOneUsed:
 
         source = inspect.getsource(repository.get_scholarship_by_id)
         assert "public_visibility_conditions" not in source
+        assert "detail_visibility_conditions" not in source
 
 
 # ---------------------------------------------------------------------------

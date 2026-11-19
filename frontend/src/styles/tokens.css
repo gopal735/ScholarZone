@@ -111,6 +111,28 @@
   --info-border: rgba(74, 91, 184, 0.28);
   --info-text: #3f4ea3;
 
+  /* ── Educational Vibrant Tones ─────────────────────────────────
+     Meaningful color tokens for scholarship achievements, verified status,
+     deadlines, AI guidance, and friendly learning accents. */
+  --edu-navy: #0f172a;
+  --edu-navy-soft: #f8fafc;
+  --edu-blue: #2563eb;
+  --edu-blue-hover: #1d4ed8;
+  --edu-blue-soft: #eff6ff;
+  --edu-blue-border: rgba(37, 99, 235, 0.25);
+  --edu-emerald: #059669;
+  --edu-emerald-hover: #047857;
+  --edu-emerald-soft: #ecfdf5;
+  --edu-emerald-border: rgba(5, 150, 105, 0.28);
+  --edu-amber: #d97706;
+  --edu-amber-hover: #b45309;
+  --edu-amber-soft: #fffbeb;
+  --edu-amber-border: rgba(217, 119, 6, 0.3);
+  --edu-violet: #7c3aed;
+  --edu-violet-hover: #6d28d9;
+  --edu-violet-soft: #f5f3ff;
+  --edu-violet-border: rgba(124, 58, 237, 0.28);
+
   /* ── Colour: focus ─────────────────────────────────────────────
       Two-tone ring per W3C C40: an inner band that contrasts with the
       component, and an outer band that contrasts with the page. The
@@ -149,38 +171,29 @@
     0 24px 48px -20px rgba(14, 26, 51, 0.16);
 
   /* ── Typography: families ────────────────────────────────────
-     Newsreader for anything a person reads as a statement: the hero,
-     page titles, section heads, card titles, large figures. Inter for
-     everything that has to be scanned or compared — tables, amounts,
-     deadlines, percentages, badges, buttons, nav.
-
-     The split is not decorative. Newsreader is an optical serif with
-     real italics: a hero line set in it reads editorial, which is the
-     register the reference establishes, and the italic carries the one
-     emphasised word in a headline. Inter has the disambiguated 1/l/I
-     and dotted zero that data columns need, and its 0.746 x-height
-     keeps dense 13px metadata legible where a serif would not. */
-  --font-display: 'Newsreader', 'Newsreader Fallback', 'Iowan Old Style', Georgia,
-    'Times New Roman', serif;
-  --font-body: 'Inter', 'Inter Fallback', ui-sans-serif, system-ui, -apple-system,
+     Plus Jakarta Sans carries every headline, hero statement and card
+     title with geometric clarity, energy and friendliness. Inter carries
+     every scanned data row, amount, badge, button and navigation item.
+     Hind Siliguri provides seamless bilingual Bengali support without
+     clipping character conjuncts or vowel signs. Newsreader is retained
+     as a prestigious academic editorial fallback. */
+  --font-display: 'Plus Jakarta Sans', 'Inter', 'Hind Siliguri', 'Newsreader', 'Iowan Old Style', Georgia,
+    sans-serif;
+  --font-body: 'Inter', 'Hind Siliguri', ui-sans-serif, system-ui, -apple-system,
     BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-bangla: 'Hind Siliguri', 'Inter', sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace;
 
   /* ── Typography: weight ───────────────────────────────────────
-     Non-round weights, and a ~7% reduction in dark mode. Light text
-     on a dark field blooms into its own counters and reads heavier
-     than it is; stepping the weight down is what keeps dark mode
-     looking like the same typeface rather than a bolder one.
-     Every rule in the codebase sets --weight, never font-weight
-     directly, so this multiplier reaches all of them. */
+     Optimized weights for crisp, modern educational interfaces. */
   --weight-multiplier: 1;
-  --weight-display: 330;
-  --weight-title: 430;
-  --weight-section: 430;
-  --weight-lede: 400;
+  --weight-display: 700;
+  --weight-title: 600;
+  --weight-section: 600;
+  --weight-lede: 450;
   --weight-body: 400;
-  --weight-label: 500;
-  --weight-strong: 580;
+  --weight-label: 550;
+  --weight-strong: 650;
   --weight: var(--weight-body);
 
   /* ── Typography: fluid scale ──────────────────────────────────
@@ -226,16 +239,143 @@
   --track-3xl: -0.028em;
   --track-display: -0.038em;
 
-  /* ── Measure ──────────────────────────────────────────────────
-     66ch is not 66 characters. 1ch is the advance width of a zero,
-     so for a proportional face 66ch lands at roughly 50-56 real
-     characters, which is the optimum. Cards are narrower because a
-     card title is scanned as an index line, not read as prose. */
+/* ── Measure ──────────────────────────────────────────────────
+      66ch is not 66 characters. 1ch is the advance width of a zero,
+      so for a proportional face 66ch lands at roughly 50-56 real
+      characters, which is the optimum. Cards are narrower because a
+      card title is scanned as an index line, not read as prose. */
   --measure: 66ch;
   --measure-card: 54ch;
   --measure-listing: 46ch;
   --measure-facet: 34ch;
   --measure-num: 22ch;
+
+  /* ── Scholarship Card Typography Tokens ─────────────────────────
+      Centralised token set so every card variant (directory, search,
+      featured, related, compare, saved) shares one scale. Changing a
+      value here updates all cards simultaneously. */
+  --schol-card-title-fs: var(--fs-lg);
+  --schol-card-title-lh: var(--lh-lg);
+  --schol-card-title-weight: var(--weight-display);
+  --schol-card-title-track: var(--track-lg);
+  --schol-card-title-family: var(--font-display);
+
+  --schol-card-provider-fs: var(--fs-base);
+  --schol-card-provider-lh: var(--lh-base);
+  --schol-card-provider-weight: var(--weight-strong);
+  --schol-card-provider-track: var(--track-base);
+
+  --schol-card-location-fs: var(--fs-sm);
+  --schol-card-location-lh: 1.4;
+  --schol-card-location-weight: 400;
+  --schol-card-location-color: var(--text-muted);
+
+  --schol-card-badge-fs: var(--fs-xs);
+  --schol-card-badge-lh: 1.3;
+  --schol-card-badge-weight: 700;
+  --schol-card-badge-track: var(--track-xs);
+
+  --schol-card-fact-label-fs: 0.75rem;
+  --schol-card-fact-label-lh: 1.5;
+  --schol-card-fact-label-weight: 700;
+  --schol-card-fact-label-track: 0.04em;
+  --schol-card-fact-label-color: var(--text-muted);
+  --schol-card-fact-label-transform: uppercase;
+
+  --schol-card-fact-value-fs: var(--fs-sm);
+  --schol-card-fact-value-lh: 1.35;
+  --schol-card-fact-value-weight: 700;
+  --schol-card-fact-value-color: var(--text-primary);
+
+  --schol-card-deadline-fs: var(--fs-sm);
+  --schol-card-deadline-lh: 1.35;
+  --schol-card-deadline-weight: 700;
+  --schol-card-deadline-color: var(--text-primary);
+
+  --schol-card-countdown-fs: 0.75rem;
+  --schol-card-countdown-weight: 600;
+  --schol-card-countdown-variant: tabular-nums;
+
+  --schol-card-hint-fs: 0.75rem;
+  --schol-card-hint-weight: 500;
+  --schol-card-hint-color: var(--text-muted);
+
+  --schol-card-summary-fs: var(--fs-sm);
+  --schol-card-summary-lh: 1.55;
+  --schol-card-summary-color: var(--text-secondary);
+  --schol-card-summary-clamp: 3;
+
+  --schol-card-check-label-fs: var(--fs-xs);
+  --schol-card-check-label-lh: 1.3;
+  --schol-card-check-label-color: var(--text-muted);
+
+  --schol-card-check-value-fs: var(--fs-sm);
+  --schol-card-check-value-weight: 600;
+
+  --schol-card-expand-btn-fs: var(--fs-sm);
+  --schol-card-expand-btn-weight: 500;
+
+  --schol-card-expanded-title-fs: var(--fs-base);
+  --schol-card-expanded-title-lh: 1.3;
+  --schol-card-expanded-title-weight: var(--weight-display);
+  --schol-card-expanded-title-family: var(--font-display);
+
+  --schol-card-expanded-text-fs: var(--fs-sm);
+  --schol-card-expanded-text-lh: 1.6;
+  --schol-card-expanded-text-color: var(--text-secondary);
+
+  --schol-card-expanded-fact-label-fs: var(--fs-xs);
+  --schol-card-expanded-fact-label-lh: 1.5;
+  --schol-card-expanded-fact-label-weight: 700;
+  --schol-card-expanded-fact-label-track: 0.04em;
+  --schol-card-expanded-fact-label-color: var(--text-muted);
+  --schol-card-expanded-fact-label-transform: uppercase;
+
+  --schol-card-expanded-fact-value-fs: var(--fs-sm);
+  --schol-card-expanded-fact-value-lh: 1.5;
+  --schol-card-expanded-fact-value-weight: 500;
+  --schol-card-expanded-fact-value-color: var(--text-primary);
+
+  --schol-card-expanded-list-fs: var(--fs-sm);
+  --schol-card-expanded-list-lh: 1.7;
+  --schol-card-expanded-list-color: var(--text-secondary);
+
+  --schol-card-expanded-subtitle-fs: var(--fs-xs);
+  --schol-card-expanded-subtitle-weight: 700;
+  --schol-card-expanded-subtitle-track: 0.04em;
+  --schol-card-expanded-subtitle-color: var(--text-muted);
+  --schol-card-expanded-subtitle-transform: uppercase;
+
+  --schol-card-link-fs: var(--fs-sm);
+  --schol-card-link-weight: 600;
+
+  --schol-card-link-host-fs: var(--fs-xs);
+  --schol-card-link-host-weight: 500;
+  --schol-card-link-host-color: var(--text-muted);
+
+  --schol-card-academic-label-fs: var(--fs-xs);
+  --schol-card-academic-label-weight: 600;
+  --schol-card-academic-label-color: var(--text-muted);
+
+  --schol-card-academic-value-fs: var(--fs-xs);
+  --schol-card-academic-value-weight: 600;
+  --schol-card-academic-value-color: var(--text-secondary);
+
+  --schol-card-citation-fs: var(--fs-xs);
+  --schol-card-citation-color: var(--text-muted);
+
+  --schol-card-verification-date-fs: 0.75rem;
+  --schol-card-verification-date-weight: 700;
+  --schol-card-verification-date-variant: tabular-nums;
+
+  --schol-card-button-fs: var(--fs-sm);
+  --schol-card-button-weight: 600;
+
+  /* Responsive title scale */
+  --schol-card-title-fs-max: clamp(1.125rem, 1.062rem + 0.313vw, 1.3125rem);
+  --schol-card-title-fs-md: 1.1875rem;
+  --schol-card-title-fs-sm: 1.125rem;
+  --schol-card-title-fs-xs: 1.0625rem;
 
   /* ── Spacing: 4px base ──────────────────────────────────────── */
   --space-1: 4px;
