@@ -426,9 +426,43 @@ def execute_deletion(db: Session, manifest: List[ClosedScholarshipManifest], dry
             sid = entry.scholarship_id
 
             # transactional re-check
-            locked = db.execute(
-                select(Scholarship).where(Scholarship.id == sid).with_for_update().execution_options(populate_existing=True)
-            ).scalar_one_or_none()
+            # Use a core query to bypass ORM identity map and get fresh data
+            locked_row = db.execute(
+                select(
+                    Scholarship.id, Scholarship.status, Scholarship.is_archived, 
+                    Scholarship.deadline_date, Scholarship.application_period,
+                    Scholarship.deadline_display, Scholarship.deadline_date,
+                    Scholarship.notes, Scholarship.verification_notes,
+                    Scholarship.selection_notes,
+                    Scholarship.official_source_url, Scholarship.application_link,
+                    Scholarship.title
+                )
+                .where(Scholarship.id == sid)
+            ).first()
+            if locked_row is None:
+                report.skipped_scholarship_ids.append(sid)
+                report.skipped.append(sid)
+                report.skipped_scholarships.append(sid)
+                continue
+            
+            # Create a lightweight object with the fresh data for lifecycle check
+            class _LockedScholarship:
+                def __init__(self, row):
+                    self.id = row.id
+                    self.status = row.status
+                    self.is_archived = row.is_archived
+                    self.deadline_date = row.deadline_date
+                    self.application_period = row.application_period
+                    self.deadline_display = row.deadline_display
+                    self.deadline = row.deadline_date  # use deadline_date column
+                    self.notes = row.notes
+                    self.verification_notes = row.verification_notes
+                    self.selection_notes = row.selection_notes
+                    self.official_source_url = row.official_source_url
+                    self.application_link = row.application_link
+                    self.title = row.title
+            
+            locked = _LockedScholarship(locked_row)
             if locked is None:
                 report.skipped_scholarship_ids.append(sid)
                 report.skipped.append(sid)

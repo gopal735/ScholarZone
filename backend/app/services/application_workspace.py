@@ -651,14 +651,20 @@ def _decision_order(item: ApplicationSummary):
     deadlines - an open round with no fixed date is genuinely open, and sorting
     it above a real deadline would be the more harmful error. Readiness then
     breaks ties, and the id makes the order total and stable.
+
+    For detached applications (scholarship_id=None), use a normalized value
+    that sorts consistently and use application ID as final tie-breaker.
     """
+    # Normalize scholarship_id for sorting: None -> -1 (sorts before positive IDs)
+    norm_scholarship_id = item.scholarship_id if item.scholarship_id is not None else -1
     return (
         0 if item.is_actionable else (1 if item.is_overdue else 2),
         item.days_remaining if item.days_remaining is not None else 0,
         0 if item.progress_percent is not None else 1,
         -1 * (item.progress_percent or 0.0),
         item.state,
-        item.scholarship_id,
+        norm_scholarship_id,
+        item.id,  # Application record ID as final deterministic tie-breaker
     )
 
 

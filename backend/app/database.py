@@ -663,6 +663,46 @@ def _migrate_fully_funded_to_nullable_sqlite(connection) -> None:
             raise RuntimeError(f"Child table {table_name} foreign key check failed: {fk_check}")
 
 
+def _extract_column_definition(sql: str, column_name: str) -> tuple[str, int]:
+    """Extract a column definition from CREATE TABLE SQL, handling nested parentheses.
+    
+    Returns (column_definition, end_position_in_sql).
+    """
+    # Find the column name (case-insensitive)
+    lower_sql = sql.lower()
+    lower_col = column_name.lower()
+    start = lower_sql.find(lower_col)
+    if start == -1:
+        return "", -1
+    
+    # Parse from the column name forward, tracking parenthesis depth
+    depth = 0
+    i = start
+    in_col_def = True
+    while i < len(sql) and in_col_def:
+        ch = sql[i]
+        if ch == '(':
+            depth += 1
+        elif ch == ')':
+            depth -= 1
+        elif depth == 0 and ch == ',':
+            # End of column definition at top level
+            in_col_def = False
+            break
+        elif depth == 0 and i + 11 <= len(sql) and sql[i:i+11].upper() == 'CONSTRAINT':
+            # End of column definitions, start of table constraints
+            in_col_def = False
+            break
+        i += 1
+    
+    # Find the actual end of the column definition (before comma or CONSTRAINT)
+    end = i
+    while end > start and sql[end-1].isspace():
+        end -= 1
+    
+    return sql[start:end], end
+
+
 def _migrate_column_to_nullable_sqlite(connection, table_name: str, column_name: str) -> None:
     """Migrate a column to nullable in SQLite by rebuilding the table.
     
@@ -690,7 +730,7 @@ def _migrate_column_to_nullable_sqlite(connection, table_name: str, column_name:
     
     # 3. Modify the CREATE TABLE SQL to make the column nullable AND remove DEFAULT
     modified_create_sql = re.sub(
-        rf'({column_name}\s+\w+\s+)NOT NULL\s+DEFAULT\s+FALSE\s*(?=\s*(?:,|\)|CONSTRAINT|PRIMARY KEY|UNIQUE|CHECK))',
+        rf'({column_name}\s+\w+\s+)NOT NULL\s+DEFAULT\s+FALSE\s*(?=\s*(?:,|\)|CONSTRAINT|PRIMARY KEY|UNIQUE|CHECK|REFERENCES))',
         r'\1',
         original_create_sql,
         flags=re.IGNORECASE
@@ -698,42 +738,30 @@ def _migrate_column_to_nullable_sqlite(connection, table_name: str, column_name:
     
     # Also handle case where NOT NULL and DEFAULT are separate
     if column_name in modified_create_sql:
-        col_section = modified_create_sql[modified_create_sql.lower().find(column_name):]
-        end_pos = len(col_section)
-        for marker in [',', ')', 'CONSTRAINT']:
-            pos = col_section.upper().find(marker)
-            if pos != -1 and pos < end_pos:
-                end_pos = pos
-        col_section = col_section[:end_pos]
-        if "NOT NULL" in col_section.upper() or "DEFAULT FALSE" in col_section.upper():
-            # Try removing NOT NULL only
+        col_def, _ = _extract_column_definition(modified_create_sql, column_name)
+        if "NOT NULL" in col_def.upper() or "DEFAULT FALSE" in col_def.upper():
+            # Remove NOT NULL (handles case followed by REFERENCES, comma, or constraint)
             modified_create_sql = re.sub(
-                rf'({column_name}\s+\w+\s+)NOT NULL\s*(?=\s*(?:DEFAULT|,|\)|CONSTRAINT|PRIMARY KEY|UNIQUE|CHECK))',
+                rf'({column_name}\s+\w+\s+)NOT NULL\s*(?=\s*(?:DEFAULT|,|\)|CONSTRAINT|PRIMARY KEY|UNIQUE|CHECK|REFERENCES))',
                 r'\1',
                 modified_create_sql,
                 flags=re.IGNORECASE
             )
-            # Then remove DEFAULT FALSE
+            # Remove DEFAULT FALSE
             modified_create_sql = re.sub(
-                rf'({column_name}\s+\w+(?:\s+\w+)*\s+)DEFAULT\s+FALSE\s*(?=\s*(?:,|\)|CONSTRAINT|PRIMARY KEY|UNIQUE|CHECK))',
+                rf'({column_name}\s+\w+(?:\s+\w+)*\s+)DEFAULT\s+FALSE\s*(?=\s*(?:,|\)|CONSTRAINT|PRIMARY KEY|UNIQUE|CHECK|REFERENCES))',
                 r'\1',
                 modified_create_sql,
                 flags=re.IGNORECASE
             )
     
-    # Final verification
+    # Final verification using proper column definition extraction
     if column_name in modified_create_sql:
-        col_section = modified_create_sql[modified_create_sql.lower().find(column_name):]
-        end_pos = len(col_section)
-        for marker in [',', ')', 'CONSTRAINT']:
-            pos = col_section.upper().find(marker)
-            if pos != -1 and pos < end_pos:
-                end_pos = pos
-        col_section = col_section[:end_pos]
-        if "NOT NULL" in col_section.upper():
-            raise RuntimeError(f"Failed to remove NOT NULL from {table_name}.{column_name} column. Column def: {col_section}")
-        if "DEFAULT FALSE" in col_section.upper():
-            raise RuntimeError(f"Failed to remove DEFAULT FALSE from {table_name}.{column_name} column. Column def: {col_section}")
+        col_def, _ = _extract_column_definition(modified_create_sql, column_name)
+        if "NOT NULL" in col_def.upper():
+            raise RuntimeError(f"Failed to remove NOT NULL from {table_name}.{column_name} column. Column def: {col_def}")
+        if "DEFAULT FALSE" in col_def.upper():
+            raise RuntimeError(f"Failed to remove DEFAULT FALSE from {table_name}.{column_name} column. Column def: {col_def}")
     
     # 4. Get all indexes on the table
     indexes = connection.execute(text(f"""
@@ -786,7 +814,10 @@ def _migrate_column_to_nullable_sqlite(connection, table_name: str, column_name:
     
     # 14. Restore sqlite_sequence high-water mark
     if current_seq is not None:
-        connection.execute(text(f'UPDATE sqlite_sequence SET seq = :seq WHERE name = "{table_name}"'), {{"seq": current_seq}})
+        connection.execute(
+            text('UPDATE sqlite_sequence SET seq = :seq WHERE name = :name'),
+            {"seq": current_seq, "name": table_name}
+        )
     
     # 15. Recreate all indexes
     for name, sql in indexes:
