@@ -163,8 +163,10 @@ function sanitizePublicHistory(history) {
 }
 
 export async function askUnifiedAI(message, options = {}) {
-  const route = classifyRoute(message)
-  const isDiscovery = route === 'discovery'
+  // If caller explicitly passes private: true, never downgrade to discovery
+  const explicitPrivate = options.private === true
+  const route = explicitPrivate ? 'mentor' : classifyRoute(message)
+  const isDiscovery = !explicitPrivate && route === 'discovery'
   const {
     mode = 'auto',
     signal,
@@ -178,9 +180,12 @@ export async function askUnifiedAI(message, options = {}) {
 
   // Resolve conversation history without letting an unintended empty array
   // override a non-empty history provided via context.
-  const resolvedHistory = Array.isArray(conversationHistory) && conversationHistory.length > 0
-    ? conversationHistory
-    : (Array.isArray(context?.conversationHistory) ? context.conversationHistory : [])
+  // For discovery routes, never use private conversation history.
+  const resolvedHistory = isDiscovery
+    ? []
+    : (Array.isArray(conversationHistory) && conversationHistory.length > 0
+      ? conversationHistory
+      : (Array.isArray(context?.conversationHistory) ? context.conversationHistory : []))
 
   if (mode === 'auto' && isAuthenticated && !isDiscovery) {
     try {
@@ -229,12 +234,14 @@ export async function askUnifiedAI(message, options = {}) {
   if (isPrivate && !isDiscovery) {
     throw new Error('Private mentor prompt cannot be forwarded to public search.')
   }
+  // For discovery, whitelist only safe context fields (no private data)
+  const safeContext = isDiscovery
+    ? { conversationHistory: [] }
+    : { ...context, conversationHistory: sanitizePublicHistory(resolvedHistory) }
+
   const grounded = await askAIAssistant({
     question: message,
-    context: {
-      ...context,
-      conversationHistory: sanitizePublicHistory(resolvedHistory),
-    },
+    context: safeContext,
   })
   return { ...grounded, kind: 'grounded' }
 }

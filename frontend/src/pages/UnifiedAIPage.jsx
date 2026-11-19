@@ -854,7 +854,7 @@ export default function UnifiedAIPage() {
           mentorOverview={mentorOverview}
         />
       )}
-      <Disclaimer activeMode={aiStatus.activeMode} />
+      <Disclaimer providerUsed={messages.length > 0 ? messages[messages.length - 1]?.mentorResponse?.provider_used ?? messages[messages.length - 1]?.providerUsed ?? false : false} />
       <ChatArea 
         messages={visibleMessages} 
         isLoading={isLoading} 
