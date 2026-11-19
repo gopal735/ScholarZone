@@ -135,7 +135,7 @@ export function JourneyProvider({ children }) {
      - 'user': real user edit -> persist (debounced)
      - 'hydrate', 'reset', 'replace-document': programmatic -> never persist
      - null: no explicit origin set -> treat as user edit (default for dispatch from UI)
-     
+
      After processing, pendingOriginRef is cleared. */
 
   useEffect(() => {
