@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useLayoutEffect, useMemo, useReducer, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react'
 import { JourneyContext } from './journeyContext.js'
 import { ACTIONS, journeyReducer } from './journeyReducer.js'
 import {
@@ -75,12 +75,10 @@ export function JourneyProvider({ children }) {
   /** Always holds the latest state reference to prevent persisting stale closures. */
   const latestStateRef = useRef(state)
 
-  /** Immutable initial state captured once, used in unmount comparisons. */
-  const initialStateRef = useRef(bootstrap.state)
-
-  useLayoutEffect(() => {
-    latestStateRef.current = state
-  }, [state])
+  // Update ref synchronously during render so it is always current,
+  // even if navigation/unmount happens before effects run.
+  // eslint-disable-next-line react-hooks/refs
+  latestStateRef.current = state
 
   /** Tracks unpersisted edits that must be flushed on unmount/pagehide. */
   const isDirtyRef = useRef(false)
@@ -341,7 +339,6 @@ export function JourneyProvider({ children }) {
   // This cleanup runs when the provider unmounts, not on state changes.
   useEffect(() => {
     isMountedRef.current = true
-    const initialState = initialStateRef.current
     return () => {
       isMountedRef.current = false
       if (pendingTimerRef.current) {
@@ -350,7 +347,7 @@ export function JourneyProvider({ children }) {
       }
       // Flush the latest state on unmount if there are unsaved changes.
       // Never flush after an explicit reset (would recreate deleted data).
-      if (!resetOccurredRef.current && latestStateRef.current && latestStateRef.current !== initialState) {
+      if (!resetOccurredRef.current && latestStateRef.current) {
         try {
           saveJourneyState(latestStateRef.current)
           isDirtyRef.current = false
