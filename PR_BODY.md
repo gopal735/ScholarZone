@@ -10,7 +10,7 @@ This PR implements the Italy Scholarship Expansion with three coordinated delive
 - **PoliTo PhD 42nd Cycle, 3rd Session** — UPCOMING (opens 14 Jan 2027, closes 15 Feb 2027, 14:00 CET)
   - Official source: https://www.polito.it/en/education/phd-programmes/admissions-to-phd-programmes/admissions/call-for-applications
   - Verified via Playwright browser automation
-- All other Italian scholarships (MAECI, Invest Your Talent, regional DSU calls, university merit) classified CLOSED or unannounced — excluded from public catalogue. Record 135 (Politecnico di Milano merit) was corrected to CLOSED effective status because its 15 Dec 2025 deadline had passed; the historical record is preserved.
+- All other Italian scholarships (MAECI, Invest Your Talent, regional DSU calls, university merit) classified CLOSED or applicant-restricted/unannounced — excluded from public catalogue. Record 135 (Politecnico di Milano merit) was corrected to CLOSED effective status because its 15 Dec 2025 deadline had passed; the historical record is preserved.
 
 ### 2. Complete DSU Knowledge System (`/scholarships/italy-dsu`)
 - 13-section guide covering all 20 Italian regions
@@ -35,8 +35,8 @@ This PR implements the Italy Scholarship Expansion with three coordinated delive
 - No page-specific overrides; all through shared tokens
 
 ### Technical Quality
-- All 43 backend tests pass
-- All 571 frontend tests pass (including 19 new from merged PR #101)
+- All 27 importer tests pass; 44 scholarship/visibility tests pass
+- All 620 frontend tests pass
 - Production build successful
 - Snapshot/API/ledger/sitemap parity verified (773 DB records, 772 public snapshot records, 774 sitemap URLs including static URLs)
 - Historical records preserved (no deletions)
@@ -44,17 +44,22 @@ This PR implements the Italy Scholarship Expansion with three coordinated delive
 
 ## Testing
 ```bash
-# Backend
-cd backend && python -m pytest tests/test_scholarships.py tests/test_scholarship_integration.py tests/test_production_seeding.py -v
-# 43 passed
+# Backend (from backend/)
+python -m pytest tests/test_insert_italy_strict.py
+# 27 passed
 
-# Frontend
-cd frontend && npm test
-# 38 test files, 571 tests passed
+python -m pytest tests/test_scholarships.py tests/test_public_detail_visibility.py
+# 44 passed
 
-# Build
-cd frontend && npm run build
-# ✓ built in 341ms
+# Frontend (from frontend/)
+npm test
+# 620 passed
+
+npm run lint
+# clean
+
+npm run build
+# success
 ```
 
 ## Files Changed (Italy Implementation)
