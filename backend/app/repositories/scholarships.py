@@ -85,7 +85,7 @@ def _utc_today() -> date:
 
 
 def public_visibility_conditions() -> list:
-    """The single definition of "this record may be shown publicly".
+    """The single definition of "this record may be shown publicly in the directory".
 
     The directory and the homepage statistics both call this. They previously
     carried separate copies of the rule, which is how a homepage ends up
@@ -112,7 +112,7 @@ def public_visibility_conditions() -> list:
       opportunities are not offered as if they were live, and a configuration
       flag that could switch that off would quietly break the promise.
     * ``status == "closed"`` indicates a genuinely closed/expired scholarship.
-      These are excluded from the public catalogue.
+      These are excluded from the public catalogue (directory/list).
     * ``verification_status == "quarantined"`` is a security/safety exclusion.
       Quarantined records represent a genuine safety concern and remain hidden.
     """
@@ -120,6 +120,23 @@ def public_visibility_conditions() -> list:
         Scholarship.verification_status != "quarantined",
         Scholarship.is_archived.is_(False),
         Scholarship.status != "closed",
+    ]
+
+    return conditions
+
+
+def detail_visibility_conditions() -> list:
+    """Visibility conditions for the scholarship detail endpoint.
+
+    Unlike the public directory, the detail page allows access to closed records
+    for historical reference. This preserves programme identity and allows users
+    to reference past cycles. However, archived and quarantined records remain
+    excluded as they represent safety concerns or deliberate removal.
+    """
+    conditions = [
+        Scholarship.verification_status != "quarantined",
+        Scholarship.is_archived.is_(False),
+        # status == "closed" is ALLOWED for historical detail access
     ]
 
     return conditions

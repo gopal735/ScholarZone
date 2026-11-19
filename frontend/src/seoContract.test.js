@@ -104,12 +104,15 @@ describe('sitemap.xml', () => {
     expect(locs).not.toContain(`${CANONICAL_ORIGIN}/countries`)
   })
 
-  it('covers more scholarship detail urls than any single catalogue page can show', () => {
-    // useScholarshipDirectory fetches limit=100, and the directory paginates at
-    // 12. A sitemap no larger than one catalogue page would leave the rest of
-    // the catalogue reachable only by clicking.
+  it('covers every public scholarship detail url from the snapshot', () => {
+    // The sitemap is generated from the public snapshot, so it must include
+    // exactly the scholarship detail URLs that are publicly visible.
+    // The snapshot only contains records passing the public visibility predicate
+    // (not closed, not archived, not quarantined).
     const detail = locs.filter((loc) => /\/scholarships\/\d+$/.test(loc))
-    expect(detail.length).toBeGreaterThan(100)
+    const snapshot = JSON.parse(read('../public/scholarships-snapshot.json'))
+    const expectedCount = (snapshot.scholarships || []).length
+    expect(detail.length).toBe(expectedCount)
   })
 })
 

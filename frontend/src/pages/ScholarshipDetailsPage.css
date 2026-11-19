@@ -260,6 +260,43 @@
   font-weight: 600;
 }
 
+/* Italy DSU guide link */
+.sz-detail-hero__dsu-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  margin-top: var(--space-2);
+  color: var(--sz-primary-text);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-decoration: none;
+  background: var(--primary-soft);
+  border: 1px solid var(--primary-border);
+  border-radius: var(--radius-md);
+  transition: background-color var(--duration-hover) var(--timing-smooth), border-color var(--duration-hover) var(--timing-smooth);
+}
+
+.sz-detail-hero__dsu-link:hover {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.sz-detail-hero__dsu-link:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.sz-detail-hero__dsu-link span:first-child {
+  font-size: var(--text-base);
+}
+
+.sz-detail-hero__dsu-link span:last-child {
+  font-size: var(--text-xs);
+  opacity: 0.8;
+}
+
 .sz-detail-hero__actions {
   display: flex;
   flex-wrap: wrap;

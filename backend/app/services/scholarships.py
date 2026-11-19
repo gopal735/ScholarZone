@@ -11,6 +11,7 @@ from ..repositories.scholarships import (
     get_scholarship_by_id,
     list_scholarships,
     public_visibility_conditions,
+    detail_visibility_conditions,
 )
 from ..schemas import PaginationMetadata, ScholarshipListResponse, ScholarshipQuery, ScholarshipVerificationUpdate
 
@@ -29,30 +30,21 @@ def get_scholarship_directory(session: Session, query: ScholarshipQuery) -> Scho
 
 
 def get_scholarship_details(session: Session, scholarship_id: int):
-    """The public read path for one scholarship, scoped to the public universe.
+    """The public read path for one scholarship, scoped to the detail universe.
 
-    This used to call ``get_scholarship_by_id``, which is a bare primary-key
-    lookup. That made the catalogue's detail endpoint a second, larger universe
-    than its own list: anything excluded from ``/scholarships`` - archived,
-    quarantined, awaiting review, or failing the image gate - was still fully
-    readable by walking ids. The list and the detail disagreed, and the detail
-    was the more permissive of the two, which is the wrong way round for a trust
-    surface.
+    The directory (/scholarships) uses public_visibility_conditions which excludes
+    closed, archived, and quarantined records. The detail endpoint uses
+    detail_visibility_conditions which allows closed records for historical
+    reference but still excludes archived and quarantined records.
 
-    The predicate is the canonical one rather than a restatement of it. A copy is
-    exactly how a list and a detail page drift apart, and this repository already
-    carries a test refusing a second definition.
-
-    The deliberately permissive ``get_scholarship_by_id`` is left untouched: the
-    verification pipeline and the administrator's verify endpoint have to reach
-    records that are *meant* to be invisible to applicants, and tightening the
-    shared loader would have broken them without closing this hole. The boundary
-    belongs here, on the public read.
+    This separation preserves programme identity: a scholarship whose cycle has
+    ended remains accessible at its detail URL for reference, but does not appear
+    in the live directory. Archived and quarantined records remain fully hidden.
     """
     scholarship = session.scalar(
         select(Scholarship)
         .where(Scholarship.id == scholarship_id)
-        .where(*public_visibility_conditions())
+        .where(*detail_visibility_conditions())
     )
     if scholarship is None:
         # The caller turns this into the same 404 a missing id produces, so the
