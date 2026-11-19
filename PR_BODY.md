@@ -10,7 +10,7 @@ This PR implements the Italy Scholarship Expansion with three coordinated delive
 - **PoliTo PhD 42nd Cycle, 3rd Session** — UPCOMING (opens 14 Jan 2027, closes 15 Feb 2027, 14:00 CET)
   - Official source: https://www.polito.it/en/education/phd-programmes/admissions-to-phd-programmes/admissions/call-for-applications
   - Verified via Playwright browser automation
-- All other Italian scholarships (MAECI, Invest Your Talent, regional DSU calls, university merit) classified CLOSED or unannounced — excluded from public catalogue
+- All other Italian scholarships (MAECI, Invest Your Talent, regional DSU calls, university merit) classified CLOSED or unannounced — excluded from public catalogue. Record 135 (Politecnico di Milano merit) was corrected to CLOSED effective status because its 15 Dec 2025 deadline had passed; the historical record is preserved.
 
 ### 2. Complete DSU Knowledge System (`/scholarships/italy-dsu`)
 - 13-section guide covering all 20 Italian regions
@@ -38,7 +38,7 @@ This PR implements the Italy Scholarship Expansion with three coordinated delive
 - All 43 backend tests pass
 - All 571 frontend tests pass (including 19 new from merged PR #101)
 - Production build successful
-- Snapshot/API/ledger/sitemap parity verified (773 records, 775 URLs)
+- Snapshot/API/ledger/sitemap parity verified (773 DB records, 772 public snapshot records, 774 sitemap URLs including static URLs)
 - Historical records preserved (no deletions)
 - No production database writes or deployments
 

@@ -52,14 +52,14 @@
 | Lombardia | UniMi / PoliMi | 5 Aug / 30 Sep 2026 | 49–104 | Deadline passed |
 | Marche | ERDIS | 28 Aug 2026 | 82 | Deadline passed |
 | Molise | ESU Molise | 30 Oct 2026 | 19 | Deadline passed |
-| Piemonte | EDISU | 4 Sep / 27 Nov 2026 | 11–75 | Deadline passed (PhD: 27 Nov - 5 days) |
+| Piemonte | EDISU | 4 Sep / 27 Nov 2026 | PhD/Specialisation open until 27 Nov 2026; Undergrad/Master closed 4 Sep 2026 | PhD window open; undergrad/master closed |
 | Puglia | ADISU | 13 Aug / 30 Oct 2026 | 19–96 | Deadline passed |
 | Sardegna | ERSU Ca | 28 Aug 2026 | 82 | Deadline passed |
 | Sardegna | ERSU Ss | 7 Sep 2026 | 72 | Deadline passed |
 | Sicilia | ERSU Pa | 22 Jul 2026 | 119 | Deadline passed |
 | Sicilia | ERSU Ct | ~Sep 2026 | ~60 | Deadline passed |
 | Toscana | ARDSU | 7 Sep / 16 Nov 2026 | 2–72 | Deadline passed (PhD: 16 Nov - 2 days) |
-| Trentino-AA | Opera Uni Tn | 5 Aug / 7 Sep / 30 Nov 2026 | 9–104 | Deadline passed |
+| Trentino-AA | Opera Uni Tn | 5 Aug / 7 Sep / 30 Nov 2026 | PhD open until 30 Nov 2026; earlier windows closed | PhD window open; earlier windows closed |
 | Umbria | ADiSU | 2 Sep 2026 | 77 | Deadline passed |
 | Veneto | Ca' Foscari | 30 Sep 2026 | 49 | Deadline passed |
 

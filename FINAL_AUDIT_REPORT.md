@@ -69,11 +69,12 @@
 
 ### Visibility Contract Enforcement
 - **Public iff:** `verification_status != "quarantined"` AND `is_archived == False` AND `status != "closed"`
-- **Applied in:** API (`get_scholarship_directory`, `get_scholarship_details`), Static Service (`getPublicSnapshotRecords`, `fetchScholarshipByIdFromSnapshot`), Snapshot Builder (`build_public_snapshot.py`), Sitemap Builder (`build-sitemap.mjs`)
-- **CLOSED records hidden:** ✅ Yes (0 in current DB)
+- **Applied in:** API (`get_scholarship_directory`, `get_scholarship_details`), Static Service (`getPublicSnapshotRecords`), Snapshot Builder (`build_public_snapshot.py`), Sitemap Builder (`build-sitemap.mjs`)
+- **CLOSED records hidden from directory:** ✅ Yes (1 in current DB: record 135, corrected to CLOSED effective status)
 - **ARCHIVED records hidden:** ✅ Yes (0 in current DB)
 - **QUARANTINED records hidden:** ✅ Yes (0 in current DB)
 - **Historical records preserved:** ✅ Yes (no deletions performed)
+- **Historical detail access:** Closed records remain in storage and are reachable via the live API detail endpoint when not archived/quarantined; the static snapshot excludes closed records, so static detail returns null for them (no fabricated historical access).
 
 ### Master Data Records (Not in Database)
 The `master_recovered_scholarships.json` contained 9 Italy records with placeholder data (missing titles, statuses, deadlines). These were **not** inserted into the database as they lacked complete official verification.

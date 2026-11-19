@@ -38,7 +38,6 @@
 
 ## Notes
 
-- No CLOSED records to purge at this time
-- All records are active (open/upcoming)
+- Stored status reflects the last verified label; effective lifecycle may differ (e.g., record 2 ICCR has stored status OPEN but its application window ended 22 Apr 2026). OPEN stored status is not proof of an active application window. Audit scope is stored-status and storage only; no deletion eligibility is inferred.
 - Storage is minimal for a catalogue of 773 records
 - Primary optimization target: frontend snapshot compression

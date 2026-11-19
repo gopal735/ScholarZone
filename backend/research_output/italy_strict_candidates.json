@@ -106,12 +106,12 @@
       "Monetary grant (varies by ISEE band and status: in sede/pendolare/fuori sede)",
       "Free accommodation in regional residences (if available)",
       "Free daily meal(s) at university canteen",
-      "Tuition fee exemption (VDA1) or partial (VDA2)",
+      "Tuition fee exemption (VDA1 only; VDA2 does not reimburse university fees)",
       "Regional tax refund (€140)",
       "International mobility supplement for Erasmus+/overseas"
     ],
     "coverage": [
-      "Tuition (VDA1 full, VDA2 partial)",
+      "Tuition (VDA1 only)",
       "Living costs (cash grant)",
       "Accommodation (regional residence or subsidy)",
       "Meals (canteen)",
@@ -151,7 +151,7 @@
     "selection_notes": "Ranking by ISEE (lower = better). Budget determines number of winners; eligible non-winners receive services only (meals, tuition exemption, tax refund) but no cash grant.",
     "program_type": "Regional right-to-study (DSU)",
     "best_fit": "International students enrolling at Valle d'Aosta universities (UniVdA, Conservatoire, Nursing) who meet ISEE thresholds. Only OPEN regional DSU call as of Nov 2026.",
-    "notes": "Two tracks: VDA1 (standard DSU thresholds) and VDA2 (higher ISEE, no ISPE, no tuition coverage). Non-resident international students without SPID/CIE receive temporary credentials via regional office request. IBAN required before final submission. Fuori sede: registered rental contract >=10 months (Sep-Jul), residence within published distance limits, no minimum rent threshold. Mobility exceptions apply. Non-EU family-residence exceptions per official call. CAF exception: applicants unable to produce DSU/ISEE may submit alternative evidence per official call. First instalment ~Nov 2026; balance after merit verification Aug/Nov 2027.",
+    "notes": "Two tracks: VDA1 (standard DSU thresholds) and VDA2 (higher ISEE, no ISPE, no tuition coverage). Non-resident international students without SPID/CIE receive temporary credentials via regional office request. IBAN required before final submission. Fuori sede: registered rental contract >=10 months (Sep-Jul), residence within published distance limits, no minimum rent threshold. Mobility exceptions apply. Non-EU family-residence exceptions per official call. CAF exception: applicants unable to produce DSU/ISEE may submit alternative evidence per official call. Payment timing and advance instalments follow the official VDA call; first-year merit is checked ex-post by 10 Aug 2027, so no advance payment should be assumed before that review.",
     "status": "open",
     "is_verified": true,
     "last_verified_at": "2026-11-18",
@@ -198,8 +198,9 @@
         "iban_requirement": "IBAN required before final submission"
       },
       "caf_exception": {
-        "description": "Applicants unable to produce DSU/ISEE may submit alternative evidence",
-        "evidence_required": "Per official call requirements"
+        "article_3_3": "Ordinary ISEE instead of university ISEE may be allowed when documented impediments exist and the office approves.",
+        "article_3_4": "Applies only to specific citizenship or residence cases following CAF confirmation.",
+        "description": "Two specific exceptions per the official call; not a general alternative-evidence fallback."
       }
     },
     "programme_verification": {
@@ -278,7 +279,7 @@
     "income_requirements": "None (merit-based)",
     "asset_requirements": "None",
     "age_requirements": "None specified",
-    "enrollment_requirements": "Must hold qualifying degree by 31 Oct 2026; enrollment after selection by PoliTo deadlines",
+    "enrollment_requirements": "Third session: qualifying candidates may apply conditionally and obtain the qualifying degree by the deadline stated in the call (verify official call); the 31 Oct 2026 degree deadline applies to the first session and must not be assumed for the third session without an explicit rule.",
     "merit_requirements": "Selection by evaluation of qualifications, research proposal, and/or interview per programme; annual renewal contingent on completion of previous year's activities",
     "funding_amount": 18854.52,
     "funding_currency": "EUR",
@@ -331,7 +332,7 @@
       "Italian and foreign citizens (no nationality restrictions)",
       "Master's degree or equivalent foreign qualification by 31 Oct 2026",
       "No age limit",
-      "Not holding another Italian PhD scholarship",
+      "Not holding another Italian PhD scholarship during enrolment (call wording; verify whether previously received scholarships are also excluded)",
       "Not a public employee on special leave with salary",
       "Not a research fellow or holder of Art. 22-ter research position",
       "Not in apprenticeship contract"
@@ -383,7 +384,7 @@
     "selection_notes": "Minimum 110 funded positions across 3 sessions for 42nd cycle. Selection by programme committee. Reserved positions for foreign government scholarships, POLITO FOR REFUGEES, CONFLICT ZONES. Gross annual amount set by Ministerial Decree 247/2022.",
     "program_type": "PhD Programme (42nd cycle, 3rd session)",
     "best_fit": "International PhD candidates in engineering, science, architecture, design, management. Fully funded 3-year position with research budget and abroad mobility. Application opens 14 Jan 2027.",
-    "notes": "3rd session of 42nd cycle. Programme starts 1 June 2027. Part of minimum 110 funded positions across all sessions (cycle-wide count). Second-session reserved positions (1 for foreign government scholarships, 2 for POLITO FOR REFUGEES, 1 for CONFLICT ZONES) are second-session only - not promised for third session. Application fee: EUR 30 per programme (non-refundable). Restricted: applicants who previously received an Italian PhD scholarship are ineligible, even if ended. Check programme tables for specific research topics and available positions.",
+    "notes": "3rd session of 42nd cycle. Programme starts 1 June 2027. Part of minimum 110 funded positions across all sessions (cycle-wide count). Second-session reserved positions (1 for foreign government scholarships, 2 for POLITO FOR REFUGEES, 1 for CONFLICT ZONES) are second-session only - not promised for third session. Application fee: EUR 30 per programme (non-refundable). Incompatibility wording in the call restricts holding another Italian PhD scholarship during enrolment; whether former recipients are excluded must be verified against the official text. Check programme tables for specific research topics and available positions.",
     "status": "upcoming",
     "is_verified": true,
     "last_verified_at": "2026-11-18",
