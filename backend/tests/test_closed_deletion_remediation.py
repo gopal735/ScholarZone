@@ -141,3 +141,169 @@ def test_cli_flags_mutually_exclusive():
     import subprocess, sys
     r = subprocess.run([sys.executable, "scripts/closed_deletion_cli.py", "--dry-run", "--execute"], capture_output=True, text=True)
     assert r.returncode == 2
+
+def test_all_snapshot_fields_populated():
+    from app.models import ApplicationRecord
+    with _session() as db:
+        s = Scholarship(
+            title="FullSnapshot", country="Atlantis", degree="PhD", funding="Full",
+            status="closed", deadline_date=date(2020, 1, 1),
+            deadline_display="Jan 2020", deadline_precision="month",
+            official_source="ProvOrg", official_source_url="https://example.com/full",
+            application_link="https://apply.example.com/full",
+        )
+        db.add(s)
+        db.commit()
+        db.refresh(s)
+        u = User(email="snap@test.com", password_hash="x")
+        db.add(u)
+        db.commit()
+        db.refresh(u)
+        app = ApplicationRecord(user_id=u.id, scholarship_id=s.id, state="saved")
+        db.add(app)
+        db.commit()
+        manifest = build_deletion_manifest(db)
+        report = execute_deletion(db, manifest, dry_run=False)
+        assert report.deleted_scholarships == 1
+        assert report.preserved_application_records == 1
+        apps = db.execute(select(ApplicationRecord)).scalars().all()
+        assert len(apps) == 1
+        a = apps[0]
+        assert a.scholarship_id is None
+        assert a.scholarship_name_snapshot == "FullSnapshot"
+        assert a.scholarship_country_snapshot == "Atlantis"
+        assert a.scholarship_degree_snapshot == "PhD"
+        assert a.scholarship_provider_snapshot == "ProvOrg"
+        assert a.scholarship_funding_snapshot == "Full"
+        assert a.scholarship_deadline_text_snapshot == "Jan 2020"
+        assert a.scholarship_deadline_date_snapshot is not None
+        assert a.scholarship_source_url_snapshot == "https://example.com/full"
+
+
+def test_existing_snapshots_not_overwritten():
+    from app.models import ApplicationRecord
+    with _session() as db:
+        s = Scholarship(title="OverwriteTest", country="X", degree="M", funding="F",
+                        status="closed", deadline_date=date(2020, 1, 1),
+                        official_source="Prov", official_source_url="https://example.com/ow")
+        db.add(s)
+        db.commit()
+        db.refresh(s)
+        u = User(email="ow@test.com", password_hash="x")
+        db.add(u)
+        db.commit()
+        db.refresh(u)
+        app = ApplicationRecord(
+            user_id=u.id, scholarship_id=s.id, state="saved",
+            scholarship_name_snapshot="ORIGINAL_NAME",
+            scholarship_country_snapshot="ORIGINAL_COUNTRY",
+        )
+        db.add(app)
+        db.commit()
+        manifest = build_deletion_manifest(db)
+        report = execute_deletion(db, manifest, dry_run=False)
+        assert report.deleted_scholarships == 1
+        apps = db.execute(select(ApplicationRecord)).scalars().all()
+        a = apps[0]
+        assert a.scholarship_name_snapshot == "ORIGINAL_NAME"
+        assert a.scholarship_country_snapshot == "ORIGINAL_COUNTRY"
+        assert a.scholarship_degree_snapshot == "M"
+        assert a.scholarship_provider_snapshot == "Prov"
+
+
+def test_lifecycle_expired_upcoming_stored_status():
+    s = Scholarship(title="t", country="c", degree="d", funding="f", status="upcoming",
+                    deadline_date=date(2020, 1, 1), is_archived=False)
+    assert get_effective_lifecycle_status(s, date(2025, 1, 1)) == "CLOSED"
+
+
+def test_lifecycle_deadline_display_fallback():
+    s = Scholarship(title="t", country="c", degree="d", funding="f", status="open",
+                    deadline_date=None, deadline_display="2020-06-15",
+                    deadline_precision="exact")
+    assert get_effective_lifecycle_status(s, date(2025, 1, 1)) == "CLOSED"
+
+    s2 = Scholarship(title="t2", country="c", degree="d", funding="f", status="open",
+                     deadline_date=None, deadline_display="2026-06-15",
+                     deadline_precision="exact")
+    assert get_effective_lifecycle_status(s2, date(2025, 1, 1)) == "OPEN"
+
+
+def test_lifecycle_month_precision_last_day():
+    s = Scholarship(title="t", country="c", degree="d", funding="f", status="open",
+                    deadline_date=date(2026, 11, 1), deadline_precision="month")
+    assert get_effective_lifecycle_status(s, date(2026, 11, 19)) == "OPEN"
+
+    s2 = Scholarship(title="t2", country="c", degree="d", funding="f", status="open",
+                     deadline_date=date(2026, 10, 1), deadline_precision="month")
+    assert get_effective_lifecycle_status(s2, date(2026, 11, 19)) == "CLOSED"
+
+
+def test_lifecycle_exact_precision():
+    s = Scholarship(title="t", country="c", degree="d", funding="f", status="open",
+                    deadline_date=date(2026, 11, 1), deadline_precision="exact")
+    assert get_effective_lifecycle_status(s, date(2026, 11, 19)) == "CLOSED"
+
+
+def test_lifecycle_qualitative_no_rollover():
+    s = Scholarship(title="t", country="c", degree="d", funding="f", status="closed",
+                    deadline_date=date(2020, 1, 1), is_archived=False,
+                    application_period="re-opens in early January")
+    assert get_effective_lifecycle_status(s, date(2026, 11, 19)) == "CLOSED"
+
+    s2 = Scholarship(title="t2", country="c", degree="d", funding="f", status="closed",
+                     deadline_date=date(2020, 1, 1), is_archived=False,
+                     application_period="re-opens in early December")
+    assert get_effective_lifecycle_status(s2, date(2026, 11, 19)) == "UPCOMING"
+
+
+def test_lifecycle_genuine_future_opening():
+    s = Scholarship(title="t", country="c", degree="d", funding="f", status="closed",
+                    deadline_date=date(2020, 1, 1), is_archived=False,
+                    application_period="opens 2026-12-01")
+    assert get_effective_lifecycle_status(s, date(2026, 11, 19)) == "UPCOMING"
+
+
+def test_lifecycle_recurring_cycle_month():
+    s = Scholarship(title="t", country="c", degree="d", funding="f", status="closed",
+                    deadline_date=date(2020, 1, 1), is_archived=False,
+                    application_period="annually in March")
+    assert get_effective_lifecycle_status(s, date(2026, 11, 19)) == "UPCOMING"
+
+
+def test_lifecycle_open_preserved():
+    s = Scholarship(title="t", country="c", degree="d", funding="f", status="open",
+                    deadline_date=date(2026, 12, 1), deadline_precision="exact")
+    assert get_effective_lifecycle_status(s, date(2026, 11, 19)) == "OPEN"
+
+
+def test_lifecycle_upcoming_preserved():
+    s = Scholarship(title="t", country="c", degree="d", funding="f", status="upcoming",
+                    deadline_date=date(2026, 12, 1), deadline_precision="exact")
+    assert get_effective_lifecycle_status(s, date(2026, 11, 19)) == "UPCOMING"
+
+
+def test_application_list_linked_first():
+    from app.models import ApplicationRecord, User
+    from app.services.application_workspace import list_for_user
+    with _session() as db:
+        u = User(email="lf@test.com", password_hash="x")
+        db.add(u)
+        db.commit()
+        db.refresh(u)
+        for i in range(10):
+            app = ApplicationRecord(user_id=u.id, scholarship_id=None, state="saved")
+            db.add(app)
+        db.commit()
+        s = Scholarship(title="Linked", country="X", degree="M", funding="F",
+                        status="open", deadline_date=date(2026, 12, 1),
+                        official_source_url="https://example.com/linked")
+        db.add(s)
+        db.commit()
+        db.refresh(s)
+        linked_app = ApplicationRecord(user_id=u.id, scholarship_id=s.id, state="in_progress")
+        db.add(linked_app)
+        db.commit()
+        result = list_for_user(db, u, limit=5)
+        scholarship_ids = [a.scholarship_id for a in result.applications]
+        assert s.id in scholarship_ids, f"Linked app missing: {scholarship_ids}"

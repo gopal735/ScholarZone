@@ -605,7 +605,7 @@ def list_for_user(
         db.execute(
             select(ApplicationRecord)
             .where(ApplicationRecord.user_id == user.id)
-            .order_by(ApplicationRecord.scholarship_id.asc())
+            .order_by(ApplicationRecord.scholarship_id.is_(None).asc(), ApplicationRecord.id.asc())
             .limit(limit)
         ).scalars()
     )
