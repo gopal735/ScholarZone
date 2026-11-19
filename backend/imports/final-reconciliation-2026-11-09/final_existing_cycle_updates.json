@@ -1,0 +1,266 @@
+[
+  {
+    "operation": "EXISTING_CYCLE_UPDATE",
+    "operation_id": "CYCLE-1",
+    "catalogue_id": 1,
+    "canonical_name": "Erasmus Mundus Joint Masters (EMJM)",
+    "current_catalogue_title": "Erasmus Mundus",
+    "changes": [
+      {
+        "field": "title",
+        "before": "Erasmus Mundus",
+        "after": "Erasmus Mundus Joint Masters (EMJM)",
+        "evidence_ref": "EV-CYCLE-1"
+      }
+    ],
+    "catalogue_official_source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+    "evidence_source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+    "evidence_source_title": "Erasmus Mundus Joint Masters (students) - Erasmus+",
+    "evidence_ref": "EV-CYCLE-1",
+    "evidence_status": "DIRECT",
+    "evidence_retrieval_date": "2026-11-10",
+    "exact_supported_claim": "Page title: \"Erasmus Mundus Joint Masters (students) - Erasmus+\". The body states: \"Erasmus Mundus Joint Masters are prestigious international masters\" and uses the official abbreviation in \"EMJM programmes\". It also states: \"Full scholarships are available for the best students\".",
+    "approved_for_import": true,
+    "idempotent": true
+  },
+  {
+    "operation": "EXISTING_CYCLE_UPDATE",
+    "operation_id": "CYCLE-3",
+    "catalogue_id": 3,
+    "canonical_name": "DAAD Scholarship",
+    "current_catalogue_title": "DAAD Scholarship",
+    "changes": [
+      {
+        "field": "application_period",
+        "before": "Varies by programme - typically Sept-Nov for a Oct/Nov deadline; check DAAD database per programme",
+        "after": "Application deadlines are updated annually in the second quarter; applications are possible between 1 June and the stated application deadline.",
+        "evidence_ref": "EV-CYCLE-3"
+      }
+    ],
+    "catalogue_official_source_url": "https://www.daad.de",
+    "evidence_source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200",
+    "evidence_source_title": "Study Scholarships - Master Studies for All Academic Disciplines - DAAD",
+    "evidence_ref": "EV-CYCLE-3",
+    "evidence_status": "DIRECT",
+    "evidence_retrieval_date": "2026-11-10",
+    "exact_supported_claim": "Application deadline section: \"Application deadlines are updated annually in the second quarter. In most cases, they are in the same period as the previous year.\" Application procedure: \"Applications for this scholarship programme are possible between 1 June and the stated application deadline.\"",
+    "approved_for_import": true,
+    "idempotent": true
+  },
+  {
+    "operation": "EXISTING_CYCLE_UPDATE",
+    "operation_id": "CYCLE-4",
+    "catalogue_id": 4,
+    "canonical_name": "Global Korea Scholarship (GKS)",
+    "current_catalogue_title": "Global Korea Scholarship (GKS)",
+    "changes": [
+      {
+        "field": "degree",
+        "before": "UG (Bachelor's/Associate)",
+        "after": "Undergraduate Degrees (including Associate Degree), Graduate Degrees (Master's and Doctoral Degrees)",
+        "evidence_ref": "EV-CYCLE-4"
+      }
+    ],
+    "catalogue_official_source_url": "https://www.studyinkorea.go.kr",
+    "evidence_source_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
+    "evidence_source_title": "Study in Korea | Run by Korean Government",
+    "evidence_ref": "EV-CYCLE-4",
+    "evidence_status": "DIRECT",
+    "evidence_retrieval_date": "2026-11-10",
+    "exact_supported_claim": "The GKS page labels the two tracks \"Undergraduate Degrees (including Associate Degree)\" and \"Graduate Degrees (Master's and Doctoral Degrees)\". The selection quota text says \"Approximately 280 undergraduate students (including associate degree students) + 1,600 graduate students\".",
+    "approved_for_import": true,
+    "idempotent": true
+  },
+  {
+    "operation": "EXISTING_CYCLE_UPDATE",
+    "operation_id": "CYCLE-5",
+    "catalogue_id": 5,
+    "canonical_name": "MEXT (Monbukagakusho) Scholarship",
+    "current_catalogue_title": "MEXT (Monbukagakusho) Scholarship",
+    "changes": [
+      {
+        "field": "degree",
+        "before": "UG/PG/PhD - separate application tracks: Undergraduate, Research Student (leads to Master's/PhD), Teacher Training, Japanese Studies, College of Technology",
+        "after": "Research students, Teacher training students, Undergraduate students, Japanese studies students, College of technology students, Specialized training college students, Young Leaders Program (YLP) students",
+        "evidence_ref": "EV-CYCLE-5"
+      }
+    ],
+    "catalogue_official_source_url": "https://www.studyinjapan.go.jp",
+    "evidence_source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/",
+    "evidence_source_title": "Japanese Government (MEXT) Scholarship｜Study in Japan Official Website",
+    "evidence_ref": "EV-CYCLE-5",
+    "evidence_status": "DIRECT",
+    "evidence_retrieval_date": "2026-11-10",
+    "exact_supported_claim": "The page states: \"there are seven types of the Japanese Government (Monbukagakusho) Scholarship program. They are Research students, Teacher training students, Undergraduate students, Japanese studies students, college of technology students, Specialized training college students, and Young Leaders Program (YLP) students.\"",
+    "approved_for_import": true,
+    "idempotent": true
+  },
+  {
+    "operation": "EXISTING_CYCLE_UPDATE",
+    "operation_id": "CYCLE-23",
+    "catalogue_id": 23,
+    "canonical_name": "DAAD Development-Related Postgraduate Courses (EPOS)",
+    "current_catalogue_title": "DAAD Development-Related Postgraduate Courses (EPOS)",
+    "changes": [
+      {
+        "field": "duration",
+        "before": null,
+        "after": "12 to 42 months (dependent on study programme)",
+        "evidence_ref": "EV-CYCLE-23"
+      }
+    ],
+    "catalogue_official_source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777",
+    "evidence_source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777",
+    "evidence_source_title": "Development-Related Postgraduate Courses (EPOS) - DAAD",
+    "evidence_ref": "EV-CYCLE-23",
+    "evidence_status": "DIRECT",
+    "evidence_retrieval_date": "2026-11-10",
+    "exact_supported_claim": "Page title: \"Development-Related Postgraduate Courses (EPOS) - DAAD\". The \"Duration of the funding\" section states: \"12 to 42 months (dependent on study programme)\".",
+    "approved_for_import": true,
+    "idempotent": true
+  },
+  {
+    "operation": "EXISTING_CYCLE_UPDATE",
+    "operation_id": "CYCLE-231",
+    "catalogue_id": 231,
+    "canonical_name": "Study Scholarships - Postgraduate Studies in the Field of Architecture",
+    "current_catalogue_title": "DAAD Postgraduate Studies in the Field of Architecture",
+    "changes": [
+      {
+        "field": "title",
+        "before": "DAAD Postgraduate Studies in the Field of Architecture",
+        "after": "Study Scholarships - Postgraduate Studies in the Field of Architecture",
+        "evidence_ref": "EV-CYCLE-231"
+      }
+    ],
+    "catalogue_official_source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135744",
+    "evidence_source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135744",
+    "evidence_source_title": "Study Scholarships - Postgraduate Studies in the Field of Architecture - DAAD",
+    "evidence_ref": "EV-CYCLE-231",
+    "evidence_status": "DIRECT",
+    "evidence_retrieval_date": "2026-11-10",
+    "exact_supported_claim": "Page title: \"Study Scholarships - Postgraduate Studies in the Field of Architecture - DAAD - Deutscher Akademischer Austauschdienst\"; the in-page heading is \"Study Scholarships - Postgraduate Studies in the Field of Architecture\".",
+    "approved_for_import": true,
+    "idempotent": true
+  },
+  {
+    "operation": "EXISTING_CYCLE_UPDATE",
+    "operation_id": "CYCLE-232",
+    "catalogue_id": 232,
+    "canonical_name": "Study Scholarships - Postgraduate Studies in the Fields of Fine Art, Design, Visual Communication and Film",
+    "current_catalogue_title": "DAAD Postgraduate Studies in the Fields of Fine Art, Design, Visual Communication and Film",
+    "changes": [
+      {
+        "field": "title",
+        "before": "DAAD Postgraduate Studies in the Fields of Fine Art, Design, Visual Communication and Film",
+        "after": "Study Scholarships - Postgraduate Studies in the Fields of Fine Art, Design, Visual Communication and Film",
+        "evidence_ref": "EV-CYCLE-232"
+      }
+    ],
+    "catalogue_official_source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135742",
+    "evidence_source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135742",
+    "evidence_source_title": "Study Scholarships - Postgraduate Studies in the Fields of Fine Art, Design, Visual Communication and Film - DAAD",
+    "evidence_ref": "EV-CYCLE-232",
+    "evidence_status": "DIRECT",
+    "evidence_retrieval_date": "2026-11-10",
+    "exact_supported_claim": "Page title: \"Study Scholarships - Postgraduate Studies in the Fields of Fine Art, Design, Visual Communication and Film - DAAD - Deutscher Akademischer Austauschdienst\"; the in-page heading matches the programme title.",
+    "approved_for_import": true,
+    "idempotent": true
+  },
+  {
+    "operation": "EXISTING_CYCLE_UPDATE",
+    "operation_id": "CYCLE-234",
+    "catalogue_id": 234,
+    "canonical_name": "Study Scholarships - Postgraduate Studies in the Field of the Performing Arts",
+    "current_catalogue_title": "DAAD Postgraduate Studies in the Field of Performing Arts",
+    "changes": [
+      {
+        "field": "title",
+        "before": "DAAD Postgraduate Studies in the Field of Performing Arts",
+        "after": "Study Scholarships - Postgraduate Studies in the Field of the Performing Arts",
+        "evidence_ref": "EV-CYCLE-234"
+      }
+    ],
+    "catalogue_official_source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50109971",
+    "evidence_source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50109971",
+    "evidence_source_title": "Study Scholarships - Postgraduate Studies in the Field of the Performing Arts - DAAD",
+    "evidence_ref": "EV-CYCLE-234",
+    "evidence_status": "DIRECT",
+    "evidence_retrieval_date": "2026-11-10",
+    "exact_supported_claim": "Page title: \"Study Scholarships - Postgraduate Studies in the Field of the Performing Arts - DAAD - Deutscher Akademischer Austauschdienst\"; the in-page heading matches the programme title.",
+    "approved_for_import": true,
+    "idempotent": true
+  },
+  {
+    "operation": "EXISTING_CYCLE_UPDATE",
+    "operation_id": "CYCLE-516",
+    "catalogue_id": 516,
+    "canonical_name": "GKS (Global Korea Scholarship) Program - Undergraduate Degree Programs",
+    "current_catalogue_title": "GKS (Global Korea Scholarship) Program - Undergraduate Degree Programs",
+    "changes": [
+      {
+        "field": "degree",
+        "before": "Undergraduate",
+        "after": "Undergraduate Degrees (including Associate Degree)",
+        "evidence_ref": "EV-CYCLE-516"
+      }
+    ],
+    "catalogue_official_source_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
+    "evidence_source_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
+    "evidence_source_title": "Study in Korea | Run by Korean Government",
+    "evidence_ref": "EV-CYCLE-516",
+    "evidence_status": "DIRECT",
+    "evidence_retrieval_date": "2026-11-10",
+    "exact_supported_claim": "The GKS page section \"Undergraduate Degrees (including Associate Degree)\" lists an \"Associate Degree Program\" and a \"Bachelor's Degree Program\"; the selection quota includes \"Associate Degree 30\" and \"UIC 100\" for bachelor's and associate degree places.",
+    "approved_for_import": true,
+    "idempotent": true
+  },
+  {
+    "operation": "EXISTING_CYCLE_UPDATE",
+    "operation_id": "CYCLE-1312",
+    "catalogue_id": 1312,
+    "canonical_name": "Knight-Hennessy Scholars at Stanford University",
+    "current_catalogue_title": "Knight-Hennessy Scholars",
+    "changes": [
+      {
+        "field": "title",
+        "before": "Knight-Hennessy Scholars",
+        "after": "Knight-Hennessy Scholars at Stanford University",
+        "evidence_ref": "EV-CYCLE-1312"
+      }
+    ],
+    "catalogue_official_source_url": "https://knight-hennessy.stanford.edu",
+    "evidence_source_url": "https://knight-hennessy.stanford.edu",
+    "evidence_source_title": "Knight-Hennessy Scholars at Stanford University",
+    "evidence_ref": "EV-CYCLE-1312",
+    "evidence_status": "DIRECT",
+    "evidence_retrieval_date": "2026-11-10",
+    "exact_supported_claim": "Page title: \"Knight-Hennessy Scholars at Stanford University\"; the main page heading repeats \"Knight-Hennessy Scholars at Stanford University\".",
+    "approved_for_import": true,
+    "idempotent": true
+  },
+  {
+    "operation": "EXISTING_CYCLE_UPDATE",
+    "operation_id": "CYCLE-1336",
+    "catalogue_id": 1336,
+    "canonical_name": "Huayu Enrichment Scholarship Program",
+    "current_catalogue_title": "Taiwan Scholarship 2027",
+    "changes": [
+      {
+        "field": "title",
+        "before": "Taiwan Scholarship 2027",
+        "after": "Huayu Enrichment Scholarship Program",
+        "evidence_ref": "EV-CYCLE-1336"
+      }
+    ],
+    "catalogue_official_source_url": "https://taiwanscholarship.moe.gov.tw",
+    "evidence_source_url": "https://taiwanscholarship.moe.gov.tw",
+    "evidence_source_title": "Taiwan Scholarship and Huayu Enrichment Scholarship Program",
+    "evidence_ref": "EV-CYCLE-1336",
+    "evidence_status": "DIRECT",
+    "evidence_retrieval_date": "2026-11-10",
+    "exact_supported_claim": "Official site title: \"Taiwan Scholarship and Huayu Enrichment Scholarship Program\" (also rendered as \"臺灣獎學金及華語文獎學金計畫網站\"). Footer: \"© Copyright Taiwan Scholarship And Huayu Enrichment Scholarship Office\". The page therefore identifies the Huayu Enrichment Scholarship Program as one of the two official programmes it administers.",
+    "approved_for_import": true,
+    "idempotent": true
+  }
+]

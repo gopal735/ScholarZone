@@ -1,0 +1,74 @@
+{
+  "validation_timestamp": "2026-11-10",
+  "validator_version": "2.0",
+  "package_status": "BLOCKED",
+  "review_package_only": true,
+  "production_import_authorized": false,
+  "semantic_validation": "PASS",
+  "json_files_loaded": 15,
+  "json_files": [
+    "blocked_records.json",
+    "duplicate_fk_dependency_report.json",
+    "duplicate_merge_dry_run.json",
+    "duplicate_merge_plan.json",
+    "final_database_reconciliation.json",
+    "final_existing_cycle_updates.json",
+    "final_funding_corrections.json",
+    "final_import_ready_scholarships.json",
+    "final_lifecycle_corrections.json",
+    "final_reconciliation_manifest.json",
+    "final_source_evidence.json",
+    "legacy/README.md",
+    "legacy/import-files/manifest.json",
+    "operation_evidence_mapping.json",
+    "package_baseline.json"
+  ],
+  "operation_counts": {
+    "approved_direct": 13,
+    "pending_research_excluded": 12,
+    "blocked_insert_candidates": 6,
+    "duplicate_pairs": 5,
+    "duplicate_merge_ready": 4,
+    "duplicate_blocked": 1
+  },
+  "counts": {
+    "baseline": {
+      "total": 830,
+      "active": 830,
+      "archived": 0,
+      "status_distribution": {
+        "open": 820,
+        "closed": 6,
+        "closing-soon": 4
+      }
+    },
+    "after_approved_subset": {
+      "total": 830,
+      "active": 830,
+      "archived": 0
+    },
+    "after_lifecycle_proposals": {
+      "total": 830,
+      "active": 828,
+      "archived": 2
+    },
+    "after_all_proposed": {
+      "total": 830,
+      "active": 824,
+      "archived": 6
+    }
+  },
+  "environment": {
+    "postgresql_simulation": "UNAVAILABLE",
+    "duplicate_plans_executed": 0
+  },
+  "blocking_reasons": [
+    "Vanier CGS and NFP/OTS lifecycle proposals remain PENDING_RESEARCH.",
+    "PostgreSQL duplicate-merge simulation is unavailable in this environment.",
+    "No duplicate merge has been executed; 4 archive-only plans await owner approval.",
+    "6 new-insert candidates remain blocked.",
+    "This package is a review package, not production import authorization."
+  ],
+  "errors": [],
+  "error_count": 0
+}

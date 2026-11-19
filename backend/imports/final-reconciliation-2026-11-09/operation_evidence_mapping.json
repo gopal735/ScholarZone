@@ -1,0 +1,381 @@
+{
+  "mapping_date": "2026-11-10",
+  "total_operations": 25,
+  "approved_operations": 13,
+  "pending_operations": 12,
+  "direct_evidence_operations": 13,
+  "pending_research_operations": 12,
+  "operations": [
+    {
+      "operation_type": "EXISTING_CYCLE_UPDATE",
+      "operation_id": "CYCLE-1",
+      "catalogue_id": 1,
+      "canonical_name": "Erasmus Mundus Joint Masters (EMJM)",
+      "changes": [
+        {
+          "field": "title",
+          "before": "Erasmus Mundus",
+          "after": "Erasmus Mundus Joint Masters (EMJM)",
+          "evidence_ref": "EV-CYCLE-1"
+        }
+      ],
+      "evidence_ref": "EV-CYCLE-1",
+      "final_evidence_status": "DIRECT",
+      "approved_for_import": true
+    },
+    {
+      "operation_type": "EXISTING_CYCLE_UPDATE",
+      "operation_id": "CYCLE-3",
+      "catalogue_id": 3,
+      "canonical_name": "DAAD Scholarship",
+      "changes": [
+        {
+          "field": "application_period",
+          "before": "Varies by programme - typically Sept-Nov for a Oct/Nov deadline; check DAAD database per programme",
+          "after": "Application deadlines are updated annually in the second quarter; applications are possible between 1 June and the stated application deadline.",
+          "evidence_ref": "EV-CYCLE-3"
+        }
+      ],
+      "evidence_ref": "EV-CYCLE-3",
+      "final_evidence_status": "DIRECT",
+      "approved_for_import": true
+    },
+    {
+      "operation_type": "EXISTING_CYCLE_UPDATE",
+      "operation_id": "CYCLE-4",
+      "catalogue_id": 4,
+      "canonical_name": "Global Korea Scholarship (GKS)",
+      "changes": [
+        {
+          "field": "degree",
+          "before": "UG (Bachelor's/Associate)",
+          "after": "Undergraduate Degrees (including Associate Degree), Graduate Degrees (Master's and Doctoral Degrees)",
+          "evidence_ref": "EV-CYCLE-4"
+        }
+      ],
+      "evidence_ref": "EV-CYCLE-4",
+      "final_evidence_status": "DIRECT",
+      "approved_for_import": true
+    },
+    {
+      "operation_type": "EXISTING_CYCLE_UPDATE",
+      "operation_id": "CYCLE-5",
+      "catalogue_id": 5,
+      "canonical_name": "MEXT (Monbukagakusho) Scholarship",
+      "changes": [
+        {
+          "field": "degree",
+          "before": "UG/PG/PhD - separate application tracks: Undergraduate, Research Student (leads to Master's/PhD), Teacher Training, Japanese Studies, College of Technology",
+          "after": "Research students, Teacher training students, Undergraduate students, Japanese studies students, College of technology students, Specialized training college students, Young Leaders Program (YLP) students",
+          "evidence_ref": "EV-CYCLE-5"
+        }
+      ],
+      "evidence_ref": "EV-CYCLE-5",
+      "final_evidence_status": "DIRECT",
+      "approved_for_import": true
+    },
+    {
+      "operation_type": "EXISTING_CYCLE_UPDATE",
+      "operation_id": "CYCLE-23",
+      "catalogue_id": 23,
+      "canonical_name": "DAAD Development-Related Postgraduate Courses (EPOS)",
+      "changes": [
+        {
+          "field": "duration",
+          "before": null,
+          "after": "12 to 42 months (dependent on study programme)",
+          "evidence_ref": "EV-CYCLE-23"
+        }
+      ],
+      "evidence_ref": "EV-CYCLE-23",
+      "final_evidence_status": "DIRECT",
+      "approved_for_import": true
+    },
+    {
+      "operation_type": "EXISTING_CYCLE_UPDATE",
+      "operation_id": "CYCLE-231",
+      "catalogue_id": 231,
+      "canonical_name": "Study Scholarships - Postgraduate Studies in the Field of Architecture",
+      "changes": [
+        {
+          "field": "title",
+          "before": "DAAD Postgraduate Studies in the Field of Architecture",
+          "after": "Study Scholarships - Postgraduate Studies in the Field of Architecture",
+          "evidence_ref": "EV-CYCLE-231"
+        }
+      ],
+      "evidence_ref": "EV-CYCLE-231",
+      "final_evidence_status": "DIRECT",
+      "approved_for_import": true
+    },
+    {
+      "operation_type": "EXISTING_CYCLE_UPDATE",
+      "operation_id": "CYCLE-232",
+      "catalogue_id": 232,
+      "canonical_name": "Study Scholarships - Postgraduate Studies in the Fields of Fine Art, Design, Visual Communication and Film",
+      "changes": [
+        {
+          "field": "title",
+          "before": "DAAD Postgraduate Studies in the Fields of Fine Art, Design, Visual Communication and Film",
+          "after": "Study Scholarships - Postgraduate Studies in the Fields of Fine Art, Design, Visual Communication and Film",
+          "evidence_ref": "EV-CYCLE-232"
+        }
+      ],
+      "evidence_ref": "EV-CYCLE-232",
+      "final_evidence_status": "DIRECT",
+      "approved_for_import": true
+    },
+    {
+      "operation_type": "EXISTING_CYCLE_UPDATE",
+      "operation_id": "CYCLE-234",
+      "catalogue_id": 234,
+      "canonical_name": "Study Scholarships - Postgraduate Studies in the Field of the Performing Arts",
+      "changes": [
+        {
+          "field": "title",
+          "before": "DAAD Postgraduate Studies in the Field of Performing Arts",
+          "after": "Study Scholarships - Postgraduate Studies in the Field of the Performing Arts",
+          "evidence_ref": "EV-CYCLE-234"
+        }
+      ],
+      "evidence_ref": "EV-CYCLE-234",
+      "final_evidence_status": "DIRECT",
+      "approved_for_import": true
+    },
+    {
+      "operation_type": "EXISTING_CYCLE_UPDATE",
+      "operation_id": "CYCLE-516",
+      "catalogue_id": 516,
+      "canonical_name": "GKS (Global Korea Scholarship) Program - Undergraduate Degree Programs",
+      "changes": [
+        {
+          "field": "degree",
+          "before": "Undergraduate",
+          "after": "Undergraduate Degrees (including Associate Degree)",
+          "evidence_ref": "EV-CYCLE-516"
+        }
+      ],
+      "evidence_ref": "EV-CYCLE-516",
+      "final_evidence_status": "DIRECT",
+      "approved_for_import": true
+    },
+    {
+      "operation_type": "EXISTING_CYCLE_UPDATE",
+      "operation_id": "CYCLE-1312",
+      "catalogue_id": 1312,
+      "canonical_name": "Knight-Hennessy Scholars at Stanford University",
+      "changes": [
+        {
+          "field": "title",
+          "before": "Knight-Hennessy Scholars",
+          "after": "Knight-Hennessy Scholars at Stanford University",
+          "evidence_ref": "EV-CYCLE-1312"
+        }
+      ],
+      "evidence_ref": "EV-CYCLE-1312",
+      "final_evidence_status": "DIRECT",
+      "approved_for_import": true
+    },
+    {
+      "operation_type": "EXISTING_CYCLE_UPDATE",
+      "operation_id": "CYCLE-1336",
+      "catalogue_id": 1336,
+      "canonical_name": "Huayu Enrichment Scholarship Program",
+      "changes": [
+        {
+          "field": "title",
+          "before": "Taiwan Scholarship 2027",
+          "after": "Huayu Enrichment Scholarship Program",
+          "evidence_ref": "EV-CYCLE-1336"
+        }
+      ],
+      "evidence_ref": "EV-CYCLE-1336",
+      "final_evidence_status": "DIRECT",
+      "approved_for_import": true
+    },
+    {
+      "operation_type": "FUNDING_CORRECTION",
+      "operation_id": "FUND-3",
+      "catalogue_id": 3,
+      "canonical_name": "DAAD Scholarship",
+      "changes": [
+        {
+          "field": "tuition_coverage",
+          "before": true,
+          "after": false,
+          "evidence_ref": "EV-FUND-3"
+        },
+        {
+          "field": "fully_funded",
+          "before": true,
+          "after": false,
+          "evidence_ref": "EV-FUND-3"
+        },
+        {
+          "field": "funding",
+          "before": "Fully Funded",
+          "after": "Partially Funded (stipend, insurance, travel; tuition not covered)",
+          "evidence_ref": "EV-FUND-3"
+        }
+      ],
+      "evidence_ref": "EV-FUND-3",
+      "final_evidence_status": "DIRECT",
+      "approved_for_import": true
+    },
+    {
+      "operation_type": "FUNDING_CORRECTION",
+      "operation_id": "FUND-1",
+      "catalogue_id": 1,
+      "canonical_name": "Erasmus Mundus",
+      "changes": [
+        {
+          "field": "fully_funded",
+          "before": null,
+          "after": true,
+          "evidence_ref": "EV-FUND-1"
+        },
+        {
+          "field": "funding",
+          "before": "EUR 1,400/month + tuition + travel",
+          "after": "Fully Funded (participation costs + travel/visa + living allowance)",
+          "evidence_ref": "EV-FUND-1"
+        }
+      ],
+      "evidence_ref": "EV-FUND-1",
+      "final_evidence_status": "DIRECT",
+      "approved_for_import": true
+    },
+    {
+      "operation_type": "EXISTING_CYCLE_UPDATE",
+      "operation_id": "PENDING-EXISTING-30",
+      "catalogue_id": 30,
+      "canonical_name": "Australia Awards Scholarships",
+      "changes": [],
+      "evidence_ref": null,
+      "final_evidence_status": "PENDING_RESEARCH",
+      "approved_for_import": false,
+      "exclusion_reason": "No DIRECT evidence record in the approved research set; excluded from the approved import files."
+    },
+    {
+      "operation_type": "EXISTING_CYCLE_UPDATE",
+      "operation_id": "PENDING-EXISTING-32",
+      "catalogue_id": 32,
+      "canonical_name": "Swedish Institute Scholarship",
+      "changes": [],
+      "evidence_ref": null,
+      "final_evidence_status": "PENDING_RESEARCH",
+      "approved_for_import": false,
+      "exclusion_reason": "No DIRECT evidence record in the approved research set; excluded from the approved import files."
+    },
+    {
+      "operation_type": "EXISTING_CYCLE_UPDATE",
+      "operation_id": "PENDING-EXISTING-33",
+      "catalogue_id": 33,
+      "canonical_name": "Chinese Government Scholarship (CSC)",
+      "changes": [],
+      "evidence_ref": null,
+      "final_evidence_status": "PENDING_RESEARCH",
+      "approved_for_import": false,
+      "exclusion_reason": "No DIRECT evidence record in the approved research set; excluded from the approved import files."
+    },
+    {
+      "operation_type": "EXISTING_CYCLE_UPDATE",
+      "operation_id": "PENDING-EXISTING-34",
+      "catalogue_id": 34,
+      "canonical_name": "Taiwan Scholarship Program",
+      "changes": [],
+      "evidence_ref": null,
+      "final_evidence_status": "PENDING_RESEARCH",
+      "approved_for_import": false,
+      "exclusion_reason": "No DIRECT evidence record in the approved research set; excluded from the approved import files."
+    },
+    {
+      "operation_type": "EXISTING_CYCLE_UPDATE",
+      "operation_id": "PENDING-EXISTING-36",
+      "catalogue_id": 36,
+      "canonical_name": "MAECI Italian Government Scholarship",
+      "changes": [],
+      "evidence_ref": null,
+      "final_evidence_status": "PENDING_RESEARCH",
+      "approved_for_import": false,
+      "exclusion_reason": "No DIRECT evidence record in the approved research set; excluded from the approved import files."
+    },
+    {
+      "operation_type": "EXISTING_CYCLE_UPDATE",
+      "operation_id": "PENDING-EXISTING-40",
+      "catalogue_id": 40,
+      "canonical_name": "ARES Scholarships (Belgium)",
+      "changes": [],
+      "evidence_ref": null,
+      "final_evidence_status": "PENDING_RESEARCH",
+      "approved_for_import": false,
+      "exclusion_reason": "No DIRECT evidence record in the approved research set; excluded from the approved import files."
+    },
+    {
+      "operation_type": "EXISTING_CYCLE_UPDATE",
+      "operation_id": "PENDING-EXISTING-41",
+      "catalogue_id": 41,
+      "canonical_name": "AECID Spanish Government Scholarship",
+      "changes": [],
+      "evidence_ref": null,
+      "final_evidence_status": "PENDING_RESEARCH",
+      "approved_for_import": false,
+      "exclusion_reason": "No DIRECT evidence record in the approved research set; excluded from the approved import files."
+    },
+    {
+      "operation_type": "FUNDING_CORRECTION",
+      "operation_id": "PENDING-FUNDING-40",
+      "catalogue_id": 40,
+      "canonical_name": "ARES Scholarships (Belgium)",
+      "changes": [],
+      "evidence_ref": null,
+      "final_evidence_status": "PENDING_RESEARCH",
+      "approved_for_import": false,
+      "exclusion_reason": "No DIRECT evidence record in the approved research set; excluded from the approved import files."
+    },
+    {
+      "operation_type": "FUNDING_CORRECTION",
+      "operation_id": "PENDING-FUNDING-31",
+      "catalogue_id": 31,
+      "canonical_name": "Netherlands Fellowship Programme (NFP/OTS)",
+      "changes": [],
+      "evidence_ref": null,
+      "final_evidence_status": "PENDING_RESEARCH",
+      "approved_for_import": false,
+      "exclusion_reason": "No DIRECT evidence record in the approved research set; excluded from the approved import files."
+    },
+    {
+      "operation_type": "FUNDING_CORRECTION",
+      "operation_id": "PENDING-FUNDING-729",
+      "catalogue_id": 729,
+      "canonical_name": "Vanier Canada Graduate Scholarship",
+      "changes": [],
+      "evidence_ref": null,
+      "final_evidence_status": "PENDING_RESEARCH",
+      "approved_for_import": false,
+      "exclusion_reason": "No DIRECT evidence record in the approved research set; excluded from the approved import files."
+    },
+    {
+      "operation_type": "LIFECYCLE_CORRECTION",
+      "operation_id": "PENDING-LIFECYCLE-729",
+      "catalogue_id": 729,
+      "canonical_name": "Vanier Canada Graduate Scholarship",
+      "changes": [],
+      "evidence_ref": null,
+      "final_evidence_status": "PENDING_RESEARCH",
+      "approved_for_import": false,
+      "exclusion_reason": "No DIRECT evidence record in the approved research set; excluded from the approved import files."
+    },
+    {
+      "operation_type": "LIFECYCLE_CORRECTION",
+      "operation_id": "PENDING-LIFECYCLE-31",
+      "catalogue_id": 31,
+      "canonical_name": "Netherlands Fellowship Programme (NFP/OTS)",
+      "changes": [],
+      "evidence_ref": null,
+      "final_evidence_status": "PENDING_RESEARCH",
+      "approved_for_import": false,
+      "exclusion_reason": "No DIRECT evidence record in the approved research set; excluded from the approved import files."
+    }
+  ]
+}

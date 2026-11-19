@@ -1,0 +1,56 @@
+[
+  {
+    "operation": "NEW_INSERT",
+    "research_id": 175,
+    "canonical_programme_name": "Erasmus University Rotterdam (EUR) - Holland Scholarship & Talent Programmes (NL Scholarship)",
+    "official_programme_url": "https://www.eur.nl/en/education/practical-matters/scholarships-grants",
+    "block_reason": "INSUFFICIENT_EVIDENCE",
+    "approved_for_import": false,
+    "final_evidence_status": "BLOCKED"
+  },
+  {
+    "operation": "NEW_INSERT",
+    "research_id": 360,
+    "canonical_programme_name": "MEXT Scholarship for 2027 - Embassy Recommendation (Research Students)",
+    "official_programme_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/",
+    "block_reason": "INSUFFICIENT_EVIDENCE",
+    "approved_for_import": false,
+    "final_evidence_status": "BLOCKED"
+  },
+  {
+    "operation": "NEW_INSERT",
+    "research_id": 383,
+    "canonical_programme_name": "Erasmus Trustfonds Scholarship",
+    "official_programme_url": "https://www.eur.nl/en/education/practical-matters/scholarships-grants",
+    "block_reason": "INSUFFICIENT_EVIDENCE",
+    "approved_for_import": false,
+    "final_evidence_status": "BLOCKED"
+  },
+  {
+    "operation": "NEW_INSERT",
+    "research_id": 384,
+    "canonical_programme_name": "Erasmus Trustfonds / TSH Changemaker",
+    "official_programme_url": "https://www.eur.nl/en/education/practical-matters/scholarships-grants",
+    "block_reason": "INSUFFICIENT_EVIDENCE",
+    "approved_for_import": false,
+    "final_evidence_status": "BLOCKED"
+  },
+  {
+    "operation": "NEW_INSERT",
+    "research_id": 423,
+    "canonical_programme_name": "Erasmus+ Grant (EUR)",
+    "official_programme_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+    "block_reason": "INSUFFICIENT_EVIDENCE",
+    "approved_for_import": false,
+    "final_evidence_status": "BLOCKED"
+  },
+  {
+    "operation": "NEW_INSERT",
+    "research_id": 556,
+    "canonical_programme_name": "Convocatoria de Becas OEA - UNIR, EP NEWMAN y UNIR Mexico (Curso Academico 2026, 2a convocatoria)",
+    "official_programme_url": "https://www.oas.org/en/scholarships/PAEC/2026/P26_Convocatoria_de_BecasOEA_UNIR_EP_NEWMAN_y_UNIR_MX_2026.pdf",
+    "block_reason": "EXCLUDED_REGION",
+    "approved_for_import": false,
+    "final_evidence_status": "BLOCKED"
+  }
+]

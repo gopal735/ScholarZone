@@ -1,0 +1,266 @@
+{
+  "dry_run_version": "2.0",
+  "dry_run_date": "2026-11-10",
+  "mode": "ISOLATED_SQLITE_COPY",
+  "source_database": "backend/scholarzone.db",
+  "source_database_sha256": "c4737c7fce02c719caed1c4f95de0b2ded926e2a84c4bcbda16cddfb9b8a3adb",
+  "source_database_unchanged": true,
+  "isolated_copy_sha256": "c2926e4d7c0ff5e77989222ddeebedcc0cd5f7dddcbf4f9fa06bb4b0b11e29b3",
+  "postgresql_simulation": {
+    "status": "UNAVAILABLE",
+    "attempted": false,
+    "checks": {
+      "psql_client": false,
+      "pg_isready_client": false,
+      "docker_client": false,
+      "psycopg_installed": true,
+      "disposable_test_dsn_present": false,
+      "environment_dsn_names_present": []
+    },
+    "reason": "No disposable PostgreSQL test DSN is configured and no local PostgreSQL client/server is available. The simulation was not attempted; this is not reported as a pass.",
+    "required_before_execution": "Run the same archive-only updates and the UNIQUE(scholarship_id) collision probe against an isolated PostgreSQL 16/18 database, then attach the run log."
+  },
+  "pairs_tested": [
+    {
+      "pair_id": 1,
+      "canonical_id": 183,
+      "duplicate_id": 753,
+      "pre_state": {
+        "duplicate_is_archived": false,
+        "duplicate_status": "open",
+        "duplicate_official_source_url": "https://www.lunduniversity.lu.se/admissions/scholarships-and-awards/lund-university-global-scholarship",
+        "canonical_is_archived": false
+      },
+      "operation": "ARCHIVE_DUPLICATE",
+      "rows_affected": 1,
+      "post_state": {
+        "duplicate_is_archived": true,
+        "duplicate_status": "open",
+        "duplicate_archived_at": "2026-11-10T00:00:00+00:00",
+        "duplicate_archived_reason": "Duplicate of ID 183 (Lund University Global Scholarship); archive-only 2026-11-10",
+        "duplicate_official_source_url": "https://www.lunduniversity.lu.se/admissions/scholarships-and-awards/lund-university-global-scholarship",
+        "canonical_is_archived": false
+      },
+      "checks": {
+        "rows_affected_1": true,
+        "duplicate_is_archived": true,
+        "duplicate_status_unchanged": true,
+        "duplicate_archived_reason_set": true,
+        "duplicate_official_source_url_unchanged": true,
+        "duplicate_funding_unchanged": true,
+        "duplicate_degree_unchanged": true,
+        "duplicate_region_unchanged": true,
+        "canonical_row_unchanged": true,
+        "unique_collision_prevented_fk_reassignment": true
+      },
+      "result": "PASS"
+    },
+    {
+      "pair_id": 2,
+      "canonical_id": 270,
+      "duplicate_id": 1244,
+      "pre_state": {
+        "duplicate_is_archived": false,
+        "duplicate_status": "open",
+        "duplicate_official_source_url": "https://www.cbs.dk/en/education/master/programmes-and-admission/fees-and-funding",
+        "canonical_is_archived": false
+      },
+      "operation": "ARCHIVE_DUPLICATE",
+      "rows_affected": 1,
+      "post_state": {
+        "duplicate_is_archived": true,
+        "duplicate_status": "open",
+        "duplicate_archived_at": "2026-11-10T00:00:00+00:00",
+        "duplicate_archived_reason": "Duplicate of ID 270 (Copenhagen Business School Danish Government Scholarship); archive-only 2026-11-10",
+        "duplicate_official_source_url": "https://www.cbs.dk/en/education/master/programmes-and-admission/fees-and-funding",
+        "canonical_is_archived": false
+      },
+      "checks": {
+        "rows_affected_1": true,
+        "duplicate_is_archived": true,
+        "duplicate_status_unchanged": true,
+        "duplicate_archived_reason_set": true,
+        "duplicate_official_source_url_unchanged": true,
+        "duplicate_funding_unchanged": true,
+        "duplicate_degree_unchanged": true,
+        "duplicate_region_unchanged": true,
+        "canonical_row_unchanged": true,
+        "unique_collision_prevented_fk_reassignment": true
+      },
+      "result": "PASS"
+    },
+    {
+      "pair_id": 3,
+      "canonical_id": 271,
+      "duplicate_id": 760,
+      "pre_state": {
+        "duplicate_is_archived": false,
+        "duplicate_status": "open",
+        "duplicate_official_source_url": "https://www.ku.dk/studies/masters/application-and-admission/scholarships",
+        "canonical_is_archived": false
+      },
+      "operation": "ARCHIVE_DUPLICATE",
+      "rows_affected": 1,
+      "post_state": {
+        "duplicate_is_archived": true,
+        "duplicate_status": "open",
+        "duplicate_archived_at": "2026-11-10T00:00:00+00:00",
+        "duplicate_archived_reason": "Duplicate of ID 271 (University of Copenhagen Danish Government Scholarship); archive-only 2026-11-10",
+        "duplicate_official_source_url": "https://www.ku.dk/studies/masters/application-and-admission/scholarships",
+        "canonical_is_archived": false
+      },
+      "checks": {
+        "rows_affected_1": true,
+        "duplicate_is_archived": true,
+        "duplicate_status_unchanged": true,
+        "duplicate_archived_reason_set": true,
+        "duplicate_official_source_url_unchanged": true,
+        "duplicate_funding_unchanged": true,
+        "duplicate_degree_unchanged": true,
+        "duplicate_region_unchanged": true,
+        "canonical_row_unchanged": true,
+        "unique_collision_prevented_fk_reassignment": true
+      },
+      "result": "PASS"
+    },
+    {
+      "pair_id": 4,
+      "canonical_id": 285,
+      "duplicate_id": 1277,
+      "pre_state": {
+        "duplicate_is_archived": false,
+        "duplicate_status": "open",
+        "duplicate_official_source_url": "https://stipendiumhungaricum.hu/apply_call",
+        "canonical_is_archived": false
+      },
+      "operation": "ARCHIVE_DUPLICATE",
+      "rows_affected": 1,
+      "post_state": {
+        "duplicate_is_archived": true,
+        "duplicate_status": "open",
+        "duplicate_archived_at": "2026-11-10T00:00:00+00:00",
+        "duplicate_archived_reason": "Duplicate of ID 285 (Stipendium Hungaricum Scholarship Programme); archive-only 2026-11-10",
+        "duplicate_official_source_url": "https://stipendiumhungaricum.hu/apply_call",
+        "canonical_is_archived": false
+      },
+      "checks": {
+        "rows_affected_1": true,
+        "duplicate_is_archived": true,
+        "duplicate_status_unchanged": true,
+        "duplicate_archived_reason_set": true,
+        "duplicate_official_source_url_unchanged": true,
+        "duplicate_funding_unchanged": true,
+        "duplicate_degree_unchanged": true,
+        "duplicate_region_unchanged": true,
+        "canonical_row_unchanged": true,
+        "unique_collision_prevented_fk_reassignment": true
+      },
+      "result": "PASS"
+    }
+  ],
+  "uniqueness_collision_tests": [
+    {
+      "pair_id": 1,
+      "table": "scholarship_supervisor_coverage",
+      "attempted_reassignment": {
+        "from": 753,
+        "to": 183
+      },
+      "expected_result": "UNIQUE_COLLISION",
+      "actual_result": "UNIQUE_COLLISION",
+      "error": "UNIQUE constraint failed: scholarship_supervisor_coverage.scholarship_id",
+      "rows_reassigned": 0
+    },
+    {
+      "pair_id": 2,
+      "table": "scholarship_supervisor_coverage",
+      "attempted_reassignment": {
+        "from": 1244,
+        "to": 270
+      },
+      "expected_result": "UNIQUE_COLLISION",
+      "actual_result": "UNIQUE_COLLISION",
+      "error": "UNIQUE constraint failed: scholarship_supervisor_coverage.scholarship_id",
+      "rows_reassigned": 0
+    },
+    {
+      "pair_id": 3,
+      "table": "scholarship_supervisor_coverage",
+      "attempted_reassignment": {
+        "from": 760,
+        "to": 271
+      },
+      "expected_result": "UNIQUE_COLLISION",
+      "actual_result": "UNIQUE_COLLISION",
+      "error": "UNIQUE constraint failed: scholarship_supervisor_coverage.scholarship_id",
+      "rows_reassigned": 0
+    },
+    {
+      "pair_id": 4,
+      "table": "scholarship_supervisor_coverage",
+      "attempted_reassignment": {
+        "from": 1277,
+        "to": 285
+      },
+      "expected_result": "UNIQUE_COLLISION",
+      "actual_result": "UNIQUE_COLLISION",
+      "error": "UNIQUE constraint failed: scholarship_supervisor_coverage.scholarship_id",
+      "rows_reassigned": 0
+    }
+  ],
+  "aggregate": {
+    "pairs_tested": 4,
+    "pairs_passed": 4,
+    "pairs_failed": 0,
+    "pairs_archived": 4,
+    "collisions_detected": 4,
+    "rows_deleted": 0,
+    "url_writes": 0,
+    "funding_writes": 0,
+    "degree_writes": 0,
+    "region_writes": 0,
+    "status_changes": 0,
+    "fk_rows_reassigned": 0,
+    "coverage_rows_before": 830,
+    "coverage_rows_after": 830,
+    "official_source_url_arrays_before": 0,
+    "official_source_url_arrays_after": 0,
+    "pair_urls_non_null": 10,
+    "pair_urls_distinct": 10,
+    "total_before": 830,
+    "active_before": 830,
+    "archived_before": 0,
+    "total_after": 830,
+    "active_after": 826,
+    "archived_after": 4,
+    "status_distribution_before": {
+      "closed": 6,
+      "closing-soon": 4,
+      "open": 820
+    },
+    "status_distribution_after": {
+      "closed": 6,
+      "closing-soon": 4,
+      "open": 820
+    },
+    "all_pair_checks_passed": true,
+    "all_collision_probes_passed": true
+  },
+  "database_state_after_dry_run": {
+    "total": 830,
+    "active": 826,
+    "archived": 4,
+    "status_distribution": {
+      "closed": 6,
+      "closing-soon": 4,
+      "open": 820
+    },
+    "merges_executed_in_source_database": 0
+  },
+  "limitations": [
+    "The simulation ran on an isolated SQLite copy, not on PostgreSQL.",
+    "SQLite locking and constraint-error text differ from PostgreSQL; the UNIQUE collision outcome should be reconfirmed on PostgreSQL.",
+    "No audit row was inserted because scholarship_restore_records requires source/target version IDs and is not a merge-audit table.",
+    "The four archive-only plans were not executed against the source database."
+  ]
+}

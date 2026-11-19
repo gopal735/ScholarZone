@@ -1,0 +1,83 @@
+{
+  "validation_timestamp": "2026-11-09",
+  "schema_version": "ScholarZone canonical catalogue v1",
+  "total_records_validated": 27,
+  "validations": {
+    "json_validity": {
+      "status": "PASS",
+      "details": "All output files are valid JSON"
+    },
+    "schema_compliance": {
+      "status": "PASS",
+      "details": "Records conform to canonical catalogue contract"
+    },
+    "required_fields": {
+      "status": "PASS",
+      "details": "All required fields present in import records"
+    },
+    "url_validity": {
+      "status": "WARNING",
+      "details": "URLs not live-tested; based on research ledger sources"
+    },
+    "duplicate_canonical_urls": {
+      "status": "PASS",
+      "details": "No duplicate official_source_url in import set"
+    },
+    "duplicate_normalized_identity": {
+      "status": "WARNING",
+      "details": "5 duplicates found in existing catalogue (see duplicates section)"
+    },
+    "duplicate_ids": {
+      "status": "PASS",
+      "details": "No duplicate IDs in import set"
+    },
+    "missing_source_evidence": {
+      "status": "WARNING",
+      "details": "46 records awaiting official verification"
+    },
+    "unsupported_claims": {
+      "status": "PASS",
+      "details": "No unsupported claims in verified records"
+    },
+    "date_validity": {
+      "status": "PASS",
+      "details": "All dates ISO 8601 format or null"
+    },
+    "deadline_consistency": {
+      "status": "PASS",
+      "details": "No contradictory deadline states"
+    },
+    "funding_consistency": {
+      "status": "WARNING",
+      "details": "5 funding corrections identified"
+    },
+    "country_taxonomy": {
+      "status": "PASS",
+      "details": "Countries match existing taxonomy"
+    },
+    "study_level_taxonomy": {
+      "status": "PASS",
+      "details": "Degree levels consistent"
+    },
+    "lifecycle_consistency": {
+      "status": "WARNING",
+      "details": "3 lifecycle corrections needed"
+    },
+    "successor_references": {
+      "status": "PASS",
+      "details": "Replacement programmes documented"
+    },
+    "existing_catalogue_duplicates": {
+      "status": "WARNING",
+      "details": "5 duplicate title+country pairs in existing catalogue"
+    },
+    "invalid_operations": {
+      "status": "PASS",
+      "details": "All operations valid (NEW_INSERT, EXISTING_CYCLE_UPDATE, FUNDING_CORRECTION, LIFECYCLE_CORRECTION)"
+    }
+  },
+  "errors": 0,
+  "warnings": 7,
+  "info": 3,
+  "import_readiness": "REQUIRES_MANUAL_REVIEW"
+}
