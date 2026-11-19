@@ -514,7 +514,7 @@ def build_next_actions(
 
     # An application already in motion outranks anything new: it is the one thing
     # the student has already decided to do.
-    application_items_with_scholarship = [item for item in application_items if item.scholarship is not None and item.scholarship.scholarship_id is not None]
+    application_items_with_scholarship = [item for item in application_items if item.scholarship is not None and item.scholarship.scholarship_id is not None and item.scholarship.detail_url]
     for item in sorted(
         (entry for entry in application_items_with_scholarship if entry.state in ("in_progress", "planning")),
         key=lambda entry: (entry.updated_at, entry.scholarship.scholarship_id),
