@@ -629,14 +629,15 @@ export default function UnifiedAIPage() {
     setIsLoading(true)
 
     const userMsgId = ++messageIdRef.current
+    const isPrivateMessage = isMentorMode || isAnonymousPrivate
     setMessages(prev => [...prev, {
       id: userMsgId,
       role: 'user',
       content: userMessage,
       timestamp: Date.now(),
-      private: isMentorMode,
-      sessionId: isMentorMode ? requestSessionKey : null,
-      sessionScope: isMentorMode ? requestScope : null,
+      private: isPrivateMessage,
+      sessionId: isPrivateMessage ? requestSessionKey : null,
+      sessionScope: isPrivateMessage ? requestScope : null,
     }])
 
     const isRequestCurrent = () => (
