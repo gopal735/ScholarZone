@@ -13,6 +13,7 @@ vi.mock('../services/unifiedAI', async () => {
     formatUnifiedResponse: actual.formatUnifiedResponse,
     setLocalAIEnabled: vi.fn(),
     isLocalAIEnabled: vi.fn(() => false),
+    classifyRoute: vi.fn(() => 'mentor'),
   }
 })
 vi.mock('../services/aiAssistant', () => ({

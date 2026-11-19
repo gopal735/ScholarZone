@@ -13,10 +13,12 @@
 
 import { askMentor, MentorUnauthenticatedError, MentorRateLimitedError, MentorValidationError, MentorUnavailableError, fetchMentorOverview } from './mentorService'
 import { askAIAssistant, checkAIAvailability, isAIEnabled, setAIEnabled } from './aiAssistant'
+import { classifyRoute } from './routeClassifier'
 
 // Re-export for backward compatibility
 export { askMentor, MentorUnauthenticatedError, MentorRateLimitedError, MentorValidationError, MentorUnavailableError, fetchMentorOverview }
 export { askAIAssistant, checkAIAvailability, isAIEnabled, setAIEnabled, isLocalAIEnabled }
+export { classifyRoute }
 export { checkLocalAIModelReady }
 
 export const AI_MODE = {
@@ -161,6 +163,8 @@ function sanitizePublicHistory(history) {
 }
 
 export async function askUnifiedAI(message, options = {}) {
+  const route = classifyRoute(message)
+  const isDiscovery = route === 'discovery'
   const {
     mode = 'auto',
     signal,
@@ -178,7 +182,7 @@ export async function askUnifiedAI(message, options = {}) {
     ? conversationHistory
     : (Array.isArray(context?.conversationHistory) ? context.conversationHistory : [])
 
-  if (mode === 'auto' && isAuthenticated) {
+  if (mode === 'auto' && isAuthenticated && !isDiscovery) {
     try {
       const raw = await askMentor(message, { signal, sessionScope })
       const normalized = normalizeMentorResponse(raw)
@@ -221,7 +225,8 @@ export async function askUnifiedAI(message, options = {}) {
   }
 
   // Never forward private prompts to public search.
-  if (isPrivate) {
+  // Discovery routes are never private.
+  if (isPrivate && !isDiscovery) {
     throw new Error('Private mentor prompt cannot be forwarded to public search.')
   }
   const grounded = await askAIAssistant({

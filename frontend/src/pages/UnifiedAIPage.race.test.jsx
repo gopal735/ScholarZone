@@ -12,6 +12,7 @@ vi.mock('../services/unifiedAI', () => ({
   formatUnifiedResponse: (r, mode) => ({ answer: r.answer, sources: r.sources || [], grounded: r.grounded ?? true, model: r.model, tokensUsed: r.tokensUsed, sourceType: mode === 'mentor' ? 'mentor' : 'grounded', label: mode === 'mentor' ? 'Grounded Mentor' : 'Grounded Search' }),
   setLocalAIEnabled: vi.fn(),
   isLocalAIEnabled: vi.fn(() => false),
+  classifyRoute: vi.fn(() => 'mentor'),
 }))
 vi.mock('../services/aiAssistant', () => ({
   askAIAssistant: vi.fn(async () => ({ answer: 'grounded answer', sources: [], grounded: true })),
