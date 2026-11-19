@@ -77,7 +77,8 @@ class TestPostgreSQLDeletionRace:
         assert sid in report.skipped_scholarship_ids
         assert report.errors == []
 
-        # Verify scholarship still exists
+        # Verify scholarship still exists (expire identity map first)
+        s1.expire_all()
         remaining = s1.get(Scholarship, sid)
         assert remaining is not None
         assert remaining.status == "open"
@@ -120,4 +121,3 @@ class TestPostgreSQLDeletionRace:
         # Cleanup
         s1.query(Scholarship).filter(Scholarship.id == sid).delete()
         s1.commit()
-EOF
