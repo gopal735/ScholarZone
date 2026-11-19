@@ -1,4 +1,16 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
+
+/** Validate a URL is a safe HTTP/HTTPS URL. Returns null for invalid. */
+function safeUrl(url) {
+  if (typeof url !== 'string' || !url) return null
+  try {
+    const parsed = new URL(url)
+    if (parsed.protocol === 'http:' || parsed.protocol === 'https:') return url
+  } catch {
+    // not a valid URL
+  }
+  return null
+}
 import { Link } from 'react-router-dom'
 import { 
   askUnifiedAI, 
@@ -101,17 +113,6 @@ function MentorResponseCard({ mentorResponse }) {
     provider_mode,
     provider_used,
   } = mentorResponse
-
-  const safeUrl = (url) => {
-    if (typeof url !== 'string' || !url) return null
-    try {
-      const parsed = new URL(url)
-      if (parsed.protocol === 'http:' || parsed.protocol === 'https:') return url
-    } catch {
-      // not a valid URL
-    }
-    return null
-  }
 
   const safeHref = (href) => {
     if (typeof href !== 'string' || !href) return null
@@ -274,8 +275,8 @@ function MessageList({ messages, messagesEndRef }) {
                 <ul>
                   {message.sources.filter((s) => s && typeof s === 'object' && !Array.isArray(s) && typeof s.title === 'string' && (s.type === undefined || typeof s.type === 'string')).map((source, i) => (
                     <li key={i}>
-                      {source.type === 'scholarship' && source.url ? (
-                        <a href={source.url} target="_blank" rel="noopener noreferrer">
+                      {source.type === 'scholarship' && safeUrl(source.url) ? (
+                        <a href={safeUrl(source.url)} target="_blank" rel="noopener noreferrer">
                           {source.title}
                         </a>
                       ) : (
@@ -552,6 +553,8 @@ export default function UnifiedAIPage() {
         if (m.private && m.sessionId !== sessionKey) return false
         return true
       }))
+      // Clear private composer draft on effective session change
+      setInput('')
     }
   }, [sessionKey])
 
@@ -594,7 +597,12 @@ export default function UnifiedAIPage() {
 
   useEffect(() => {
     isMountedRef.current = true
-    return () => { isMountedRef.current = false }
+    return () => {
+      isMountedRef.current = false
+      // Invalidate any in-flight request on unmount so abandoned requests
+      // cannot start public fallback or trigger refreshSession.
+      activeRequestIdRef.current = null
+    }
   }, [])
 
   useEffect(() => {
@@ -640,6 +648,7 @@ export default function UnifiedAIPage() {
         isAuthenticated: auth.status === 'authenticated',
         sessionScope: requestScope,
         isRequestCurrent,
+        private: isMentorMode,
         context: {
           conversationHistory: messages.slice(-6).map(m => ({
             role: m.role,

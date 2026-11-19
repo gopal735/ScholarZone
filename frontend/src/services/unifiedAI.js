@@ -169,6 +169,7 @@ export async function askUnifiedAI(message, options = {}) {
     isAuthenticated = false,
     sessionScope,
     isRequestCurrent,
+    private: isPrivate = false,
   } = options
 
   // Resolve conversation history without letting an unintended empty array
@@ -195,6 +196,10 @@ export async function askUnifiedAI(message, options = {}) {
         if (typeof isRequestCurrent === 'function' && !isRequestCurrent()) {
           throw error
         }
+        // Never forward private prompts to public fallback search.
+        if (isPrivate) {
+          throw error
+        }
         try {
           const grounded = await askAIAssistant({
             question: message,
@@ -215,6 +220,10 @@ export async function askUnifiedAI(message, options = {}) {
     }
   }
 
+  // Never forward private prompts to public search.
+  if (isPrivate) {
+    throw new Error('Private mentor prompt cannot be forwarded to public search.')
+  }
   const grounded = await askAIAssistant({
     question: message,
     context: {
