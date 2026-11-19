@@ -300,20 +300,17 @@ export function JourneyProvider({ children }) {
       pendingTimerRef.current = null
     }
     isDirtyRef.current = false
-    pendingOriginRef.current = StateOrigin.REPLACE_DOCUMENT
+    // Treat the imported document as a committed user-visible change so the
+    // normal persistence effect schedules and owns the debounced write after
+    // the state commit. Do NOT schedule a timer here: the persistence effect's
+    // cleanup from the previous run would cancel it before commit. The effect
+    // reads pendingOriginRef during the commit that follows this dispatch.
+    pendingOriginRef.current = StateOrigin.USER
+    resetOccurredRef.current = false
     const next = normalizeJourneyDocument(document)
     dispatch({ type: ACTIONS.HYDRATE, payload: next })
-    // Schedule a debounced save for the imported document.
-    // The persistence effect skips REPLACE_DOCUMENT origin, so we
-    // schedule the save here. This is a programmatic save, not a
-    // user edit, but the document should still be persisted.
-    isDirtyRef.current = true
-    pendingTimerRef.current = window.setTimeout(() => {
-      pendingTimerRef.current = null
-      performSave(latestStateRef.current)
-    }, PERSIST_DEBOUNCE_MS)
     return next
-  }, [performSave])
+  }, [])
 
   const value = useMemo(
     () => ({

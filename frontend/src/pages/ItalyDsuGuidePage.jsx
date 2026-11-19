@@ -105,10 +105,9 @@ function parseDeadlineToDate(deadlineStr) {
 }
 
 function getCurrentRomeTime() {
-  const now = new Date()
-  const romeOffset = 2 * 60 * 60 * 1000
-  const romeTime = new Date(now.getTime() + romeOffset - (now.getTimezoneOffset() * 60 * 1000))
-  return romeTime
+  // Return the actual instant. Comparison logic relies on absolute instants;
+  // Europe/Rome is applied only for calendar display via Intl (see formatRomeDate).
+  return new Date()
 }
 
 const REGIONS = [
@@ -345,21 +344,21 @@ const DSU_SECTIONS = [
     id: 'eligibility',
     title: 'Who Can Apply',
     content: `
-      <h4>Citizenship</h4>
+      <h3>Citizenship</h3>
       <ul>
         <li><strong>Italian citizens</strong></li>
         <li><strong>EU citizens</strong> (same treatment as Italians)</li>
         <li><strong>Non-EU international students</strong> — eligible under same economic/merit conditions</li>
         <li><strong>Stateless persons & refugees</strong> — special provisions (often ISEE based only on Italian income/assets)</li>
       </ul>
-      <h4>Enrollment Status</h4>
+      <h3>Enrollment Status</h3>
       <ul>
         <li><strong>First-year students</strong> (matricole) — apply on economic criteria only; merit checked ex-post</li>
         <li><strong>Subsequent-year students</strong> — must meet merit requirements (CFU credits) at application</li>
         <li><strong>PhD students</strong> — eligible if not receiving other PhD scholarships/grants</li>
         <li><strong>Specialisation students</strong> — eligible except medical area (D.Lgs. 368/1999)</li>
       </ul>
-      <h4>Exclusions</h4>
+      <h3>Exclusions</h3>
       <ul>
         <li>Already hold a degree of same/higher level (Italy or abroad, recognised)</li>
         <li>Receiving another public scholarship for same academic year</li>
@@ -372,9 +371,9 @@ const DSU_SECTIONS = [
     id: 'isee',
     title: 'ISEE / ISEE Parificato / ISPE',
     content: `
-      <h4>ISEE Universitario</h4>
+      <h3>ISEE Universitario</h3>
       <p>The standard indicator for students with family income/assets in Italy. Requested via <strong>DSU (Dichiarazione Sostitutiva Unica)</strong> at CAF or INPS. Must specify "prestazioni agevolate per il diritto allo studio universitario" with student's tax code.</p>
-      <h4>ISEE Parificato (Equalized ISEE)</h4>
+      <h3>ISEE Parificato (Equalized ISEE)</h3>
       <p>For students whose family resides abroad and/or has income/assets abroad. Calculated by authorised <strong>CAF (Centro di Assistenza Fiscale)</strong> from foreign documents.</p>
       <p><strong>Required documents (typically):</strong></p>
       <ul>
@@ -386,9 +385,10 @@ const DSU_SECTIONS = [
         <li><strong>Translation into Italian</strong> by certified translator</li>
         <li><strong>Legalisation/Apostille</strong> by Italian diplomatic authorities (Embassy/Consulate) or foreign diplomatic representation in Italy + Prefecture legalisation</li>
       </ul>
-      <h4>ISPE (Indicatore Situazione Patrimoniale Equivalente)</h4>
+<p><strong>Reference year varies by agency and call.</strong> Do not assume one universal year. For example, ER.GO 2026/27 requires 2025 foreign income/assets, while UniSR 2026/27 requires 2024 foreign income/assets. Always use the reference year stated in the official call for your agency and academic year.</p>
+      <h3>ISPE (Indicatore Situazione Patrimoniale Equivalente)</h3>
       <p>Asset indicator = ISP / equivalence scale. Most regions set both ISEE and ISPE limits; both must be satisfied.</p>
-      <h4>Independent Student Status</h4>
+      <h3>Independent Student Status</h3>
       <p>Student living outside family home ≥2 years in non-family-owned housing + declared taxable income ≥€9,000/year for 2 years. Treated as <em>fuori sede</em> (off-site) for scholarship amount.</p>
     `,
   },
@@ -414,7 +414,7 @@ const DSU_SECTIONS = [
     title: 'Benefits Breakdown',
     content: `
       <p>The DSU scholarship comprises a <strong>cash portion</strong> + <strong>services</strong> (deducted from gross amount).</p>
-      <h4>Typical Benefits</h4>
+      <h3>Typical Benefits</h3>
       <ul>
         <li><strong>Monetary grant</strong> — varies by ISEE band and status (fuori sede/pendolare/in sede)</li>
         <li><strong>Accommodation</strong> — free place in regional residence (ERSU/ADISU/ESU/Opera/ARDiS/DiSCo/ALISEO) OR rent subsidy (≈€1,500–2,600/year) if no place available</li>
@@ -424,7 +424,7 @@ const DSU_SECTIONS = [
         <li><strong>International mobility supplement</strong> — €600/month up to 10 months for Erasmus+/overseas (deduct EU grants)</li>
         <li><strong>Degree award</strong> — bonus for graduating on time (often 50% of last year's grant)</li>
       </ul>
-      <h4>Amount Ranges (2026/27 base, before ISEE band adjustments)</h4>
+      <h3>Amount Ranges (2026/27 base, before ISEE band adjustments)</h3>
       <table>
         <thead><tr><th>Status</th><th>Min (3rd band)</th><th>Max (1st band)</th></tr></thead>
         <tbody>
@@ -458,28 +458,28 @@ const DSU_SECTIONS = [
     id: 'ranking',
     title: 'Ranking, Payments & Renewal',
     content: `
-      <h4>Eligible vs Winner</h4>
+      <h3>Eligible vs Winner</h3>
       <ul>
         <li><strong>Winner (assegnatario/beneficiario)</strong> — Receives cash + services within available budget.</li>
         <li><strong>Eligible non-winner (idoneo non beneficiario)</strong> — Meets all criteria but no funds left. Receives services (meals, tuition exemption, tax refund) but NO cash grant.</li>
       </ul>
-      <h4>Provisional → Appeals → Final</h4>
+      <h3>Provisional → Appeals → Final</h3>
       <p>Provisional rankings published; students have 3–10 days to appeal errors. Final rankings are binding.</p>
-      <h4>Payment Installments</h4>
+      <h3>Payment Installments</h3>
       <ul>
         <li><strong>First-year:</strong> ~20% by Nov 10, ~30% by Dec 31, balance after 20 CFU by Aug 10 / Nov 30 2027</li>
         <li><strong>Master's 1st year:</strong> ~50% by Dec 31, balance after 20–23 CFU</li>
         <li><strong>Subsequent years:</strong> ~50% by Dec 31, ~50% after merit verification</li>
       </ul>
-      <h4>Merit Requirements (2026/27 typical)</h4>
+      <h3>Merit Requirements (2026/27 typical)</h3>
       <ul>
         <li>First-year Bachelor/Single-cycle: 20 CFU by Aug 10 2027 (30 Nov 2027 = 50% grant)</li>
         <li>First-year Master's: 20–23 CFU by Aug 10 2027</li>
         <li>Subsequent years: Varies by year/course (e.g., 2nd year Bachelor: 35 CFU; 3rd year: 80 CFU)</li>
       </ul>
-      <h4>Renewal</h4>
+      <h3>Renewal</h3>
       <p>Not automatic. Must reapply each year. Must meet merit requirements for previous year to renew.</p>
-      <h4>Revocation & Repayment</h4>
+      <h3>Revocation & Repayment</h3>
       <p>Failure to meet merit, enrolment, or income conditions → revocation + repayment of cash + service costs.</p>
     `,
   },
@@ -523,14 +523,14 @@ const DSU_SECTIONS = [
     id: 'checklist',
     title: 'International Applicant Checklist',
     content: `
-      <h4>Before Applying</h4>
+      <h3>Before Applying</h3>
       <ul>
         <li>[ ] Identify your university's regional DSU agency (see table below)</li>
         <li>[ ] Check 2026/27 bando deadline — <strong>most are CLOSED</strong></li>
         <li>[ ] Verify ISEE/ISPE limits for your region</li>
         <li>[ ] Determine your status: in sede / pendolare / fuori sede</li>
       </ul>
-      <h4>Financial Documents (Family Abroad)</h4>
+      <h3>Financial Documents (Family Abroad)</h3>
       <ul>
         <li>[ ] Family composition certificate</li>
         <li>[ ] 2025 income statements for each family member</li>
@@ -541,7 +541,7 @@ const DSU_SECTIONS = [
         <li>[ ] Legalisation/Apostille by Italian Embassy/Consulate</li>
         <li>[ ] Contact authorised CAF for ISEE Parificato calculation</li>
       </ul>
-      <h4>Application</h4>
+      <h3>Application</h3>
       <ul>
         <li>[ ] Register on agency portal (SPID/CIE or temporary credentials)</li>
         <li>[ ] Complete online application by deadline</li>
@@ -549,7 +549,7 @@ const DSU_SECTIONS = [
         <li>[ ] Request accommodation if needed</li>
         <li>[ ] Save application receipt</li>
       </ul>
-      <h4>After Submission</h4>
+      <h3>After Submission</h3>
       <ul>
         <li>[ ] Monitor provisional ranking publication</li>
         <li>[ ] Submit appeals within deadline if errors found</li>
@@ -642,7 +642,15 @@ export default function ItalyDsuGuidePage() {
   const getMatchingUniversities = (region) => {
     if (!searchTerm) return region.universities
     const searchLower = searchTerm.toLowerCase()
-    return region.universities.filter(u => u.toLowerCase().includes(searchLower))
+    const matches = region.universities.filter(u => u.toLowerCase().includes(searchLower))
+    if (matches.length > 0) return matches
+    // If the search matched the region or an agency but no university name,
+    // keep the full regional university list instead of hiding it.
+    const regionMatched =
+      region.name.toLowerCase().includes(searchLower) ||
+      (region.aliases || []).some(a => a.toLowerCase().includes(searchLower)) ||
+      region.agencies.some(a => a.toLowerCase().includes(searchLower))
+    return regionMatched ? region.universities : []
   }
 
 const formatRomeDate = (date) => {

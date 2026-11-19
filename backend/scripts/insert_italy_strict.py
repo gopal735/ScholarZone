@@ -152,7 +152,27 @@ def _normalize_status(value: Any) -> str:
 def _normalize_url(value: Any) -> str:
     if not value:
         return ""
-    return str(value).strip().rstrip("/").lower()
+    try:
+        parsed = urlparse(str(value).strip())
+    except Exception:
+        return str(value).strip().rstrip("/")
+    # Normalize scheme and host only; preserve case-sensitive path/query/fragment.
+    scheme = (parsed.scheme or "").lower()
+    host = (parsed.netloc or "").lower()
+    # Preserve userinfo? Drop credentials if present.
+    if "@" in host:
+        host = host.split("@", 1)[-1]
+    path = parsed.path or ""
+    # Collapse trailing slash for comparison, but keep internal case.
+    path = path.rstrip("/")
+    query = parsed.query
+    fragment = parsed.fragment
+    normalized = f"{scheme}://{host}{path}" if host else str(value).strip().rstrip("/")
+    if query:
+        normalized += f"?{query}"
+    if fragment:
+        normalized += f"#{fragment}"
+    return normalized
 
 
 def _load_candidates() -> list[dict[str, Any]]:
@@ -412,8 +432,8 @@ def _find_existing(session: Session, candidate: dict[str, Any]) -> Scholarship |
     return None
 
 
-def _map_to_model(candidate: dict[str, Any]) -> Scholarship:
-    status = _effective_status(candidate)
+def _map_to_model(candidate: dict[str, Any], now: datetime | None = None) -> Scholarship:
+    status = _effective_status(candidate, now)
     if not status:
         status = "open"
 
@@ -560,7 +580,7 @@ def _reconstruct_report_from_db(inserted_ids: list[int], matched_ids: list[int],
             title_lower = (sch.title or "").lower()
             if vda_id is None and ("valle d'aosta" in title_lower or "vda" in title_lower):
                 vda_id = sch.id
-            elif polito_id is None and ("politecnico" in title_lower or "polito" in title_lower):
+            elif polito_id is None and ("politecnico di torino" in title_lower or "polito" in title_lower):
                 polito_id = sch.id
 
         return {
@@ -744,7 +764,7 @@ def main(dry_run: bool = True, now: datetime | None = None, reconstruct: bool = 
                 continue
             print(f"    Lifecycle OK: {candidate.get('title','')[:50]} -> {_effective_status(candidate, now)}")
 
-            model = _map_to_model(candidate)
+            model = _map_to_model(candidate, now)
             session.add(model)
             session.flush()
 
@@ -792,7 +812,7 @@ def main(dry_run: bool = True, now: datetime | None = None, reconstruct: bool = 
             title_lower = detail.get("title", "").lower()
             if "valle d'aosta" in title_lower or "vda" in title_lower:
                 vda_id = detail.get("id")
-            elif "politecnico" in title_lower or "polito" in title_lower:
+            elif "politecnico di torino" in title_lower or "polito" in title_lower:
                 polito_id = detail.get("id")
         
         # For newly inserted or unmatched records, query the DB
@@ -803,7 +823,7 @@ def main(dry_run: bool = True, now: datetime | None = None, reconstruct: bool = 
                 title_lower = (sch.title or "").lower()
                 if vda_id is None and ("valle d'aosta" in title_lower or "vda" in title_lower):
                     vda_id = sch.id
-                elif polito_id is None and ("politecnico" in title_lower or "polito" in title_lower):
+                elif polito_id is None and ("politecnico di torino" in title_lower or "polito" in title_lower):
                     polito_id = sch.id
         
         # Build mapping with None for unresolved (no fallback to hardcoded IDs)
@@ -877,7 +897,7 @@ def main(dry_run: bool = True, now: datetime | None = None, reconstruct: bool = 
         except Exception:
             pass
 
-    return 0 if not result.rollback else 1
+    return 0 if result.failed == 0 and not result.rollback else 1
 
 
 if __name__ == "__main__":

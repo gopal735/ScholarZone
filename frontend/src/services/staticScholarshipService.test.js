@@ -726,7 +726,7 @@ beforeEach(() => {
       expect(result.id).toBe(1)
     })
 
-    it('returns records classified as closed for historical access', async () => {
+    it('does not return closed records from the static snapshot', async () => {
       clearSnapshotCache()
       const closedSnapshot = {
         ...mockSnapshot,
@@ -743,10 +743,7 @@ beforeEach(() => {
       }
       vi.stubGlobal('fetch', vi.fn(async () => ({ ok: true, json: async () => closedSnapshot })))
 
-      const result = await fetchScholarshipByIdFromSnapshot(3)
-      expect(result).not.toBeNull()
-      expect(result.id).toBe(3)
-      expect(result.status).toBe('closed')
+      await expect(fetchScholarshipByIdFromSnapshot(3)).resolves.toBeNull()
     })
 
     it('does not return archived records', async () => {

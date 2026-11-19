@@ -465,18 +465,20 @@ export async function fetchScholarshipStatsFromSnapshot() {
 /**
  * Look up a single scholarship by ID from the snapshot.
  * Returns the normalized record or null if not found.
- * 
- * Unlike the public directory, the detail page allows access to closed records
- * for historical reference. This preserves programme identity and allows users
- * to reference past cycles. However, archived and quarantined records remain
- * excluded as they represent safety concerns or deliberate removal.
+ *
+ * The public snapshot contains only directory-visible records: quarantined,
+ * archived, and closed records are excluded by the snapshot producer. Therefore
+ * closed historical records are not retrievable from the static snapshot; use
+ * the live API historical-detail path (where supported) for those. Archived
+ * and quarantined records are excluded for safety.
  */
 export async function fetchScholarshipByIdFromSnapshot(id) {
   const snapshot = await loadScholarshipSnapshot()
   const record = snapshot.scholarships.find((s) => String(s.id) === String(id))
   if (!record) return null
-  // Allow closed records for historical detail access, but not archived/quarantined
+  // Defensive: never expose archived or quarantined records even if present.
   if (record.is_archived === true) return null
   if (record.verification_status === 'quarantined') return null
+  if ((record.status || '').toLowerCase() === 'closed') return null
   return toScholarship(record)
 }
