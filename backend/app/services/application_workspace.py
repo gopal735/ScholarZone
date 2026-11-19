@@ -519,6 +519,8 @@ def _summary(
     """
     use_snapshot = context is None or not context.is_visible
     name = record.scholarship_name_snapshot if use_snapshot else context.name
+    if name is None:
+        name = "Scholarship (no longer listed)"
     country = record.scholarship_country_snapshot if use_snapshot else context.country
     degree = record.scholarship_degree_snapshot if use_snapshot else context.degree
     provider = record.scholarship_provider_snapshot if use_snapshot else context.provider
@@ -545,12 +547,12 @@ def _summary(
     return ApplicationSummary(
         id=record.id,
         scholarship_id=record.scholarship_id,
-        name=name or f"Scholarship {record.scholarship_id}",
+        name=name,
         country=country,
         degree=degree,
         provider=provider,
         funding=funding,
-        detail_url=f"/scholarships/{record.scholarship_id}",
+        detail_url=(f"/scholarships/{record.scholarship_id}" if record.scholarship_id is not None else ""),
         official_source_url=source_url,
         state=record.state,
         state_label=APPLICATION_STATE_LABELS.get(record.state, record.state),

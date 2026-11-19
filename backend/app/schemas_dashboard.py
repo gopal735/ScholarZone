@@ -324,7 +324,7 @@ class ScholarshipReference(BaseModel):
     so a shortlist can never surface something the public directory hides.
     """
 
-    scholarship_id: int
+    scholarship_id: int | None = None
     name: str
     country: str
     degree: str

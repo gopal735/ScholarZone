@@ -11,6 +11,7 @@ from __future__ import annotations
 import json
 import logging
 import re
+import calendar
 from dataclasses import dataclass, field
 from datetime import date, datetime, timezone
 from pathlib import Path
@@ -178,8 +179,6 @@ def _parse_future_open_date(text: str, ref_date: date) -> date | None:
             year = ref_date.year
             try:
                 d = date(year, mon, day)
-                if d <= ref_date:
-                    d = date(year + 1, mon, day)
                 if d > ref_date:
                     return d
             except ValueError:
@@ -212,11 +211,90 @@ def _has_verified_future_cycle(scholarship, ref_date: date) -> bool:
     if recurring and month:
         return True
 
-    status = (getattr(scholarship, "status", None) or "").lower().strip()
-    if status == "upcoming":
-        return True
-
     return False
+
+
+def _parse_date_from_text(text: str, month_only: bool = False) -> Optional[date]:
+    """Parse a date from text, matching frontend parseLifecycleDate behavior."""
+    if not isinstance(text, str) or not text.strip():
+        return None
+    text = text.strip()
+
+    # ISO month: YYYY-MM
+    m = re.match(r'^(\d{4})-(\d{2})$', text)
+    if m:
+        y, mo = int(m.group(1)), int(m.group(2))
+        d = date(y, mo, 1)
+        month_only = True
+    else:
+        # Named month: "Month YYYY"
+        m = re.match(r'^([a-z]+)\s+(\d{4})$', text, re.I)
+        if m:
+            month_names = ['january', 'february', 'march', 'april', 'may', 'june',
+                           'july', 'august', 'september', 'october', 'november', 'december']
+            if m.group(1).lower() not in month_names:
+                return None
+            mi = month_names.index(m.group(1).lower())
+            d = date(int(m.group(2)), mi + 1, 1)
+            month_only = True
+        else:
+            # ISO date: YYYY-MM-DD
+            m = re.match(r'^\d{4}-\d{2}-\d{2}$', text)
+            if m:
+                try:
+                    d = date.fromisoformat(text)
+                except ValueError:
+                    return None
+            else:
+                # General parse attempt
+                for fmt in ("%Y-%m-%d", "%d %B %Y", "%B %d, %Y", "%d %b %Y", "%B %Y"):
+                    try:
+                        if fmt == "%B %Y":
+                            dt = datetime.strptime(text, fmt)
+                            d = dt.date().replace(day=1)
+                            month_only = True
+                        else:
+                            d = datetime.strptime(text, fmt).date()
+                        break
+                    except ValueError:
+                        continue
+                else:
+                    return None
+
+    if month_only:
+        last_day = calendar.monthrange(d.year, d.month)[1]
+        d = d.replace(day=last_day)
+    return d
+
+
+def _resolve_deadline_date(scholarship) -> Optional[date]:
+    """Resolve the effective deadline date, matching frontend parseDate behavior.
+
+    Handles deadline_date field with month precision (last day of month),
+    and falls back to deadline_display / deadline when deadline_date is absent.
+    """
+    precision = getattr(scholarship, "deadline_precision", None) or "month"
+    is_month = (precision == "month")
+
+    # Prefer explicit deadline_date
+    dl = getattr(scholarship, "deadline_date", None)
+    if dl is not None:
+        d = _normalize_date(dl)
+        if d is not None:
+            if is_month:
+                last_day = calendar.monthrange(d.year, d.month)[1]
+                d = d.replace(day=last_day)
+            return d
+
+    # Fallback to display fields
+    for field_name in ("deadline_display", "deadline"):
+        val = getattr(scholarship, field_name, None)
+        if isinstance(val, str) and val.strip():
+            d = _parse_date_from_text(val, month_only=is_month)
+            if d is not None:
+                return d
+
+    return None
 
 
 def get_effective_lifecycle_status(scholarship, reference_date=None) -> str:
@@ -239,8 +317,7 @@ def get_effective_lifecycle_status(scholarship, reference_date=None) -> str:
         if not has_future:
             return "CLOSED"
 
-    deadline = getattr(scholarship, "deadline_date", None)
-    dl_date = _normalize_date(deadline)
+    dl_date = _resolve_deadline_date(scholarship)
     if dl_date is not None and dl_date < ref_date and not has_future:
         return "CLOSED"
 
@@ -358,7 +435,7 @@ def build_deletion_manifest(db: Session, reference_date=None) -> List[ClosedScho
             institution=s.official_source or "Unknown",
             stored_status=s.status,
             effective_status=get_effective_lifecycle_status(s, reference_date),
-            deadline_date=s.deadline_date.isoformat() if getattr(s, "deadline_date", None) else None,
+            deadline_date=(_resolve_deadline_date(s).isoformat() if _resolve_deadline_date(s) else None),
             official_source=s.official_source,
             official_source_url=s.official_source_url,
             linked_professor_count=deps["professor_links"],
@@ -437,7 +514,8 @@ def execute_deletion(db: Session, manifest: List[ClosedScholarshipManifest], dry
                     Scholarship.official_source_url, Scholarship.application_link,
                     Scholarship.title,
                     Scholarship.country, Scholarship.degree,
-                    Scholarship.official_source, Scholarship.funding
+                    Scholarship.official_source, Scholarship.funding,
+                    Scholarship.deadline_precision
                 )
                 .where(Scholarship.id == sid)
                 .with_for_update()
@@ -468,6 +546,7 @@ def execute_deletion(db: Session, manifest: List[ClosedScholarshipManifest], dry
                     self.degree = row.degree
                     self.official_source = row.official_source
                     self.funding = row.funding
+                    self.deadline_precision = getattr(row, "deadline_precision", None) or "month"
             
             locked = _LockedScholarship(locked_row)
             if locked is None:

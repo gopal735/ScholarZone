@@ -514,7 +514,7 @@ def build_next_actions(
 
     # An application already in motion outranks anything new: it is the one thing
     # the student has already decided to do.
-    application_items_with_scholarship = [item for item in application_items if item.scholarship is not None]
+    application_items_with_scholarship = [item for item in application_items if item.scholarship is not None and item.scholarship.scholarship_id is not None]
     for item in sorted(
         (entry for entry in application_items_with_scholarship if entry.state in ("in_progress", "planning")),
         key=lambda entry: (entry.updated_at, entry.scholarship.scholarship_id),
@@ -712,7 +712,7 @@ def build_dashboard(db: Session, user: User, as_of: date | None = None) -> Dashb
         db.execute(
             select(ApplicationRecord)
             .where(ApplicationRecord.user_id == user.id)
-            .order_by(ApplicationRecord.scholarship_id.asc().nullsfirst())
+            .order_by(ApplicationRecord.scholarship_id.is_(None).asc(), ApplicationRecord.scholarship_id.asc().nullsfirst())
             .limit(MAX_APPLICATION_ITEMS)
         ).scalars()
     )
@@ -846,7 +846,7 @@ def build_dashboard(db: Session, user: User, as_of: date | None = None) -> Dashb
         if row.scholarship_id is None:
             # Detached application: build reference from snapshot
             reference = ScholarshipReference(
-                scholarship_id=0,
+                scholarship_id=None,
                 name=row.scholarship_name_snapshot or "Scholarship (no longer listed)",
                 country=row.scholarship_country_snapshot or "",
                 degree=row.scholarship_degree_snapshot or "",
@@ -924,6 +924,8 @@ def _build_deadlines(
 
     for item in application_items:
         reference = item.scholarship
+        if reference.scholarship_id is None:
+            continue  # Exclude detached from scholarship-keyed deadline watch
         entries[reference.scholarship_id] = DeadlineItem(
             scholarship_id=reference.scholarship_id,
             name=reference.name,
