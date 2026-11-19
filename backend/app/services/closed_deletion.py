@@ -130,69 +130,81 @@ def _parse_future_date_from_text(text: str, ref_date: date) -> Optional[date]:
     return None
 
 
+def _parse_future_open_date(text: str, ref_date: date) -> date | None:
+    """Parse a future open date from application_period or deadline_display text."""
+    if not text or not isinstance(text, str):
+        return None
+    # opens YYYY-MM-DD
+    for m in re.finditer(r"opens?\s+(?:on\s+)?(\d{4}-\d{2}-\d{2})", text, re.I):
+        try:
+            d = date.fromisoformat(m.group(1))
+            if d > ref_date:
+                return d
+        except ValueError:
+            pass
+    # 2027 cycle
+    for m in re.finditer(r"(\d{4})\s+cycle:?.*?opens?\s+(\d{4}-\d{2}-\d{2})", text, re.I):
+        try:
+            d = date.fromisoformat(m.group(2))
+            if d > ref_date:
+                return d
+        except ValueError:
+            pass
+    # call opens Month YYYY
+    for m in re.finditer(r"(?:call|applications?)\s+opens?\s+([A-Za-z]+\s+\d{4})", text, re.I):
+        try:
+            parsed = datetime.strptime(m.group(1).strip(), "%B %Y")
+            d = parsed.date().replace(day=1)
+            if d > ref_date:
+                return d
+        except ValueError:
+            try:
+                parsed = datetime.strptime(m.group(1).strip(), "%b %Y")
+                d = parsed.date().replace(day=1)
+                if d > ref_date:
+                    return d
+            except ValueError:
+                pass
+    # re-opens in early December
+    m = re.search(r"(?:re-)?opens?\s+in\s+(early|mid|late)\s+([A-Za-z]+)", text, re.I)
+    if m:
+        month_map = {
+            "january": 1, "february": 2, "march": 3, "april": 4, "may": 5, "june": 6,
+            "july": 7, "august": 8, "september": 9, "october": 10, "november": 11, "december": 12,
+        }
+        mon = month_map.get(m.group(2).lower())
+        if mon is not None:
+            day = 5 if m.group(1).lower() == "early" else (15 if m.group(1).lower() == "mid" else 25)
+            year = ref_date.year
+            try:
+                d = date(year, mon, day)
+                if d <= ref_date:
+                    d = date(year + 1, mon, day)
+                if d > ref_date:
+                    return d
+            except ValueError:
+                pass
+    return None
+
+
 def _has_verified_future_cycle(scholarship, ref_date: date) -> bool:
     now_date = ref_date
-    # application_period patterns
+    # Check application_period for future open dates
     ap = getattr(scholarship, "application_period", None)
     if isinstance(ap, str):
-        # opens YYYY-MM-DD
-        for m in re.finditer(r"opens?\s+(?:on\s+)?(\d{4}-\d{2}-\d{2})", ap, re.I):
-            try:
-                d = date.fromisoformat(m.group(1))
-                if d > now_date:
-                    return True
-            except ValueError:
-                pass
-        # 2027 cycle
-        for m in re.finditer(r"(\d{4})\s+cycle:?.*?opens?\s+(\d{4}-\d{2}-\d{2})", ap, re.I):
-            try:
-                d = date.fromisoformat(m.group(2))
-                if d > now_date:
-                    return True
-            except ValueError:
-                pass
-        # call opens Month YYYY
-        for m in re.finditer(r"(?:call|applications?)\s+opens?\s+([A-Za-z]+\s+\d{4})", ap, re.I):
-            try:
-                parsed = datetime.strptime(m.group(1).strip(), "%B %Y")
-                d = parsed.date().replace(day=1)
-                if d > now_date:
-                    return True
-            except ValueError:
-                try:
-                    parsed = datetime.strptime(m.group(1).strip(), "%b %Y")
-                    d = parsed.date().replace(day=1)
-                    if d > now_date:
-                        return True
-                except ValueError:
-                    pass
-        # re-opens in early December
-        m = re.search(r"(?:re-)?opens?\s+in\s+(early|mid|late)\s+([A-Za-z]+)", ap, re.I)
-        if m:
-            month_map = {
-                "january": 1, "february": 2, "march": 3, "april": 4, "may": 5, "june": 6,
-                "july": 7, "august": 8, "september": 9, "october": 10, "november": 11, "december": 12,
-            }
-            mon = month_map.get(m.group(2).lower())
-            if mon is not None:
-                day = 5 if m.group(1).lower() == "early" else (15 if m.group(1).lower() == "mid" else 25)
-                year = now_date.year
-                try:
-                    d = date(year, mon, day)
-                    if d <= now_date:
-                        d = date(year + 1, mon, day)
-                    if d > now_date:
-                        return True
-                except ValueError:
-                    pass
-
-    # recurring cycle indicators
+        if _parse_future_open_date(ap, now_date):
+            return True
+    # Check deadline_display for future open dates
+    dd = getattr(scholarship, "deadline_display", None)
+    if isinstance(dd, str):
+        if _parse_future_open_date(dd, now_date):
+            return True
+    # recurring cycle indicators - only use canonical fields
     cycle_text = " ".join(
         str(x) for x in [
             getattr(scholarship, "application_period", None),
-            getattr(scholarship, "notes", None),
-            getattr(scholarship, "verification_notes", None),
-            getattr(scholarship, "selection_notes", None),
+            getattr(scholarship, "deadline_display", None),
+            getattr(scholarship, "deadline", None),
         ] if x
     )
     recurring = re.search(r"\b(annually|annual|every year|each year|per year|yearly|rounds? per year)\b", cycle_text, re.I)
@@ -415,7 +427,7 @@ def execute_deletion(db: Session, manifest: List[ClosedScholarshipManifest], dry
 
             # transactional re-check
             locked = db.execute(
-                select(Scholarship).where(Scholarship.id == sid).with_for_update()
+                select(Scholarship).where(Scholarship.id == sid).with_for_update().execution_options(populate_existing=True)
             ).scalar_one_or_none()
             if locked is None:
                 report.skipped_scholarship_ids.append(sid)

@@ -202,6 +202,8 @@ def load_contexts(db: Session, ids: list[int], as_of: date) -> dict[int, Scholar
     difference. What is *published* is still bounded to the display fields above:
     loading a row internally is not the same as exposing it.
     """
+    # Filter out None IDs (detached applications)
+    ids = [i for i in ids if i is not None]
     if not ids:
         return {}
 
@@ -615,7 +617,9 @@ def list_for_user(
         )
 
     items_by_application = _load_checklists(db, [record.id for record in records])
-    contexts = load_contexts(db, sorted({record.scholarship_id for record in records}), effective_date)
+    # Filter out None scholarship_ids for detached applications
+    scholarship_ids = sorted({record.scholarship_id for record in records if record.scholarship_id is not None})
+    contexts = load_contexts(db, scholarship_ids, effective_date)
     match_by_id = _match_index(db, user, effective_date)
 
     summaries = [
@@ -729,7 +733,9 @@ def build_detail(
 ) -> ApplicationDetail:
     effective_date = as_of or date.today()
     items = _load_checklists(db, [record.id]).get(record.id, [])
-    contexts = load_contexts(db, [record.scholarship_id], effective_date)
+    contexts = {}
+    if record.scholarship_id is not None:
+        contexts = load_contexts(db, [record.scholarship_id], effective_date)
     match_by_id = _match_index(db, user, effective_date)
 
     summary = _summary(record, items, contexts.get(record.scholarship_id), match_by_id.get(record.scholarship_id))

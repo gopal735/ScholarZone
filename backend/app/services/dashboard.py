@@ -514,8 +514,9 @@ def build_next_actions(
 
     # An application already in motion outranks anything new: it is the one thing
     # the student has already decided to do.
+    application_items_with_scholarship = [item for item in application_items if item.scholarship is not None]
     for item in sorted(
-        (entry for entry in application_items if entry.state in ("in_progress", "planning")),
+        (entry for entry in application_items_with_scholarship if entry.state in ("in_progress", "planning")),
         key=lambda entry: (entry.updated_at, entry.scholarship.scholarship_id),
         reverse=True,
     ):
@@ -530,9 +531,10 @@ def build_next_actions(
             )
         )
 
-    tracked = {item.scholarship.scholarship_id for item in application_items}
+    tracked = {item.scholarship.scholarship_id for item in application_items_with_scholarship}
+    saved_items_with_scholarship = [item for item in saved_items if item.scholarship is not None]
     for item in sorted(
-        (entry for entry in saved_items if entry.scholarship.scholarship_id not in tracked),
+        (entry for entry in saved_items_with_scholarship if entry.scholarship.scholarship_id not in tracked),
         key=lambda entry: (entry.saved_at, entry.scholarship.scholarship_id),
     ):
         actions.append(
@@ -701,6 +703,7 @@ def build_dashboard(db: Session, user: User, as_of: date | None = None) -> Dashb
         db.execute(
             select(SavedScholarship)
             .where(SavedScholarship.user_id == user.id)
+            .where(SavedScholarship.scholarship_id.is_not(None))
             .order_by(SavedScholarship.scholarship_id.asc())
             .limit(MAX_SAVED_ITEMS)
         ).scalars()
@@ -709,6 +712,7 @@ def build_dashboard(db: Session, user: User, as_of: date | None = None) -> Dashb
         db.execute(
             select(ApplicationRecord)
             .where(ApplicationRecord.user_id == user.id)
+            .where(ApplicationRecord.scholarship_id.is_not(None))
             .order_by(ApplicationRecord.scholarship_id.asc())
             .limit(MAX_APPLICATION_ITEMS)
         ).scalars()
@@ -748,8 +752,13 @@ def build_dashboard(db: Session, user: User, as_of: date | None = None) -> Dashb
     # One bounded query for every id this response will describe: the shortlist,
     # the applications, and the recommended cards that need their published
     # deadline wording. Never one query per card.
-    acted_ids = sorted({row.scholarship_id for row in saved_rows} | {row.scholarship_id for row in application_rows})
-    needed_ids = sorted(set(acted_ids) | {result.scholarship_id for result in selected})
+    acted_ids = sorted(
+        {row.scholarship_id for row in saved_rows if row.scholarship_id is not None}
+        | {row.scholarship_id for row in application_rows if row.scholarship_id is not None}
+    )
+    needed_ids = sorted(
+        set(acted_ids) | {result.scholarship_id for result in selected if result.scholarship_id is not None}
+    )
     rows_by_id = load_facts_for_ids(db, needed_ids)
 
     recommendations: list[MatchRecommendation] = []
