@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { fetchSupervisors, fetchGlobalSupervisors } from '../services/supervisorService'
+import { fetchGlobalSupervisors } from '../services/supervisorService'
 import './SupervisorsPage.css'
 
 /* Research interests are typed by the student and kept in this browser only.
@@ -89,10 +89,8 @@ function SupervisorCard({ result }) {
     scholarship_title,
     scholarship_id,
     country,
-    degree_level,
     effective_lifecycle,
     deadline,
-    host_institution,
     official_name,
     academic_title,
     institution,
@@ -211,14 +209,14 @@ function SupervisorCard({ result }) {
   )
 }
 
-function Filters({ 
-  degreeLevels, setDegreeLevels, 
-  lifecycle, setLifecycle, 
+function Filters({
+  degreeLevels, setDegreeLevels,
+  lifecycle, setLifecycle,
   country, setCountry,
   institution, setInstitution,
   contactTypes, setContactTypes,
   verifiedEmailOnly, setVerifiedEmailOnly,
-  onReset 
+  onReset
 }) {
   return (
     <div className="sz-supervisors-page__filters">
@@ -323,59 +321,78 @@ export default function SupervisorsPage() {
   const [verifiedEmailOnly, setVerifiedEmailOnly] = useState(false)
   const [page, setPage] = useState(1)
   const [pageSize] = useState(20)
-  const [state, setState] = useState('idle') // idle, loading, ready, error
+  const [state, setState] = useState('idle')
   const [results, setResults] = useState(null)
   const [error, setError] = useState(null)
 
-  const runSearch = useCallback(async (signal, interests) => {
+  const requestIdRef = useRef(0)
+  const abortControllerRef = useRef(null)
+
+  const runSearch = useCallback(async (interests, currentPage) => {
+    const requestId = ++requestIdRef.current
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort()
+    }
+    const controller = new AbortController()
+    abortControllerRef.current = controller
+
     setState('loading')
     setError(null)
+
     try {
-      const response = await fetch('/api/supervisors/search', {
-        method: 'POST',
-        signal,
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          research_interests: interests,
-          degree_levels: degreeLevels,
-          lifecycle,
-          country: country || undefined,
-          institution: institution || undefined,
-          contact_types: contactTypes,
-          verified_email_only: verifiedEmailOnly,
-          page,
-          page_size: pageSize,
-        }),
-        credentials: 'include',
+      const response = await fetchGlobalSupervisors({
+        research_interests: interests,
+        degree_levels: degreeLevels,
+        lifecycle,
+        country: country || undefined,
+        institution: institution || undefined,
+        contact_types: contactTypes,
+        verified_email_only: verifiedEmailOnly,
+        page: currentPage,
+        page_size: pageSize,
+        signal: controller.signal,
       })
 
-      if (response.status === 401) {
-        // Not an error for public endpoint, but handle anyway
-      }
-      if (!response.ok) {
-        let message = 'Something went wrong. Please try again.'
-        try {
-          const payload = await response.json()
-          if (typeof payload.detail === 'string') {
-            message = payload.detail
-          } else if (payload.error_code === 'schema_not_ready') {
-            message = 'Supervisor discovery schema is not ready. Please try again later.'
-          }
-        } catch {
-          // Non-JSON failure
-        }
-        throw new Error(message)
+      if (requestId !== requestIdRef.current) {
+        return // Stale request, ignore
       }
 
-      const data = await response.json()
-      setResults(data)
+      setResults(response)
       setState('ready')
     } catch (caught) {
       if (caught.name === 'AbortError') return
+      if (requestId !== requestIdRef.current) return // Stale request, ignore
       setError(caught.message || 'Could not load supervisor information.')
       setState('error')
     }
-  }, [degreeLevels, lifecycle, country, institution, contactTypes, verifiedEmailOnly, page, pageSize])
+  }, [degreeLevels, lifecycle, country, institution, contactTypes, verifiedEmailOnly, pageSize])
+
+  // Initial search on mount
+  useEffect(() => {
+    const interests = readInterests()
+    const timer = setTimeout(() => runSearch(interests, 1), 0)
+    return () => clearTimeout(timer)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  // Trigger search when filters or page change
+  useEffect(() => {
+    const interests = readInterests()
+    const timer = setTimeout(() => runSearch(interests, page), 0)
+    return () => clearTimeout(timer)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [degreeLevels, lifecycle, country, institution, contactTypes, verifiedEmailOnly, page])
+
+  // Trigger search when interests change
+  useEffect(() => {
+    const interests = readInterests()
+    const timer = setTimeout(() => {
+      setPage(1)
+      runSearch(interests, 1)
+    }, 0)
+    return () => clearTimeout(timer)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [interestsInput])
 
   const saveInterestsAndSearch = useCallback(() => {
     const next = interestsInput
@@ -385,13 +402,8 @@ export default function SupervisorsPage() {
       .slice(0, 20)
     saveInterests(next)
     setPage(1)
-    runSearch(undefined, next)
+    runSearch(next, 1)
   }, [interestsInput, runSearch])
-
-  const handleFilterChange = useCallback(() => {
-    setPage(1)
-    runSearch(undefined, readInterests())
-  }, [runSearch])
 
   const handleReset = useCallback(() => {
     setDegreeLevels([])
@@ -401,24 +413,8 @@ export default function SupervisorsPage() {
     setContactTypes([])
     setVerifiedEmailOnly(false)
     setPage(1)
-    runSearch(undefined, readInterests())
+    runSearch(readInterests(), 1)
   }, [runSearch])
-
-  useEffect(() => {
-    const controller = new AbortController()
-    runSearch(controller.signal, readInterests())
-    return () => controller.abort()
-  }, [])
-
-  // Reset page when filters change
-  useEffect(() => {
-    setPage(1)
-  }, [degreeLevels, lifecycle, country, institution, contactTypes, verifiedEmailOnly])
-
-  // Search when interests change
-  useEffect(() => {
-    runSearch(undefined, readInterests())
-  }, [interestsInput])
 
   const totalPages = results?.total_pages || 0
   const total = results?.total || 0
@@ -455,17 +451,17 @@ export default function SupervisorsPage() {
 
       <Filters
         degreeLevels={degreeLevels}
-        setDegreeLevels={handleFilterChange}
+        setDegreeLevels={setDegreeLevels}
         lifecycle={lifecycle}
-        setLifecycle={handleFilterChange}
+        setLifecycle={setLifecycle}
         country={country}
-        setCountry={handleFilterChange}
+        setCountry={setCountry}
         institution={institution}
-        setInstitution={handleFilterChange}
+        setInstitution={setInstitution}
         contactTypes={contactTypes}
-        setContactTypes={handleFilterChange}
+        setContactTypes={setContactTypes}
         verifiedEmailOnly={verifiedEmailOnly}
-        setVerifiedEmailOnly={handleFilterChange}
+        setVerifiedEmailOnly={setVerifiedEmailOnly}
         onReset={handleReset}
       />
 
@@ -478,7 +474,7 @@ export default function SupervisorsPage() {
       {state === 'error' && (
         <div className="sz-supervisors-page__error" role="alert">
           Supervisor information is unavailable right now. {error}
-          <button type="button" onClick={() => runSearch(undefined, readInterests())}>
+          <button type="button" onClick={() => runSearch(readInterests(), page)}>
             Try again
           </button>
         </div>
@@ -498,7 +494,7 @@ export default function SupervisorsPage() {
                 Showing {results.items.length} of {total} result{total !== 1 ? 's' : ''}
               </div>
               <div className="sz-supervisors-page__results">
-                {results.items.map((result, index) => (
+                {results.items.map((result) => (
                   <SupervisorCard key={`${result.professor_id}-${result.scholarship_id}`} result={result} />
                 ))}
               </div>

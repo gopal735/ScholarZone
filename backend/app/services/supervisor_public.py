@@ -617,16 +617,43 @@ def global_supervisor_search(
         )
     )
 
-    # Apply filters
+    # Apply degree-level filter at SQL level
     if degree_levels:
-        # We need to filter by normalized degree level
-        # This is a simple in-Python filter for now since degree normalization is not in DB
-        pass
+        degree_conditions = []
+        for dl in degree_levels:
+            if dl == 'PHD':
+                degree_conditions.append(Scholarship.degree.ilike('%phd%'))
+                degree_conditions.append(Scholarship.degree.ilike('%doctoral%'))
+                degree_conditions.append(Scholarship.degree.ilike('%dphil%'))
+            elif dl == 'MASTER':
+                degree_conditions.append(Scholarship.degree.ilike('%master%'))
+                degree_conditions.append(Scholarship.degree.ilike('%msc%'))
+                degree_conditions.append(Scholarship.degree.ilike('%meng%'))
+                degree_conditions.append(Scholarship.degree.ilike('%mphil%'))
+            elif dl == 'BACHELOR':
+                degree_conditions.append(Scholarship.degree.ilike('%bachelor%'))
+                degree_conditions.append(Scholarship.degree.ilike('%bsc%'))
+                degree_conditions.append(Scholarship.degree.ilike('%beng%'))
+                degree_conditions.append(Scholarship.degree.ilike('%undergraduate%'))
+        if degree_conditions and 'OTHER' not in degree_levels:
+            from sqlalchemy import or_
+            base_query = base_query.where(or_(*degree_conditions))
 
+    # Apply lifecycle filter at SQL level
     if lifecycle_filters:
-        # Filter by effective lifecycle
-        # For now we'll filter in Python since it requires computation
-        pass
+        status_conditions = []
+        for lf in lifecycle_filters:
+            if lf == 'OPEN':
+                status_conditions.append(Scholarship.status.in_(['open', 'opening', 'closing_soon']))
+            elif lf == 'UPCOMING':
+                status_conditions.append(Scholarship.status == 'upcoming')
+            elif lf == 'CLOSED':
+                status_conditions.append(Scholarship.status == 'closed')
+            elif lf == 'UNKNOWN':
+                status_conditions.append(~Scholarship.status.in_(['open', 'opening', 'closing_soon', 'upcoming', 'closed']))
+        if status_conditions:
+            from sqlalchemy import or_
+            base_query = base_query.where(or_(*status_conditions))
 
     if request.country:
         base_query = base_query.where(Scholarship.country.ilike(f"%{request.country}%"))
@@ -662,14 +689,8 @@ def global_supervisor_search(
     # Process results
     items: list[GlobalSupervisorSearchResult] = []
     for row in rows:
-        # Apply degree and lifecycle filters in Python
         degree_level = _normalize_degree_level(row.degree or "")
-        if degree_levels and degree_level not in degree_levels:
-            continue
-
         effective_lifecycle = _get_effective_lifecycle_from_row(row)
-        if lifecycle_filters and effective_lifecycle not in lifecycle_filters:
-            continue
 
         # Compute research alignment
         from .supervisor_alignment import ResearchAlignment, align_research
@@ -827,10 +848,11 @@ def _get_effective_lifecycle_for_report(scholarship: Scholarship) -> str:
 
 def get_coverage_report(db: Session) -> CoverageReport:
     """Generate a comprehensive coverage report for all eligible scholarships.
-    
+
     Eligible = publicly visible, not archived, not quarantined, lifecycle OPEN or UPCOMING.
+    Uses bulk queries to avoid N+1 performance issues.
     """
-    from sqlalchemy import select, func, and_, case
+    from sqlalchemy import select, func, and_
     from ..models import Scholarship
     from ..repositories.scholarships import public_visibility_conditions
     from ..models_supervisor import (
@@ -838,24 +860,50 @@ def get_coverage_report(db: Session) -> CoverageReport:
         ScholarshipProfessorLink,
         ProfessorProfile,
     )
-    from .supervisor_status import (
-        PUBLIC_RELATIONSHIP_STATUSES,
-        ProfessorRelationshipType,
-    )
-    
+    from .supervisor_status import PUBLIC_RELATIONSHIP_STATUSES
+
     # Get all eligible scholarships
     eligible_scholarships = db.execute(select(Scholarship).where(
         *public_visibility_conditions(),
         Scholarship.status.in_(['open', 'upcoming', 'opening', 'closing_soon'])
     )).scalars().all()
-    
+
     total_eligible = len(eligible_scholarships)
-    
+    eligible_ids = [s.id for s in eligible_scholarships]
+
+    # Bulk fetch coverage rows
+    coverage_rows = db.execute(
+        select(ScholarshipSupervisorCoverage).where(
+            ScholarshipSupervisorCoverage.scholarship_id.in_(eligible_ids)
+        )
+    ).scalars().all()
+    coverage_by_schol = {c.scholarship_id: c for c in coverage_rows}
+
+    # Bulk fetch all links for eligible scholarships
+    all_links = db.execute(
+        select(ScholarshipProfessorLink).where(
+            ScholarshipProfessorLink.scholarship_id.in_(eligible_ids)
+        )
+    ).scalars().all()
+
+    # Group links by scholarship
+    links_by_schol = {}
+    for link in all_links:
+        links_by_schol.setdefault(link.scholarship_id, []).append(link)
+
+    # Bulk fetch all professor profiles referenced by links
+    professor_ids = set(link.professor_id for link in all_links)
+    profiles_by_id = {}
+    if professor_ids:
+        profiles = db.execute(
+            select(ProfessorProfile).where(ProfessorProfile.id.in_(professor_ids))
+        ).scalars().all()
+        profiles_by_id = {p.id: p for p in profiles}
+
     # Counters
     open_count = 0
     upcoming_count = 0
-    
-    # Coverage state counters
+
     not_started = 0
     existing_contacts_audited = 0
     host_mapping_pending = 0
@@ -866,8 +914,7 @@ def get_coverage_report(db: Session) -> CoverageReport:
     no_public_contact_found = 0
     needs_review = 0
     not_applicable_count = 0
-    
-    # Contact counters
+
     total_existing_contacts = 0
     total_verified_contacts = 0
     total_verified_emails = 0
@@ -877,39 +924,26 @@ def get_coverage_report(db: Session) -> CoverageReport:
     total_department_contacts = 0
     total_university_leadership = 0
     total_programme_office = 0
-    
-    # Institution tracking
+
     institutions = set()
     departments = set()
-    
-    # Per-scholarship details
-    scholarships_details: List[ScholarshipCoverageSummary] = []
-    
+    unique_verified_emails = set()
+
+    scholarships_details = []
+
     for schol in eligible_scholarships:
         lifecycle = _get_effective_lifecycle_for_report(schol)
         if lifecycle == "OPEN":
             open_count += 1
         elif lifecycle == "UPCOMING":
             upcoming_count += 1
-        
-        # Get coverage row
-        coverage = db.execute(
-            select(ScholarshipSupervisorCoverage).where(
-                ScholarshipSupervisorCoverage.scholarship_id == schol.id
-            )
-        ).scalar_one_or_none()
-        
-        # Get links
-        links = db.execute(
-            select(ScholarshipProfessorLink).where(
-                ScholarshipProfessorLink.scholarship_id == schol.id
-            )
-        ).scalars().all()
-        
+
+        coverage = coverage_by_schol.get(schol.id)
+        links = links_by_schol.get(schol.id, [])
+
         existing_contacts = len(links)
         total_existing_contacts += existing_contacts
-        
-        # Count by relationship type
+
         research_supervisors = 0
         course_instructors = 0
         programme_faculty = 0
@@ -918,25 +952,25 @@ def get_coverage_report(db: Session) -> CoverageReport:
         programme_office = 0
         verified_count = 0
         has_verified_email = False
-        
+
         for link in links:
-                if link.verification_status in PUBLIC_RELATIONSHIP_STATUSES:
-                    verified_count += 1
-                
-                rel_type = link.relationship_type
-                if rel_type == "potential_supervisor" or rel_type == "RESEARCH_SUPERVISOR":
-                    research_supervisors += 1
-                elif rel_type == "course_instructor" or rel_type == "COURSE_INSTRUCTOR":
-                    course_instructors += 1
-                elif rel_type == "program_faculty" or rel_type == "PROGRAMME_FACULTY":
-                    programme_faculty += 1
-                elif rel_type == "department_contact" or rel_type == "DEPARTMENT_CONTACT":
-                    department_contacts += 1
-                elif rel_type == "university_leadership" or rel_type == "UNIVERSITY_LEADERSHIP":
-                    university_leadership += 1
-                elif rel_type == "programme_office" or rel_type == "PROGRAMME_OFFICE":
-                    programme_office += 1
-        
+            if link.verification_status in PUBLIC_RELATIONSHIP_STATUSES:
+                verified_count += 1
+
+            rel_type = link.relationship_type
+            if rel_type in ("potential_supervisor", "RESEARCH_SUPERVISOR"):
+                research_supervisors += 1
+            elif rel_type in ("course_instructor", "COURSE_INSTRUCTOR"):
+                course_instructors += 1
+            elif rel_type in ("program_faculty", "PROGRAMME_FACULTY"):
+                programme_faculty += 1
+            elif rel_type in ("department_contact", "DEPARTMENT_CONTACT"):
+                department_contacts += 1
+            elif rel_type in ("university_leadership", "UNIVERSITY_LEADERSHIP"):
+                university_leadership += 1
+            elif rel_type in ("programme_office", "PROGRAMME_OFFICE"):
+                programme_office += 1
+
         total_verified_contacts += verified_count
         total_research_supervisors += research_supervisors
         total_course_instructors += course_instructors
@@ -944,31 +978,29 @@ def get_coverage_report(db: Session) -> CoverageReport:
         total_department_contacts += department_contacts
         total_university_leadership += university_leadership
         total_programme_office += programme_office
-        
-        # Check for verified emails
+
+        # Check for verified emails (bulk lookup already done)
         for link in links:
             if link.verification_status in PUBLIC_RELATIONSHIP_STATUSES:
-                prof = db.execute(
-                    select(ProfessorProfile).where(ProfessorProfile.id == link.professor_id)
-                ).scalar_one_or_none()
+                prof = profiles_by_id.get(link.professor_id)
                 if prof and prof.official_email_verified and prof.official_email:
                     has_verified_email = True
-                    total_verified_emails += 1
-                    break
-        
+                    if prof.official_email not in unique_verified_emails:
+                        unique_verified_emails.add(prof.official_email)
+                        total_verified_emails += 1
+
         # Track institutions
         for link in links:
-            prof = db.execute(
-                select(ProfessorProfile).where(ProfessorProfile.id == link.professor_id)
-            ).scalar_one_or_none()
-            if prof and prof.institution_name:
-                institutions.add(prof.institution_name)
-            if prof and prof.department_name:
-                departments.add(f"{prof.institution_name}:{prof.department_name}")
-        
+            prof = profiles_by_id.get(link.professor_id)
+            if prof:
+                if prof.institution_name:
+                    institutions.add(prof.institution_name)
+                if prof.department_name:
+                    departments.add(f"{prof.institution_name}:{prof.department_name}")
+
         # Determine coverage state
         coverage_status = coverage.status if coverage else "not_started"
-        
+
         if coverage_status == "search_pending":
             not_started += 1
         elif coverage_status == "verified_supervisors":
@@ -984,10 +1016,8 @@ def get_coverage_report(db: Session) -> CoverageReport:
         elif coverage_status == "not_applicable":
             not_applicable_count += 1
         else:
-            # Default
             not_started += 1
-        
-        # Last/next check
+
         last_checked = None
         next_check = None
         if coverage:
@@ -995,7 +1025,7 @@ def get_coverage_report(db: Session) -> CoverageReport:
                 last_checked = coverage.last_checked_at.isoformat()
             if coverage.next_check_at:
                 next_check = coverage.next_check_at.isoformat()
-        
+
         scholarships_details.append(ScholarshipCoverageSummary(
             scholarship_id=schol.id,
             title=schol.title,
@@ -1016,12 +1046,12 @@ def get_coverage_report(db: Session) -> CoverageReport:
             next_check=next_check,
             error_summary=coverage.last_error_summary if coverage else None,
         ))
-    
+
     return CoverageReport(
         total_eligible=total_eligible,
         open_count=open_count,
         upcoming_count=upcoming_count,
-        closed_excluded=0,  # Not tracked in this query
+        closed_excluded=0,
         unknown_lifecycle=0,
         not_started=not_started,
         existing_contacts_audited=existing_contacts_audited,

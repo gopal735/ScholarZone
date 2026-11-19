@@ -39,6 +39,32 @@ from ..services.supervisor_public import (
 
 logger = logging.getLogger(__name__)
 
+# Map frontend contact type filter values to stored database values.
+# Legacy types are stored lowercase; new types are stored uppercase.
+CONTACT_TYPE_NORMALIZATION = {
+    'POTENTIAL_SUPERVISOR': 'potential_supervisor',
+    'PROGRAM_FACULTY': 'program_faculty',
+    'RESEARCH_GROUP': 'research_group',
+    'PROGRAM_RELEVANT_FACULTY': 'program_relevant_faculty',
+    'RESEARCH_SUPERVISOR': 'RESEARCH_SUPERVISOR',
+    'PROGRAMME_FACULTY': 'PROGRAMME_FACULTY',
+    'COURSE_INSTRUCTOR': 'COURSE_INSTRUCTOR',
+    'DEPARTMENT_CONTACT': 'DEPARTMENT_CONTACT',
+    'UNIVERSITY_LEADERSHIP': 'UNIVERSITY_LEADERSHIP',
+    'PROGRAMME_OFFICE': 'PROGRAMME_OFFICE',
+}
+
+def normalize_contact_types(types):
+    result = []
+    for t in types:
+        upper = t.upper().strip()
+        if upper in CONTACT_TYPE_NORMALIZATION:
+            result.append(CONTACT_TYPE_NORMALIZATION[upper])
+        else:
+            result.append(t.strip())
+    return result
+
+
 router = APIRouter(prefix="/supervisors", tags=["supervisors-global"])
 
 # Bounded because interests are matched term-by-term and an unbounded list would
@@ -185,6 +211,9 @@ def search_supervisors(
     valid_lifecycles = ["OPEN", "UPCOMING", "CLOSED", "UNKNOWN"]
     lifecycle = [l.upper() for l in request.lifecycle if l.upper() in valid_lifecycles]
 
+    # Normalize contact types to stored DB values
+    contact_types = normalize_contact_types(request.contact_types)
+
     search_request = GlobalSupervisorSearchRequest(
         research_interests=cleaned_interests,
         degree_levels=degree_levels,
@@ -192,7 +221,7 @@ def search_supervisors(
         country=request.country,
         subject=request.subject,
         institution=request.institution,
-        contact_types=request.contact_types,
+        contact_types=contact_types,
         verified_email_only=request.verified_email_only,
         scholarship_id=request.scholarship_id,
         page=request.page,
