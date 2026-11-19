@@ -68,6 +68,32 @@ describe('routeClassifier', () => {
     })
   })
 
+  describe('personal disclosure (health, financial, legal)', () => {
+    it('classifies "Find scholarships for me; my HIV diagnosis is positive" as mentor', () => {
+      expect(classifyRoute('Find scholarships for me; my HIV diagnosis is positive')).toBe('mentor')
+    })
+
+    it('classifies "Find scholarships for me; I was diagnosed with cancer" as mentor', () => {
+      expect(classifyRoute('Find scholarships for me; I was diagnosed with cancer')).toBe('mentor')
+    })
+
+    it('classifies "Find scholarships; my disability affects my studies" as mentor', () => {
+      expect(classifyRoute('Find scholarships; my disability affects my studies')).toBe('mentor')
+    })
+
+    it('classifies "Find scholarships; my income is below poverty line" as mentor', () => {
+      expect(classifyRoute('Find scholarships; my income is below poverty line')).toBe('mentor')
+    })
+
+    it('classifies "Find scholarships; my visa status is pending" as mentor', () => {
+      expect(classifyRoute('Find scholarships; my visa status is pending')).toBe('mentor')
+    })
+
+    it('classifies "Find scholarships; I am pregnant" as mentor', () => {
+      expect(classifyRoute('Find scholarships; I am pregnant')).toBe('mentor')
+    })
+  })
+
   describe('edge cases', () => {
     it('classifies empty string as mentor (safe default)', () => {
       expect(classifyRoute('')).toBe('mentor')

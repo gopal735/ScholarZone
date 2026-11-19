@@ -149,6 +149,19 @@ const PRIVATE_ELIGIBILITY_PATTERNS = [
   /\bwhich\s+scholarships?\s+fit\s+(my|me)\b/i,
 ];
 
+// Personal disclosure patterns: health, financial, legal, immigration, etc.
+// These indicate private mentor intent even when discovery words are present.
+const PERSONAL_DISCLOSURE_PATTERNS = [
+  /\bmy\s+(hiv|aids|cancer|diagnosis|disability|illness|disease|condition|health|medical|depression|anxiety|mental health)\b/i,
+  /\bmy\s+(income|financial|poverty|family income|economic)\b/i,
+  /\bmy\s+(visa|immigration|refugee|asylum|criminal record|conviction)\b/i,
+  /\bmy\s+(pregnancy|pregnant)\b/i,
+  /\bi\s+am\s+pregnant\b/i,
+  /\bdiagnosed\s+with\b/i,
+  /\bmy\s+health\s+(status|condition|issue)\b/i,
+  /\bpositive\s+(hiv|test|diagnosis)\b/i,
+];
+
 export function classifyRoute(message) {
   if (!message || typeof message !== 'string') {
     return 'mentor'; // default to private for safety
@@ -162,6 +175,14 @@ export function classifyRoute(message) {
   // Phase 1: Check first-person eligibility patterns (highest priority)
   // These indicate private mentor intent even when discovery words are present
   for (const pattern of PRIVATE_ELIGIBILITY_PATTERNS) {
+    if (pattern.test(message)) {
+      return 'mentor';
+    }
+  }
+
+  // Phase 1b: Check personal disclosure patterns (health, financial, legal, etc.)
+  // These indicate private mentor intent even when discovery words are present
+  for (const pattern of PERSONAL_DISCLOSURE_PATTERNS) {
     if (pattern.test(message)) {
       return 'mentor';
     }
@@ -200,4 +221,4 @@ export function classifyRoute(message) {
 }
 
 // Export for testing
-export { PRIVATE_ELIGIBILITY_PATTERNS, PRIVATE_MENTOR_PHRASES, DISCOVERY_PHRASES };
+export { PRIVATE_ELIGIBILITY_PATTERNS, PERSONAL_DISCLOSURE_PATTERNS, PRIVATE_MENTOR_PHRASES, DISCOVERY_PHRASES };

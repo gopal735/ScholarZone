@@ -654,9 +654,9 @@ export default function UnifiedAIPage() {
         id: anonMsgId,
         role: 'assistant',
         content: 'This is a personalized question. Please sign in to get Mentor guidance tailored to your profile and applications.',
-        private: false,
-        sessionId: null,
-        sessionScope: null,
+        private: true,
+        sessionId: requestSessionKey,
+        sessionScope: requestScope,
         timestamp: Date.now()
       }])
       setIsLoading(false)
