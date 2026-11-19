@@ -157,7 +157,8 @@ const PERSONAL_DISCLOSURE_PATTERNS = [
   /\bmy\s+(visa|immigration|refugee|asylum|criminal record|conviction)\b/i,
   /\bmy\s+(pregnancy|pregnant)\b/i,
   /\bi\s+am\s+pregnant\b/i,
-  /\bdiagnosed\s+with\b/i,
+  /\bi'm\s+pregnant\b/i,
+  /\b(i|my)\s+.{0,20}diagnosed\s+with\b/i,
   /\bmy\s+health\s+(status|condition|issue)\b/i,
   /\bpositive\s+(hiv|test|diagnosis)\b/i,
 ];

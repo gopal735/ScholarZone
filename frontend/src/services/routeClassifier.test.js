@@ -69,6 +69,17 @@ describe('routeClassifier', () => {
   })
 
   describe('personal disclosure (health, financial, legal)', () => {
+    it('classifies "Find scholarships for me; I am pregnant" as mentor', () => {
+      expect(classifyRoute("Find scholarships for me; I am pregnant")).toBe('mentor')
+    })
+
+    it('classifies pregnancy disclosure as mentor', () => {
+      expect(classifyRoute("Find scholarships for me; I am pregnant")).toBe('mentor')
+    })
+
+    it('classifies "Find scholarships for students diagnosed with cancer" as discovery', () => {
+      expect(classifyRoute('Find scholarships for students diagnosed with cancer')).toBe('discovery')
+    })
     it('classifies "Find scholarships for me; my HIV diagnosis is positive" as mentor', () => {
       expect(classifyRoute('Find scholarships for me; my HIV diagnosis is positive')).toBe('mentor')
     })
