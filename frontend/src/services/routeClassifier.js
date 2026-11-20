@@ -157,7 +157,6 @@ const PERSONAL_DISCLOSURE_PATTERNS = [
   /\bi\s+am\s+(hiv|disabled|ill|sick|diagnosed)\b/i,
   /\bi'm\s+(hiv|disabled|ill|sick)\b/i,
   /\bi'm\s+hiv[-\s]?positive\b/i,
-  /\bhiv[-\s]?positive\b/i,
   /\bmy\s+(income|financial|poverty|family income|economic)\b/i,
   /\bi\s+have\s+(low income|financial hardship|poverty)\b/i,
   /\bmy\s+(visa|immigration|refugee|asylum|criminal record|conviction)\b/i,
@@ -166,7 +165,6 @@ const PERSONAL_DISCLOSURE_PATTERNS = [
   /\bi'm\s+pregnant\b/i,
   /\b(i|my)\s+.{0,20}diagnosed\s+with\b/i,
   /\bmy\s+health\s+(status|condition|issue)\b/i,
-  /\bpositive\s+(hiv|test|diagnosis)\b/i,
 ];
 
 export function classifyRoute(message) {
