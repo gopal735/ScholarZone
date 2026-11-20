@@ -13,6 +13,7 @@ vi.mock('../services/unifiedAI', async () => {
     formatUnifiedResponse: actual.formatUnifiedResponse,
     setLocalAIEnabled: vi.fn(),
     isLocalAIEnabled: vi.fn(() => false),
+    classifyRoute: actual.classifyRoute,
   }
 })
 vi.mock('../services/aiAssistant', () => ({
@@ -52,7 +53,7 @@ describe('UnifiedAIPage crash safety', () => {
     vi.mocked(askUnifiedAI).mockResolvedValue({ answer: undefined, sources: [], grounded: true })
     renderPage('unauthenticated')
     const input = await screen.findByPlaceholderText(/Ask about scholarships/i)
-    await userEvent.type(input, 'test question')
+    await userEvent.type(input, 'Find PhD scholarships in Europe')
     await userEvent.click(screen.getByRole('button', { name: /Send question/i }))
     await waitFor(() => {
       expect(screen.getByText(/No response available/i)).toBeInTheDocument()
@@ -63,7 +64,7 @@ describe('UnifiedAIPage crash safety', () => {
     vi.mocked(askUnifiedAI).mockResolvedValue({ answer: null, sources: [], grounded: true })
     renderPage('unauthenticated')
     const input = await screen.findByPlaceholderText(/Ask about scholarships/i)
-    await userEvent.type(input, 'test question')
+    await userEvent.type(input, 'Find PhD scholarships in Europe')
     await userEvent.click(screen.getByRole('button', { name: /Send question/i }))
     await waitFor(() => {
       expect(screen.getByText(/No response available/i)).toBeInTheDocument()
