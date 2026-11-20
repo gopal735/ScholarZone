@@ -7,46 +7,24 @@ import json
 from datetime import datetime, timezone
 
 sys.path.insert(0, 'backend')
-from app.database import get_session_factory, init_database
-<<<<<<< HEAD
-from app.services.closed_deletion import execute_deletion, save_report
-=======
+from app.database import get_session_factory
 from app.services.closed_deletion import execute_deletion, save_report, ClosedScholarshipManifest
->>>>>>> 1289d2c4 (fix(closed-deletion): complete automatic production purge remediation)
 from app.models import DeletedClosedScholarship
 from sqlalchemy import select
 
 def main():
-    init_database()
     sf = get_session_factory()
-<<<<<<< HEAD
-
-    # Load the validated manifest
-    with open('artifacts/deletion_manifest.json', 'r') as f:
-        manifest_data = json.load(f)
-
-    # Convert manifest data to ClosedScholarshipManifest objects
-    from app.services.closed_deletion import ClosedScholarshipManifest
-    manifest = [ClosedScholarshipManifest(**m) for m in manifest_data]
-
-=======
->>>>>>> 1289d2c4 (fix(closed-deletion): complete automatic production purge remediation)
     merge_sha = os.environ.get('MERGE_COMMIT_SHA', '')
     if not merge_sha:
         print('ERROR: MERGE_COMMIT_SHA not set')
         sys.exit(1)
 
-<<<<<<< HEAD
-    init_database()
-    sf = get_session_factory()
-=======
     # Load the validated manifest artifact
     with open('artifacts/deletion_manifest.json', 'r') as f:
         manifest_data = json.load(f)
 
     # Convert manifest data to ClosedScholarshipManifest objects
     manifest = [ClosedScholarshipManifest(**m) for m in manifest_data]
->>>>>>> 1289d2c4 (fix(closed-deletion): complete automatic production purge remediation)
 
     with sf() as db:
         # Check idempotency within the same transaction
@@ -58,19 +36,7 @@ def main():
             print('ALREADY_EXECUTED: Purge already executed for merge commit ' + merge_sha)
             sys.exit(2)
 
-<<<<<<< HEAD
-        # Load manifest
-        with open('artifacts/deletion_manifest.json', 'r') as f:
-            manifest_data = json.load(f)
-
-        from app.services.closed_deletion import ClosedScholarshipManifest
-        manifest = [ClosedScholarshipManifest(**m) for m in manifest_data]
-
-        # Execute deletion with idempotency marker in same transaction
-        from app.services.closed_deletion import execute_deletion, save_report
-=======
         # Execute deletion
->>>>>>> 1289d2c4 (fix(closed-deletion): complete automatic production purge remediation)
         report = execute_deletion(db, manifest, dry_run=False, reference_date=datetime.now(timezone.utc))
 
         # Add idempotency marker in the same transaction
