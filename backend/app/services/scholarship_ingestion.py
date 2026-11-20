@@ -11,7 +11,7 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator, model_valida
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
-from ..models import Scholarship
+from ..models import Scholarship, DeletedClosedScholarship
 from ..services.deadline_semantics import coerce_deadline_precision as _coerce_deadline_precision
 from ..services.image_validator import assess_image_evidence
 from ..services.scholarship_image_verifier import _VALID_SOURCE_TYPES, is_valid_source_type
@@ -419,6 +419,24 @@ def _find_existing_scholarship(session: Session, record: ScholarshipIngestionRec
     return legacy_candidates[0] if legacy_candidates else None
 
 
+def _is_tombstoned(session: Session, record: ScholarshipIngestionRecord) -> bool:
+    urls = {record.official_source_url, f"{record.official_source_url}/"}
+    existing = session.scalar(
+        select(DeletedClosedScholarship).where(
+            (DeletedClosedScholarship.official_source_url.in_(urls))
+            | (DeletedClosedScholarship.application_link.in_(urls))
+        )
+    )
+    if existing is not None:
+        return True
+    if record.legacy_titles:
+        titles = session.scalars(select(DeletedClosedScholarship.title)).all()
+        lower = {t.lower() for t in titles if t}
+        if any(str(lt).lower() in lower for lt in record.legacy_titles):
+            return True
+    return False
+
+
 def _fit_columns(payload: dict[str, object]) -> tuple[dict[str, object], list[str]]:
     """Drop values that do not fit their column, and say which.
 
@@ -444,6 +462,24 @@ def _fit_columns(payload: dict[str, object]) -> tuple[dict[str, object], list[st
             continue
         fitted[field] = value
     return fitted, dropped
+
+
+def _is_tombstoned(session, record) -> bool:
+    urls = {record.official_source_url, f"{record.official_source_url}/"}
+    existing = session.scalar(
+        select(DeletedClosedScholarship).where(
+            (DeletedClosedScholarship.official_source_url.in_(urls))
+            | (DeletedClosedScholarship.application_link.in_(urls))
+        )
+    )
+    if existing is not None:
+        return True
+    if getattr(record, "legacy_titles", None):
+        titles = session.scalars(select(DeletedClosedScholarship.title)).all()
+        lower = {t.lower() for t in titles if t}
+        if any(str(lt).lower() in lower for lt in record.legacy_titles):
+            return True
+    return False
 
 
 def upsert_verified_scholarships(
@@ -474,6 +510,9 @@ def upsert_verified_scholarships(
             )
 
         if scholarship is None:
+            if _is_tombstoned(session, record):
+                logger.info("skipping tombstoned closed scholarship: %s", record.name)
+                continue
             if record.funding_type is None:
                 raise ValueError("funding_type is required when inserting a new scholarship record")
             if record.preferred_id is not None and session.get(Scholarship, record.preferred_id) is None:

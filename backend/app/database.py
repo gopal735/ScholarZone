@@ -168,6 +168,7 @@ def init_database() -> None:
                 migration_engine.dispose()
     elif engine.dialect.name == "postgresql":
         _upgrade_postgresql_schema(engine)
+        _upgrade_application_outreach_nullable(engine)
         _validate_postgresql_schema(engine)
 
 
@@ -385,6 +386,18 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
         create_image_audit_schema(connection)
 
 
+def _upgrade_application_outreach_nullable(engine: Engine) -> None:
+    """Make application/outreach scholarship_id nullable for history preservation."""
+    with engine.begin() as connection:
+        inspector = inspect(engine)
+        for table in ("application_records", "professor_outreach_records"):
+            if not inspector.has_table(table):
+                continue
+            cols = {c["name"]: c for c in inspector.get_columns(table)}
+            if "scholarship_id" in cols and not cols["scholarship_id"].get("nullable", True):
+                connection.execute(text(f"ALTER TABLE {table} ALTER COLUMN scholarship_id DROP NOT NULL"))
+
+
 def _validate_postgresql_schema(engine: Engine) -> None:
     """Validate required PostgreSQL schema objects exist after startup migration.
 
@@ -569,7 +582,10 @@ def _migrate_fully_funded_to_nullable_sqlite(connection) -> None:
     """)).fetchall()
     
     # 6. Get the current sqlite_sequence value (high-water mark)
-    seq_row = connection.execute(text('SELECT seq FROM sqlite_sequence WHERE name = "scholarships"')).fetchone()
+    seq_row = connection.execute(
+        text('SELECT seq FROM sqlite_sequence WHERE name = :name'),
+        {"name": "scholarships"}
+    ).fetchone()
     current_seq = seq_row[0] if seq_row else None
     
     # 7. Get child tables that reference scholarships (to verify they still work)
@@ -648,6 +664,199 @@ def _migrate_fully_funded_to_nullable_sqlite(connection) -> None:
         fk_check = connection.execute(text(f'PRAGMA foreign_key_check("{table_name}")')).fetchall()
         if fk_check:
             raise RuntimeError(f"Child table {table_name} foreign key check failed: {fk_check}")
+
+
+def _extract_column_definition(sql: str, column_name: str) -> tuple[str, int]:
+    """Extract a column definition from CREATE TABLE SQL, handling nested parentheses.
+    
+    Returns (column_definition, end_position_in_sql).
+    """
+    # Find the column name (case-insensitive)
+    lower_sql = sql.lower()
+    lower_col = column_name.lower()
+    start = lower_sql.find(lower_col)
+    if start == -1:
+        return "", -1
+    
+    # Parse from the column name forward, tracking parenthesis depth
+    depth = 0
+    i = start
+    in_col_def = True
+    while i < len(sql) and in_col_def:
+        ch = sql[i]
+        if ch == '(':
+            depth += 1
+        elif ch == ')':
+            depth -= 1
+        elif depth == 0 and ch == ',':
+            # End of column definition at top level
+            in_col_def = False
+            break
+        elif depth == 0 and i + 11 <= len(sql) and sql[i:i+11].upper() == 'CONSTRAINT':
+            # End of column definitions, start of table constraints
+            in_col_def = False
+            break
+        i += 1
+    
+    # Find the actual end of the column definition (before comma or CONSTRAINT)
+    end = i
+    while end > start and sql[end-1].isspace():
+        end -= 1
+    
+    return sql[start:end], end
+
+
+def _migrate_column_to_nullable_sqlite(connection, table_name: str, column_name: str) -> None:
+    """Migrate a column to nullable in SQLite by rebuilding the table.
+    
+    Preserves all indexes, triggers, constraints, foreign keys, and data.
+    """
+    import re
+    
+    # 1. Check if migration is already done (idempotency)
+    pragma_result = connection.execute(text(f"PRAGMA table_info({table_name})")).fetchall()
+    for row in pragma_result:
+        if row[1] == column_name and row[3] == 0:
+            # Already nullable, nothing to do
+            return
+
+    # 2. Get the exact original CREATE TABLE SQL
+    create_table_result = connection.execute(text(f"""
+        SELECT sql FROM sqlite_master 
+        WHERE type = 'table' AND name = '{table_name}'
+    """)).fetchone()
+    
+    if not create_table_result or not create_table_result[0]:
+        raise RuntimeError(f"Could not find {table_name} table definition")
+    
+    original_create_sql = create_table_result[0]
+    
+    # 3. Modify the CREATE TABLE SQL to make the column nullable AND remove DEFAULT
+    modified_create_sql = re.sub(
+        rf'({column_name}\s+\w+\s+)NOT NULL\s+DEFAULT\s+FALSE\s*(?=\s*(?:,|\)|CONSTRAINT|PRIMARY KEY|UNIQUE|CHECK|REFERENCES))',
+        r'\1',
+        original_create_sql,
+        flags=re.IGNORECASE
+    )
+    
+    # Also handle case where NOT NULL and DEFAULT are separate
+    if column_name in modified_create_sql:
+        col_def, _ = _extract_column_definition(modified_create_sql, column_name)
+        if "NOT NULL" in col_def.upper() or "DEFAULT FALSE" in col_def.upper():
+            # Remove NOT NULL (handles case followed by REFERENCES, comma, or constraint)
+            modified_create_sql = re.sub(
+                rf'({column_name}\s+\w+\s+)NOT NULL\s*(?=\s*(?:DEFAULT|,|\)|CONSTRAINT|PRIMARY KEY|UNIQUE|CHECK|REFERENCES))',
+                r'\1',
+                modified_create_sql,
+                flags=re.IGNORECASE
+            )
+            # Remove DEFAULT FALSE
+            modified_create_sql = re.sub(
+                rf'({column_name}\s+\w+(?:\s+\w+)*\s+)DEFAULT\s+FALSE\s*(?=\s*(?:,|\)|CONSTRAINT|PRIMARY KEY|UNIQUE|CHECK|REFERENCES))',
+                r'\1',
+                modified_create_sql,
+                flags=re.IGNORECASE
+            )
+    
+    # Final verification using proper column definition extraction
+    if column_name in modified_create_sql:
+        col_def, _ = _extract_column_definition(modified_create_sql, column_name)
+        if "NOT NULL" in col_def.upper():
+            raise RuntimeError(f"Failed to remove NOT NULL from {table_name}.{column_name} column. Column def: {col_def}")
+        if "DEFAULT FALSE" in col_def.upper():
+            raise RuntimeError(f"Failed to remove DEFAULT FALSE from {table_name}.{column_name} column. Column def: {col_def}")
+    
+    # 4. Get all indexes on the table
+    indexes = connection.execute(text(f"""
+        SELECT name, sql FROM sqlite_master 
+        WHERE type = 'index' AND tbl_name = '{table_name}' AND sql IS NOT NULL
+    """)).fetchall()
+    
+    # 5. Get all triggers on the table
+    triggers = connection.execute(text(f"""
+        SELECT name, sql FROM sqlite_master 
+        WHERE type = 'trigger' AND tbl_name = '{table_name}'
+    """)).fetchall()
+    
+# 6. Get the current sqlite_sequence value (high-water mark)
+    seq_row = connection.execute(
+        text('SELECT seq FROM sqlite_sequence WHERE name = :name'),
+        {"name": table_name}
+    ).fetchone()
+    current_seq = seq_row[0] if seq_row else None
+    
+    # 7. Get child tables that reference this table
+    child_tables = connection.execute(text(f"""
+        SELECT name, sql FROM sqlite_master 
+        WHERE type = 'table' AND sql LIKE '%REFERENCES {table_name}%'
+    """)).fetchall()
+    
+    # 8. Create new table with modified schema
+    new_table_sql = modified_create_sql.replace(f"CREATE TABLE {table_name}", f"CREATE TABLE {table_name}_new")
+    connection.execute(text(new_table_sql))
+    
+    # 9. Copy all data with explicit column list
+    table_info = connection.execute(text(f"PRAGMA table_info({table_name})")).fetchall()
+    column_names = [col[1] for col in table_info]
+    columns_list = ", ".join(column_names)
+    connection.execute(text(f'INSERT INTO {table_name}_new ({columns_list}) SELECT {columns_list} FROM {table_name}'))
+    
+    # 10. Verify data integrity
+    old_count = connection.execute(text(f"SELECT COUNT(*) FROM {table_name}")).scalar()
+    new_count = connection.execute(text(f"SELECT COUNT(*) FROM {table_name}_new")).scalar()
+    if old_count != new_count:
+        raise RuntimeError(f"Data copy failed for {table_name}: old={old_count}, new={new_count}")
+    
+    # 11. Verify foreign key integrity on new table
+    fk_check = connection.execute(text(f"PRAGMA foreign_key_check({table_name}_new)")).fetchall()
+    if fk_check:
+        raise RuntimeError(f"Foreign key check failed after copy for {table_name}: {fk_check}")
+    
+    # 12. Drop old table
+    connection.execute(text(f"DROP TABLE {table_name}"))
+    
+    # 13. Rename new table
+    connection.execute(text(f"ALTER TABLE {table_name}_new RENAME TO {table_name}"))
+    
+    # 14. Restore sqlite_sequence high-water mark
+    if current_seq is not None:
+        connection.execute(
+            text('UPDATE sqlite_sequence SET seq = :seq WHERE name = :name'),
+            {"seq": current_seq, "name": table_name}
+        )
+    
+    # 15. Recreate all indexes
+    for name, sql in indexes:
+        if sql:
+            connection.execute(text(sql))
+    
+    # 16. Recreate all triggers
+    for name, sql in triggers:
+        if sql:
+            connection.execute(text(sql))
+    
+    # 16b. Verify foreign key integrity after migration
+    fk_check = connection.execute(text(f"PRAGMA foreign_key_check({table_name})")).fetchall()
+    if fk_check:
+        raise RuntimeError(f"Foreign key check failed after migration for {table_name}: {fk_check}")
+    
+    # 17. Verify NOT NULL constraint is removed
+    pragma_result = connection.execute(text(f"PRAGMA table_info({table_name})")).fetchall()
+    for row in pragma_result:
+        if row[1] == column_name and row[3] == 1:
+            raise RuntimeError(f"Migration failed: {table_name}.{column_name} still has NOT NULL constraint")
+    
+    # 18. Verify DEFAULT is removed
+    pragma_result = connection.execute(text(f"PRAGMA table_info({table_name})")).fetchall()
+    for row in pragma_result:
+        if row[1] == column_name and row[4] is not None and "FALSE" in str(row[4]).upper():
+            raise RuntimeError(f"Migration failed: {table_name}.{column_name} still has DEFAULT FALSE: {row[4]}")
+    
+    # 19. Verify child table references still work
+    for child_table_name, _ in child_tables:
+        fk_check = connection.execute(text(f'PRAGMA foreign_key_check("{child_table_name}")')).fetchall()
+        if fk_check:
+            raise RuntimeError(f"Child table {child_table_name} foreign key check failed: {fk_check}")
 
 
 def _upgrade_sqlite_schema(engine: Engine) -> None:
@@ -781,6 +990,14 @@ def _upgrade_sqlite_schema(engine: Engine) -> None:
         # Same audit instrumentation as PostgreSQL, so a local or test database
         # exercises the identical trigger semantics rather than a stub.
         create_image_audit_schema(connection)
+
+        # Make application/outreach scholarship_id nullable for history preservation
+        inspector = inspect(connection)
+        for table in ("application_records", "professor_outreach_records"):
+            if inspector.has_table(table):
+                cols = {c["name"]: c for c in inspector.get_columns(table)}
+                if "scholarship_id" in cols and cols["scholarship_id"].get("notnull", 1) == 1:
+                    _migrate_column_to_nullable_sqlite(connection, table, "scholarship_id")
 
     schema = inspect(engine)
     unique_source_constraints = (

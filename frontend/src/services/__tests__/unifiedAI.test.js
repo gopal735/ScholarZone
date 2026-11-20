@@ -198,8 +198,14 @@ describe('askUnifiedAI routing', () => {
   })
   afterEach(() => vi.clearAllMocks())
 
-  it('anonymous: calls askAIAssistant, not askMentor', async () => {
-    const res = await askUnifiedAI('hello', { isAuthenticated: false })
+  it('anonymous mentor query: does not reach public search', async () => {
+    await expect(askUnifiedAI('hello', { isAuthenticated: false })).rejects.toThrow()
+    expect(askAIAssistant).not.toHaveBeenCalled()
+    expect(askMentor).not.toHaveBeenCalled()
+  })
+
+  it('anonymous discovery: calls askAIAssistant, not askMentor', async () => {
+    const res = await askUnifiedAI('Find PhD scholarships in Europe', { isAuthenticated: false })
     expect(askAIAssistant).toHaveBeenCalled()
     expect(askMentor).not.toHaveBeenCalled()
     expect(res.answer).toBe('grounded answer')
@@ -213,13 +219,20 @@ describe('askUnifiedAI routing', () => {
     expect(res.answer).toBe('mentor answer')
   })
 
-  it('expired session: falls back to grounded, sets authExpired', async () => {
+  it('expired session: private mentor does not fall back to public search', async () => {
     vi.mocked(askMentor).mockRejectedValue(new MentorUnauthenticatedError('expired'))
     vi.mocked(askAIAssistant).mockResolvedValue({ answer: 'grounded answer', sources: [], grounded: true })
-    const res = await askUnifiedAI('hello', { isAuthenticated: true })
+    await expect(askUnifiedAI('hello', { isAuthenticated: true })).rejects.toThrow()
     expect(askMentor).toHaveBeenCalled()
+    expect(askAIAssistant).not.toHaveBeenCalled()
+  })
+
+  it('discovery query: calls askAIAssistant directly, no authExpired', async () => {
+    vi.mocked(askMentor).mockRejectedValue(new MentorUnauthenticatedError('expired'))
+    vi.mocked(askAIAssistant).mockResolvedValue({ answer: 'grounded answer', sources: [], grounded: true })
+    const res = await askUnifiedAI('Find PhD scholarships in Europe', { isAuthenticated: true })
     expect(askAIAssistant).toHaveBeenCalled()
-    expect(res.authExpired).toBe(true)
+    expect(askMentor).not.toHaveBeenCalled()
     expect(res.answer).toBe('grounded answer')
   })
 

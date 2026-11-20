@@ -49,8 +49,8 @@ BACKEND = Path(__file__).resolve().parents[1]
 #: Index was added, and out of scope for this hardening pass. Creating only the
 #: tables under test keeps the fixtures honest instead of hiding the defect.
 SCHEMA_TABLES = ("scholarships", "scholarship_reviews",
-                 "scholarship_verification_history", "image_reviews",
-                 "maintenance_runs")
+                  "scholarship_verification_history", "image_reviews",
+                  "maintenance_runs", "deleted_closed_scholarships")
 
 
 def _create_schema(engine):
