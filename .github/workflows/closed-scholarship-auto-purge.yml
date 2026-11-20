@@ -431,10 +431,16 @@ jobs:
 
   preflight-summary:
     name: Preflight Summary & Gate Status
-    needs: [preflight-gate1-atomicity, preflight-gate2-identity, preflight-gate3-dependencies, preflight-gate4-backup, preflight-gate5-classification, preflight-gate6-cycle-validation, preflight-gate7-git-safety]
+    needs: [verify-merge-trigger, preflight-gate1-atomicity, preflight-gate2-identity, preflight-gate3-dependencies, preflight-gate4-backup, preflight-gate5-classification, preflight-gate6-cycle-validation, preflight-gate7-git-safety]
     if: needs.verify-merge-trigger.outputs.should_run == 'true'
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          ref: ${{ needs.verify-merge-trigger.outputs.head_sha }}
+
       - name: Download all artifacts
         uses: actions/download-artifact@v4
         with:
@@ -580,11 +586,6 @@ jobs:
           name: deletion-manifest
           path: artifacts
 
-      - name: Verify Idempotency
-        run: python .github/scripts/verify_idempotency.py
-        env:
-          MERGE_COMMIT_SHA: ${{ needs.verify-merge-trigger.outputs.merge_commit_sha }}
-
       - name: Execute Production Deletion
         id: deletion
         run: python .github/scripts/execute_deletion.py
@@ -599,15 +600,9 @@ jobs:
             deletion_report.json
           retention-days: 90
 
-      - name: Record Idempotency Marker
-        if: success()
-        run: python .github/scripts/record_idempotency.py
-        env:
-          MERGE_COMMIT_SHA: ${{ needs.verify-merge-trigger.outputs.merge_commit_sha }}
-
   regenerate-snapshot:
     name: Regenerate Public Snapshot & Sitemap
-    needs: [execute-deletion]
+    needs: [verify-merge-trigger, execute-deletion]
     if: needs.verify-merge-trigger.outputs.should_run == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 30
@@ -707,6 +702,12 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          ref: ${{ needs.verify-merge-trigger.outputs.head_sha }}
+
       - name: Download all artifacts
         uses: actions/download-artifact@v4
         with:

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate dynamic deletion manifest for PR #107 automatic purge."""
+"""Generate dynamic deletion manifest for PR #107 automatic purge using read-only connection."""
 
 import sys
 import json
@@ -7,12 +7,12 @@ import hashlib
 from datetime import datetime, timezone
 
 sys.path.insert(0, 'backend')
-from app.database import get_session_factory, init_database
+from app.database_readonly import get_readonly_session_factory, init_readonly_database
 from app.services.closed_deletion import build_deletion_manifest, save_manifest
 
 def main():
-    init_database()
-    sf = get_session_factory()
+    init_readonly_database()
+    sf = get_readonly_session_factory()
     with sf() as db:
         manifest = build_deletion_manifest(db)
         total = len(manifest)

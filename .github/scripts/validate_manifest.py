@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
-"""Validate manifest stability for PR #107 automatic purge."""
+"""Validate manifest stability for PR #107 automatic purge using read-only connection."""
 
 import sys
 import json
 import hashlib
 
 sys.path.insert(0, 'backend')
-from app.database import get_session_factory, init_database
-from app.services.closed_deletion import build_deletion_manifest, save_manifest
+from app.database_readonly import get_readonly_session_factory, init_readonly_database
+from app.services.closed_deletion import build_deletion_manifest
 
 def main():
-    init_database()
-    sf = get_session_factory()
+    init_readonly_database()
+    sf = get_readonly_session_factory()
     with sf() as db:
         current_manifest = build_deletion_manifest(db)
 

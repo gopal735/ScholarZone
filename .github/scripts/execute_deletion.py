@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Execute production deletion for PR #107 automatic purge."""
+"""Execute production deletion for PR #107 automatic purge using validated manifest with atomic idempotency."""
 
 import sys
 import os
@@ -8,15 +8,59 @@ from datetime import datetime, timezone
 
 sys.path.insert(0, 'backend')
 from app.database import get_session_factory, init_database
-from app.services.closed_deletion import build_deletion_manifest, execute_deletion, save_report
+from app.services.closed_deletion import execute_deletion, save_report
+from app.models import DeletedClosedScholarship
+from sqlalchemy import select
 
 def main():
     init_database()
     sf = get_session_factory()
 
+    # Load the validated manifest
+    with open('artifacts/deletion_manifest.json', 'r') as f:
+        manifest_data = json.load(f)
+
+    # Convert manifest data to ClosedScholarshipManifest objects
+    from app.services.closed_deletion import ClosedScholarshipManifest
+    manifest = [ClosedScholarshipManifest(**m) for m in manifest_data]
+
+    merge_sha = os.environ.get('MERGE_COMMIT_SHA', '')
+    if not merge_sha:
+        print('ERROR: MERGE_COMMIT_SHA not set')
+        sys.exit(1)
+
+    init_database()
+    sf = get_session_factory()
+
     with sf() as db:
-        manifest = build_deletion_manifest(db, reference_date=datetime.now(timezone.utc))
-        report = execute_deletion(db, manifest, dry_run=False)
+        # Check idempotency within the same transaction
+        existing = db.execute(
+            select(DeletedClosedScholarship)
+            .where(DeletedClosedScholarship.reason.like('%' + merge_sha + '%'))
+        ).first()
+        if existing:
+            print('ALREADY_EXECUTED: Purge already executed for merge commit ' + merge_sha)
+            sys.exit(2)
+
+        # Load manifest
+        with open('artifacts/deletion_manifest.json', 'r') as f:
+            manifest_data = json.load(f)
+
+        from app.services.closed_deletion import ClosedScholarshipManifest
+        manifest = [ClosedScholarshipManifest(**m) for m in manifest_data]
+
+        # Execute deletion with idempotency marker in same transaction
+        from app.services.closed_deletion import execute_deletion, save_report
+        report = execute_deletion(db, manifest, dry_run=False, reference_date=datetime.now(timezone.utc))
+
+        # Add idempotency marker in the same transaction
+        ts = DeletedClosedScholarship(
+            official_source_url=None,
+            application_link=None,
+            title='PR #107 PURGE MERGE COMMIT ' + merge_sha,
+            reason='pr107_purge_merge_commit_' + merge_sha
+        )
+        db.add(ts)
 
         report_path = 'deletion_report.json'
         save_report(report, report_path)
