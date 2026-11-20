@@ -796,7 +796,7 @@ class ApplicationRecord(Base):
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False, index=True)
-    scholarship_id: Mapped[int | None] = mapped_column(ForeignKey("scholarships.id"), nullable=True, index=True)
+    scholarship_id: Mapped[int] = mapped_column(ForeignKey("scholarships.id"), nullable=False, index=True)
     #: One of ``APPLICATION_STATES``. Stored as text rather than a database enum
     #: so adding a state is a code change plus a migration, never a type
     #: rewrite of live rows.
@@ -875,22 +875,3 @@ class ApplicationChecklistItem(Base):
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
 
 
-
-class DeletedClosedScholarship(Base):
-    """Minimal tombstone preventing re-import of permanently deleted closed scholarships.
-
-    Stores only the identity fields the scholarship importer checks, so a
-    deleted closed record cannot be silently restored by a later import.
-    """
-
-    __tablename__ = "deleted_closed_scholarships"
-    __table_args__ = (
-        Index("ix_deleted_closed_scholarships_url", "official_source_url"),
-    )
-
-    id: Mapped[int] = mapped_column(Integer, primary_key=True)
-    official_source_url: Mapped[str | None] = mapped_column(String(2048), nullable=True, index=True)
-    application_link: Mapped[str | None] = mapped_column(String(2048), nullable=True)
-    title: Mapped[str | None] = mapped_column(String(255), nullable=True)
-    deleted_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
-    reason: Mapped[str | None] = mapped_column(String(120), nullable=True)
