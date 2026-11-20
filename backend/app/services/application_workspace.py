@@ -619,10 +619,8 @@ def list_for_user(
         )
 
     items_by_application = _load_checklists(db, [record.id for record in records])
-    # Filter out None scholarship_ids for detached applications
     scholarship_ids = sorted({record.scholarship_id for record in records if record.scholarship_id is not None})
     contexts = load_contexts(db, scholarship_ids, effective_date)
-    match_by_id = _match_index(db, user, effective_date)
 
     summaries = [
         _summary(

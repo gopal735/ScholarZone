@@ -464,6 +464,24 @@ def _fit_columns(payload: dict[str, object]) -> tuple[dict[str, object], list[st
     return fitted, dropped
 
 
+def _is_tombstoned(session, record) -> bool:
+    urls = {record.official_source_url, f"{record.official_source_url}/"}
+    existing = session.scalar(
+        select(DeletedClosedScholarship).where(
+            (DeletedClosedScholarship.official_source_url.in_(urls))
+            | (DeletedClosedScholarship.application_link.in_(urls))
+        )
+    )
+    if existing is not None:
+        return True
+    if getattr(record, "legacy_titles", None):
+        titles = session.scalars(select(DeletedClosedScholarship.title)).all()
+        lower = {t.lower() for t in titles if t}
+        if any(str(lt).lower() in lower for lt in record.legacy_titles):
+            return True
+    return False
+
+
 def upsert_verified_scholarships(
     session: Session,
     records: Iterable[ScholarshipIngestionRecord],

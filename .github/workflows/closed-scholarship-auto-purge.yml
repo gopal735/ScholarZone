@@ -586,6 +586,14 @@ jobs:
           name: deletion-manifest
           path: artifacts
 
+<<<<<<< HEAD
+=======
+      - name: Verify Idempotency
+        run: python .github/scripts/verify_idempotency.py
+        env:
+          MERGE_COMMIT_SHA: ${{ needs.verify-merge-trigger.outputs.merge_commit_sha }}
+
+>>>>>>> 1289d2c4 (fix(closed-deletion): complete automatic production purge remediation)
       - name: Execute Production Deletion
         id: deletion
         run: python .github/scripts/execute_deletion.py
@@ -600,6 +608,15 @@ jobs:
             deletion_report.json
           retention-days: 90
 
+<<<<<<< HEAD
+=======
+      - name: Record Idempotency Marker
+        if: success()
+        run: python .github/scripts/record_idempotency.py
+        env:
+          MERGE_COMMIT_SHA: ${{ needs.verify-merge-trigger.outputs.merge_commit_sha }}
+
+>>>>>>> 1289d2c4 (fix(closed-deletion): complete automatic production purge remediation)
   regenerate-snapshot:
     name: Regenerate Public Snapshot & Sitemap
     needs: [verify-merge-trigger, execute-deletion]
