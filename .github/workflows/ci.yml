@@ -910,7 +910,16 @@ jobs:
         chmod +x actionlint
         ./actionlint --version
     - name: Run actionlint
-      run: ./actionlint
+      run: |
+        set +e
+        ./actionlint > actionlint.out 2>&1
+        rc=$?
+        if [ $rc -ne 0 ]; then
+          echo "::error::Actionlint failed: $(head -c 500 actionlint.out | tr '\n' ' ')"
+          cat actionlint.out
+          exit $rc
+        fi
+        cat actionlint.out
 
 
   closed-deletion-postgresql:
