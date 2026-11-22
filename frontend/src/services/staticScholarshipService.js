@@ -354,7 +354,8 @@ export async function fetchScholarshipsFromSnapshot(query = {}) {
 
   let records = getPublicSnapshotRecords(snapshot)
 
-  const needles = String(search).trim().toLowerCase().split(/\s+/).filter(Boolean)
+  const INSTRUCTION_WORDS = new Set(['find', 'search', 'browse', 'show', 'list', 'discover', 'explore', 'looking', 'look', 'get', 'tell', 'help'])
+  const needles = String(search).trim().toLowerCase().split(/\s+/).filter(Boolean).filter((w) => !INSTRUCTION_WORDS.has(w))
   if (needles.length > 0) {
     records = records.filter((record) => {
       const haystack = [record.title, record.country, record.degree, record.description, record.funding,

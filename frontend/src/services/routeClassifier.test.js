@@ -103,6 +103,14 @@ describe('routeClassifier', () => {
     it('classifies "Find scholarships; I am pregnant" as mentor', () => {
       expect(classifyRoute('Find scholarships; I am pregnant')).toBe('mentor')
     })
+
+    it('classifies "Find scholarships; I’m pregnant" (U+2019) as mentor', () => {
+      expect(classifyRoute('Find scholarships; I\u2019m pregnant')).toBe('mentor')
+    })
+
+    it('classifies "Find scholarships; I‘m pregnant" (U+2018) as mentor', () => {
+      expect(classifyRoute('Find scholarships; I\u2018m pregnant')).toBe('mentor')
+    })
   })
 
   describe('edge cases', () => {
@@ -121,5 +129,49 @@ describe('routeClassifier', () => {
     it('classifies ambiguous input as mentor (safe default)', () => {
       expect(classifyRoute('scholarship')).toBe('mentor')
     })
+  })
+})
+describe('personal disclosure regression coverage', () => {
+  const privateCases = [
+    'I have HIV.',
+    'I have cancer.',
+    "I'm HIV-positive.",
+    'I have a disability.',
+    'I am pregnant.',
+    "I'm pregnant.",
+    'I was diagnosed with cancer.',
+    'Find scholarships; I have HIV',
+    "Find scholarships; I'm HIV-positive",
+    'Find scholarships; I have a disability',
+    "Find scholarships; I'm pregnant",
+    'Can I get scholarships with a GPA of 2.5?',
+    'Can I get fully funded scholarships with my GPA of 2.5?',
+    'What scholarships am I eligible for based on my income?',
+  ]
+  privateCases.forEach((q) => {
+    it(`routes private: ${q}`, () => {
+      expect(classifyRoute(q)).toBe('mentor')
+    })
+  })
+
+  const publicCases = [
+    'Find scholarships for students diagnosed with cancer',
+    'Find scholarships for HIV-positive students',
+    'Scholarships for students with disabilities',
+    'Scholarships for pregnant students',
+    'Find fully funded scholarships in Germany',
+    'Find PhD scholarships with stipend in Europe',
+    'Which scholarships have deadlines in the next 30 days?',
+  ]
+  publicCases.forEach((q) => {
+    it(`routes discovery: ${q}`, () => {
+      expect(classifyRoute(q)).toBe('discovery')
+    })
+  })
+
+  it('explicit private overrides discovery classification', () => {
+    // classifyRoute itself has no explicit flag; service layer handles explicit private.
+    // Ensure first-person disclosure beats discovery wording.
+    expect(classifyRoute('Find scholarships; I have HIV')).toBe('mentor')
   })
 })

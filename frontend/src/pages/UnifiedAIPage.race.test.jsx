@@ -6,44 +6,17 @@ import { useState } from 'react'
 import { AuthContext } from '../context/authContext'
 import UnifiedAIPage from './UnifiedAIPage'
 
-vi.mock('../services/unifiedAI', () => ({
-  askUnifiedAI: vi.fn(),
-  getAIStatus: vi.fn(async () => ({ mentor: false, remoteAI: false, localAI: false, grounded: true, activeMode: 'grounded' })),
-  formatUnifiedResponse: (r, mode) => ({ answer: r.answer, sources: r.sources || [], grounded: r.grounded ?? true, model: r.model, tokensUsed: r.tokensUsed, sourceType: mode === 'mentor' ? 'mentor' : 'grounded', label: mode === 'mentor' ? 'Grounded Mentor' : 'Grounded Search' }),
-  setLocalAIEnabled: vi.fn(),
-  isLocalAIEnabled: vi.fn(() => false),
-  classifyRoute: (msg) => {
-    if (!msg || typeof msg !== 'string') return 'mentor'
-    const lower = msg.toLowerCase().trim()
-    if (!lower) return 'mentor'
-    // First-person eligibility
-    if (/can\s+i\s+apply/i.test(msg)) return 'mentor'
-    if (/am\s+i\s+eligible/i.test(msg)) return 'mentor'
-    if (/with\s+my\s+(gpa|grades?|score|ielts|toefl|profile|academic)/i.test(msg)) return 'mentor'
-    if (/my\s+(gpa|grades?|score|ielts|toefl|profile|academic)/i.test(msg)) return 'mentor'
-    if (/based\s+on\s+my/i.test(msg)) return 'mentor'
-    // Private mentor phrases
-    if (lower.includes('my profile') || lower.includes('my application') || lower.includes('my eligibility')) return 'mentor'
-    if (lower.includes('what should i do') || lower.includes('what are my next steps')) return 'mentor'
-    // Discovery phrases
-    if (lower.includes('find scholarship') || lower.includes('find scholarships')) return 'discovery'
-    if (lower.includes('phd scholarship') || lower.includes('phd scholarships')) return 'discovery'
-    if (lower.includes('fully funded')) return 'discovery'
-    if (lower.includes('with stipend')) return 'discovery'
-    if (lower.includes('scholarships in') || lower.includes('scholarship in')) return 'discovery'
-    if (lower.includes('deadlines')) return 'discovery'
-    if (lower.includes('search scholarships') || lower.includes('search scholarship')) return 'discovery'
-    // Discovery verbs + scholarship noun
-    const hasVerb = /\b(find|search|browse|show|list|discover|explore|which)\b/.test(lower)
-    const hasNoun = /\b(scholarship|scholarships|opportunity|opportunities|grant|grants|funding)\b/.test(lower)
-    if (hasVerb && hasNoun) return 'discovery'
-    // Degree + funding/location
-    const hasDegree = /\b(phd|doctoral|doctorate|master|masters|bachelor|undergraduate)\b/.test(lower)
-    const hasLocation = /\b(europe|germany|uk|usa|canada|australia|japan|korea|china|india|france|italy|spain|netherlands)\b/.test(lower)
-    if (hasDegree && hasLocation && hasNoun) return 'discovery'
-    return 'mentor'
-  },
-}))
+vi.mock('../services/unifiedAI', async () => {
+  const actual = await vi.importActual('../services/unifiedAI')
+  return {
+    askUnifiedAI: vi.fn(),
+    getAIStatus: vi.fn(async () => ({ mentor: false, remoteAI: false, localAI: false, grounded: true, activeMode: 'grounded' })),
+    formatUnifiedResponse: actual.formatUnifiedResponse,
+    setLocalAIEnabled: vi.fn(),
+    isLocalAIEnabled: vi.fn(() => false),
+    classifyRoute: actual.classifyRoute,
+  }
+})
 vi.mock('../services/aiAssistant', () => ({
   askAIAssistant: vi.fn(async () => ({ answer: 'grounded answer', sources: [], grounded: true })),
   checkAIAvailability: vi.fn(async () => false),
@@ -59,7 +32,7 @@ vi.mock('../services/mentorService', () => ({
   MentorUnauthenticatedError: class extends Error {},
 }))
 
-import { askUnifiedAI, getAIStatus } from '../services/unifiedAI'
+import { askUnifiedAI, getAIStatus, classifyRoute } from '../services/unifiedAI'
 
 function deferred() {
   let resolve
@@ -217,5 +190,11 @@ describe('UnifiedAIPage submission routing', () => {
     await waitFor(() => {
       expect(refreshSession).toHaveBeenCalled()
     })
+  })
+})
+describe('UnifiedAIPage race test classifier parity', () => {
+  it('uses production classifier for first-person disclosure and public discovery', () => {
+    expect(classifyRoute('I have HIV')).toBe('mentor')
+    expect(classifyRoute('Find fully funded scholarships in Germany')).toBe('discovery')
   })
 })
