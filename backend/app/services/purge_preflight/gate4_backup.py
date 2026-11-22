@@ -1715,7 +1715,7 @@ def main() -> int:
         print(f"CONFIGURATION ERROR: {e}", file=sys.stderr)
         return 1
 
-    result = run_gate4(accessor, config.gpg, config.restore_test, config.durable_storage, CANONICAL_TARGET_IDS)
+    result = run_gate4(accessor, config.gpg, config.restore_test, config.durable_storage, target_ids)
 
     # Save results with metadata
     save_result_with_metadata(result.to_dict(), "gate4", "gate4_result.json")

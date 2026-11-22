@@ -243,7 +243,7 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
         for _statement in index_statements():
             connection.execute(text(_statement))
 
-        columns = {column["name"] for column in inspect(engine).get_columns("scholarships")}
+        columns = {column["name"] for column in inspect(connection).get_columns("scholarships")}
         additions = {
             # Backward-compatible URL slugs for legacy links.
             "legacy_id": "INTEGER UNIQUE",
@@ -355,7 +355,7 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
             "ON scholarships (is_archived)"
         ))
 
-        if not inspect(engine).has_table("image_reviews"):
+        if not inspect(connection).has_table("image_reviews"):
             connection.execute(text("""
                 CREATE TABLE IF NOT EXISTS image_reviews (
                     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
@@ -392,7 +392,7 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
 def _upgrade_saved_scholarships_schema(engine: Engine) -> None:
     """Add scholarship_title_snapshot column to saved_scholarships if missing."""
     with engine.begin() as connection:
-        inspector = inspect(engine)
+        inspector = inspect(connection)
         if not inspector.has_table("saved_scholarships"):
             return
         cols = {c["name"] for c in inspector.get_columns("saved_scholarships")}
@@ -404,7 +404,7 @@ def _upgrade_saved_scholarships_schema(engine: Engine) -> None:
 def _upgrade_application_outreach_nullable(engine: Engine) -> None:
     """Make application/outreach/saved scholarship_id nullable for history preservation."""
     with engine.begin() as connection:
-        inspector = inspect(engine)
+        inspector = inspect(connection)
         for table in ("application_records", "professor_outreach_records", "saved_scholarships"):
             if not inspector.has_table(table):
                 continue

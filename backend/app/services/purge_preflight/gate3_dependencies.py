@@ -253,7 +253,7 @@ def main() -> int:
         print(f"CONFIGURATION ERROR: {e}", file=sys.stderr)
         return 1
 
-    result = run_gate3(accessor, CANONICAL_TARGET_IDS)
+    result = run_gate3(accessor, target_ids)
 
     # Save results with metadata
     save_result_with_metadata(result.to_dict(), "gate3", "gate3_result.json")

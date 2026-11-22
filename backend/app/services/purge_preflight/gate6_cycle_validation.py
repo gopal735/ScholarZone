@@ -318,8 +318,13 @@ def run_gate6(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate6Result:
 def main() -> int:
     """CLI entry point for Gate 6."""
     print("=== GATE 6: APPLICATION CYCLE VALIDATION ===")
-    print(f"Target IDs: {CANONICAL_TARGET_IDS}")
-    print(f"Count: {len(CANONICAL_TARGET_IDS)}")
+    import os, json
+    manifest_path = os.environ.get("MANIFEST_PATH", "artifacts/deletion_manifest.json")
+    with open(manifest_path) as f:
+        _m = json.load(f)
+    target_ids = [x["scholarship_id"] for x in _m]
+    print(f"Target IDs from dynamic manifest: {target_ids}")
+    print(f"Count: {len(target_ids)}")
     print()
 
     try:
@@ -329,7 +334,7 @@ def main() -> int:
         print(f"CONFIGURATION ERROR: {e}", file=sys.stderr)
         return 1
 
-    result = run_gate6(accessor, CANONICAL_TARGET_IDS)
+    result = run_gate6(accessor, target_ids)
 
     # Save results with metadata
     save_result_with_metadata(result.to_dict(), "gate6", "gate6_result.json")
