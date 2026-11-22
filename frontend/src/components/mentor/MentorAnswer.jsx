@@ -126,6 +126,8 @@ function DiscoveryResults({ answer }) {
     if (status === 'NO_PUBLIC_CANDIDATES') message = 'No public scholarship candidates available.'
     else if (status === 'NO_DEGREE_MATCHES') message = 'No scholarships match the requested degree level.'
     else if (status === 'NO_REGION_MATCHES') message = 'No scholarships match the requested region.'
+    else if (status === 'UNSUPPORTED_FILTER') message = 'The requested location has no catalogue coverage yet.'
+    else if (status === 'AMBIGUOUS_FILTER') message = 'The location filter is ambiguous; please clarify.'
     else if (status === 'NO_VERIFIED_STIPEND_MATCHES') message = 'No verified stipend matches found; only unverified or excluded records exist.'
     else if (status === 'SEARCH_UNAVAILABLE' || status === 'SEARCH_ERROR') message = 'Search is currently unavailable. Please try again later.'
     return (

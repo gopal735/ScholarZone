@@ -85,7 +85,7 @@ export function normalizeMentorResponse(raw) {
         warnings: Array.isArray(m.warnings) ? m.warnings.filter(w => typeof w === 'string') : [],
       }
     }
-    const allowedSearchStatuses = new Set(['MATCHES_FOUND','POTENTIAL_MATCHES_FOUND','NO_PUBLIC_CANDIDATES','NO_DEGREE_MATCHES','NO_REGION_MATCHES','NO_VERIFIED_STIPEND_MATCHES','SEARCH_UNAVAILABLE','SEARCH_ERROR'])
+    const allowedSearchStatuses = new Set(['MATCHES_FOUND','POTENTIAL_MATCHES_FOUND','NO_PUBLIC_CANDIDATES','NO_DEGREE_MATCHES','NO_REGION_MATCHES','NO_VERIFIED_STIPEND_MATCHES','UNSUPPORTED_FILTER','AMBIGUOUS_FILTER','SEARCH_UNAVAILABLE','SEARCH_ERROR'])
     const rawSearchStatus = typeof raw.search_status === 'string' && allowedSearchStatuses.has(raw.search_status) ? raw.search_status : null
     const known = Array.isArray(raw.known) ? raw.known : []
     const unknown = Array.isArray(raw.unknown) ? raw.unknown : []
@@ -280,20 +280,22 @@ export async function askUnifiedAI(message, options = {}) {
           signal,
         })
         if (!resp.ok) {
-          throw new Error('Discovery request failed')
+          if (resp.status >= 500) throw new Error('SEARCH_UNAVAILABLE')
+          throw new Error('SEARCH_ERROR')
         }
         raw = await resp.json()
       }
+      if (signal?.aborted) throw new DOMException('Aborted', 'AbortError')
       const normalized = normalizeMentorResponse(raw)
       if (normalized) return normalized
-      // Fallback: legacy shape
-      if (raw && typeof raw.answer === 'string' && raw.answer.trim() !== '') {
-        return { ...raw, kind: 'grounded' }
-      }
+      // No legacy fallback. Malformed canonical response is a hard error.
+      throw new Error('SEARCH_ERROR')
     } catch (e) {
       void e
-      if (e && (e.name === 'AbortError' || signal?.aborted)) throw e
-      // Do NOT fall through to legacy keyword-AND search. Surface as search error.
+      if (signal?.aborted) throw new DOMException('Aborted', 'AbortError')
+      if (e && e.name === 'AbortError') throw e
+      if (e && (e.message === 'SEARCH_ERROR' || e.message === 'SEARCH_UNAVAILABLE')) throw e
+      // Network/JSON parse failures are provider outages.
       throw new Error('SEARCH_UNAVAILABLE', { cause: e })
     }
   }
