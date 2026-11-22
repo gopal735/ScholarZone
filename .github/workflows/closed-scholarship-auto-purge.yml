@@ -78,6 +78,16 @@ jobs:
             exit 1
           fi
 
+          # Validate SHA format: exactly 40 lowercase hexadecimal characters.
+          if ! printf '%s' "$EVENT_MERGE_SHA" | grep -Eq '^[0-9a-f]{40}$'; then
+            echo "ERROR: Invalid merge commit SHA format"
+            exit 1
+          fi
+          if ! printf '%s' "$EVENT_HEAD_SHA" | grep -Eq '^[0-9a-f]{40}$'; then
+            echo "ERROR: Invalid head SHA format"
+            exit 1
+          fi
+
           MERGE_COMMIT_SHA="$EVENT_MERGE_SHA"
           HEAD_SHA="$EVENT_HEAD_SHA"
 
