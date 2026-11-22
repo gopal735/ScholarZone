@@ -43,7 +43,7 @@ from .metadata import save_result_with_metadata
 class Gate5Result:
     """Gate 5 execution result."""
     test_name: str = "gate5_classification"
-    total_ids: int = 34
+    total_ids: int = 0
     verified_ids: int = 0
     closed_count: int = 0
     closing_soon_count: int = 0
@@ -158,6 +158,11 @@ def run_gate5(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate5Result:
     """
     result = Gate5Result()
 
+    if not target_ids:
+        result.status = "FAIL"
+        result.error = "NO_TARGETS: empty manifest cannot authorize deletion"
+        return result
+
     try:
         with accessor.connect_readonly() as conn:
             # Fetch all target records
@@ -262,7 +267,7 @@ def run_gate5(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate5Result:
                 return result
 
             # Gate PASS only if: 0 mismatches AND 0 blocked categories AND all 34 IDs reconciled
-            if not validation_result.reconciliation_verified:
+            if not result.reconciliation_verified:
                 result.status = "FAIL"
                 result.error = "Reconciliation not verified: mismatches, missing IDs, or blocked categories exist"
                 return result

@@ -684,7 +684,11 @@ jobs:
         working-directory: backend
         env:
           SCHOLARZONE_ENVIRONMENT: production
-          SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
+      SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
+      EXPECTED_NEON_PROJECT_ID: ${{ secrets.EXPECTED_NEON_PROJECT_ID }}
+      EXPECTED_NEON_BRANCH_ID: ${{ secrets.EXPECTED_NEON_BRANCH_ID }}
+      EXPECTED_NEON_BRANCH_NAME: ${{ secrets.EXPECTED_NEON_BRANCH_NAME }}
+      EXPECTED_DATABASE_NAME: ${{ secrets.EXPECTED_DATABASE_NAME }}
         run: |
           python scripts/build_public_snapshot.py
 

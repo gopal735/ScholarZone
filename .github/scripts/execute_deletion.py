@@ -16,9 +16,13 @@ def _verify_write_identity(db):
             print('ERROR: missing required env ' + var); sys.exit(1)
 
     write_url = os.environ.get("SCHOLARZONE_DATABASE_URL", "")
+    if not write_url:
+        print('ERROR: SCHOLARZONE_DATABASE_URL not set'); sys.exit(1)
     parsed = urlparse(write_url)
     expected_user = parsed.username
     expected_host = parsed.hostname
+    if not expected_host:
+        print('ERROR: invalid database URL host'); sys.exit(1)
 
     try:
         row = db.execute(text("""
@@ -47,14 +51,14 @@ def _verify_write_identity(db):
         print('ERROR: neon branch mismatch'); sys.exit(1)
     if not row["branch_name"] or row["branch_name"] != os.environ["EXPECTED_NEON_BRANCH_NAME"]:
         print('ERROR: neon branch name mismatch'); sys.exit(1)
-    if expected_host and str(row["server_addr"]) not in ("", "None", None) and expected_host != str(row["server_addr"]):
-        # Hostname vs IP: only fail if we can positively compare; otherwise require non-empty
-        pass
     if row["server_addr"] is None or str(row["server_addr"]).strip() == "":
         print('ERROR: database host identity unavailable'); sys.exit(1)
-    if expected_host and str(row["server_addr"]) != expected_host and str(row["server_addr"]) not in expected_host:
-        # Allow IP resolution differences but require the resolved host to be reachable/known
-        pass
+    # Host verification: the configured DSN hostname must be an approved endpoint.
+    # We do not equate DNS hostname to server IP; instead require non-empty server
+    # identity and an explicitly approved hostname suffix.
+    approved_suffixes = (".neon.tech",)
+    if not any(expected_host.endswith(s) for s in approved_suffixes):
+        print('ERROR: unexpected database host: ' + str(expected_host)); sys.exit(1)
 
 def _verify_ledger_schema(db):
     bind = db.get_bind() if hasattr(db, "get_bind") else None
@@ -69,6 +73,13 @@ def _verify_ledger_schema(db):
     required = {"uq_purge_execution_ledger_merge_sha", "uq_purge_execution_ledger_execution_key"}
     if not required.issubset(ucs | unique_index_names):
         print('ERROR: purge_execution_ledger unique constraints missing'); sys.exit(1)
+    # Verify all model columns exist
+    cols = {c["name"] for c in inspector.get_columns("purge_execution_ledger")}
+    required_cols = {"id","pr_number","merge_commit_sha","execution_key","manifest_sha256",
+                     "manifest_schema_version","manifest_target_count","started_at","completed_at",
+                     "execution_status","deleted_count","workflow_run_id","reference_date","audit_metadata"}
+    if not required_cols.issubset(cols):
+        print('ERROR: purge_execution_ledger columns missing'); sys.exit(1)
 
 def main():
     sf = get_session_factory()
@@ -117,6 +128,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-'''
-filePath">
-C:\Users\GopaL\Desktop\Projects folder\ScholarZone\.github\scripts\execute_deletion.py
