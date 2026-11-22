@@ -72,3 +72,40 @@ def test_no_run_and_uses_same_step():
         for step in job.get("steps", []):
             if isinstance(step, dict):
                 assert not ("run" in step and "uses" in step), f"Malformed step in {job_id}"
+
+
+def test_verify_merge_trigger_checks_out_before_verifier():
+    data = yaml.safe_load(WORKFLOW.read_text(encoding="utf-8"))
+    job = data["jobs"]["verify-merge-trigger"]
+    steps = job.get("steps", [])
+    checkout_index = None
+    verifier_index = None
+    for index, step in enumerate(steps):
+        if isinstance(step, dict) and step.get("uses", "").startswith("actions/checkout@"):
+            checkout_index = index
+        if isinstance(step, dict) and "verify_pr_merge_trigger.py" in str(step.get("run", "")):
+            verifier_index = index
+    assert checkout_index is not None, "verify-merge-trigger must check out the repository"
+    assert verifier_index is not None, "verify-merge-trigger must run the verifier"
+    assert checkout_index < verifier_index, "checkout must precede verifier execution"
+
+    checkout_step = steps[checkout_index]
+    assert checkout_step["uses"].startswith("actions/checkout@v4")
+    assert checkout_step.get("with", {}).get("fetch-depth") == 0
+
+def test_verify_merge_trigger_has_python_runtime():
+    data = yaml.safe_load(WORKFLOW.read_text(encoding="utf-8"))
+    job = data["jobs"]["verify-merge-trigger"]
+    steps = job.get("steps", [])
+    assert any(
+        isinstance(step, dict)
+        and step.get("uses", "").startswith("actions/setup-python@")
+        for step in steps
+    ), "verify-merge-trigger must set up Python"
+
+def test_verify_merge_trigger_has_least_privilege_permissions():
+    data = yaml.safe_load(WORKFLOW.read_text(encoding="utf-8"))
+    job = data["jobs"]["verify-merge-trigger"]
+    permissions = job.get("permissions", {})
+    assert permissions.get("contents") == "read"
+    assert permissions.get("pull-requests") == "read"

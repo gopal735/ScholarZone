@@ -23,12 +23,29 @@ jobs:
     name: Verify PR #107 Merge Trigger
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    permissions:
+      contents: read
+      pull-requests: read
     outputs:
       should_run: ${{ steps.check.outputs.should_run }}
       pr_number: ${{ steps.check.outputs.pr_number }}
       merge_commit_sha: ${{ steps.check.outputs.merge_commit_sha }}
       head_sha: ${{ steps.check.outputs.head_sha }}
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Verify verifier exists
+        run: test -f .github/scripts/verify_pr_merge_trigger.py
+
       - name: Verify PR #107 merge conditions
         id: check
         env:
