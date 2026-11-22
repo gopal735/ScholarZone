@@ -16,6 +16,7 @@ const ApplicationsPage = lazy(() => import('./pages/ApplicationsPage'))
 const CountryPage = lazy(() => import('./pages/CountryPage'))
 const UnifiedAIPage = lazy(() => import('./pages/UnifiedAIPage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
+const SupervisorsPage = lazy(() => import('./pages/SupervisorsPage'))
 const BangladeshJourneyPage = lazy(() => import('./features/journey/components/JourneyPage'))
 const JourneyRoutes = lazy(() => import('./features/journey/components/JourneyRoutes'))
 const ItalyDsuGuidePage = lazy(() => import('./pages/ItalyDsuGuidePage'))
@@ -49,6 +50,8 @@ function App() {
         {/* Redirect legacy /mentor to /assistant */}
         <Route path="/mentor" element={<Navigate to="/assistant" replace />} />
         <Route path="/compare" element={<ComparePage />} />
+        {/* Global Supervisor Discovery */}
+        <Route path="/supervisors" element={<SupervisorsPage />} />
         {/* Bangladesh Applicant Journey - shared JourneyProvider via parent route with Outlet */}
         <Route
           element={

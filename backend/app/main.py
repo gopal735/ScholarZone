@@ -27,6 +27,7 @@ from .routers.dashboard import router as dashboard_router
 from .routers.applications import router as applications_router
 from .routers.mentor import router as mentor_router
 from .routers.supervisors import router as supervisors_router
+from .routers.supervisors_global import router as supervisors_global_router
 from .routers.countries import router as countries_router
 from .routers.ai import router as ai_router
 from .services.application_workspace import WorkspaceError
@@ -347,6 +348,8 @@ app.include_router(counts_router)
 # registering it first makes that independence structural rather than dependent on
 # scan order.
 app.include_router(supervisors_router)
+# Global supervisor search router
+app.include_router(supervisors_global_router)
 app.include_router(scholarships_router)
 app.include_router(admin_dashboard_router)
 # Public AI Assistant endpoints. No external provider is required; when

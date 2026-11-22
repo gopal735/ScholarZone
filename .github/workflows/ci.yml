@@ -368,6 +368,8 @@ jobs:
         python scripts/init_schema.py
     - name: Run schema compat check
       run: cd backend && python scripts/schema_compat_check.py 2>&1 | tee schema_compat_check.log
+    - name: Run PostgreSQL supervisor schema validation
+      run: cd backend && python scripts/validate_postgres_schema.py 2>&1 | tee postgresql_supervisor_schema_validation.log
     - name: Verify initialization idempotency
       run: |
         cd backend

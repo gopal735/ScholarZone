@@ -98,6 +98,37 @@ export function fetchContactTemplates({ signal } = {}) {
   return request('/supervisor-email/templates', { signal })
 }
 
+/* ── Global Supervisor Search ───────────────────────────────────────────── */
+
+export function fetchGlobalSupervisors({
+  research_interests = [],
+  degree_levels = [],
+  lifecycle = [],
+  country,
+  institution,
+  contact_types = [],
+  verified_email_only = false,
+  page = 1,
+  page_size = 20,
+  signal,
+} = {}) {
+  return request('/supervisors/search', {
+    method: 'POST',
+    signal,
+    body: {
+      research_interests,
+      degree_levels,
+      lifecycle,
+      country: country || undefined,
+      institution: institution || undefined,
+      contact_types,
+      verified_email_only,
+      page,
+      page_size,
+    },
+  })
+}
+
 /* ── Private ───────────────────────────────────────────────────────────── */
 
 export function fetchOutreach({ status, signal } = {}) {
@@ -151,6 +182,7 @@ export default {
   fetchSupervisors,
   fetchSupervisorSummary,
   fetchContactTemplates,
+  fetchGlobalSupervisors,
   fetchOutreach,
   fetchOutreachSummary,
   startOutreach,
