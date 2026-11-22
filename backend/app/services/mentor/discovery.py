@@ -167,6 +167,8 @@ def _match_from_row(row: Scholarship, classification: str, reason: str, supporti
         warnings.append("Funding is described, but stipend evidence is not established.")
     elif classification == "FUNDING_UNVERIFIED":
         warnings.append("Funding information is unverified.")
+    elif classification == "FUNDING_EVIDENCE_CONFLICT":
+        warnings.append("Funding evidence conflicts across source fields; treat as uncertain.")
     return DiscoveryMatch(
         scholarship_id=row.id,
         title=row.title,
@@ -250,6 +252,7 @@ def run_discovery(db: Session, message: str, as_of: date | None = None, limit: i
     stipend_text_candidates_count = 0
     funding_support_unclear_count = 0
     unverified_count = 0
+    funding_evidence_conflict_count = 0
     eligible_ids: list[int] = []
     while True:
         batch = list(
@@ -279,6 +282,11 @@ def run_discovery(db: Session, message: str, as_of: date | None = None, limit: i
             elif cls == "FUNDING_SUPPORT_CONFIRMED_STIPEND_UNCLEAR":
                 funding_support_unclear_count += 1
                 eligible_ids.append(row.id)
+            elif cls == "FUNDING_EVIDENCE_CONFLICT":
+                funding_evidence_conflict_count += 1
+                # Keep as potential/uncertain; never verified. Exclude only if
+                # the user explicitly asked for a confirmed stipend? Keep visible.
+                eligible_ids.append(row.id)
         boff += batch_size
 
     counts = {
@@ -290,6 +298,7 @@ def run_discovery(db: Session, message: str, as_of: date | None = None, limit: i
         "funding_support_unclear": int(funding_support_unclear_count),
         "funding_unverified": int(unverified_count),
         "explicit_stipend_excluded": int(excluded_count),
+        "funding_evidence_conflict": int(funding_evidence_conflict_count),
     }
 
     # Paginate eligible (non-excluded) population.
@@ -339,7 +348,8 @@ def run_discovery(db: Session, message: str, as_of: date | None = None, limit: i
     elif region_val and region_count == 0:
         status = "NO_REGION_MATCHES"
     elif funding_val == "stipend":
-        if counts["stipend_text_candidates"] > 0 or counts["funding_support_unclear"] > 0:
+        if (counts["stipend_text_candidates"] > 0 or counts["funding_support_unclear"] > 0
+                or counts["funding_evidence_conflict"] > 0):
             status = "POTENTIAL_MATCHES_FOUND"
         else:
             status = "NO_VERIFIED_STIPEND_MATCHES"
@@ -350,6 +360,9 @@ def run_discovery(db: Session, message: str, as_of: date | None = None, limit: i
         else:
             status = "NO_REGION_MATCHES"
 
+    if status in ("UNSUPPORTED_FILTER", "AMBIGUOUS_FILTER"):
+        potential = []
+        evidence = []
     return DiscoveryResult(
         query_summary=query_summary,
         search_status=status,

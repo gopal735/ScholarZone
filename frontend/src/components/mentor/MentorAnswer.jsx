@@ -120,6 +120,17 @@ function DiscoveryResults({ answer }) {
   const potential = Array.isArray(answer?.potential_matches) ? answer.potential_matches : []
   const status = answer?.search_status
   const diagnostics = answer?.diagnostics || {}
+  if (status === 'AMBIGUOUS_FILTER' || status === 'UNSUPPORTED_FILTER') {
+    let message = status === 'AMBIGUOUS_FILTER'
+      ? 'The location filter is ambiguous; please clarify.'
+      : 'The requested location has no catalogue coverage yet.'
+    return (
+      <section className="mentor-answer__section" aria-labelledby="mentor-discovery-heading">
+        <h3 className="mentor-answer__heading" id="mentor-discovery-heading">Scholarship results</h3>
+        <p className="mentor-answer__section-note">{message}</p>
+      </section>
+    )
+  }
   if (verified.length === 0 && potential.length === 0) {
     // Explicit diagnostic empty state instead of silently returning null.
     let message = 'No scholarship matches found.'
@@ -152,7 +163,11 @@ function DiscoveryResults({ answer }) {
           {verified.map((m) => (
             <li key={m.scholarship_id} className="mentor-evidence__item">
               <div className="mentor-evidence__head">
-                <span className="mentor-evidence__label">{m.title}</span>
+                {m.scholarship_id ? (
+                  <Link className="mentor-evidence__label" to={`/scholarships/${m.scholarship_id}`}>{m.title}</Link>
+                ) : (
+                  <span className="mentor-evidence__label">{m.title}</span>
+                )}
               </div>
               <p className="mentor-evidence__value">{m.country} — {m.funding_classification}</p>
               {m.official_source_url ? (
@@ -167,7 +182,11 @@ function DiscoveryResults({ answer }) {
           {potential.map((m) => (
             <li key={m.scholarship_id} className="mentor-evidence__item">
               <div className="mentor-evidence__head">
-                <span className="mentor-evidence__label">{m.title}</span>
+                {m.scholarship_id ? (
+                  <Link className="mentor-evidence__label" to={`/scholarships/${m.scholarship_id}`}>{m.title}</Link>
+                ) : (
+                  <span className="mentor-evidence__label">{m.title}</span>
+                )}
               </div>
               <p className="mentor-evidence__value">{m.country} — {m.funding_classification}</p>
               {Array.isArray(m.warnings) && m.warnings.length > 0 ? (
