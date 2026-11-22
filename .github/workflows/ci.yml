@@ -889,3 +889,105 @@ jobs:
       with:
         name: postgresql-deadline-integration-logs-pg${{ matrix.pg-version }}
         path: backend/deadline_pg_integration.log
+
+
+  actionlint:
+    name: actionlint
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Install pinned actionlint
+      run: |
+        set -euo pipefail
+        version=1.7.7
+        base="https://github.com/rhysd/actionlint/releases/download/v${version}"
+        curl -fsSL "${base}/actionlint_${version}_linux_amd64.tar.gz" -o actionlint.tar.gz
+        curl -fsSL "${base}/actionlint_${version}_checksums.txt" -o checksums.txt
+        grep " actionlint_${version}_linux_amd64.tar.gz$" checksums.txt | sha256sum -c -
+        tar -xzf actionlint.tar.gz actionlint
+        chmod +x actionlint
+        ./actionlint --version
+    - name: Run actionlint
+      run: ./actionlint .github/workflows
+
+
+  closed-deletion-postgresql:
+    name: Closed Deletion PostgreSQL Integration (PostgreSQL ${{ matrix.pg-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        pg-version: ['16', '18']
+      fail-fast: false
+    services:
+      postgres:
+        image: postgres:${{ matrix.pg-version }}
+        env:
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: scholarzone_test
+        ports:
+          - 5440:5432
+        options: >-
+          --health-cmd="pg_isready -U test -d scholarzone_test"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+    env:
+      SCHOLARZONE_ENVIRONMENT: test
+      TEST_POSTGRESQL_URL: postgresql://test:test@localhost:5440/scholarzone_test?sslmode=disable
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: Install system dependencies
+      run: sudo apt-get update && sudo apt-get install -y libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7-dev libtiff5-dev libwebp-dev postgresql-client
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Cache pip dependencies
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+        restore-keys: |
+          Linux-pip-
+    - name: Install dependencies
+      run: cd backend && pip install -r requirements.txt
+    - name: Wait for PostgreSQL to be ready
+      run: |
+        for i in {1..30}; do
+          if pg_isready -h localhost -p 5440 -U test -d scholarzone_test; then
+            echo "PostgreSQL ${{ matrix.pg-version }} is ready"
+            break
+          fi
+          echo "Waiting for PostgreSQL... ($i/30)"
+          sleep 2
+        done
+    - name: Run closed deletion PostgreSQL integration tests
+      run: |
+        cd backend
+        set -o pipefail
+        python -m pytest tests/test_closed_deletion_postgresql.py -q -ra --tb=short 2>&1 | tee closed_deletion_pg.log
+    - name: Verify closed deletion tests executed (not skipped)
+      run: |
+        cd backend
+        if grep -q "SKIPPED" closed_deletion_pg.log; then
+          echo "ERROR: closed deletion PostgreSQL tests were SKIPPED"
+          cat closed_deletion_pg.log
+          exit 1
+        fi
+        if ! grep -q "passed" closed_deletion_pg.log; then
+          echo "ERROR: closed deletion PostgreSQL tests did not pass"
+          cat closed_deletion_pg.log
+          exit 1
+        fi
+        echo "Closed deletion PostgreSQL tests executed and passed"
+    - name: Upload closed deletion PostgreSQL logs
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: closed-deletion-postgresql-logs-pg${{ matrix.pg-version }}
+        path: backend/closed_deletion_pg.log

@@ -33,73 +33,24 @@ jobs:
         id: check
         env:
           EVENT_REPOSITORY: ${{ github.repository }}
+          EVENT_ACTION: ${{ github.event.action }}
           EVENT_NUMBER: ${{ github.event.number }}
           EVENT_MERGED: ${{ github.event.pull_request.merged }}
+          EVENT_BASE_REPOSITORY: ${{ github.event.pull_request.base.repo.full_name }}
           EVENT_BASE_REF: ${{ github.event.pull_request.base.ref }}
+          EVENT_HEAD_REPOSITORY: ${{ github.event.pull_request.head.repo.full_name }}
           EVENT_HEAD_REF: ${{ github.event.pull_request.head.ref }}
           EVENT_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
           EVENT_MERGE_SHA: ${{ github.event.pull_request.merge_commit_sha }}
-        run: |
-          if [ "$EVENT_REPOSITORY" != "gopal735/ScholarZone" ]; then
-            echo "ERROR: Wrong repository: $EVENT_REPOSITORY"
-            exit 1
-          fi
-
-          if [ "$EVENT_NUMBER" != "107" ]; then
-            echo "should_run=false" >> $GITHUB_OUTPUT
-            echo "pr_number=$EVENT_NUMBER" >> $GITHUB_OUTPUT
-            exit 0
-          fi
-
-          if [ "$EVENT_MERGED" != "true" ]; then
-            echo "should_run=false" >> $GITHUB_OUTPUT
-            echo "pr_number=107" >> $GITHUB_OUTPUT
-            echo "PR #107 was closed but not merged"
-            exit 0
-          fi
-
-          if [ "$EVENT_BASE_REF" != "master" ]; then
-            echo "ERROR: Base branch is not master"
-            exit 1
-          fi
-
-          if [ "$EVENT_HEAD_REF" != "feat/closed-scholarship-permanent-deletion" ]; then
-            echo "ERROR: Unexpected feature branch: $EVENT_HEAD_REF"
-            exit 1
-          fi
-
-          if [ -z "$EVENT_MERGE_SHA" ] || [ "$EVENT_MERGE_SHA" = "null" ]; then
-            echo "ERROR: Merge commit SHA not available"
-            exit 1
-          fi
-
-          if [ -z "$EVENT_HEAD_SHA" ] || [ "$EVENT_HEAD_SHA" = "null" ]; then
-            echo "ERROR: Head SHA not available"
-            exit 1
-          fi
-
-          # Validate SHA format: exactly 40 lowercase hexadecimal characters.
-          if ! printf '%s' "$EVENT_MERGE_SHA" | grep -Eq '^[0-9a-f]{40}$'; then
-            echo "ERROR: Invalid merge commit SHA format"
-            exit 1
-          fi
-          if ! printf '%s' "$EVENT_HEAD_SHA" | grep -Eq '^[0-9a-f]{40}$'; then
-            echo "ERROR: Invalid head SHA format"
-            exit 1
-          fi
-
-          MERGE_COMMIT_SHA="$EVENT_MERGE_SHA"
-          HEAD_SHA="$EVENT_HEAD_SHA"
-
-          echo "should_run=true" >> $GITHUB_OUTPUT
-          echo "pr_number=107" >> $GITHUB_OUTPUT
-          echo "merge_commit_sha=$MERGE_COMMIT_SHA" >> $GITHUB_OUTPUT
-          echo "head_sha=$HEAD_SHA" >> $GITHUB_OUTPUT
-
-          echo "PR #107 merge verified:"
-          echo "  Merge commit: $MERGE_COMMIT_SHA"
-          echo "  Head SHA: $HEAD_SHA"
-          echo "  Base: master"
+          EXPECTED_PR_NUMBER: "107"
+          EXPECTED_REPOSITORY: "gopal735/ScholarZone"
+          EXPECTED_BASE_REPOSITORY: "gopal735/ScholarZone"
+          EXPECTED_BASE_REF: "master"
+          EXPECTED_HEAD_REPOSITORY: "gopal735/ScholarZone"
+          EXPECTED_HEAD_REF: "feat/closed-scholarship-permanent-deletion"
+          GITHUB_API_URL: ${{ github.api_url }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python .github/scripts/verify_pr_merge_trigger.py
 
       - name: Verify workflow revision matches merged PR
         if: steps.check.outputs.should_run == 'true'
