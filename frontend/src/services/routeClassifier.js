@@ -173,7 +173,10 @@ export function classifyRoute(message) {
     return 'mentor'; // default to private for safety
   }
 
-  const lower = message.toLowerCase().trim();
+  // Normalize typographic apostrophes (U+2018, U+2019) to ASCII apostrophes
+  // before classification so contraction patterns (e.g. "I'm pregnant") match.
+  const normalized = message.replace(/[\u2018\u2019]/g, "'");
+  const lower = normalized.toLowerCase().trim();
   if (!lower) {
     return 'mentor';
   }
@@ -181,7 +184,7 @@ export function classifyRoute(message) {
   // Phase 1: Check first-person eligibility patterns (highest priority)
   // These indicate private mentor intent even when discovery words are present
   for (const pattern of PRIVATE_ELIGIBILITY_PATTERNS) {
-    if (pattern.test(message)) {
+    if (pattern.test(normalized)) {
       return 'mentor';
     }
   }
@@ -189,7 +192,7 @@ export function classifyRoute(message) {
   // Phase 1b: Check personal disclosure patterns (health, financial, legal, etc.)
   // These indicate private mentor intent even when discovery words are present
   for (const pattern of PERSONAL_DISCLOSURE_PATTERNS) {
-    if (pattern.test(message)) {
+    if (pattern.test(normalized)) {
       return 'mentor';
     }
   }

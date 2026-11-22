@@ -103,6 +103,14 @@ describe('routeClassifier', () => {
     it('classifies "Find scholarships; I am pregnant" as mentor', () => {
       expect(classifyRoute('Find scholarships; I am pregnant')).toBe('mentor')
     })
+
+    it('classifies "Find scholarships; I’m pregnant" (U+2019) as mentor', () => {
+      expect(classifyRoute('Find scholarships; I\u2019m pregnant')).toBe('mentor')
+    })
+
+    it('classifies "Find scholarships; I‘m pregnant" (U+2018) as mentor', () => {
+      expect(classifyRoute('Find scholarships; I\u2018m pregnant')).toBe('mentor')
+    })
   })
 
   describe('edge cases', () => {
