@@ -228,7 +228,9 @@ jobs:
       - name: Install dependencies
         run: |
           pip install psycopg2-binary --quiet
-          pip install -r backend/requirements.txt --quiet      - name: Download Manifest Artifact
+          pip install -r backend/requirements.txt --quiet
+
+      - name: Download Manifest Artifact
         uses: actions/download-artifact@v4
         with:
           name: deletion-manifest
@@ -360,7 +362,9 @@ jobs:
       - name: Install dependencies
         run: |
           pip install psycopg2-binary --quiet
-          pip install -r backend/requirements.txt --quiet      - name: Download Manifest Artifact
+          pip install -r backend/requirements.txt --quiet
+
+      - name: Download Manifest Artifact
         uses: actions/download-artifact@v4
         with:
           name: deletion-manifest
@@ -408,7 +412,9 @@ jobs:
       - name: Install dependencies
         run: |
           pip install psycopg2-binary --quiet
-          pip install -r backend/requirements.txt --quiet      - name: Download Manifest Artifact
+          pip install -r backend/requirements.txt --quiet
+
+      - name: Download Manifest Artifact
         uses: actions/download-artifact@v4
         with:
           name: deletion-manifest
@@ -595,6 +601,10 @@ jobs:
     env:
       SCHOLARZONE_ENVIRONMENT: production
       SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
+      EXPECTED_NEON_PROJECT_ID: ${{ secrets.EXPECTED_NEON_PROJECT_ID }}
+      EXPECTED_NEON_BRANCH_ID: ${{ secrets.EXPECTED_NEON_BRANCH_ID }}
+      EXPECTED_NEON_BRANCH_NAME: ${{ secrets.EXPECTED_NEON_BRANCH_NAME }}
+      EXPECTED_DATABASE_NAME: ${{ secrets.EXPECTED_DATABASE_NAME }}
     outputs:
       deleted_count: ${{ steps.deletion.outputs.deleted_count }}
       report_path: ${{ steps.deletion.outputs.report_path }}
@@ -684,11 +694,7 @@ jobs:
         working-directory: backend
         env:
           SCHOLARZONE_ENVIRONMENT: production
-      SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
-      EXPECTED_NEON_PROJECT_ID: ${{ secrets.EXPECTED_NEON_PROJECT_ID }}
-      EXPECTED_NEON_BRANCH_ID: ${{ secrets.EXPECTED_NEON_BRANCH_ID }}
-      EXPECTED_NEON_BRANCH_NAME: ${{ secrets.EXPECTED_NEON_BRANCH_NAME }}
-      EXPECTED_DATABASE_NAME: ${{ secrets.EXPECTED_DATABASE_NAME }}
+          SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
         run: |
           python scripts/build_public_snapshot.py
 
