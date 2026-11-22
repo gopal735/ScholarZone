@@ -415,8 +415,15 @@ function extractKeywords(question) {
     "we'd", "they'd", "i'll", "you'll", "he'll", "she'll", "we'll", "they'll",
     "isn't", "aren't", "wasn't", "weren't", "hasn't", "haven't", "hadn't",
     "doesn't", "don't", "didn't", "won't", "wouldn't", "shan't", "shouldn't",
+    'don', 'should',
+    'now', "i'm", "you're", "he's", "she's", "it's", "we're", "they're",
+    "i've", "you've", "we've", "they've", "i'd", "you'd", "he'd", "she'd",
+    "we'd", "they'd", "i'll", "you'll", "he'll", "she'll", "we'll", "they'll",
+    "isn't", "aren't", "wasn't", "weren't", "hasn't", "haven't", "hadn't",
+    "doesn't", "don't", "didn't", "won't", "wouldn't", "shan't", "shouldn't",
     "can't", "cannot", "couldn't", "mustn't", "let's", "that's", "who's",
-    "what's", "here's", "there's", "when's", "where's", "why's", "how's"
+    "what's", "here's", "there's", "when's", "where's", "why's", "how's",
+    'find', 'search', 'browse', 'show', 'list', 'discover', 'explore', 'looking', 'look'
   ]);
   
   return question

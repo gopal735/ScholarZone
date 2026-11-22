@@ -6,13 +6,17 @@ import { useState } from 'react'
 import { AuthContext } from '../context/authContext'
 import UnifiedAIPage from './UnifiedAIPage'
 
-vi.mock('../services/unifiedAI', () => ({
-  askUnifiedAI: vi.fn(),
-  getAIStatus: vi.fn(async () => ({ mentor: false, remoteAI: false, localAI: false, grounded: true, activeMode: 'grounded' })),
-  formatUnifiedResponse: (r, mode) => ({ answer: r.answer, sources: r.sources || [], grounded: r.grounded ?? true, model: r.model, tokensUsed: r.tokensUsed, sourceType: mode === 'mentor' ? 'mentor' : 'grounded', label: mode === 'mentor' ? 'Grounded Mentor' : 'Grounded Search' }),
-  setLocalAIEnabled: vi.fn(),
-  isLocalAIEnabled: vi.fn(() => false),
-}))
+vi.mock('../services/unifiedAI', async () => {
+  const actual = await vi.importActual('../services/unifiedAI')
+  return {
+    askUnifiedAI: vi.fn(),
+    getAIStatus: vi.fn(async () => ({ mentor: false, remoteAI: false, localAI: false, grounded: true, activeMode: 'grounded' })),
+    formatUnifiedResponse: actual.formatUnifiedResponse,
+    setLocalAIEnabled: vi.fn(),
+    isLocalAIEnabled: vi.fn(() => false),
+    classifyRoute: actual.classifyRoute,
+  }
+})
 vi.mock('../services/aiAssistant', () => ({
   askAIAssistant: vi.fn(async () => ({ answer: 'grounded answer', sources: [], grounded: true })),
   checkAIAvailability: vi.fn(async () => false),
@@ -28,7 +32,7 @@ vi.mock('../services/mentorService', () => ({
   MentorUnauthenticatedError: class extends Error {},
 }))
 
-import { askUnifiedAI, getAIStatus } from '../services/unifiedAI'
+import { askUnifiedAI, getAIStatus, classifyRoute } from '../services/unifiedAI'
 
 function deferred() {
   let resolve
@@ -186,5 +190,11 @@ describe('UnifiedAIPage submission routing', () => {
     await waitFor(() => {
       expect(refreshSession).toHaveBeenCalled()
     })
+  })
+})
+describe('UnifiedAIPage race test classifier parity', () => {
+  it('uses production classifier for first-person disclosure and public discovery', () => {
+    expect(classifyRoute('I have HIV')).toBe('mentor')
+    expect(classifyRoute('Find fully funded scholarships in Germany')).toBe('discovery')
   })
 })
