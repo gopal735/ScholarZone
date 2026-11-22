@@ -31,47 +31,55 @@ jobs:
     steps:
       - name: Verify PR #107 merge conditions
         id: check
+        env:
+          EVENT_REPOSITORY: ${{ github.repository }}
+          EVENT_NUMBER: ${{ github.event.number }}
+          EVENT_MERGED: ${{ github.event.pull_request.merged }}
+          EVENT_BASE_REF: ${{ github.event.pull_request.base.ref }}
+          EVENT_HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          EVENT_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          EVENT_MERGE_SHA: ${{ github.event.pull_request.merge_commit_sha }}
         run: |
-          if [ "${{ github.repository }}" != "gopal735/ScholarZone" ]; then
-            echo "ERROR: Wrong repository: ${{ github.repository }}"
+          if [ "$EVENT_REPOSITORY" != "gopal735/ScholarZone" ]; then
+            echo "ERROR: Wrong repository: $EVENT_REPOSITORY"
             exit 1
           fi
 
-          if [ "${{ github.event.number }}" != "107" ]; then
+          if [ "$EVENT_NUMBER" != "107" ]; then
             echo "should_run=false" >> $GITHUB_OUTPUT
-            echo "pr_number=${{ github.event.number }}" >> $GITHUB_OUTPUT
+            echo "pr_number=$EVENT_NUMBER" >> $GITHUB_OUTPUT
             exit 0
           fi
 
-          if [ "${{ github.event.pull_request.merged }}" != "true" ]; then
+          if [ "$EVENT_MERGED" != "true" ]; then
             echo "should_run=false" >> $GITHUB_OUTPUT
             echo "pr_number=107" >> $GITHUB_OUTPUT
             echo "PR #107 was closed but not merged"
             exit 0
           fi
 
-          if [ "${{ github.event.pull_request.base.ref }}" != "master" ]; then
+          if [ "$EVENT_BASE_REF" != "master" ]; then
             echo "ERROR: Base branch is not master"
             exit 1
           fi
 
-          HEAD_BRANCH="${{ github.event.pull_request.head.ref }}"
-          if [ "$HEAD_BRANCH" != "feat/closed-scholarship-permanent-deletion" ]; then
-            echo "ERROR: Unexpected feature branch: $HEAD_BRANCH"
+          if [ "$EVENT_HEAD_REF" != "feat/closed-scholarship-permanent-deletion" ]; then
+            echo "ERROR: Unexpected feature branch: $EVENT_HEAD_REF"
             exit 1
           fi
 
-          MERGE_COMMIT_SHA="${{ github.event.pull_request.merge_commit_sha }}"
-          if [ -z "$MERGE_COMMIT_SHA" ] || [ "$MERGE_COMMIT_SHA" = "null" ]; then
+          if [ -z "$EVENT_MERGE_SHA" ] || [ "$EVENT_MERGE_SHA" = "null" ]; then
             echo "ERROR: Merge commit SHA not available"
             exit 1
           fi
 
-          HEAD_SHA="${{ github.event.pull_request.head.sha }}"
-          if [ -z "$HEAD_SHA" ] || [ "$HEAD_SHA" = "null" ]; then
+          if [ -z "$EVENT_HEAD_SHA" ] || [ "$EVENT_HEAD_SHA" = "null" ]; then
             echo "ERROR: Head SHA not available"
             exit 1
           fi
+
+          MERGE_COMMIT_SHA="$EVENT_MERGE_SHA"
+          HEAD_SHA="$EVENT_HEAD_SHA"
 
           echo "should_run=true" >> $GITHUB_OUTPUT
           echo "pr_number=107" >> $GITHUB_OUTPUT
