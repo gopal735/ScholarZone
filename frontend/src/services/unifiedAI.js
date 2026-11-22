@@ -131,6 +131,13 @@ export function normalizeMentorResponse(raw) {
         provider_used: typeof raw.provider_used === 'boolean' ? raw.provider_used : false,
         supported_intents: validatedSupportedIntents,
         redirects: validatedRedirects,
+        answer_schema_version: typeof raw.answer_schema_version === 'number' ? raw.answer_schema_version : 1,
+        search_status: typeof raw.search_status === 'string' ? raw.search_status : null,
+        query_summary: (raw.query_summary && typeof raw.query_summary === 'object') ? raw.query_summary : null,
+        result_count: typeof raw.result_count === 'number' ? raw.result_count : 0,
+        verified_matches: Array.isArray(raw.verified_matches) ? raw.verified_matches : [],
+        potential_matches: Array.isArray(raw.potential_matches) ? raw.potential_matches : [],
+        diagnostics: (raw.diagnostics && typeof raw.diagnostics === 'object') ? raw.diagnostics : {},
       },
       grounded: true,
     }

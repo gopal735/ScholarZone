@@ -112,6 +112,53 @@ function NextActions({ actions }) {
   )
 }
 
+
+function DiscoveryResults({ answer }) {
+  const verified = Array.isArray(answer?.verified_matches) ? answer.verified_matches : []
+  const potential = Array.isArray(answer?.potential_matches) ? answer.potential_matches : []
+  if (verified.length === 0 && potential.length === 0) return null
+  return (
+    <section className="mentor-answer__section" aria-labelledby="mentor-discovery-heading">
+      <h3 className="mentor-answer__heading" id="mentor-discovery-heading">
+        Scholarship results
+      </h3>
+      {verified.length > 0 ? (
+        <ul className="mentor-evidence">
+          {verified.map((m) => (
+            <li key={m.scholarship_id} className="mentor-evidence__item">
+              <div className="mentor-evidence__head">
+                <span className="mentor-evidence__label">{m.title}</span>
+              </div>
+              <p className="mentor-evidence__value">{m.country} — {m.funding_classification}</p>
+              {m.official_source_url ? (
+                <a href={m.official_source_url} target="_blank" rel="noreferrer">Official source</a>
+              ) : null}
+            </li>
+          ))}
+        </ul>
+      ) : null}
+      {potential.length > 0 ? (
+        <ul className="mentor-evidence">
+          {potential.map((m) => (
+            <li key={m.scholarship_id} className="mentor-evidence__item">
+              <div className="mentor-evidence__head">
+                <span className="mentor-evidence__label">{m.title}</span>
+              </div>
+              <p className="mentor-evidence__value">{m.country} — {m.funding_classification}</p>
+              {Array.isArray(m.warnings) && m.warnings.length > 0 ? (
+                <p className="mentor-answer__section-note">{m.warnings.join(' ')}</p>
+              ) : null}
+              {m.official_source_url ? (
+                <a href={m.official_source_url} target="_blank" rel="noreferrer">Official source</a>
+              ) : null}
+            </li>
+          ))}
+        </ul>
+      ) : null}
+    </section>
+  )
+}
+
 export default function MentorAnswer({ answer }) {
   const source = sourceLabel(answer)
 
@@ -160,6 +207,8 @@ export default function MentorAnswer({ answer }) {
           </ul>
         </section>
       ) : null}
+
+      <DiscoveryResults answer={answer} />
 
       {answer.caveats && answer.caveats.length > 0 ? (
         <section className="mentor-answer__section" aria-labelledby="mentor-caveat-heading">

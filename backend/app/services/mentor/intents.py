@@ -22,6 +22,7 @@ from .guards import MAX_MESSAGE_LENGTH, contains_injection_marker, normalize_mes
 #: Ordered. When two intents score identically the earlier entry wins, which is
 #: what makes ties deterministic rather than dependent on dict ordering.
 INTENT_ORDER: tuple[str, ...] = (
+    "SCHOLARSHIP_DISCOVERY",
     "NEXT_ACTION",
     "DEADLINE",
     "APPLICATION_PROGRESS",
@@ -36,6 +37,7 @@ INTENT_ORDER: tuple[str, ...] = (
 )
 
 INTENT_LABELS: dict[str, str] = {
+    "SCHOLARSHIP_DISCOVERY": "Find scholarships",
     "NEXT_ACTION": "What to do next",
     "SCHOLARSHIP_EXPLANATION": "Why this scholarship fits",
     "MATCH_EXPLANATION": "Reading your match",
@@ -53,6 +55,30 @@ INTENT_LABELS: dict[str, str] = {
 #: are deliberate: "what next" and "next steps" are how people actually ask,
 #: while a bare "next" would capture unrelated sentences.
 _PHRASES: dict[str, tuple[str, ...]] = {
+    "SCHOLARSHIP_DISCOVERY": (
+        "find scholarship",
+        "find scholarships",
+        "search scholarship",
+        "search scholarships",
+        "show scholarship",
+        "show scholarships",
+        "scholarships for",
+        "scholarships in",
+        "scholarships with",
+        "phd scholarships",
+        "doctoral scholarships",
+        "phd funding",
+        "scholarships with stipend",
+        "stipend in",
+        "opportunities in",
+        "opportunities for",
+        "opportunities with",
+        "স্কলারশিপ খুঁজ",
+        "বৃত্তি খুঁজ",
+        "scholarship ase",
+        "stipend chai",
+        "khuje dao",
+    ),
     "NEXT_ACTION": (
         "what should i do",
         "what do i do",
