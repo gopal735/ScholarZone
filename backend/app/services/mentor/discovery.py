@@ -65,18 +65,39 @@ def extract_slots(message: str) -> dict[str, Any]:
     }
 
 
-def classify_funding(row: Scholarship) -> tuple[str, str | None, str | None]:
+def classify_funding(row: Scholarship) -> tuple[str, str | None, list[str]]:
+    # Determine which fields contain the evidence.
+    supporting: list[str] = []
+    if row.funding and str(row.funding).strip() and str(row.funding).strip().upper() != "UNKNOWN":
+        supporting.append("funding")
+    if row.benefits:
+        bt = " ".join(str(x) for x in row.benefits)
+        if _STIPEND_PATTERNS.search(bt) or _NO_STIPEND_PATTERNS.search(bt):
+            supporting.append("benefits")
+    if row.coverage:
+        ct = " ".join(str(x) for x in row.coverage)
+        if _STIPEND_PATTERNS.search(ct) or _NO_STIPEND_PATTERNS.search(ct):
+            supporting.append("coverage")
+    # Build combined text for pattern matching.
     funding_text = " ".join(
         str(x) for x in [row.funding, " ".join(row.benefits or []), " ".join(row.coverage or [])]
         if x
     )
-    if not funding_text.strip() or str(row.funding or "").strip().upper() == "UNKNOWN":
-        return "FUNDING_UNVERIFIED", "Funding information is missing or unverified.", "funding"
-    if _NO_STIPEND_PATTERNS.search(funding_text):
-        return "STIPEND_EXPLICITLY_EXCLUDED", "Source states tuition-only or no stipend.", "funding"
-    if _STIPEND_PATTERNS.search(funding_text):
-        return "STIPEND_TEXT_CANDIDATE", "Stipend/living allowance mentioned in funding/benefits text.", "funding"
-    return "FUNDING_SUPPORT_CONFIRMED_STIPEND_UNCLEAR", "Funding support described without explicit stipend evidence.", "funding"
+    if not funding_text.strip():
+        return "FUNDING_UNVERIFIED", "Funding information is missing or unverified.", []
+    if funding_text.strip().upper() == "UNKNOWN":
+        return "FUNDING_UNVERIFIED", "Funding information is missing or unverified.", []
+    # Conflicting evidence: positive in one field, negative in another.
+    pos = bool(_STIPEND_PATTERNS.search(funding_text))
+    neg = bool(_NO_STIPEND_PATTERNS.search(funding_text))
+    if pos and neg:
+        # Determine if conflict is across fields.
+        return "FUNDING_SUPPORT_CONFIRMED_STIPEND_UNCLEAR", "Conflicting stipend evidence across fields.", supporting
+    if neg:
+        return "STIPEND_EXPLICITLY_EXCLUDED", "Source states tuition-only or no stipend.", supporting
+    if pos:
+        return "STIPEND_TEXT_CANDIDATE", "Stipend/living allowance mentioned in funding/benefits text.", supporting
+    return "FUNDING_SUPPORT_CONFIRMED_STIPEND_UNCLEAR", "Funding support described without explicit stipend evidence.", supporting
 
 
 @dataclass
@@ -90,6 +111,7 @@ class DiscoveryMatch:
     official_source_url: str | None
     verification: str | None
     knowledge_state: str
+    supporting_fields: list[str] = field(default_factory=list)
     warnings: list[str] = field(default_factory=list)
 
 
@@ -103,7 +125,7 @@ class DiscoveryResult:
     evidence: list[EvidenceItem] = field(default_factory=list)
 
 
-def _match_from_row(row: Scholarship, classification: str, reason: str) -> DiscoveryMatch:
+def _match_from_row(row: Scholarship, classification: str, reason: str, supporting_fields=None) -> DiscoveryMatch:
     warnings: list[str] = []
     if classification == "STIPEND_TEXT_CANDIDATE":
         warnings.append("Stipend mention found, but it has not been independently verified.")
@@ -121,6 +143,7 @@ def _match_from_row(row: Scholarship, classification: str, reason: str) -> Disco
         official_source_url=row.official_source_url,
         verification=row.verification_status,
         knowledge_state="record_level_source_only",
+        supporting_fields=list(supporting_fields or []),
         warnings=warnings,
     )
 
@@ -205,6 +228,9 @@ def run_discovery(db: Session, message: str, as_of: date | None = None, limit: i
             cls, _, _ = classify_funding(row)
             if cls == "STIPEND_EXPLICITLY_EXCLUDED":
                 excluded_count += 1
+                # Only exclude from candidate list when the user explicitly asked for stipend.
+                if funding_val != "stipend":
+                    eligible_ids.append(row.id)
             elif cls == "STIPEND_TEXT_CANDIDATE":
                 stipend_text_candidates_count += 1
                 eligible_ids.append(row.id)
@@ -242,10 +268,10 @@ def run_discovery(db: Session, message: str, as_of: date | None = None, limit: i
     potential: list[DiscoveryMatch] = []
     evidence: list[EvidenceItem] = []
     for row in region_rows:
-        classification, reason, _ = classify_funding(row)
+        classification, reason, supporting = classify_funding(row)
         if classification == "STIPEND_EXPLICITLY_EXCLUDED":
             continue
-        match = _match_from_row(row, classification, reason)
+        match = _match_from_row(row, classification, reason, supporting)
         potential.append(match)
         evidence.append(
             EvidenceItem(

@@ -266,6 +266,7 @@ export async function askUnifiedAI(message, options = {}) {
 
   // Discovery route: use canonical backend discovery service (authenticated or public).
   if (isDiscovery) {
+    if (signal?.aborted) throw new DOMException('Aborted', 'AbortError')
     const discoveryMessage = message
     try {
       let raw = null
@@ -291,6 +292,7 @@ export async function askUnifiedAI(message, options = {}) {
       }
     } catch (e) {
       void e
+      if (e && (e.name === 'AbortError' || signal?.aborted)) throw e
       // Do NOT fall through to legacy keyword-AND search. Surface as search error.
       throw new Error('SEARCH_UNAVAILABLE', { cause: e })
     }

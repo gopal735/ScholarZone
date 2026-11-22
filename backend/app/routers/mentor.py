@@ -223,6 +223,7 @@ def post_discovery(
                 "official_source_url": m.official_source_url,
                 "verification": m.verification,
                 "knowledge_state": m.knowledge_state,
+                "supporting_fields": list(getattr(m, "supporting_fields", []) or []),
                 "warnings": list(m.warnings),
             }
             for m in discovery.potential_matches

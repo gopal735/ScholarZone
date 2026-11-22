@@ -114,6 +114,8 @@ function NextActions({ actions }) {
 
 
 function DiscoveryResults({ answer }) {
+  // Only render for discovery answers (search_status present).
+  if (!answer || !answer.search_status) return null
   const verified = Array.isArray(answer?.verified_matches) ? answer.verified_matches : []
   const potential = Array.isArray(answer?.potential_matches) ? answer.potential_matches : []
   const status = answer?.search_status
