@@ -419,20 +419,37 @@ def _find_existing_scholarship(session: Session, record: ScholarshipIngestionRec
     return legacy_candidates[0] if legacy_candidates else None
 
 
+def _normalize_tombstone_url(url):
+    if not url:
+        return None
+    u = str(url).strip().rstrip("/")
+    return u.lower() if u else None
+
+
 def _is_tombstoned(session: Session, record: ScholarshipIngestionRecord) -> bool:
-    urls = {record.official_source_url, f"{record.official_source_url}/"}
-    existing = session.scalar(
-        select(DeletedClosedScholarship).where(
-            (DeletedClosedScholarship.official_source_url.in_(urls))
-            | (DeletedClosedScholarship.application_link.in_(urls))
-        )
-    )
-    if existing is not None:
-        return True
-    if record.legacy_titles:
-        titles = session.scalars(select(DeletedClosedScholarship.title)).all()
-        lower = {t.lower() for t in titles if t}
-        if any(str(lt).lower() in lower for lt in record.legacy_titles):
+    urls = set()
+    for u in (getattr(record, "official_source_url", None), getattr(record, "application_link", None)):
+        nu = _normalize_tombstone_url(u)
+        if nu:
+            urls.add(nu)
+    tombstones = session.scalars(select(DeletedClosedScholarship)).all()
+    for ts in tombstones:
+        ts_urls = set()
+        for u in (ts.official_source_url, ts.application_link):
+            nu = _normalize_tombstone_url(u)
+            if nu:
+                ts_urls.add(nu)
+        if urls and (urls & ts_urls):
+            return True
+        fp = getattr(record, "record_fingerprint", None)
+        if fp and getattr(ts, "record_fingerprint", None) and fp == ts.record_fingerprint:
+            return True
+    if not urls:
+        titles = {str(t).strip().lower() for t in (getattr(record, "legacy_titles", None) or [])}
+        if getattr(record, "name", None):
+            titles.add(str(record.name).strip().lower())
+        ts_titles = {str(t).strip().lower() for t in [x.title for x in tombstones] if t}
+        if titles and (titles & ts_titles):
             return True
     return False
 

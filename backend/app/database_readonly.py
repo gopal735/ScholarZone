@@ -1,17 +1,27 @@
 """Read-only SQLAlchemy engine and session for production manifest operations."""
 
 import logging
+import os
 from functools import lru_cache
 from sqlalchemy import create_engine, event, text
 from sqlalchemy.orm import Session, sessionmaker
-from .core.config import get_settings
 
 logger = logging.getLogger(__name__)
 
 
+def _readonly_database_url() -> str:
+    url = os.getenv("SCHOLARZONE_DATABASE_URL_RO", "").strip()
+    if not url:
+        raise RuntimeError(
+            "SCHOLARZONE_DATABASE_URL_RO is required for read-only database access. "
+            "Configure a read-only PostgreSQL (Neon) connection string."
+        )
+    return url
+
+
 @lru_cache
 def get_readonly_engine():
-    database_url = get_settings().database_url
+    database_url = _readonly_database_url()
     if database_url.startswith("postgresql://"):
         database_url = "postgresql+psycopg://" + database_url[len("postgresql://"):]
     connect_args = {"check_same_thread": False} if database_url.startswith("sqlite") else {}
@@ -26,9 +36,9 @@ def get_readonly_engine():
 
     @event.listens_for(engine, "before_cursor_execute")
     def _enforce_readonly(conn, cursor, statement, parameters, context, executemany):
-        stmt_upper = statement.strip().upper()
+        stmt_upper = (statement or "").strip().upper()
         if stmt_upper.startswith(('INSERT', 'UPDATE', 'DELETE', 'CREATE', 'ALTER', 'DROP',
-                                   'TRUNCATE', 'COPY', 'GRANT', 'REVOKE', 'LOCK')):
+                                   'TRUNCATE', 'COPY', 'GRANT', 'REVOKE', 'LOCK', 'MERGE')):
             raise RuntimeError(
                 f"READ-ONLY VIOLATION: Write operation blocked: {statement[:200]}"
             )
@@ -36,7 +46,20 @@ def get_readonly_engine():
     if database_url.startswith("postgresql"):
         @event.listens_for(engine, "connect")
         def set_readonly(conn, record):
-            conn.exec_driver_sql("SET DEFAULT_TRANSACTION_READ_ONLY = on")
+            cur = conn.cursor()
+            try:
+                cur.execute("SET DEFAULT_TRANSACTION_READ_ONLY = on")
+            finally:
+                cur.close()
+
+    if database_url.startswith("sqlite"):
+        @event.listens_for(engine, "connect")
+        def set_sqlite_query_only(conn, record):
+            cur = conn.cursor()
+            try:
+                cur.execute("PRAGMA query_only=ON")
+            finally:
+                cur.close()
 
     return engine
 
@@ -59,5 +82,5 @@ def get_readonly_session():
 def init_readonly_database():
     engine = get_readonly_engine()
     with engine.connect() as conn:
-        conn.exec_driver_sql("SELECT 1")
+        conn.execute(text("SELECT 1"))
     logger.info("Read-only database connection verified")

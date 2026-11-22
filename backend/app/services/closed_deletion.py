@@ -597,8 +597,14 @@ def execute_deletion(db: Session, manifest: List[ClosedScholarshipManifest], dry
             db.execute(delete(ImageReview).where(ImageReview.scholarship_id == sid))
             db.execute(delete(ScholarshipRestoreRecord).where(ScholarshipRestoreRecord.scholarship_id == sid))
 
-            # saved scholarships
-            db.execute(delete(SavedScholarship).where(SavedScholarship.scholarship_id == sid))
+            # saved scholarships: PRESERVE student-owned shortlist history; detach FK only
+            saved_rows = db.execute(
+                select(SavedScholarship).where(SavedScholarship.scholarship_id == sid)
+            ).scalars().all()
+            for sv in saved_rows:
+                sv.scholarship_id = None
+                if getattr(sv, "scholarship_title_snapshot", None) is None:
+                    sv.scholarship_title_snapshot = getattr(locked, "title", None)
 
             # discovery candidates unlink
             db.execute(
@@ -634,12 +640,16 @@ def execute_deletion(db: Session, manifest: List[ClosedScholarshipManifest], dry
                 existing_ts = db.execute(
                     select(DeletedClosedScholarship).where(DeletedClosedScholarship.official_source_url == url)
                 ).scalar_one_or_none()
+            import hashlib
+            fp_src = "|".join(str(x or "") for x in (title, getattr(locked, "country", None), getattr(locked, "degree", None), url, link))
+            fingerprint = hashlib.sha256(fp_src.encode("utf-8")).hexdigest()
             if existing_ts is None:
                 ts = DeletedClosedScholarship(
                     official_source_url=url,
                     application_link=link,
                     title=title,
                     reason="closed_permanent_deletion",
+                    record_fingerprint=fingerprint,
                 )
                 db.add(ts)
                 db.flush()
@@ -649,7 +659,7 @@ def execute_deletion(db: Session, manifest: List[ClosedScholarshipManifest], dry
             res = db.execute(delete(Scholarship).where(Scholarship.id == sid))
             report.deleted_scholarships += (res.rowcount or 0)
 
-        db.commit()
+        db.flush()
         report.completed_at = datetime.now(timezone.utc).isoformat()
 
     except Exception as e:

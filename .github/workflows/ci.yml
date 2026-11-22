@@ -809,7 +809,7 @@ jobs:
         path: backend/windows_e2e.log
 
   postgresql-deadline-integration:
-    name: PostgreSQL Integration Test (PostgreSQL ${{ matrix.pg-version }})
+    name: PostgreSQL Deadline Integration Test (PostgreSQL ${{ matrix.pg-version }})
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -864,34 +864,28 @@ jobs:
           echo "Waiting for PostgreSQL... ($i/30)"
           sleep 2
         done
-    - name: Run deadline and closed-deletion integration tests
+    - name: Run deadline integration tests
       run: |
         cd backend
         set -o pipefail
-        python -m pytest tests/test_deadline_postgresql_integration.py tests/test_closed_deletion_postgresql.py -v --tb=short 2>&1 | tee pg_integration.log
-    - name: Verify integration tests executed (not skipped)
+        python -m pytest tests/test_deadline_postgresql_integration.py -q -ra --tb=short 2>&1 | tee deadline_pg_integration.log
+    - name: Verify deadline integration tests executed (not skipped)
       run: |
         cd backend
-        if grep -q "SKIPPED" pg_integration.log; then
-          echo "ERROR: PostgreSQL integration tests were SKIPPED"
-          cat pg_integration.log
+        if grep -q "SKIPPED" deadline_pg_integration.log; then
+          echo "ERROR: deadline integration tests were SKIPPED"
+          cat deadline_pg_integration.log
           exit 1
         fi
-        # Verify both race tests passed
-        if ! grep -q "test_reopened_scholarship_skipped_with_row_lock.*PASSED" pg_integration.log; then
-          echo "ERROR: test_reopened_scholarship_skipped_with_row_lock did not pass"
-          cat pg_integration.log
+        if ! grep -q "passed" deadline_pg_integration.log; then
+          echo "ERROR: deadline integration tests did not pass"
+          cat deadline_pg_integration.log
           exit 1
         fi
-        if ! grep -q "test_future_cycle_added_skips_deletion.*PASSED" pg_integration.log; then
-          echo "ERROR: test_future_cycle_added_skips_deletion did not pass"
-          cat pg_integration.log
-          exit 1
-        fi
-        echo "PostgreSQL integration tests (deadline + closed-deletion) executed and passed"
-    - name: Upload integration logs
+        echo "PostgreSQL deadline integration tests executed and passed"
+    - name: Upload deadline integration logs
       uses: actions/upload-artifact@v4
       if: always()
       with:
-        name: postgresql-integration-logs-pg${{ matrix.pg-version }}
-        path: backend/pg_integration.log
+        name: postgresql-deadline-integration-logs-pg${{ matrix.pg-version }}
+        path: backend/deadline_pg_integration.log

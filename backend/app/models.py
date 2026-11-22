@@ -750,13 +750,13 @@ class SavedScholarship(Base):
 
     __tablename__ = "saved_scholarships"
     __table_args__ = (
-        UniqueConstraint("user_id", "scholarship_id", name="uq_saved_scholarships_user_scholarship"),
         Index("ix_saved_scholarships_user_created", "user_id", "created_at"),
     )
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False, index=True)
-    scholarship_id: Mapped[int] = mapped_column(ForeignKey("scholarships.id"), nullable=False, index=True)
+    scholarship_id: Mapped[int | None] = mapped_column(ForeignKey("scholarships.id"), nullable=True, index=True)
+    scholarship_title_snapshot: Mapped[str | None] = mapped_column(String(500), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
 
 
@@ -894,3 +894,29 @@ class DeletedClosedScholarship(Base):
     title: Mapped[str | None] = mapped_column(String(255), nullable=True)
     deleted_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
     reason: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    record_fingerprint: Mapped[str | None] = mapped_column(String(64), nullable=True, index=True)
+
+
+class PurgeExecutionLedger(Base):
+    """Dedicated execution ledger for PR #107 purge runs (NOT a scholarship tombstone)."""
+
+    __tablename__ = "purge_execution_ledger"
+    __table_args__ = (
+        UniqueConstraint("merge_commit_sha", name="uq_purge_execution_ledger_merge_sha"),
+        UniqueConstraint("execution_key", name="uq_purge_execution_ledger_execution_key"),
+    )
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    pr_number: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    merge_commit_sha: Mapped[str] = mapped_column(String(64), nullable=False, index=True)
+    execution_key: Mapped[str] = mapped_column(String(128), nullable=False, index=True)
+    manifest_sha256: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    manifest_schema_version: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    manifest_target_count: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    started_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
+    completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    execution_status: Mapped[str] = mapped_column(String(32), nullable=False, default="started")
+    deleted_count: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    workflow_run_id: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    reference_date: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    audit_metadata: Mapped[str | None] = mapped_column(Text, nullable=True)

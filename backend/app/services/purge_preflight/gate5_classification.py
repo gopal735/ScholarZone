@@ -163,9 +163,9 @@ def run_gate5(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate5Result:
             # Fetch all target records
             records = accessor.get_target_records(conn, target_ids)
 
-            if len(records) != 34:
+            if len(records) != len(target_ids):
                 result.status = "FAIL"
-                result.error = f"Expected 34 records, got {len(records)}"
+                result.error = f"Expected {len(target_ids)} records, got {len(records)}"
                 return result
 
             # Classify each record and build detailed report
@@ -217,49 +217,23 @@ def run_gate5(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate5Result:
                     "classification_reason": _get_classification_reason(classification, status, parsed_deadline, deadline_precision, deadline_display),
                 })
 
-            # Validate against expected manifest classifications - returns detailed result
-            validation_result: ClassificationValidationResult = validate_classifications(classifications)
+            # Dynamic validation: only definitively CLOSED scholarships are eligible.
+            non_closed = [cid for cid, cls in classifications.items() if cls.value != 'closed']
+            result.mismatches = [{'id': cid, 'expected': 'closed', 'actual': classifications[cid].value,
+                                 'reason': f'Target {cid} is {classifications[cid].value}, not CLOSED'} for cid in non_closed]
+            result.missing_from_db = []
+            result.unexpected_in_db = []
+            result.category_breakdown = {
+                'closed': sum(1 for v in classifications.values() if v.value == 'closed'),
+                'total': len(classifications),
+            }
+            result.reconciliation_verified = (len(non_closed) == 0)
+            result.classification_errors = [f'ID {cid}: not CLOSED' for cid in non_closed]
 
-            # Populate new explicit mismatch fields
-            result.mismatches = [
-                {"id": m.id, "expected": m.expected.value, "actual": m.actual.value, "reason": m.reason}
-                for m in validation_result.mismatches
-            ]
-            result.missing_from_db = validation_result.missing_from_db
-            result.unexpected_in_db = validation_result.unexpected_in_db
-            result.category_breakdown = validation_result.category_breakdown
-            result.reconciliation_verified = validation_result.reconciliation_verified
-
-            # Also populate legacy fields for backward compatibility
-            result.classification_errors = []
-            for m in validation_result.mismatches:
-                result.classification_errors.append(f"ID {m.id}: expected {m.expected.value}, got {m.actual.value}")
-            for tid in validation_result.missing_from_db:
-                result.classification_errors.append(f"Missing classification for ID {tid}")
-            for tid in validation_result.unexpected_in_db:
-                result.classification_errors.append(f"Unexpected ID in classifications: {tid}")
-
-            if not validation_result.is_valid:
-                result.status = "FAIL"
-                error_parts = []
-                if validation_result.mismatches:
-                    mismatch_ids = [str(m.id) for m in validation_result.mismatches]
-                    error_parts.append(f"{len(validation_result.mismatches)} mismatches: {', '.join(mismatch_ids)}")
-                if validation_result.missing_from_db:
-                    error_parts.append(f"{len(validation_result.missing_from_db)} missing from DB: {', '.join(map(str, validation_result.missing_from_db))}")
-                if validation_result.unexpected_in_db:
-                    error_parts.append(f"{len(validation_result.unexpected_in_db)} unexpected in DB: {', '.join(map(str, validation_result.unexpected_in_db))}")
-                if validation_result.category_breakdown.get("evergreen", 0) > 0:
-                    error_parts.append(f"{validation_result.category_breakdown['evergreen']} evergreen")
-                if validation_result.category_breakdown.get("unknown", 0) > 0:
-                    error_parts.append(f"{validation_result.category_breakdown['unknown']} unknown")
-                if validation_result.category_breakdown.get("blocked", 0) > 0:
-                    error_parts.append(f"{validation_result.category_breakdown['blocked']} blocked")
-                if validation_result.category_breakdown.get("status_deadline_conflict", 0) > 0:
-                    error_parts.append(f"{validation_result.category_breakdown['status_deadline_conflict']} conflicts")
-                result.error = f"Classification validation failed: {', '.join(error_parts)}"
+            if non_closed:
+                result.status = 'FAIL'
+                result.error = 'Non-CLOSED targets present: ' + str(non_closed)
                 return result
-
             # Count categories (for legacy fields)
             for cat in classifications.values():
                 if cat == ClassificationCategory.CLOSED:

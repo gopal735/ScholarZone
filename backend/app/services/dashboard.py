@@ -514,9 +514,8 @@ def build_next_actions(
 
     # An application already in motion outranks anything new: it is the one thing
     # the student has already decided to do.
-    application_items_with_scholarship = [item for item in application_items if item.scholarship is not None and item.scholarship.scholarship_id is not None and item.scholarship.detail_url]
     for item in sorted(
-        (entry for entry in application_items_with_scholarship if entry.state in ("in_progress", "planning")),
+        (entry for entry in application_items if entry.state in ("in_progress", "planning")),
         key=lambda entry: (entry.updated_at, entry.scholarship.scholarship_id),
         reverse=True,
     ):
@@ -531,10 +530,9 @@ def build_next_actions(
             )
         )
 
-    tracked = {item.scholarship.scholarship_id for item in application_items_with_scholarship}
-    saved_items_with_scholarship = [item for item in saved_items if item.scholarship is not None]
+    tracked = {item.scholarship.scholarship_id for item in application_items}
     for item in sorted(
-        (entry for entry in saved_items_with_scholarship if entry.scholarship.scholarship_id not in tracked),
+        (entry for entry in saved_items if entry.scholarship.scholarship_id not in tracked),
         key=lambda entry: (entry.saved_at, entry.scholarship.scholarship_id),
     ):
         actions.append(
@@ -703,7 +701,6 @@ def build_dashboard(db: Session, user: User, as_of: date | None = None) -> Dashb
         db.execute(
             select(SavedScholarship)
             .where(SavedScholarship.user_id == user.id)
-            .where(SavedScholarship.scholarship_id.is_not(None))
             .order_by(SavedScholarship.scholarship_id.asc())
             .limit(MAX_SAVED_ITEMS)
         ).scalars()
@@ -712,7 +709,7 @@ def build_dashboard(db: Session, user: User, as_of: date | None = None) -> Dashb
         db.execute(
             select(ApplicationRecord)
             .where(ApplicationRecord.user_id == user.id)
-            .order_by(ApplicationRecord.scholarship_id.is_(None).asc(), ApplicationRecord.scholarship_id.asc().nullsfirst())
+            .order_by(ApplicationRecord.scholarship_id.asc())
             .limit(MAX_APPLICATION_ITEMS)
         ).scalars()
     )
@@ -751,13 +748,8 @@ def build_dashboard(db: Session, user: User, as_of: date | None = None) -> Dashb
     # One bounded query for every id this response will describe: the shortlist,
     # the applications, and the recommended cards that need their published
     # deadline wording. Never one query per card.
-    acted_ids = sorted(
-        {row.scholarship_id for row in saved_rows if row.scholarship_id is not None}
-        | {row.scholarship_id for row in application_rows if row.scholarship_id is not None}
-    )
-    needed_ids = sorted(
-        set(acted_ids) | {result.scholarship_id for result in selected if result.scholarship_id is not None}
-    )
+    acted_ids = sorted({row.scholarship_id for row in saved_rows} | {row.scholarship_id for row in application_rows})
+    needed_ids = sorted(set(acted_ids) | {result.scholarship_id for result in selected})
     rows_by_id = load_facts_for_ids(db, needed_ids)
 
     recommendations: list[MatchRecommendation] = []
@@ -775,13 +767,13 @@ def build_dashboard(db: Session, user: User, as_of: date | None = None) -> Dashb
 
     match_by_id = {item.scholarship_id: item for item in recommendations}
     saved_by_id = {row.scholarship_id: row for row in saved_rows}
-    application_by_id = {row.scholarship_id: row for row in application_rows if row.scholarship_id is not None}
-    
+    application_by_id = {row.scholarship_id: row for row in application_rows}
+
     # Applications whose scholarship has since left the public universe. The
     # student created these rows, so they are shown from the snapshot taken at
     # that moment rather than dropped: a round closing must not make an
     # application count quietly shrink.
-    snapshot_by_id = {row.scholarship_id: row for row in application_rows if row.scholarship_id is not None}
+    snapshot_by_id = {row.scholarship_id: row for row in application_rows}
 
     def _reference(scholarship_id: int) -> ScholarshipReference | None:
         row = rows_by_id.get(scholarship_id)
@@ -843,26 +835,10 @@ def build_dashboard(db: Session, user: User, as_of: date | None = None) -> Dashb
 
     application_items: list[ApplicationItem] = []
     for row in application_rows:
-        if row.scholarship_id is None:
-            # Detached application: build reference from snapshot
-            reference = ScholarshipReference(
-                scholarship_id=None,
-                name=row.scholarship_name_snapshot or "Scholarship (no longer listed)",
-                country=row.scholarship_country_snapshot or "",
-                degree=row.scholarship_degree_snapshot or "",
-                funding=row.scholarship_funding_snapshot,
-                detail_url="",
-                official_source_url=row.scholarship_source_url_snapshot,
-                verification_status="not_listed",
-                verified=False,
-                verification_display="No longer listed",
-                is_listed=False,
-            )
-        else:
-            reference = _reference(row.scholarship_id)
-            if reference is None:
-                continue
-        match_item = match_by_id.get(row.scholarship_id) if row.scholarship_id is not None else None
+        reference = _reference(row.scholarship_id)
+        if reference is None:
+            continue
+        match_item = match_by_id.get(row.scholarship_id)
         application_items.append(
             ApplicationItem(
                 scholarship=reference,
@@ -924,8 +900,6 @@ def _build_deadlines(
 
     for item in application_items:
         reference = item.scholarship
-        if reference.scholarship_id is None:
-            continue  # Exclude detached from scholarship-keyed deadline watch
         entries[reference.scholarship_id] = DeadlineItem(
             scholarship_id=reference.scholarship_id,
             name=reference.name,

@@ -237,8 +237,13 @@ def run_gate3(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate3Result:
 def main() -> int:
     """CLI entry point for Gate 3."""
     print("=== GATE 3: FOREIGN KEY AND DEPENDENCY INSPECTION ===")
-    print(f"Target IDs: {CANONICAL_TARGET_IDS}")
-    print(f"Count: {len(CANONICAL_TARGET_IDS)}")
+    import os, json
+    manifest_path = os.environ.get("MANIFEST_PATH", "artifacts/deletion_manifest.json")
+    with open(manifest_path) as f:
+        _m = json.load(f)
+    target_ids = [x["scholarship_id"] for x in _m]
+    print(f"Target IDs from dynamic manifest: {target_ids}")
+    print(f"Count: {len(target_ids)}")
     print()
 
     try:

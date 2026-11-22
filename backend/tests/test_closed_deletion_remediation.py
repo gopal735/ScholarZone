@@ -73,6 +73,8 @@ def test_application_history_preserved():
         db.commit()
         manifest = build_deletion_manifest(db)
         report = execute_deletion(db, manifest, dry_run=False)
+        db.commit()
+        db.commit()
         assert report.deleted_scholarships == 1
         assert report.preserved_application_records == 1
         assert report.errors == []
@@ -102,6 +104,8 @@ def test_source_evidence_link_id_cleanup():
         assert deps["source_evidence"] == 1
         manifest = build_deletion_manifest(db)
         report = execute_deletion(db, manifest, dry_run=False)
+        db.commit()
+        db.commit()
         assert report.deleted_source_evidence == 1
         assert report.errors == []
         assert db.execute(select(SupervisorSourceEvidence)).scalars().all() == []
@@ -115,6 +119,8 @@ def test_tombstone_created_and_reimport_blocked():
         db.refresh(s)
         manifest = build_deletion_manifest(db)
         report = execute_deletion(db, manifest, dry_run=False)
+        db.commit()
+        db.commit()
         assert report.tombstones_created == 1
         assert report.errors == []
         ts = db.execute(select(DeletedClosedScholarship)).scalars().all()
@@ -164,6 +170,8 @@ def test_all_snapshot_fields_populated():
         db.commit()
         manifest = build_deletion_manifest(db)
         report = execute_deletion(db, manifest, dry_run=False)
+        db.commit()
+        db.commit()
         assert report.deleted_scholarships == 1
         assert report.preserved_application_records == 1
         apps = db.execute(select(ApplicationRecord)).scalars().all()
@@ -202,6 +210,8 @@ def test_existing_snapshots_not_overwritten():
         db.commit()
         manifest = build_deletion_manifest(db)
         report = execute_deletion(db, manifest, dry_run=False)
+        db.commit()
+        db.commit()
         assert report.deleted_scholarships == 1
         apps = db.execute(select(ApplicationRecord)).scalars().all()
         a = apps[0]

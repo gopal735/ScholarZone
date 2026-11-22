@@ -257,9 +257,9 @@ def run_gate6(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate6Result:
         with accessor.connect_readonly() as conn:
             records = accessor.get_target_records(conn, target_ids)
 
-            if len(records) != 34:
+            if len(records) != len(target_ids):
                 result.status = "FAIL"
-                result.error = f"Expected 34 records, got {len(records)}"
+                result.error = f"Expected {len(target_ids)} records, got {len(records)}"
                 return result
 
             for record in records:
@@ -296,9 +296,9 @@ def run_gate6(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate6Result:
                 result.error = f"{len(result.blocked_ids)} records not verifiably expired: {result.blocked_ids}"
                 return result
 
-            if result.expired_cycles != 34:
+            if result.expired_cycles != len(target_ids):
                 result.status = "FAIL"
-                result.error = f"Only {result.expired_cycles}/34 records have verified expired cycles"
+                result.error = f"Only {result.expired_cycles}/{len(target_ids)} records have verified expired cycles"
                 return result
 
             if result.insufficient_evidence > 0:

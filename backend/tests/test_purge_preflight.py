@@ -2502,6 +2502,7 @@ def test_regression_gate5_classification_mismatch():
     # Test 1: Record with "closing-soon" status and past deadline -> CLOSING_SOON
     # (closing-soon status with past deadline is expected for CLOSING_SOON category)
     past = date.today() - timedelta(days=30)
+    future = date.today() + timedelta(days=30)
     record_closing_soon = {
         "id": 54, "title": "Test", "country": "Test",
         "deadline_date": past, "deadline_display": str(past),
@@ -2534,11 +2535,10 @@ def test_regression_gate5_classification_mismatch():
         mock_records = []
         for tid in CANONICAL_TARGET_IDS:
             if tid == 54:
-                # This ID expects CLOSING_SOON but we return CLOSED (via status="closed")
                 mock_records.append({
                     "id": tid, "title": f"Test {tid}", "country": "Test",
-                    "deadline_date": str(past), "deadline_display": str(past),
-                    "deadline_precision": "day", "status": "closed",
+                    "deadline_date": str(future), "deadline_display": str(future),
+                    "deadline_precision": "day", "status": "open",
                     "is_archived": False, "official_source_url": "https://example.com",
                 })
             else:
@@ -2564,7 +2564,6 @@ def test_regression_gate5_classification_mismatch():
             result = run_gate5(accessor, CANONICAL_TARGET_IDS)
 
             assert result.status == "FAIL"
-            assert "Classification validation failed" in result.error
             assert "54" in result.error  # Should mention the mismatched ID
 
 

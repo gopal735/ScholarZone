@@ -86,7 +86,7 @@ jobs:
         if: steps.check.outputs.should_run == 'true'
         run: |
           MERGE_COMMIT_SHA="${{ steps.check.outputs.merge_commit_sha }}"
-          git fetch origin $MERGE_COMMIT_SHA --depth=1 2>/dev/null || true
+          git fetch origin $MERGE_COMMIT_SHA --depth=1
           if git show $MERGE_COMMIT_SHA:.github/workflows/closed-scholarship-auto-purge.yml >/dev/null 2>&1; then
             echo "Workflow exists in merge commit - revision verified"
           else
@@ -194,7 +194,7 @@ jobs:
 
   preflight-gate3-dependencies:
     name: Gate 3 - Production Dependencies Verification
-    needs: verify-merge-trigger
+    needs: [verify-merge-trigger, generate-manifest]
     if: needs.verify-merge-trigger.outputs.should_run == 'true'
     environment: production-readonly
     runs-on: ubuntu-latest
@@ -236,7 +236,7 @@ jobs:
 
   preflight-gate4-backup:
     name: Gate 4 - Production Backup & Verification
-    needs: verify-merge-trigger
+    needs: [verify-merge-trigger, generate-manifest]
     if: needs.verify-merge-trigger.outputs.should_run == 'true'
     environment:
       name: production-backup
@@ -312,7 +312,7 @@ jobs:
 
   preflight-gate5-classification:
     name: Gate 5 - Target Classification Validation
-    needs: verify-merge-trigger
+    needs: [verify-merge-trigger, generate-manifest]
     if: needs.verify-merge-trigger.outputs.should_run == 'true'
     environment: production-readonly
     runs-on: ubuntu-latest
@@ -354,7 +354,7 @@ jobs:
 
   preflight-gate6-cycle-validation:
     name: Gate 6 - Application Cycle Validation
-    needs: verify-merge-trigger
+    needs: [verify-merge-trigger, generate-manifest]
     if: needs.verify-merge-trigger.outputs.should_run == 'true'
     environment: production-readonly
     runs-on: ubuntu-latest
@@ -431,7 +431,7 @@ jobs:
 
   preflight-summary:
     name: Preflight Summary & Gate Status
-    needs: [verify-merge-trigger, preflight-gate1-atomicity, preflight-gate2-identity, preflight-gate3-dependencies, preflight-gate4-backup, preflight-gate5-classification, preflight-gate6-cycle-validation, preflight-gate7-git-safety]
+    needs: [verify-merge-trigger, preflight-gate1-atomicity, preflight-gate2-identity, preflight-gate3-dependencies, preflight-gate4-backup, preflight-gate5-classification, preflight-gate6-cycle-validation, preflight-gate7-git-safety, validate-manifest]
     if: needs.verify-merge-trigger.outputs.should_run == 'true'
     runs-on: ubuntu-latest
     steps:
@@ -553,7 +553,7 @@ jobs:
 
   execute-deletion:
     name: Execute Production Deletion
-    needs: [verify-merge-trigger, generate-manifest, validate-manifest]
+    needs: [verify-merge-trigger, generate-manifest, validate-manifest, preflight-summary]
     if: needs.verify-merge-trigger.outputs.should_run == 'true'
     environment: production
     runs-on: ubuntu-latest

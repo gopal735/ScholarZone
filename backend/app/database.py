@@ -159,16 +159,19 @@ def init_database() -> None:
         if database_url in ("sqlite:///:memory:", "sqlite:///:memory:"):
             migration_engine = engine
             _upgrade_sqlite_schema(migration_engine)
+            _upgrade_saved_scholarships_schema(migration_engine)
         else:
             # Use migration engine with explicit transaction behavior for DDL rollback
             migration_engine = _get_migration_engine()
             try:
                 _upgrade_sqlite_schema(migration_engine)
+                _upgrade_saved_scholarships_schema(migration_engine)
             finally:
                 migration_engine.dispose()
     elif engine.dialect.name == "postgresql":
         _upgrade_postgresql_schema(engine)
         _upgrade_application_outreach_nullable(engine)
+        _upgrade_saved_scholarships_schema(engine)
         _validate_postgresql_schema(engine)
 
 
@@ -386,11 +389,23 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
         create_image_audit_schema(connection)
 
 
-def _upgrade_application_outreach_nullable(engine: Engine) -> None:
-    """Make application/outreach scholarship_id nullable for history preservation."""
+def _upgrade_saved_scholarships_schema(engine: Engine) -> None:
+    """Add scholarship_title_snapshot column to saved_scholarships if missing."""
     with engine.begin() as connection:
         inspector = inspect(engine)
-        for table in ("application_records", "professor_outreach_records"):
+        if not inspector.has_table("saved_scholarships"):
+            return
+        cols = {c["name"] for c in inspector.get_columns("saved_scholarships")}
+        if "scholarship_title_snapshot" not in cols:
+            add = "ADD COLUMN IF NOT EXISTS" if engine.dialect.name == "postgresql" else "ADD COLUMN"
+            connection.execute(text(f"ALTER TABLE saved_scholarships {add} scholarship_title_snapshot VARCHAR(500)"))
+
+
+def _upgrade_application_outreach_nullable(engine: Engine) -> None:
+    """Make application/outreach/saved scholarship_id nullable for history preservation."""
+    with engine.begin() as connection:
+        inspector = inspect(engine)
+        for table in ("application_records", "professor_outreach_records", "saved_scholarships"):
             if not inspector.has_table(table):
                 continue
             cols = {c["name"]: c for c in inspector.get_columns(table)}
