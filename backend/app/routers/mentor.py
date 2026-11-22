@@ -33,7 +33,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query, Request, status
 from sqlalchemy.orm import Session
 
 from ..database import get_db
-from ..core.rate_limit import InProcessRateLimiter
+from ..core.rate_limit import InProcessRateLimiter, RateLimitExceeded
 from ..dependencies import require_user
 from ..models import User
 from ..routers.applications import _same_origin_guard
@@ -49,6 +49,14 @@ logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/mentor", tags=["mentor"])
 _public_discovery_limiter = InProcessRateLimiter(limit=30, window_seconds=60)
+
+#: Process-local in-flight cap for anonymous public discovery. This is NOT a
+#: fleet-wide or distributed limit: each application process has its own
+#: independent capacity. It exists to stop a burst of concurrent catalogue
+#: scans from exhausting worker threads / database connections in one instance.
+_PUBLIC_DISCOVERY_MAX_IN_FLIGHT = 4
+_PUBLIC_DISCOVERY_RETRY_AFTER_SECONDS = 2
+_public_discovery_semaphore = threading.BoundedSemaphore(_PUBLIC_DISCOVERY_MAX_IN_FLIGHT)
 
 
 # ------------------------------------------------------------------ limiter
@@ -161,8 +169,12 @@ def post_discovery(
     client_ip = request.client.host if request.client else "unknown"
     try:
         _public_discovery_limiter.check(client_ip)
-    except Exception as exc:
-        raise HTTPException(status_code=429, detail="Too many requests.") from exc
+    except RateLimitExceeded as exc:
+        raise HTTPException(
+            status_code=status.HTTP_429_TOO_MANY_REQUESTS,
+            detail="Too many requests.",
+            headers={"Retry-After": str(exc.retry_after_seconds)},
+        ) from exc
     from ..services.mentor.guards import normalize_message
     from ..services.mentor.intents import classify
     from ..services.mentor.discovery import run_discovery
@@ -185,51 +197,66 @@ def post_discovery(
     else:
         resolved_as_of = _date.today()
 
-    discovery = run_discovery(db, message, resolved_as_of)
+    # Acquire a process-local in-flight slot only after cheap validation, so a
+    # malformed request cannot consume discovery capacity.
+    acquired = False
+    if not _public_discovery_semaphore.acquire(blocking=False):
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="Discovery is busy. Please retry shortly.",
+            headers={"Retry-After": str(_PUBLIC_DISCOVERY_RETRY_AFTER_SECONDS)},
+        )
 
-    return MentorAnswerResponse(
-        request_id=request_id,
-        as_of=resolved_as_of,
-        intent="SCHOLARSHIP_DISCOVERY",
-        intent_label="Scholarship discovery",
-        supported=True,
-        headline="Scholarship discovery results",
-        why=(
-            f"ScholarZone searched the public catalogue for "
-            f"{discovery.query_summary.get('degree_level') or 'scholarship'} "
-            f"opportunities in {discovery.query_summary.get('region') or 'the catalogue'}."
-        ),
-        known=[],
-        unknown=[],
-        next_steps=[],
-        caveats=[],
-        notes=[],
-        general_guidance_only=False,
-        provider_mode="disabled",
-        provider_used=False,
-        answer_schema_version=1,
-        search_status=discovery.search_status,
-        query_summary=discovery.query_summary,
-        result_count=len(discovery.potential_matches),
-        verified_matches=[],
-        potential_matches=[
-            {
-                "scholarship_id": m.scholarship_id,
-                "title": m.title,
-                "country": m.country,
-                "degree": m.degree,
-                "funding_classification": m.funding_classification,
-                "funding_text": m.funding_text,
-                "official_source_url": m.official_source_url,
-                "verification": m.verification,
-                "knowledge_state": m.knowledge_state,
-                "supporting_fields": list(getattr(m, "supporting_fields", []) or []),
-                "warnings": list(m.warnings),
-            }
-            for m in discovery.potential_matches
-        ],
-        diagnostics=discovery.diagnostics,
-    )
+    acquired = True
+    try:
+        discovery = run_discovery(db, message, resolved_as_of)
+
+        return MentorAnswerResponse(
+            request_id=request_id,
+            as_of=resolved_as_of,
+            intent="SCHOLARSHIP_DISCOVERY",
+            intent_label="Scholarship discovery",
+            supported=True,
+            headline="Scholarship discovery results",
+            why=(
+                f"ScholarZone searched the public catalogue for "
+                f"{discovery.query_summary.get('degree_level') or 'scholarship'} "
+                f"opportunities in {discovery.query_summary.get('region') or 'the catalogue'}."
+            ),
+            known=[],
+            unknown=[],
+            next_steps=[],
+            caveats=[],
+            notes=[],
+            general_guidance_only=False,
+            provider_mode="disabled",
+            provider_used=False,
+            answer_schema_version=1,
+            search_status=discovery.search_status,
+            query_summary=discovery.query_summary,
+            result_count=len(discovery.potential_matches),
+            verified_matches=[],
+            potential_matches=[
+                {
+                    "scholarship_id": m.scholarship_id,
+                    "title": m.title,
+                    "country": m.country,
+                    "degree": m.degree,
+                    "funding_classification": m.funding_classification,
+                    "funding_text": m.funding_text,
+                    "official_source_url": m.official_source_url,
+                    "verification": m.verification,
+                    "knowledge_state": m.knowledge_state,
+                    "supporting_fields": list(getattr(m, "supporting_fields", []) or []),
+                    "warnings": list(m.warnings),
+                }
+                for m in discovery.potential_matches
+            ],
+            diagnostics=discovery.diagnostics,
+        )
+    finally:
+        if acquired:
+            _public_discovery_semaphore.release()
 @router.post("/message", response_model=MentorAnswerResponse)
 def post_message(
     payload: MentorMessageRequest,
