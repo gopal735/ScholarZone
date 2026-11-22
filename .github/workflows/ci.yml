@@ -901,11 +901,12 @@ jobs:
       run: |
         set -euo pipefail
         version=1.7.7
+        asset="actionlint_${version}_linux_amd64.tar.gz"
         base="https://github.com/rhysd/actionlint/releases/download/v${version}"
-        curl -fsSL "${base}/actionlint_${version}_linux_amd64.tar.gz" -o actionlint.tar.gz
+        curl -fsSL "${base}/${asset}" -o "${asset}"
         curl -fsSL "${base}/actionlint_${version}_checksums.txt" -o checksums.txt
-        grep " actionlint_${version}_linux_amd64.tar.gz$" checksums.txt | sha256sum -c -
-        tar -xzf actionlint.tar.gz actionlint
+        grep " ${asset}$" checksums.txt | sha256sum -c -
+        tar -xzf "${asset}" actionlint
         chmod +x actionlint
         ./actionlint --version
     - name: Run actionlint
