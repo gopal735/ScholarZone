@@ -202,6 +202,8 @@ def load_contexts(db: Session, ids: list[int], as_of: date) -> dict[int, Scholar
     difference. What is *published* is still bounded to the display fields above:
     loading a row internally is not the same as exposing it.
     """
+    # Filter out None IDs (detached applications)
+    ids = [i for i in ids if i is not None]
     if not ids:
         return {}
 
@@ -517,6 +519,8 @@ def _summary(
     """
     use_snapshot = context is None or not context.is_visible
     name = record.scholarship_name_snapshot if use_snapshot else context.name
+    if name is None:
+        name = "Scholarship (no longer listed)"
     country = record.scholarship_country_snapshot if use_snapshot else context.country
     degree = record.scholarship_degree_snapshot if use_snapshot else context.degree
     provider = record.scholarship_provider_snapshot if use_snapshot else context.provider
@@ -543,12 +547,12 @@ def _summary(
     return ApplicationSummary(
         id=record.id,
         scholarship_id=record.scholarship_id,
-        name=name or f"Scholarship {record.scholarship_id}",
+        name=name,
         country=country,
         degree=degree,
         provider=provider,
         funding=funding,
-        detail_url=f"/scholarships/{record.scholarship_id}",
+        detail_url=(f"/scholarships/{record.scholarship_id}" if record.scholarship_id is not None else ""),
         official_source_url=source_url,
         state=record.state,
         state_label=APPLICATION_STATE_LABELS.get(record.state, record.state),
@@ -601,7 +605,7 @@ def list_for_user(
         db.execute(
             select(ApplicationRecord)
             .where(ApplicationRecord.user_id == user.id)
-            .order_by(ApplicationRecord.scholarship_id.asc())
+            .order_by(ApplicationRecord.scholarship_id.is_(None).asc(), ApplicationRecord.id.asc())
             .limit(limit)
         ).scalars()
     )
@@ -615,7 +619,8 @@ def list_for_user(
         )
 
     items_by_application = _load_checklists(db, [record.id for record in records])
-    contexts = load_contexts(db, sorted({record.scholarship_id for record in records}), effective_date)
+    scholarship_ids = sorted({record.scholarship_id for record in records if record.scholarship_id is not None})
+    contexts = load_contexts(db, scholarship_ids, effective_date)
     match_by_id = _match_index(db, user, effective_date)
 
     summaries = [
@@ -647,14 +652,20 @@ def _decision_order(item: ApplicationSummary):
     deadlines - an open round with no fixed date is genuinely open, and sorting
     it above a real deadline would be the more harmful error. Readiness then
     breaks ties, and the id makes the order total and stable.
+
+    For detached applications (scholarship_id=None), use a normalized value
+    that sorts consistently and use application ID as final tie-breaker.
     """
+    # Normalize scholarship_id for sorting: None -> -1 (sorts before positive IDs)
+    norm_scholarship_id = item.scholarship_id if item.scholarship_id is not None else -1
     return (
         0 if item.is_actionable else (1 if item.is_overdue else 2),
         item.days_remaining if item.days_remaining is not None else 0,
         0 if item.progress_percent is not None else 1,
         -1 * (item.progress_percent or 0.0),
         item.state,
-        item.scholarship_id,
+        norm_scholarship_id,
+        item.id,  # Application record ID as final deterministic tie-breaker
     )
 
 
@@ -729,7 +740,9 @@ def build_detail(
 ) -> ApplicationDetail:
     effective_date = as_of or date.today()
     items = _load_checklists(db, [record.id]).get(record.id, [])
-    contexts = load_contexts(db, [record.scholarship_id], effective_date)
+    contexts = {}
+    if record.scholarship_id is not None:
+        contexts = load_contexts(db, [record.scholarship_id], effective_date)
     match_by_id = _match_index(db, user, effective_date)
 
     summary = _summary(record, items, contexts.get(record.scholarship_id), match_by_id.get(record.scholarship_id))

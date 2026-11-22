@@ -206,7 +206,7 @@ class ApplicationSummary(BaseModel):
     """List row: identity, deadline, state and progress, in decision order."""
 
     id: int
-    scholarship_id: int
+    scholarship_id: int | None = None
     name: str
     country: str | None = None
     degree: str | None = None
