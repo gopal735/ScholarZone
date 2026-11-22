@@ -910,7 +910,7 @@ jobs:
         chmod +x actionlint
         ./actionlint --version
     - name: Run actionlint
-      run: ./actionlint .github/workflows
+      run: ./actionlint
 
 
   closed-deletion-postgresql:
