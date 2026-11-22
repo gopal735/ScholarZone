@@ -59,7 +59,9 @@ def extract_slots(message: str) -> dict[str, Any]:
     elif _contains_any(norm, ["bachelor", "undergraduate", "bsc"]) or _contains_any(original, ["\u09ac\u09cd\u09af\u09be\u099a\u09c7\u09b2\u09b0"]):
         degree = "bachelors"
     region = None
-    if _contains_any(norm, ["europe", "european"]) or "europe" in norm or _contains_any(original, ["\u0987\u0989\u09b0\u09cb\u09aa"]):
+    if re.search(r"\b(eu|european union)\b", original or "", re.IGNORECASE):
+        region = "eu"
+    elif _contains_any(norm, ["europe", "european"]) or "europe" in norm or _contains_any(original, ["\u0987\u0989\u09b0\u09cb\u09aa"]):
         region = "europe"
     country_resolution = resolve_country_resolution(original)
     country = country_resolution["country"] if country_resolution["status"] == "RESOLVED_SUPPORTED" else None
@@ -125,10 +127,12 @@ def classify_funding(row: Scholarship) -> tuple[str, str | None, list[str]]:
     # No stipend polarity evidence. Is there any funding support described?
     support_fields = [f for f in ("funding", "benefits", "coverage")
                       if (f == "funding" and funding_str and funding_str.upper() != "UNKNOWN")
-                      or (f == "benefits" and benefits_text.strip())
-                      or (f == "coverage" and coverage_text.strip())]
+                      or (f == "benefits" and benefits_text.strip() and benefits_text.strip().upper() != "UNKNOWN")
+                      or (f == "coverage" and coverage_text.strip() and coverage_text.strip().upper() != "UNKNOWN")]
     # But only count as support if not all unknown/empty
-    any_text = bool(funding_str and funding_str.upper() != "UNKNOWN") or bool(benefits_text.strip()) or bool(coverage_text.strip())
+    any_text = (bool(funding_str and funding_str.upper() != "UNKNOWN")
+                or (benefits_text.strip() != "" and benefits_text.strip().upper() != "UNKNOWN")
+                or (coverage_text.strip() != "" and coverage_text.strip().upper() != "UNKNOWN"))
     if not any_text:
         return "FUNDING_UNVERIFIED", "Funding information is missing or unverified.", []
     return "FUNDING_SUPPORT_CONFIRMED_STIPEND_UNCLEAR", "Funding support described without explicit stipend evidence.", support_fields
@@ -226,6 +230,7 @@ def run_discovery(db: Session, message: str, as_of: date | None = None, limit: i
             or_(
                 Scholarship.degree.ilike("%bachelor%"),
                 Scholarship.degree.ilike("%undergraduate%"),
+                Scholarship.degree.ilike("%bsc%"),
             )
         )
 
@@ -250,6 +255,7 @@ def run_discovery(db: Session, message: str, as_of: date | None = None, limit: i
     boff = 0
     excluded_count = 0
     stipend_text_candidates_count = 0
+    stipend_text_candidate_ids: list[int] = []
     funding_support_unclear_count = 0
     unverified_count = 0
     funding_evidence_conflict_count = 0
@@ -275,6 +281,7 @@ def run_discovery(db: Session, message: str, as_of: date | None = None, limit: i
                     eligible_ids.append(row.id)
             elif cls == "STIPEND_TEXT_CANDIDATE":
                 stipend_text_candidates_count += 1
+                stipend_text_candidate_ids.append(row.id)
                 eligible_ids.append(row.id)
             elif cls == "FUNDING_UNVERIFIED":
                 unverified_count += 1
@@ -301,12 +308,22 @@ def run_discovery(db: Session, message: str, as_of: date | None = None, limit: i
         "funding_evidence_conflict": int(funding_evidence_conflict_count),
     }
 
+    # For stipend searches, rank stipend-text candidates ahead of records
+    # without stipend evidence so the first page is useful. Generic searches
+    # keep the existing (id-ordered) candidate order.
+    if funding_val == "stipend" and stipend_text_candidate_ids:
+        candidate_set = set(stipend_text_candidate_ids)
+        eligible_ids = [i for i in eligible_ids if i in candidate_set] + [i for i in eligible_ids if i not in candidate_set]
+
     # Paginate eligible (non-excluded) population.
     page_ids = eligible_ids[offset:offset + limit]
     if page_ids:
         rows_by_id = {
             r.id: r for r in db.execute(
-                select(Scholarship).where(Scholarship.id.in_(page_ids))
+                select(Scholarship).where(
+                    Scholarship.id.in_(page_ids),
+                    *public_visibility_conditions(),
+                )
             ).scalars()
         }
         region_rows = [rows_by_id[i] for i in page_ids if i in rows_by_id]
