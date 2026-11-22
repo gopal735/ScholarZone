@@ -28,7 +28,6 @@ from ...schemas_mentor import (
 from .compose import compose, redirects
 from .context import MentorContext, build_context
 from .discovery import run_discovery
-from .discovery import run_discovery, DiscoveryMatch
 from .evidence import EvidenceItem
 from .guards import MAX_MESSAGE_LENGTH, contains_injection_marker, normalize_message
 from .intents import classify

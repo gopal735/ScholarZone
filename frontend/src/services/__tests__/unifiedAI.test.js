@@ -227,12 +227,12 @@ describe('askUnifiedAI routing', () => {
     expect(askAIAssistant).not.toHaveBeenCalled()
   })
 
-  it('discovery query: calls askAIAssistant directly, no authExpired', async () => {
+  it('discovery query: uses canonical discovery service, falls back to public search on auth failure', async () => {
     vi.mocked(askMentor).mockRejectedValue(new MentorUnauthenticatedError('expired'))
     vi.mocked(askAIAssistant).mockResolvedValue({ answer: 'grounded answer', sources: [], grounded: true })
     const res = await askUnifiedAI('Find PhD scholarships in Europe', { isAuthenticated: true })
+    expect(askMentor).toHaveBeenCalled()
     expect(askAIAssistant).toHaveBeenCalled()
-    expect(askMentor).not.toHaveBeenCalled()
     expect(res.answer).toBe('grounded answer')
   })
 

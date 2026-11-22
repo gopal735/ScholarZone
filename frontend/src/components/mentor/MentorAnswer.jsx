@@ -116,7 +116,28 @@ function NextActions({ actions }) {
 function DiscoveryResults({ answer }) {
   const verified = Array.isArray(answer?.verified_matches) ? answer.verified_matches : []
   const potential = Array.isArray(answer?.potential_matches) ? answer.potential_matches : []
-  if (verified.length === 0 && potential.length === 0) return null
+  const status = answer?.search_status
+  const diagnostics = answer?.diagnostics || {}
+  if (verified.length === 0 && potential.length === 0) {
+    // Explicit diagnostic empty state instead of silently returning null.
+    let message = 'No scholarship matches found.'
+    if (status === 'NO_PUBLIC_CANDIDATES') message = 'No public scholarship candidates available.'
+    else if (status === 'NO_DEGREE_MATCHES') message = 'No scholarships match the requested degree level.'
+    else if (status === 'NO_REGION_MATCHES') message = 'No scholarships match the requested region.'
+    else if (status === 'NO_VERIFIED_STIPEND_MATCHES') message = 'No verified stipend matches found; only unverified or excluded records exist.'
+    else if (status === 'SEARCH_UNAVAILABLE' || status === 'SEARCH_ERROR') message = 'Search is currently unavailable. Please try again later.'
+    return (
+      <section className="mentor-answer__section" aria-labelledby="mentor-discovery-heading">
+        <h3 className="mentor-answer__heading" id="mentor-discovery-heading">Scholarship results</h3>
+        <p className="mentor-answer__section-note">{message}</p>
+        {diagnostics && Object.keys(diagnostics).length > 0 ? (
+          <p className="mentor-answer__section-note">
+            Diagnostics: {Object.entries(diagnostics).map(([k, v]) => `${k}=${v}`).join(', ')}
+          </p>
+        ) : null}
+      </section>
+    )
+  }
   return (
     <section className="mentor-answer__section" aria-labelledby="mentor-discovery-heading">
       <h3 className="mentor-answer__heading" id="mentor-discovery-heading">
@@ -131,7 +152,7 @@ function DiscoveryResults({ answer }) {
               </div>
               <p className="mentor-evidence__value">{m.country} — {m.funding_classification}</p>
               {m.official_source_url ? (
-                <a href={m.official_source_url} target="_blank" rel="noreferrer">Official source</a>
+                <a href={m.official_source_url} target="_blank" rel="noopener noreferrer">Official source</a>
               ) : null}
             </li>
           ))}
@@ -149,7 +170,7 @@ function DiscoveryResults({ answer }) {
                 <p className="mentor-answer__section-note">{m.warnings.join(' ')}</p>
               ) : null}
               {m.official_source_url ? (
-                <a href={m.official_source_url} target="_blank" rel="noreferrer">Official source</a>
+                <a href={m.official_source_url} target="_blank" rel="noopener noreferrer">Official source</a>
               ) : null}
             </li>
           ))}

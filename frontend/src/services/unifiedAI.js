@@ -60,7 +60,33 @@ export function normalizeMentorResponse(raw) {
     if (parsedDate.getUTCFullYear() !== y || parsedDate.getUTCMonth() + 1 !== m || parsedDate.getUTCDate() !== d) return null
     if (typeof raw.general_guidance_only !== 'boolean') return null
 
-    // Validate arrays
+    const safeHttpUrl = (u) => {
+      if (typeof u !== 'string' || !u) return null
+      try {
+        const p = new URL(u)
+        if (p.protocol === 'http:' || p.protocol === 'https:') return u
+      } catch { /* invalid */ }
+      return null
+    }
+    const validateMatch = (m) => {
+      if (!m || typeof m !== 'object' || Array.isArray(m)) return null
+      if (typeof m.scholarship_id !== 'number' || !Number.isFinite(m.scholarship_id)) return null
+      if (typeof m.title !== 'string' || !m.title.trim()) return null
+      return {
+        scholarship_id: m.scholarship_id,
+        title: m.title,
+        country: typeof m.country === 'string' ? m.country : null,
+        degree: typeof m.degree === 'string' ? m.degree : null,
+        funding_classification: typeof m.funding_classification === 'string' ? m.funding_classification : null,
+        funding_text: typeof m.funding_text === 'string' ? m.funding_text : null,
+        official_source_url: safeHttpUrl(m.official_source_url),
+        verification: typeof m.verification === 'string' ? m.verification : null,
+        knowledge_state: typeof m.knowledge_state === 'string' ? m.knowledge_state : null,
+        warnings: Array.isArray(m.warnings) ? m.warnings.filter(w => typeof w === 'string') : [],
+      }
+    }
+    const allowedSearchStatuses = new Set(['MATCHES_FOUND','POTENTIAL_MATCHES_FOUND','NO_PUBLIC_CANDIDATES','NO_DEGREE_MATCHES','NO_REGION_MATCHES','NO_VERIFIED_STIPEND_MATCHES','SEARCH_UNAVAILABLE','SEARCH_ERROR'])
+    const rawSearchStatus = typeof raw.search_status === 'string' && allowedSearchStatuses.has(raw.search_status) ? raw.search_status : null
     const known = Array.isArray(raw.known) ? raw.known : []
     const unknown = Array.isArray(raw.unknown) ? raw.unknown : []
     const nextSteps = Array.isArray(raw.next_steps) ? raw.next_steps : []
@@ -132,11 +158,11 @@ export function normalizeMentorResponse(raw) {
         supported_intents: validatedSupportedIntents,
         redirects: validatedRedirects,
         answer_schema_version: typeof raw.answer_schema_version === 'number' ? raw.answer_schema_version : 1,
-        search_status: typeof raw.search_status === 'string' ? raw.search_status : null,
+        search_status: rawSearchStatus,
         query_summary: (raw.query_summary && typeof raw.query_summary === 'object') ? raw.query_summary : null,
         result_count: typeof raw.result_count === 'number' ? raw.result_count : 0,
-        verified_matches: Array.isArray(raw.verified_matches) ? raw.verified_matches : [],
-        potential_matches: Array.isArray(raw.potential_matches) ? raw.potential_matches : [],
+        verified_matches: Array.isArray(raw.verified_matches) ? raw.verified_matches.map(validateMatch).filter(Boolean) : [],
+        potential_matches: Array.isArray(raw.potential_matches) ? raw.potential_matches.map(validateMatch).filter(Boolean) : [],
         diagnostics: (raw.diagnostics && typeof raw.diagnostics === 'object') ? raw.diagnostics : {},
       },
       grounded: true,
@@ -235,6 +261,37 @@ export async function askUnifiedAI(message, options = {}) {
       if (error instanceof MentorRateLimitedError) throw error
       if (error instanceof MentorValidationError) throw error
       if (error instanceof MentorUnavailableError) throw error
+    }
+  }
+
+  // Discovery route: use canonical backend discovery service (authenticated or public).
+  if (isDiscovery) {
+    const discoveryMessage = message
+    try {
+      let raw = null
+      if (isAuthenticated) {
+        raw = await askMentor(discoveryMessage, { signal, sessionScope })
+      } else {
+        const resp = await fetch('/api/mentor/discovery', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: discoveryMessage }),
+          signal,
+        })
+        if (!resp.ok) {
+          throw new Error('Discovery request failed')
+        }
+        raw = await resp.json()
+      }
+      const normalized = normalizeMentorResponse(raw)
+      if (normalized) return normalized
+      // Fallback: legacy shape
+      if (raw && typeof raw.answer === 'string' && raw.answer.trim() !== '') {
+        return { ...raw, kind: 'grounded' }
+      }
+    } catch (e) {
+      void e
+      // fall through to grounded fallback below
     }
   }
 

@@ -143,6 +143,80 @@ def read_overview() -> dict:
     }
 
 
+@router.post("/discovery", response_model=MentorAnswerResponse)
+def post_discovery(
+    payload: MentorMessageRequest,
+    request: Request,
+    db: Session = Depends(get_db),
+    as_of: str | None = Query(None, description="Pin the measurement day (YYYY-MM-DD)."),
+) -> MentorAnswerResponse:
+    """Public (unauthenticated) scholarship discovery.
+
+    Uses the same canonical discovery service as the authenticated Mentor path.
+    No user context or private data is involved.
+    """
+    _same_origin_guard(request)
+    from ..services.mentor.guards import normalize_message
+    from ..services.mentor.intents import classify
+    from ..services.mentor.discovery import run_discovery
+    from ..services.mentor.evidence import EvidenceItem
+    from uuid import uuid4
+    from datetime import date as _date
+
+    request_id = uuid4().hex[:12]
+    message = normalize_message(payload.message)
+    resolved_as_of = None
+    try:
+        resolved_as_of = _date.fromisoformat(as_of) if as_of else None
+    except ValueError:
+        resolved_as_of = None
+    if resolved_as_of is None:
+        resolved_as_of = payload.as_of or _date.today()
+
+    discovery = run_discovery(db, message, resolved_as_of)
+
+    return MentorAnswerResponse(
+        request_id=request_id,
+        as_of=resolved_as_of,
+        intent="SCHOLARSHIP_DISCOVERY",
+        intent_label="Scholarship discovery",
+        supported=True,
+        headline="Scholarship discovery results",
+        why=(
+            f"ScholarZone searched the public catalogue for "
+            f"{discovery.query_summary.get('degree_level') or 'scholarship'} "
+            f"opportunities in {discovery.query_summary.get('region') or 'the catalogue'}."
+        ),
+        known=[],
+        unknown=[],
+        next_steps=[],
+        caveats=[],
+        notes=[],
+        general_guidance_only=False,
+        provider_mode="disabled",
+        provider_used=False,
+        answer_schema_version=1,
+        search_status=discovery.search_status,
+        query_summary=discovery.query_summary,
+        result_count=len(discovery.potential_matches),
+        verified_matches=[],
+        potential_matches=[
+            {
+                "scholarship_id": m.scholarship_id,
+                "title": m.title,
+                "country": m.country,
+                "degree": m.degree,
+                "funding_classification": m.funding_classification,
+                "funding_text": m.funding_text,
+                "official_source_url": m.official_source_url,
+                "verification": m.verification,
+                "knowledge_state": m.knowledge_state,
+                "warnings": list(m.warnings),
+            }
+            for m in discovery.potential_matches
+        ],
+        diagnostics=discovery.diagnostics,
+    )
 @router.post("/message", response_model=MentorAnswerResponse)
 def post_message(
     payload: MentorMessageRequest,
