@@ -16,7 +16,7 @@ from ...schemas_mentor import EvidenceResponse
 from .evidence import EvidenceItem, BASIS_CATALOGUE
 from .guards import bound_text
 from .normalization import normalize_query
-from .countries import extract_country_from_message
+from .countries import extract_country_from_message, resolve_country_resolution
 
 EUROPE_COUNTRIES: frozenset[str] = frozenset(
     {
@@ -25,6 +25,15 @@ EUROPE_COUNTRIES: frozenset[str] = frozenset(
         "Latvia","Lithuania","Luxembourg","Malta","Netherlands","Norway","Poland",
         "Portugal","Romania","Serbia","Slovakia","Slovenia","Spain","Sweden",
         "Switzerland","Turkey","United Kingdom","Europe","EU (multiple)",
+    }
+)
+
+EU_COUNTRIES: frozenset[str] = frozenset(
+    {
+        "Austria","Belgium","Bulgaria","Cyprus","Czech Republic","Denmark","Estonia",
+        "Finland","France","Germany","Greece","Hungary","Ireland","Italy","Latvia",
+        "Lithuania","Luxembourg","Malta","Netherlands","Poland","Portugal","Romania",
+        "Slovakia","Slovenia","Spain","Sweden",
     }
 )
 
@@ -52,7 +61,8 @@ def extract_slots(message: str) -> dict[str, Any]:
     region = None
     if _contains_any(norm, ["europe", "european"]) or "europe" in norm or _contains_any(original, ["\u0987\u0989\u09b0\u09cb\u09aa"]):
         region = "europe"
-    country = extract_country_from_message(original)
+    country_resolution = resolve_country_resolution(original)
+    country = country_resolution["country"] if country_resolution["status"] == "RESOLVED_SUPPORTED" else None
     if country is not None and country not in ("International", "Multiple"):
         region = country
     funding = None
@@ -62,42 +72,66 @@ def extract_slots(message: str) -> dict[str, Any]:
         "degree_level": {"value": degree, "source": "explicit_query" if degree else None},
         "region": {"value": region, "source": "explicit_query" if region else None},
         "funding_intent": {"value": funding, "source": "explicit_query" if funding else None},
+        "country_resolution": country_resolution,
     }
 
 
-def classify_funding(row: Scholarship) -> tuple[str, str | None, list[str]]:
-    # Determine which fields contain the evidence.
-    supporting: list[str] = []
-    if row.funding and str(row.funding).strip() and str(row.funding).strip().upper() != "UNKNOWN":
-        supporting.append("funding")
-    if row.benefits:
-        bt = " ".join(str(x) for x in row.benefits)
-        if _STIPEND_PATTERNS.search(bt) or _NO_STIPEND_PATTERNS.search(bt):
-            supporting.append("benefits")
-    if row.coverage:
-        ct = " ".join(str(x) for x in row.coverage)
-        if _STIPEND_PATTERNS.search(ct) or _NO_STIPEND_PATTERNS.search(ct):
-            supporting.append("coverage")
-    # Build combined text for pattern matching.
-    funding_text = " ".join(
-        str(x) for x in [row.funding, " ".join(row.benefits or []), " ".join(row.coverage or [])]
-        if x
-    )
-    if not funding_text.strip():
-        return "FUNDING_UNVERIFIED", "Funding information is missing or unverified.", []
-    if funding_text.strip().upper() == "UNKNOWN":
-        return "FUNDING_UNVERIFIED", "Funding information is missing or unverified.", []
-    # Conflicting evidence: positive in one field, negative in another.
-    pos = bool(_STIPEND_PATTERNS.search(funding_text))
-    neg = bool(_NO_STIPEND_PATTERNS.search(funding_text))
-    if pos and neg:
-        # Determine if conflict is across fields.
-        return "FUNDING_SUPPORT_CONFIRMED_STIPEND_UNCLEAR", "Conflicting stipend evidence across fields.", supporting
+def _field_polarity(text: str) -> str | None:
+    """Return 'positive','negative','conflict','none', or None for unknown/empty."""
+    t = (text or "").strip()
+    if not t or t.upper() == "UNKNOWN":
+        return None
+    neg_matches = list(_NO_STIPEND_PATTERNS.finditer(t))
+    remaining = t
+    for m in sorted(neg_matches, key=lambda x: -x.start()):
+        remaining = remaining[:m.start()] + " " + remaining[m.end():]
+    pos_in_remaining = bool(_STIPEND_PATTERNS.search(remaining))
+    neg = bool(neg_matches)
+    pos_overall = bool(_STIPEND_PATTERNS.search(t))
+    if neg and pos_in_remaining:
+        return "conflict"
     if neg:
-        return "STIPEND_EXPLICITLY_EXCLUDED", "Source states tuition-only or no stipend.", supporting
-    if pos:
-        return "STIPEND_TEXT_CANDIDATE", "Stipend/living allowance mentioned in funding/benefits text.", supporting
-    return "FUNDING_SUPPORT_CONFIRMED_STIPEND_UNCLEAR", "Funding support described without explicit stipend evidence.", supporting
+        return "negative"
+    if pos_overall:
+        return "positive"
+    return "none"
+
+
+def classify_funding(row: Scholarship) -> tuple[str, str | None, list[str]]:
+    funding_str = str(row.funding).strip() if row.funding is not None else ""
+    benefits_text = " ".join(str(x) for x in (row.benefits or []))
+    coverage_text = " ".join(str(x) for x in (row.coverage or []))
+
+    polarities = {
+        "funding": _field_polarity(funding_str),
+        "benefits": _field_polarity(benefits_text),
+        "coverage": _field_polarity(coverage_text),
+    }
+
+    evidence_fields = [f for f in ("funding", "benefits", "coverage") if polarities[f] in ("positive", "negative", "conflict")]
+    positives = [f for f in evidence_fields if polarities[f] == "positive"]
+    negatives = [f for f in evidence_fields if polarities[f] == "negative"]
+    conflicts = [f for f in evidence_fields if polarities[f] == "conflict"]
+
+    if conflicts:
+        return "FUNDING_EVIDENCE_CONFLICT", "Conflicting stipend evidence within a field.", evidence_fields
+    if positives and negatives:
+        return "FUNDING_EVIDENCE_CONFLICT", "Conflicting stipend evidence across fields.", evidence_fields
+    if negatives and not positives:
+        return "STIPEND_EXPLICITLY_EXCLUDED", "Source states tuition-only or no stipend.", evidence_fields
+    if positives and not negatives:
+        return "STIPEND_TEXT_CANDIDATE", "Stipend/living allowance mentioned in funding/benefits text.", evidence_fields
+
+    # No stipend polarity evidence. Is there any funding support described?
+    support_fields = [f for f in ("funding", "benefits", "coverage")
+                      if (f == "funding" and funding_str and funding_str.upper() != "UNKNOWN")
+                      or (f == "benefits" and benefits_text.strip())
+                      or (f == "coverage" and coverage_text.strip())]
+    # But only count as support if not all unknown/empty
+    any_text = bool(funding_str and funding_str.upper() != "UNKNOWN") or bool(benefits_text.strip()) or bool(coverage_text.strip())
+    if not any_text:
+        return "FUNDING_UNVERIFIED", "Funding information is missing or unverified.", []
+    return "FUNDING_SUPPORT_CONFIRMED_STIPEND_UNCLEAR", "Funding support described without explicit stipend evidence.", support_fields
 
 
 @dataclass
@@ -153,11 +187,14 @@ def run_discovery(db: Session, message: str, as_of: date | None = None, limit: i
     degree_val = (slots["degree_level"] or {}).get("value")
     region_val = (slots["region"] or {}).get("value")
     funding_val = (slots["funding_intent"] or {}).get("value")
+    country_resolution = slots.get("country_resolution") or {}
+    country_status = country_resolution.get("status", "NOT_PROVIDED")
 
     query_summary = {
         "degree_level": degree_val,
         "region": region_val,
         "funding_intent": funding_val,
+        "country_status": country_status,
     }
 
     public_conditions = list(public_visibility_conditions())
@@ -197,7 +234,9 @@ def run_discovery(db: Session, message: str, as_of: date | None = None, limit: i
     region_conditions = list(conditions)
     if region_val == "europe":
         region_conditions.append(Scholarship.country.in_(tuple(EUROPE_COUNTRIES)))
-    elif region_val and region_val != "europe":
+    elif region_val == "eu":
+        region_conditions.append(Scholarship.country.in_(tuple(EU_COUNTRIES)))
+    elif region_val and region_val not in ("europe", "eu"):
         region_conditions.append(func.lower(Scholarship.country) == str(region_val).casefold())
 
     region_count = db.scalar(
@@ -269,7 +308,10 @@ def run_discovery(db: Session, message: str, as_of: date | None = None, limit: i
     evidence: list[EvidenceItem] = []
     for row in region_rows:
         classification, reason, supporting = classify_funding(row)
-        if classification == "STIPEND_EXPLICITLY_EXCLUDED":
+        # Only exclude explicit no-stipend records when the user explicitly
+        # asked for a stipend. Generic discovery keeps them (with correct
+        # funding classification).
+        if classification == "STIPEND_EXPLICITLY_EXCLUDED" and funding_val == "stipend":
             continue
         match = _match_from_row(row, classification, reason, supporting)
         potential.append(match)
@@ -288,14 +330,25 @@ def run_discovery(db: Session, message: str, as_of: date | None = None, limit: i
 
     if public_count == 0:
         status = "NO_PUBLIC_CANDIDATES"
+    elif country_status == "RESOLVED_NO_CATALOGUE_DATA":
+        status = "UNSUPPORTED_FILTER"
+    elif country_status == "AMBIGUOUS_FILTER":
+        status = "AMBIGUOUS_FILTER"
     elif degree_val and degree_count == 0:
         status = "NO_DEGREE_MATCHES"
-    elif region_count == 0:
+    elif region_val and region_count == 0:
         status = "NO_REGION_MATCHES"
-    elif counts["stipend_text_candidates"] > 0 or counts["funding_support_unclear"] > 0:
-        status = "POTENTIAL_MATCHES_FOUND"
+    elif funding_val == "stipend":
+        if counts["stipend_text_candidates"] > 0 or counts["funding_support_unclear"] > 0:
+            status = "POTENTIAL_MATCHES_FOUND"
+        else:
+            status = "NO_VERIFIED_STIPEND_MATCHES"
     else:
-        status = "NO_VERIFIED_STIPEND_MATCHES"
+        # Generic discovery: any region candidate is a match.
+        if region_count > 0:
+            status = "POTENTIAL_MATCHES_FOUND"
+        else:
+            status = "NO_REGION_MATCHES"
 
     return DiscoveryResult(
         query_summary=query_summary,

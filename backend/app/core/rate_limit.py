@@ -56,17 +56,21 @@ class InProcessRateLimiter:
         """
         moment = time.monotonic() if now is None else now
         with self._lock:
+            # Remove expired buckets first (bounded cleanup).
+            expired = [k for k, b in self._buckets.items() if moment - b.window_started_at >= self._window]
+            for k in expired:
+                del self._buckets[k]
             bucket = self._buckets.get(key)
-            if bucket is None or moment - bucket.window_started_at >= self._window:
+            if bucket is None:
                 if len(self._buckets) >= self._max_keys:
-                    # Refuse rather than evict. See the module docstring.
                     raise RateLimitExceeded(self._window)
                 self._buckets[key] = _Bucket(count=1, window_started_at=moment)
                 return
+            # existing active window
             bucket.count += 1
             if bucket.count > self._limit:
                 retry_after = self._window - int(moment - bucket.window_started_at)
-                raise RateLimitExceeded(retry_after)
+                raise RateLimitExceeded(retry_after if retry_after > 0 else 1)
 
     def reset(self) -> None:
         """Clear every bucket. Used by tests."""
