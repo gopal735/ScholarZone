@@ -291,7 +291,8 @@ export async function askUnifiedAI(message, options = {}) {
       }
     } catch (e) {
       void e
-      // fall through to grounded fallback below
+      // Do NOT fall through to legacy keyword-AND search. Surface as search error.
+      throw new Error('SEARCH_UNAVAILABLE', { cause: e })
     }
   }
 

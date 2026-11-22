@@ -33,6 +33,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query, Request, status
 from sqlalchemy.orm import Session
 
 from ..database import get_db
+from ..core.rate_limit import InProcessRateLimiter
 from ..dependencies import require_user
 from ..models import User
 from ..routers.applications import _same_origin_guard
@@ -47,6 +48,7 @@ from ..services.mentor.intents import INTENT_ORDER
 logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/mentor", tags=["mentor"])
+_public_discovery_limiter = InProcessRateLimiter(limit=30, window_seconds=60)
 
 
 # ------------------------------------------------------------------ limiter
@@ -156,6 +158,11 @@ def post_discovery(
     No user context or private data is involved.
     """
     _same_origin_guard(request)
+    client_ip = request.client.host if request.client else "unknown"
+    try:
+        _public_discovery_limiter.check(client_ip)
+    except Exception as exc:
+        raise HTTPException(status_code=429, detail="Too many requests.") from exc
     from ..services.mentor.guards import normalize_message
     from ..services.mentor.intents import classify
     from ..services.mentor.discovery import run_discovery
@@ -165,13 +172,18 @@ def post_discovery(
 
     request_id = uuid4().hex[:12]
     message = normalize_message(payload.message)
-    resolved_as_of = None
-    try:
-        resolved_as_of = _date.fromisoformat(as_of) if as_of else None
-    except ValueError:
-        resolved_as_of = None
-    if resolved_as_of is None:
-        resolved_as_of = payload.as_of or _date.today()
+    if as_of:
+        try:
+            resolved_as_of = _date.fromisoformat(as_of)
+        except ValueError:
+            raise HTTPException(status_code=422, detail="as_of must be a date in YYYY-MM-DD form.")
+    elif payload.as_of:
+        try:
+            resolved_as_of = _date.fromisoformat(str(payload.as_of))
+        except (ValueError, TypeError):
+            raise HTTPException(status_code=422, detail="as_of must be a date in YYYY-MM-DD form.")
+    else:
+        resolved_as_of = _date.today()
 
     discovery = run_discovery(db, message, resolved_as_of)
 

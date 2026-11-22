@@ -204,11 +204,9 @@ describe('askUnifiedAI routing', () => {
     expect(askMentor).not.toHaveBeenCalled()
   })
 
-  it('anonymous discovery: calls askAIAssistant, not askMentor', async () => {
-    const res = await askUnifiedAI('Find PhD scholarships in Europe', { isAuthenticated: false })
-    expect(askAIAssistant).toHaveBeenCalled()
+  it('anonymous discovery: attempts canonical discovery endpoint', async () => {
+    await expect(askUnifiedAI('Find PhD scholarships in Europe', { isAuthenticated: false })).rejects.toThrow()
     expect(askMentor).not.toHaveBeenCalled()
-    expect(res.answer).toBe('grounded answer')
   })
 
   it('authenticated: calls askMentor, not askAIAssistant', async () => {
@@ -227,13 +225,12 @@ describe('askUnifiedAI routing', () => {
     expect(askAIAssistant).not.toHaveBeenCalled()
   })
 
-  it('discovery query: uses canonical discovery service, falls back to public search on auth failure', async () => {
+  it('discovery query: uses canonical discovery service; no legacy fallback on failure', async () => {
     vi.mocked(askMentor).mockRejectedValue(new MentorUnauthenticatedError('expired'))
     vi.mocked(askAIAssistant).mockResolvedValue({ answer: 'grounded answer', sources: [], grounded: true })
-    const res = await askUnifiedAI('Find PhD scholarships in Europe', { isAuthenticated: true })
+    await expect(askUnifiedAI('Find PhD scholarships in Europe', { isAuthenticated: true })).rejects.toThrow()
     expect(askMentor).toHaveBeenCalled()
-    expect(askAIAssistant).toHaveBeenCalled()
-    expect(res.answer).toBe('grounded answer')
+    expect(askAIAssistant).not.toHaveBeenCalled()
   })
 
   it('expired session + fallback failure: throws original auth error', async () => {

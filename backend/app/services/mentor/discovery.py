@@ -16,6 +16,7 @@ from ...schemas_mentor import EvidenceResponse
 from .evidence import EvidenceItem, BASIS_CATALOGUE
 from .guards import bound_text
 from .normalization import normalize_query
+from .countries import extract_country_from_message
 
 EUROPE_COUNTRIES: frozenset[str] = frozenset(
     {
@@ -29,8 +30,7 @@ EUROPE_COUNTRIES: frozenset[str] = frozenset(
 
 _DEGREE_PATTERNS = re.compile(r"\b(ph\.?d|doctoral|doctorate)\b", re.IGNORECASE)
 _STIPEND_PATTERNS = re.compile(r"\b(stipend|living allowance|maintenance allowance|subsistence allowance|living expenses|research stipend|monthly (stipend|allowance|grant))\b", re.IGNORECASE)
-_NO_STIPEND_PATTERNS = re.compile(r"\b(tuition only|tuition-only|no stipend|stipend not (provided|included|offered))\b", re.IGNORECASE)
-_EUROPE_ALIASES = ("europe", "european")
+_NO_STIPEND_PATTERNS = re.compile(r"\b(tuition only|tuition-only|no (monthly )?stipend|no living allowance|stipend not (provided|included|offered)|stipend is not (provided|included|offered)|does not include (a )?stipend|living costs are not covered)\b", re.IGNORECASE)
 
 
 def _contains_any(text, terms):
@@ -52,8 +52,9 @@ def extract_slots(message: str) -> dict[str, Any]:
     region = None
     if _contains_any(norm, ["europe", "european"]) or "europe" in norm or _contains_any(original, ["\u0987\u0989\u09b0\u09cb\u09aa"]):
         region = "europe"
-    if _contains_any(norm, ["germany", "jarmani", "deutschland"]) or _contains_any(original, ["\u099c\u09be\u09b0\u09cd\u09ae\u09be\u09a8\u09bf"]):
-        region = "germany"
+    country = extract_country_from_message(original)
+    if country is not None and country not in ("International", "Multiple"):
+        region = country
     funding = None
     if _STIPEND_PATTERNS.search(original) or _contains_any(original, ["\u09ad\u09be\u09a4\u09be", "\u09b8\u09cd\u099f\u09be\u0987\u09aa\u09c7\u09a8\u09cd\u09a1", "\u09ae\u09be\u09b8\u09bf\u0995"]) or _contains_any(norm, ["stipend", "living allowance", "maintenance"]):
         funding = "stipend"
@@ -165,6 +166,7 @@ def run_discovery(db: Session, message: str, as_of: date | None = None, limit: i
                 Scholarship.degree.ilike("%undergraduate%"),
             )
         )
+
     degree_count = db.scalar(
         select(func.count()).select_from(Scholarship).where(*conditions)
     ) or 0
@@ -173,49 +175,46 @@ def run_discovery(db: Session, message: str, as_of: date | None = None, limit: i
     if region_val == "europe":
         region_conditions.append(Scholarship.country.in_(tuple(EUROPE_COUNTRIES)))
     elif region_val and region_val != "europe":
-        region_conditions.append(func.lower(Scholarship.country) == region_val.casefold())
+        region_conditions.append(func.lower(Scholarship.country) == str(region_val).casefold())
 
     region_count = db.scalar(
         select(func.count()).select_from(Scholarship).where(*region_conditions)
     ) or 0
 
-    excluded_count = db.scalar(
-        select(func.count()).select_from(Scholarship).where(
-            *region_conditions,
-            or_(
-                Scholarship.funding.ilike("%tuition only%"),
-                Scholarship.funding.ilike("%tuition-only%"),
-                Scholarship.funding.ilike("%no stipend%"),
-            ),
+    # Batched classification across full population for parity.
+    batch_size = 500
+    boff = 0
+    excluded_count = 0
+    stipend_text_candidates_count = 0
+    funding_support_unclear_count = 0
+    unverified_count = 0
+    eligible_ids: list[int] = []
+    while True:
+        batch = list(
+            db.execute(
+                select(Scholarship)
+                .where(*region_conditions)
+                .order_by(Scholarship.id.asc())
+                .offset(boff)
+                .limit(batch_size)
+            ).scalars()
         )
-    ) or 0
-
-    stipend_like_count = db.scalar(
-        select(func.count()).select_from(Scholarship).where(
-            *region_conditions,
-            or_(
-                Scholarship.funding.ilike("%stipend%"),
-                Scholarship.funding.ilike("%living allowance%"),
-                Scholarship.funding.ilike("%maintenance allowance%"),
-                Scholarship.funding.ilike("%subsistence%"),
-                Scholarship.funding.ilike("%living expenses%"),
-            ),
-        )
-    ) or 0
-
-    unverified_count = db.scalar(
-        select(func.count()).select_from(Scholarship).where(
-            *region_conditions,
-            or_(
-                Scholarship.funding.is_(None),
-                func.trim(Scholarship.funding) == "",
-                func.upper(Scholarship.funding) == "UNKNOWN",
-            ),
-        )
-    ) or 0
-
-    stipend_text_candidates_count = max(0, stipend_like_count - excluded_count)
-    funding_support_unclear_count = max(0, region_count - excluded_count - stipend_text_candidates_count - unverified_count)
+        if not batch:
+            break
+        for row in batch:
+            cls, _, _ = classify_funding(row)
+            if cls == "STIPEND_EXPLICITLY_EXCLUDED":
+                excluded_count += 1
+            elif cls == "STIPEND_TEXT_CANDIDATE":
+                stipend_text_candidates_count += 1
+                eligible_ids.append(row.id)
+            elif cls == "FUNDING_UNVERIFIED":
+                unverified_count += 1
+                eligible_ids.append(row.id)
+            elif cls == "FUNDING_SUPPORT_CONFIRMED_STIPEND_UNCLEAR":
+                funding_support_unclear_count += 1
+                eligible_ids.append(row.id)
+        boff += batch_size
 
     counts = {
         "public_candidates": int(public_count),
@@ -228,15 +227,17 @@ def run_discovery(db: Session, message: str, as_of: date | None = None, limit: i
         "explicit_stipend_excluded": int(excluded_count),
     }
 
-    region_rows = list(
-        db.execute(
-            select(Scholarship)
-            .where(*region_conditions)
-            .order_by(Scholarship.id.asc())
-            .offset(offset)
-            .limit(limit)
-        ).scalars()
-    )
+    # Paginate eligible (non-excluded) population.
+    page_ids = eligible_ids[offset:offset + limit]
+    if page_ids:
+        rows_by_id = {
+            r.id: r for r in db.execute(
+                select(Scholarship).where(Scholarship.id.in_(page_ids))
+            ).scalars()
+        }
+        region_rows = [rows_by_id[i] for i in page_ids if i in rows_by_id]
+    else:
+        region_rows = []
 
     potential: list[DiscoveryMatch] = []
     evidence: list[EvidenceItem] = []
