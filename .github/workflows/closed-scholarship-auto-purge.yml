@@ -485,10 +485,11 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           path: artifacts
+          merge-multiple: true
 
       - name: Generate Final Preflight Report
         run: |
-          python .github/scripts/summary.py artifacts ${{ github.sha }} ${{ github.run_id }} ${{ github.run_number }} ${{ github.run_attempt }} ${{ github.workflow }}
+          python .github/scripts/summary.py artifacts ${{ needs.verify-merge-trigger.outputs.merge_commit_sha }} ${{ github.run_id }} ${{ github.run_number }} ${{ github.run_attempt }} ${{ github.workflow }}
 
       - name: Upload Preflight Summary
         uses: actions/upload-artifact@v4
@@ -515,16 +516,18 @@ jobs:
     environment: production-readonly
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    outputs:
+      manifest_hash: ${{ steps.manifest.outputs.manifest_hash }}
+      total_closed: ${{ steps.manifest.outputs.total_closed }}
+      schema_version: ${{ steps.manifest.outputs.schema_version }}
+      reference_date: ${{ steps.manifest.outputs.reference_date }}
+      manifest_path: ${{ steps.manifest.outputs.manifest_path }}
     env:
       SCHOLARZONE_DATABASE_URL_RO: ${{ secrets.SCHOLARZONE_DATABASE_URL_RO }}
       EXPECTED_NEON_PROJECT_ID: ${{ secrets.EXPECTED_NEON_PROJECT_ID }}
       EXPECTED_NEON_BRANCH_ID: ${{ secrets.EXPECTED_NEON_BRANCH_ID }}
       EXPECTED_NEON_BRANCH_NAME: ${{ secrets.EXPECTED_NEON_BRANCH_NAME }}
       EXPECTED_DATABASE_NAME: ${{ secrets.EXPECTED_DATABASE_NAME }}
-    outputs:
-      manifest_path: ${{ steps.manifest.outputs.manifest_path }}
-      manifest_hash: ${{ steps.manifest.outputs.manifest_hash }}
-      total_closed: ${{ steps.manifest.outputs.total_closed }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -605,6 +608,11 @@ jobs:
       EXPECTED_NEON_BRANCH_ID: ${{ secrets.EXPECTED_NEON_BRANCH_ID }}
       EXPECTED_NEON_BRANCH_NAME: ${{ secrets.EXPECTED_NEON_BRANCH_NAME }}
       EXPECTED_DATABASE_NAME: ${{ secrets.EXPECTED_DATABASE_NAME }}
+      EXPECTED_DATABASE_HOST: ${{ secrets.EXPECTED_DATABASE_HOST }}
+      EXPECTED_MANIFEST_SHA256: ${{ needs.generate-manifest.outputs.manifest_hash }}
+      EXPECTED_MANIFEST_COUNT: ${{ needs.generate-manifest.outputs.total_closed }}
+      EXPECTED_MANIFEST_SCHEMA_VERSION: ${{ needs.generate-manifest.outputs.schema_version }}
+      EXPECTED_MANIFEST_REFERENCE_DATE: ${{ needs.generate-manifest.outputs.reference_date }}
     outputs:
       deleted_count: ${{ steps.deletion.outputs.deleted_count }}
       report_path: ${{ steps.deletion.outputs.report_path }}
@@ -752,9 +760,16 @@ jobs:
           fetch-depth: 1
           ref: ${{ needs.verify-merge-trigger.outputs.merge_commit_sha }}
 
-      - name: Download all artifacts
+      - name: Download Manifest Artifact
         uses: actions/download-artifact@v4
         with:
+          name: deletion-manifest
+          path: artifacts
+
+      - name: Download Deletion Report Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: deletion-report
           path: artifacts
 
       - name: Generate Final Execution Report
