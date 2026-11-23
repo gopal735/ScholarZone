@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import enum
 import os
+import tempfile
 import warnings
 
 import pytest
@@ -1108,12 +1109,16 @@ def test_concurrent_conditional_update_allows_exactly_one_writer():
     from concurrent.futures import ThreadPoolExecutor
     from sqlalchemy import create_engine, update
     from sqlalchemy.orm import sessionmaker
-    from sqlalchemy.pool import StaticPool
 
+    # File-backed database, because the two workers must run concurrently on
+    # separate pooled connections: a shared in-memory connection (StaticPool)
+    # serialises them through one DBAPI handle, so the test outcome would
+    # depend on fixture behaviour instead of on the version predicate.
+    db_fd, db_path = tempfile.mkstemp(suffix=".sqlite")
+    os.close(db_fd)
     engine = create_engine(
-        "sqlite://",
+        "sqlite:///" + db_path.replace("\\", "/"),
         connect_args={"check_same_thread": False},
-        poolclass=StaticPool,
     )
     Base.metadata.create_all(engine)
     SessionLocal = sessionmaker(bind=engine)
@@ -1202,6 +1207,10 @@ def test_concurrent_conditional_update_allows_exactly_one_writer():
         verify.close()
 
     engine.dispose()
+    try:
+        os.unlink(db_path)
+    except OSError:
+        pass
 
 
 def test_selecting_built_ins_by_negative_id_stores_the_matching_template_key(client, db):
