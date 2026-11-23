@@ -1052,3 +1052,87 @@ class TestServiceUnitBehaviour:
         signature = inspect.signature(build_dashboard)
         assert "as_of" in signature.parameters
         assert signature.parameters["as_of"].default is None
+# -------------------------------------------------------------------- profile deletion
+
+
+class TestProfileDeletion:
+    def test_unauthenticated_delete_is_blocked(self, client, db):
+        make_user(db, "pd_unauth@example.com")
+        response = client.delete("/dashboard/profile")
+        assert response.status_code == 401
+
+    def test_delete_with_no_profile_returns_empty_state(self, client, db):
+        make_user(db, "pd_empty@example.com")
+        login(client, "pd_empty@example.com")
+        response = client.delete("/dashboard/profile")
+        assert response.status_code == 200, response.text
+        body = response.json()
+        assert body["profile"] == {}
+        assert body["is_empty"] is True
+
+    def test_delete_removes_profile(self, client, db):
+        user = make_user(db, "pd_remove@example.com")
+        login(client, "pd_remove@example.com")
+        assert client.put(
+            "/dashboard/profile", json={"profile": {"citizenship": "Nepal", "age": 20}}
+        ).status_code == 200
+        assert client.get("/dashboard/profile").json()["is_empty"] is False
+
+        response = client.delete("/dashboard/profile")
+        assert response.status_code == 200, response.text
+        body = response.json()
+        assert body["profile"] == {}
+        assert body["is_empty"] is True
+
+        stored = client.get("/dashboard/profile").json()
+        assert stored["profile"] == {}
+        assert stored["is_empty"] is True
+        assert build_dashboard(db, user, as_of=AS_OF).has_profile is False
+
+    def test_delete_does_not_touch_saved_scholarships(self, client, db):
+        user = make_user(db, "pd_saved@example.com")
+        login(client, "pd_saved@example.com")
+        scholarship = make_scholarship(db)
+        client.post(f"/dashboard/saved?scholarship_id={scholarship.id}")
+        assert client.get("/dashboard/saved").json()["count"] == 1
+
+        save_profile(db, user, citizenship="Nepal")
+        response = client.delete("/dashboard/profile")
+        assert response.status_code == 200, response.text
+
+        # Saved shortlist must survive a profile deletion.
+        assert client.get("/dashboard/saved").json()["count"] == 1
+
+    def test_delete_does_not_touch_applications(self, client, db):
+        from app.models import ApplicationRecord
+
+        user = make_user(db, "pd_app@example.com")
+        login(client, "pd_app@example.com")
+        scholarship = make_scholarship(db)
+        # Create an application record directly to avoid depending on state transitions.
+        record = ApplicationRecord(user_id=user.id, scholarship_id=scholarship.id, state="draft")
+        db.add(record)
+        db.commit()
+
+        save_profile(db, user, citizenship="Nepal")
+        response = client.delete("/dashboard/profile")
+        assert response.status_code == 200, response.text
+
+        remaining = db.execute(
+            select(ApplicationRecord).where(ApplicationRecord.user_id == user.id)
+        ).scalars().all()
+        assert len(remaining) == 1
+
+    def test_delete_is_user_scoped(self, client, db):
+        # User A creates a profile; user B must not be able to delete it.
+        user_a = make_user(db, "pd_a@example.com")
+        make_user(db, "pd_b@example.com")
+        save_profile(db, user_a, citizenship="Nepal")
+
+        login(client, "pd_b@example.com")
+        response = client.delete("/dashboard/profile")
+        assert response.status_code == 200, response.text
+        # B's own (empty) deletion returns empty; A's profile must remain.
+        from app.services.dashboard import get_profile_record
+
+        assert get_profile_record(db, user_a.id) is not None
