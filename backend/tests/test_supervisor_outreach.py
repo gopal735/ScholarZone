@@ -1180,9 +1180,9 @@ def test_concurrent_conditional_update_allows_exactly_one_writer():
             )
             s.commit()
             outcomes.append(result.rowcount)
-        except Exception:
+        except Exception as exc:  # pragma: no cover - should never happen
             s.rollback()
-            outcomes.append(0)
+            raise AssertionError(f"unexpected error during concurrent update: {exc!r}")
         finally:
             s.close()
 
@@ -1191,7 +1191,96 @@ def test_concurrent_conditional_update_allows_exactly_one_writer():
 
     assert sorted(outcomes) == [0, 1], outcomes
 
+    # Verify the persisted state reflects exactly one successful write.
+    verify = SessionLocal()
+    try:
+        final = verify.get(ProfessorOutreachRecord, record_id)
+        assert final is not None
+        assert final.version == 1
+        assert final.notes == "concurrent"
+    finally:
+        verify.close()
+
     engine.dispose()
+
+
+def test_selecting_built_ins_by_negative_id_stores_the_matching_template_key(client, db):
+    _register(client, "student@example.com")
+    templates = client.get("/supervisor-email/templates").json()
+    assert len(templates) == 3
+
+    # Seed a second professor so two distinct outreach records can be created
+    # (create_outreach is idempotent per (user, scholarship, professor)).
+    from app.models_supervisor import ProfessorProfile, ScholarshipProfessorLink
+    from app.services.supervisor_status import (
+        ProfessorRelationshipType,
+        RelationshipVerificationStatus,
+    )
+
+    professor2 = ProfessorProfile(
+        canonical_name="Dr Second",
+        title="Professor",
+        institution_name="Test University",
+        department_name="CS",
+        official_profile_url="https://uni1.edu/people/second",
+        official_email="second@uni1.edu",
+        official_email_verified=True,
+        research_areas=["ML"],
+        last_verified_at=datetime.now(timezone.utc),
+    )
+    db.add(professor2)
+    db.commit()
+    db.refresh(professor2)
+    db.add(
+        ScholarshipProfessorLink(
+            scholarship_id=client.scholarship_id,
+            professor_id=professor2.id,
+            relationship_type=str(ProfessorRelationshipType.POTENTIAL_SUPERVISOR),
+            evidence_source_url="https://uni1.edu/people/faculty",
+            evidence_source_type="official_department_page",
+            retrieved_at=datetime.now(timezone.utc),
+            verified_at=datetime.now(timezone.utc),
+            verification_status=str(RelationshipVerificationStatus.VERIFIED),
+        )
+    )
+    db.commit()
+
+    pairs = (
+        (templates[2], client.professor_id),
+        (templates[0], professor2.id),
+    )
+    for template, professor_id in pairs:
+        created = client.post(
+            "/outreach",
+            json={
+                "scholarship_id": client.scholarship_id,
+                "professor_id": professor_id,
+                "template_id": template["id"],
+            },
+        )
+        assert created.status_code in (200, 201), created.text
+        stored = db.query(ContactTemplate).filter_by(id=created.json()["template_id"]).one()
+        assert stored.template_key == template["template_key"]
+
+
+def test_listing_templates_after_selecting_one_still_shows_all_three_built_ins(client, db):
+    _register(client, "student@example.com")
+    templates = client.get("/supervisor-email/templates").json()
+    template_id = templates[0]["id"]
+
+    created = client.post(
+        "/outreach",
+        json={
+            "scholarship_id": client.scholarship_id,
+            "professor_id": client.professor_id,
+            "template_id": template_id,
+        },
+    )
+    assert created.status_code in (200, 201), created.text
+
+    again = client.get("/supervisor-email/templates").json()
+    keys = {item["template_key"] for item in again}
+    assert keys == {"masters_initial", "phd_initial", "follow_up_no_response"}
 
 
 # ---------------------------------------------------------------------------
@@ -1379,12 +1468,13 @@ def test_an_invalid_template_id_is_refused(client):
     assert response.status_code == 422
 
 
-def test_a_valid_template_id_is_recorded(client):
+def test_a_valid_template_id_is_recorded(client, db):
     _register(client, "student@example.com")
 
     templates = client.get("/supervisor-email/templates").json()
     assert templates
     template_id = templates[0]["id"]
+    expected_key = templates[0]["template_key"]
 
     created = client.post(
         "/outreach",
@@ -1395,7 +1485,10 @@ def test_a_valid_template_id_is_recorded(client):
         },
     ).json()
 
-    assert created["template_id"] == template_id
+    # The stored id is the persisted row's id, which may differ from the
+    # synthetic built-in id the client selected; it must resolve to the same key.
+    stored = db.query(ContactTemplate).filter_by(id=created["template_id"]).one()
+    assert stored.template_key == expected_key
 
 
 def test_markup_in_subject_draft_body_and_next_action_is_refused(client):

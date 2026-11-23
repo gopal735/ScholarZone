@@ -141,7 +141,7 @@ _TEMPLATES_BY_KEY = {template.key: template for template in BUILTIN_TEMPLATES}
 #: read path serves these, so the identifiers handed to clients never depend on
 #: database state that a GET could mutate.
 _BUILTIN_TEMPLATES_BY_ID: dict[int, Template] = {
-    index: template for index, template in enumerate(BUILTIN_TEMPLATES, start=1)
+    -(index): template for index, template in enumerate(BUILTIN_TEMPLATES, start=1)
 }
 
 
@@ -335,30 +335,56 @@ def list_templates(db: Session) -> list[ContactTemplate]:
     maintenance path (:func:`ensure_templates`), which is never invoked from the
     read route.
     """
-    rows = list(
-        db.execute(
-            select(ContactTemplate).order_by(ContactTemplate.id)
-        ).scalars()
-    )
-    if not rows:
-        # Read-only fallback for a database that has not been through the explicit
-        # maintenance path yet: serve the built-in set without persisting anything.
-        return [
-            ContactTemplate(
-                id=identifier,
-                template_key=template.key,
-                title=template.title,
-                degree_level=template.degree_level,
-                subject_hint=template.subject_hint,
-                body_text=template.body_text,
-                is_active=True,
+    # Load every persisted row once. The built-in set is merged against this map
+    # by template_key, so a built-in that has been persisted (for example via
+    # the write path) is not duplicated, and a persisted row that was deactivated
+    # stays hidden instead of being resurrected from the built-in fallback.
+    persisted = {
+        row.template_key: row
+        for row in db.execute(select(ContactTemplate).order_by(ContactTemplate.id)).scalars()
+    }
+
+    result: list[ContactTemplate] = []
+    seen_keys: set[str] = set()
+
+    # Built-ins first, in their declared order. Use the persisted row when one
+    # exists (honouring its active flag); otherwise the read-only fallback.
+    for template in BUILTIN_TEMPLATES:
+        row = persisted.get(template.key)
+        if row is not None:
+            if row.is_active:
+                result.append(row)
+                seen_keys.add(template.key)
+        else:
+            # Read-only fallback for a built-in that has not been persisted yet.
+            synthetic_id = None
+            for identifier, builtin in _BUILTIN_TEMPLATES_BY_ID.items():
+                if builtin.key == template.key:
+                    synthetic_id = identifier
+                    break
+            result.append(
+                ContactTemplate(
+                    id=synthetic_id if synthetic_id is not None else 0,
+                    template_key=template.key,
+                    title=template.title,
+                    degree_level=template.degree_level,
+                    subject_hint=template.subject_hint,
+                    body_text=template.body_text,
+                    is_active=True,
+                )
             )
-            for identifier, template in sorted(_BUILTIN_TEMPLATES_BY_ID.items())
-        ]
-    # Templates exist in the table: honour their active flags. A persisted but
-    # deactivated template is not advertised, and an all-inactive table yields
-    # an empty list rather than silently resurrecting the built-in set.
-    return [row for row in rows if row.is_active]
+            seen_keys.add(template.key)
+
+    # Then any persisted templates that are not part of the built-in set
+    # (custom templates), honouring their active flag.
+    for row in persisted.values():
+        if row.template_key in seen_keys:
+            continue
+        if row.is_active:
+            result.append(row)
+            seen_keys.add(row.template_key)
+
+    return result
 
 
 def verified_relationship(
