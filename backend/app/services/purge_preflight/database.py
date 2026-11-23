@@ -258,7 +258,7 @@ class DatabaseAccessor:
         with conn.cursor(cursor_factory=RealDictCursor) as cur:
             cur.execute(
                 """
-                SELECT n.nspname AS schema_name,
+                SELECT n.nspname AS table_schema,
                        c.relname AS table_name,
                        fk.conname AS constraint_name,
                        ARRAY(SELECT a.attname

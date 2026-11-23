@@ -20,6 +20,13 @@ UPDATE purge_execution_ledger
 SET id = nextval('purge_execution_ledger_id_seq')
 WHERE id IS NULL;
 
+-- Advance the sequence past the maximum existing ID so future inserts cannot collide.
+SELECT setval(
+    'purge_execution_ledger_id_seq',
+    COALESCE((SELECT MAX(id) FROM purge_execution_ledger), 0),
+    true
+);
+
 DO $$
 BEGIN
     IF NOT EXISTS (
@@ -34,4 +41,3 @@ END $$;
 -- Allow detached outreach history after a scholarship is permanently deleted.
 ALTER TABLE professor_outreach_records
     ALTER COLUMN scholarship_id DROP NOT NULL;
-PY

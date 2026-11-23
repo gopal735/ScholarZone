@@ -131,6 +131,8 @@ def _dependency_fingerprint_data(db: Session, scholarship_id: int) -> dict:
                 (ScholarshipRestoreRecord, "scholarship_id"),
                 (ImageReview, "scholarship_id"),
                 (ScholarshipProfessorLink, "scholarship_id"),
+                (ScholarshipSupervisorCoverage, "scholarship_id"),
+                (OfficialContact, "scholarship_id"),
             )
         },
         "source_evidence": sorted(
@@ -161,7 +163,7 @@ def _lock_dependents(db: Session, scholarship_id: int) -> None:
         ProfessorOutreachRecord, ApplicationRecord, SavedScholarship,
         DiscoveryCandidate, ScholarshipVerificationHistory, ScholarshipReview,
         ScholarshipFetchAttempt, ScholarshipSnapshot, ScholarshipRestoreRecord,
-        ImageReview,
+        ImageReview, ScholarshipSupervisorCoverage, OfficialContact,
     ]
     for model in models:
         col = DiscoveryCandidate.matched_scholarship_id if model is DiscoveryCandidate else model.scholarship_id
@@ -602,24 +604,28 @@ def _parse_date_from_text(text: str, month_only: bool = False) -> Optional[date]
 
         else:
 
-            # ISO date: YYYY-MM-DD
-
-            m = re.match(r'^\d{4}-\d{2}-\d{2}(?:[T ].*)?$', text)
-
-            if m:
-
+            # ISO date or full ISO timestamp: validate the entire string.
+            iso_candidate = None
+            if re.match(r'^\d{4}-\d{2}-\d{2}$', text):
+                iso_candidate = text
+            elif "T" in text or " " in text:
                 try:
-
-                    d = date.fromisoformat(text[:10])
-
+                    from datetime import datetime as _dt
+                    _dt.fromisoformat(text.replace("Z", "+00:00"))
+                    iso_candidate = text[:10]
                 except ValueError:
+                    iso_candidate = None
 
-                    return None
-
+            if iso_candidate is not None:
+                try:
+                    d = date.fromisoformat(iso_candidate)
+                except ValueError:
+                    d = None
             else:
+                d = None
 
+            if d is None:
                 # General parse attempt
-
                 for fmt in ("%Y-%m-%d", "%d %B %Y", "%B %d, %Y", "%d %b %Y", "%B %Y"):
 
                     try:
@@ -1302,7 +1308,8 @@ def execute_deletion(db: Session, manifest: List[ClosedScholarshipManifest], dry
 
 
 
-            if not locked.deletion_protected:
+            # Fail closed: a missing/None/invalid protection state is treated as protected.
+            if locked.deletion_protected is not False:
                 report.skipped_scholarship_ids.append(sid)
                 report.skipped.append(sid)
                 report.skipped_scholarships.append(sid)
