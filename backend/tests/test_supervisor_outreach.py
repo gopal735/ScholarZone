@@ -37,6 +37,7 @@ from app.main import app  # noqa: E402
 from app.models import Base, Scholarship, User  # noqa: E402
 from app.models_supervisor import (  # noqa: E402
     ContactTemplate,
+    ProfessorOutreachRecord,
     ProfessorProfile,
     ScholarshipProfessorLink,
 )
@@ -882,6 +883,315 @@ def test_get_templates_does_not_write_to_the_database(client, db):
     # The read path serves the built-in set when the table holds nothing, and it
     # must not seed the table either: only the explicit maintenance path may.
     assert db.query(ContactTemplate).count() == 0
+
+
+# ---------------------------------------------------------------------------
+# Draft validation consistency (Blocker A)
+# ---------------------------------------------------------------------------
+
+
+def test_a_draft_containing_a_comparison_expression_can_be_persisted(client):
+    _register(client, "student@example.com")
+    draft = client.post(
+        "/supervisor-email/draft",
+        json={
+            "scholarship_id": client.scholarship_id,
+            "professor_id": client.professor_id,
+            "interests": ["ML < NLP"],
+        },
+    ).json()
+    assert "ML < NLP" in draft["body"]
+
+    created = client.post(
+        "/outreach",
+        json={
+            "scholarship_id": client.scholarship_id,
+            "professor_id": client.professor_id,
+            "draft_body": draft["body"],
+        },
+    )
+    assert created.status_code in (200, 201)
+    assert "ML < NLP" in created.json()["draft_body"]
+
+    # PATCH path uses the same validator.
+    patched = client.patch(
+        f"/outreach/{created.json()['id']}",
+        json={"version": created.json()["version"], "draft_body": draft["body"]},
+    )
+    assert patched.status_code == 200
+    assert "ML < NLP" in patched.json()["draft_body"]
+
+
+@pytest.mark.parametrize(
+    "dangerous",
+    [
+        "<script>alert(1)</script>",
+        "<b>x</b>",
+        "{injection}",
+        "a{b}",
+        "<img src=x onerror=alert(1)>",
+    ],
+)
+def test_dangerous_markup_payloads_are_rejected(client, dangerous):
+    _register(client, "student@example.com")
+    created = client.post(
+        "/outreach",
+        json={"scholarship_id": client.scholarship_id, "professor_id": client.professor_id},
+    ).json()
+
+    for field in ("draft_subject", "draft_body", "notes", "next_action"):
+        response = client.patch(
+            f"/outreach/{created['id']}",
+            json={"version": created["version"], field: dangerous},
+        )
+        assert response.status_code == 422, (field, dangerous, response.text)
+
+
+# ---------------------------------------------------------------------------
+# Built-in template foreign key (Blocker B)
+# ---------------------------------------------------------------------------
+
+
+def test_get_templates_on_an_empty_table_creates_no_rows(client, db):
+    assert db.query(ContactTemplate).count() == 0
+    response = client.get("/supervisor-email/templates")
+    assert response.status_code == 200
+    assert len(response.json()) == 3
+    assert db.query(ContactTemplate).count() == 0
+
+
+def test_selecting_a_built_in_template_persists_a_real_foreign_key(client, db):
+    _register(client, "student@example.com")
+    templates = client.get("/supervisor-email/templates").json()
+    template_id = templates[0]["id"]
+
+    created = client.post(
+        "/outreach",
+        json={
+            "scholarship_id": client.scholarship_id,
+            "professor_id": client.professor_id,
+            "template_id": template_id,
+        },
+    )
+    assert created.status_code in (200, 201)
+    stored_id = created.json()["template_id"]
+    assert stored_id is not None
+    # The stored id must resolve to an actual persisted row.
+    assert db.query(ContactTemplate).filter_by(id=stored_id).count() == 1
+
+
+def test_an_inactive_persisted_template_is_rejected(client, db):
+    _register(client, "student@example.com")
+    row = ContactTemplate(
+        template_key="custom_inactive",
+        title="Inactive",
+        degree_level=None,
+        subject_hint="x",
+        body_text="y",
+        is_active=False,
+    )
+    db.add(row)
+    db.commit()
+    db.refresh(row)
+
+    response = client.post(
+        "/outreach",
+        json={
+            "scholarship_id": client.scholarship_id,
+            "professor_id": client.professor_id,
+            "template_id": row.id,
+        },
+    )
+    assert response.status_code == 422
+
+
+def test_an_unknown_template_id_is_rejected_with_422(client):
+    _register(client, "student@example.com")
+    response = client.post(
+        "/outreach",
+        json={
+            "scholarship_id": client.scholarship_id,
+            "professor_id": client.professor_id,
+            "template_id": 999999,
+        },
+    )
+    assert response.status_code == 422
+
+
+def test_sqlite_foreign_key_enforcement_accepts_a_resolved_built_in_template():
+    from sqlalchemy import create_engine, event
+    from sqlalchemy.orm import sessionmaker
+    from sqlalchemy.pool import StaticPool
+
+    engine = create_engine(
+        "sqlite://",
+        connect_args={"check_same_thread": False},
+        poolclass=StaticPool,
+    )
+
+    @event.listens_for(engine, "connect")
+    def _enable_fk(dbapi_conn, _):
+        cursor = dbapi_conn.cursor()
+        cursor.execute("PRAGMA foreign_keys=ON")
+        cursor.close()
+
+    Base.metadata.create_all(engine)
+    session = sessionmaker(bind=engine)()
+
+    # Seed scholarship/professor/link.
+    scholarship = Scholarship(
+        title="FK Test Scholarship", country="Germany", degree="Master",
+        funding="Fully Funded", status="open", deadline_date=date(2027, 6, 30),
+        deadline_precision="exact", eligibility=[], coverage=[], requirements=[],
+        documents=[], official_source="Test University",
+        official_source_url="https://fk.edu/programmes/1", is_verified=True,
+        verification_status="active", image_url="https://fk.edu/logo.png",
+    )
+    session.add(scholarship)
+    session.commit()
+    session.refresh(scholarship)
+    professor = ProfessorProfile(
+        canonical_name="Dr FK", title="Professor", institution_name="Test University",
+        department_name="CS", official_profile_url="https://fk.edu/people/fk",
+        official_email="fk@fk.edu", official_email_verified=True,
+        research_areas=["ML"], last_verified_at=datetime.now(timezone.utc),
+    )
+    session.add(professor)
+    session.commit()
+    session.refresh(professor)
+    session.add(
+        ScholarshipProfessorLink(
+            scholarship_id=scholarship.id, professor_id=professor.id,
+            relationship_type=str(ProfessorRelationshipType.POTENTIAL_SUPERVISOR),
+            evidence_source_url="https://fk.edu/people/faculty",
+            evidence_source_type="official_department_page",
+            retrieved_at=datetime.now(timezone.utc),
+            verified_at=datetime.now(timezone.utc),
+            verification_status=str(RelationshipVerificationStatus.VERIFIED),
+        )
+    )
+    session.commit()
+
+    # Register a user via a client bound to this engine.
+    def override_get_db():
+        try:
+            yield session
+        finally:
+            pass
+
+    app.dependency_overrides[get_db] = override_get_db
+    outreach_write_limiter.reset()
+    draft_limiter.reset()
+    with TestClient(app) as tc:
+        tc.post("/auth/register", json={"email": "fk@example.com", "password": "a-long-enough-password"})
+        templates = tc.get("/supervisor-email/templates").json()
+        template_id = templates[0]["id"]
+        response = tc.post(
+            "/outreach",
+            json={"scholarship_id": scholarship.id, "professor_id": professor.id, "template_id": template_id},
+        )
+        assert response.status_code in (200, 201), response.text
+        stored_id = response.json()["template_id"]
+        # FK enforcement: the stored id must exist in contact_templates.
+        assert session.query(ContactTemplate).filter_by(id=stored_id).count() == 1
+    app.dependency_overrides.pop(get_db, None)
+    session.close()
+    engine.dispose()
+
+
+# ---------------------------------------------------------------------------
+# Concurrent atomic update (Blocker: outreach update)
+# ---------------------------------------------------------------------------
+
+
+def test_concurrent_conditional_update_allows_exactly_one_writer():
+    from concurrent.futures import ThreadPoolExecutor
+    from sqlalchemy import create_engine, update
+    from sqlalchemy.orm import sessionmaker
+    from sqlalchemy.pool import StaticPool
+
+    engine = create_engine(
+        "sqlite://",
+        connect_args={"check_same_thread": False},
+        poolclass=StaticPool,
+    )
+    Base.metadata.create_all(engine)
+    SessionLocal = sessionmaker(bind=engine)
+
+    session = SessionLocal()
+    scholarship = Scholarship(
+        title="Conc Scholarship", country="Germany", degree="Master",
+        funding="Fully Funded", status="open", deadline_date=date(2027, 6, 30),
+        deadline_precision="exact", eligibility=[], coverage=[], requirements=[],
+        documents=[], official_source="Test University",
+        official_source_url="https://conc.edu/programmes/1", is_verified=True,
+        verification_status="active", image_url="https://conc.edu/logo.png",
+    )
+    session.add(scholarship)
+    session.commit()
+    session.refresh(scholarship)
+    professor = ProfessorProfile(
+        canonical_name="Dr Conc", title="Professor", institution_name="Test University",
+        department_name="CS", official_profile_url="https://conc.edu/people/conc",
+        official_email="conc@conc.edu", official_email_verified=True,
+        research_areas=["ML"], last_verified_at=datetime.now(timezone.utc),
+    )
+    session.add(professor)
+    session.commit()
+    session.refresh(professor)
+    session.add(
+        ScholarshipProfessorLink(
+            scholarship_id=scholarship.id, professor_id=professor.id,
+            relationship_type=str(ProfessorRelationshipType.POTENTIAL_SUPERVISOR),
+            evidence_source_url="https://conc.edu/people/faculty",
+            evidence_source_type="official_department_page",
+            retrieved_at=datetime.now(timezone.utc),
+            verified_at=datetime.now(timezone.utc),
+            verification_status=str(RelationshipVerificationStatus.VERIFIED),
+        )
+    )
+    from app.models import User
+    user = User(email="conc@example.com", password_hash="x", is_active=True)
+    session.add(user)
+    session.commit()
+    session.refresh(user)
+    record = ProfessorOutreachRecord(
+        user_id=user.id, scholarship_id=scholarship.id, professor_id=professor.id,
+        status=str(OutreachStatus.NOT_CONTACTED), version=0,
+        created_at=datetime.now(timezone.utc), updated_at=datetime.now(timezone.utc),
+    )
+    session.add(record)
+    session.commit()
+    record_id = record.id
+    session.close()
+
+    outcomes = []
+
+    def worker():
+        s = SessionLocal()
+        try:
+            result = s.execute(
+                update(ProfessorOutreachRecord)
+                .where(
+                    ProfessorOutreachRecord.id == record_id,
+                    ProfessorOutreachRecord.version == 0,
+                )
+                .values(notes="concurrent", version=1, updated_at=datetime.now(timezone.utc))
+            )
+            s.commit()
+            outcomes.append(result.rowcount)
+        except Exception:
+            s.rollback()
+            outcomes.append(0)
+        finally:
+            s.close()
+
+    with ThreadPoolExecutor(max_workers=2) as pool:
+        list(pool.map(lambda _: worker(), range(2)))
+
+    assert sorted(outcomes) == [0, 1], outcomes
+
+    engine.dispose()
 
 
 # ---------------------------------------------------------------------------

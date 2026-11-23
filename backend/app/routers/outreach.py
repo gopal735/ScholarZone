@@ -86,10 +86,14 @@ _RECOGNISED_OUTREACH_STATUSES: frozenset[str] = frozenset(
     member.value for member in OutreachStatus
 )
 
-#: Notes are stored and returned as plain text and rendered as text. Rejecting
-#: angle brackets and braces costs the student nothing here and removes the
-#: temptation to treat this column as a rendering surface later.
-_MARKUP_PATTERN = re.compile(r"[<>{}]")
+#: Notes are stored and returned as plain text and rendered as text. Actual
+#: HTML/XML tags and template-style brace placeholders are rejected so the
+#: column can never become a rendering or injection surface. Ordinary prose
+#: that merely contains an angle bracket (e.g. "ML < NLP") is allowed, because
+#: rejecting it would silently drop legitimate student text such as a comparison
+#: expression that the draft builder is happy to emit.
+_TAG_PATTERN = re.compile(r"<[A-Za-z/]")
+_BRACE_PATTERN = re.compile(r"\{[^}]*\}")
 
 
 def _reject_markup(value: str | None, field: str, limit: int) -> str | None:
@@ -101,10 +105,10 @@ def _reject_markup(value: str | None, field: str, limit: int) -> str | None:
             status.HTTP_422_UNPROCESSABLE_ENTITY,
             f"{field} must be {limit} characters or fewer.",
         )
-    if _MARKUP_PATTERN.search(trimmed):
+    if _TAG_PATTERN.search(trimmed) or _BRACE_PATTERN.search(trimmed):
         raise HTTPException(
             status.HTTP_422_UNPROCESSABLE_ENTITY,
-            f"{field} must be plain text and cannot contain angle brackets or braces.",
+            f"{field} must be plain text and cannot contain markup or template placeholders.",
         )
     return trimmed or None
 
@@ -163,15 +167,21 @@ def _validate_pair(db: Session, scholarship_id: int, professor_id: int) -> Profe
     return professor
 
 
-def _validate_template(db: Session, template_id: int | None) -> None:
-    """Reject a template id that cannot be referenced.
+def _resolve_template(db: Session, template_id: int | None) -> int | None:
+    """Return the persisted ``ContactTemplate`` id to store, or ``None``.
 
-    The foreign key would fail on the insert, but that arrives as a database
-    error (a 500) rather than a usable answer. Checking first makes it a 422 and
-    keeps the idempotent-create race handler below about one specific failure.
+    A client may name a built-in template by one of the deterministic
+    read-only identifiers the GET path serves. Those identifiers do not
+    necessarily exist as rows, so they are resolved here to a real persisted
+    row before the outreach write, creating it transaction-safely on first use
+    so the foreign key always points at an actual ``contact_templates`` row.
+    Persisted rows (active or inactive) are honoured as-is; an inactive
+    template is rejected, and an unknown id is a controlled 422 rather than a
+    database error. The write path never overwrites an existing persisted
+    template, so locally edited templates survive.
     """
     if template_id is None:
-        return
+        return None
     template = db.get(ContactTemplate, template_id)
     if template is not None:
         if not template.is_active:
@@ -179,14 +189,54 @@ def _validate_template(db: Session, template_id: int | None) -> None:
                 status.HTTP_422_UNPROCESSABLE_ENTITY,
                 "That outreach template is not available.",
             )
-        return
-    # The built-in set carries deterministic read-only identifiers; a client
-    # that resolved a template from the public read path may name one of those.
-    if get_builtin_template_by_id(template_id) is None:
+        return template.id
+
+    builtin = get_builtin_template_by_id(template_id)
+    if builtin is None:
         raise HTTPException(
             status.HTTP_422_UNPROCESSABLE_ENTITY,
             "That outreach template is not available.",
         )
+
+    existing = db.execute(
+        select(ContactTemplate).where(ContactTemplate.template_key == builtin.key)
+    ).scalar_one_or_none()
+    if existing is not None:
+        if not existing.is_active:
+            raise HTTPException(
+                status.HTTP_422_UNPROCESSABLE_ENTITY,
+                "That outreach template is not available.",
+            )
+        return existing.id
+
+    row = ContactTemplate(
+        template_key=builtin.key,
+        title=builtin.title,
+        degree_level=builtin.degree_level,
+        subject_hint=builtin.subject_hint,
+        body_text=builtin.body_text,
+        is_active=True,
+    )
+    db.add(row)
+    try:
+        db.commit()
+    except IntegrityError:
+        # A concurrent first-use request won the race. Re-fetch the row it
+        # created rather than failing; never create a duplicate.
+        db.rollback()
+        existing = db.execute(
+            select(ContactTemplate).where(ContactTemplate.template_key == builtin.key)
+        ).scalar_one_or_none()
+        if existing is None:
+            raise
+        if not existing.is_active:
+            raise HTTPException(
+                status.HTTP_422_UNPROCESSABLE_ENTITY,
+                "That outreach template is not available.",
+            )
+        return existing.id
+    db.refresh(row)
+    return row.id
 
 
 def _to_response(row: ProfessorOutreachRecord) -> OutreachResponse:
@@ -321,7 +371,7 @@ def create_outreach(
     except ScholarshipNotPublic:
         raise HTTPException(status.HTTP_404_NOT_FOUND, "Scholarship not found.")
 
-    _validate_template(db, payload.template_id)
+    resolved_template_id = _resolve_template(db, payload.template_id)
     draft_subject = _reject_markup(payload.draft_subject, "Subject", MAX_SUBJECT_LENGTH)
     draft_body = _reject_markup(payload.draft_body, "Draft body", MAX_DRAFT_BODY_LENGTH)
     next_action = _reject_markup(payload.next_action, "Next action", MAX_NEXT_ACTION_LENGTH)
@@ -331,7 +381,7 @@ def create_outreach(
         user_id=user.id,
         scholarship_id=payload.scholarship_id,
         professor_id=payload.professor_id,
-        template_id=payload.template_id,
+        template_id=resolved_template_id,
         draft_subject=draft_subject,
         draft_body=draft_body,
         next_action=next_action,
