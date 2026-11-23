@@ -524,10 +524,49 @@ def run_gate6(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate6Result:
         else:
             _connect = getattr(accessor, "connect_readonly_snapshot", None) or accessor.connect_readonly
         with _connect() as conn:
-
             records = accessor.get_target_records(conn, target_ids)
 
+            # Retrieve authoritative evidence from the persistent registry.
+            # Exact matching: scholarship_id + application cycle/deadline.
+            # Ambiguous/conflicting/duplicate evidence fails closed.
+            try:
+                evidence_rows = accessor.get_evidence_by_scholarship_ids(conn, target_ids)
+            except Exception:
+                evidence_rows = []
 
+            evidence_by_scholarship = {}
+            for er in evidence_rows:
+                evidence_by_scholarship.setdefault(er.get("scholarship_id"), []).append(er)
+
+            enriched_records = []
+            for record in records:
+                rec = dict(record)
+                sid = record.get("id")
+                candidates = evidence_by_scholarship.get(sid, [])
+                rec_deadline = record.get("deadline_date")
+                exact = []
+                for er in candidates:
+                    er_deadline = er.get("deadline")
+                    if rec_deadline is not None and er_deadline is not None:
+                        if str(er_deadline) != str(rec_deadline):
+                            continue
+                    exact.append(er)
+                # Fail closed on ambiguity: require exactly one exact match.
+                if len(exact) == 1:
+                    er = exact[0]
+                    rec["evidence_official_domain"] = er.get("official_domain")
+                    rec["evidence_official_url"] = er.get("official_url")
+                    rec["evidence_source_title"] = er.get("source_title")
+                    rec["evidence_deadline"] = er.get("deadline")
+                    rec["evidence_deadline_precision"] = er.get("deadline_precision")
+                    rec["evidence_supporting_excerpt"] = er.get("supporting_excerpt")
+                    rec["evidence_excerpt_hash"] = er.get("excerpt_hash")
+                    rec["evidence_retrieval_date"] = er.get("retrieval_date")
+                    rec["evidence_reviewer"] = er.get("reviewer")
+                    rec["evidence_decision"] = er.get("decision")
+                enriched_records.append(rec)
+
+            records = enriched_records
 
             if len(records) != 34:
 

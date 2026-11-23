@@ -315,20 +315,12 @@ def get_changed_files(repo_root: Path) -> List[str]:
 
 
 def check_unrelated_changes(changed_files: List[str]) -> List[str]:
-    """Identify changes outside the purge preflight scope."""
-    purge_prefixes = [
-        ".github/scripts/",
-        ".github/workflows/production-purge-preflight.yml",
-        "backend/app/services/purge_preflight/",
-        "backend/tests/test_purge_preflight.py",
-        "backend/scripts/validate_snapshot_ids.py",
-    ]
+    """Identify changes outside the purge preflight scope.
 
-    unrelated = []
-    for f in changed_files:
-        if not any(f.startswith(p) for p in purge_prefixes):
-            unrelated.append(f)
-    return unrelated
+    Uses the same canonical allowlist as check_purge_files_only so the two
+    checks can never disagree.
+    """
+    return [f for f in changed_files if not check_purge_files_only([f])]
 
 
 def scan_for_secrets(repo_root: Path, changed_files: List[str]) -> List[dict]:
@@ -413,10 +405,13 @@ def check_purge_files_only(changed_files: List[str]) -> bool:
     purge_patterns = [
         # Workflow files
         r"^\.github/workflows/production-purge-preflight\.yml$",
+        r"^\.github/workflows/closed-scholarship-auto-purge\.yml$",
         r"^\.github/workflows/ci\.yml$",
         
         # Gate implementation modules
         r"^backend/app/services/purge_preflight/.*\.py$",
+        r"^backend/app/services/closed_deletion\.py$",
+        r"^backend/app/database_readonly\.py$",
         
         # CLI wrappers
         r"^\.github/scripts/gate[1-7]_.*\.py$",

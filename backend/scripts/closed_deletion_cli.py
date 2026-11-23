@@ -18,7 +18,7 @@ import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
-from app.database import get_engine, init_database
+from app.database import get_engine
 from app.services.closed_deletion import (
     build_deletion_manifest,
     execute_deletion,
@@ -26,6 +26,23 @@ from app.services.closed_deletion import (
     save_report,
 )
 from sqlalchemy.orm import Session
+
+
+def check_schema_ready(engine):
+    """Read-only schema readiness check; never mutates schema."""
+    from sqlalchemy import text
+    required = {"scholarships", "purge_execution_ledger"}
+    with engine.connect() as conn:
+        rows = conn.execute(
+            text("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'")
+        ).fetchall()
+    present = {r[0] for r in rows}
+    missing = required - present
+    if missing:
+        print("ERROR: Required schema is not ready. Missing tables: " + ", ".join(sorted(missing)))
+        print("Run the authorized migration process before executing this CLI.")
+        return False
+    return True
 
 
 def main():
@@ -45,8 +62,8 @@ def main():
         sys.exit(1)
 
     engine = get_engine()
-    if not dry_run:
-        init_database()
+    if not check_schema_ready(engine):
+        sys.exit(1)
     print(f"Database dialect: {engine.dialect.name}")
     print(f"Mode: {'DRY RUN' if dry_run else 'LIVE DELETION'}")
     print()
@@ -62,6 +79,14 @@ def main():
 
         report = execute_deletion(db, manifest, dry_run=dry_run)
 
+        if report.errors or report.skipped_scholarship_ids:
+            db.rollback()
+            print(f"Errors: {report.errors}")
+            sys.exit(1)
+
+        if not dry_run:
+            db.commit()
+
         report_path = os.path.join(args.output_dir, "closed_deletion_report.json")
         save_report(report, report_path)
         print(f"Report saved to: {report_path}")
@@ -76,17 +101,8 @@ def main():
         print(f"Tombstones created: {report.tombstones_created}")
         print(f"Preserved application records: {report.preserved_application_records}")
 
-        if report.errors or report.skipped_scholarship_ids:
-            db.rollback()
-            print(f"Errors: {report.errors}")
-            sys.exit(1)
-
-        if not dry_run:
-            db.commit()
-        else:
-            db.rollback()
-
         if dry_run:
+            db.rollback()
             print()
             print("DRY RUN COMPLETE. No records were deleted.")
             print("To execute deletion, run with --execute --confirm-production")

@@ -141,18 +141,21 @@ def get_temp_gpg_home() -> str:
 
 
 def cleanup_temp_gpg_home(gpg_home: str) -> None:
+    """Securely clean up temporary GPG home directory.
 
-    """Securely clean up temporary GPG home directory."""
-
+    Fails loudly if the directory cannot be removed so that sensitive
+    material is never silently left behind.
+    """
+    if not gpg_home:
+        return
+    if not os.path.exists(gpg_home):
+        return
     try:
-
-        if os.path.exists(gpg_home):
-
-            shutil.rmtree(gpg_home, ignore_errors=True)
-
-    except Exception:
-
-        pass
+        shutil.rmtree(gpg_home)
+    except Exception as exc:
+        raise RuntimeError(f"Failed to remove temporary GPG home {gpg_home}: {exc}") from exc
+    if os.path.exists(gpg_home):
+        raise RuntimeError(f"Temporary GPG home still exists after cleanup: {gpg_home}")
 
 
 

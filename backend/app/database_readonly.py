@@ -22,6 +22,16 @@ def _readonly_database_url() -> str:
 @lru_cache
 def get_readonly_engine():
     database_url = _readonly_database_url()
+    env = os.getenv("SCHOLARZONE_ENVIRONMENT", "").strip().lower()
+    # Reject explicit TLS downgrade in production.
+    if env == "production":
+        lowered = database_url.lower()
+        for weak in ("sslmode=disable", "sslmode=allow", "sslmode=prefer"):
+            if weak in lowered:
+                raise RuntimeError(
+                    "Read-only database URL uses a weak sslmode in production; "
+                    "verify-full (or verify-ca) is required."
+                )
     if database_url.startswith("postgresql://"):
         database_url = "postgresql+psycopg://" + database_url[len("postgresql://"):]
     connect_args = {"check_same_thread": False} if database_url.startswith("sqlite") else {}

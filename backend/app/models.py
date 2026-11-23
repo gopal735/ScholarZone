@@ -920,3 +920,46 @@ class PurgeExecutionLedger(Base):
     workflow_run_id: Mapped[str | None] = mapped_column(String(64), nullable=True)
     reference_date: Mapped[str | None] = mapped_column(String(32), nullable=True)
     audit_metadata: Mapped[str | None] = mapped_column(Text, nullable=True)
+
+
+
+class ScholarshipEvidence(Base):
+    """Authoritative application-cycle evidence registry for purge Gate 6.
+
+    One row per (scholarship_id, application_cycle). Evidence must be exact:
+    scholarship + cycle identity. Duplicate/conflicting rows fail closed in
+    Gate 6.
+    """
+
+    __tablename__ = "scholarship_evidence"
+    __table_args__ = (
+        UniqueConstraint(
+            "scholarship_id", "application_cycle", "deadline",
+            name="uq_scholarship_evidence_cycle",
+        ),
+        Index("ix_scholarship_evidence_scholarship_id", "scholarship_id"),
+        Index("ix_scholarship_evidence_deadline", "deadline"),
+    )
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    scholarship_id: Mapped[int] = mapped_column(
+        Integer, ForeignKey("scholarships.id", ondelete="CASCADE"), nullable=False
+    )
+    application_cycle: Mapped[str] = mapped_column(String(128), nullable=False)
+    official_domain: Mapped[str] = mapped_column(String(255), nullable=False)
+    official_url: Mapped[str] = mapped_column(String(2048), nullable=False)
+    source_title: Mapped[str] = mapped_column(String(512), nullable=False)
+    deadline: Mapped[date | None] = mapped_column(Date, nullable=True)
+    deadline_precision: Mapped[str] = mapped_column(String(32), nullable=False, default="day")
+    supporting_excerpt: Mapped[str] = mapped_column(Text, nullable=False)
+    excerpt_hash: Mapped[str] = mapped_column(String(64), nullable=False)
+    retrieval_date: Mapped[date] = mapped_column(Date, nullable=False)
+    reviewer: Mapped[str] = mapped_column(String(120), nullable=False)
+    decision: Mapped[str] = mapped_column(String(64), nullable=False)
+    provenance: Mapped[str | None] = mapped_column(Text, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=func.now()
+    )
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=func.now(), onupdate=func.now()
+    )
