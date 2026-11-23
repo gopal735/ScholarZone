@@ -58,8 +58,12 @@ _PHRASES: dict[str, tuple[str, ...]] = {
     "SCHOLARSHIP_DISCOVERY": (
         "find scholarship",
         "find scholarships",
+        "find grant",
+        "find grants",
         "search scholarship",
         "search scholarships",
+        "search grant",
+        "search grants",
         "show scholarship",
         "show scholarships",
         "show grant",
