@@ -62,6 +62,7 @@ from app.services.supervisor_status import (  # noqa: E402
     ProfessorRelationshipType,
     RelationshipVerificationStatus,
     SupervisorCoverageStatus,
+    ProfessorProfileStatus,
 )
 
 GATE_VARS = (
@@ -1157,3 +1158,87 @@ def test_supervisor_state_behavior_unchanged(client, db):
     summary = client.get(f"/scholarships/{scholarship.id}/supervisor-summary").json()
     assert "coverage_status" in summary
     assert "verified_supervisor_count" in summary
+# ---------------------------------------------------------------------------
+# Production-readiness additions
+# ---------------------------------------------------------------------------
+
+
+def test_merged_professor_is_not_counted_or_listed(client, db):
+    scholarship = _seed_public_scholarship(db)
+    professor = _seed_professor(db)
+    link = _seed_link(db, scholarship, professor)
+    db.add(
+        SupervisorSourceEvidence(
+            professor_id=professor.id,
+            scholarship_id=scholarship.id,
+            link_id=link.id,
+            source_url="https://uni1.edu/people/faculty",
+            source_host="uni1.edu",
+            source_type="official_department_page",
+            retrieved_at=datetime.now(timezone.utc),
+            verified_at=datetime.now(timezone.utc),
+            verification_status=str(RelationshipVerificationStatus.VERIFIED),
+            evidence_summary="Listed on the faculty page.",
+        )
+    )
+    db.commit()
+
+    recompute_coverage(db, scholarship.id, searched=True)
+
+    before = client.get(f"/scholarships/{scholarship.id}/supervisors").json()
+    assert before["coverage"]["verified_supervisor_count"] == 1
+    assert len(before["supervisors"]) == 1
+
+    professor.profile_status = str(ProfessorProfileStatus.MERGED)
+    db.commit()
+
+    after = client.get(f"/scholarships/{scholarship.id}/supervisors").json()
+    assert after["supervisors"] == []
+    assert after["coverage"]["verified_supervisor_count"] == 0
+    assert after["coverage"]["coverage_status"] == str(
+        SupervisorCoverageStatus.NO_VERIFIED_SUPERVISOR_FOUND
+    )
+
+
+def test_summary_count_matches_listed_professors(client, db):
+    scholarship = _seed_public_scholarship(db)
+    professor = _seed_professor(db)
+    _seed_link(db, scholarship, professor)
+
+    # A stale coverage row claiming two supervisors must not survive the
+    # recomputed count when only one professor can actually be shown.
+    ensure_coverage_row(db, scholarship.id)
+    coverage = db.query(ScholarshipSupervisorCoverage).filter_by(
+        scholarship_id=scholarship.id
+    ).one()
+    coverage.status = str(SupervisorCoverageStatus.VERIFIED_SUPERVISORS)
+    coverage.verified_supervisor_count = 2
+    db.commit()
+
+    summary = client.get(f"/scholarships/{scholarship.id}/supervisor-summary").json()
+    listing = client.get(f"/scholarships/{scholarship.id}/supervisors").json()
+
+    assert summary["verified_supervisor_count"] == 1
+    assert listing["coverage"]["verified_supervisor_count"] == 1
+    assert len(listing["supervisors"]) == 1
+
+
+def test_read_rate_limit_is_keyed_per_client(client, db):
+    scholarship = _seed_public_scholarship(db)
+
+    # Exhaust one caller's budget.
+    statuses = [
+        client.get(
+            f"/scholarships/{scholarship.id}/supervisor-summary",
+            headers={"X-Forwarded-For": "198.51.100.10"},
+        ).status_code
+        for _ in range(125)
+    ]
+    assert 429 in statuses
+
+    # A different caller is unaffected.
+    other = client.get(
+        f"/scholarships/{scholarship.id}/supervisor-summary",
+        headers={"X-Forwarded-For": "198.51.100.11"},
+    )
+    assert other.status_code == 200

@@ -82,6 +82,7 @@ from .supervisor_freshness import effective_availability_state
 from .supervisor_status import (
     NON_PUBLISHING_COVERAGE_STATUSES,
     PUBLIC_RELATIONSHIP_STATUSES,
+    ProfessorProfileStatus,
     SupervisorCoverageStatus,
     OfficialContactVerificationStatus,
     PUBLIC_CONTACT_STATUSES,
@@ -138,12 +139,24 @@ def get_coverage(db: Session, scholarship_id: int) -> ScholarshipSupervisorCover
     ).scalar_one_or_none()
 
 def count_publishable_links(db: Session, scholarship_id: int) -> int:
-    """Count relationships that may be shown publicly for this scholarship."""
+    """Count relationships that may actually be shown for this scholarship.
+
+    A link whose professor has been merged is excluded here for the same reason
+    the list excludes it. Counting the raw link row instead made the response
+    headline a number larger than the list beneath it, which is a direct
+    contradiction on the page and was visible whenever two profiles were merged.
+    """
     return db.execute(
-        select(func.count(ScholarshipProfessorLink.id)).where(
+        select(func.count(ScholarshipProfessorLink.id))
+        .join(
+            ProfessorProfile,
+            ProfessorProfile.id == ScholarshipProfessorLink.professor_id,
+        )
+        .where(
             and_(
                 ScholarshipProfessorLink.scholarship_id == scholarship_id,
                 ScholarshipProfessorLink.verification_status.in_(PUBLIC_RELATIONSHIP_STATUSES),
+                ProfessorProfile.profile_status != str(ProfessorProfileStatus.MERGED),
             )
         )
     ).scalar_one()
@@ -154,10 +167,15 @@ def _load_publishable_links(
     return list(
         db.execute(
             select(ScholarshipProfessorLink)
+            .join(
+                ProfessorProfile,
+                ProfessorProfile.id == ScholarshipProfessorLink.professor_id,
+            )
             .where(
                 and_(
                     ScholarshipProfessorLink.scholarship_id == scholarship_id,
                     ScholarshipProfessorLink.verification_status.in_(PUBLIC_RELATIONSHIP_STATUSES),
+                    ProfessorProfile.profile_status != str(ProfessorProfileStatus.MERGED),
                 )
             )
             .order_by(
@@ -306,10 +324,17 @@ def coverage_public_state(
     public page.
 
     ``publishable_count`` is the number of relationships this response could
-    actually show. When it is greater than the stored count, the links win: a page
-    that lists three professors must not headline "no verified supervisors found"
-    because a stored counter drifted. The stored row is still the right answer
-    when it agrees, so a pending or blocked state is never overwritten by a count.
+    actually show. When it is supplied it wins in **both** directions: a page
+    that lists three professors must not headline "no verified supervisors
+    found" because a stored counter drifted, and a stored count of five must not
+    be shown beside a list of two after profiles were merged or relationships
+    were withdrawn. A positive count always establishes the verified state. A
+    zero count only overrides a stored ``verified_supervisors`` claim, because
+    that claim is the one contradicted by the data; pending, blocked and other
+    non-publishing states keep their more specific explanation.
+
+    The stored row is still the answer when no count is supplied, so callers
+    that cannot afford the extra count keep the previous behaviour.
     """
     if coverage is None:
         state = {
@@ -328,10 +353,17 @@ def coverage_public_state(
             "discovery_pending": coverage.status == str(SupervisorCoverageStatus.SEARCH_PENDING),
         }
 
-    if publishable_count is not None and publishable_count > state["verified_supervisor_count"]:
-        state["verified_supervisor_count"] = publishable_count
-        state["coverage_status"] = str(SupervisorCoverageStatus.VERIFIED_SUPERVISORS)
-        state["discovery_pending"] = False
+    if publishable_count is not None:
+        if publishable_count > 0:
+            state["verified_supervisor_count"] = publishable_count
+            state["coverage_status"] = str(SupervisorCoverageStatus.VERIFIED_SUPERVISORS)
+            state["discovery_pending"] = False
+        elif state["coverage_status"] == str(SupervisorCoverageStatus.VERIFIED_SUPERVISORS):
+            state["verified_supervisor_count"] = 0
+            state["coverage_status"] = str(
+                SupervisorCoverageStatus.NO_VERIFIED_SUPERVISOR_FOUND
+            )
+            state["discovery_pending"] = False
     return state
 
 def build_supervisor_list(
@@ -364,10 +396,12 @@ def build_supervisor_list(
     professors: list[dict] = []
     for link in links:
         profile = profiles.get(link.professor_id)
-        if profile is None or profile.profile_status == "merged":
+        if profile is None or profile.profile_status == str(ProfessorProfileStatus.MERGED):
             # A retired professor is still published with their history intact;
             # a merged one has been folded into another record and must not
-            # appear twice.
+            # appear twice. The queries above already exclude the merged case;
+            # this remains as a defensive check because a profile could be
+            # loaded from a stale identity map.
             continue
         alignment: ResearchAlignment = align_research(
             interests, profile.research_areas, profile.research_keywords

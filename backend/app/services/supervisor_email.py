@@ -22,11 +22,12 @@ import logging
 from dataclasses import dataclass
 
 from sqlalchemy import select
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from ..models_supervisor import ContactTemplate, ProfessorProfile, ScholarshipProfessorLink
 from .supervisor_freshness import PUBLISHABLE_AVAILABILITY_STATES
-from .supervisor_status import PUBLIC_RELATIONSHIP_STATUSES
+from .supervisor_status import PUBLIC_RELATIONSHIP_STATUSES, ProfessorProfileStatus
 
 logger = logging.getLogger(__name__)
 
@@ -179,7 +180,13 @@ def ensure_templates(db: Session) -> None:
             row.degree_level = template.degree_level
             row.subject_hint = template.subject_hint
             row.body_text = template.body_text
-    db.commit()
+    try:
+        db.commit()
+    except IntegrityError:
+        # Two callers may seed an empty table at the same time. The unique key
+        # makes one of them lose; that is not an error, and the next read sees
+        # the complete set. Rolling back leaves the session usable.
+        db.rollback()
 
 
 @dataclass(frozen=True)
@@ -318,13 +325,28 @@ def list_templates(db: Session) -> list[ContactTemplate]:
 def verified_relationship(
     db: Session, scholarship_id: int, professor_id: int
 ) -> ScholarshipProfessorLink | None:
+    """Return one verified relationship that the public list would also show.
+
+    A professor may legitimately be linked for more than one reason (the unique
+    constraint includes ``relationship_type``), so this returns the first row
+    rather than asserting there is exactly one. A merged profile is excluded for
+    the same reason the public list excludes it: the person has been folded into
+    another record and must not be selectable under the retired id.
+    """
     return db.execute(
-        select(ScholarshipProfessorLink).where(
+        select(ScholarshipProfessorLink)
+        .join(
+            ProfessorProfile,
+            ProfessorProfile.id == ScholarshipProfessorLink.professor_id,
+        )
+        .where(
             ScholarshipProfessorLink.scholarship_id == scholarship_id,
             ScholarshipProfessorLink.professor_id == professor_id,
             ScholarshipProfessorLink.verification_status.in_(PUBLIC_RELATIONSHIP_STATUSES),
+            ProfessorProfile.profile_status != str(ProfessorProfileStatus.MERGED),
         )
-    ).scalar_one_or_none()
+        .order_by(ScholarshipProfessorLink.id)
+    ).scalars().first()
 
 
 def publishable_availability_states(db: Session, professor_id: int) -> list[str]:

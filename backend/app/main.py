@@ -27,6 +27,8 @@ from .routers.dashboard import router as dashboard_router
 from .routers.applications import router as applications_router
 from .routers.mentor import router as mentor_router
 from .routers.supervisors import router as supervisors_router
+from .routers.outreach import router as outreach_router
+from .routers.supervisor_email import router as supervisor_email_router
 from .routers.countries import router as countries_router
 from .routers.ai import router as ai_router
 from .services.application_workspace import WorkspaceError
@@ -165,10 +167,14 @@ if allowed_origins:
         # GET and POST cover the read-only public catalogue plus the stateless
         # Match endpoint. PUT and DELETE were added for the student dashboard's
         # own state - saving a scholarship and moving an application forward -
-        # which are the first authenticated writes this API has. The method list
-        # is still explicit rather than a wildcard, and the origin list is
-        # unchanged.
-        allow_methods=["GET", "POST", "PUT", "DELETE"],
+        # which are the first authenticated writes this API has. PATCH carries
+        # the supervisor outreach tracker's optimistic-concurrency update, where
+        # sending the version the client read is what lets the server refuse a
+        # stale overwrite with 409.
+        #
+        # The method list is still explicit rather than a wildcard, and the
+        # origin list is unchanged.
+        allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE"],
         allow_headers=["Accept", "Content-Type"],
     )
 
@@ -176,32 +182,32 @@ if allowed_origins:
 @app.middleware("http")
 async def rate_limit_middleware(request: Request, call_next):
     """Rate limiting for public API endpoints.
-    
+
     Applies generous limits to /scholarships and /scholarships/stats endpoints.
     Other endpoints (private, health, etc.) are not rate limited.
     """
     path = request.url.path
-    
+
     # Skip rate limiting for non-public paths
     if not (path.startswith("/scholarships") or path.startswith("/api/scholarships")):
         return await call_next(request)
-    
+
     # Skip rate limiting for health check
     if path in ("/health", "/"):
         return await call_next(request)
-    
+
     # Determine which limiter to use
     if path.endswith("/stats") or path.endswith("/api/scholarships/stats"):
         limiter = public_stats_limiter
     else:
         limiter = public_api_limiter
-    
+
     # Use client IP as key (respecting X-Forwarded-For for proxied requests)
     client_ip = request.headers.get("x-forwarded-for", request.client.host if request.client else "unknown")
     if "," in client_ip:
         client_ip = client_ip.split(",")[0].strip()
     key = f"{client_ip}:{path}"
-    
+
     try:
         limiter.check(key)
     except RateLimitExceeded as e:
@@ -210,7 +216,7 @@ async def rate_limit_middleware(request: Request, call_next):
             content={"detail": "Rate limit exceeded. Please try again later."},
             headers={"Retry-After": str(e.retry_after_seconds)},
         )
-    
+
     return await call_next(request)
 
 
@@ -367,6 +373,13 @@ app.include_router(applications_router)
 # dependent on scan order, which is the same discipline the match router uses
 # for /scholarships/match.
 app.include_router(mentor_router)
+# Supervisor outreach and email drafting sit behind the same session dependency
+# as the dashboard and workspace. Their prefixes are /outreach and
+# /supervisor-email with no public counterpart, so registering them last cannot
+# shadow anything. No authentication router is added here: the existing /auth
+# router remains the only identity surface.
+app.include_router(outreach_router)
+app.include_router(supervisor_email_router)
 
 app.include_router(countries_router)
 
