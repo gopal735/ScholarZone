@@ -436,7 +436,7 @@ function OutreachTracker({ scholarshipId, trackedIds, onChanged }) {
       return undefined
     }
     const controller = new AbortController()
-    fetchOutreach({ signal: controller.signal })
+    fetchOutreach({ scholarshipId, signal: controller.signal })
       .then((result) => {
         setRecords(result.filter((record) => record.scholarship_id === scholarshipId))
         setState('ready')

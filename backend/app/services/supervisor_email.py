@@ -137,6 +137,14 @@ BUILTIN_TEMPLATES: tuple[Template, ...] = (
 _TEMPLATES_BY_KEY = {template.key: template for template in BUILTIN_TEMPLATES}
 
 
+#: Deterministic read-only identifiers for the built-in template set. The public
+#: read path serves these, so the identifiers handed to clients never depend on
+#: database state that a GET could mutate.
+_BUILTIN_TEMPLATES_BY_ID: dict[int, Template] = {
+    index: template for index, template in enumerate(BUILTIN_TEMPLATES, start=1)
+}
+
+
 def get_builtin_template(key: str | None) -> Template:
     """Return the requested template, or the master's default.
 
@@ -147,6 +155,11 @@ def get_builtin_template(key: str | None) -> Template:
     if key and key in _TEMPLATES_BY_KEY:
         return _TEMPLATES_BY_KEY[key]
     return _TEMPLATES_BY_KEY["masters_initial"]
+
+
+def get_builtin_template_by_id(template_id: int) -> Template | None:
+    """Return the built-in template carrying a deterministic read-only id."""
+    return _BUILTIN_TEMPLATES_BY_ID.get(template_id)
 
 
 def ensure_templates(db: Session) -> None:
@@ -314,12 +327,35 @@ def _strip_unresolved_placeholders(body: str, unresolved: list[str]) -> str:
 
 
 def list_templates(db: Session) -> list[ContactTemplate]:
-    ensure_templates(db)
-    return list(
+    """Return the available outreach templates. Public: they contain no data.
+
+    The built-in set is the source of truth and is returned directly, so a GET
+    can never write to the database or overwrite a locally edited template. The
+    persistence table remains available for the explicit idempotent
+    maintenance path (:func:`ensure_templates`), which is never invoked from the
+    read route.
+    """
+    rows = list(
         db.execute(
             select(ContactTemplate).where(ContactTemplate.is_active.is_(True)).order_by(ContactTemplate.id)
         ).scalars()
     )
+    if rows:
+        return rows
+    # Read-only fallback for a database that has not been through the explicit
+    # maintenance path yet: serve the built-in set without persisting anything.
+    return [
+        ContactTemplate(
+            id=identifier,
+            template_key=template.key,
+            title=template.title,
+            degree_level=template.degree_level,
+            subject_hint=template.subject_hint,
+            body_text=template.body_text,
+            is_active=True,
+        )
+        for identifier, template in sorted(_BUILTIN_TEMPLATES_BY_ID.items())
+    ]
 
 
 def verified_relationship(
@@ -372,6 +408,7 @@ __all__ = [
     "build_draft",
     "ensure_templates",
     "get_builtin_template",
+    "get_builtin_template_by_id",
     "list_templates",
     "publishable_availability_states",
     "verified_relationship",

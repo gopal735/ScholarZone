@@ -333,6 +333,10 @@ def coverage_public_state(
     that claim is the one contradicted by the data; pending, blocked and other
     non-publishing states keep their more specific explanation.
 
+    The zero reset applies to every coverage status, not only to a stored
+    ``verified_supervisors`` row: whenever the supplied publishable count is zero,
+    the verified supervisor count is zero, whatever the stored status was.
+
     The stored row is still the answer when no count is supplied, so callers
     that cannot afford the extra count keep the previous behaviour.
     """
@@ -358,12 +362,16 @@ def coverage_public_state(
             state["verified_supervisor_count"] = publishable_count
             state["coverage_status"] = str(SupervisorCoverageStatus.VERIFIED_SUPERVISORS)
             state["discovery_pending"] = False
-        elif state["coverage_status"] == str(SupervisorCoverageStatus.VERIFIED_SUPERVISORS):
+        else:
+            # The zero reset is unconditional across statuses; only the
+            # status-specific transition out of "verified" is narrowed to that
+            # state, so a pending or blocked row keeps its own explanation.
             state["verified_supervisor_count"] = 0
-            state["coverage_status"] = str(
-                SupervisorCoverageStatus.NO_VERIFIED_SUPERVISOR_FOUND
-            )
-            state["discovery_pending"] = False
+            if state["coverage_status"] == str(SupervisorCoverageStatus.VERIFIED_SUPERVISORS):
+                state["coverage_status"] = str(
+                    SupervisorCoverageStatus.NO_VERIFIED_SUPERVISOR_FOUND
+                )
+                state["discovery_pending"] = False
     return state
 
 def build_supervisor_list(

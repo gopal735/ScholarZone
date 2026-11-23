@@ -23,7 +23,7 @@ import re
 from datetime import datetime, timezone
 
 from fastapi import APIRouter, Depends, HTTPException, Query, status
-from sqlalchemy import and_, func, select
+from sqlalchemy import and_, func, select, update
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
@@ -42,7 +42,18 @@ from ..schemas import (
     OutreachSummaryResponse,
     OutreachUpdateRequest,
 )
-from ..services.supervisor_email import verified_relationship
+from ..services.supervisor_email import (
+    DraftRequest,
+    build_draft,
+    get_builtin_template,
+    get_builtin_template_by_id,
+    list_templates,
+    verified_relationship,
+)
+from ..services.supervisor_public import (
+    ScholarshipNotPublic,
+    get_public_scholarship_or_404,
+)
 from ..services.supervisor_status import (
     OutreachStatus,
     outreach_transition_is_legal,
@@ -162,7 +173,16 @@ def _validate_template(db: Session, template_id: int | None) -> None:
     if template_id is None:
         return
     template = db.get(ContactTemplate, template_id)
-    if template is None or not template.is_active:
+    if template is not None:
+        if not template.is_active:
+            raise HTTPException(
+                status.HTTP_422_UNPROCESSABLE_ENTITY,
+                "That outreach template is not available.",
+            )
+        return
+    # The built-in set carries deterministic read-only identifiers; a client
+    # that resolved a template from the public read path may name one of those.
+    if get_builtin_template_by_id(template_id) is None:
         raise HTTPException(
             status.HTTP_422_UNPROCESSABLE_ENTITY,
             "That outreach template is not available.",
@@ -195,13 +215,21 @@ def _to_response(row: ProfessorOutreachRecord) -> OutreachResponse:
 @router.get("", response_model=list[OutreachResponse])
 def list_outreach(
     outreach_status: str | None = Query(default=None, alias="status"),
+    scholarship_id: int | None = Query(default=None, ge=1),
     limit: int = Query(default=50, ge=1, le=200),
     offset: int = Query(default=0, ge=0),
     user: User = Depends(require_user),
     db: Session = Depends(get_db),
 ) -> list[OutreachResponse]:
-    """Return the signed-in student's own outreach records."""
+    """Return the signed-in student's own outreach records.
+
+    ``scholarship_id`` scopes the page to the scholarship on screen so the
+    student's own tracker cannot page past records that belong to another
+    scholarship.
+    """
     query = select(ProfessorOutreachRecord).where(ProfessorOutreachRecord.user_id == user.id)
+    if scholarship_id is not None:
+        query = query.where(ProfessorOutreachRecord.scholarship_id == scholarship_id)
     if outreach_status:
         query = query.where(ProfessorOutreachRecord.status == outreach_status)
     rows = db.execute(
@@ -279,7 +307,19 @@ def create_outreach(
         )
     ).scalar_one_or_none()
     if existing is not None:
+        # Historical records are preserved: a student who already tracks a
+        # pairing keeps their record, even if the scholarship later became
+        # hidden.
         return _to_response(existing)
+
+    # A NEW outreach record may only be created against a scholarship the public
+    # surface would show. The check goes through the shared visibility service
+    # rather than a local copy of the predicate, so the private tracker and the
+    # public list can never disagree about what may be read.
+    try:
+        get_public_scholarship_or_404(db, payload.scholarship_id)
+    except ScholarshipNotPublic:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "Scholarship not found.")
 
     _validate_template(db, payload.template_id)
     draft_subject = _reject_markup(payload.draft_subject, "Subject", MAX_SUBJECT_LENGTH)
@@ -336,6 +376,12 @@ def update_outreach(
     The client must send back the ``version`` it read. A mismatch means another
     tab saved in between, and overwriting it would silently destroy whatever the
     student typed there, so this answers 409 instead.
+
+    The refusal is enforced by the database rather than by comparing against a
+    freshly loaded row: the update is constrained by the expected version, and a
+    write that affects no row is a stale write. A comparison against an in-memory
+    snapshot alone would race with a concurrent writer that committed between the
+    read and this write.
     """
     _rate_limit(user)
     row = _owned_record(db, record_id, user)
@@ -345,18 +391,6 @@ def update_outreach(
             status.HTTP_409_CONFLICT,
             "This record changed since you loaded it. Reload and try again.",
         )
-
-    if payload.status is not None and payload.status != row.status:
-        if payload.status not in _RECOGNISED_OUTREACH_STATUSES:
-            raise HTTPException(
-                status.HTTP_422_UNPROCESSABLE_ENTITY,
-                "That outreach status is not recognised.",
-            )
-        if not outreach_transition_is_legal(row.status, payload.status):
-            raise HTTPException(
-                status.HTTP_422_UNPROCESSABLE_ENTITY,
-                f"An outreach record cannot move from '{row.status}' to '{payload.status}'.",
-            )
 
     # Validate every supplied field before mutating the row, so a rejected
     # payload cannot leave a partially applied update behind.
@@ -389,31 +423,67 @@ def update_outreach(
     )
 
     now = datetime.now(timezone.utc)
-    if payload.status is not None:
-        row.status = payload.status
+    next_status = row.status
+    next_first_contacted_at = row.first_contacted_at
+    next_last_contacted_at = row.last_contacted_at
+    next_response_at = row.response_at
+    next_response_status = row.response_status
+
+    if payload.status is not None and payload.status != row.status:
+        if payload.status not in _RECOGNISED_OUTREACH_STATUSES:
+            raise HTTPException(
+                status.HTTP_422_UNPROCESSABLE_ENTITY,
+                "That outreach status is not recognised.",
+            )
+        if not outreach_transition_is_legal(row.status, payload.status):
+            raise HTTPException(
+                status.HTTP_422_UNPROCESSABLE_ENTITY,
+                f"An outreach record cannot move from '{row.status}' to '{payload.status}'.",
+            )
+        next_status = payload.status
         if payload.status == str(OutreachStatus.SENT):
             # First contact is recorded once and never rewritten by a later send.
             if row.first_contacted_at is None:
-                row.first_contacted_at = now
-            row.last_contacted_at = now
+                next_first_contacted_at = now
+            next_last_contacted_at = now
         if payload.status in (str(OutreachStatus.POSITIVE), str(OutreachStatus.NEGATIVE)):
-            row.response_at = now
-            row.response_status = response_status or payload.status
+            next_response_at = now
+            next_response_status = response_status or payload.status
         if payload.status == str(OutreachStatus.NOT_CONTACTED):
-            row.first_contacted_at = None
-            row.last_contacted_at = None
+            next_first_contacted_at = None
+            next_last_contacted_at = None
 
-    row.draft_subject = draft_subject
-    row.draft_body = draft_body
-    row.notes = notes
-    row.next_action = next_action
+    values = {
+        "status": next_status,
+        "draft_subject": draft_subject,
+        "draft_body": draft_body,
+        "notes": notes,
+        "next_action": next_action,
+        "updated_at": now,
+        "version": row.version + 1,
+        "first_contacted_at": next_first_contacted_at,
+        "last_contacted_at": next_last_contacted_at,
+        "response_at": next_response_at,
+        "response_status": next_response_status,
+    }
     if payload.follow_up_due_at is not None:
-        row.follow_up_due_at = payload.follow_up_due_at
-    if response_status is not None:
-        row.response_status = response_status
+        values["follow_up_due_at"] = payload.follow_up_due_at
 
-    row.version += 1
-    row.updated_at = now
+    result = db.execute(
+        update(ProfessorOutreachRecord)
+        .where(
+            ProfessorOutreachRecord.id == record_id,
+            ProfessorOutreachRecord.version == row.version,
+        )
+        .values(**values)
+    )
+    if result.rowcount != 1:
+        # No row matched the expected version: a concurrent writer moved the
+        # record between the read and this write. Refuse rather than overwrite.
+        raise HTTPException(
+            status.HTTP_409_CONFLICT,
+            "This record changed since you loaded it. Reload and try again.",
+        )
     db.commit()
     db.refresh(row)
     return _to_response(row)

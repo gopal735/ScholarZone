@@ -50,6 +50,13 @@ class Settings:
     # records listed, that is an explicit product decision made here, not
     # something the resolver may decide for itself.
     public_allow_third_party_image: bool = False
+    # Trusted reverse-proxy addresses (bare IPs or CIDR networks) that may
+    # authoritatively set ``X-Forwarded-For``. When a request reaches the
+    # service from one of these peers, the forwarded header is honoured and the
+    # first untrusted entry names the caller. Anything else - including a
+    # caller that sends a forged header directly - is ignored in favour of the
+    # actual request client address.
+    trusted_proxies: tuple[str, ...] = ()
 
 
 def get_settings() -> Settings:
@@ -122,5 +129,8 @@ def get_settings() -> Settings:
         ),
         public_allow_third_party_image=_as_bool(
             os.getenv("SCHOLARZONE_PUBLIC_ALLOW_THIRD_PARTY_IMAGE"), False
+        ),
+        trusted_proxies=tuple(
+            entry.strip() for entry in os.getenv("SCHOLARZONE_TRUSTED_PROXIES", "").split(",") if entry.strip()
         ),
     )

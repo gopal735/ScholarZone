@@ -36,6 +36,7 @@ from app.database import get_db  # noqa: E402
 from app.main import app  # noqa: E402
 from app.models import Base, Scholarship, User  # noqa: E402
 from app.models_supervisor import (  # noqa: E402
+    ContactTemplate,
     ProfessorProfile,
     ScholarshipProfessorLink,
 )
@@ -69,12 +70,7 @@ def _reset_settings_cache() -> None:
 
 
 @pytest.fixture
-def client():
-    previous = {name: os.environ.get(name) for name in GATE_VARS}
-    for name in GATE_VARS:
-        os.environ[name] = "false"
-    _reset_settings_cache()
-
+def db():
     engine = create_engine(
         "sqlite://",
         connect_args={"check_same_thread": False},
@@ -82,6 +78,19 @@ def client():
     )
     Base.metadata.create_all(engine)
     session = sessionmaker(bind=engine)()
+    try:
+        yield session
+    finally:
+        session.close()
+        engine.dispose()
+
+
+@pytest.fixture
+def client(db):
+    previous = {name: os.environ.get(name) for name in GATE_VARS}
+    for name in GATE_VARS:
+        os.environ[name] = "false"
+    _reset_settings_cache()
 
     scholarship = Scholarship(
         title="Test Scholarship",
@@ -101,9 +110,9 @@ def client():
         verification_status="active",
         image_url="https://uni1.edu/logo.png",
     )
-    session.add(scholarship)
-    session.commit()
-    session.refresh(scholarship)
+    db.add(scholarship)
+    db.commit()
+    db.refresh(scholarship)
 
     professor = ProfessorProfile(
         canonical_name="Dr Ada Lovelace",
@@ -116,11 +125,11 @@ def client():
         research_areas=["Machine Learning"],
         last_verified_at=datetime.now(timezone.utc),
     )
-    session.add(professor)
-    session.commit()
-    session.refresh(professor)
+    db.add(professor)
+    db.commit()
+    db.refresh(professor)
 
-    session.add(
+    db.add(
         ScholarshipProfessorLink(
             scholarship_id=scholarship.id,
             professor_id=professor.id,
@@ -132,11 +141,11 @@ def client():
             verification_status=str(RelationshipVerificationStatus.VERIFIED),
         )
     )
-    session.commit()
+    db.commit()
 
     def override_get_db():
         try:
-            yield session
+            yield db
         finally:
             pass
 
@@ -148,8 +157,6 @@ def client():
         test_client.professor_id = professor.id
         yield test_client
     app.dependency_overrides.pop(get_db, None)
-    session.close()
-    engine.dispose()
     for name, value in previous.items():
         if value is None:
             os.environ.pop(name, None)
@@ -743,6 +750,138 @@ def test_writes_are_rate_limited(client):
     ]
 
     assert 429 in statuses
+
+
+# ---------------------------------------------------------------------------
+# Hidden scholarships and historical records
+# ---------------------------------------------------------------------------
+
+
+def _seed_hidden_scholarship(
+    db,
+    *,
+    is_archived: bool = False,
+    verification_status: str | None = None,
+) -> tuple[Scholarship, ProfessorProfile]:
+    """Seed a scholarship the public visibility predicate withholds."""
+    scholarship = Scholarship(
+        title="Hidden Scholarship",
+        country="Germany",
+        degree="Master",
+        funding="Fully Funded",
+        status="open",
+        deadline_date=date(2027, 6, 30),
+        deadline_precision="exact",
+        eligibility=[],
+        coverage=[],
+        requirements=[],
+        documents=[],
+        official_source="Test University",
+        official_source_url="https://uni2.edu/programmes/2",
+        is_verified=True,
+        verification_status=verification_status or "active",
+        image_url="https://uni2.edu/logo2.png",
+        is_archived=is_archived,
+    )
+    db.add(scholarship)
+    db.commit()
+    db.refresh(scholarship)
+
+    professor = ProfessorProfile(
+        canonical_name="Dr Grace Hopper",
+        title="Professor",
+        institution_name="Test University",
+        department_name="Computer Science",
+        official_profile_url="https://uni2.edu/people/grace-hopper",
+        official_email="g.hopper@uni2.edu",
+        official_email_verified=True,
+        research_areas=["Machine Learning"],
+        last_verified_at=datetime.now(timezone.utc),
+    )
+    db.add(professor)
+    db.commit()
+    db.refresh(professor)
+
+    db.add(
+        ScholarshipProfessorLink(
+            scholarship_id=scholarship.id,
+            professor_id=professor.id,
+            relationship_type=str(ProfessorRelationshipType.POTENTIAL_SUPERVISOR),
+            evidence_source_url="https://uni2.edu/people/faculty",
+            evidence_source_type="official_department_page",
+            retrieved_at=datetime.now(timezone.utc),
+            verified_at=datetime.now(timezone.utc),
+            verification_status=str(RelationshipVerificationStatus.VERIFIED),
+        )
+    )
+    db.commit()
+    return scholarship, professor
+
+
+def test_a_new_outreach_against_an_archived_scholarship_is_refused(client, db):
+    _register(client, "student@example.com")
+    scholarship, professor = _seed_hidden_scholarship(db, is_archived=True)
+
+    response = client.post(
+        "/outreach",
+        json={"scholarship_id": scholarship.id, "professor_id": professor.id},
+    )
+
+    assert response.status_code == 404
+    assert response.json()["detail"] == "Scholarship not found."
+
+
+def test_a_new_outreach_against_a_quarantined_scholarship_is_refused(client, db):
+    _register(client, "student@example.com")
+    scholarship, professor = _seed_hidden_scholarship(db, verification_status="quarantined")
+
+    response = client.post(
+        "/outreach",
+        json={"scholarship_id": scholarship.id, "professor_id": professor.id},
+    )
+
+    assert response.status_code == 404
+    assert response.json()["detail"] == "Scholarship not found."
+
+
+def test_a_historical_outreach_record_survives_a_scholarship_that_becomes_hidden(client, db):
+    _register(client, "student@example.com")
+    created = client.post(
+        "/outreach",
+        json={"scholarship_id": client.scholarship_id, "professor_id": client.professor_id},
+    ).json()
+
+    scholarship = db.query(Scholarship).filter_by(id=client.scholarship_id).one()
+    scholarship.is_archived = True
+    db.commit()
+
+    repeat = client.post(
+        "/outreach",
+        json={"scholarship_id": client.scholarship_id, "professor_id": client.professor_id},
+    )
+
+    # The idempotency lookup runs before the visibility gate, so a student who
+    # already tracks a pairing keeps their record even once the programme is gone.
+    assert repeat.status_code in (200, 201)
+    assert repeat.json()["id"] == created["id"]
+    assert repeat.json()["version"] == created["version"]
+
+    patched = client.patch(
+        f"/outreach/{created['id']}",
+        json={"version": created["version"], "notes": "kept after archiving"},
+    )
+    assert patched.status_code == 200
+
+
+def test_get_templates_does_not_write_to_the_database(client, db):
+    first = client.get("/supervisor-email/templates")
+    second = client.get("/supervisor-email/templates")
+
+    assert first.status_code == 200
+    assert second.status_code == 200
+    # The read path serves the built-in set when the table holds nothing, and it
+    # must not seed the table either: only the explicit maintenance path may.
+    assert db.query(ContactTemplate).count() == 0
 
 
 # ---------------------------------------------------------------------------

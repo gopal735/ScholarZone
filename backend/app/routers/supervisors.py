@@ -18,7 +18,12 @@ import logging
 from fastapi import APIRouter, Depends, HTTPException, Query, Request, status
 from sqlalchemy.orm import Session
 
-from ..core.rate_limit import RateLimitExceeded, supervisor_read_limiter
+from ..core.config import get_settings
+from ..core.rate_limit import (
+    RateLimitExceeded,
+    client_identifier,
+    supervisor_read_limiter,
+)
 from ..database import get_db
 from ..schemas import (
     ProfessorResponse,
@@ -55,19 +60,13 @@ def _client_identifier(request: Request) -> str:
     needed for the same record, which is a denial of service on a public read
     surface.
 
-    ``X-Forwarded-For`` is consulted first because the application runs behind
-    the deployment proxy, which appends the originating address. The first entry
-    is the client; the rest are proxies. Outside a trusted proxy the header is
-    caller-controlled, which would let a caller rotate buckets and grant itself
-    more allowance - but it still cannot spend another visitor's bucket, which is
-    the failure this key exists to prevent.
+    ``X-Forwarded-For`` is honoured only when the immediate peer is a configured
+    trusted proxy, in which case the first untrusted entry names the caller and
+    the rest are proxy hops. Behind an untrusted peer the header is treated as
+    caller-controlled and the actual request client address is used instead, so
+    a forged header cannot mint a fresh budget for itself.
     """
-    forwarded = request.headers.get("x-forwarded-for")
-    if forwarded:
-        first = forwarded.split(",")[0].strip()
-        if first:
-            return first
-    return request.client.host if request.client else "unknown"
+    return client_identifier(request, get_settings().trusted_proxies)
 
 
 @router.get("/{scholarship_id}/supervisors", response_model=SupervisorListResponse)

@@ -13,7 +13,7 @@ from fastapi.responses import JSONResponse
 from sqlalchemy import text
 
 from .core.config import get_settings
-from .core.rate_limit import public_api_limiter, public_stats_limiter, RateLimitExceeded
+from .core.rate_limit import client_identifier, public_api_key, public_api_limiter, public_stats_limiter, RateLimitExceeded
 from .build_provenance import ProvenanceError, read_embedded_revision
 from . import build_provenance
 from .database import close_database, get_engine, init_database
@@ -202,11 +202,12 @@ async def rate_limit_middleware(request: Request, call_next):
     else:
         limiter = public_api_limiter
 
-    # Use client IP as key (respecting X-Forwarded-For for proxied requests)
-    client_ip = request.headers.get("x-forwarded-for", request.client.host if request.client else "unknown")
-    if "," in client_ip:
-        client_ip = client_ip.split(",")[0].strip()
-    key = f"{client_ip}:{path}"
+    # Use the caller identity as the key. ``X-Forwarded-For`` is honoured only
+    # when the immediate peer is a configured trusted proxy; otherwise the
+    # actual request client address is used, so a caller cannot forge its way
+    # into another caller's budget.
+    client_ip = client_identifier(request, get_settings().trusted_proxies)
+    key = public_api_key(client_ip, path)
 
     try:
         limiter.check(key)

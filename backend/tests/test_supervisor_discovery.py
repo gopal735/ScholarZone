@@ -57,6 +57,9 @@ from app.services.supervisor_freshness import (  # noqa: E402
     CONTACT_REFRESH_DAYS,
     effective_availability_state,
 )
+from app.services.supervisor_public import (  # noqa: E402
+    coverage_public_state,
+)
 from app.services.supervisor_status import (  # noqa: E402
     AvailabilityState,
     ProfessorRelationshipType,
@@ -1223,22 +1226,85 @@ def test_summary_count_matches_listed_professors(client, db):
     assert len(listing["supervisors"]) == 1
 
 
-def test_read_rate_limit_is_keyed_per_client(client, db):
+def _coverage_row(status: str, count: int) -> ScholarshipSupervisorCoverage:
+    """A coverage row as discovery would have stored it, without needing a join."""
+    return ScholarshipSupervisorCoverage(
+        scholarship_id=1,
+        status=status,
+        verified_supervisor_count=count,
+        evidence_state="not_collected",
+    )
+
+
+def test_a_zero_publishable_count_resets_the_stored_verified_claim_for_every_status():
+    # The zero reset is unconditional across coverage statuses: whenever the
+    # publishable count supplied to the public response is zero, the verified
+    # supervisor count is zero whatever the stored status was. Only the
+    # transition out of "verified" is narrowed to that state, so a pending or
+    # blocked row keeps its own explanation.
+    for status in (
+        str(SupervisorCoverageStatus.SEARCH_PENDING),
+        str(SupervisorCoverageStatus.NO_VERIFIED_SUPERVISOR_FOUND),
+        str(SupervisorCoverageStatus.NOT_APPLICABLE),
+        str(SupervisorCoverageStatus.NEEDS_VERIFICATION),
+        str(SupervisorCoverageStatus.SOURCE_BLOCKED),
+        str(SupervisorCoverageStatus.SOURCE_REQUIRES_RENDERING),
+    ):
+        state = coverage_public_state(_coverage_row(status, 3), publishable_count=0)
+        assert state["verified_supervisor_count"] == 0
+        assert state["coverage_status"] == status
+
+    verified = coverage_public_state(
+        _coverage_row(str(SupervisorCoverageStatus.VERIFIED_SUPERVISORS), 3),
+        publishable_count=0,
+    )
+    assert verified["verified_supervisor_count"] == 0
+    assert verified["coverage_status"] == str(SupervisorCoverageStatus.NO_VERIFIED_SUPERVISOR_FOUND)
+    assert verified["discovery_pending"] is False
+
+
+def test_a_positive_publishable_count_overrides_a_stale_stored_count():
+    state = coverage_public_state(
+        _coverage_row(str(SupervisorCoverageStatus.SEARCH_PENDING), 0),
+        publishable_count=2,
+    )
+    assert state["verified_supervisor_count"] == 2
+    assert state["coverage_status"] == str(SupervisorCoverageStatus.VERIFIED_SUPERVISORS)
+    assert state["discovery_pending"] is False
+
+
+def test_the_stored_row_is_the_answer_when_no_publishable_count_is_supplied():
+    state = coverage_public_state(
+        _coverage_row(str(SupervisorCoverageStatus.NO_VERIFIED_SUPERVISOR_FOUND), 0)
+    )
+    assert state["verified_supervisor_count"] == 0
+    assert state["coverage_status"] == str(SupervisorCoverageStatus.NO_VERIFIED_SUPERVISOR_FOUND)
+
+
+def test_read_rate_limit_is_keyed_per_client(client, db, monkeypatch):
     scholarship = _seed_public_scholarship(db)
 
-    # Exhaust one caller's budget.
-    statuses = [
-        client.get(
-            f"/scholarships/{scholarship.id}/supervisor-summary",
-            headers={"X-Forwarded-For": "198.51.100.10"},
-        ).status_code
-        for _ in range(125)
-    ]
-    assert 429 in statuses
+    # The deployment proxy must be configured as trusted before X-Forwarded-For
+    # is honoured; "testclient" is the peer the test transport uses.
+    monkeypatch.setenv("SCHOLARZONE_TRUSTED_PROXIES", "testclient")
+    _reset_settings_cache()
 
-    # A different caller is unaffected.
-    other = client.get(
-        f"/scholarships/{scholarship.id}/supervisor-summary",
-        headers={"X-Forwarded-For": "198.51.100.11"},
-    )
-    assert other.status_code == 200
+    try:
+        # Exhaust one caller's budget.
+        statuses = [
+            client.get(
+                f"/scholarships/{scholarship.id}/supervisor-summary",
+                headers={"X-Forwarded-For": "198.51.100.10"},
+            ).status_code
+            for _ in range(125)
+        ]
+        assert 429 in statuses
+
+        # A different caller is unaffected.
+        other = client.get(
+            f"/scholarships/{scholarship.id}/supervisor-summary",
+            headers={"X-Forwarded-For": "198.51.100.11"},
+        )
+        assert other.status_code == 200
+    finally:
+        _reset_settings_cache()
