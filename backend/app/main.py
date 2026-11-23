@@ -26,6 +26,7 @@ from .routers.auth import router as auth_router
 from .routers.dashboard import router as dashboard_router
 from .routers.applications import router as applications_router
 from .routers.mentor import router as mentor_router
+from .routers.study_planner import router as study_planner_router
 from .routers.supervisors import router as supervisors_router
 from .routers.countries import router as countries_router
 from .routers.ai import router as ai_router
@@ -367,6 +368,7 @@ app.include_router(applications_router)
 # dependent on scan order, which is the same discipline the match router uses
 # for /scholarships/match.
 app.include_router(mentor_router)
+app.include_router(study_planner_router)
 
 app.include_router(countries_router)
 

@@ -1,0 +1,7 @@
+.sp-page { padding: 1.5rem; max-width: 900px; margin: 0 auto; }
+.sp-create { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+.sp-plan { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; }
+.sp-plan-header { display: flex; justify-content: space-between; align-items: center; }
+.sp-add-task { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
+.sp-error { color: #b00020; }
+.done label { text-decoration: line-through; opacity: 0.6; }
