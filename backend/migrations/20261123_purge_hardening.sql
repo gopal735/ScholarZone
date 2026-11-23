@@ -21,11 +21,17 @@ SET id = nextval('purge_execution_ledger_id_seq')
 WHERE id IS NULL;
 
 -- Advance the sequence past the maximum existing ID so future inserts cannot collide.
-SELECT setval(
-    'purge_execution_ledger_id_seq',
-    COALESCE((SELECT MAX(id) FROM purge_execution_ledger), 0),
-    true
-);
+DO $$
+DECLARE
+    max_id BIGINT;
+BEGIN
+    SELECT MAX(id) INTO max_id FROM purge_execution_ledger;
+    IF max_id IS NOT NULL THEN
+        PERFORM setval('purge_execution_ledger_id_seq', max_id, true);
+    ELSE
+        PERFORM setval('purge_execution_ledger_id_seq', 1, false);
+    END IF;
+END $$;
 
 DO $$
 BEGIN
