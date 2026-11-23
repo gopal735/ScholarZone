@@ -150,6 +150,24 @@ def write_profile(
     return {"profile": stored, "updated_at": record.updated_at, "is_empty": False}
 
 
+@router.delete("/profile")
+def delete_profile(
+    db: Session = Depends(get_db),
+    user: User = Depends(require_user),
+) -> dict:
+    """Delete the student's stored Match profile.
+
+    Removes the persisted profile so the student controls their data. Returns
+    the empty state so callers can update their UI without a follow-up read.
+    """
+    record = get_profile_record(db, user.id)
+    if record is not None:
+        db.delete(record)
+        db.commit()
+    return {"profile": {}, "is_empty": True}
+
+
+
 @router.get("/saved")
 def list_saved(
     db: Session = Depends(get_db),
