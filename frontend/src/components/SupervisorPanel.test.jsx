@@ -13,7 +13,7 @@
  */
 
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 
 import { AuthProvider } from '../context/AuthContext.jsx'
 import SupervisorPanel from './SupervisorPanel'
@@ -85,7 +85,7 @@ function professor(overrides = {}) {
 
 function mockFetch(handler, { signedIn = false } = {}) {
   const spy = vi.fn(async (url, options) => {
-    if (String(url).includes('/auth/me')) {
+    if (String(url).includes('/auth/me') || String(url).includes('/auth/session')) {
       if (!signedIn) {
         return { ok: false, status: 401, json: async () => ({ detail: 'Authentication required.' }) }
       }
@@ -263,5 +263,91 @@ describe('SupervisorPanel states', () => {
     await screen.findByText('Dr Ada Lovelace')
 
     expect(screen.queryByText('guess@uni1.edu')).toBeNull()
+  })
+})
+describe('SupervisorPanel outreach integration', () => {
+  it('prepares an email and tracks outreach through the restored routes', async () => {
+    const calls = []
+    mockFetch(async (url, options) => {
+      const href = String(url)
+      if (href.includes('/scholarships/7/supervisors')) {
+        return coverageResponse({
+          status: 'verified_supervisors',
+          count: 1,
+          supervisors: [professor({ scholarshipId: 7 })],
+        })
+      }
+      if (href.includes('/outreach') && (!options || options.method === 'GET')) {
+        return { ok: true, status: 200, json: async () => [] }
+      }
+      if (href.includes('/outreach') && options?.method === 'POST') {
+        calls.push({ url: href, body: JSON.parse(options.body) })
+        return {
+          ok: true,
+          status: 201,
+          json: async () => ({
+            id: 42,
+            scholarship_id: 7,
+            professor_id: 1,
+            status: 'not_contacted',
+            draft_subject: null,
+            draft_body: null,
+            first_contacted_at: null,
+            last_contacted_at: null,
+            follow_up_due_at: null,
+            response_status: null,
+            response_at: null,
+            next_action: null,
+            notes: null,
+            template_id: null,
+            version: 1,
+            created_at: '2026-09-01T00:00:00+00:00',
+            updated_at: '2026-09-01T00:00:00+00:00',
+          }),
+        }
+      }
+      if (href.includes('/supervisor-email/draft')) {
+        calls.push({ url: href, body: JSON.parse(options.body) })
+        return {
+          ok: true,
+          status: 200,
+          json: async () => ({
+            subject: 'Prepared subject',
+            body: 'Prepared body',
+            unresolved: [],
+            template_key: 'masters_initial',
+            to_address: 'a.lovelace@uni1.edu',
+          }),
+        }
+      }
+      return coverageResponse({ status: 'verified_supervisors', count: 1, supervisors: [] })
+    }, { signedIn: true })
+
+    renderPanel({ scholarshipId: 7 })
+
+    expect(await screen.findByText('Dr Ada Lovelace')).toBeTruthy()
+
+    fireEvent.click(screen.getByRole('button', { name: /Prepare email/i }))
+    expect(await screen.findByDisplayValue('Prepared subject')).toBeTruthy()
+    expect(screen.getByDisplayValue('Prepared body')).toBeTruthy()
+
+    fireEvent.click(screen.getByRole('button', { name: /Track outreach/i }))
+    expect(await screen.findByRole('button', { name: /Tracked/i })).toBeTruthy()
+
+    const draftCall = calls.find((call) => call.url.includes('/supervisor-email/draft'))
+    expect(draftCall.body).toMatchObject({
+      scholarship_id: 7,
+      professor_id: 1,
+      interests: [],
+    })
+
+    const trackCall = calls.find((call) => call.url.includes('/outreach') && !call.url.includes('/supervisor-email'))
+    // fetch records only the POST; the GETs above do not push to `calls`.
+    expect(trackCall.body).toMatchObject({
+      scholarship_id: 7,
+      professor_id: 1,
+      draft_subject: 'Prepared subject',
+      draft_body: 'Prepared body',
+    })
   })
 })

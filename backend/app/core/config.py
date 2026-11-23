@@ -50,25 +50,13 @@ class Settings:
     # records listed, that is an explicit product decision made here, not
     # something the resolver may decide for itself.
     public_allow_third_party_image: bool = False
-    # Whether the bounded Supervisor discovery trigger may run at all.
-    #
-    # This is a *discovery execution* switch and nothing else. It gates one
-    # endpoint that runs supervisor discovery for one named scholarship. It does
-    # not enable browser rendering, and it is not the same switch as
-    # SCHOLARZONE_SUPERVISOR_RENDER_ENABLED, which is read by
-    # app.services.supervisor_render and governs whether a client-side directory
-    # may be rendered with a browser at all.
-    #
-    # They are kept apart on purpose. Conflating them would mean that turning on
-    # discovery also turned on Playwright in production, which is a far larger
-    # change in blast radius than "run one discovery pass". Turning this on does
-    # not make the renderer available, and turning the renderer on does not make
-    # this endpoint reachable.
-    #
-    # Default OFF in every environment. An unconfigured deployment refuses the
-    # trigger, so the capability is opt-in rather than something a deploy
-    # inherits by being reachable.
-    supervisor_discovery_enabled: bool = False
+    # Trusted reverse-proxy addresses (bare IPs or CIDR networks) that may
+    # authoritatively set ``X-Forwarded-For``. When a request reaches the
+    # service from one of these peers, the forwarded header is honoured and the
+    # first untrusted entry names the caller. Anything else - including a
+    # caller that sends a forged header directly - is ignored in favour of the
+    # actual request client address.
+    trusted_proxies: tuple[str, ...] = ()
 
 
 def get_settings() -> Settings:
@@ -142,7 +130,7 @@ def get_settings() -> Settings:
         public_allow_third_party_image=_as_bool(
             os.getenv("SCHOLARZONE_PUBLIC_ALLOW_THIRD_PARTY_IMAGE"), False
         ),
-        supervisor_discovery_enabled=_as_bool(
-            os.getenv("SCHOLARZONE_SUPERVISOR_DISCOVERY_ENABLED"), False
+        trusted_proxies=tuple(
+            entry.strip() for entry in os.getenv("SCHOLARZONE_TRUSTED_PROXIES", "").split(",") if entry.strip()
         ),
     )

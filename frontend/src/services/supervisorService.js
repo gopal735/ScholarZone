@@ -100,8 +100,10 @@ export function fetchContactTemplates({ signal } = {}) {
 
 /* ── Private ───────────────────────────────────────────────────────────── */
 
-export function fetchOutreach({ status, signal } = {}) {
-  return request('/outreach', { signal, searchParams: { status } })
+export function fetchOutreach({ status, scholarshipId, signal } = {}) {
+  // The tracker scopes its list to the scholarship on screen, so pagination
+  // can never skip a record that belongs to another scholarship.
+  return request('/outreach', { signal, searchParams: { status, scholarship_id: scholarshipId } })
 }
 
 export function fetchOutreachSummary({ signal } = {}) {
