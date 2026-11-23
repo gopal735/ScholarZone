@@ -109,3 +109,21 @@ def test_verify_merge_trigger_has_least_privilege_permissions():
     permissions = job.get("permissions", {})
     assert permissions.get("contents") == "read"
     assert permissions.get("pull-requests") == "read"
+
+
+def test_execute_deletion_needs_backup_job():
+    data = yaml.safe_load(WORKFLOW.read_text(encoding="utf-8"))
+    exec_job = data["jobs"]["execute-deletion"]
+    needs = exec_job.get("needs") or []
+    if isinstance(needs, str):
+        needs = [needs]
+    assert "preflight-gate4-backup" in needs, "execute-deletion must explicitly depend on backup verification"
+
+
+def test_execute_deletion_requires_backup_success():
+    data = yaml.safe_load(WORKFLOW.read_text(encoding="utf-8"))
+    exec_job = data["jobs"]["execute-deletion"]
+    condition = str(exec_job.get("if", ""))
+    assert "preflight-gate4-backup.result == 'success'" in condition, (
+        "execute-deletion must not run unless backup verification succeeded"
+    )

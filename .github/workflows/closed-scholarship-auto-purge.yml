@@ -582,8 +582,8 @@ jobs:
 
   execute-deletion:
     name: Execute Production Deletion
-    needs: [verify-merge-trigger, generate-manifest, validate-manifest, preflight-summary]
-    if: needs.verify-merge-trigger.outputs.should_run == 'true'
+    needs: [verify-merge-trigger, generate-manifest, validate-manifest, preflight-summary, preflight-gate4-backup]
+    if: needs.verify-merge-trigger.outputs.should_run == 'true' && needs.preflight-gate4-backup.result == 'success'
     environment: production
     runs-on: ubuntu-latest
     timeout-minutes: 30
