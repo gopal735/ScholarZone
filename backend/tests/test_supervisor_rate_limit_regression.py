@@ -33,6 +33,7 @@ from app.core.rate_limit import (  # noqa: E402
     client_identifier,
     public_api_key,
     public_api_limiter,
+    public_stats_limiter,
     supervisor_read_limiter,
 )
 from app.database import get_db  # noqa: E402
@@ -97,11 +98,13 @@ def client(pin_gates, db):
     app.dependency_overrides[get_db] = override_get_db
     supervisor_read_limiter.reset()
     public_api_limiter.reset()
+    public_stats_limiter.reset()
     with TestClient(app) as test_client:
         yield test_client
     app.dependency_overrides.pop(get_db, None)
     supervisor_read_limiter.reset()
     public_api_limiter.reset()
+    public_stats_limiter.reset()
 
 
 # ---------------------------------------------------------------------------

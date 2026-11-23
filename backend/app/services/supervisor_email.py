@@ -337,25 +337,28 @@ def list_templates(db: Session) -> list[ContactTemplate]:
     """
     rows = list(
         db.execute(
-            select(ContactTemplate).where(ContactTemplate.is_active.is_(True)).order_by(ContactTemplate.id)
+            select(ContactTemplate).order_by(ContactTemplate.id)
         ).scalars()
     )
-    if rows:
-        return rows
-    # Read-only fallback for a database that has not been through the explicit
-    # maintenance path yet: serve the built-in set without persisting anything.
-    return [
-        ContactTemplate(
-            id=identifier,
-            template_key=template.key,
-            title=template.title,
-            degree_level=template.degree_level,
-            subject_hint=template.subject_hint,
-            body_text=template.body_text,
-            is_active=True,
-        )
-        for identifier, template in sorted(_BUILTIN_TEMPLATES_BY_ID.items())
-    ]
+    if not rows:
+        # Read-only fallback for a database that has not been through the explicit
+        # maintenance path yet: serve the built-in set without persisting anything.
+        return [
+            ContactTemplate(
+                id=identifier,
+                template_key=template.key,
+                title=template.title,
+                degree_level=template.degree_level,
+                subject_hint=template.subject_hint,
+                body_text=template.body_text,
+                is_active=True,
+            )
+            for identifier, template in sorted(_BUILTIN_TEMPLATES_BY_ID.items())
+        ]
+    # Templates exist in the table: honour their active flags. A persisted but
+    # deactivated template is not advertised, and an all-inactive table yields
+    # an empty list rather than silently resurrecting the built-in set.
+    return [row for row in rows if row.is_active]
 
 
 def verified_relationship(

@@ -91,9 +91,12 @@ def client_identifier(request, trusted_proxies=None) -> str:
 
     ``X-Forwarded-For`` is only honoured when the immediate peer the platform
     routed through is a configured trusted proxy. Behind such a proxy the header
-    is appended by the proxy, so the first entry is the originating client and
-    the remaining entries are proxy hops. The first *untrusted* entry is the
-    caller; entries that name another trusted proxy are skipped.
+    is built by appending the originating client on the right, with proxy hops to
+    its right; any leftmost entries were supplied by the caller and cannot be
+    trusted. The entries are therefore scanned from the right, and the nearest
+    untrusted entry to that side is the caller; entries that name another
+    trusted proxy are skipped. This preserves the single-entry behaviour when a
+    proxy overwrites rather than appends the header.
 
     When the peer is not a trusted proxy - or no proxy is configured - the
     caller-supplied header is treated as attacker-controlled input and ignored,
@@ -110,7 +113,11 @@ def client_identifier(request, trusted_proxies=None) -> str:
         forwarded = headers.get("x-forwarded-for")
     if forwarded and _is_trusted_proxy(peer, trusted_proxies):
         entries = [entry.strip() for entry in forwarded.split(",") if entry and entry.strip()]
-        for entry in entries:
+        # Scan from the right: the trusted proxy appends the real client on the
+        # rightmost side, and any leftmost entries were supplied by the caller
+        # and cannot be trusted. The first untrusted entry encountered from the
+        # right is the originating client.
+        for entry in reversed(entries):
             if not _is_trusted_proxy(entry, trusted_proxies):
                 return entry
         # Every hop named in the header was itself a trusted proxy; the nearest
@@ -128,8 +135,21 @@ def public_api_key(client: str, path: str) -> str:
     one bucket for one caller instead of minting a fresh key per identifier. The
     shared public limiter therefore cannot be exhausted by rotating unknown
     scholarship ids through dynamic URL paths.
+
+    Only a small, fixed set of static path segments is preserved verbatim; every
+    other segment is folded onto the same placeholder, so arbitrary path values
+    cannot mint a distinct bucket either.
     """
-    normalized = re.sub(r"/(\d+)(?=/|$)", "/{id}", path or "/")
+    _static = frozenset(
+        {"scholarships", "supervisors", "supervisor-summary", "stats", "api"}
+    )
+    raw = (path or "/").strip()
+    if not raw or raw == "/":
+        return f"{client}:/"
+    segments = [segment for segment in raw.split("/") if segment != ""]
+    normalized = "/" + "/".join(
+        segment if segment in _static else "{id}" for segment in segments
+    )
     return f"{client}:{normalized}"
 
 
