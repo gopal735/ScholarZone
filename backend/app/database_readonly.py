@@ -28,7 +28,7 @@ def get_readonly_engine():
     if database_url.startswith("postgresql"):
         connect_args["connect_timeout"] = 10
         if "sslmode=" not in database_url:
-            database_url += ("&" if "?" in database_url else "?") + "sslmode=require"
+            database_url += ("&" if "?" in database_url else "?") + "sslmode=verify-full"
     engine_kwargs = {"connect_args": connect_args, "pool_pre_ping": True}
     if database_url.startswith("postgresql"):
         engine_kwargs["pool_timeout"] = 10
@@ -49,6 +49,7 @@ def get_readonly_engine():
             cur = conn.cursor()
             try:
                 cur.execute("SET DEFAULT_TRANSACTION_READ_ONLY = on")
+                conn.commit()
             finally:
                 cur.close()
 

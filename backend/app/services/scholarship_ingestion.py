@@ -422,8 +422,20 @@ def _find_existing_scholarship(session: Session, record: ScholarshipIngestionRec
 def _normalize_tombstone_url(url):
     if not url:
         return None
+    from urllib.parse import urlsplit, urlunsplit
     u = str(url).strip().rstrip("/")
-    return u.lower() if u else None
+    if not u:
+        return None
+    parts = urlsplit(u)
+    # Lower-case only the scheme and host; path/query/fragment are case-sensitive.
+    normalized = urlunsplit((
+        parts.scheme.lower(),
+        parts.netloc.lower(),
+        parts.path,
+        parts.query,
+        parts.fragment,
+    ))
+    return normalized if normalized else None
 
 
 def _is_tombstoned(session: Session, record: ScholarshipIngestionRecord) -> bool:
@@ -444,11 +456,16 @@ def _is_tombstoned(session: Session, record: ScholarshipIngestionRecord) -> bool
         fp = getattr(record, "record_fingerprint", None)
         if fp and getattr(ts, "record_fingerprint", None) and fp == ts.record_fingerprint:
             return True
-    if not urls:
+    url_less_tombstones = [
+        ts for ts in tombstones
+        if not any(_normalize_tombstone_url(u) for u in (ts.official_source_url, ts.application_link))
+    ]
+
+    if (not urls or url_less_tombstones) and url_less_tombstones:
         titles = {str(t).strip().lower() for t in (getattr(record, "legacy_titles", None) or [])}
         if getattr(record, "name", None):
             titles.add(str(record.name).strip().lower())
-        ts_titles = {str(t).strip().lower() for t in [x.title for x in tombstones] if t}
+        ts_titles = {str(t).strip().lower() for t in [x.title for x in url_less_tombstones] if t}
         if titles and (titles & ts_titles):
             return True
     return False

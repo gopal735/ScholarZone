@@ -187,6 +187,17 @@ def check_branch_and_base(repo_root: Path) -> tuple[str, str, str, str, bool, bo
     if error:
         return current_branch, "master", "", "", False, False, error
 
+    # Read the verified merge commit SHA from the trusted event payload
+    pr_merge_sha = ""
+    event_path = os.getenv("GITHUB_EVENT_PATH", "")
+    if event_path and os.path.exists(event_path):
+        try:
+            with open(event_path, "r", encoding="utf-8") as event_file:
+                event_data = json.load(event_file)
+            pr_merge_sha = event_data.get("pull_request", {}).get("merge_commit_sha", "") or ""
+        except (OSError, json.JSONDecodeError):
+            pr_merge_sha = ""
+
     # Check if we're on the expected branch (only if not detached HEAD)
     expected_branch = "fix/production-expired-cycle-purge"
     expected_base = "master"
@@ -194,11 +205,12 @@ def check_branch_and_base(repo_root: Path) -> tuple[str, str, str, str, bool, bo
     if current_branch:
         branch_match = current_branch == expected_branch
     else:
-        # Detached HEAD (common in CI) - verify HEAD matches expected PR head SHA
+        # Detached HEAD (common in CI) - verify HEAD matches the verified merge commit SHA
         head_result = run_git_command(["rev-parse", "HEAD"], repo_root)
         if head_result.returncode == 0:
             actual_head = head_result.stdout.strip()
-            branch_match = (actual_head == pr_head_sha)
+            expected_head = pr_merge_sha or pr_head_sha
+            branch_match = (actual_head == expected_head)
         else:
             branch_match = False
 

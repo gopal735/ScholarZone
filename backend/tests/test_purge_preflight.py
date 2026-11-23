@@ -275,10 +275,6 @@ def test_gate5_classification_logic():
     record = {"id": 2, "status": "archived", "deadline_date": past, "deadline_display": str(past), "deadline_precision": "day"}
     assert classify_record(record) == ClassificationCategory.CLOSED
 
-    # Expired, but status is closing-soon - this is expected for CLOSING_SOON
-    record = {"id": 3, "status": "closing-soon", "deadline_date": past, "deadline_display": str(past), "deadline_precision": "day"}
-    assert classify_record(record) == ClassificationCategory.CLOSING_SOON
-
     # Future deadline
     record = {"id": 4, "status": "open", "deadline_date": future, "deadline_display": str(future), "deadline_precision": "day"}
     assert classify_record(record) == ClassificationCategory.BLOCKED
@@ -1354,12 +1350,13 @@ def test_regression_incorrect_status_deadline_classification():
     today = date.today()
     past = today - timedelta(days=30)
 
-    # Past deadline but status is "open" (not closed/archived/closing-soon) -> CONFLICT
+    # Past deadline with an open stored status still resolves to CLOSED
+    # under the authoritative effective lifecycle policy.
     record = {
         "id": 1, "status": "open", "deadline_date": past,
         "deadline_display": str(past), "deadline_precision": "day"
     }
-    assert classify_record(record) == ClassificationCategory.STATUS_DEADLINE_CONFLICT
+    assert classify_record(record) == ClassificationCategory.CLOSED
 
     # Past deadline but status is "archived" -> CLOSED
     record = {
@@ -1368,12 +1365,12 @@ def test_regression_incorrect_status_deadline_classification():
     }
     assert classify_record(record) == ClassificationCategory.CLOSED
 
-    # Past deadline with "closing-soon" status -> CLOSING_SOON (expected)
+    # Past deadline with "closing-soon" status -> CLOSED under effective policy
     record = {
         "id": 3, "status": "closing-soon", "deadline_date": past,
         "deadline_display": str(past), "deadline_precision": "day"
     }
-    assert classify_record(record) == ClassificationCategory.CLOSING_SOON
+    assert classify_record(record) == ClassificationCategory.CLOSED
 
     # Future deadline -> BLOCKED
     future = today + timedelta(days=30)
@@ -1396,13 +1393,6 @@ def test_regression_incorrect_status_deadline_classification():
         "deadline_display": "", "deadline_precision": "unknown"
     }
     assert classify_record(record) == ClassificationCategory.UNKNOWN
-
-    # Past deadline with closing-soon status -> CLOSING_SOON (not conflict)
-    record = {
-        "id": 6, "status": "closing-soon", "deadline_date": past,
-        "deadline_display": str(past), "deadline_precision": "day"
-    }
-    assert classify_record(record) == ClassificationCategory.CLOSING_SOON
 
     # Future deadline with closing-soon status -> CLOSING_SOON (not blocked)
     record = {
@@ -2510,8 +2500,9 @@ def test_regression_gate5_classification_mismatch():
         "is_archived": False, "official_source_url": "https://example.com",
     }
     actual = classify_record(record_closing_soon)
-    # closing-soon with past deadline -> CLOSING_SOON (expected for CLOSING_SOON category)
-    assert actual == ClassificationCategory.CLOSING_SOON
+    # closing-soon with past deadline resolves to CLOSED under the
+    # authoritative effective lifecycle policy.
+    assert actual == ClassificationCategory.CLOSED
 
     # Test 2: Record with "closed" status and past deadline -> CLOSED
     record_closed = {

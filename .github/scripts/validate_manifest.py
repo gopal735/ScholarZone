@@ -30,7 +30,13 @@ def main():
             original_manifest = json.load(f)
 
         original_ids = {m['scholarship_id'] for m in original_manifest}
+        if len(original_manifest) != len(original_ids):
+            print('ERROR: duplicate scholarship_id in saved manifest')
+            sys.exit(1)
         current_ids = {m.scholarship_id for m in current_manifest}
+        if len(current_manifest) != len(current_ids):
+            print('ERROR: duplicate scholarship_id in current manifest')
+            sys.exit(1)
 
         if original_ids != current_ids:
             added = current_ids - original_ids

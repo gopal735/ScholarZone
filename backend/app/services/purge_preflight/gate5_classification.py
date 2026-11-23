@@ -22,8 +22,11 @@ NEVER uses EXPECTED_CLASSIFICATIONS as hardcoded truth or sole authorization for
 import json
 import sys
 from dataclasses import dataclass, asdict
-from datetime import date
+from datetime import date, datetime, timezone
 from typing import Optional
+from types import SimpleNamespace
+
+from ..closed_deletion import get_effective_lifecycle_status
 
 from .manifest import (
     CANONICAL_TARGET_IDS,
@@ -93,59 +96,40 @@ class Gate5Result:
         return asdict(self)
 
 
-def classify_record(record: dict) -> ClassificationCategory:
+def classify_record(record: dict, reference_date: Optional[date] = None) -> ClassificationCategory:
     """
-    Classify a single record based on its actual data.
-
-    This is the REAL classification logic - not a placeholder.
+    Classify a single record using the same effective lifecycle policy as
+    manifest generation.
     """
-    status = record.get("status", "").lower()
-    deadline = record.get("deadline_date")
-    deadline_precision = record.get("deadline_precision", "unknown")
-    deadline_display = record.get("deadline_display", "")
+    if reference_date is None:
+        reference_date = datetime.now(timezone.utc).date()
 
-    # Parse deadline if string
-    parsed_deadline = None
-    if deadline and isinstance(deadline, str):
-        try:
-            parsed_deadline = date.fromisoformat(deadline)
-        except ValueError:
-            pass
-    elif isinstance(deadline, date):
-        parsed_deadline = deadline
-
-    # Check if evergreen (no deadline or recurring programme)
-    is_evergreen = parsed_deadline is None
-
-    if is_evergreen:
+    # Adapt the dictionary record to the attribute-based interface expected by
+    # get_effective_lifecycle_status.
+    if record.get("deadline_date") is None:
         return ClassificationCategory.EVERGREEN
 
-    # Check for unknown/ambiguous deadline
-    if deadline_precision == "unknown" or not deadline_display:
+    if record.get("deadline_precision", "unknown") == "unknown" and not record.get("deadline_display"):
         return ClassificationCategory.UNKNOWN
 
-    if parsed_deadline and parsed_deadline < date.today():
-        # Deadline is in the past
-        if status in ("closed", "archived"):
-            return ClassificationCategory.CLOSED
-        elif status in ("closing-soon", "closing_soon"):
-            # Past deadline but status is closing-soon - this is expected for CLOSING_SOON
-            return ClassificationCategory.CLOSING_SOON
-        else:
-            # Past deadline but status is NOT closed/archived/closing-soon - CONFLICT
-            return ClassificationCategory.STATUS_DEADLINE_CONFLICT
+    obj = SimpleNamespace(**{k: v for k, v in record.items() if not isinstance(v, (list, dict))})
+    effective = get_effective_lifecycle_status(obj, reference_date)
 
-    if parsed_deadline and parsed_deadline >= date.today():
-        # Future deadline
-        if status in ("closing-soon", "closing_soon"):
-            return ClassificationCategory.CLOSING_SOON
+    if effective == "CLOSED":
+        return ClassificationCategory.CLOSED
+    if effective == "CLOSING_SOON":
+        return ClassificationCategory.CLOSING_SOON
+    if effective in ("OPEN", "OPENING", "UPCOMING"):
         return ClassificationCategory.BLOCKED
+    if effective == "UNKNOWN":
+        return ClassificationCategory.UNKNOWN
+    # Records without a deadline are treated as evergreen.
+    if record.get("deadline_date") is None:
+        return ClassificationCategory.EVERGREEN
+    return ClassificationCategory.BLOCKED
 
-    # Ambiguous - no deadline but not evergreen?
-    return ClassificationCategory.UNKNOWN
 
-
-def run_gate5(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate5Result:
+def run_gate5(accessor: DatabaseAccessor, target_ids: list[int], reference_date: Optional[date] = None) -> Gate5Result:
     """
     Execute Gate 5: Target Classification Validation.
 
@@ -157,6 +141,9 @@ def run_gate5(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate5Result:
         Gate5Result with classification validation and explicit mismatch reporting.
     """
     result = Gate5Result()
+
+    if reference_date is None:
+        reference_date = datetime.now(timezone.utc).date()
 
     if not target_ids:
         result.status = "FAIL"
@@ -177,7 +164,7 @@ def run_gate5(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate5Result:
             classifications = {}
             for record in records:
                 rec_id = record["id"]
-                classification = classify_record(record)
+                classification = classify_record(record, reference_date)
                 classifications[rec_id] = classification
 
                 # Track archive state
@@ -308,6 +295,13 @@ def main() -> int:
     with open(manifest_path) as f:
         _m = json.load(f)
     target_ids = [x["scholarship_id"] for x in _m]
+    reference_date = None
+    metadata_path = os.path.join(os.path.dirname(manifest_path), "manifest_metadata.json")
+    if os.path.exists(metadata_path):
+        with open(metadata_path) as f:
+            _md = json.load(f)
+        if _md.get("reference_date"):
+            reference_date = date.fromisoformat(_md["reference_date"])
     print(f"Target IDs from dynamic manifest: {target_ids}")
     print(f"Count: {len(target_ids)}")
     print()
@@ -319,7 +313,7 @@ def main() -> int:
         print(f"CONFIGURATION ERROR: {e}", file=sys.stderr)
         return 1
 
-    result = run_gate5(accessor, target_ids)
+    result = run_gate5(accessor, target_ids, reference_date)
 
     # Save results with metadata
     save_result_with_metadata(result.to_dict(), "gate5", "gate5_result.json")

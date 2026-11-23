@@ -224,7 +224,10 @@ def _parse_date_from_text(text: str, month_only: bool = False) -> Optional[date]
     m = re.match(r'^(\d{4})-(\d{2})$', text)
     if m:
         y, mo = int(m.group(1)), int(m.group(2))
-        d = date(y, mo, 1)
+        try:
+            d = date(y, mo, 1)
+        except ValueError:
+            return None
         month_only = True
     else:
         # Named month: "Month YYYY"
@@ -235,7 +238,10 @@ def _parse_date_from_text(text: str, month_only: bool = False) -> Optional[date]
             if m.group(1).lower() not in month_names:
                 return None
             mi = month_names.index(m.group(1).lower())
-            d = date(int(m.group(2)), mi + 1, 1)
+            try:
+                d = date(int(m.group(2)), mi + 1, 1)
+            except ValueError:
+                return None
             month_only = True
         else:
             # ISO date: YYYY-MM-DD
@@ -561,6 +567,27 @@ def execute_deletion(db: Session, manifest: List[ClosedScholarshipManifest], dry
                 continue
 
             deps = audit_dependencies(db, sid)
+
+            # Revalidate dependency state against the approved manifest before
+            # deleting any rows. New dependencies are not covered by backup.
+            dependency_mismatch = False
+            if entry.linked_professor_count != deps["professor_links"]:
+                dependency_mismatch = True
+            if bool(entry.linked_coverage) != (deps["coverage_rows"] > 0):
+                dependency_mismatch = True
+            if entry.linked_official_contacts != deps["official_contacts"]:
+                dependency_mismatch = True
+            if entry.linked_source_evidence != deps["source_evidence"]:
+                dependency_mismatch = True
+            if entry.linked_application_count != deps["application_records"]:
+                dependency_mismatch = True
+            if entry.linked_application_records != deps["application_records"]:
+                dependency_mismatch = True
+            if dependency_mismatch:
+                report.skipped_scholarship_ids.append(sid)
+                report.skipped.append(sid)
+                report.skipped_scholarships.append(sid)
+                continue
             link_ids = _link_ids_for_scholarship(db, sid)
 
             # delete source evidence (scholarship_id or link_id)

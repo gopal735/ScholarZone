@@ -55,7 +55,7 @@ class CycleValidationResult:
 class Gate6Result:
     """Gate 6 execution result."""
     test_name: str = "gate6_cycle_validation"
-    total_records: int = 34
+    total_records: int = 0
     expired_cycles: int = 0
     evergreen_programmes: int = 0
     future_deadlines: int = 0
@@ -170,8 +170,28 @@ def validate_cycle_record(record: dict, reference_date: Optional[date] = None) -
             actual_hash = hashlib.sha256(excerpt.encode()).hexdigest()
 
             if actual_hash == expected_hash:
+                # Verify the evidence deadline describes the same expired cycle
+                evidence_deadline_raw = record.get("evidence_deadline")
+                evidence_deadline = None
+                if isinstance(evidence_deadline_raw, str):
+                    try:
+                        evidence_deadline = date.fromisoformat(evidence_deadline_raw)
+                    except ValueError:
+                        evidence_deadline = None
+                elif isinstance(evidence_deadline_raw, date):
+                    evidence_deadline = evidence_deadline_raw
+
+                if evidence_deadline is None:
+                    blocked_reason = "Invalid or missing evidence deadline"
+                    evidence_sufficient = False
+                elif evidence_deadline > reference_date:
+                    blocked_reason = "Evidence deadline is after the reference date"
+                    evidence_sufficient = False
+                elif evidence_deadline != parsed_deadline:
+                    blocked_reason = "Evidence deadline does not match the live expired cycle"
+                    evidence_sufficient = False
                 # Verify decision is EXPIRED_VERIFIED
-                if record.get("evidence_decision") == "EXPIRED_VERIFIED":
+                elif record.get("evidence_decision") == "EXPIRED_VERIFIED":
                     evidence_sufficient = True
                     evidence = {
                         "official_domain": record.get("evidence_official_domain"),
@@ -240,7 +260,7 @@ def validate_cycle_record(record: dict, reference_date: Optional[date] = None) -
     )
 
 
-def run_gate6(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate6Result:
+def run_gate6(accessor: DatabaseAccessor, target_ids: list[int], reference_date: Optional[date] = None) -> Gate6Result:
     """
     Execute Gate 6: Application Cycle Validation.
 
@@ -253,6 +273,9 @@ def run_gate6(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate6Result:
     """
     result = Gate6Result()
 
+    if reference_date is None:
+        reference_date = date.today()
+
     try:
         with accessor.connect_readonly() as conn:
             records = accessor.get_target_records(conn, target_ids)
@@ -263,7 +286,7 @@ def run_gate6(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate6Result:
                 return result
 
             for record in records:
-                validation = validate_cycle_record(record)
+                validation = validate_cycle_record(record, reference_date)
                 result.validations.append(validation.__dict__)
 
                 if validation.is_expired and validation.evidence_sufficient:
@@ -323,6 +346,13 @@ def main() -> int:
     with open(manifest_path) as f:
         _m = json.load(f)
     target_ids = [x["scholarship_id"] for x in _m]
+    reference_date = None
+    metadata_path = os.path.join(os.path.dirname(manifest_path), "manifest_metadata.json")
+    if os.path.exists(metadata_path):
+        with open(metadata_path) as f:
+            _md = json.load(f)
+        if _md.get("reference_date"):
+            reference_date = date.fromisoformat(_md["reference_date"])
     print(f"Target IDs from dynamic manifest: {target_ids}")
     print(f"Count: {len(target_ids)}")
     print()
@@ -334,7 +364,7 @@ def main() -> int:
         print(f"CONFIGURATION ERROR: {e}", file=sys.stderr)
         return 1
 
-    result = run_gate6(accessor, target_ids)
+    result = run_gate6(accessor, target_ids, reference_date)
 
     # Save results with metadata
     save_result_with_metadata(result.to_dict(), "gate6", "gate6_result.json")

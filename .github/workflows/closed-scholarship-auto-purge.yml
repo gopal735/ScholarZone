@@ -458,7 +458,7 @@ jobs:
   preflight-summary:
     name: Preflight Summary & Gate Status
     needs: [verify-merge-trigger, preflight-gate1-atomicity, preflight-gate2-identity, preflight-gate3-dependencies, preflight-gate4-backup, preflight-gate5-classification, preflight-gate6-cycle-validation, preflight-gate7-git-safety, validate-manifest]
-    if: needs.verify-merge-trigger.outputs.should_run == 'true'
+    if: always() && needs.verify-merge-trigger.outputs.should_run == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -474,10 +474,17 @@ jobs:
           merge-multiple: true
 
       - name: Generate Final Preflight Report
+        env:
+          MERGE_COMMIT_SHA: ${{ needs.verify-merge-trigger.outputs.merge_commit_sha }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_NUMBER: ${{ github.run_number }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          WORKFLOW_NAME: ${{ github.workflow }}
         run: |
-          python .github/scripts/summary.py artifacts ${{ needs.verify-merge-trigger.outputs.merge_commit_sha }} ${{ github.run_id }} ${{ github.run_number }} ${{ github.run_attempt }} ${{ github.workflow }}
+          python .github/scripts/summary.py artifacts "$MERGE_COMMIT_SHA" "$RUN_ID" "$RUN_NUMBER" "$RUN_ATTEMPT" "$WORKFLOW_NAME"
 
       - name: Upload Preflight Summary
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: preflight-summary
@@ -694,7 +701,7 @@ jobs:
 
       - name: Validate snapshot structure
         working-directory: frontend
-        run: node .github/scripts/validate_snapshot.js
+        run: node ../.github/scripts/validate_snapshot.js
 
       - name: Generate sitemap from snapshot
         working-directory: frontend
@@ -702,7 +709,7 @@ jobs:
 
       - name: Validate sitemap
         working-directory: frontend
-        run: node .github/scripts/validate_sitemap.js
+        run: node ../.github/scripts/validate_sitemap.js
 
       - name: Run frontend lint
         working-directory: frontend
@@ -727,7 +734,7 @@ jobs:
           if ! git diff --quiet frontend/public/scholarships-snapshot.json frontend/public/sitemap.xml; then
             git add frontend/public/scholarships-snapshot.json frontend/public/sitemap.xml
             git commit -m "chore(catalogue): regenerate public snapshot and sitemap after PR #107 purge [skip ci]"
-            git push
+            git push origin HEAD:master
             echo "Snapshot and sitemap committed and pushed"
           else
             echo "No changes to snapshot/sitemap"

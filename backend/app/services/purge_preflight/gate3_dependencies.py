@@ -188,25 +188,38 @@ def run_gate3(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate3Result:
             # - Zero references to target IDs (aggregate AND per-target)
             # - No inspection errors
 
+            # Gate 3 may pass when references are limited to explicitly handled
+            # dependency tables. Unknown tables and CASCADE remain fail-closed.
+            known_dependency_tables = {
+                "application_records",
+                "saved_scholarships",
+                "discovery_candidates",
+                "professor_outreach_records",
+                "scholarship_professor_links",
+                "scholarship_supervisor_coverage",
+                "supervisor_source_evidence",
+                "official_contacts",
+                "scholarship_snapshots",
+                "scholarship_fetch_attempts",
+                "scholarship_verification_history",
+                "scholarship_reviews",
+                "image_reviews",
+                "scholarship_restore_records",
+            }
             has_inspection_errors = len(inspection_errors) > 0
             has_unknown_references = any(c < 0 for c in reference_counts.values())
             has_cascade = result.cascade_fk_count > 0
-            has_references = total_refs > 0
-
-            # Also check per-target: no target should have any references
-            has_per_target_refs = False
-            if result.per_target_reference_counts:
-                for tid, refs in result.per_target_reference_counts.items():
-                    if any(count > 0 for count in refs.values()):
-                        has_per_target_refs = True
-                        break
+            unsupported_ref_tables = [
+                key.split(".")[0] for key, count in reference_counts.items()
+                if count > 0 and key.split(".")[0] not in known_dependency_tables
+            ]
+            has_unsupported_references = bool(unsupported_ref_tables)
 
             result.safe_to_delete = (
                 not has_inspection_errors
                 and not has_unknown_references
                 and not has_cascade
-                and not has_references
-                and not has_per_target_refs
+                and not has_unsupported_references
             )
 
             if not result.safe_to_delete:
@@ -217,10 +230,10 @@ def run_gate3(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate3Result:
                     reasons.append("unknown reference counts")
                 if has_cascade:
                     reasons.append(f"{result.cascade_fk_count} CASCADE FKs")
-                if has_references:
+                if has_unsupported_references:
+                    reasons.append(f"unsupported referencing tables: {sorted(set(unsupported_ref_tables))}")
+                if total_refs > 0:
                     reasons.append(f"{total_refs} aggregate references to targets")
-                if has_per_target_refs:
-                    reasons.append("per-target references found")
                 result.status = "FAIL"
                 result.error = "Safe to delete: NO - " + "; ".join(reasons)
                 return result
