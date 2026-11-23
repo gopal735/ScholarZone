@@ -1,4 +1,4 @@
-"""Tests for the study planner API."""
+﻿"""Tests for the study planner API."""
 
 from __future__ import annotations
 
@@ -71,7 +71,8 @@ def test_add_task_and_complete(client, db):
     r2 = client.post(f"/study-plans/{pid}/tasks", json={"title": "Task A", "priority": "high"})
     assert r2.status_code == 201
     tid = r2.json()["id"]
-    r3 = client.patch(f"/study-plans/tasks/{tid}", json={"status": "completed"})
+    tver = r2.json()["version"]
+    r3 = client.patch(f"/study-plans/tasks/{tid}", json={"status": "completed", "version": tver})
     assert r3.status_code == 200
     assert r3.json()["status"] == "completed"
     assert r3.json()["completed_at"] is not None
@@ -84,8 +85,9 @@ def test_reopen_task(client, db):
     pid = r.json()["id"]
     r2 = client.post(f"/study-plans/{pid}/tasks", json={"title": "Task B"})
     tid = r2.json()["id"]
-    client.patch(f"/study-plans/tasks/{tid}", json={"status": "completed"})
-    r3 = client.patch(f"/study-plans/tasks/{tid}", json={"status": "reopened"})
+    v0 = r2.json()["version"]
+    rcomp = client.patch(f"/study-plans/tasks/{tid}", json={"status": "completed", "version": v0})
+    r3 = client.patch(f"/study-plans/tasks/{tid}", json={"status": "reopened", "version": rcomp.json()["version"]})
     assert r3.status_code == 200
     assert r3.json()["status"] == "reopened"
     assert r3.json()["completed_at"] is None

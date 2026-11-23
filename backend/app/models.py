@@ -1,4 +1,4 @@
-"""Persistent scholarship data model."""
+﻿"""Persistent scholarship data model."""
 
 from datetime import date, datetime
 
@@ -903,6 +903,7 @@ class StudyPlan(Base):
 
 class StudyPlanTask(Base):
     __tablename__ = "study_plan_tasks"
+    __table_args__ = (UniqueConstraint("plan_id", "position", name="uq_study_plan_task_plan_position"),)
     __table_args__ = (
         UniqueConstraint("plan_id", "position", name="uq_study_plan_tasks_plan_position"),
         Index("ix_study_plan_tasks_plan_status", "plan_id", "status"),

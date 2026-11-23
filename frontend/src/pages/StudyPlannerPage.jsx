@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+﻿import { useCallback, useEffect, useRef, useState } from 'react'
 import {
   StudyPlanUnauthenticatedError,
   fetchPlans,
@@ -18,15 +18,20 @@ export default function StudyPlannerPage() {
   const [error, setError] = useState(null)
   const [newTitle, setNewTitle] = useState('')
   const [newTask, setNewTask] = useState({})
+  const [pending, setPending] = useState({ plans: false, tasks: {} })
+  const requestIdRef = useRef(0)
 
   const load = useCallback(async () => {
+    const thisRequest = ++requestIdRef.current
     setStatus(PAGE_STATUS.LOADING)
     try {
       const data = await fetchPlans()
+      if (thisRequest !== requestIdRef.current) return
       setPlans(data)
       setError(null)
       setStatus(PAGE_STATUS.READY)
     } catch (caught) {
+      if (thisRequest !== requestIdRef.current) return
       if (caught instanceof StudyPlanUnauthenticatedError) {
         setStatus(PAGE_STATUS.UNAUTH)
         return
@@ -43,31 +48,38 @@ export default function StudyPlannerPage() {
 
   const handleCreatePlan = async (e) => {
     e.preventDefault()
-    if (!newTitle.trim()) return
+    if (!newTitle.trim() || pending.plans) return
+    setPending((p) => ({ ...p, plans: true }))
     try {
       await createPlan({ title: newTitle.trim() })
       setNewTitle('')
       await load()
     } catch (caught) { setError(caught) }
+    finally { setPending((p) => ({ ...p, plans: false })) }
   }
 
   const handleDeletePlan = async (id) => {
+    if (pending.plans) return
+    setPending((p) => ({ ...p, plans: true }))
     try { await deletePlan(id); await load() } catch (caught) { setError(caught) }
+    finally { setPending((p) => ({ ...p, plans: false })) }
   }
 
   const handleAddTask = async (planId) => {
     const title = (newTask[planId] || '').trim()
-    if (!title) return
+    if (!title || pending.tasks[planId]) return
+    setPending((p) => ({ ...p, tasks: { ...p.tasks, [planId]: true } }))
     try {
       await addTask(planId, { title })
       setNewTask((s) => ({ ...s, [planId]: '' }))
       await load()
     } catch (caught) { setError(caught) }
+    finally { setPending((p) => ({ ...p, tasks: { ...p.tasks, [planId]: false } })) }
   }
 
   const handleToggleTask = async (task) => {
     try {
-      await updateTask(task.id, { status: task.status === 'completed' ? 'reopened' : 'completed' })
+      await updateTask(task.id, { status: task.status === 'completed' ? 'reopened' : 'completed', version: task.version })
       await load()
     } catch (caught) { setError(caught) }
   }

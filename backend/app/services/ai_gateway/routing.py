@@ -1,4 +1,4 @@
-"""Model routing policy for the ScholarZone AI gateway.
+﻿"""Model routing policy for the ScholarZone AI gateway.
 
 A routing policy maps a task kind to a set of required capabilities and a
 preferred cost tier. The gateway resolves the policy to a concrete model from
@@ -94,5 +94,12 @@ def resolve_model(
 
     # Prefer the configured cost tier, then cheapest.
     preferred = [m for m in candidates if m.cost_tier == policy.preferred_cost_tier]
-    pool = preferred if preferred else candidates
+    if preferred:
+        pool = preferred
+    elif policy.allow_fallback:
+        pool = candidates
+    else:
+        return None
+    if not pool:
+        return None
     return min(pool, key=lambda m: (m.cost_tier, m.id))

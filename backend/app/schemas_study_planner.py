@@ -1,4 +1,4 @@
-"""Wire contracts for the study planner."""
+﻿"""Wire contracts for the study planner."""
 
 from __future__ import annotations
 
@@ -29,7 +29,7 @@ class StudyPlanTaskUpdate(BaseModel):
     due_date: Optional[date] = None
     status: Optional[str] = Field(default=None, pattern="^(open|completed|reopened)$")
     rationale: Optional[str] = Field(default=None, max_length=2000)
-    version: Optional[int] = Field(default=None, ge=1)
+    version: int = Field(ge=1)
 
 
 class StudyPlanTaskResponse(BaseModel):
@@ -64,7 +64,7 @@ class StudyPlanUpdate(BaseModel):
     title: Optional[str] = Field(default=None, min_length=1, max_length=255)
     goal: Optional[str] = Field(default=None, max_length=2000)
     status: Optional[str] = Field(default=None, pattern="^(active|paused|completed)$")
-    version: Optional[int] = Field(default=None, ge=1)
+    version: int = Field(ge=1)
 
 
 class StudyPlanResponse(BaseModel):

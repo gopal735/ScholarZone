@@ -1,4 +1,4 @@
-"""Study planner private API for Dream AI Mentor 2.0."""
+﻿"""Study planner private API for Dream AI Mentor 2.0."""
 
 from __future__ import annotations
 
@@ -120,7 +120,7 @@ def add_task(plan_id: int, payload: StudyPlanTaskCreate, db: Session = Depends(g
         id=t.id, plan_id=t.plan_id, title=t.title, description=t.description,
         priority=t.priority, due_date=t.due_date, status=t.status,
         related_scholarship_id=t.related_scholarship_id, rationale=t.rationale,
-        position=t.position, completed_at=t.completed_at,
+        position=t.position, version=t.version, completed_at=t.completed_at,
         created_at=t.created_at, updated_at=t.updated_at,
     )
 
@@ -141,7 +141,7 @@ def update_task(task_id: int, payload: StudyPlanTaskUpdate, db: Session = Depend
         id=t.id, plan_id=t.plan_id, title=t.title, description=t.description,
         priority=t.priority, due_date=t.due_date, status=t.status,
         related_scholarship_id=t.related_scholarship_id, rationale=t.rationale,
-        position=t.position, completed_at=t.completed_at,
+        position=t.position, version=t.version, completed_at=t.completed_at,
         created_at=t.created_at, updated_at=t.updated_at,
     )
 

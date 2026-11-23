@@ -1,4 +1,4 @@
-from contextlib import asynccontextmanager
+﻿from contextlib import asynccontextmanager
 import logging
 import os
 import re
@@ -169,7 +169,7 @@ if allowed_origins:
         # which are the first authenticated writes this API has. The method list
         # is still explicit rather than a wildcard, and the origin list is
         # unchanged.
-        allow_methods=["GET", "POST", "PUT", "DELETE"],
+        allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE"],
         allow_headers=["Accept", "Content-Type"],
     )
 

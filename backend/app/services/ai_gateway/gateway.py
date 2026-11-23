@@ -1,4 +1,4 @@
-"""The ScholarZone AI gateway.
+﻿"""The ScholarZone AI gateway.
 
 Central entry point for all model interactions. Enforces:
 - capability checks before invocation
@@ -31,7 +31,7 @@ from .providers import (
     elapsed_ms,
     sanitise_provider_error,
 )
-from .routing import RoutingPolicy, resolve_model
+from .routing import DEFAULT_POLICIES, RoutingPolicy, resolve_model
 
 logger = logging.getLogger(__name__)
 
@@ -64,7 +64,7 @@ class GatewayConfig:
     """Configuration for the gateway."""
 
     registry: list[ModelSpec] = field(default_factory=list)
-    policies: dict[str, RoutingPolicy] = field(default_factory=dict)
+    policies: dict[str, RoutingPolicy] = field(default_factory=lambda: {k: v for k, v in DEFAULT_POLICIES.items()})
     default_provider: ModelProvider | None = None
     enabled: bool = False
     production: bool = False
@@ -88,6 +88,8 @@ class AIGateway:
         self._lock = threading.Lock()
         self._usage: list[dict] = []
         self._timed_out_workers: set[threading.Thread] = set()
+        self._max_provider_workers = 4
+        self._worker_semaphore = threading.BoundedSemaphore(self._max_provider_workers)
 
     @property
     def enabled(self) -> bool:
@@ -130,19 +132,32 @@ class AIGateway:
         validator: Optional[Callable[[str], bool]] = None,
         cancel_event: Optional[threading.Event] = None,
     ) -> ProviderResult:
-        """Generate a response for the given task kind.
-
-        Returns a ``ProviderResult``. On any failure (unavailable provider,
-        capability mismatch, timeout, malformed output) the result carries a
-        failure category and ``used=False``. The caller must handle the failure
-        honestly rather than assuming success.
-        """
         started = __import__("time").perf_counter()
 
-        policy, model = self.resolve(task_kind, model_override=model_override)
+        effective_model_override = model_override if model_override is not None else getattr(request, "model_override", None)
+        effective_cancel_event = cancel_event if cancel_event is not None else getattr(request, "cancel_event", None)
+
+        policy = self.get_policy(task_kind)
+        if policy is None:
+            policy = RoutingPolicy(task_kind=task_kind, required_capabilities=frozenset())
+
+        effective_required = policy.required_capabilities | set(getattr(request, "required_capabilities", frozenset()) or frozenset())
+        effective_policy = RoutingPolicy(
+            task_kind=policy.task_kind,
+            required_capabilities=frozenset(effective_required),
+            preferred_cost_tier=policy.preferred_cost_tier,
+            allow_fallback=policy.allow_fallback,
+            max_output_tokens=policy.max_output_tokens,
+            timeout_seconds=policy.timeout_seconds,
+        )
+        model = resolve_model(effective_policy, self._config.registry, model_override=effective_model_override)
+        policy = effective_policy
 
         if not self._config.enabled:
             return ProviderResult(mode="disabled", used=False, failure=None, latency_ms=elapsed_ms(started))
+
+        with self._lock:
+            provider = self._provider
 
         if model is None:
             return ProviderResult(
@@ -152,19 +167,17 @@ class AIGateway:
                 latency_ms=elapsed_ms(started),
             )
 
-        # Capability check
-        if not model.supports(policy.required_capabilities):
+        if not model.supports(effective_required):
             return ProviderResult(
                 mode="configured",
                 used=False,
                 failure="capability_mismatch",
                 latency_ms=elapsed_ms(started),
                 model=model.id,
-                provider=self._provider.name,
+                provider=provider.name,
             )
 
-        # Respect cancellation
-        if cancel_event is not None and cancel_event.is_set():
+        if effective_cancel_event is not None and effective_cancel_event.is_set():
             return ProviderResult(
                 mode="configured",
                 used=False,
@@ -172,14 +185,12 @@ class AIGateway:
                 latency_ms=elapsed_ms(started),
             )
 
-        # Ensure request carries the cancel event for providers that honour it.
         from dataclasses import replace as _replace
-        request = _replace(request, cancel_event=cancel_event if cancel_event is not None else request.cancel_event)
+        request = _replace(request, cancel_event=effective_cancel_event if effective_cancel_event is not None else request.cancel_event)
 
-        # Retry loop
         last_failure = None
         for attempt in range(MAX_RETRIES + 1):
-            if cancel_event is not None and cancel_event.is_set():
+            if effective_cancel_event is not None and effective_cancel_event.is_set():
                 return ProviderResult(
                     mode="configured",
                     used=False,
@@ -187,22 +198,37 @@ class AIGateway:
                     latency_ms=elapsed_ms(started),
                 )
             try:
-                # Enforce timeout via a worker thread.
-                import threading as _threading
                 outcome: dict = {}
 
                 def _run():
                     try:
-                        outcome["result"] = self._provider.generate(request, model)
+                        outcome["result"] = provider.generate(request, model)
                     except BaseException as exc:  # noqa: BLE001
                         outcome["exc"] = exc
+                    finally:
+                        self._worker_semaphore.release()
 
-                worker = _threading.Thread(target=_run, daemon=True)
-                worker.start()
+                acquired = self._worker_semaphore.acquire(blocking=False)
+                if not acquired:
+                    return ProviderResult(
+                        mode="configured",
+                        used=False,
+                        failure="worker_capacity_exhausted",
+                        latency_ms=elapsed_ms(started),
+                        model=model.id,
+                        provider=provider.name,
+                    )
+
+                worker = threading.Thread(target=_run, daemon=True)
+                try:
+                    worker.start()
+                except Exception:  # noqa: BLE001
+                    self._worker_semaphore.release()
+                    raise
+
                 timeout = request.timeout_seconds or policy.timeout_seconds
                 worker.join(timeout=timeout)
                 if worker.is_alive():
-                    # Best-effort cancellation; thread may linger. Track until it terminates.
                     if request.cancel_event is not None:
                         request.cancel_event.set()
                     with self._lock:
@@ -213,7 +239,7 @@ class AIGateway:
                         failure="timeout",
                         latency_ms=elapsed_ms(started),
                         model=model.id,
-                        provider=self._provider.name,
+                        provider=provider.name,
                     )
                 if "exc" in outcome:
                     raise outcome["exc"]
@@ -225,9 +251,19 @@ class AIGateway:
                         _t.sleep(RETRY_BASE_DELAY * (attempt + 1))
                         continue
                     return result
+                # Record usage for completed provider result (once), even if validation rejects.
+                if getattr(result, "prompt_tokens", None) is not None or getattr(result, "completion_tokens", None) is not None:
+                    with self._lock:
+                        self._usage.append({
+                            "task_kind": task_kind,
+                            "model": model.id,
+                            "provider": provider.name,
+                            "prompt_tokens": result.prompt_tokens,
+                            "completion_tokens": result.completion_tokens,
+                        })
                 # Validate structured output if validator provided
-                if validator is not None and result.text is not None:
-                    if not validator(result.text):
+                if validator is not None:
+                    if result.text is None or not validator(result.text):
                         return ProviderResult(
                             mode=result.mode,
                             used=False,
@@ -235,17 +271,8 @@ class AIGateway:
                             failure="malformed_response",
                             latency_ms=elapsed_ms(started),
                             model=model.id,
-                            provider=self._provider.name,
+                            provider=provider.name,
                         )
-                # Record usage
-                with self._lock:
-                    self._usage.append({
-                        "task_kind": task_kind,
-                        "model": model.id,
-                        "provider": self._provider.name,
-                        "prompt_tokens": result.prompt_tokens,
-                        "completion_tokens": result.completion_tokens,
-                    })
                 return result
             except Exception as exc:  # noqa: BLE001
                 last_failure = sanitise_provider_error(exc)
@@ -260,7 +287,7 @@ class AIGateway:
                     failure=last_failure,
                     latency_ms=elapsed_ms(started),
                     model=model.id,
-                    provider=self._provider.name,
+                    provider=provider.name,
                 )
 
         return ProviderResult(

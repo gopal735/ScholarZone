@@ -1,4 +1,4 @@
-"""Study planner service for Dream AI Mentor 2.0.
+﻿"""Study planner service for Dream AI Mentor 2.0.
 
 Provides authenticated CRUD for user-owned study plans and tasks. The system
 never silently overwrites user edits. Completion/reopen are explicit actions.
@@ -9,7 +9,7 @@ from __future__ import annotations
 from datetime import datetime, timezone
 from typing import Optional
 
-from sqlalchemy import select
+from sqlalchemy import select, update
 from sqlalchemy.orm import Session
 
 from ...models import StudyPlan, StudyPlanTask, User
@@ -84,32 +84,58 @@ def update_plan(db: Session, user: User, plan_id: int, payload: StudyPlanUpdate)
     plan = get_plan(db, user, plan_id)
     if plan is None:
         return None
-    if payload.version is not None and payload.version != plan.version:
+    if payload.version != plan.version:
         raise StaleWriteError("stale_plan_version")
+    values: dict = {}
     if payload.title is not None:
-        plan.title = payload.title
+        values["title"] = payload.title
     if payload.goal is not None:
-        plan.goal = payload.goal
+        values["goal"] = payload.goal
     if payload.status is not None:
-        plan.status = payload.status
-    plan.version += 1
-    plan.updated_at = _now()
+        values["status"] = payload.status
+    values["version"] = StudyPlan.version + 1
+    values["updated_at"] = _now()
+    result = db.execute(
+        update(StudyPlan)
+        .where(
+            StudyPlan.id == plan_id,
+            StudyPlan.user_id == user.id,
+            StudyPlan.status != "deleted",
+            StudyPlan.version == payload.version,
+        )
+        .values(**values)
+    )
+    if result.rowcount != 1:
+        db.rollback()
+        raise StaleWriteError("stale_plan_version")
     db.commit()
-    db.refresh(plan)
-    return plan
+    return get_plan(db, user, plan_id)
 
 
 def delete_plan(db: Session, user: User, plan_id: int) -> bool:
     plan = get_plan(db, user, plan_id)
     if plan is None:
         return False
-    plan.status = "deleted"
+    result = db.execute(
+        update(StudyPlan)
+        .where(
+            StudyPlan.id == plan_id,
+            StudyPlan.user_id == user.id,
+            StudyPlan.status != "deleted",
+        )
+        .values(status="deleted", version=StudyPlan.version + 1, updated_at=_now())
+    )
     db.commit()
-    return True
+    return result.rowcount == 1
 
 
 def add_task(db: Session, user: User, plan_id: int, payload: StudyPlanTaskCreate) -> StudyPlanTask | None:
-    plan = get_plan(db, user, plan_id)
+    plan_stmt = select(StudyPlan).where(
+        StudyPlan.id == plan_id,
+        StudyPlan.user_id == user.id,
+        StudyPlan.status != "deleted",
+    ).with_for_update()
+    plan = db.execute(plan_stmt).scalar_one_or_none()
     if plan is None:
         return None
     stmt = select(StudyPlanTask).where(StudyPlanTask.plan_id == plan.id)
@@ -154,33 +180,49 @@ def update_task(db: Session, user: User, task_id: int, payload: StudyPlanTaskUpd
     t = get_task(db, user, task_id)
     if t is None:
         return None
-    if payload.version is not None and payload.version != t.version:
+    if payload.version != t.version:
         raise StaleWriteError("stale_task_version")
+    values: dict = {}
     if payload.title is not None:
-        t.title = payload.title
+        values["title"] = payload.title
     if payload.description is not None:
-        t.description = payload.description
+        values["description"] = payload.description
     if payload.priority is not None:
-        t.priority = payload.priority
+        values["priority"] = payload.priority
     if "due_date" in payload.model_fields_set:
-        t.due_date = payload.due_date
+        values["due_date"] = payload.due_date
     if payload.status is not None:
-        # Validate transitions
         if payload.status == "completed":
-            t.status = "completed"
-            t.completed_at = _now()
+            values["status"] = "completed"
+            values["completed_at"] = _now()
         elif payload.status in ("open", "reopened"):
-            t.status = payload.status
-            t.completed_at = None
+            values["status"] = payload.status
+            values["completed_at"] = None
         else:
             return None
     if payload.rationale is not None:
-        t.rationale = payload.rationale
-    t.version += 1
-    t.updated_at = _now()
+        values["rationale"] = payload.rationale
+    values["version"] = StudyPlanTask.version + 1
+    values["updated_at"] = _now()
+    result = db.execute(
+        update(StudyPlanTask)
+        .where(
+            StudyPlanTask.id == task_id,
+            StudyPlanTask.version == payload.version,
+            StudyPlanTask.plan_id.in_(
+                select(StudyPlan.id).where(
+                    StudyPlan.user_id == user.id,
+                    StudyPlan.status != "deleted",
+                )
+            ),
+        )
+        .values(**values)
+    )
+    if result.rowcount != 1:
+        db.rollback()
+        raise StaleWriteError("stale_task_version")
     db.commit()
-    db.refresh(t)
-    return t
+    return get_task(db, user, task_id)
 
 
 def delete_task(db: Session, user: User, task_id: int) -> bool:

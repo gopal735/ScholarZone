@@ -1,4 +1,4 @@
-"""Bounded agent orchestrator for ScholarZone AI.
+﻿"""Bounded agent orchestrator for ScholarZone AI.
 
 Defines task execution states, ownership, permission enforcement, budget
 limits, and cancellation. Agents are bounded capabilities, not autonomous
@@ -72,7 +72,10 @@ class TaskExecution:
     error: str | None = None
     cancel_event: threading.Event = field(default_factory=threading.Event)
     tool_calls_used: int = 0
+    tool_calls_by_tool: dict[str, int] = field(default_factory=dict)
     depth_used: int = 0
+    running: bool = False
+    confirmed_tools: set[str] = field(default_factory=set)
     context_chars_used: int = 0
     _lock: threading.Lock = field(default_factory=threading.Lock, repr=False, compare=False)
 
@@ -120,6 +123,31 @@ class TaskExecution:
             self.state = TaskState.CANCELLED
             self.finished_at = time.time()
 
+    def try_start_run(self) -> bool:
+        with self._lock:
+            if self.running or self.state in TERMINAL_STATES:
+                return False
+            self.running = True
+            return True
+
+    def finish_run(self) -> None:
+        with self._lock:
+            self.running = False
+
+    def confirm_tool(self, tool_name: str) -> None:
+        with self._lock:
+            self.confirmed_tools.add(tool_name)
+
+    def reserve_tool_call(self, tool_name: str, max_per_tool: int) -> str | None:
+        with self._lock:
+            if self.tool_calls_used >= self.budget.max_tool_calls:
+                return "max_tool_calls_exceeded"
+            if self.tool_calls_by_tool.get(tool_name, 0) >= max_per_tool:
+                return "tool_call_limit_exceeded"
+            self.tool_calls_used += 1
+            self.tool_calls_by_tool[tool_name] = self.tool_calls_by_tool.get(tool_name, 0) + 1
+            return None
+
     def record_tool_call(self) -> None:
         with self._lock:
             self.tool_calls_used += 1
@@ -166,14 +194,54 @@ class ToolRegistry:
         if tool_name not in task.allowed_tools:
             raise PermissionError(f"Tool {tool_name} not in allowed set for task {task.task_id}")
         perm = self._tools[tool_name]
-        if task.tool_calls_used >= perm.max_calls_per_task:
-            raise RuntimeError(f"Tool {tool_name} call limit exceeded")
-        budget_error = task.check_budget()
+        if perm.requires_user_confirmation:
+            with task._lock:
+                if tool_name not in task.confirmed_tools:
+                    raise PermissionError(f"Tool {tool_name} requires user confirmation")
+                task.confirmed_tools.discard(tool_name)
+        budget_error = task.reserve_tool_call(tool_name, perm.max_calls_per_task)
         if budget_error:
             raise RuntimeError(budget_error)
-        task.record_tool_call()
         handler = self._handlers[tool_name]
         return handler(**kwargs)
+
+
+
+def _result_size(value: Any, limit: int, _seen: set[int] | None = None, _depth: int = 0) -> int:
+    """Return a bounded byte-size estimate for a structured result."""
+    if _seen is None:
+        _seen = set()
+    if _depth > 50:
+        raise ValueError("result_too_deep")
+    if isinstance(value, str):
+        return len(value.encode("utf-8"))
+    if value is None or isinstance(value, bool):
+        return 4
+    if isinstance(value, (int, float)):
+        return 8
+    obj_id = id(value)
+    if obj_id in _seen:
+        raise ValueError("circular_result")
+    _seen.add(obj_id)
+    try:
+        if isinstance(value, (list, tuple)):
+            total = 2
+            for item in value:
+                total += _result_size(item, limit, _seen, _depth + 1) + 1
+                if total > limit:
+                    return total
+            return total
+        if isinstance(value, dict):
+            total = 2
+            for key, item in value.items():
+                total += _result_size(key, limit, _seen, _depth + 1)
+                total += _result_size(item, limit, _seen, _depth + 1) + 1
+                if total > limit:
+                    return total
+            return total
+        raise TypeError("unsupported_result_type")
+    finally:
+        _seen.discard(obj_id)
 
 
 class Orchestrator:
@@ -230,11 +298,16 @@ class Orchestrator:
         """
         if not callable(plan_func):
             raise TypeError("plan_func must be callable")
+        if not task.try_start_run():
+            task.error = "task_already_running"
+            return task
         if task.is_terminal:
+            task.finish_run()
             return task
         # Cooperative cancellation before planning.
         if task.cancel_event.is_set():
             task.cancel()
+            task.finish_run()
             return task
         try:
             task.transition(TaskState.PLANNING)
@@ -245,9 +318,14 @@ class Orchestrator:
             result = plan_func(task, self)
             if task.cancel_event.is_set():
                 task.cancel()
+                task.finish_run()
                 return task
-            # Restrict planning output size.
-            if isinstance(result, str) and len(result) > task.budget.max_context_chars:
+            # Restrict planning output size (structured).
+            try:
+                size = _result_size(result, task.budget.max_context_chars)
+            except (TypeError, ValueError):
+                raise RuntimeError("plan_output_too_large")
+            if size > task.budget.max_context_chars:
                 raise RuntimeError("plan_output_too_large")
             if task.elapsed_seconds >= task.budget.max_duration_seconds:
                 raise RuntimeError("max_duration_exceeded")
@@ -263,7 +341,16 @@ class Orchestrator:
                     task.transition(TaskState.FAILED)
                 except ValueError:
                     pass
+        finally:
+            task.finish_run()
         return task
+
+    def confirm_tool(self, task_id: str, user_id: int, tool_name: str) -> bool:
+        task = self.get_task(task_id, user_id)
+        if task is None:
+            return False
+        task.confirm_tool(tool_name)
+        return True
 
     def cancel_task(self, task_id: str, user_id: int) -> bool:
         task = self.get_task(task_id, user_id)
