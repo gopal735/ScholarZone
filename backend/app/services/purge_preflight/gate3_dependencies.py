@@ -397,6 +397,7 @@ def run_gate3(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate3Result:
                 ("public", "scholarship_reviews"),
                 ("public", "image_reviews"),
                 ("public", "scholarship_restore_records"),
+                ("public", "scholarship_evidence"),
             }
 
             dependency_policy = {
@@ -414,6 +415,7 @@ def run_gate3(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate3Result:
                 ("public", "scholarship_reviews"): "SAFE_CHILD_CLEANUP",
                 ("public", "image_reviews"): "SAFE_CHILD_CLEANUP",
                 ("public", "scholarship_restore_records"): "SAFE_CHILD_CLEANUP",
+                ("public", "scholarship_evidence"): "PRESERVE_AS_AUDIT_EVIDENCE",
             }
 
             def _key_identity(key: str) -> tuple[str, str]:

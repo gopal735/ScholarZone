@@ -84,12 +84,30 @@ def main():
             print(f"Errors: {report.errors}")
             sys.exit(1)
 
+        committed = False
         if not dry_run:
-            db.commit()
+            try:
+                db.commit()
+                committed = True
+            except Exception as e:
+                db.rollback()
+                print(f"ERROR: Database commit failed: {e}")
+                print("No deletion was committed. Committed deletion count: 0.")
+                sys.exit(1)
 
         report_path = os.path.join(args.output_dir, "closed_deletion_report.json")
-        save_report(report, report_path)
-        print(f"Report saved to: {report_path}")
+        try:
+            save_report(report, report_path)
+        except Exception as e:
+            if committed:
+                print(f"WARNING: Database commit succeeded, but report publication failed: {e}")
+                print("Database changes are committed; artifact publication failed. Preserve execution identity for recovery.")
+            else:
+                print(f"ERROR: Report publication failed: {e}")
+            # Still attempt to print summary
+        else:
+            print(f"Report saved to: {report_path}")
+
         print()
 
         print(f"Total closed: {report.total_closed}")
@@ -106,6 +124,8 @@ def main():
             print()
             print("DRY RUN COMPLETE. No records were deleted.")
             print("To execute deletion, run with --execute --confirm-production")
+        elif not committed:
+            sys.exit(1)
 
 
 if __name__ == "__main__":

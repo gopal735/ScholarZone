@@ -547,7 +547,7 @@ class DatabaseAccessor:
                 f"retrieval_date, reviewer, decision "
                 f"FROM scholarship_evidence WHERE scholarship_id = ANY(%s) "
                 f"ORDER BY scholarship_id, application_cycle, deadline",
-                (tuple(target_ids),)
+                (list(target_ids),)
             )
             return [dict(row) for row in cur.fetchall()]
 

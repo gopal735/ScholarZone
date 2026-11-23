@@ -52,7 +52,7 @@ from datetime import date
 
 from typing import Optional
 
-
+from urllib.parse import urlparse
 
 from .manifest import CANONICAL_TARGET_IDS, TARGET_ID_SET, EvidenceRecord
 
@@ -61,6 +61,52 @@ from .database import DatabaseAccessor, create_accessor
 from .config import DatabaseConfig, PreflightConfig, load_config
 
 from .metadata import save_result_with_metadata
+
+
+def canonical_cycle_identity(
+    deadline_display: Optional[str] = None,
+    deadline_date: Optional[object] = None,
+    deadline_precision: Optional[str] = None,
+    application_cycle: Optional[str] = None,
+) -> Optional[str]:
+    """Return one canonical, normalized application-cycle identity.
+
+    Returns None when no independently meaningful cycle can be established.
+    Never guesses from weak text.
+    """
+    if application_cycle is not None and str(application_cycle).strip():
+        base = str(application_cycle).strip()
+    elif deadline_display is not None and str(deadline_display).strip():
+        base = str(deadline_display).strip()
+    else:
+        base = ""
+    # Normalize whitespace/case lightly but preserve meaningful content.
+    base = " ".join(base.split())
+    if not base:
+        return None
+    # If a concrete deadline exists, include it to distinguish cycles.
+    dd = None
+    if isinstance(deadline_date, date):
+        dd = deadline_date.isoformat()
+    elif isinstance(deadline_date, str) and deadline_date.strip():
+        try:
+            dd = date.fromisoformat(deadline_date.strip()).isoformat()
+        except ValueError:
+            dd = deadline_date.strip()
+    precision = (deadline_precision or "").strip()
+    parts = [base]
+    if dd:
+        parts.append(dd)
+    if precision and precision.lower() not in ("unknown", ""):
+        parts.append(precision)
+    identity = "|".join(parts)
+    # A cycle with only an unknown/empty base and no deadline is not meaningful.
+    if base.lower() in ("unknown", "ongoing", "rolling", "n/a", "") and dd is None:
+        # "Ongoing"/rolling without a date is still a meaningful evergreen cycle label?
+        # Require at least a non-generic label; generic labels alone are not a cycle.
+        if base.lower() in ("unknown", "n/a", ""):
+            return None
+    return identity
 
 
 
@@ -336,59 +382,70 @@ def validate_cycle_record(record: dict, reference_date: Optional[date] = None) -
 
         if all_present:
 
-            # Verify excerpt hash matches
-
-            excerpt = record.get("evidence_supporting_excerpt", "")
-
-            expected_hash = record.get("evidence_excerpt_hash", "")
-
-            actual_hash = hashlib.sha256(excerpt.encode()).hexdigest()
-
-
-
-            if actual_hash == expected_hash:
-
-                # Verify decision is EXPIRED_VERIFIED
-
-                if record.get("evidence_decision") == "EXPIRED_VERIFIED":
-
-                    evidence_sufficient = True
-
-                    evidence = {
-
-                        "official_domain": record.get("evidence_official_domain"),
-
-                        "official_url": record.get("evidence_official_url"),
-
-                        "source_title": record.get("evidence_source_title"),
-
-                        "deadline": record.get("evidence_deadline"),
-
-                        "deadline_precision": record.get("evidence_deadline_precision"),
-
-                        "supporting_excerpt": excerpt,
-
-                        "excerpt_hash": expected_hash,
-
-                        "retrieval_date": record.get("evidence_retrieval_date"),
-
-                        "reviewer": record.get("evidence_reviewer"),
-
-                        "decision": record.get("evidence_decision"),
-
-                    }
-
-                else:
-
-                    blocked_reason = f"Evidence decision not EXPIRED_VERIFIED: {record.get('evidence_decision')}"
-
+            # Canonical application-cycle consistency (when evidence provides it).
+            ev_cycle = record.get("evidence_application_cycle")
+            rec_cycle = canonical_cycle_identity(
+                deadline_display=record.get("deadline_display"),
+                deadline_date=record.get("deadline_date"),
+                deadline_precision=record.get("deadline_precision"),
+                application_cycle=record.get("application_cycle"),
+            )
+            if ev_cycle is not None and str(ev_cycle).strip() != "":
+                ev_norm = " ".join(str(ev_cycle).split()).lower()
+                # Compare against record's deadline_display base (cycle label).
+                rec_base = " ".join(str(record.get("deadline_display") or record.get("application_cycle") or "").split()).lower()
+                if rec_base and ev_norm != rec_base:
+                    blocked_reason = f"Evidence application cycle mismatch: {ev_cycle} != {record.get('deadline_display')}"
                     evidence_sufficient = False
+                    # skip further checks
+                    all_present = False
 
-            else:
+            # Official domain must belong to the actual official source URL.
+            if all_present:
+                official_url = str(record.get("evidence_official_url", "")).strip()
+                official_domain = str(record.get("evidence_official_domain", "")).strip().lower()
+                try:
+                    host = (urlparse(official_url).hostname or "").lower()
+                except Exception:
+                    host = ""
+                if not host or not official_domain:
+                    blocked_reason = "Invalid official domain/URL"
+                    evidence_sufficient = False
+                    all_present = False
+                elif host != official_domain and not host.endswith("." + official_domain):
+                    blocked_reason = f"Official domain mismatch: {official_domain} not owner of {host}"
+                    evidence_sufficient = False
+                    all_present = False
 
-                blocked_reason = "Evidence excerpt hash mismatch - integrity check failed"
+            # Verify excerpt hash matches
+            if all_present:
+                excerpt = record.get("evidence_supporting_excerpt", "")
+                expected_hash = record.get("evidence_excerpt_hash", "")
+                actual_hash = hashlib.sha256(excerpt.encode()).hexdigest()
 
-                evidence_sufficient = False
+                if actual_hash == expected_hash:
+                    # Verify decision is EXPIRED_VERIFIED
+                    if record.get("evidence_decision") == "EXPIRED_VERIFIED":
+                        evidence_sufficient = True
+                        evidence = {
+                            "official_domain": record.get("evidence_official_domain"),
+                            "official_url": record.get("evidence_official_url"),
+                            "source_title": record.get("evidence_source_title"),
+                            "deadline": record.get("evidence_deadline"),
+                            "deadline_precision": record.get("evidence_deadline_precision"),
+                            "application_cycle": record.get("evidence_application_cycle"),
+                            "supporting_excerpt": excerpt,
+                            "excerpt_hash": expected_hash,
+                            "retrieval_date": record.get("evidence_retrieval_date"),
+                            "reviewer": record.get("evidence_reviewer"),
+                            "decision": record.get("evidence_decision"),
+                        }
+                    else:
+                        blocked_reason = f"Evidence decision not EXPIRED_VERIFIED: {record.get('evidence_decision')}"
+                        evidence_sufficient = False
+                else:
+                    blocked_reason = "Evidence excerpt hash mismatch - integrity check failed"
+                    evidence_sufficient = False
 
         else:
 
@@ -488,7 +545,7 @@ def validate_cycle_record(record: dict, reference_date: Optional[date] = None) -
 
 
 
-def run_gate6(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate6Result:
+def run_gate6(accessor: DatabaseAccessor, target_ids: list[int], reference_date: Optional[date] = None) -> Gate6Result:
 
     """
 
@@ -512,7 +569,8 @@ def run_gate6(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate6Result:
 
     result = Gate6Result()
 
-
+    if reference_date is None:
+        reference_date = date.today()
 
     try:
 
@@ -527,12 +585,20 @@ def run_gate6(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate6Result:
             records = accessor.get_target_records(conn, target_ids)
 
             # Retrieve authoritative evidence from the persistent registry.
-            # Exact matching: scholarship_id + application cycle/deadline.
-            # Ambiguous/conflicting/duplicate evidence fails closed.
+            # Exact matching requires:
+            #   1. exact scholarship_id
+            #   2. exact canonical application-cycle identity
+            #   3. consistent deadline (both null or equal)
+            #   4. consistent deadline precision
+            #   5. valid decision
+            #   6. no conflicting/ambiguous candidate
+            # Database errors must NOT be swallowed.
             try:
                 evidence_rows = accessor.get_evidence_by_scholarship_ids(conn, target_ids)
-            except Exception:
-                evidence_rows = []
+            except Exception as e:
+                result.status = "ERROR"
+                result.error = f"Evidence registry unavailable: {e}"
+                return result
 
             evidence_by_scholarship = {}
             for er in evidence_rows:
@@ -544,12 +610,31 @@ def run_gate6(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate6Result:
                 sid = record.get("id")
                 candidates = evidence_by_scholarship.get(sid, [])
                 rec_deadline = record.get("deadline_date")
+                rec_precision = record.get("deadline_precision")
+                rec_cycle_base = " ".join(str(record.get("deadline_display") or record.get("application_cycle") or "").split())
                 exact = []
                 for er in candidates:
                     er_deadline = er.get("deadline")
+                    er_precision = er.get("deadline_precision")
+                    er_cycle_base = " ".join(str(er.get("application_cycle") or "").split())
+                    # 1. cycle identity must match exactly and be non-empty
+                    if not rec_cycle_base or not er_cycle_base:
+                        continue
+                    if rec_cycle_base.lower() != er_cycle_base.lower():
+                        continue
+                    # 2. deadline consistency
                     if rec_deadline is not None and er_deadline is not None:
-                        if str(er_deadline) != str(rec_deadline):
+                        if str(rec_deadline) != str(er_deadline):
                             continue
+                    elif (rec_deadline is None) != (er_deadline is None):
+                        continue
+                    # 3. precision consistency
+                    if rec_precision is not None and er_precision is not None:
+                        if str(rec_precision).strip().lower() != str(er_precision).strip().lower():
+                            continue
+                    # 4. valid decision
+                    if not er.get("decision"):
+                        continue
                     exact.append(er)
                 # Fail closed on ambiguity: require exactly one exact match.
                 if len(exact) == 1:
@@ -559,6 +644,7 @@ def run_gate6(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate6Result:
                     rec["evidence_source_title"] = er.get("source_title")
                     rec["evidence_deadline"] = er.get("deadline")
                     rec["evidence_deadline_precision"] = er.get("deadline_precision")
+                    rec["evidence_application_cycle"] = er.get("application_cycle")
                     rec["evidence_supporting_excerpt"] = er.get("supporting_excerpt")
                     rec["evidence_excerpt_hash"] = er.get("excerpt_hash")
                     rec["evidence_retrieval_date"] = er.get("retrieval_date")
@@ -580,7 +666,7 @@ def run_gate6(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate6Result:
 
             for record in records:
 
-                validation = validate_cycle_record(record)
+                validation = validate_cycle_record(record, reference_date=reference_date)
 
                 result.validations.append(validation.__dict__)
 
@@ -606,7 +692,7 @@ def run_gate6(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate6Result:
 
                         dl = date.fromisoformat(validation.deadline)
 
-                        if dl >= date.today():
+                        if dl >= reference_date:
 
                             result.future_deadlines += 1
 

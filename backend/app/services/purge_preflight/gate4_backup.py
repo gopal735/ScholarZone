@@ -3527,6 +3527,14 @@ def run_gate4(
 
             result.cleanup_errors.extend(cleanup_failures)
 
+            # Cleanup failure must fail the gate; never coexist with PASS.
+
+            if getattr(result, "status", None) == "PASS":
+
+                result.status = "FAIL"
+
+                result.error = "Required cleanup failed: " + "; ".join(cleanup_failures)
+
         # Note: encrypted_file and checksum_file are kept for artifact upload
 
 

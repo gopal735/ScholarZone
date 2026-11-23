@@ -3,6 +3,7 @@
 import logging
 import os
 from functools import lru_cache
+from urllib.parse import urlparse, parse_qsl
 from sqlalchemy import create_engine, event, text
 from sqlalchemy.orm import Session, sessionmaker
 
@@ -19,25 +20,48 @@ def _readonly_database_url() -> str:
     return url
 
 
+def _validate_production_ssl(url: str) -> None:
+    """Structurally validate sslmode in production; reject weak/ambiguous values."""
+    env = os.getenv("SCHOLARZONE_ENVIRONMENT", "").strip().lower()
+    if env != "production":
+        return
+    parsed = urlparse(url)
+    # Collect sslmode parameters preserving duplicates.
+    sslmodes = [v for (k, v) in parse_qsl(parsed.query, keep_blank_values=True)
+                if k.lower() == "sslmode"]
+    if len(sslmodes) > 1:
+        raise RuntimeError("Ambiguous duplicate sslmode parameters in production database URL.")
+    if not sslmodes:
+        # Missing is acceptable; will default to verify-full later.
+        return
+    mode = sslmodes[0].strip().lower()
+    if mode in ("disable", "allow", "prefer", "require"):
+        raise RuntimeError(
+            f"Read-only database URL uses a weak/unsupported sslmode '{mode}' in production; "
+            "verify-full (or verify-ca) is required."
+        )
+    if mode not in ("verify-ca", "verify-full"):
+        raise RuntimeError(
+            f"Read-only database URL uses an unsupported sslmode '{mode}' in production."
+        )
+
+
 @lru_cache
 def get_readonly_engine():
     database_url = _readonly_database_url()
+    _validate_production_ssl(database_url)
     env = os.getenv("SCHOLARZONE_ENVIRONMENT", "").strip().lower()
-    # Reject explicit TLS downgrade in production.
-    if env == "production":
-        lowered = database_url.lower()
-        for weak in ("sslmode=disable", "sslmode=allow", "sslmode=prefer"):
-            if weak in lowered:
-                raise RuntimeError(
-                    "Read-only database URL uses a weak sslmode in production; "
-                    "verify-full (or verify-ca) is required."
-                )
     if database_url.startswith("postgresql://"):
         database_url = "postgresql+psycopg://" + database_url[len("postgresql://"):]
     connect_args = {"check_same_thread": False} if database_url.startswith("sqlite") else {}
     if database_url.startswith("postgresql"):
         connect_args["connect_timeout"] = 10
-        if "sslmode=" not in database_url:
+        # Determine if sslmode present (structurally).
+        from urllib.parse import urlparse, parse_qsl
+        parsed = urlparse(database_url)
+        sslmodes = [v for (k, v) in parse_qsl(parsed.query, keep_blank_values=True)
+                    if k.lower() == "sslmode"]
+        if not sslmodes:
             database_url += ("&" if "?" in database_url else "?") + "sslmode=verify-full"
     engine_kwargs = {"connect_args": connect_args, "pool_pre_ping": True}
     if database_url.startswith("postgresql"):
