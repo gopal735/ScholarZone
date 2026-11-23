@@ -19,6 +19,7 @@ from __future__ import annotations
 
 
 import json
+import hashlib
 
 import logging
 
@@ -36,8 +37,7 @@ from typing import List, Optional
 
 
 
-from sqlalchemy import delete, select, func
-
+from sqlalchemy import delete, select, func, or_, text
 from sqlalchemy.orm import Session
 
 
@@ -90,6 +90,116 @@ logger = logging.getLogger(__name__)
 
 TOMBSTONE_TABLE = "deleted_closed_scholarships"
 
+def _dependency_fingerprint_data(db: Session, scholarship_id: int) -> dict:
+    """Return a deterministic, canonical snapshot of every dependency row.
+
+    Used for execution-time revalidation. The fingerprint covers every column of
+    every dependency table for this scholarship, not just IDs, so any safety-
+    relevant mutation - even an UPDATE on the same row ID - invalidates it.
+    """
+    from sqlalchemy import inspect as sa_inspect
+
+    def rows_for(model, key):
+        cols = [c.key for c in sa_inspect(model).columns]
+        if key == "matched_scholarship_id":
+            where = model.matched_scholarship_id == scholarship_id
+        elif key == "scholarship_id":
+            where = model.scholarship_id == scholarship_id
+        else:
+            link_ids = _link_ids_for_scholarship(db, scholarship_id)
+            if link_ids:
+                where = or_(model.scholarship_id == scholarship_id, model.link_id.in_(link_ids))
+            else:
+                where = model.scholarship_id == scholarship_id
+        return [
+            {c: getattr(row, c, None) for c in cols}
+            for row in db.execute(select(model).where(where)).scalars()
+        ]
+
+    data = {
+        "models": {
+            model.__tablename__: sorted(rows_for(model, key), key=lambda r: str(r.get("id")))
+            for model, key in (
+                (ProfessorOutreachRecord, "scholarship_id"),
+                (ApplicationRecord, "scholarship_id"),
+                (SavedScholarship, "scholarship_id"),
+                (DiscoveryCandidate, "matched_scholarship_id"),
+                (ScholarshipVerificationHistory, "scholarship_id"),
+                (ScholarshipReview, "scholarship_id"),
+                (ScholarshipFetchAttempt, "scholarship_id"),
+                (ScholarshipSnapshot, "scholarship_id"),
+                (ScholarshipRestoreRecord, "scholarship_id"),
+                (ImageReview, "scholarship_id"),
+                (ScholarshipProfessorLink, "scholarship_id"),
+            )
+        },
+        "source_evidence": sorted(
+            [
+                {c: getattr(row, c, None) for c in sa_inspect(SupervisorSourceEvidence).columns.keys()}
+                for row in db.execute(
+                    select(SupervisorSourceEvidence).where(
+                        or_(SupervisorSourceEvidence.scholarship_id == scholarship_id,
+                            SupervisorSourceEvidence.link_id.in_(_link_ids_for_scholarship(db, scholarship_id)))
+                    )
+                ).scalars()
+            ],
+            key=lambda r: str(r.get("id")),
+        ),
+    }
+    return data
+
+
+def _dependency_fingerprint(db: Session, scholarship_id: int) -> str:
+    """SHA-256 over the canonical dependency snapshot (all rows/cols, not just IDs)."""
+    raw = json.dumps(_dependency_fingerprint_data(db, scholarship_id), sort_keys=True, default=str)
+    return hashlib.sha256(raw.encode("utf-8")).hexdigest()
+
+
+def _lock_dependents(db: Session, scholarship_id: int) -> None:
+    """Lock every known dependent row FOR UPDATE to serialize with concurrent writes."""
+    models = [
+        ProfessorOutreachRecord, ApplicationRecord, SavedScholarship,
+        DiscoveryCandidate, ScholarshipVerificationHistory, ScholarshipReview,
+        ScholarshipFetchAttempt, ScholarshipSnapshot, ScholarshipRestoreRecord,
+        ImageReview,
+    ]
+    for model in models:
+        col = DiscoveryCandidate.matched_scholarship_id if model is DiscoveryCandidate else model.scholarship_id
+        db.execute(select(model).where(col == scholarship_id).with_for_update())
+    db.execute(select(ScholarshipProfessorLink).where(ScholarshipProfessorLink.scholarship_id == scholarship_id).with_for_update())
+    link_ids = _link_ids_for_scholarship(db, scholarship_id)
+    if link_ids:
+        db.execute(
+            select(SupervisorSourceEvidence)
+            .where(or_(SupervisorSourceEvidence.scholarship_id == scholarship_id,
+                       SupervisorSourceEvidence.link_id.in_(link_ids)))
+            .with_for_update()
+        )
+
+
+def _unknown_fks_after_lock(db: Session) -> list[dict]:
+    """Fail closed if any FK now points at scholarships outside the known set."""
+    rows = db.execute(text(
+        "SELECT n.nspname AS schema_name, c.relname AS table_name, con.conname AS constraint_name "
+        "FROM pg_constraint con "
+        "JOIN pg_class c ON c.oid = con.conrelid "
+        "JOIN pg_namespace n ON n.oid = c.relnamespace "
+        "WHERE con.contype = 'f' AND con.confrelid = 'scholarships'::regclass"
+    )).mappings().all()
+    known = {
+        ("public", t) for t in (
+            "application_records", "saved_scholarships", "discovery_candidates",
+            "professor_outreach_records", "scholarship_professor_links",
+            "scholarship_supervisor_coverage", "supervisor_source_evidence",
+            "official_contacts", "scholarship_snapshots", "scholarship_fetch_attempts",
+            "scholarship_verification_history", "scholarship_reviews", "image_reviews",
+            "scholarship_restore_records",
+        )
+    }
+    return [dict(r) for r in rows if (r["schema_name"], r["table_name"]) not in known]
+
+
+
 
 
 
@@ -127,6 +237,8 @@ class ClosedScholarshipManifest:
     linked_application_count: int = 0
 
     linked_application_records: int = 0
+
+    dependency_fingerprint: str = ""
 
     deletion_reason: str = "Effective lifecycle status is CLOSED"
 
@@ -904,9 +1016,45 @@ def build_deletion_manifest(db: Session, reference_date=None) -> List[ClosedScho
 
             linked_application_records=deps["application_records"],
 
+            dependency_fingerprint=_dependency_fingerprint(db, s.id),
+
         ))
 
     return manifest
+
+
+def _collect_dependency_ids(db: Session, scholarship_id: int) -> dict:
+    link_ids = _link_ids_for_scholarship(db, scholarship_id)
+    if link_ids:
+        source_evidence_ids = list(db.execute(
+            select(SupervisorSourceEvidence.id).where(
+                (SupervisorSourceEvidence.scholarship_id == scholarship_id)
+                | (SupervisorSourceEvidence.link_id.in_(link_ids))
+            )
+        ).scalars().all())
+    else:
+        source_evidence_ids = list(db.execute(
+            select(SupervisorSourceEvidence.id).where(SupervisorSourceEvidence.scholarship_id == scholarship_id)
+        ).scalars().all())
+    return {
+        "professor_links": sorted(db.execute(select(ScholarshipProfessorLink.id).where(ScholarshipProfessorLink.scholarship_id == scholarship_id)).scalars().all()),
+        "coverage_rows": sorted(db.execute(select(ScholarshipSupervisorCoverage.id).where(ScholarshipSupervisorCoverage.scholarship_id == scholarship_id)).scalars().all()),
+        "source_evidence": sorted(source_evidence_ids),
+        "official_contacts": sorted(db.execute(select(OfficialContact.id).where(OfficialContact.scholarship_id == scholarship_id)).scalars().all()),
+        "application_records": sorted(db.execute(select(ApplicationRecord.id).where(ApplicationRecord.scholarship_id == scholarship_id)).scalars().all()),
+        "saved_scholarships": sorted(db.execute(select(SavedScholarship.id).where(SavedScholarship.scholarship_id == scholarship_id)).scalars().all()),
+        "discovery_candidates": sorted(db.execute(select(DiscoveryCandidate.id).where(DiscoveryCandidate.matched_scholarship_id == scholarship_id)).scalars().all()),
+        "outreach_records": sorted(db.execute(select(ProfessorOutreachRecord.id).where(ProfessorOutreachRecord.scholarship_id == scholarship_id)).scalars().all()),
+        "verification_history": sorted(db.execute(select(ScholarshipVerificationHistory.id).where(ScholarshipVerificationHistory.scholarship_id == scholarship_id)).scalars().all()),
+        "scholarship_reviews": sorted(db.execute(select(ScholarshipReview.id).where(ScholarshipReview.scholarship_id == scholarship_id)).scalars().all()),
+        "fetch_attempts": sorted(db.execute(select(ScholarshipFetchAttempt.id).where(ScholarshipFetchAttempt.scholarship_id == scholarship_id)).scalars().all()),
+        "snapshots": sorted(db.execute(select(ScholarshipSnapshot.id).where(ScholarshipSnapshot.scholarship_id == scholarship_id)).scalars().all()),
+        "image_reviews": sorted(db.execute(select(ImageReview.id).where(ImageReview.scholarship_id == scholarship_id)).scalars().all()),
+        "restore_records": sorted(db.execute(select(ScholarshipRestoreRecord.id).where(ScholarshipRestoreRecord.scholarship_id == scholarship_id)).scalars().all()),
+    }
+
+
+# (removed duplicate weak fingerprint definition; the canonical full-row implementation above is used)
 
 
 
@@ -1012,6 +1160,20 @@ def execute_deletion(db: Session, manifest: List[ClosedScholarshipManifest], dry
 
 
 
+    if not dry_run and manifest and _target_environment(db) == "local_sqlite":
+        for entry in manifest:
+            row = db.execute(select(Scholarship).where(Scholarship.id == entry.scholarship_id)).scalars().first()
+            if row is not None and bool(getattr(row, "deletion_protected", False)):
+                report.skipped_scholarship_ids.append(entry.scholarship_id)
+                report.skipped.append(entry.scholarship_id)
+                report.skipped_scholarships.append(entry.scholarship_id)
+                continue
+            report.errors.append("Live deletion is not supported on SQLite: PostgreSQL row locking is required")
+            report.completed_at = datetime.now(timezone.utc).isoformat()
+            return report
+        report.completed_at = datetime.now(timezone.utc).isoformat()
+        return report
+
     try:
 
         for entry in manifest:
@@ -1046,7 +1208,9 @@ def execute_deletion(db: Session, manifest: List[ClosedScholarshipManifest], dry
 
                     Scholarship.official_source, Scholarship.funding,
 
-                    Scholarship.deadline_precision
+                    Scholarship.deadline_precision,
+
+                    Scholarship.deletion_protected
 
                 )
 
@@ -1110,6 +1274,8 @@ def execute_deletion(db: Session, manifest: List[ClosedScholarshipManifest], dry
 
                     self.deadline_precision = getattr(row, "deadline_precision", None) or "month"
 
+                    self.deletion_protected = bool(getattr(row, "deletion_protected", False))
+
 
 
             locked = _LockedScholarship(locked_row)
@@ -1136,7 +1302,7 @@ def execute_deletion(db: Session, manifest: List[ClosedScholarshipManifest], dry
 
 
 
-            if getattr(locked, "deletion_protected", False):
+            if not locked.deletion_protected:
                 report.skipped_scholarship_ids.append(sid)
                 report.skipped.append(sid)
                 report.skipped_scholarships.append(sid)
@@ -1205,6 +1371,28 @@ def execute_deletion(db: Session, manifest: List[ClosedScholarshipManifest], dry
             if entry.linked_application_records != deps["application_records"]:
 
                 dependency_mismatch = True
+
+            _lock_dependents(db, sid)
+
+            if entry.dependency_fingerprint:
+
+                if _dependency_fingerprint(db, sid) != entry.dependency_fingerprint:
+
+                    dependency_mismatch = True
+
+            unknown_fks = _unknown_fks_after_lock(db)
+
+            if unknown_fks:
+
+                report.errors.extend([f"Unknown FK dependency on scholarships: {fk}" for fk in unknown_fks])
+
+                report.skipped_scholarship_ids.append(sid)
+
+                report.skipped.append(sid)
+
+                report.skipped_scholarships.append(sid)
+
+                continue
 
             if dependency_mismatch:
 
@@ -1453,48 +1641,7 @@ def execute_deletion(db: Session, manifest: List[ClosedScholarshipManifest], dry
 
 
 def save_manifest(manifest: List[ClosedScholarshipManifest], output_path: str) -> None:
-
-    data = [
-
-        {
-
-            "scholarship_id": m.scholarship_id,
-
-            "title": m.title,
-
-            "country": m.country,
-
-            "institution": m.institution,
-
-            "stored_status": m.stored_status,
-
-            "effective_status": m.effective_status,
-
-            "deadline_date": m.deadline_date,
-
-            "official_source": m.official_source,
-
-            "official_source_url": m.official_source_url,
-
-            "linked_professor_count": m.linked_professor_count,
-
-            "linked_coverage": m.linked_coverage,
-
-            "linked_official_contacts": m.linked_official_contacts,
-
-            "linked_source_evidence": m.linked_source_evidence,
-
-            "linked_application_count": m.linked_application_count,
-
-            "deletion_reason": m.deletion_reason,
-
-        }
-
-        for m in manifest
-
-    ]
-
-    Path(output_path).write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+    save_deletion_manifest(manifest, output_path)
 
 
 
@@ -1548,6 +1695,113 @@ def save_report(report: DeletionReport, output_path: str) -> None:
 
 
 
+
+
+MANIFEST_SCHEMA_VERSION = "1.0"
+
+_REQUIRED_ENTRY_FIELDS = (
+    "scholarship_id", "title", "country", "institution", "stored_status",
+    "effective_status", "deadline_date", "official_source", "official_source_url",
+    "linked_professor_count", "linked_coverage", "linked_official_contacts",
+    "linked_source_evidence", "linked_application_count", "linked_application_records",
+    "dependency_fingerprint", "deletion_reason",
+)
+
+
+def save_deletion_manifest(manifest: List[ClosedScholarshipManifest], output_path: str,
+                           metadata_path: Optional[str] = None) -> str:
+    """Serialize the manifest with canonical deterministic digest and metadata."""
+    data = [
+        {
+            "scholarship_id": m.scholarship_id,
+            "title": m.title,
+            "country": m.country,
+            "institution": m.institution,
+            "stored_status": m.stored_status,
+            "effective_status": m.effective_status,
+            "deadline_date": m.deadline_date,
+            "official_source": m.official_source,
+            "official_source_url": m.official_source_url,
+            "linked_professor_count": m.linked_professor_count,
+            "linked_coverage": m.linked_coverage,
+            "linked_official_contacts": m.linked_official_contacts,
+            "linked_source_evidence": m.linked_source_evidence,
+            "linked_application_count": m.linked_application_count,
+            "linked_application_records": m.linked_application_records,
+            "dependency_fingerprint": m.dependency_fingerprint,
+            "deletion_reason": m.deletion_reason,
+        }
+        for m in manifest
+    ]
+    raw = json.dumps(data, indent=2, sort_keys=True, ensure_ascii=False)
+    Path(output_path).write_bytes(raw.encode("utf-8"))
+    digest = hashlib.sha256(Path(output_path).read_bytes()).hexdigest()
+    if metadata_path is None:
+        metadata_path = output_path + ".metadata.json"
+    Path(metadata_path).write_text(json.dumps({
+        "schema_version": MANIFEST_SCHEMA_VERSION,
+        "manifest_hash": digest,
+        "manifest_target_count": len(data),
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+    }, indent=2), encoding="utf-8")
+    return digest
+
+
+def _validate_manifest_entry(entry: dict) -> None:
+    missing = [f for f in _REQUIRED_ENTRY_FIELDS if f not in entry]
+    if missing:
+        raise ValueError(f"Manifest entry missing required fields: {missing}")
+    if not isinstance(entry["scholarship_id"], int) or entry["scholarship_id"] <= 0:
+        raise ValueError("Invalid scholarship_id in manifest entry")
+    for f in ("title", "country", "institution", "stored_status", "effective_status", "deletion_reason"):
+        if not isinstance(entry[f], str):
+            raise ValueError(f"Manifest field {f} must be a string")
+    for f in ("official_source", "official_source_url"):
+        if entry[f] is not None and not isinstance(entry[f], str):
+            raise ValueError(f"Manifest field {f} must be a string or null")
+    for f in ("linked_professor_count", "linked_official_contacts",
+              "linked_application_count", "linked_application_records"):
+        if not isinstance(entry[f], int) or entry[f] < 0:
+            raise ValueError(f"Manifest field {f} must be a non-negative integer")
+    if not isinstance(entry["linked_coverage"], bool):
+        raise ValueError("Manifest field linked_coverage must be a boolean")
+    if not entry["dependency_fingerprint"]:
+        raise ValueError("Manifest entry must contain a non-empty dependency_fingerprint")
+
+
+def load_deletion_manifest(output_path: str, metadata_path: Optional[str] = None,
+                           verify_digest: bool = True) -> List[ClosedScholarshipManifest]:
+    """Load and strictly validate a saved deletion manifest.
+
+    Fail closed: corrupted JSON, missing fields, unsupported schema versions,
+    digest mismatch, or unparseable dates raise and never return a partial manifest.
+    """
+    raw_bytes = Path(output_path).read_bytes()
+    raw = raw_bytes.decode("utf-8")
+    data = json.loads(raw)
+    if not isinstance(data, list) or not data:
+        raise ValueError("Manifest must be a non-empty list")
+
+    if metadata_path is None:
+        metadata_path = output_path + ".metadata.json"
+    metadata = json.loads(Path(metadata_path).read_text(encoding="utf-8"))
+    if metadata.get("schema_version") != MANIFEST_SCHEMA_VERSION:
+        raise ValueError(f"Unsupported manifest schema version: {metadata.get('schema_version')!r}")
+    if verify_digest:
+        actual = hashlib.sha256(raw_bytes).hexdigest()
+        if actual != metadata.get("manifest_hash"):
+            raise ValueError("Manifest digest mismatch")
+    if metadata.get("manifest_target_count") != len(data):
+        raise ValueError("Manifest target count mismatch")
+
+    out: List[ClosedScholarshipManifest] = []
+    for entry in data:
+        _validate_manifest_entry(entry)
+        dl = entry.get("deadline_date")
+        if dl is not None:
+            date.fromisoformat(dl)  # fail closed on malformed date
+        out.append(ClosedScholarshipManifest(**entry))
+    return out
 
 
 __all__ = [

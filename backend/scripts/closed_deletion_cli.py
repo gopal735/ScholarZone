@@ -45,7 +45,8 @@ def main():
         sys.exit(1)
 
     engine = get_engine()
-    init_database()
+    if not dry_run:
+        init_database()
     print(f"Database dialect: {engine.dialect.name}")
     print(f"Mode: {'DRY RUN' if dry_run else 'LIVE DELETION'}")
     print()

@@ -49,11 +49,28 @@ def test_wrong_pr_number_does_not_run():
     assert identity["pr_number"] == "108"
 
 
+def test_wrong_pr_number_does_not_run():
+    env = _valid_event()
+    env["EVENT_NUMBER"] = "999"
+    should_run, identity = trigger.validate_event_identity(env)
+    assert should_run is False
+    assert identity["pr_number"] == "999"
+
+
 def test_not_merged_does_not_run():
     env = _valid_event()
     env["EVENT_MERGED"] = "false"
     should_run, identity = trigger.validate_event_identity(env)
     assert should_run is False
+    assert identity["pr_number"] == "107"
+
+
+def test_unmerged_pr_event_does_not_run():
+    env = _valid_event()
+    env["EVENT_MERGED"] = "false"
+    should_run, identity = trigger.validate_event_identity(env)
+    assert should_run is False
+    assert identity["pr_number"] == "107"
 
 
 def test_missing_event_value_fails_closed():
@@ -78,6 +95,28 @@ def test_malformed_sha_fails_closed():
         raise AssertionError(f"expected failure for {bad!r}")
 
 
+def test_merged_pr_missing_merge_sha_fails_closed():
+    env = _valid_event()
+    del env["EVENT_MERGE_SHA"]
+    try:
+        trigger.validate_event_identity(env)
+    except trigger.TriggerVerificationError:
+        pass
+    else:
+        raise AssertionError("expected failure for missing merge SHA")
+
+
+def test_merged_pr_wrong_merge_sha_format_fails_closed():
+    env = _valid_event()
+    env["EVENT_MERGE_SHA"] = "not-a-sha"
+    try:
+        trigger.validate_event_identity(env)
+    except trigger.TriggerVerificationError:
+        pass
+    else:
+        raise AssertionError("expected failure for invalid merge SHA")
+
+
 def test_head_and_merge_sha_must_differ():
     env = _valid_event()
     env["EVENT_MERGE_SHA"] = env["EVENT_HEAD_SHA"]
@@ -86,7 +125,7 @@ def test_head_and_merge_sha_must_differ():
     except trigger.TriggerVerificationError:
         pass
     else:
-        raise AssertionError("expected failure")
+        raise AssertionError("expected failure for equal head/merge SHA")
 
 
 def test_api_metadata_mismatch_fails_closed():

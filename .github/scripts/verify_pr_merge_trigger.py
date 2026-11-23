@@ -87,15 +87,15 @@ def validate_event_identity(env: Dict[str, str]) -> Tuple[bool, Dict[str, str]]:
     if not is_valid_sha(head_sha):
         raise TriggerVerificationError("invalid head SHA format")
 
+    if not merged:
+        return False, {"pr_number": number}
+
     merge_sha = _require(env, "EVENT_MERGE_SHA")
     if not is_valid_sha(merge_sha):
         raise TriggerVerificationError("invalid merge commit SHA format")
 
     if head_sha == merge_sha:
         raise TriggerVerificationError("head SHA and merge commit SHA must differ")
-
-    if not merged:
-        return False, {"pr_number": number}
 
     identity = {
         "pr_number": number,

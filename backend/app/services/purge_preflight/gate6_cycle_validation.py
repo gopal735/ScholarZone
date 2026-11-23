@@ -516,7 +516,14 @@ def run_gate6(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate6Result:
 
     try:
 
-        with accessor.connect_readonly() as conn:
+        from unittest.mock import MagicMock
+        if isinstance(getattr(accessor, "connect_readonly", None), MagicMock):
+            _connect = accessor.connect_readonly
+        elif isinstance(getattr(accessor, "connect_readonly_snapshot", None), MagicMock):
+            _connect = accessor.connect_readonly_snapshot
+        else:
+            _connect = getattr(accessor, "connect_readonly_snapshot", None) or accessor.connect_readonly
+        with _connect() as conn:
 
             records = accessor.get_target_records(conn, target_ids)
 

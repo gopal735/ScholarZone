@@ -168,7 +168,7 @@ def run_gate3(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate3Result:
 
     try:
 
-        with accessor.connect_readonly() as conn:
+        with accessor.connect_readonly_snapshot() as conn:
 
             # 1. Discover ALL foreign keys referencing scholarships.id
 
@@ -262,11 +262,11 @@ def run_gate3(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate3Result:
 
                     if fk.is_composite:
 
-                        key = f"{fk.table_name}.({','.join(fk.column_names)})"
+                        key = f"{fk.table_schema}.{fk.table_name}.({','.join(fk.column_names)})"
 
                     else:
 
-                        key = f"{fk.table_name}.{fk.column_names[0]}"
+                        key = f"{fk.table_schema}.{fk.table_name}.{fk.column_names[0]}"
 
                     reference_counts[key] = count
 
@@ -314,11 +314,11 @@ def run_gate3(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate3Result:
 
                     if fk.is_composite:
 
-                        key = f"{fk.table_name}.({','.join(fk.column_names)})"
+                        key = f"{fk.table_schema}.{fk.table_name}.({','.join(fk.column_names)})"
 
                     else:
 
-                        key = f"{fk.table_name}.{fk.column_names[0]}"
+                        key = f"{fk.table_schema}.{fk.table_name}.{fk.column_names[0]}"
 
                     error_msg = f"Failed to inspect {key}: {e}"
 
@@ -383,92 +383,64 @@ def run_gate3(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate3Result:
             # dependency tables. Unknown tables and CASCADE remain fail-closed.
 
             known_dependency_tables = {
-
-                "application_records",
-
-                "saved_scholarships",
-
-                "discovery_candidates",
-
-                "professor_outreach_records",
-
-                "scholarship_professor_links",
-
-                "scholarship_supervisor_coverage",
-
-                "supervisor_source_evidence",
-
-                "official_contacts",
-
-                "scholarship_snapshots",
-
-                "scholarship_fetch_attempts",
-
-                "scholarship_verification_history",
-
-                "scholarship_reviews",
-
-                "image_reviews",
-
-                "scholarship_restore_records",
-
+                ("public", "application_records"),
+                ("public", "saved_scholarships"),
+                ("public", "discovery_candidates"),
+                ("public", "professor_outreach_records"),
+                ("public", "scholarship_professor_links"),
+                ("public", "scholarship_supervisor_coverage"),
+                ("public", "supervisor_source_evidence"),
+                ("public", "official_contacts"),
+                ("public", "scholarship_snapshots"),
+                ("public", "scholarship_fetch_attempts"),
+                ("public", "scholarship_verification_history"),
+                ("public", "scholarship_reviews"),
+                ("public", "image_reviews"),
+                ("public", "scholarship_restore_records"),
             }
 
             dependency_policy = {
-
-                "application_records": "PRESERVE_AND_DETACH",
-
-                "saved_scholarships": "DETACH",
-
-                "discovery_candidates": "DETACH",
-
-                "professor_outreach_records": "PRESERVE_AND_DETACH",
-
-                "scholarship_professor_links": "SAFE_CHILD_CLEANUP",
-
-                "scholarship_supervisor_coverage": "SAFE_CHILD_CLEANUP",
-
-                "supervisor_source_evidence": "SAFE_CHILD_CLEANUP",
-
-                "official_contacts": "SAFE_CHILD_CLEANUP",
-
-                "scholarship_snapshots": "SAFE_CHILD_CLEANUP",
-
-                "scholarship_fetch_attempts": "SAFE_CHILD_CLEANUP",
-
-                "scholarship_verification_history": "SAFE_CHILD_CLEANUP",
-
-                "scholarship_reviews": "SAFE_CHILD_CLEANUP",
-
-                "image_reviews": "SAFE_CHILD_CLEANUP",
-
-                "scholarship_restore_records": "SAFE_CHILD_CLEANUP",
-
+                ("public", "application_records"): "PRESERVE_AND_DETACH",
+                ("public", "saved_scholarships"): "DETACH",
+                ("public", "discovery_candidates"): "DETACH",
+                ("public", "professor_outreach_records"): "PRESERVE_AND_DETACH",
+                ("public", "scholarship_professor_links"): "SAFE_CHILD_CLEANUP",
+                ("public", "scholarship_supervisor_coverage"): "SAFE_CHILD_CLEANUP",
+                ("public", "supervisor_source_evidence"): "SAFE_CHILD_CLEANUP",
+                ("public", "official_contacts"): "SAFE_CHILD_CLEANUP",
+                ("public", "scholarship_snapshots"): "SAFE_CHILD_CLEANUP",
+                ("public", "scholarship_fetch_attempts"): "SAFE_CHILD_CLEANUP",
+                ("public", "scholarship_verification_history"): "SAFE_CHILD_CLEANUP",
+                ("public", "scholarship_reviews"): "SAFE_CHILD_CLEANUP",
+                ("public", "image_reviews"): "SAFE_CHILD_CLEANUP",
+                ("public", "scholarship_restore_records"): "SAFE_CHILD_CLEANUP",
             }
 
-            unpoliced_tables = [
+            def _key_identity(key: str) -> tuple[str, str]:
+                parts = key.split(".", 2)
+                return (parts[0], parts[1])
 
-                key.split(".")[0] for key in reference_counts
+            def _identities_with_refs() -> set[tuple[str, str]]:
+                return {_key_identity(key) for key, count in reference_counts.items() if count > 0}
 
-                if key.split(".")[0] not in dependency_policy
-
-            ]
+            unpoliced_tables = sorted(
+                f"{schema}.{table}"
+                for schema, table in _identities_with_refs()
+                if (schema, table) not in dependency_policy
+            )
 
             has_inspection_errors = len(inspection_errors) > 0
-
             has_unpoliced_dependencies = bool(unpoliced_tables)
 
             has_unknown_references = any(c < 0 for c in reference_counts.values())
 
             has_cascade = result.cascade_fk_count > 0
 
-            unsupported_ref_tables = [
-
-                key.split(".")[0] for key, count in reference_counts.items()
-
-                if count > 0 and key.split(".")[0] not in known_dependency_tables
-
-            ]
+            unsupported_ref_tables = sorted(
+                f"{schema}.{table}"
+                for schema, table in _identities_with_refs()
+                if (schema, table) not in known_dependency_tables
+            )
 
             has_unsupported_references = bool(unsupported_ref_tables)
 

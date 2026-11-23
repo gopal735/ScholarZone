@@ -50,6 +50,24 @@ ALTER TABLE purge_execution_ledger ALTER COLUMN execution_status SET DEFAULT 'st
 ALTER TABLE purge_execution_ledger ALTER COLUMN deleted_count SET NOT NULL;
 ALTER TABLE purge_execution_ledger ALTER COLUMN deleted_count SET DEFAULT 0;
 
+-- Repair a partially created table that lacks the required generated primary key.
+DO $$
+BEGIN
+    IF NOT EXISTS (
+        SELECT 1 FROM information_schema.columns
+        WHERE table_name = 'purge_execution_ledger' AND column_name = 'id'
+    ) THEN
+        ALTER TABLE purge_execution_ledger ADD COLUMN id SERIAL;
+    END IF;
+    IF NOT EXISTS (
+        SELECT 1 FROM pg_constraint
+        WHERE conname = 'purge_execution_ledger_pkey'
+          AND conrelid = 'purge_execution_ledger'::regclass
+    ) THEN
+        ALTER TABLE purge_execution_ledger ADD PRIMARY KEY (id);
+    END IF;
+END $$;
+
 -- Unique constraints (scoped to this relation).
 DO $$
 BEGIN

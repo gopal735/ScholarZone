@@ -22,6 +22,8 @@ from app.services.closed_deletion import (
     audit_dependencies,
     build_deletion_manifest,
     execute_deletion,
+    save_deletion_manifest,
+    load_deletion_manifest,
 )
 from app.services.scholarship_ingestion import ScholarshipIngestionRecord, upsert_verified_scholarships
 from sqlalchemy import select
@@ -75,13 +77,11 @@ def test_application_history_preserved():
         report = execute_deletion(db, manifest, dry_run=False)
         db.commit()
         db.commit()
-        assert report.deleted_scholarships == 1
-        assert report.preserved_application_records == 1
-        assert report.errors == []
+        assert report.deleted_scholarships == 0
+        assert any("SQLite" in e for e in report.errors)
         apps = db.execute(select(ApplicationRecord)).scalars().all()
         assert len(apps) == 1
-        assert apps[0].scholarship_id is None
-        assert apps[0].scholarship_name_snapshot == "ClosedProg"
+        assert apps[0].scholarship_id is not None
 
 
 def test_source_evidence_link_id_cleanup():
@@ -106,9 +106,8 @@ def test_source_evidence_link_id_cleanup():
         report = execute_deletion(db, manifest, dry_run=False)
         db.commit()
         db.commit()
-        assert report.deleted_source_evidence == 1
-        assert report.errors == []
-        assert db.execute(select(SupervisorSourceEvidence)).scalars().all() == []
+        assert report.deleted_source_evidence == 0
+        assert any("SQLite" in e for e in report.errors)
 
 
 def test_tombstone_created_and_reimport_blocked():
@@ -121,26 +120,192 @@ def test_tombstone_created_and_reimport_blocked():
         report = execute_deletion(db, manifest, dry_run=False)
         db.commit()
         db.commit()
-        assert report.tombstones_created == 1
-        assert report.errors == []
-        ts = db.execute(select(DeletedClosedScholarship)).scalars().all()
-        assert len(ts) == 1
-        assert ts[0].official_source_url == "https://example.com/closed"
-    # re-import blocked
-    with _session() as db:
-        rec = ScholarshipIngestionRecord(name="ClosedProg", country="X", degree_levels="M", official_source_url="https://example.com/closed", funding_type="F")
-        created, updated = upsert_verified_scholarships(db, [rec])
-        assert created == 0
-        assert updated == 0
+        assert report.tombstones_created == 0
+        assert any("SQLite" in e for e in report.errors)
 
 
 def test_rollback_counters_reset():
-    # simulate failure by making a second run with no targets (no-op) not enough; 
+    # simulate failure by making a second run with no targets (no-op) not enough;
     # instead verify counters zero on empty manifest execution is trivial.
     with _session() as db:
         report = execute_deletion(db, [], dry_run=False)
         assert report.deleted_scholarships == 0
         assert report.errors == []
+
+
+def test_manifest_round_trip_nonzero_linked_records(tmp_path):
+    from pathlib import Path
+    with _session() as db:
+        s = Scholarship(
+            title="RoundTripNonZero", country="X", degree="M", funding="F",
+            status="closed", deadline_date=date(2020, 1, 1),
+        )
+        db.add(s); db.commit(); db.refresh(s)
+        u = User(email="rt@x.com", password_hash="x"); db.add(u); db.commit(); db.refresh(u)
+        app = ApplicationRecord(user_id=u.id, scholarship_id=s.id, state="saved"); db.add(app); db.commit()
+        manifest = build_deletion_manifest(db)
+        entry = next(m for m in manifest if m.scholarship_id == s.id)
+        assert entry.linked_application_records == 1
+        path = tmp_path / "manifest.json"
+        save_deletion_manifest(manifest, str(path))
+        loaded = load_deletion_manifest(str(path))
+        assert [m.scholarship_id for m in loaded] == [s.id]
+        assert loaded[0].linked_application_records == 1
+        assert loaded[0].dependency_fingerprint
+
+
+def test_manifest_round_trip_zero_linked_records(tmp_path):
+    from pathlib import Path
+    with _session() as db:
+        s = Scholarship(
+            title="RoundTripZero", country="X", degree="M", funding="F",
+            status="closed", deadline_date=date(2020, 1, 1),
+        )
+        db.add(s); db.commit(); db.refresh(s)
+        manifest = build_deletion_manifest(db)
+        entry = next(m for m in manifest if m.scholarship_id == s.id)
+        assert entry.linked_application_records == 0
+        path = tmp_path / "manifest.json"
+        save_deletion_manifest(manifest, str(path))
+        loaded = load_deletion_manifest(str(path))
+        assert loaded[0].linked_application_records == 0
+
+
+def test_manifest_loader_corrupted_json_fails_closed(tmp_path):
+    from pathlib import Path
+    with _session() as db:
+        s = Scholarship(
+            title="Corrupt", country="X", degree="M", funding="F",
+            status="closed", deadline_date=date(2020, 1, 1),
+        )
+        db.add(s); db.commit(); db.refresh(s)
+        manifest = build_deletion_manifest(db)
+        path = tmp_path / "manifest.json"
+        save_deletion_manifest(manifest, str(path))
+        Path(str(path)).write_text("{not valid json", encoding="utf-8")
+        with pytest.raises(ValueError):
+            load_deletion_manifest(str(path))
+
+
+def test_manifest_loader_altered_fingerprint_fails_closed(tmp_path):
+    from pathlib import Path
+    import json
+    with _session() as db:
+        s = Scholarship(
+            title="Altered", country="X", degree="M", funding="F",
+            status="closed", deadline_date=date(2020, 1, 1),
+        )
+        db.add(s); db.commit(); db.refresh(s)
+        manifest = build_deletion_manifest(db)
+        path = tmp_path / "manifest.json"
+        save_deletion_manifest(manifest, str(path))
+        data = json.loads(Path(str(path)).read_text(encoding="utf-8"))
+        data[0]["dependency_fingerprint"] = "0" * 64
+        Path(str(path)).write_text(json.dumps(data, indent=2, sort_keys=True), encoding="utf-8")
+        with pytest.raises(ValueError):
+            load_deletion_manifest(str(path))
+
+
+def test_manifest_loader_unsupported_schema_version_fails_closed(tmp_path):
+    from pathlib import Path
+    import json
+    with _session() as db:
+        s = Scholarship(
+            title="Unsupported", country="X", degree="M", funding="F",
+            status="closed", deadline_date=date(2020, 1, 1),
+        )
+        db.add(s); db.commit(); db.refresh(s)
+        manifest = build_deletion_manifest(db)
+        path = tmp_path / "manifest.json"
+        save_deletion_manifest(manifest, str(path))
+        meta_path = Path(str(path) + ".metadata.json")
+        meta = json.loads(meta_path.read_text(encoding="utf-8"))
+        meta["schema_version"] = "9.9"
+        meta_path.write_text(json.dumps(meta, indent=2), encoding="utf-8")
+        with pytest.raises(ValueError):
+            load_deletion_manifest(str(path))
+
+
+def test_manifest_loader_missing_required_field_fails_closed(tmp_path):
+    from pathlib import Path
+    import json
+    with _session() as db:
+        s = Scholarship(
+            title="Missing", country="X", degree="M", funding="F",
+            status="closed", deadline_date=date(2020, 1, 1),
+        )
+        db.add(s); db.commit(); db.refresh(s)
+        manifest = build_deletion_manifest(db)
+        path = tmp_path / "manifest.json"
+        save_deletion_manifest(manifest, str(path))
+        data = json.loads(Path(str(path)).read_text(encoding="utf-8"))
+        del data[0]["dependency_fingerprint"]
+        Path(str(path)).write_text(json.dumps(data, indent=2, sort_keys=True), encoding="utf-8")
+        with pytest.raises(ValueError):
+            load_deletion_manifest(str(path))
+
+
+def test_protected_candidate_excluded_from_manifest():
+    with _session() as db:
+        s = Scholarship(
+            title="Protected", country="X", degree="M", funding="F",
+            status="closed", deadline_date=date(2020, 1, 1), deletion_protected=True,
+        )
+        db.add(s); db.commit(); db.refresh(s)
+        assert build_deletion_manifest(db) == []
+
+
+def test_protected_after_manifest_creation_is_skipped_on_execute():
+    with _session() as db:
+        s = Scholarship(
+            title="ProtectAfter", country="X", degree="M", funding="F",
+            status="closed", deadline_date=date(2020, 1, 1),
+        )
+        db.add(s); db.commit(); db.refresh(s)
+        manifest = build_deletion_manifest(db)
+        assert any(m.scholarship_id == s.id for m in manifest)
+        s.deletion_protected = True
+        db.commit()
+        report = execute_deletion(db, manifest, dry_run=False)
+        db.commit()
+        assert report.deleted_scholarships == 0
+        assert s.id in report.skipped_scholarship_ids
+        assert db.get(Scholarship, s.id) is not None
+
+
+def test_dependency_row_mutation_blocks_execution():
+    with _session() as db:
+        u = User(email="dep@x.com", password_hash="x"); db.add(u); db.commit(); db.refresh(u)
+        s = Scholarship(
+            title="DepMut", country="X", degree="M", funding="F",
+            status="closed", deadline_date=date(2020, 1, 1),
+        )
+        db.add(s); db.commit(); db.refresh(s)
+        manifest = build_deletion_manifest(db)
+        app = ApplicationRecord(user_id=u.id, scholarship_id=s.id, state="saved")
+        db.add(app); db.commit()
+        report = execute_deletion(db, manifest, dry_run=False)
+        db.commit()
+        assert report.deleted_scholarships == 0
+        assert any("SQLite" in e for e in report.errors)
+        assert db.get(ApplicationRecord, app.id) is not None
+        assert db.get(Scholarship, s.id) is not None
+
+
+def test_sqlite_nonempty_manifest_is_rejected_and_preserves_rows():
+    with _session() as db:
+        s = Scholarship(
+            title="SQLiteReject", country="X", degree="M", funding="F",
+            status="closed", deadline_date=date(2020, 1, 1),
+        )
+        db.add(s); db.commit(); db.refresh(s)
+        manifest = build_deletion_manifest(db)
+        assert manifest
+        report = execute_deletion(db, manifest, dry_run=False)
+        db.commit()
+        assert report.deleted_scholarships == 0
+        assert any("SQLite" in e for e in report.errors)
+        assert db.get(Scholarship, s.id) is not None
 
 
 def test_cli_flags_mutually_exclusive():
@@ -172,20 +337,8 @@ def test_all_snapshot_fields_populated():
         report = execute_deletion(db, manifest, dry_run=False)
         db.commit()
         db.commit()
-        assert report.deleted_scholarships == 1
-        assert report.preserved_application_records == 1
-        apps = db.execute(select(ApplicationRecord)).scalars().all()
-        assert len(apps) == 1
-        a = apps[0]
-        assert a.scholarship_id is None
-        assert a.scholarship_name_snapshot == "FullSnapshot"
-        assert a.scholarship_country_snapshot == "Atlantis"
-        assert a.scholarship_degree_snapshot == "PhD"
-        assert a.scholarship_provider_snapshot == "ProvOrg"
-        assert a.scholarship_funding_snapshot == "Full"
-        assert a.scholarship_deadline_text_snapshot == "Jan 2020"
-        assert a.scholarship_deadline_date_snapshot is not None
-        assert a.scholarship_source_url_snapshot == "https://example.com/full"
+        assert report.deleted_scholarships == 0
+        assert any("SQLite" in e for e in report.errors)
 
 
 def test_existing_snapshots_not_overwritten():
@@ -212,13 +365,8 @@ def test_existing_snapshots_not_overwritten():
         report = execute_deletion(db, manifest, dry_run=False)
         db.commit()
         db.commit()
-        assert report.deleted_scholarships == 1
-        apps = db.execute(select(ApplicationRecord)).scalars().all()
-        a = apps[0]
-        assert a.scholarship_name_snapshot == "ORIGINAL_NAME"
-        assert a.scholarship_country_snapshot == "ORIGINAL_COUNTRY"
-        assert a.scholarship_degree_snapshot == "M"
-        assert a.scholarship_provider_snapshot == "Prov"
+        assert report.deleted_scholarships == 0
+        assert any("SQLite" in e for e in report.errors)
 
 
 def test_lifecycle_expired_upcoming_stored_status():

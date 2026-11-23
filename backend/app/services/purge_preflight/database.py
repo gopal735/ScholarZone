@@ -94,6 +94,29 @@ class DatabaseAccessor:
             conn.close()
 
     @contextlib.contextmanager
+    def connect_readonly_snapshot(self) -> Generator[PgConnection, None, None]:
+        """Read-only REPEATABLE READ snapshot connection for one Gate decision."""
+        import psycopg2.extensions
+        conn = psycopg2.connect(self.config.readonly_url, cursor_factory=RealDictCursor)
+        try:
+            conn.autocommit = False
+            conn.set_isolation_level(psycopg2.extensions.ISOLATION_LEVEL_REPEATABLE_READ)
+            conn.set_session(readonly=True)
+            yield conn
+            conn.rollback()
+        except Exception:
+            try:
+                conn.rollback()
+            except Exception:
+                pass
+            raise
+        finally:
+            try:
+                conn.close()
+            except Exception:
+                pass
+
+    @contextlib.contextmanager
     def connect_test(self) -> Generator[PgConnection, None, None]:
         """Create a connection to disposable test database (Gate 1 only).
         
@@ -183,6 +206,11 @@ class DatabaseAccessor:
                 f"got '{identity.neon_branch_name}'"
             )
 
+        if self.config.expected_database_host and (identity.server_address or "").strip().lower() != self.config.expected_database_host.strip().lower():
+            errors.append(
+                f"Database host mismatch: expected {self.config.expected_database_host}, got {identity.server_address}"
+            )
+
         if not identity.is_read_only:
             errors.append("Connection is not read-only")
 
@@ -228,64 +256,82 @@ class DatabaseAccessor:
         Handles composite foreign keys by grouping columns by constraint.
         """
         with conn.cursor(cursor_factory=RealDictCursor) as cur:
-            cur.execute("""
-                SELECT
-                    tc.constraint_name,
-                    tc.table_schema,
-                    tc.table_name,
-                    kcu.column_name,
-                    kcu.ordinal_position,
-                    ccu.table_schema as referenced_table_schema,
-                    ccu.table_name as referenced_table_name,
-                    ccu.column_name as referenced_column_name,
-                    rc.delete_rule as on_delete_action,
-                    rc.update_rule as on_update_action
-                FROM information_schema.table_constraints tc
-                JOIN information_schema.key_column_usage kcu
-                  ON tc.constraint_name = kcu.constraint_name
-                 AND tc.table_schema = kcu.table_schema
-                JOIN information_schema.constraint_column_usage ccu
-                  ON ccu.constraint_name = tc.constraint_name
-                 AND ccu.table_schema = tc.table_schema
-                JOIN information_schema.referential_constraints rc
-                  ON rc.constraint_name = tc.constraint_name
-                 AND rc.constraint_schema = tc.table_schema
-                WHERE tc.constraint_type = 'FOREIGN KEY'
-                  AND ccu.table_name = 'scholarships'
-                  AND ccu.column_name = 'id'
-                  AND ccu.table_schema = 'public'
-                ORDER BY tc.table_schema, tc.table_name, tc.constraint_name, kcu.ordinal_position
-            """)
+            cur.execute(
+                """
+                SELECT n.nspname AS schema_name,
+                       c.relname AS table_name,
+                       fk.conname AS constraint_name,
+                       ARRAY(SELECT a.attname
+                             FROM unnest(fk.conkey) WITH ORDINALITY AS col(attnum, ord)
+                             JOIN pg_attribute a ON a.attrelid = fk.conrelid AND a.attnum = col.attnum
+                             ORDER BY col.ord) AS column_names,
+                       fn.nspname AS referenced_table_schema,
+                       fr.relname AS referenced_table_name,
+                       ARRAY(SELECT a.attname
+                             FROM unnest(fk.confkey) WITH ORDINALITY AS col(attnum, ord)
+                             JOIN pg_attribute a ON a.attrelid = fk.confrelid AND a.attnum = col.attnum
+                             ORDER BY col.ord) AS referenced_column_names,
+                       CASE WHEN fk.confdeltype = 'c' THEN 'CASCADE'
+                            WHEN fk.confdeltype = 'n' THEN 'SET NULL'
+                            WHEN fk.confdeltype = 'd' THEN 'SET DEFAULT'
+                            WHEN fk.confdeltype = 'r' THEN 'RESTRICT'
+                            ELSE 'NO ACTION' END AS on_delete_action,
+                       CASE WHEN fk.confupdtype = 'c' THEN 'CASCADE'
+                            WHEN fk.confupdtype = 'n' THEN 'SET NULL'
+                            WHEN fk.confupdtype = 'd' THEN 'SET DEFAULT'
+                            WHEN fk.confupdtype = 'r' THEN 'RESTRICT'
+                            ELSE 'NO ACTION' END AS on_update_action
+                FROM pg_constraint fk
+                JOIN pg_class c ON c.oid = fk.conrelid
+                JOIN pg_namespace n ON n.oid = c.relnamespace
+                JOIN pg_class fr ON fr.oid = fk.confrelid
+                JOIN pg_namespace fn ON fn.oid = fr.relnamespace
+                WHERE fk.contype = 'f'
+                  AND fr.relname = 'scholarships'
+                  AND EXISTS (
+                      SELECT 1 FROM pg_attribute a
+                      WHERE a.attrelid = fr.oid AND a.attname = 'id' AND a.attnum > 0
+                  )
+                  AND EXISTS (
+                      SELECT 1 FROM unnest(fk.confkey) AS k(attnum)
+                      WHERE k.attnum = (SELECT a.attnum FROM pg_attribute a WHERE a.attrelid = fr.oid AND a.attname = 'id')
+                  )
+                ORDER BY n.nspname, c.relname, fk.conname
+                """
+            )
 
-            # Group by constraint to handle composite FKs
+            # Group by schema + table + constraint to handle composite FKs and
+            # same-named constraints/tables in different schemas.
             from collections import defaultdict
             fk_groups = defaultdict(list)
             for row in cur.fetchall():
-                fk_groups[row["constraint_name"]].append(row)
+                key = (row["table_schema"], row["table_name"], row["constraint_name"])
+                fk_groups[key].append(row)
 
             results = []
-            for constraint_name, rows in fk_groups.items():
+            for (schema_name, table_name, constraint_name), rows in fk_groups.items():
                 first_row = rows[0]
-                column_names = [r["column_name"] for r in rows]
-                referenced_column_names = [r["referenced_column_name"] for r in rows]
+                column_names = list(first_row["column_names"] or [])
+                referenced_column_names = list(first_row["referenced_column_names"] or [])
                 is_composite = len(column_names) > 1
 
                 results.append(
                     ForeignKeyInfo(
                         constraint_name=constraint_name,
-                        table_schema=first_row["table_schema"],
-                        table_name=first_row["table_name"],
+                        table_schema=schema_name,
+                        table_name=table_name,
                         column_names=column_names,
                         referenced_table_schema=first_row["referenced_table_schema"],
                         referenced_table_name=first_row["referenced_table_name"],
                         referenced_column_names=referenced_column_names,
-                        on_delete_action=first_row["on_delete_action"],
-                        on_update_action=first_row["on_update_action"],
+                        on_delete_action=first_row["on_delete_action"] or "NO ACTION",
+                        on_update_action=first_row["on_update_action"] or "NO ACTION",
                         is_cascade=first_row["on_delete_action"] == "CASCADE",
                         is_composite=is_composite,
                     )
                 )
 
+            return results
             return results
 
     def count_references(
@@ -303,8 +349,8 @@ class DatabaseAccessor:
         if not target_ids:
             return 0
 
-        # Safely quote identifiers
-        quoted_table = self._quote_identifier(fk.table_name)
+        # Safely quote identifiers (schema-qualified)
+        quoted_table = self._quote_identifier_qualified(fk.table_schema, fk.table_name)
         quoted_columns = [self._quote_identifier(col) for col in fk.column_names]
 
         placeholders = ','.join(['%s'] * len(target_ids))
@@ -321,14 +367,14 @@ class DatabaseAccessor:
             # We'll check the column that corresponds to the 'id' reference
             idx = fk.referenced_column_names.index('id') if 'id' in fk.referenced_column_names else 0
             quoted_column = quoted_columns[idx]
-            query = f"SELECT COUNT(*) FROM {quoted_table} WHERE {quoted_column} = ANY(%s)"
+            query = f"SELECT COUNT(*) AS cnt FROM {quoted_table} WHERE {quoted_column} = ANY(%s)"
         else:
             quoted_column = quoted_columns[0]
-            query = f"SELECT COUNT(*) FROM {quoted_table} WHERE {quoted_column} = ANY(%s)"
+            query = f"SELECT COUNT(*) AS cnt FROM {quoted_table} WHERE {quoted_column} = ANY(%s)"
 
         with conn.cursor() as cur:
             cur.execute(query, (tuple(target_ids),))
-            return cur.fetchone()[0]
+            return cur.fetchone()["cnt"]
 
     def count_references_per_target(
         self,
@@ -344,7 +390,7 @@ class DatabaseAccessor:
         if not target_ids:
             return {}
 
-        quoted_table = self._quote_identifier(fk.table_name)
+        quoted_table = self._quote_identifier_qualified(fk.table_schema, fk.table_name)
 
         if fk.is_composite:
             idx = fk.referenced_column_names.index('id') if 'id' in fk.referenced_column_names else 0
@@ -356,10 +402,10 @@ class DatabaseAccessor:
         with conn.cursor() as cur:
             for tid in target_ids:
                 cur.execute(
-                    f"SELECT COUNT(*) FROM {quoted_table} WHERE {quoted_column} = %s",
+                    f"SELECT COUNT(*) AS cnt FROM {quoted_table} WHERE {quoted_column} = %s",
                     (tid,)
                 )
-                results[tid] = cur.fetchone()[0]
+                results[tid] = cur.fetchone()["cnt"]
         return results
 
     def count_all_references(
@@ -427,7 +473,7 @@ class DatabaseAccessor:
                 f"SELECT id FROM scholarships WHERE id IN ({placeholders})",
                 (tuple(target_ids),)
             )
-            found = {row[0] for row in cur.fetchall()}
+            found = {row["id"] for row in cur.fetchall()}
 
         expected = set(target_ids)
         missing = expected - found
@@ -436,8 +482,8 @@ class DatabaseAccessor:
     def get_scholarship_count(self, conn: PgConnection) -> int:
         """Get total scholarship count."""
         with conn.cursor() as cur:
-            cur.execute("SELECT COUNT(*) FROM scholarships")
-            return cur.fetchone()[0]
+            cur.execute("SELECT COUNT(*) AS cnt FROM scholarships")
+            return cur.fetchone()["cnt"]
 
     def execute_in_transaction(
         self,
@@ -465,14 +511,45 @@ class DatabaseAccessor:
         return results
 
     @staticmethod
+    def _quote_identifier_qualified(schema: str, table: str) -> str:
+        """Safely quote a schema-qualified PostgreSQL identifier."""
+        return f"{DatabaseAccessor._quote_identifier(schema)}.{DatabaseAccessor._quote_identifier(table)}"
+
+    @staticmethod
     def _quote_identifier(identifier: str) -> str:
-        """Safely quote a PostgreSQL identifier."""
-        # Validate identifier contains only safe characters
-        if not identifier:
-            raise ValueError(f"Invalid identifier: empty string")
-        if not all(c.isalnum() or c in '_' for c in identifier):
-            raise ValueError(f"Invalid identifier: {identifier}")
-        return f'"{identifier}"'
+        """Safely quote a PostgreSQL identifier.
+
+        Only allows the character set PostgreSQL accepts unquoted or as safe
+        quoted identifiers; schema/table/column names with dots are rejected.
+        """
+        if not identifier or not all(c.isalnum() or c in "_" for c in identifier):
+            raise ValueError(f"Invalid identifier: {identifier!r}")
+        return '"' + identifier.replace('"', '""') + '"'
+
+
+    def get_evidence_by_scholarship_ids(
+        self,
+        conn: PgConnection,
+        target_ids: list[int]
+    ) -> list[dict[str, Any]]:
+        """Fetch authoritative evidence rows for target scholarships.
+
+        Returns list of dicts with keys matching scholarship_evidence table columns.
+        Fail closed: database errors propagate.
+        """
+        if not target_ids:
+            return []
+        placeholders = ",".join(["%s"] * len(target_ids))
+        with conn.cursor(cursor_factory=RealDictCursor) as cur:
+            cur.execute(
+                f"SELECT scholarship_id, application_cycle, official_domain, official_url, "
+                f"source_title, deadline, deadline_precision, supporting_excerpt, excerpt_hash, "
+                f"retrieval_date, reviewer, decision "
+                f"FROM scholarship_evidence WHERE scholarship_id = ANY(%s) "
+                f"ORDER BY scholarship_id, application_cycle, deadline",
+                (tuple(target_ids),)
+            )
+            return [dict(row) for row in cur.fetchall()]
 
 
 def create_accessor(config: DatabaseConfig) -> DatabaseAccessor:
