@@ -281,6 +281,24 @@ REFERENCE_INTEGRITY: dict[str, dict[str, str]] = {
             "delete. Any record carrying an official contact is never a deletion candidate."
         ),
     },
+    "StudyPlan": {
+        "table": "study_plans",
+        "disposition": "PRESERVE",
+        "rationale": (
+            "A user-owned study plan linked to a scholarship. Removing the scholarship "
+            "would destroy or orphan the plan, so any record carrying a study plan is "
+            "never a deletion candidate."
+        ),
+    },
+    "StudyPlanTask": {
+        "table": "study_plan_tasks",
+        "disposition": "PRESERVE",
+        "rationale": (
+            "A task within a user-owned study plan linked to a scholarship. Removing the "
+            "scholarship would destroy or orphan the task, so any record carrying a "
+            "study plan task is never a deletion candidate."
+        ),
+    },
 }
 
 #: Models whose mere presence blocks deletion, because their rows are the record's
