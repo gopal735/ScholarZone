@@ -70,7 +70,7 @@ describe('MentorAnswer discovery rendering', () => {
   it('RESOLVED_NO_CATALOGUE_DATA renders empty state without worldwide results', () => {
     const answer = {
       ...BASE_ANSWER,
-      search_status: 'RESOLVED_NO_CATALOGUE_DATA',
+      search_status: 'NO_PUBLIC_CANDIDATES',
       verified_matches: [],
       potential_matches: [],
     }
@@ -79,7 +79,7 @@ describe('MentorAnswer discovery rendering', () => {
         <MentorAnswer answer={answer} />
       </MemoryRouter>,
     )
-    expect(screen.getByText(/No scholarship matches found/i)).toBeInTheDocument()
+    expect(screen.getByText(/No public scholarship candidates available/i)).toBeInTheDocument()
   })
 
   it('valid discovery renders verified and potential with distinction', () => {

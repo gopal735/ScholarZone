@@ -93,27 +93,31 @@ def make_sch(db, **kw):
 
 
 def test_grant_query_preserves_country_and_degree(client, db):
-    make_sch(db, country="Germany", degree="Master's")
+    de = make_sch(db, country="Germany", degree="Master's")
     make_sch(db, country="France", degree="PhD")
     # anonymous public discovery
     r = client.post("/mentor/discovery", json={"message": "Grants for Master's in Germany"})
     assert r.status_code == 200, r.text
     data = r.json()
-    assert data["search_status"] in ("POTENTIAL_MATCHES_FOUND", "NO_VERIFIED_STIPEND_MATCHES", "NO_REGION_MATCHES", "NO_DEGREE_MATCHES")
+    assert data["search_status"] == "POTENTIAL_MATCHES_FOUND"
     qs = data["query_summary"]
     assert qs["region"] == "Germany"
     assert qs["degree_level"] == "masters"
+    # only the German master's record is returned
+    assert {m["scholarship_id"] for m in data["potential_matches"]} == {de.id}
     # no France leakage
     for m in data["potential_matches"]:
         assert m["country"] == "Germany"
 
 
 def test_grant_query_does_not_become_worldwide(client, db):
-    make_sch(db, country="Germany", degree="PhD")
+    de = make_sch(db, country="Germany", degree="PhD")
     make_sch(db, country="France", degree="PhD")
     r = client.post("/mentor/discovery", json={"message": "Show grants in Germany"})
     data = r.json()
+    assert data["search_status"] == "POTENTIAL_MATCHES_FOUND"
     assert data["query_summary"]["region"] == "Germany"
+    assert {m["scholarship_id"] for m in data["potential_matches"]} == {de.id}
     for m in data["potential_matches"]:
         assert m["country"] == "Germany"
 
