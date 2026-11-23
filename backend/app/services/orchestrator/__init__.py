@@ -8,6 +8,7 @@ from .orchestrator import (
     ToolRegistry,
     ToolPermission,
     TERMINAL_STATES,
+    VALID_TRANSITIONS,
 )
 
 __all__ = (
@@ -18,4 +19,5 @@ __all__ = (
     "ToolRegistry",
     "ToolPermission",
     "TERMINAL_STATES",
+    "VALID_TRANSITIONS",
 )

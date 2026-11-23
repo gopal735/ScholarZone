@@ -17,6 +17,7 @@ from ..schemas_study_planner import (
     StudyPlanUpdate,
 )
 from ..services.study_planner import service as sp
+from ..services.study_planner.service import StaleWriteError
 
 router = APIRouter(prefix="/study-plans", tags=["study-plans"])
 
@@ -31,6 +32,7 @@ def _plan_to_response(plan) -> StudyPlanResponse:
         goal=plan.goal,
         scholarship_id=plan.scholarship_id,
         status=plan.status,
+        version=getattr(plan, "version", 1),
         tasks=[
             StudyPlanTaskResponse(
                 id=t.id,
@@ -43,6 +45,7 @@ def _plan_to_response(plan) -> StudyPlanResponse:
                 related_scholarship_id=t.related_scholarship_id,
                 rationale=t.rationale,
                 position=t.position,
+                version=getattr(t, "version", 1),
                 completed_at=t.completed_at,
                 created_at=t.created_at,
                 updated_at=t.updated_at,
@@ -64,7 +67,12 @@ def list_plans(db: Session = Depends(get_db), user: User = Depends(require_user)
 
 @router.post("", response_model=StudyPlanResponse, status_code=status.HTTP_201_CREATED)
 def create_plan(payload: StudyPlanCreate, db: Session = Depends(get_db), user: User = Depends(require_user)):
-    plan = sp.create_plan(db, user, payload)
+    try:
+        plan = sp.create_plan(db, user, payload)
+    except ValueError as exc:
+        if str(exc) == "too_many_tasks":
+            raise HTTPException(status_code=400, detail="Too many tasks for plan.")
+        raise
     return _plan_to_response(plan)
 
 
@@ -78,7 +86,14 @@ def get_plan(plan_id: int, db: Session = Depends(get_db), user: User = Depends(r
 
 @router.patch("/{plan_id}", response_model=StudyPlanResponse)
 def update_plan(plan_id: int, payload: StudyPlanUpdate, db: Session = Depends(get_db), user: User = Depends(require_user)):
-    plan = sp.update_plan(db, user, plan_id, payload)
+    try:
+        plan = sp.update_plan(db, user, plan_id, payload)
+    except StaleWriteError:
+        raise HTTPException(status_code=409, detail="Plan version conflict.")
+    except ValueError as exc:
+        if str(exc) == "too_many_tasks":
+            raise HTTPException(status_code=400, detail="Too many tasks for plan.")
+        raise
     if plan is None:
         raise HTTPException(status_code=404, detail="Plan not found.")
     return _plan_to_response(plan)
@@ -93,7 +108,12 @@ def delete_plan(plan_id: int, db: Session = Depends(get_db), user: User = Depend
 
 @router.post("/{plan_id}/tasks", response_model=StudyPlanTaskResponse, status_code=status.HTTP_201_CREATED)
 def add_task(plan_id: int, payload: StudyPlanTaskCreate, db: Session = Depends(get_db), user: User = Depends(require_user)):
-    t = sp.add_task(db, user, plan_id, payload)
+    try:
+        t = sp.add_task(db, user, plan_id, payload)
+    except ValueError as exc:
+        if str(exc) == "too_many_tasks":
+            raise HTTPException(status_code=400, detail="Too many tasks for plan.")
+        raise
     if t is None:
         raise HTTPException(status_code=404, detail="Plan not found.")
     return StudyPlanTaskResponse(
@@ -107,7 +127,14 @@ def add_task(plan_id: int, payload: StudyPlanTaskCreate, db: Session = Depends(g
 
 @router.patch("/tasks/{task_id}", response_model=StudyPlanTaskResponse)
 def update_task(task_id: int, payload: StudyPlanTaskUpdate, db: Session = Depends(get_db), user: User = Depends(require_user)):
-    t = sp.update_task(db, user, task_id, payload)
+    try:
+        t = sp.update_task(db, user, task_id, payload)
+    except StaleWriteError:
+        raise HTTPException(status_code=409, detail="Task version conflict.")
+    except ValueError as exc:
+        if str(exc) == "too_many_tasks":
+            raise HTTPException(status_code=400, detail="Too many tasks for plan.")
+        raise
     if t is None:
         raise HTTPException(status_code=404, detail="Task not found.")
     return StudyPlanTaskResponse(

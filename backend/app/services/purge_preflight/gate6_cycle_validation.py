@@ -161,10 +161,7 @@ def validate_cycle_record(record: dict, reference_date: Optional[date] = None) -
         ]
 
         # Check if all evidence fields are present
-        all_present = all(
-            (record.get(field) is not None and str(record.get(field)).strip() != "")
-            for field in evidence_fields
-        )
+        all_present = all(record.get(field) is not None for field in evidence_fields)
 
         if all_present:
             # Verify excerpt hash matches
@@ -277,6 +274,7 @@ def run_gate6(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate6Result:
                 if validation.is_evergreen:
                     result.evergreen_programmes += 1
                 if validation.deadline and not validation.is_expired and not validation.is_evergreen:
+                    from datetime import date
                     try:
                         dl = date.fromisoformat(validation.deadline)
                         if dl >= date.today():

@@ -26,7 +26,7 @@ async function request(path, options = {}) {
   if (res.status === 404) throw new StudyPlanNotFoundError('Not found.')
   if (!res.ok) {
     let msg = `Request failed (${res.status})`
-    try { const j = await res.json(); if (j.detail) msg = j.detail } catch {}
+    try { const j = await res.json(); if (j.detail) msg = j.detail } catch { /* ignore */ }
     throw new StudyPlanApiError(msg, res.status)
   }
   if (res.status === 204) return null

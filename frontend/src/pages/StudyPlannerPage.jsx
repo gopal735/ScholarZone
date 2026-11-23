@@ -36,7 +36,10 @@ export default function StudyPlannerPage() {
     }
   }, [])
 
-  useEffect(() => { load() }, [load])
+  useEffect(() => {
+    const id = setTimeout(() => { void load() }, 0)
+    return () => clearTimeout(id)
+  }, [load])
 
   const handleCreatePlan = async (e) => {
     e.preventDefault()
@@ -81,7 +84,7 @@ export default function StudyPlannerPage() {
     <div className="sp-page">
       <h1>Study Planner</h1>
       <form onSubmit={handleCreatePlan} className="sp-create">
-        <input value={newTitle} onChange={(e) => setNewTitle(e.target.value)} placeholder="New plan title" />
+        <input aria-label="New plan title" value={newTitle} onChange={(e) => setNewTitle(e.target.value)} placeholder="New plan title" />
         <button type="submit">Create plan</button>
       </form>
       {error && <p className="sp-error">{String(error)}</p>}
@@ -105,6 +108,7 @@ export default function StudyPlannerPage() {
           </ul>
           <div className="sp-add-task">
             <input
+              aria-label={`New task for ${plan.title}`}
               value={newTask[plan.id] || ''}
               onChange={(e) => setNewTask((s) => ({ ...s, [plan.id]: e.target.value }))}
               placeholder="New task"

@@ -21,20 +21,33 @@ from ...schemas_study_planner import (
 )
 
 
+class StaleWriteError(Exception):
+    """Raised when an update is based on a stale version."""
+
+
 def _now() -> datetime:
     return datetime.now(timezone.utc)
 
 
+MAX_TASKS_PER_PLAN = 100
+
+
 def list_plans(db: Session, user: User) -> list[StudyPlan]:
-    stmt = select(StudyPlan).where(StudyPlan.user_id == user.id).order_by(StudyPlan.updated_at.desc())
+    stmt = (
+        select(StudyPlan)
+        .where(StudyPlan.user_id == user.id, StudyPlan.status != "deleted")
+        .order_by(StudyPlan.updated_at.desc())
+    )
     return list(db.execute(stmt).scalars().all())
 
 
 def get_plan(db: Session, user: User, plan_id: int) -> StudyPlan | None:
-    plan = db.get(StudyPlan, plan_id)
-    if plan is None or plan.user_id != user.id:
-        return None
-    return plan
+    stmt = select(StudyPlan).where(
+        StudyPlan.id == plan_id,
+        StudyPlan.user_id == user.id,
+        StudyPlan.status != "deleted",
+    )
+    return db.execute(stmt).scalar_one_or_none()
 
 
 def create_plan(db: Session, user: User, payload: StudyPlanCreate) -> StudyPlan:
@@ -45,6 +58,8 @@ def create_plan(db: Session, user: User, payload: StudyPlanCreate) -> StudyPlan:
         scholarship_id=payload.scholarship_id,
         status="active",
     )
+    if len(payload.tasks) > MAX_TASKS_PER_PLAN:
+        raise ValueError("too_many_tasks")
     db.add(plan)
     db.flush()
     for idx, task in enumerate(payload.tasks):
@@ -69,12 +84,15 @@ def update_plan(db: Session, user: User, plan_id: int, payload: StudyPlanUpdate)
     plan = get_plan(db, user, plan_id)
     if plan is None:
         return None
+    if payload.version is not None and payload.version != plan.version:
+        raise StaleWriteError("stale_plan_version")
     if payload.title is not None:
         plan.title = payload.title
     if payload.goal is not None:
         plan.goal = payload.goal
     if payload.status is not None:
         plan.status = payload.status
+    plan.version += 1
     plan.updated_at = _now()
     db.commit()
     db.refresh(plan)
@@ -85,24 +103,19 @@ def delete_plan(db: Session, user: User, plan_id: int) -> bool:
     plan = get_plan(db, user, plan_id)
     if plan is None:
         return False
-    # Soft delete via status to preserve history; also remove tasks.
     plan.status = "deleted"
-    for t in plan.tasks if hasattr(plan, "tasks") else []:
-        pass
     db.commit()
     return True
 
 
 def add_task(db: Session, user: User, plan_id: int, payload: StudyPlanTaskCreate) -> StudyPlanTask | None:
     plan = get_plan(db, user, plan_id)
-    if plan is None or plan.status == "deleted":
+    if plan is None:
         return None
-    # Determine next position
-    existing = [t for t in plan.tasks] if hasattr(plan, "tasks") else []
-    # Query directly to be safe
-    from sqlalchemy import select as _select
-    stmt = _select(StudyPlanTask).where(StudyPlanTask.plan_id == plan.id)
+    stmt = select(StudyPlanTask).where(StudyPlanTask.plan_id == plan.id)
     tasks = list(db.execute(stmt).scalars().all())
+    if len(tasks) >= MAX_TASKS_PER_PLAN:
+        raise ValueError("too_many_tasks")
     next_pos = (max((t.position for t in tasks), default=-1) + 1)
     t = StudyPlanTask(
         plan_id=plan.id,
@@ -126,8 +139,13 @@ def get_task(db: Session, user: User, task_id: int) -> StudyPlanTask | None:
     t = db.get(StudyPlanTask, task_id)
     if t is None:
         return None
-    plan = db.get(StudyPlan, t.plan_id)
-    if plan is None or plan.user_id != user.id:
+    stmt = select(StudyPlan).where(
+        StudyPlan.id == t.plan_id,
+        StudyPlan.user_id == user.id,
+        StudyPlan.status != "deleted",
+    )
+    plan = db.execute(stmt).scalar_one_or_none()
+    if plan is None:
         return None
     return t
 
@@ -136,22 +154,29 @@ def update_task(db: Session, user: User, task_id: int, payload: StudyPlanTaskUpd
     t = get_task(db, user, task_id)
     if t is None:
         return None
+    if payload.version is not None and payload.version != t.version:
+        raise StaleWriteError("stale_task_version")
     if payload.title is not None:
         t.title = payload.title
     if payload.description is not None:
         t.description = payload.description
     if payload.priority is not None:
         t.priority = payload.priority
-    if payload.due_date is not None:
+    if "due_date" in payload.model_fields_set:
         t.due_date = payload.due_date
     if payload.status is not None:
-        t.status = payload.status
+        # Validate transitions
         if payload.status == "completed":
+            t.status = "completed"
             t.completed_at = _now()
         elif payload.status in ("open", "reopened"):
+            t.status = payload.status
             t.completed_at = None
+        else:
+            return None
     if payload.rationale is not None:
         t.rationale = payload.rationale
+    t.version += 1
     t.updated_at = _now()
     db.commit()
     db.refresh(t)

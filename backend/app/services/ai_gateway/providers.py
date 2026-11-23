@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import logging
 import os
+import threading
 import time
 from dataclasses import dataclass, field
 from typing import Protocol, runtime_checkable
@@ -41,6 +42,7 @@ class GatewayRequest:
     max_output_tokens: int = 400
     timeout_seconds: float = 6.0
     model_override: str | None = None
+    cancel_event: Optional[threading.Event] = None
 
 
 @dataclass(frozen=True)
@@ -87,8 +89,9 @@ class DisabledProvider:
 
 @dataclass
 class RecordingProvider:
-    """Deterministic provider for tests."""
+    """Deterministic provider for tests. Test-only: not selectable in production."""
 
+    test_only: bool = True
     name: str = "recording"
     reply: str = "recorded"
     failure: str | None = None

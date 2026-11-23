@@ -893,6 +893,7 @@ class StudyPlan(Base):
     goal: Mapped[str | None] = mapped_column(Text, nullable=True)
     scholarship_id: Mapped[int | None] = mapped_column(ForeignKey("scholarships.id"), nullable=True, index=True)
     status: Mapped[str] = mapped_column(String(16), nullable=False, default="active", index=True)
+    version: Mapped[int] = mapped_column(Integer, nullable=False, default=1)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now(), onupdate=func.now())
 
@@ -908,7 +909,7 @@ class StudyPlanTask(Base):
     )
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
-    plan_id: Mapped[int] = mapped_column(ForeignKey("study_plans.id"), nullable=False, index=True)
+    plan_id: Mapped[int] = mapped_column(ForeignKey("study_plans.id", ondelete="CASCADE"), nullable=False, index=True)
     title: Mapped[str] = mapped_column(String(255), nullable=False)
     description: Mapped[str | None] = mapped_column(Text, nullable=True)
     priority: Mapped[str] = mapped_column(String(16), nullable=False, default="medium")
@@ -917,6 +918,7 @@ class StudyPlanTask(Base):
     related_scholarship_id: Mapped[int | None] = mapped_column(ForeignKey("scholarships.id"), nullable=True)
     rationale: Mapped[str | None] = mapped_column(Text, nullable=True)
     position: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    version: Mapped[int] = mapped_column(Integer, nullable=False, default=1)
     completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now(), onupdate=func.now())

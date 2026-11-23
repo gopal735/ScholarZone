@@ -13,7 +13,7 @@ from app.services.orchestrator import (
 
 def test_task_lifecycle():
     orch = Orchestrator()
-    task = orch.create_task(user_id=1, task_type="research")
+    task = orch.create_task(user_id=1, task_type="research", allowed_tools={"search"})
     assert task.state == TaskState.CREATED
 
     def plan(t, o):
@@ -26,7 +26,7 @@ def test_task_lifecycle():
 
 def test_ownership_isolation():
     orch = Orchestrator()
-    task = orch.create_task(user_id=1, task_type="research")
+    task = orch.create_task(user_id=1, task_type="research", allowed_tools={"search"})
     assert orch.get_task(task.task_id, user_id=2) is None
     assert orch.get_task(task.task_id, user_id=1) is not None
 
@@ -38,7 +38,7 @@ def test_tool_permission_enforcement():
         lambda q: f"result:{q}",
     )
     orch = Orchestrator(tool_registry=reg)
-    task = orch.create_task(user_id=1, task_type="research")
+    task = orch.create_task(user_id=1, task_type="research", allowed_tools={"search"})
 
     # allowed
     r = reg.invoke("search", task, q="hello")
@@ -61,7 +61,7 @@ def test_budget_max_tool_calls():
         lambda q: "r",
     )
     orch = Orchestrator(tool_registry=reg)
-    task = orch.create_task(user_id=1, task_type="research", budget=TaskBudget(max_tool_calls=1))
+    task = orch.create_task(user_id=1, task_type="research", allowed_tools={"search"}, budget=TaskBudget(max_tool_calls=1))
     reg.invoke("search", task, q="a")
     try:
         reg.invoke("search", task, q="b")
@@ -72,7 +72,7 @@ def test_budget_max_tool_calls():
 
 def test_cancel():
     orch = Orchestrator()
-    task = orch.create_task(user_id=1, task_type="research")
+    task = orch.create_task(user_id=1, task_type="research", allowed_tools={"search"})
 
     def plan(t, o):
         t.cancel()
@@ -84,7 +84,7 @@ def test_cancel():
 
 def test_task_failure():
     orch = Orchestrator()
-    task = orch.create_task(user_id=1, task_type="research")
+    task = orch.create_task(user_id=1, task_type="research", allowed_tools={"search"})
 
     def plan(t, o):
         raise ValueError("boom")
