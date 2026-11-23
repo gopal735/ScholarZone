@@ -22,11 +22,12 @@ import logging
 from dataclasses import dataclass
 
 from sqlalchemy import select
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from ..models_supervisor import ContactTemplate, ProfessorProfile, ScholarshipProfessorLink
 from .supervisor_freshness import PUBLISHABLE_AVAILABILITY_STATES
-from .supervisor_status import PUBLIC_RELATIONSHIP_STATUSES
+from .supervisor_status import PUBLIC_RELATIONSHIP_STATUSES, ProfessorProfileStatus
 
 logger = logging.getLogger(__name__)
 
@@ -136,6 +137,14 @@ BUILTIN_TEMPLATES: tuple[Template, ...] = (
 _TEMPLATES_BY_KEY = {template.key: template for template in BUILTIN_TEMPLATES}
 
 
+#: Deterministic read-only identifiers for the built-in template set. The public
+#: read path serves these, so the identifiers handed to clients never depend on
+#: database state that a GET could mutate.
+_BUILTIN_TEMPLATES_BY_ID: dict[int, Template] = {
+    -(index): template for index, template in enumerate(BUILTIN_TEMPLATES, start=1)
+}
+
+
 def get_builtin_template(key: str | None) -> Template:
     """Return the requested template, or the master's default.
 
@@ -146,6 +155,11 @@ def get_builtin_template(key: str | None) -> Template:
     if key and key in _TEMPLATES_BY_KEY:
         return _TEMPLATES_BY_KEY[key]
     return _TEMPLATES_BY_KEY["masters_initial"]
+
+
+def get_builtin_template_by_id(template_id: int) -> Template | None:
+    """Return the built-in template carrying a deterministic read-only id."""
+    return _BUILTIN_TEMPLATES_BY_ID.get(template_id)
 
 
 def ensure_templates(db: Session) -> None:
@@ -179,7 +193,13 @@ def ensure_templates(db: Session) -> None:
             row.degree_level = template.degree_level
             row.subject_hint = template.subject_hint
             row.body_text = template.body_text
-    db.commit()
+    try:
+        db.commit()
+    except IntegrityError:
+        # Two callers may seed an empty table at the same time. The unique key
+        # makes one of them lose; that is not an error, and the next read sees
+        # the complete set. Rolling back leaves the session usable.
+        db.rollback()
 
 
 @dataclass(frozen=True)
@@ -307,24 +327,91 @@ def _strip_unresolved_placeholders(body: str, unresolved: list[str]) -> str:
 
 
 def list_templates(db: Session) -> list[ContactTemplate]:
-    ensure_templates(db)
-    return list(
-        db.execute(
-            select(ContactTemplate).where(ContactTemplate.is_active.is_(True)).order_by(ContactTemplate.id)
-        ).scalars()
-    )
+    """Return the available outreach templates. Public: they contain no data.
+
+    The built-in set is the source of truth and is returned directly, so a GET
+    can never write to the database or overwrite a locally edited template. The
+    persistence table remains available for the explicit idempotent
+    maintenance path (:func:`ensure_templates`), which is never invoked from the
+    read route.
+    """
+    # Load every persisted row once. The built-in set is merged against this map
+    # by template_key, so a built-in that has been persisted (for example via
+    # the write path) is not duplicated, and a persisted row that was deactivated
+    # stays hidden instead of being resurrected from the built-in fallback.
+    persisted = {
+        row.template_key: row
+        for row in db.execute(select(ContactTemplate).order_by(ContactTemplate.id)).scalars()
+    }
+
+    result: list[ContactTemplate] = []
+    seen_keys: set[str] = set()
+
+    # Built-ins first, in their declared order. Use the persisted row when one
+    # exists (honouring its active flag); otherwise the read-only fallback.
+    for template in BUILTIN_TEMPLATES:
+        row = persisted.get(template.key)
+        if row is not None:
+            if row.is_active:
+                result.append(row)
+                seen_keys.add(template.key)
+        else:
+            # Read-only fallback for a built-in that has not been persisted yet.
+            synthetic_id = None
+            for identifier, builtin in _BUILTIN_TEMPLATES_BY_ID.items():
+                if builtin.key == template.key:
+                    synthetic_id = identifier
+                    break
+            result.append(
+                ContactTemplate(
+                    id=synthetic_id if synthetic_id is not None else 0,
+                    template_key=template.key,
+                    title=template.title,
+                    degree_level=template.degree_level,
+                    subject_hint=template.subject_hint,
+                    body_text=template.body_text,
+                    is_active=True,
+                )
+            )
+            seen_keys.add(template.key)
+
+    # Then any persisted templates that are not part of the built-in set
+    # (custom templates), honouring their active flag.
+    for row in persisted.values():
+        if row.template_key in seen_keys:
+            continue
+        if row.is_active:
+            result.append(row)
+            seen_keys.add(row.template_key)
+
+    return result
 
 
 def verified_relationship(
     db: Session, scholarship_id: int, professor_id: int
 ) -> ScholarshipProfessorLink | None:
+    """Return one verified relationship that the public list would also show.
+
+    A professor may legitimately be linked for more than one reason (the unique
+    constraint includes ``relationship_type``), so this returns the first row
+    rather than asserting there is exactly one. A merged profile is excluded for
+    the same reason the public list excludes it: the person has been folded into
+    another record and must not be selectable under the retired id.
+    """
     return db.execute(
-        select(ScholarshipProfessorLink).where(
+        select(ScholarshipProfessorLink)
+        .join(
+            ProfessorProfile,
+            ProfessorProfile.id == ScholarshipProfessorLink.professor_id,
+        )
+        .where(
             ScholarshipProfessorLink.scholarship_id == scholarship_id,
             ScholarshipProfessorLink.professor_id == professor_id,
             ScholarshipProfessorLink.verification_status.in_(PUBLIC_RELATIONSHIP_STATUSES),
+            ProfessorProfile.profile_status != str(ProfessorProfileStatus.MERGED),
         )
-    ).scalar_one_or_none()
+        .order_by(ScholarshipProfessorLink.id)
+    ).scalars().first()
 
 
 def publishable_availability_states(db: Session, professor_id: int) -> list[str]:
@@ -350,6 +437,7 @@ __all__ = [
     "build_draft",
     "ensure_templates",
     "get_builtin_template",
+    "get_builtin_template_by_id",
     "list_templates",
     "publishable_availability_states",
     "verified_relationship",
