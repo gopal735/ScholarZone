@@ -127,6 +127,17 @@ def client_identifier(request, trusted_proxies=None) -> str:
     return peer
 
 
+_ALLOWED_PUBLIC_TEMPLATES = frozenset(
+    {
+        "/scholarships",
+        "/scholarships/stats",
+        "/scholarships/{id}",
+        "/scholarships/{id}/supervisors",
+        "/scholarships/{id}/supervisor-summary",
+    }
+)
+
+
 def public_api_key(client: str, path: str) -> str:
     """Return a bounded, caller-scoped bucket key for a public path.
 
@@ -140,16 +151,18 @@ def public_api_key(client: str, path: str) -> str:
     other segment is folded onto the same placeholder, so arbitrary path values
     cannot mint a distinct bucket either.
     """
-    _static = frozenset(
-        {"scholarships", "supervisors", "supervisor-summary", "stats", "api"}
-    )
     raw = (path or "/").strip()
+    if raw.startswith("/api/"):
+        raw = raw[4:] or "/"
     if not raw or raw == "/":
-        return f"{client}:/"
+        return f"{client}:/scholarships/other"
     segments = [segment for segment in raw.split("/") if segment != ""]
-    normalized = "/" + "/".join(
-        segment if segment in _static else "{id}" for segment in segments
-    )
+    normalized_segments = [
+        "{id}" if segment.isdigit() else segment for segment in segments
+    ]
+    normalized = "/" + "/".join(normalized_segments)
+    if normalized not in _ALLOWED_PUBLIC_TEMPLATES:
+        normalized = "/scholarships/other"
     return f"{client}:{normalized}"
 
 
