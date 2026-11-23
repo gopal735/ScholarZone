@@ -49,6 +49,12 @@ class EvidenceItem:
     verification: str | None = None
     source_url: str | None = None
     scholarship_id: int | None = None
+    knowledge_state: str = "record_level_source_only"
+    evidence_id: str | None = None
+    confidence: str = "unverified"
+    last_checked: str | None = None
+    last_verified: str | None = None
+    verified_by: str | None = None
 
 
 #: The Match engine's normalised funding vocabulary, in words.

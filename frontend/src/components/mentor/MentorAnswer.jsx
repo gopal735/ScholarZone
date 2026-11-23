@@ -112,6 +112,97 @@ function NextActions({ actions }) {
   )
 }
 
+
+function DiscoveryResults({ answer }) {
+  // Only render for discovery answers (search_status present).
+  if (!answer || !answer.search_status) return null
+  const verified = Array.isArray(answer?.verified_matches) ? answer.verified_matches : []
+  const potential = Array.isArray(answer?.potential_matches) ? answer.potential_matches : []
+  const status = answer?.search_status
+  const diagnostics = answer?.diagnostics || {}
+  if (status === 'AMBIGUOUS_FILTER' || status === 'UNSUPPORTED_FILTER') {
+    let message = status === 'AMBIGUOUS_FILTER'
+      ? 'The location filter is ambiguous; please clarify.'
+      : 'The requested location has no catalogue coverage yet.'
+    return (
+      <section className="mentor-answer__section" aria-labelledby="mentor-discovery-heading">
+        <h3 className="mentor-answer__heading" id="mentor-discovery-heading">Scholarship results</h3>
+        <p className="mentor-answer__section-note">{message}</p>
+      </section>
+    )
+  }
+  if (verified.length === 0 && potential.length === 0) {
+    // Explicit diagnostic empty state instead of silently returning null.
+    let message = 'No scholarship matches found.'
+    if (status === 'NO_PUBLIC_CANDIDATES') message = 'No public scholarship candidates available.'
+    else if (status === 'NO_DEGREE_MATCHES') message = 'No scholarships match the requested degree level.'
+    else if (status === 'NO_REGION_MATCHES') message = 'No scholarships match the requested region.'
+    else if (status === 'UNSUPPORTED_FILTER') message = 'The requested location has no catalogue coverage yet.'
+    else if (status === 'AMBIGUOUS_FILTER') message = 'The location filter is ambiguous; please clarify.'
+    else if (status === 'NO_VERIFIED_STIPEND_MATCHES') message = 'No verified stipend matches found; only unverified or excluded records exist.'
+    else if (status === 'SEARCH_UNAVAILABLE' || status === 'SEARCH_ERROR') message = 'Search is currently unavailable. Please try again later.'
+    return (
+      <section className="mentor-answer__section" aria-labelledby="mentor-discovery-heading">
+        <h3 className="mentor-answer__heading" id="mentor-discovery-heading">Scholarship results</h3>
+        <p className="mentor-answer__section-note">{message}</p>
+        {diagnostics && Object.keys(diagnostics).length > 0 ? (
+          <p className="mentor-answer__section-note">
+            Diagnostics: {Object.entries(diagnostics).map(([k, v]) => `${k}=${v}`).join(', ')}
+          </p>
+        ) : null}
+      </section>
+    )
+  }
+  return (
+    <section className="mentor-answer__section" aria-labelledby="mentor-discovery-heading">
+      <h3 className="mentor-answer__heading" id="mentor-discovery-heading">
+        Scholarship results
+      </h3>
+      {verified.length > 0 ? (
+        <ul className="mentor-evidence">
+          {verified.map((m) => (
+            <li key={m.scholarship_id} className="mentor-evidence__item">
+              <div className="mentor-evidence__head">
+                {m.scholarship_id ? (
+                  <Link className="mentor-evidence__label" to={`/scholarships/${m.scholarship_id}`}>{m.title}</Link>
+                ) : (
+                  <span className="mentor-evidence__label">{m.title}</span>
+                )}
+              </div>
+              <p className="mentor-evidence__value">{m.country} — {m.funding_classification}</p>
+              {m.official_source_url ? (
+                <a href={m.official_source_url} target="_blank" rel="noopener noreferrer">Official source</a>
+              ) : null}
+            </li>
+          ))}
+        </ul>
+      ) : null}
+      {potential.length > 0 ? (
+        <ul className="mentor-evidence">
+          {potential.map((m) => (
+            <li key={m.scholarship_id} className="mentor-evidence__item">
+              <div className="mentor-evidence__head">
+                {m.scholarship_id ? (
+                  <Link className="mentor-evidence__label" to={`/scholarships/${m.scholarship_id}`}>{m.title}</Link>
+                ) : (
+                  <span className="mentor-evidence__label">{m.title}</span>
+                )}
+              </div>
+              <p className="mentor-evidence__value">{m.country} — {m.funding_classification}</p>
+              {Array.isArray(m.warnings) && m.warnings.length > 0 ? (
+                <p className="mentor-answer__section-note">{m.warnings.join(' ')}</p>
+              ) : null}
+              {m.official_source_url ? (
+                <a href={m.official_source_url} target="_blank" rel="noopener noreferrer">Official source</a>
+              ) : null}
+            </li>
+          ))}
+        </ul>
+      ) : null}
+    </section>
+  )
+}
+
 export default function MentorAnswer({ answer }) {
   const source = sourceLabel(answer)
 
@@ -160,6 +251,8 @@ export default function MentorAnswer({ answer }) {
           </ul>
         </section>
       ) : null}
+
+      <DiscoveryResults answer={answer} />
 
       {answer.caveats && answer.caveats.length > 0 ? (
         <section className="mentor-answer__section" aria-labelledby="mentor-caveat-heading">

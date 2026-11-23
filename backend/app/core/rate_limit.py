@@ -10,10 +10,12 @@ honest about its own limit: a multi-instance deployment would need shared state.
 Writing a Redis-backed limiter now, with no Redis and no second instance to
 justify it, would be a dependency bought for a problem that does not exist yet.
 
-It **fails closed on unbounded keys**. The bucket count is capped, and once the
-cap is reached a new client is simply refused rather than evicting an entry to
-make room. Eviction would let a flood of new keys push real clients out of the
-table, which is the opposite of what a limiter is for.
+Expired buckets are removed before the capacity check, so an expired client
+can start a new window and capacity can recover after expiry. The bucket count
+is still capped: once the cap is reached after cleanup, a new client is refused
+rather than evicting an active entry. Eviction of active buckets would let a
+flood of new keys push real clients out of the table, which is the opposite of
+what a limiter is for.
 """
 
 from __future__ import annotations
@@ -56,17 +58,21 @@ class InProcessRateLimiter:
         """
         moment = time.monotonic() if now is None else now
         with self._lock:
+            # Remove expired buckets first (bounded cleanup).
+            expired = [k for k, b in self._buckets.items() if moment - b.window_started_at >= self._window]
+            for k in expired:
+                del self._buckets[k]
             bucket = self._buckets.get(key)
-            if bucket is None or moment - bucket.window_started_at >= self._window:
+            if bucket is None:
                 if len(self._buckets) >= self._max_keys:
-                    # Refuse rather than evict. See the module docstring.
                     raise RateLimitExceeded(self._window)
                 self._buckets[key] = _Bucket(count=1, window_started_at=moment)
                 return
+            # existing active window
             bucket.count += 1
             if bucket.count > self._limit:
                 retry_after = self._window - int(moment - bucket.window_started_at)
-                raise RateLimitExceeded(retry_after)
+                raise RateLimitExceeded(retry_after if retry_after > 0 else 1)
 
     def reset(self) -> None:
         """Clear every bucket. Used by tests."""
