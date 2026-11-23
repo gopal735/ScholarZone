@@ -40,7 +40,7 @@ class GatewayRequest:
     context_blocks: tuple[str, ...]
     required_capabilities: frozenset = field(default_factory=frozenset)
     max_output_tokens: int = 400
-    timeout_seconds: float = 6.0
+    timeout_seconds: float | None = None
     model_override: str | None = None
     cancel_event: Optional[threading.Event] = None
 

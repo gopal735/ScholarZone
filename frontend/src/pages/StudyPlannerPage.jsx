@@ -1,6 +1,7 @@
 ﻿import { useCallback, useEffect, useRef, useState } from 'react'
 import {
   StudyPlanUnauthenticatedError,
+  StudyPlanConflictError,
   fetchPlans,
   createPlan,
   deletePlan,
@@ -81,7 +82,14 @@ export default function StudyPlannerPage() {
     try {
       await updateTask(task.id, { status: task.status === 'completed' ? 'reopened' : 'completed', version: task.version })
       await load()
-    } catch (caught) { setError(caught) }
+    } catch (caught) {
+      if (caught instanceof StudyPlanConflictError) {
+        await load()
+        setError(caught)
+        return
+      }
+      setError(caught)
+    }
   }
 
   const handleDeleteTask = async (id) => {

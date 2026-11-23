@@ -105,7 +105,7 @@ def parse_ddl_columns(ddl: str) -> dict[str, dict]:
             default = default_match.group(1)
 
         # Check for inline REFERENCES - capture local column, referenced table/column, ON DELETE
-        ref_match = re.search(r'REFERENCES\s+(\w+)\s*\((\w+)\)\s*(ON DELETE\s+\w+)?', part, re.IGNORECASE)
+        ref_match = re.search(r'REFERENCES\s+(\w+)\s*\((\w+)\)\s*(ON DELETE\s+(?:RESTRICT|CASCADE|SET\s+NULL|SET\s+DEFAULT|NO\s+ACTION))?', part, re.IGNORECASE)
         if ref_match:
             ref_table = ref_match.group(1)
             ref_column = ref_match.group(2)
@@ -1722,7 +1722,33 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
                 if (actual_cols == expected_cols and
                     actual_fk.get("referred_table") == expected_fk.get("referred_table")):
                     found = True
-                    actual_on_delete = normalize_on_delete(actual_fk.get("options", {}).get("ondelete", "NO ACTION"))
+                    # SQLite's SQLAlchemy inspector often omits ON DELETE for inline
+                    # foreign keys; recover the action from PRAGMA foreign_key_list
+                    # so the canonical CASCADE / SET NULL / RESTRICT contract is
+                    # still verifiable.
+                    if dialect == "sqlite":
+                        raw_on_delete = (actual_fk.get("options") or {}).get("ondelete")
+                        if not raw_on_delete:
+                            try:
+                                pragma_rows = conn.execute(
+                                    text(f'PRAGMA foreign_key_list("{table_name}")')
+                                ).fetchall()
+                                for prow in pragma_rows:
+                                    # prow: (id, seq, table, from, to, on_update, on_delete, match)
+                                    if (
+                                        len(prow) >= 7
+                                        and prow[2] == actual_fk.get("referred_table")
+                                        and prow[3] in (actual_fk.get("constrained_columns") or [])
+                                    ):
+                                        raw_on_delete = prow[6]
+                                        break
+                            except Exception:
+                                raw_on_delete = None
+                        actual_on_delete = normalize_on_delete(raw_on_delete or "NO ACTION")
+                    else:
+                        actual_on_delete = normalize_on_delete(
+                            actual_fk.get("options", {}).get("ondelete", "NO ACTION")
+                        )
                     expected_on_delete = normalize_on_delete(expected_fk.get("on_delete", "NO ACTION"))
 
                     # For SQLite, RESTRICT in DDL maps to NO ACTION in actual (SQLite doesn't support ON DELETE RESTRICT)

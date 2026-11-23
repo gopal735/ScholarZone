@@ -140,10 +140,21 @@ class TaskExecution:
 
     def reserve_tool_call(self, tool_name: str, max_per_tool: int) -> str | None:
         with self._lock:
+            if self.cancel_event.is_set():
+                return "cancelled"
             if self.tool_calls_used >= self.budget.max_tool_calls:
                 return "max_tool_calls_exceeded"
             if self.tool_calls_by_tool.get(tool_name, 0) >= max_per_tool:
                 return "tool_call_limit_exceeded"
+            # Duration budget (cooperative): reject once expired.
+            if self.started_at is not None:
+                elapsed = self.finished_at - self.started_at if self.finished_at is not None else time.time() - self.started_at
+                if elapsed >= self.budget.max_duration_seconds:
+                    return "max_duration_exceeded"
+            if self.depth_used >= self.budget.max_depth:
+                return "max_depth_exceeded"
+            if self.context_chars_used >= self.budget.max_context_chars:
+                return "max_context_exceeded"
             self.tool_calls_used += 1
             self.tool_calls_by_tool[tool_name] = self.tool_calls_by_tool.get(tool_name, 0) + 1
             return None
@@ -188,12 +199,18 @@ class ToolRegistry:
 
     def invoke(self, tool_name: str, task: TaskExecution, **kwargs) -> Any:
         """Invoke a tool with permission and budget checks."""
-        if not self.is_allowed(tool_name, task.task_type):
+        if task is None:
+            raise PermissionError("task is required")
+        if task.cancel_event.is_set():
+            raise RuntimeError("cancelled")
+        perm = self._tools.get(tool_name)
+        if perm is None:
+            raise PermissionError(f"Tool {tool_name} is not registered")
+        if not perm.allowed_for_task_types or task.task_type not in perm.allowed_for_task_types:
             raise PermissionError(f"Tool {tool_name} not allowed for task {task.task_type}")
         # Deny-by-default: tool must be in the task's explicit allowed set.
         if tool_name not in task.allowed_tools:
             raise PermissionError(f"Tool {tool_name} not in allowed set for task {task.task_id}")
-        perm = self._tools[tool_name]
         if perm.requires_user_confirmation:
             with task._lock:
                 if tool_name not in task.confirmed_tools:
@@ -298,11 +315,10 @@ class Orchestrator:
         """
         if not callable(plan_func):
             raise TypeError("plan_func must be callable")
-        if not task.try_start_run():
-            task.error = "task_already_running"
-            return task
         if task.is_terminal:
-            task.finish_run()
+            return task
+        if not task.try_start_run():
+            # Rejected duplicate run: do not mutate the active task's state.
             return task
         # Cooperative cancellation before planning.
         if task.cancel_event.is_set():
@@ -348,6 +364,13 @@ class Orchestrator:
     def confirm_tool(self, task_id: str, user_id: int, tool_name: str) -> bool:
         task = self.get_task(task_id, user_id)
         if task is None:
+            return False
+        perm = self._tool_registry._tools.get(tool_name)
+        if perm is None or not perm.requires_user_confirmation:
+            return False
+        if tool_name not in task.allowed_tools:
+            return False
+        if perm.allowed_for_task_types and task.task_type not in perm.allowed_for_task_types:
             return False
         task.confirm_tool(tool_name)
         return True

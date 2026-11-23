@@ -115,6 +115,27 @@ def _run_init() -> None:
             logger.info("Production: verifying database connectivity, not migrating schema")
             with get_engine().connect() as conn:
                 conn.execute(text("SELECT 1"))
+                # Verify required Study Planner schema is present without
+                # creating or migrating anything. Missing tables/columns must
+                # leave readiness false so routes do not appear operational.
+                from sqlalchemy import inspect as _sa_inspect
+
+                inspector = _sa_inspect(conn)
+                tables = set(inspector.get_table_names())
+                required_tables = {"study_plans", "study_plan_tasks"}
+                if not required_tables.issubset(tables):
+                    raise RuntimeError(
+                        "study planner schema not ready: missing tables "
+                        + ", ".join(sorted(required_tables - tables))
+                    )
+                plan_cols = {c["name"] for c in inspector.get_columns("study_plans")}
+                task_cols = {c["name"] for c in inspector.get_columns("study_plan_tasks")}
+                required_plan_cols = {"id", "user_id", "title", "status", "version"}
+                required_task_cols = {"id", "plan_id", "title", "status", "version", "related_scholarship_id"}
+                if not required_plan_cols.issubset(plan_cols):
+                    raise RuntimeError("study planner schema not ready: missing study_plans columns")
+                if not required_task_cols.issubset(task_cols):
+                    raise RuntimeError("study planner schema not ready: missing study_plan_tasks columns")
             _db_ready = True
             logger.info("Production: database reachable")
             return

@@ -16,6 +16,10 @@ export class StudyPlanNotFoundError extends StudyPlanApiError {
   constructor(message) { super(message, 404); this.name = 'StudyPlanNotFoundError' }
 }
 
+export class StudyPlanConflictError extends StudyPlanApiError {
+  constructor(message) { super(message, 409); this.name = 'StudyPlanConflictError' }
+}
+
 async function request(path, options = {}) {
   const res = await fetch(`${apiBaseUrl}${path}`, {
     credentials: 'include',
@@ -24,6 +28,7 @@ async function request(path, options = {}) {
   })
   if (res.status === 401) throw new StudyPlanUnauthenticatedError('Sign in to continue.')
   if (res.status === 404) throw new StudyPlanNotFoundError('Not found.')
+  if (res.status === 409) throw new StudyPlanConflictError('Version conflict. Refreshing.')
   if (!res.ok) {
     let msg = `Request failed (${res.status})`
     try { const j = await res.json(); if (j.detail) msg = j.detail } catch { /* ignore */ }

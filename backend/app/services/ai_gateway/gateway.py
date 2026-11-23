@@ -153,6 +153,17 @@ class AIGateway:
         model = resolve_model(effective_policy, self._config.registry, model_override=effective_model_override)
         policy = effective_policy
 
+        # Clamp caller output-token limit to the (possibly stricter) policy cap.
+        effective_max_tokens = min(
+            getattr(request, "max_output_tokens", effective_policy.max_output_tokens),
+            effective_policy.max_output_tokens,
+        )
+        effective_timeout = (
+            request.timeout_seconds
+            if getattr(request, "timeout_seconds", None) is not None
+            else effective_policy.timeout_seconds
+        )
+
         if not self._config.enabled:
             return ProviderResult(mode="disabled", used=False, failure=None, latency_ms=elapsed_ms(started))
 
@@ -186,7 +197,13 @@ class AIGateway:
             )
 
         from dataclasses import replace as _replace
-        request = _replace(request, cancel_event=effective_cancel_event if effective_cancel_event is not None else request.cancel_event)
+        request = _replace(
+            request,
+            required_capabilities=frozenset(effective_required),
+            max_output_tokens=effective_max_tokens,
+            timeout_seconds=effective_timeout,
+            cancel_event=effective_cancel_event if effective_cancel_event is not None else request.cancel_event,
+        )
 
         last_failure = None
         for attempt in range(MAX_RETRIES + 1):
@@ -226,7 +243,7 @@ class AIGateway:
                     self._worker_semaphore.release()
                     raise
 
-                timeout = request.timeout_seconds or policy.timeout_seconds
+                timeout = request.timeout_seconds if request.timeout_seconds is not None else policy.timeout_seconds
                 worker.join(timeout=timeout)
                 if worker.is_alive():
                     if request.cancel_event is not None:
@@ -244,14 +261,8 @@ class AIGateway:
                 if "exc" in outcome:
                     raise outcome["exc"]
                 result = outcome["result"]
-                if result.failure:
-                    last_failure = result.failure
-                    if attempt < MAX_RETRIES:
-                        import time as _t
-                        _t.sleep(RETRY_BASE_DELAY * (attempt + 1))
-                        continue
-                    return result
-                # Record usage for completed provider result (once), even if validation rejects.
+                # Record usage for every completed provider attempt with token
+                # counts, including failed/malformed responses.
                 if getattr(result, "prompt_tokens", None) is not None or getattr(result, "completion_tokens", None) is not None:
                     with self._lock:
                         self._usage.append({
@@ -261,6 +272,13 @@ class AIGateway:
                             "prompt_tokens": result.prompt_tokens,
                             "completion_tokens": result.completion_tokens,
                         })
+                if result.failure:
+                    last_failure = result.failure
+                    if attempt < MAX_RETRIES:
+                        import time as _t
+                        _t.sleep(RETRY_BASE_DELAY * (attempt + 1))
+                        continue
+                    return result
                 # Validate structured output if validator provided
                 if validator is not None:
                     if result.text is None or not validator(result.text):
