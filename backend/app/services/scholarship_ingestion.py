@@ -938,7 +938,7 @@ def _is_tombstoned(session: Session, record: ScholarshipIngestionRecord) -> bool
 
                 getattr(record, "country", None),
 
-                getattr(record, "degree", None),
+                getattr(record, "degree_levels", None),
 
                 None,
 

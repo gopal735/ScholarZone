@@ -492,13 +492,13 @@ def _parse_date_from_text(text: str, month_only: bool = False) -> Optional[date]
 
             # ISO date: YYYY-MM-DD
 
-            m = re.match(r'^\d{4}-\d{2}-\d{2}$', text)
+            m = re.match(r'^\d{4}-\d{2}-\d{2}(?:[T ].*)?$', text)
 
             if m:
 
                 try:
 
-                    d = date.fromisoformat(text)
+                    d = date.fromisoformat(text[:10])
 
                 except ValueError:
 
@@ -867,6 +867,8 @@ def build_deletion_manifest(db: Session, reference_date=None) -> List[ClosedScho
     manifest = []
 
     for s in closed:
+        if getattr(s, "deletion_protected", False):
+            continue
 
         deps = audit_dependencies(db, s.id)
 
@@ -1134,6 +1136,12 @@ def execute_deletion(db: Session, manifest: List[ClosedScholarshipManifest], dry
 
 
 
+            if getattr(locked, "deletion_protected", False):
+                report.skipped_scholarship_ids.append(sid)
+                report.skipped.append(sid)
+                report.skipped_scholarships.append(sid)
+                continue
+
             deps = audit_dependencies(db, sid)
 
 
@@ -1148,7 +1156,7 @@ def execute_deletion(db: Session, manifest: List[ClosedScholarshipManifest], dry
 
                 or locked.country != entry.country
 
-                or str(locked.deadline_date) != str(entry.deadline_date)
+                or str(_resolve_deadline_date(locked)) != str(entry.deadline_date)
 
                 or locked.status != entry.stored_status
 

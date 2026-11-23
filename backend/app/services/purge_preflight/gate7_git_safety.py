@@ -199,7 +199,7 @@ def check_branch_and_base(repo_root: Path) -> tuple[str, str, str, str, bool, bo
             pr_merge_sha = ""
 
     # Check if we're on the expected branch (only if not detached HEAD)
-    expected_branch = "fix/production-expired-cycle-purge"
+    expected_branch = "feat/closed-scholarship-permanent-deletion"
     expected_base = "master"
     
     if current_branch:

@@ -75,9 +75,15 @@ def main():
         print(f"Tombstones created: {report.tombstones_created}")
         print(f"Preserved application records: {report.preserved_application_records}")
 
-        if report.errors:
+        if report.errors or report.skipped_scholarship_ids:
+            db.rollback()
             print(f"Errors: {report.errors}")
             sys.exit(1)
+
+        if not dry_run:
+            db.commit()
+        else:
+            db.rollback()
 
         if dry_run:
             print()

@@ -1914,11 +1914,11 @@ def _collect_table_counts(conn) -> dict:
 
         """)
 
-        tables = [row[0] for row in cur.fetchall()]
+        tables = [row["table_name"] for row in cur.fetchall()]
 
         for table_name in tables:
 
-            query = sql.SQL("SELECT COUNT(*) FROM {}.{}").format(
+            query = sql.SQL("SELECT COUNT(*) AS count FROM {}.{}").format(
 
                 sql.Identifier("public"), sql.Identifier(table_name)
 
@@ -1926,7 +1926,7 @@ def _collect_table_counts(conn) -> dict:
 
             cur.execute(query)
 
-            counts[table_name] = cur.fetchone()[0]
+            counts[table_name] = cur.fetchone()["count"]
 
     return counts
 
