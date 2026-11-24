@@ -17,9 +17,10 @@ from ..schemas_study_planner import (
     StudyPlanUpdate,
 )
 from ..services.study_planner import service as sp
+from ..study_planner_readiness import study_planner_ready
 from ..services.study_planner.service import StaleWriteError
 
-router = APIRouter(prefix="/study-plans", tags=["study-plans"])
+router = APIRouter(prefix="/study-plans", tags=["study-plans"], dependencies=[Depends(study_planner_ready)])
 
 
 def _plan_to_response(plan) -> StudyPlanResponse:
