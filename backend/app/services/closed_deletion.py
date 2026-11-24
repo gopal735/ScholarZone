@@ -818,6 +818,13 @@ def _resolve_deadline_date(scholarship) -> Optional[date]:
 
     dl = getattr(scholarship, "deadline_date", None)
 
+    if isinstance(dl, str) and dl.strip():
+        # Parse ISO date strings (possibly full timestamps)
+        try:
+            dl = date.fromisoformat(dl.strip()[:10])
+        except ValueError:
+            dl = None
+
     if dl is not None:
 
         d = _normalize_date(dl)
