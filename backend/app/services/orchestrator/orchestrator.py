@@ -146,7 +146,11 @@ class TaskExecution:
         with self._lock:
             if self.state != TaskState.VALIDATING:
                 return False
-            self._result = result
+            try:
+                detached = _detach_result(result, self.budget.max_context_chars)
+            except (TypeError, ValueError):
+                return False
+            self._result = detached
             self.finished_at = time.time()
             self.finished_monotonic_at = time.monotonic()
             self.state = TaskState.COMPLETED
@@ -167,7 +171,7 @@ class TaskExecution:
         with self._lock:
             self.confirmed_tools.add(tool_name)
 
-    def reserve_tool_call(self, tool_name: str, max_per_tool: int) -> str | None:
+    def reserve_tool_call(self, tool_name: str, max_per_tool: int, consume_confirmation: bool = False) -> str | None:
         with self._lock:
             if self.state in TERMINAL_STATES:
                 return "cancelled" if self.state == TaskState.CANCELLED else "task_terminal"
@@ -187,8 +191,12 @@ class TaskExecution:
                 return "max_depth_exceeded"
             if self.context_chars_used >= self.budget.max_context_chars:
                 return "max_context_exceeded"
+            if consume_confirmation and tool_name not in self.confirmed_tools:
+                return "confirmation_required"
             self.tool_calls_used += 1
             self.tool_calls_by_tool[tool_name] = self.tool_calls_by_tool.get(tool_name, 0) + 1
+            if consume_confirmation:
+                self.confirmed_tools.discard(tool_name)
             return None
 
     def record_tool_call(self) -> None:
@@ -250,14 +258,11 @@ class ToolRegistry:
         # Deny-by-default: tool must be in the task's explicit allowed set.
         if tool_name not in task.allowed_tools:
             raise PermissionError(f"Tool {tool_name} not in allowed set for task {task.task_id}")
-        budget_error = task.reserve_tool_call(tool_name, perm.max_calls_per_task)
+        budget_error = task.reserve_tool_call(tool_name, perm.max_calls_per_task, consume_confirmation=perm.requires_user_confirmation)
+        if budget_error == "confirmation_required":
+            raise PermissionError(f"Tool {tool_name} requires user confirmation")
         if budget_error:
             raise RuntimeError(budget_error)
-        if perm.requires_user_confirmation:
-            with task._lock:
-                if tool_name not in task.confirmed_tools:
-                    raise PermissionError(f"Tool {tool_name} requires user confirmation")
-                task.confirmed_tools.discard(tool_name)
         handler = self._handlers[tool_name]
         return handler(**kwargs)
 

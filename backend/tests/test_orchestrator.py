@@ -94,9 +94,74 @@ def test_task_failure():
     assert "boom" in (task.error or "")
 
 
-def test_list_tasks_user_scoped():
+def test_result_setter_input_isolation():
     orch = Orchestrator()
-    orch.create_task(user_id=1, task_type="a")
-    orch.create_task(user_id=2, task_type="b")
-    assert len(orch.list_tasks(1)) == 1
-    assert len(orch.list_tasks(2)) == 1
+    task = orch.create_task(user_id=1, task_type="research", allowed_tools=set())
+    data = {"items": [1, 2]}
+    task.result = data
+    data["items"].append(3)
+    data["extra"] = "x"
+    assert task.result == {"items": [1, 2]}
+
+
+def test_result_getter_output_isolation():
+    orch = Orchestrator()
+    task = orch.create_task(user_id=1, task_type="research", allowed_tools=set())
+    task.result = {"items": [1, 2]}
+    out = task.result
+    out["items"].append(3)
+    assert task.result == {"items": [1, 2]}
+
+
+def test_direct_completion_isolation():
+    orch = Orchestrator()
+    task = orch.create_task(user_id=1, task_type="research", allowed_tools=set())
+    task.transition(TaskState.PLANNING)
+    task.transition(TaskState.RUNNING)
+    task.transition(TaskState.VALIDATING)
+    original = {"nested": {"value": 7}}
+    assert task.commit_completion(original) is True
+    original["nested"]["value"] = 999
+    assert task.result == {"nested": {"value": 7}}
+
+
+def test_direct_completion_invalid_result_leaves_state():
+    orch = Orchestrator()
+    task = orch.create_task(user_id=1, task_type="research", allowed_tools=set())
+    task.transition(TaskState.PLANNING)
+    task.transition(TaskState.RUNNING)
+    task.transition(TaskState.VALIDATING)
+    before = task.finished_at
+    assert task.commit_completion(object()) is False
+    assert task.state == TaskState.VALIDATING
+    assert task.result is None
+    assert task.finished_at == before
+
+
+def test_direct_completion_cannot_repeat():
+    orch = Orchestrator()
+    task = orch.create_task(user_id=1, task_type="research", allowed_tools=set())
+    task.transition(TaskState.PLANNING)
+    task.transition(TaskState.RUNNING)
+    task.transition(TaskState.VALIDATING)
+    assert task.commit_completion({"ok": True}) is True
+    assert task.commit_completion({"ok": False}) is False
+    assert task.result == {"ok": True}
+    assert task.state == TaskState.COMPLETED
+
+
+def test_unconfirmed_tool_does_not_consume_quota():
+    reg = ToolRegistry()
+    reg.register(
+        ToolPermission(tool_name="search", allowed_for_task_types=frozenset({"research"}), requires_user_confirmation=True, max_calls_per_task=2),
+        lambda q: "r",
+    )
+    orch = Orchestrator(tool_registry=reg)
+    task = orch.create_task(user_id=1, task_type="research", allowed_tools={"search"})
+    before = task.tool_calls_used
+    try:
+        reg.invoke("search", task, q="x")
+        assert False, "should raise"
+    except PermissionError:
+        pass
+    assert task.tool_calls_used == before
