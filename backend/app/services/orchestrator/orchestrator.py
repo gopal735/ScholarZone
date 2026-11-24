@@ -91,7 +91,7 @@ class TaskExecution:
         if stored is None:
             return None
         try:
-            return _detach_result(stored)
+            return _detach_result(stored, self.budget.max_context_chars)
         except (TypeError, ValueError):
             return stored
 
@@ -304,21 +304,36 @@ def _result_size(value: Any, limit: int, _seen: set[int] | None = None, _depth: 
         _seen.discard(obj_id)
 
 
-def _detach_result(value: Any, _seen: set[int] | None = None, _depth: int = 0) -> Any:
+def _detach_result(value: Any, limit: int, _seen: set[int] | None = None, _depth: int = 0, _budget: list[int] | None = None) -> Any:
     """Return a detached, supported copy of a structured result."""
     if _seen is None:
         _seen = set()
+    if _budget is None:
+        _budget = [limit]
     if _depth > 50:
         raise ValueError("result_too_deep")
     if value is None or isinstance(value, bool):
+        if _budget[0] < 4:
+            raise ValueError("result_too_large")
+        _budget[0] -= 4
         return value
     if isinstance(value, str):
+        cost = len(value.encode("utf-8"))
+        if _budget[0] < cost:
+            raise ValueError("result_too_large")
+        _budget[0] -= cost
         return str(value)
     if isinstance(value, int):
         if value.bit_length() > 63:
             raise ValueError("integer_too_large")
+        if _budget[0] < 8:
+            raise ValueError("result_too_large")
+        _budget[0] -= 8
         return value
     if isinstance(value, float):
+        if _budget[0] < 8:
+            raise ValueError("result_too_large")
+        _budget[0] -= 8
         return value
     obj_id = id(value)
     if obj_id in _seen:
@@ -326,23 +341,32 @@ def _detach_result(value: Any, _seen: set[int] | None = None, _depth: int = 0) -
     _seen.add(obj_id)
     try:
         if isinstance(value, (list, tuple)):
-            try:
-                items = [_detach_result(item, _seen, _depth + 1) for item in value]
-            except RuntimeError as exc:
-                raise ValueError("result_collection_changed") from exc
+            if _budget[0] < 2:
+                raise ValueError("result_too_large")
+            _budget[0] -= 2
+            items = []
+            for item in value:
+                if _budget[0] < 1:
+                    raise ValueError("result_too_large")
+                _budget[0] -= 1
+                items.append(_detach_result(item, limit, _seen, _depth + 1, _budget))
             return list(items) if isinstance(value, list) else tuple(items)
         if isinstance(value, dict):
-            try:
-                entries = list(value.items())
-            except RuntimeError as exc:
-                raise ValueError("result_collection_changed") from exc
+            if _budget[0] < 2:
+                raise ValueError("result_too_large")
+            _budget[0] -= 2
             result: dict[Any, Any] = {}
-            for key, item in entries:
-                detached_key = _detach_result(key, _seen, _depth + 1)
-                detached_item = _detach_result(item, _seen, _depth + 1)
+            for key, item in value.items():
+                if _budget[0] < 1:
+                    raise ValueError("result_too_large")
+                _budget[0] -= 1
+                detached_key = _detach_result(key, limit, _seen, _depth + 1, _budget)
+                detached_item = _detach_result(item, limit, _seen, _depth + 1, _budget)
                 result[detached_key] = detached_item
             return result
         raise TypeError("unsupported_result_type")
+    except RuntimeError as exc:
+        raise ValueError("result_collection_changed") from exc
     finally:
         _seen.discard(obj_id)
 
@@ -424,7 +448,7 @@ class Orchestrator:
                 return task
             # Restrict planning output size (structured).
             try:
-                detached_result = _detach_result(result)
+                detached_result = _detach_result(result, task.budget.max_context_chars)
                 size = _result_size(detached_result, task.budget.max_context_chars)
             except (TypeError, ValueError):
                 raise RuntimeError("plan_output_too_large")

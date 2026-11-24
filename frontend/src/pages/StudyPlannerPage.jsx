@@ -119,7 +119,7 @@ export default function StudyPlannerPage() {
         <input aria-label="New plan title" value={newTitle} onChange={(e) => setNewTitle(e.target.value)} placeholder="New plan title" />
         <button type="submit">Create plan</button>
       </form>
-      {error && <p className="sp-error">{String(error)}</p>}
+      {error && <div className="sp-refresh-error"><p>{String(error)}</p><button onClick={() => load(false)}>Retry refresh</button></div>}
       {plans.length === 0 && <p>No plans yet.</p>}
       {plans.map((plan) => (
         <div key={plan.id} className="sp-plan">
