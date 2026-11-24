@@ -1,4 +1,4 @@
-"""The database half of the retention engine: classify, prove, then delete.
+﻿"""The database half of the retention engine: classify, prove, then delete.
 
 :class:`app.services.retention_contract` decides. This module does only the things
 that need a database, and it does them in an order chosen so the cheapest refusal
@@ -71,6 +71,8 @@ from ..models import (
     ScholarshipReview,
     ScholarshipSnapshot,
     ScholarshipVerificationHistory,
+    StudyPlan,
+    StudyPlanTask,
     ApplicationRecord,
 )
 from ..models_supervisor import (
@@ -293,6 +295,24 @@ REFERENCE_INTEGRITY: dict[str, dict[str, str]] = {
             "candidate; permanent deletion archives it first via closed_deletion."
         ),
     },
+    "StudyPlan": {
+        "table": "study_plans",
+        "disposition": "PRESERVE",
+        "rationale": (
+            "A user-owned study plan linked to a scholarship. Removing the scholarship "
+            "would destroy or orphan the plan, so any record carrying a study plan is "
+            "never a deletion candidate."
+        ),
+    },
+    "StudyPlanTask": {
+        "table": "study_plan_tasks",
+        "disposition": "PRESERVE",
+        "rationale": (
+            "A task within a user-owned study plan linked to a scholarship. Removing the "
+            "scholarship would destroy or orphan the task, so any record carrying a "
+            "study plan task is never a deletion candidate."
+        ),
+    },
 }
 
 #: Models whose mere presence blocks deletion, because their rows are the record's
@@ -331,6 +351,15 @@ DEPENDENT_MODELS: Mapping[str, type] = {
     "ProfessorOutreachRecord": ProfessorOutreachRecord,
     "OfficialContact": OfficialContact,
     "ScholarshipEvidence": ScholarshipEvidence,
+    "StudyPlan": StudyPlan,
+    "StudyPlanTask": StudyPlanTask,
+}
+
+#: Actual scholarship-linking column for each dependent model.
+DEPENDENT_MODEL_COLUMNS: dict[str, str] = {
+    "ScholarshipEvidence": "scholarship_id",
+    "StudyPlan": "scholarship_id",
+    "StudyPlanTask": "related_scholarship_id",
 }
 
 
@@ -478,7 +507,8 @@ def reference_dependencies(session: Session, ids: Sequence[int]) -> dict[int, fr
     for name, model in DEPENDENT_MODELS.items():
         if name not in PRESERVE_MODELS:
             continue
-        column = model.scholarship_id
+        column_name = DEPENDENT_MODEL_COLUMNS.get(name, "scholarship_id")
+        column = getattr(model, column_name)
         for (sid,) in session.execute(
             select(column).where(column.in_(id_list)).distinct()
         ):

@@ -26,6 +26,7 @@ from .routers.auth import router as auth_router
 from .routers.dashboard import router as dashboard_router
 from .routers.applications import router as applications_router
 from .routers.mentor import router as mentor_router
+from .routers.study_planner import router as study_planner_router
 from .routers.supervisors import router as supervisors_router
 from .routers.outreach import router as outreach_router
 from .routers.supervisor_email import router as supervisor_email_router
@@ -116,6 +117,27 @@ def _run_init() -> None:
             logger.info("Production: verifying database connectivity, not migrating schema")
             with get_engine().connect() as conn:
                 conn.execute(text("SELECT 1"))
+                # Verify required Study Planner schema is present without
+                # creating or migrating anything. Missing tables/columns must
+                # leave readiness false so routes do not appear operational.
+                from sqlalchemy import inspect as _sa_inspect
+
+                inspector = _sa_inspect(conn)
+                tables = set(inspector.get_table_names())
+                required_tables = {"study_plans", "study_plan_tasks"}
+                if not required_tables.issubset(tables):
+                    raise RuntimeError(
+                        "study planner schema not ready: missing tables "
+                        + ", ".join(sorted(required_tables - tables))
+                    )
+                plan_cols = {c["name"] for c in inspector.get_columns("study_plans")}
+                task_cols = {c["name"] for c in inspector.get_columns("study_plan_tasks")}
+                required_plan_cols = {"id", "user_id", "title", "status", "version"}
+                required_task_cols = {"id", "plan_id", "title", "status", "version", "related_scholarship_id"}
+                if not required_plan_cols.issubset(plan_cols):
+                    raise RuntimeError("study planner schema not ready: missing study_plans columns")
+                if not required_task_cols.issubset(task_cols):
+                    raise RuntimeError("study planner schema not ready: missing study_plan_tasks columns")
             _db_ready = True
             logger.info("Production: database reachable")
             return
@@ -374,6 +396,7 @@ app.include_router(applications_router)
 # dependent on scan order, which is the same discipline the match router uses
 # for /scholarships/match.
 app.include_router(mentor_router)
+app.include_router(study_planner_router)
 # Supervisor outreach and email drafting sit behind the same session dependency
 # as the dashboard and workspace. Their prefixes are /outreach and
 # /supervisor-email with no public counterpart, so registering them last cannot

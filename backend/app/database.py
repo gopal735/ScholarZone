@@ -380,6 +380,45 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
         connection.execute(text("CREATE INDEX IF NOT EXISTS ix_image_reviews_scholarship_decision ON image_reviews (scholarship_id, decision)"))
         connection.execute(text("CREATE INDEX IF NOT EXISTS ix_image_reviews_created_at ON image_reviews (created_at)"))
 
+        # Study planner (Dream AI Mentor 2.0) tables. create_all makes these on a
+        # fresh database; these guarded statements are the idempotent path for one
+        # that already exists, so a production database gains them on startup.
+        connection.execute(text("""
+            CREATE TABLE IF NOT EXISTS study_plans (
+                id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+                user_id INTEGER NOT NULL REFERENCES users(id),
+                title VARCHAR(255) NOT NULL,
+                goal TEXT,
+                scholarship_id INTEGER REFERENCES scholarships(id),
+                status VARCHAR(16) NOT NULL DEFAULT 'active',
+                version INTEGER NOT NULL DEFAULT 1,
+                created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+                updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+            )
+        """))
+        connection.execute(text("CREATE INDEX IF NOT EXISTS ix_study_plans_user_updated ON study_plans (user_id, updated_at)"))
+        connection.execute(text("""
+            CREATE TABLE IF NOT EXISTS study_plan_tasks (
+                id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+                plan_id INTEGER NOT NULL REFERENCES study_plans(id) ON DELETE CASCADE,
+                title VARCHAR(255) NOT NULL,
+                description TEXT,
+                priority VARCHAR(16) NOT NULL DEFAULT 'medium',
+                due_date DATE,
+                status VARCHAR(16) NOT NULL DEFAULT 'open',
+                related_scholarship_id INTEGER REFERENCES scholarships(id),
+                rationale TEXT,
+                position INTEGER NOT NULL DEFAULT 0,
+                version INTEGER NOT NULL DEFAULT 1,
+                completed_at TIMESTAMPTZ,
+                created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+                updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+                CONSTRAINT uq_study_plan_tasks_plan_position UNIQUE (plan_id, position)
+            )
+        """))
+        connection.execute(text("ALTER TABLE study_plan_tasks ADD COLUMN IF NOT EXISTS version INTEGER NOT NULL DEFAULT 1"))
+        connection.execute(text("CREATE INDEX IF NOT EXISTS ix_study_plan_tasks_plan_status ON study_plan_tasks (plan_id, status)"))
+
         # Durable, database-level attribution for image mutations. The image
         # regression on scholarships 14/130/554 reverted with no history row
         # and no recorded maintenance run, which left no trace of the writer.
@@ -459,6 +498,10 @@ def _validate_postgresql_schema(engine: Engine) -> None:
     ]
     supervisor_tables_ok = not missing_supervisor_tables
 
+    # Study planner tables (Dream AI Mentor 2.0).
+    study_plans_ok = inspector.has_table("study_plans")
+    study_plan_tasks_ok = inspector.has_table("study_plan_tasks")
+
     logger.info("[SCHEMA VALIDATION] image_kind: %s", "OK" if image_kind_ok else "MISSING")
     logger.info("[SCHEMA VALIDATION] image_reviews: %s", "OK" if image_reviews_ok else "MISSING")
     logger.info("[SCHEMA VALIDATION] indexes: %s", "OK" if indexes_ok else "MISSING")
@@ -480,7 +523,7 @@ def _validate_postgresql_schema(engine: Engine) -> None:
             image_audit_ok, trigger_ok,
         )
 
-    if not (image_kind_ok and image_reviews_ok and indexes_ok and supervisor_tables_ok):
+    if not (image_kind_ok and image_reviews_ok and indexes_ok and supervisor_tables_ok and study_plans_ok and study_plan_tasks_ok):
         missing = []
         if not image_kind_ok:
             missing.append("scholarships.image_kind")
@@ -491,6 +534,10 @@ def _validate_postgresql_schema(engine: Engine) -> None:
         if not idx_created_ok:
             missing.append("ix_image_reviews_created_at")
         missing.extend(missing_supervisor_tables)
+        if not study_plans_ok:
+            missing.append("study_plans")
+        if not study_plan_tasks_ok:
+            missing.append("study_plan_tasks")
         raise RuntimeError(
             "[SCHEMA VALIDATION] STATUS: INVALID - Missing: " + ", ".join(missing)
         )
@@ -1004,6 +1051,49 @@ def _upgrade_sqlite_schema(engine: Engine) -> None:
         _create_content_fingerprints_table(connection)
         _upgrade_discovery_candidates_table(connection)
         _create_image_reviews_table(connection)
+        # Study planner (Dream AI Mentor 2.0) tables.
+        connection.execute(text("""
+            CREATE TABLE IF NOT EXISTS study_plans (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id INTEGER NOT NULL REFERENCES users(id),
+                title VARCHAR(255) NOT NULL,
+                goal TEXT,
+                scholarship_id INTEGER REFERENCES scholarships(id),
+                status VARCHAR(16) NOT NULL DEFAULT 'active',
+                version INTEGER NOT NULL DEFAULT 1,
+                created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+            )
+        """))
+        connection.execute(text("CREATE INDEX IF NOT EXISTS ix_study_plans_user_updated ON study_plans (user_id, updated_at)"))
+        connection.execute(text("""
+            CREATE TABLE IF NOT EXISTS study_plan_tasks (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                plan_id INTEGER NOT NULL REFERENCES study_plans(id) ON DELETE CASCADE,
+                title VARCHAR(255) NOT NULL,
+                description TEXT,
+                priority VARCHAR(16) NOT NULL DEFAULT 'medium',
+                due_date DATE,
+                status VARCHAR(16) NOT NULL DEFAULT 'open',
+                related_scholarship_id INTEGER REFERENCES scholarships(id),
+                rationale TEXT,
+                position INTEGER NOT NULL DEFAULT 0,
+                version INTEGER NOT NULL DEFAULT 1,
+                completed_at DATETIME,
+                created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                CONSTRAINT uq_study_plan_tasks_plan_position UNIQUE (plan_id, position)
+            )
+        """))
+        connection.execute(text("CREATE INDEX IF NOT EXISTS ix_study_plan_tasks_plan_status ON study_plan_tasks (plan_id, status)"))
+        for _stmt in (
+            "ALTER TABLE study_plans ADD COLUMN version INTEGER NOT NULL DEFAULT 1",
+            "ALTER TABLE study_plan_tasks ADD COLUMN version INTEGER NOT NULL DEFAULT 1",
+        ):
+            try:
+                connection.execute(text(_stmt))
+            except Exception:
+                pass
         _create_supervisor_tables(connection)
         # Same audit instrumentation as PostgreSQL, so a local or test database
         # exercises the identical trigger semantics rather than a stub.

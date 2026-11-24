@@ -214,7 +214,7 @@ class TestReferenceIntegrity:
         assert report["integrity_uncertain"] is False
         assert report["unclassified_relationships"] == []
         assert report["verdict"] == "ALL_RELATIONSHIPS_CLASSIFIED"
-        assert report["relationship_count"] == 15
+        assert report["relationship_count"] == 17
 
     def test_the_report_is_introspected_not_hardcoded(self):
         """A table added later must appear, or it is invisible to the audit."""
@@ -249,6 +249,8 @@ class TestReferenceIntegrity:
             "ProfessorOutreachRecord",
             "OfficialContact",
             "ScholarshipEvidence",
+            "StudyPlan",
+            "StudyPlanTask",
         }
 
     @pytest.mark.parametrize(
