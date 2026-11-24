@@ -212,4 +212,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-'@ | Out-File -FilePath "C:\Users\GopaL\AppData\Local\Temp\kilo\pr107-worktree\.github\scripts\verify_preflight_provenance.py" -Encoding utf8; echo "written"
