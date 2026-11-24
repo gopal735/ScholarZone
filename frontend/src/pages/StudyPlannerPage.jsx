@@ -22,9 +22,12 @@ export default function StudyPlannerPage() {
   const [pending, setPending] = useState({ plans: false, tasks: {} })
   const requestIdRef = useRef(0)
 
-  const load = useCallback(async () => {
+  const [refreshing, setRefreshing] = useState(false)
+
+  const load = useCallback(async (initial = false) => {
     const thisRequest = ++requestIdRef.current
-    setStatus(PAGE_STATUS.LOADING)
+    if (initial) setStatus(PAGE_STATUS.LOADING)
+    else setRefreshing(true)
     try {
       const data = await fetchPlans()
       if (thisRequest !== requestIdRef.current) return
@@ -37,24 +40,31 @@ export default function StudyPlannerPage() {
         setStatus(PAGE_STATUS.UNAUTH)
         return
       }
-      setError(caught)
-      setStatus(PAGE_STATUS.ERROR)
+      if (initial) {
+        setError(caught)
+        setStatus(PAGE_STATUS.ERROR)
+      } else {
+        setError(caught)
+      }
+    } finally {
+      if (thisRequest === requestIdRef.current) setRefreshing(false)
     }
   }, [])
 
   useEffect(() => {
-    const id = setTimeout(() => { void load() }, 0)
+    const id = setTimeout(() => { void load(true) }, 0)
     return () => clearTimeout(id)
   }, [load])
 
   const handleCreatePlan = async (e) => {
     e.preventDefault()
     if (!newTitle.trim() || pending.plans) return
+    const submittedTitle = newTitle
     setPending((p) => ({ ...p, plans: true }))
     try {
       await createPlan({ title: newTitle.trim() })
-      setNewTitle('')
-      await load()
+      setNewTitle((current) => (current === submittedTitle ? '' : current))
+      await load(false)
     } catch (caught) { setError(caught) }
     finally { setPending((p) => ({ ...p, plans: false })) }
   }
@@ -62,18 +72,19 @@ export default function StudyPlannerPage() {
   const handleDeletePlan = async (id) => {
     if (pending.plans) return
     setPending((p) => ({ ...p, plans: true }))
-    try { await deletePlan(id); await load() } catch (caught) { setError(caught) }
+    try { await deletePlan(id); await load(false) } catch (caught) { setError(caught) }
     finally { setPending((p) => ({ ...p, plans: false })) }
   }
 
   const handleAddTask = async (planId) => {
     const title = (newTask[planId] || '').trim()
     if (!title || pending.tasks[planId]) return
+    const submittedTask = newTask[planId] || ''
     setPending((p) => ({ ...p, tasks: { ...p.tasks, [planId]: true } }))
     try {
       await addTask(planId, { title })
-      setNewTask((s) => ({ ...s, [planId]: '' }))
-      await load()
+      setNewTask((s) => ({ ...s, [planId]: (s[planId] === submittedTask ? '' : s[planId]) }))
+      await load(false)
     } catch (caught) { setError(caught) }
     finally { setPending((p) => ({ ...p, tasks: { ...p.tasks, [planId]: false } })) }
   }
@@ -81,10 +92,10 @@ export default function StudyPlannerPage() {
   const handleToggleTask = async (task) => {
     try {
       await updateTask(task.id, { status: task.status === 'completed' ? 'reopened' : 'completed', version: task.version })
-      await load()
+      await load(false)
     } catch (caught) {
       if (caught instanceof StudyPlanConflictError) {
-        await load()
+        await load(false)
         setError(caught)
         return
       }
@@ -93,16 +104,17 @@ export default function StudyPlannerPage() {
   }
 
   const handleDeleteTask = async (id) => {
-    try { await deleteTask(id); await load() } catch (caught) { setError(caught) }
+    try { await deleteTask(id); await load(false) } catch (caught) { setError(caught) }
   }
 
   if (status === PAGE_STATUS.LOADING) return <div className="sp-page"><p>Loading…</p></div>
   if (status === PAGE_STATUS.UNAUTH) return <div className="sp-page"><p>Please sign in to use the study planner.</p></div>
-  if (status === PAGE_STATUS.ERROR) return <div className="sp-page"><p>Error: {String(error)}</p><button onClick={load}>Retry</button></div>
+  if (status === PAGE_STATUS.ERROR) return <div className="sp-page"><p>Error: {String(error)}</p><button onClick={() => load(true)}>Retry</button></div>
 
   return (
     <div className="sp-page">
       <h1>Study Planner</h1>
+      {refreshing && <p role="status" aria-live="polite" className="sp-refreshing">Refreshing…</p>}
       <form onSubmit={handleCreatePlan} className="sp-create">
         <input aria-label="New plan title" value={newTitle} onChange={(e) => setNewTitle(e.target.value)} placeholder="New plan title" />
         <button type="submit">Create plan</button>
