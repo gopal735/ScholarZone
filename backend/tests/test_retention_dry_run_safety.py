@@ -336,7 +336,7 @@ class TestDryRunIssuesNoDestructiveStatement:
             "saved_scholarships", "application_records",
             "scholarship_supervisor_coverage", "scholarship_professor_links",
             "supervisor_source_evidence", "professor_outreach_records",
-            "official_contacts",
+            "official_contacts", "scholarship_evidence",
         }, sorted(tables_read)
 
     def test_bounded_statement_count(self, session, statements):

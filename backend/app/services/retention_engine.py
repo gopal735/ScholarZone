@@ -65,6 +65,7 @@ from ..models import (
     MaintenanceRun,
     SavedScholarship,
     Scholarship,
+    ScholarshipEvidence,
     ScholarshipFetchAttempt,
     ScholarshipRestoreRecord,
     ScholarshipReview,
@@ -281,6 +282,17 @@ REFERENCE_INTEGRITY: dict[str, dict[str, str]] = {
             "delete. Any record carrying an official contact is never a deletion candidate."
         ),
     },
+    "ScholarshipEvidence": {
+        "table": "scholarship_evidence",
+        "disposition": "PRESERVE",
+        "rationale": (
+            "Authoritative application-cycle evidence used to authorize permanent "
+            "deletion (Gate 6). Removing the scholarship would destroy the evidence, "
+            "and the foreign key refuses the parent delete (ON DELETE NO ACTION). "
+            "Any record carrying scholarship evidence is never an auto-deletion "
+            "candidate; permanent deletion archives it first via closed_deletion."
+        ),
+    },
 }
 
 #: Models whose mere presence blocks deletion, because their rows are the record's
@@ -318,6 +330,7 @@ DEPENDENT_MODELS: Mapping[str, type] = {
     "SupervisorSourceEvidence": SupervisorSourceEvidence,
     "ProfessorOutreachRecord": ProfessorOutreachRecord,
     "OfficialContact": OfficialContact,
+    "ScholarshipEvidence": ScholarshipEvidence,
 }
 
 
