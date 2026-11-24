@@ -154,9 +154,11 @@ class AIGateway:
         policy = effective_policy
 
         # Clamp caller output-token limit to the (possibly stricter) policy cap.
+        model_cap = model.max_output_tokens if model is not None and getattr(model, "max_output_tokens", None) is not None else effective_policy.max_output_tokens
         effective_max_tokens = min(
             getattr(request, "max_output_tokens", effective_policy.max_output_tokens),
             effective_policy.max_output_tokens,
+            model_cap,
         )
         effective_timeout = (
             request.timeout_seconds

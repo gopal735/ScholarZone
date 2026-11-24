@@ -42,7 +42,7 @@ class GatewayRequest:
     max_output_tokens: int = 400
     timeout_seconds: float | None = None
     model_override: str | None = None
-    cancel_event: Optional[threading.Event] = None
+    cancel_event: threading.Event | None = None
 
 
 @dataclass(frozen=True)

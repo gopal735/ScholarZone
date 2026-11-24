@@ -35,10 +35,35 @@ REQUIRED_STUDY_PLANNER_TABLES: frozenset[str] = frozenset(
 # alone is not sufficient: a partially migrated table must also be rejected.
 REQUIRED_STUDY_PLANNER_COLUMNS: dict[str, frozenset[str]] = {
     "study_plans": frozenset(
-        {"id", "user_id", "title", "status", "version"}
+        {
+            "id",
+            "user_id",
+            "title",
+            "goal",
+            "scholarship_id",
+            "status",
+            "version",
+            "created_at",
+            "updated_at",
+        }
     ),
     "study_plan_tasks": frozenset(
-        {"id", "plan_id", "title", "status", "version", "related_scholarship_id"}
+        {
+            "id",
+            "plan_id",
+            "title",
+            "description",
+            "priority",
+            "due_date",
+            "status",
+            "related_scholarship_id",
+            "rationale",
+            "position",
+            "version",
+            "completed_at",
+            "created_at",
+            "updated_at",
+        }
     ),
 }
 
