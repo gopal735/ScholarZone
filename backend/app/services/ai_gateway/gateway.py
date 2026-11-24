@@ -320,6 +320,107 @@ class AIGateway:
             latency_ms=elapsed_ms(started),
         )
 
+    def generate_stream(
+        self,
+        task_kind: str,
+        request: GatewayRequest,
+        *,
+        model_override: str | None = None,
+        validator=None,
+        cancel_event=None,
+    ):
+        started = __import__("time").perf_counter()
+        effective_model_override = model_override if model_override is not None else getattr(request, "model_override", None)
+        effective_cancel_event = cancel_event if cancel_event is not None else getattr(request, "cancel_event", None)
+
+        policy = self.get_policy(task_kind)
+        if policy is None:
+            from .routing import RoutingPolicy
+            policy = RoutingPolicy(task_kind=task_kind, required_capabilities=frozenset())
+
+        from .routing import RoutingPolicy, resolve_model
+
+        effective_required = policy.required_capabilities | set(getattr(request, "required_capabilities", frozenset()) or frozenset())
+        effective_policy = RoutingPolicy(
+            task_kind=policy.task_kind,
+            required_capabilities=frozenset(effective_required),
+            preferred_cost_tier=policy.preferred_cost_tier,
+            allow_fallback=policy.allow_fallback,
+            max_output_tokens=policy.max_output_tokens,
+            timeout_seconds=policy.timeout_seconds,
+        )
+        model = resolve_model(effective_policy, self._config.registry, model_override=effective_model_override)
+
+        model_cap = model.max_output_tokens if model is not None and getattr(model, "max_output_tokens", None) is not None else effective_policy.max_output_tokens
+        effective_max_tokens = min(
+            getattr(request, "max_output_tokens", effective_policy.max_output_tokens),
+            effective_policy.max_output_tokens,
+            model_cap,
+        )
+        effective_timeout = (
+            request.timeout_seconds
+            if getattr(request, "timeout_seconds", None) is not None
+            else effective_policy.timeout_seconds
+        )
+
+        if not self._config.enabled:
+            return
+            yield
+
+        with self._lock:
+            provider = self._provider
+
+        if model is None:
+            raise RuntimeError("unavailable")
+
+        if not model.supports(effective_required):
+            raise RuntimeError("capability_mismatch")
+
+        if effective_cancel_event is not None and effective_cancel_event.is_set():
+            raise RuntimeError("cancelled")
+
+        from dataclasses import replace as _replace
+        request = _replace(
+            request,
+            required_capabilities=frozenset(effective_required),
+            max_output_tokens=effective_max_tokens,
+            timeout_seconds=effective_timeout,
+            cancel_event=effective_cancel_event if effective_cancel_event is not None else request.cancel_event,
+        )
+
+        acquired = self._worker_semaphore.acquire(blocking=False)
+        if not acquired:
+            raise RuntimeError("worker_capacity_exhausted")
+        try:
+            gen = provider.generate_stream(request, model)
+            try:
+                for chunk in gen:
+                    if effective_cancel_event is not None and effective_cancel_event.is_set():
+                        try:
+                            gen.close()
+                        except Exception:
+                            pass
+                        raise RuntimeError("cancelled")
+                    if __import__("time").perf_counter() - started >= effective_timeout:
+                        try:
+                            gen.close()
+                        except Exception:
+                            pass
+                        raise RuntimeError("timeout")
+                    if chunk is None:
+                        continue
+                    yield chunk
+            finally:
+                try:
+                    gen.close()
+                except Exception:
+                    pass
+        finally:
+            self._worker_semaphore.release()
+
+    def stream(self, *args, **kwargs):
+        return self.generate_stream(*args, **kwargs)
+
     @property
     def pending_timed_out_workers(self) -> int:
         with self._lock:

@@ -445,7 +445,7 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
                 error VARCHAR(64),
                 created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
                 completed_at TIMESTAMPTZ,
-                CONSTRAINT uq_mentor_messages_request_id UNIQUE (request_id)
+                CONSTRAINT uq_mentor_messages_conv_role_request UNIQUE (conversation_id, role, request_id)
             )
         """))
         connection.execute(text("CREATE INDEX IF NOT EXISTS ix_mentor_messages_conversation_seq ON mentor_messages (conversation_id, sequence_number)"))
@@ -507,6 +507,10 @@ def _validate_postgresql_schema(engine: Engine) -> None:
     study_plans_ok = inspector.has_table("study_plans")
     study_plan_tasks_ok = inspector.has_table("study_plan_tasks")
 
+    # Dream AI Mentor 2.0 conversation persistence tables.
+    mentor_conversations_ok = inspector.has_table("mentor_conversations")
+    mentor_messages_ok = inspector.has_table("mentor_messages")
+
     logger.info("[SCHEMA VALIDATION] image_kind: %s", "OK" if image_kind_ok else "MISSING")
     logger.info("[SCHEMA VALIDATION] image_reviews: %s", "OK" if image_reviews_ok else "MISSING")
     logger.info("[SCHEMA VALIDATION] indexes: %s", "OK" if indexes_ok else "MISSING")
@@ -528,7 +532,7 @@ def _validate_postgresql_schema(engine: Engine) -> None:
             image_audit_ok, trigger_ok,
         )
 
-    if not (image_kind_ok and image_reviews_ok and indexes_ok and supervisor_tables_ok and study_plans_ok and study_plan_tasks_ok):
+    if not (image_kind_ok and image_reviews_ok and indexes_ok and supervisor_tables_ok and study_plans_ok and study_plan_tasks_ok and mentor_conversations_ok and mentor_messages_ok):
         missing = []
         if not image_kind_ok:
             missing.append("scholarships.image_kind")
@@ -543,6 +547,10 @@ def _validate_postgresql_schema(engine: Engine) -> None:
             missing.append("study_plans")
         if not study_plan_tasks_ok:
             missing.append("study_plan_tasks")
+        if not mentor_conversations_ok:
+            missing.append("mentor_conversations")
+        if not mentor_messages_ok:
+            missing.append("mentor_messages")
         raise RuntimeError(
             "[SCHEMA VALIDATION] STATUS: INVALID - Missing: " + ", ".join(missing)
         )
@@ -925,7 +933,7 @@ def _upgrade_sqlite_schema(engine: Engine) -> None:
                 error VARCHAR(64),
                 created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
                 completed_at DATETIME,
-                CONSTRAINT uq_mentor_messages_request_id UNIQUE (request_id)
+                CONSTRAINT uq_mentor_messages_conv_role_request UNIQUE (conversation_id, role, request_id)
             )
         """))
         connection.execute(text("CREATE INDEX IF NOT EXISTS ix_mentor_messages_conversation_seq ON mentor_messages (conversation_id, sequence_number)"))

@@ -22,6 +22,7 @@ from .providers import (
 )
 from .routing import RoutingPolicy, DEFAULT_POLICIES, resolve_model
 from .gateway import AIGateway, GatewayConfig
+from .factory import build_ai_gateway, get_ai_gateway
 
 __all__ = (
     "AIGateway",
@@ -42,4 +43,6 @@ __all__ = (
     "RoutingPolicy",
     "DEFAULT_POLICIES",
     "resolve_model",
+    "build_ai_gateway",
+    "get_ai_gateway",
 )

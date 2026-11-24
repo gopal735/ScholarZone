@@ -957,7 +957,7 @@ class MentorMessage(Base):
     __table_args__ = (
         Index("ix_mentor_messages_conversation_seq", "conversation_id", "sequence_number"),
         Index("ix_mentor_messages_user_created", "user_id", "created_at"),
-        UniqueConstraint("request_id", name="uq_mentor_messages_request_id"),
+        UniqueConstraint("conversation_id", "role", "request_id", name="uq_mentor_messages_conv_role_request"),
     )
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)

@@ -96,6 +96,16 @@ def list_messages(db: Session, user_id: int, conversation_id: int, limit: int = 
 
 
 def _next_sequence(db: Session, conversation_id: int) -> int:
+    # Atomic allocation: lock the conversation row (where supported) before
+    # computing MAX+1 to avoid duplicate sequence numbers under concurrency.
+    try:
+        db.execute(
+            select(MentorConversation)
+            .where(MentorConversation.id == conversation_id)
+            .with_for_update()
+        ).scalar_one_or_none()
+    except Exception:
+        pass
     stmt = select(func.coalesce(func.max(MentorMessage.sequence_number), 0)).where(
         MentorMessage.conversation_id == conversation_id
     )
@@ -116,9 +126,13 @@ def add_user_message(
     # idempotency: if request_id already exists, return existing
     if request_id:
         existing = db.execute(
-            select(MentorMessage).where(MentorMessage.request_id == request_id)
+            select(MentorMessage).where(
+                MentorMessage.conversation_id == conversation_id,
+                MentorMessage.role == "user",
+                MentorMessage.request_id == request_id,
+            )
         ).scalar_one_or_none()
-        if existing is not None and existing.conversation_id == conversation_id:
+        if existing is not None:
             return existing
     msg = MentorMessage(
         conversation_id=conversation_id,
@@ -152,11 +166,12 @@ def reserve_assistant_message(
     if request_id:
         existing = db.execute(
             select(MentorMessage).where(
-                MentorMessage.request_id == request_id,
+                MentorMessage.conversation_id == conversation_id,
                 MentorMessage.role == "assistant",
+                MentorMessage.request_id == request_id,
             )
         ).scalar_one_or_none()
-        if existing is not None and existing.conversation_id == conversation_id:
+        if existing is not None:
             return existing
     msg = MentorMessage(
         conversation_id=conversation_id,

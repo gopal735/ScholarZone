@@ -217,19 +217,37 @@ export async function fetchMentorConversationMessages(conversationId) {
 }
 
 export async function deleteMentorConversation(conversationId) {
-  const response = await fetch(`${apiBaseUrl}/mentor/conversations/${conversationId}`, {
-    method: 'DELETE',
-    credentials: 'include',
+  return request(`/mentor/conversations/${conversationId}`, { method: 'DELETE' })
+}
+
+export async function renameMentorConversation(conversationId, title) {
+  return request(`/mentor/conversations/${conversationId}`, {
+    method: 'PATCH',
+    body: JSON.stringify({ title }),
   })
-  if (!response.ok && response.status !== 204) {
-    throw new MentorApiError('Failed to delete conversation', response.status)
-  }
-  return null
+}
+
+export async function sendMentorMessage(conversationId, message, { signal } = {}) {
+  return raceAbort(request(`/mentor/conversations/${conversationId}/messages`, {
+    method: 'POST',
+    body: JSON.stringify({ message }),
+  }), signal)
+}
+
+export async function cancelMentorMessage(conversationId, messageId) {
+  return request(`/mentor/conversations/${conversationId}/messages/${messageId}/cancel`, { method: 'POST' })
+}
+
+export async function retryMentorMessage(conversationId, messageId) {
+  return request(`/mentor/conversations/${conversationId}/messages/${messageId}/retry`, { method: 'POST' })
 }
 
 /**
  * Stream a conversation message via SSE. Yields parsed event objects:
  * { event, data }
+ *
+ * Robustly handles arbitrary chunk boundaries, CRLF/LF, multiline data,
+ * UTF-8 boundaries, and final buffered events.
  */
 export async function* streamMentorConversationMessage(conversationId, message, { signal } = {}) {
   const response = await fetch(`${apiBaseUrl}/mentor/conversations/${conversationId}/messages/stream`, {
@@ -243,28 +261,74 @@ export async function* streamMentorConversationMessage(conversationId, message, 
     const text = await response.text()
     throw new MentorApiError(text || 'Stream failed', response.status)
   }
+  if (!response.body) {
+    throw new MentorApiError('No response body', response.status)
+  }
   const reader = response.body.getReader()
   const decoder = new TextDecoder('utf-8')
   let buffer = ''
-  while (true) {
-    const { done, value } = await reader.read()
-    if (done) break
-    buffer += decoder.decode(value, { stream: true })
-    const parts = buffer.split('\n\n')
-    buffer = parts.pop() || ''
-    for (const part of parts) {
-      if (!part.trim()) continue
-      let event = 'message'
-      let data = ''
-      for (const line of part.split('\n')) {
-        if (line.startsWith('event:')) event = line.slice(6).trim()
-        else if (line.startsWith('data:')) data += line.slice(5).trim()
+  let cancelled = false
+  const onAbort = () => { cancelled = true; try { reader.cancel() } catch { /* ignore */ } }
+  if (signal) {
+    if (signal.aborted) onAbort()
+    else signal.addEventListener('abort', onAbort, { once: true })
+  }
+  try {
+    while (true) {
+      if (cancelled) break
+      let readResult
+      try {
+        readResult = await reader.read()
+      } catch (e) {
+        if (cancelled) break
+        throw e
       }
-      let parsed = null
-      try { parsed = data ? JSON.parse(data) : null } catch { parsed = data }
-      yield { event, data: parsed }
+      const { done, value } = readResult
+      if (done) break
+      buffer += decoder.decode(value, { stream: true })
+      // Normalize CRLF to LF
+      buffer = buffer.replace(/\r\n/g, '\n').replace(/\r/g, '\n')
+      // Split on blank line (event boundary)
+      let idx
+      while ((idx = buffer.indexOf('\n\n')) !== -1) {
+        const raw = buffer.slice(0, idx)
+        buffer = buffer.slice(idx + 2)
+        const evt = parseSSEEvent(raw)
+        if (evt) yield evt
+      }
+    }
+    // Final buffered event
+    if (buffer.trim()) {
+      const tail = buffer.replace(/\r\n/g, '\n').replace(/\r/g, '\n')
+      const evt = parseSSEEvent(tail)
+      if (evt) yield evt
+    }
+  } finally {
+    try { reader.releaseLock() } catch { /* ignore */ }
+    if (signal) signal.removeEventListener('abort', onAbort)
+  }
+}
+
+function parseSSEEvent(raw) {
+  if (!raw.trim()) return null
+  const lines = raw.split('\n')
+  let event = 'message'
+  const dataLines = []
+  for (const line of lines) {
+    if (line.startsWith('event:')) {
+      event = line.slice(6).trim()
+    } else if (line.startsWith('data:')) {
+      dataLines.push(line.slice(5).replace(/^ /, ''))
+    } else if (line.startsWith(':')) {
+      // comment, ignore
     }
   }
+  const dataStr = dataLines.join('\n')
+  let parsed = null
+  if (dataStr) {
+    try { parsed = JSON.parse(dataStr) } catch { parsed = dataStr }
+  }
+  return { event, data: parsed }
 }
 export function askMentor(message, { signal, sessionScope, sessionId, sessionKey, scope, session, generation, sessionGeneration } = {}) {
   const resolvedScope = (sessionScope !== undefined ? sessionScope
