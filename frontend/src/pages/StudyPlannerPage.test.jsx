@@ -50,16 +50,19 @@ describe('StudyPlannerPage', () => {
     fireEvent.change(input, { target: { value: 'Task A' } })
     fireEvent.click(screen.getByRole('button', { name: /Add task/i }))
 
-    const refreshDeferred = deferred()
-    svc.fetchPlans.mockReturnValue(refreshDeferred.promise)
-    // trigger refresh via retry? Use a second add? Instead call load through retry button not present.
     // Reject the task request to create an error.
     addDeferred.reject(new Error('add failed'))
     await waitFor(() => expect(screen.getByText(/add failed/i)).toBeInTheDocument())
 
-    // A successful refresh should not clear the mutation error.
-    refreshDeferred.resolve([{ id: 1, title: 'Plan', tasks: [] }])
-    await waitFor(() => expect(screen.getByText('Plan')).toBeInTheDocument())
+    // Trigger a successful mutation so a refresh actually runs.
+    svc.createPlan.mockResolvedValue({ id: 2, title: 'New Plan' })
+    const refreshDeferred = deferred()
+    svc.fetchPlans.mockReturnValue(refreshDeferred.promise)
+    const titleInput = screen.getByLabelText(/New plan title/i)
+    fireEvent.change(titleInput, { target: { value: 'New Plan' } })
+    fireEvent.click(screen.getByRole('button', { name: /Create plan/i }))
+    refreshDeferred.resolve([{ id: 1, title: 'Plan', tasks: [] }, { id: 2, title: 'New Plan', tasks: [] }])
+    await waitFor(() => expect(screen.getByText('New Plan')).toBeInTheDocument())
     expect(screen.getByText(/add failed/i)).toBeInTheDocument()
   })
 

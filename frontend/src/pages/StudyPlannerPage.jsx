@@ -92,9 +92,24 @@ export default function StudyPlannerPage() {
 
   const handleDeletePlan = async (id) => {
     if (pending.plans) return
+    const plan = plans.find((p) => p.id === id)
+    const taskIds = (plan?.tasks || []).map((t) => t.id)
     const opKey = `delete-plan:${id}`
     setPending((p) => ({ ...p, plans: true }))
-    try { await deletePlan(id); clearMutationError(opKey); await load(false) } catch (caught) { setMutationError(opKey, caught) }
+    try {
+      await deletePlan(id)
+      setMutationErrors((prev) => {
+        const next = { ...prev }
+        delete next[opKey]
+        delete next[`add-task:${id}`]
+        for (const tid of taskIds) {
+          delete next[`toggle-task:${tid}`]
+          delete next[`delete-task:${tid}`]
+        }
+        return next
+      })
+      await load(false)
+    } catch (caught) { setMutationError(opKey, caught) }
     finally { setPending((p) => ({ ...p, plans: false })) }
   }
 
