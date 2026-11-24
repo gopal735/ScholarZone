@@ -197,7 +197,75 @@ export const clearMentorInFlight = clearInFlightAsk
 // Legacy compatibility shim (some callers/tests may reference inFlightAsk).
 export let inFlightAsk = null
 
-export function askMentor(message, { signal, sessionScope, sessionId, sessionKey, scope, session, generation, sessionGeneration } = {}) {
+// ---------------------------------------------------------------------------
+// Dream AI Mentor 2 conversation helpers
+// ---------------------------------------------------------------------------
+
+export async function fetchMentorConversations() {
+  return request('/mentor/conversations')
+}
+
+export async function createMentorConversation(title) {
+  return request('/mentor/conversations', {
+    method: 'POST',
+    body: JSON.stringify({ title }),
+  })
+}
+
+export async function fetchMentorConversationMessages(conversationId) {
+  return request(`/mentor/conversations/${conversationId}/messages`)
+}
+
+export async function deleteMentorConversation(conversationId) {
+  const response = await fetch(`${apiBaseUrl}/mentor/conversations/${conversationId}`, {
+    method: 'DELETE',
+    credentials: 'include',
+  })
+  if (!response.ok && response.status !== 204) {
+    throw new MentorApiError('Failed to delete conversation', response.status)
+  }
+  return null
+}
+
+/**
+ * Stream a conversation message via SSE. Yields parsed event objects:
+ * { event, data }
+ */
+export async function* streamMentorConversationMessage(conversationId, message, { signal } = {}) {
+  const response = await fetch(`${apiBaseUrl}/mentor/conversations/${conversationId}/messages/stream`, {
+    method: 'POST',
+    credentials: 'include',
+    headers: { 'Content-Type': 'application/json', Accept: 'text/event-stream' },
+    body: JSON.stringify({ message }),
+    signal,
+  })
+  if (!response.ok) {
+    const text = await response.text()
+    throw new MentorApiError(text || 'Stream failed', response.status)
+  }
+  const reader = response.body.getReader()
+  const decoder = new TextDecoder('utf-8')
+  let buffer = ''
+  while (true) {
+    const { done, value } = await reader.read()
+    if (done) break
+    buffer += decoder.decode(value, { stream: true })
+    const parts = buffer.split('\n\n')
+    buffer = parts.pop() || ''
+    for (const part of parts) {
+      if (!part.trim()) continue
+      let event = 'message'
+      let data = ''
+      for (const line of part.split('\n')) {
+        if (line.startsWith('event:')) event = line.slice(6).trim()
+        else if (line.startsWith('data:')) data += line.slice(5).trim()
+      }
+      let parsed = null
+      try { parsed = data ? JSON.parse(data) : null } catch { parsed = data }
+      yield { event, data: parsed }
+    }
+  }
+}
   const resolvedScope = (sessionScope !== undefined ? sessionScope
     : sessionId !== undefined ? sessionId
     : sessionKey !== undefined ? sessionKey
