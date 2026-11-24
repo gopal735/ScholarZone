@@ -107,41 +107,13 @@ jobs:
 
         env:
 
-          EVENT_REPOSITORY: ${{ github.repository }}
-
-          EVENT_ACTION: "closed"
-
-          EVENT_NUMBER: "107"
-
-          EVENT_MERGED: "true"
-
-          EVENT_BASE_REPOSITORY: "gopal735/ScholarZone"
-
-          EVENT_BASE_REF: "master"
-
-          EVENT_HEAD_REPOSITORY: "gopal735/ScholarZone"
-
-          EVENT_HEAD_REF: "feat/closed-scholarship-permanent-deletion"
-
-          EVENT_HEAD_SHA: "ce2e942a9c409e46cca02d602bd0d1480b523b00"
-
-          EVENT_MERGE_SHA: ${{ inputs.merge_commit_sha }}
-
-          EXPECTED_PR_NUMBER: "107"
-
           EXPECTED_REPOSITORY: "gopal735/ScholarZone"
-
-          EXPECTED_BASE_REPOSITORY: "gopal735/ScholarZone"
-
-          EXPECTED_BASE_REF: "master"
-
-          EXPECTED_HEAD_REPOSITORY: "gopal735/ScholarZone"
-
-          EXPECTED_HEAD_REF: "feat/closed-scholarship-permanent-deletion"
 
           GITHUB_API_URL: ${{ github.api_url }}
 
           GITHUB_TOKEN: ${{ github.token }}
+
+          EVENT_MERGE_SHA: ${{ inputs.merge_commit_sha }}
 
         run: python .github/scripts/verify_pr_merge_trigger.py
 
