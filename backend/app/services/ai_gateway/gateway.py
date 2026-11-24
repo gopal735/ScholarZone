@@ -225,6 +225,19 @@ class AIGateway:
                     except BaseException as exc:  # noqa: BLE001
                         outcome["exc"] = exc
                     finally:
+                        _late_result = outcome.get("result")
+                        if _late_result is not None and (
+                            getattr(_late_result, "prompt_tokens", None) is not None
+                            or getattr(_late_result, "completion_tokens", None) is not None
+                        ):
+                            with self._lock:
+                                self._usage.append({
+                                    "task_kind": task_kind,
+                                    "model": model.id,
+                                    "provider": provider.name,
+                                    "prompt_tokens": _late_result.prompt_tokens,
+                                    "completion_tokens": _late_result.completion_tokens,
+                                })
                         self._worker_semaphore.release()
 
                 acquired = self._worker_semaphore.acquire(blocking=False)
@@ -251,6 +264,7 @@ class AIGateway:
                     if request.cancel_event is not None:
                         request.cancel_event.set()
                     with self._lock:
+                        self._timed_out_workers = {w for w in self._timed_out_workers if w.is_alive()}
                         self._timed_out_workers.add(worker)
                     return ProviderResult(
                         mode="configured",
@@ -263,17 +277,6 @@ class AIGateway:
                 if "exc" in outcome:
                     raise outcome["exc"]
                 result = outcome["result"]
-                # Record usage for every completed provider attempt with token
-                # counts, including failed/malformed responses.
-                if getattr(result, "prompt_tokens", None) is not None or getattr(result, "completion_tokens", None) is not None:
-                    with self._lock:
-                        self._usage.append({
-                            "task_kind": task_kind,
-                            "model": model.id,
-                            "provider": provider.name,
-                            "prompt_tokens": result.prompt_tokens,
-                            "completion_tokens": result.completion_tokens,
-                        })
                 if result.failure:
                     last_failure = result.failure
                     if attempt < MAX_RETRIES:
