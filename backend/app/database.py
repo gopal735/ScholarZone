@@ -415,6 +415,42 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
         connection.execute(text("ALTER TABLE study_plan_tasks ADD COLUMN IF NOT EXISTS version INTEGER NOT NULL DEFAULT 1"))
         connection.execute(text("CREATE INDEX IF NOT EXISTS ix_study_plan_tasks_plan_status ON study_plan_tasks (plan_id, status)"))
 
+        # Dream AI Mentor 2.0 conversation persistence tables.
+        connection.execute(text("""
+            CREATE TABLE IF NOT EXISTS mentor_conversations (
+                id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+                user_id INTEGER NOT NULL REFERENCES users(id),
+                title VARCHAR(255) NOT NULL DEFAULT 'New conversation',
+                status VARCHAR(16) NOT NULL DEFAULT 'active',
+                created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+                updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+                last_message_at TIMESTAMPTZ
+            )
+        """))
+        connection.execute(text("CREATE INDEX IF NOT EXISTS ix_mentor_conversations_user_updated ON mentor_conversations (user_id, updated_at)"))
+        connection.execute(text("""
+            CREATE TABLE IF NOT EXISTS mentor_messages (
+                id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+                conversation_id INTEGER NOT NULL REFERENCES mentor_conversations(id) ON DELETE CASCADE,
+                user_id INTEGER NOT NULL REFERENCES users(id),
+                role VARCHAR(16) NOT NULL,
+                content TEXT NOT NULL DEFAULT '',
+                status VARCHAR(16) NOT NULL DEFAULT 'pending',
+                sequence_number INTEGER NOT NULL DEFAULT 0,
+                request_id VARCHAR(64),
+                provider VARCHAR(64),
+                model VARCHAR(128),
+                prompt_tokens INTEGER,
+                completion_tokens INTEGER,
+                error VARCHAR(64),
+                created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+                completed_at TIMESTAMPTZ,
+                CONSTRAINT uq_mentor_messages_request_id UNIQUE (request_id)
+            )
+        """))
+        connection.execute(text("CREATE INDEX IF NOT EXISTS ix_mentor_messages_conversation_seq ON mentor_messages (conversation_id, sequence_number)"))
+        connection.execute(text("CREATE INDEX IF NOT EXISTS ix_mentor_messages_user_created ON mentor_messages (user_id, created_at)"))
+
         # Durable, database-level attribution for image mutations. The image
         # regression on scholarships 14/130/554 reverted with no history row
         # and no recorded maintenance run, which left no trace of the writer.
@@ -859,6 +895,41 @@ def _upgrade_sqlite_schema(engine: Engine) -> None:
             )
         """))
         connection.execute(text("CREATE INDEX IF NOT EXISTS ix_study_plan_tasks_plan_status ON study_plan_tasks (plan_id, status)"))
+        # Dream AI Mentor 2.0 conversation persistence tables.
+        connection.execute(text("""
+            CREATE TABLE IF NOT EXISTS mentor_conversations (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id INTEGER NOT NULL REFERENCES users(id),
+                title VARCHAR(255) NOT NULL DEFAULT 'New conversation',
+                status VARCHAR(16) NOT NULL DEFAULT 'active',
+                created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                last_message_at DATETIME
+            )
+        """))
+        connection.execute(text("CREATE INDEX IF NOT EXISTS ix_mentor_conversations_user_updated ON mentor_conversations (user_id, updated_at)"))
+        connection.execute(text("""
+            CREATE TABLE IF NOT EXISTS mentor_messages (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                conversation_id INTEGER NOT NULL REFERENCES mentor_conversations(id) ON DELETE CASCADE,
+                user_id INTEGER NOT NULL REFERENCES users(id),
+                role VARCHAR(16) NOT NULL,
+                content TEXT NOT NULL DEFAULT '',
+                status VARCHAR(16) NOT NULL DEFAULT 'pending',
+                sequence_number INTEGER NOT NULL DEFAULT 0,
+                request_id VARCHAR(64),
+                provider VARCHAR(64),
+                model VARCHAR(128),
+                prompt_tokens INTEGER,
+                completion_tokens INTEGER,
+                error VARCHAR(64),
+                created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                completed_at DATETIME,
+                CONSTRAINT uq_mentor_messages_request_id UNIQUE (request_id)
+            )
+        """))
+        connection.execute(text("CREATE INDEX IF NOT EXISTS ix_mentor_messages_conversation_seq ON mentor_messages (conversation_id, sequence_number)"))
+        connection.execute(text("CREATE INDEX IF NOT EXISTS ix_mentor_messages_user_created ON mentor_messages (user_id, created_at)"))
         for _stmt in (
             "ALTER TABLE study_plans ADD COLUMN version INTEGER NOT NULL DEFAULT 1",
             "ALTER TABLE study_plan_tasks ADD COLUMN version INTEGER NOT NULL DEFAULT 1",

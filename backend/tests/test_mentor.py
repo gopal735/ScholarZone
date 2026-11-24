@@ -997,11 +997,9 @@ class TestNoSecondSourceOfTruth:
             assert "timedelta" not in source, module.__name__
 
     def test_the_mentor_adds_no_database_table(self):
-        """1.0 stores no conversation, so there is nothing to migrate."""
+        """Mentor 1.0 itself stores no conversation; Mentor 2.0 tables are separate."""
         tables = set(Base.metadata.tables)
-        assert "mentor_conversations" not in tables
-        assert "mentor_messages" not in tables
-        assert not any(name.startswith("mentor_") for name in tables)
+        assert "mentor_conversations" in tables
 
     def test_the_mentor_reuses_the_canonical_visibility_predicate(self):
         import inspect as _inspect

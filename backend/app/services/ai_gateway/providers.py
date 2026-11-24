@@ -132,3 +132,124 @@ def sanitise_provider_error(exc: BaseException) -> str:
 
 def elapsed_ms(started: float) -> int:
     return int((time.perf_counter() - started) * 1000)
+
+
+class OpenAICompatibleProvider:
+    """A genuine OpenAI-compatible chat-completions provider adapter.
+
+    Uses only server-side configuration. Never exposes credentials.
+    """
+
+    name = "openai_compatible"
+
+    def __init__(
+        self,
+        api_key: str,
+        base_url: str = "https://api.openai.com/v1",
+        default_model: str | None = None,
+        timeout_seconds: float = 30.0,
+    ) -> None:
+        self._api_key = (api_key or "").strip()
+        self._base_url = (base_url or "").rstrip("/")
+        self._default_model = default_model
+        self._timeout = float(timeout_seconds)
+
+    def _model_id(self, model) -> str:
+        if getattr(model, "id", None):
+            return str(model.id)
+        if self._default_model:
+            return self._default_model
+        return "gpt-4o-mini"
+
+    def _messages(self, request: GatewayRequest) -> list[dict]:
+        messages = [{"role": "system", "content": request.system_instruction}]
+        for block in getattr(request, "context_blocks", ()) or ():
+            messages.append({"role": "user", "content": str(block)})
+        messages.append({"role": "user", "content": request.question})
+        return messages
+
+    def generate(self, request: GatewayRequest, model: ModelSpec) -> ProviderResult:
+        import time as _t
+        started = _t.perf_counter()
+        model_id = self._model_id(model)
+        payload = {
+            "model": model_id,
+            "messages": self._messages(request),
+            "max_tokens": getattr(request, "max_output_tokens", 400) or 400,
+        }
+        headers = {"Authorization": f"Bearer {self._api_key}", "Content-Type": "application/json"}
+        url = f"{self._base_url}/chat/completions"
+        try:
+            import httpx
+
+            with httpx.Client(timeout=self._timeout) as client:
+                resp = client.post(url, json=payload, headers=headers)
+            if resp.status_code == 401 or resp.status_code == 403:
+                return ProviderResult(mode=PROVIDER_MODE_CONFIGURED, used=False, failure=FAILURE_UNAVAILABLE if False else "unauthorized", latency_ms=elapsed_ms(started), model=model_id, provider=self.name)
+            if resp.status_code == 429:
+                return ProviderResult(mode=PROVIDER_MODE_CONFIGURED, used=False, failure="rate_limited", latency_ms=elapsed_ms(started), model=model_id, provider=self.name)
+            if resp.status_code >= 400:
+                return ProviderResult(mode=PROVIDER_MODE_CONFIGURED, used=False, failure="unavailable", latency_ms=elapsed_ms(started), model=model_id, provider=self.name)
+            data = resp.json()
+            choices = data.get("choices") or []
+            text = None
+            if choices:
+                text = (choices[0].get("message") or {}).get("content")
+            usage = data.get("usage") or {}
+            return ProviderResult(
+                mode=PROVIDER_MODE_CONFIGURED,
+                used=text is not None,
+                text=text,
+                failure=None if text is not None else "malformed_response",
+                latency_ms=elapsed_ms(started),
+                model=model_id,
+                provider=self.name,
+                prompt_tokens=usage.get("prompt_tokens"),
+                completion_tokens=usage.get("completion_tokens"),
+            )
+        except Exception as exc:  # noqa: BLE001
+            category = sanitise_provider_error(exc)
+            return ProviderResult(mode=PROVIDER_MODE_CONFIGURED, used=False, failure=category, latency_ms=elapsed_ms(started), model=model_id, provider=self.name)
+
+    def generate_stream(self, request: GatewayRequest, model: ModelSpec):
+        """Yield text chunks. Returns empty on failure."""
+        model_id = self._model_id(model)
+        payload = {
+            "model": model_id,
+            "messages": self._messages(request),
+            "max_tokens": getattr(request, "max_output_tokens", 400) or 400,
+            "stream": True,
+        }
+        headers = {"Authorization": f"Bearer {self._api_key}", "Content-Type": "application/json"}
+        url = f"{self._base_url}/chat/completions"
+        try:
+            import httpx, json as _json
+
+            with httpx.Client(timeout=self._timeout) as client:
+                with client.stream("POST", url, json=payload, headers=headers) as resp:
+                    if resp.status_code >= 400:
+                        return
+                    for line in resp.iter_lines():
+                        if not line:
+                            continue
+                        if not line.startswith("data:"):
+                            continue
+                        data_str = line[len("data:"):].strip()
+                        if data_str == "[DONE]":
+                            break
+                        try:
+                            obj = _json.loads(data_str)
+                        except Exception:
+                            continue
+                        choices = obj.get("choices") or []
+                        if not choices:
+                            continue
+                        delta = (choices[0].get("delta") or {}).get("content")
+                        if delta:
+                            yield delta
+        except Exception:
+            return
+
+    def health(self) -> ProviderHealth:
+        # Lightweight: report configured. Avoid network calls by default.
+        return ProviderHealth(provider=self.name, available=bool(self._api_key))

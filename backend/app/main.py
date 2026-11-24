@@ -26,6 +26,7 @@ from .routers.auth import router as auth_router
 from .routers.dashboard import router as dashboard_router
 from .routers.applications import router as applications_router
 from .routers.mentor import router as mentor_router
+from .routers.mentor_conversations import router as mentor_conversations_router
 from .routers.study_planner import router as study_planner_router
 from .routers.supervisors import router as supervisors_router
 from .routers.outreach import router as outreach_router
@@ -124,7 +125,7 @@ def _run_init() -> None:
 
                 inspector = _sa_inspect(conn)
                 tables = set(inspector.get_table_names())
-                required_tables = {"study_plans", "study_plan_tasks"}
+                required_tables = {"study_plans", "study_plan_tasks", "mentor_conversations", "mentor_messages"}
                 if not required_tables.issubset(tables):
                     raise RuntimeError(
                         "study planner schema not ready: missing tables "
@@ -396,6 +397,7 @@ app.include_router(applications_router)
 # dependent on scan order, which is the same discipline the match router uses
 # for /scholarships/match.
 app.include_router(mentor_router)
+app.include_router(mentor_conversations_router)
 app.include_router(study_planner_router)
 # Supervisor outreach and email drafting sit behind the same session dependency
 # as the dashboard and workspace. Their prefixes are /outreach and
