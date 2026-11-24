@@ -165,3 +165,109 @@ def test_unconfirmed_tool_does_not_consume_quota():
     except PermissionError:
         pass
     assert task.tool_calls_used == before
+
+
+def test_result_setter_rejected_after_completed():
+    orch = Orchestrator()
+    task = orch.create_task(user_id=1, task_type="research", allowed_tools=set())
+    task.transition(TaskState.PLANNING)
+    task.transition(TaskState.RUNNING)
+    task.transition(TaskState.VALIDATING)
+    assert task.commit_completion({"final": True}) is True
+    try:
+        task.result = {"replacement": True}
+        assert False, "should raise"
+    except RuntimeError:
+        pass
+    assert task.result == {"final": True}
+
+
+def test_result_setter_rejected_after_failed():
+    orch = Orchestrator()
+    task = orch.create_task(user_id=1, task_type="research", allowed_tools=set())
+    task.transition(TaskState.PLANNING)
+    task.transition(TaskState.RUNNING)
+    task.transition(TaskState.FAILED)
+    try:
+        task.result = {"replacement": True}
+        assert False, "should raise"
+    except RuntimeError:
+        pass
+
+
+def test_result_setter_rejected_after_cancelled():
+    orch = Orchestrator()
+    task = orch.create_task(user_id=1, task_type="research", allowed_tools=set())
+    task.cancel()
+    try:
+        task.result = {"replacement": True}
+        assert False, "should raise"
+    except RuntimeError:
+        pass
+
+
+def test_result_setter_rejected_clear_after_terminal():
+    orch = Orchestrator()
+    task = orch.create_task(user_id=1, task_type="research", allowed_tools=set())
+    task.transition(TaskState.PLANNING)
+    task.transition(TaskState.RUNNING)
+    task.transition(TaskState.VALIDATING)
+    assert task.commit_completion({"final": True}) is True
+    try:
+        task.result = None
+        assert False, "should raise"
+    except RuntimeError:
+        pass
+    assert task.result == {"final": True}
+
+
+def test_result_setter_invalid_does_not_overwrite():
+    orch = Orchestrator()
+    task = orch.create_task(user_id=1, task_type="research", allowed_tools=set())
+    task.result = {"kept": True}
+    try:
+        task.result = object()
+        assert False, "should raise"
+    except (TypeError, ValueError):
+        pass
+    assert task.result == {"kept": True}
+
+
+import threading
+
+
+def test_concurrent_completion_exactly_one_wins():
+    orch = Orchestrator()
+    task = orch.create_task(user_id=1, task_type="research", allowed_tools=set())
+    task.transition(TaskState.PLANNING)
+    task.transition(TaskState.RUNNING)
+    task.transition(TaskState.VALIDATING)
+
+    barrier = threading.Barrier(2)
+    results = []
+
+    def worker(value):
+        barrier.wait()
+        results.append(task.commit_completion({value: True}))
+
+    t1 = threading.Thread(target=worker, args=("a",))
+    t2 = threading.Thread(target=worker, args=("b",))
+    t1.start()
+    t2.start()
+    t1.join(timeout=5)
+    t2.join(timeout=5)
+    assert results.count(True) == 1
+    assert results.count(False) == 1
+    assert task.state == TaskState.COMPLETED
+
+
+def test_cancellation_before_completion_wins():
+    orch = Orchestrator()
+    task = orch.create_task(user_id=1, task_type="research", allowed_tools=set())
+    task.transition(TaskState.PLANNING)
+    task.transition(TaskState.RUNNING)
+    task.transition(TaskState.VALIDATING)
+    task.cancel()
+    assert task.commit_completion({"final": True}) is False
+    assert task.state == TaskState.CANCELLED
+    assert task.result is None

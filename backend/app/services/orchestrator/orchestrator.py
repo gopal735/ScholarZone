@@ -87,17 +87,21 @@ class TaskExecution:
 
     @property
     def result(self) -> Any:
-        stored = self._result
+        with self._lock:
+            stored = self._result
         if stored is None:
             return None
         return _detach_result(stored, self.budget.max_context_chars)
 
     @result.setter
     def result(self, value: Any) -> None:
-        if value is None:
-            self._result = None
-            return
-        self._result = _detach_result(value, self.budget.max_context_chars)
+        with self._lock:
+            if self.state in TERMINAL_STATES:
+                raise RuntimeError("task_terminal" if self.state != TaskState.CANCELLED else "cancelled")
+            if value is None:
+                self._result = None
+                return
+            self._result = _detach_result(value, self.budget.max_context_chars)
 
     @property
     def elapsed_seconds(self) -> float:

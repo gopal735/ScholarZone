@@ -18,6 +18,19 @@ export default function StudyPlannerPage() {
   const [plans, setPlans] = useState([])
   const [error, setError] = useState(null)
   const [refreshError, setRefreshError] = useState(null)
+  const [mutationErrors, setMutationErrors] = useState({})
+
+  const setMutationError = useCallback((key, err) => {
+    setMutationErrors((prev) => ({ ...prev, [key]: err }))
+  }, [])
+  const clearMutationError = useCallback((key) => {
+    setMutationErrors((prev) => {
+      if (!(key in prev)) return prev
+      const next = { ...prev }
+      delete next[key]
+      return next
+    })
+  }, [])
   const [newTitle, setNewTitle] = useState('')
   const [newTask, setNewTask] = useState({})
   const [pending, setPending] = useState({ plans: false, tasks: {} })
@@ -35,6 +48,7 @@ export default function StudyPlannerPage() {
       setPlans(data)
       if (initial) {
         setError(null)
+        setMutationErrors({})
         setStatus(PAGE_STATUS.READY)
       } else {
         setRefreshError(null)
@@ -65,20 +79,22 @@ export default function StudyPlannerPage() {
     e.preventDefault()
     if (!newTitle.trim() || pending.plans) return
     const submittedTitle = newTitle
+    const opKey = 'create-plan'
     setPending((p) => ({ ...p, plans: true }))
     try {
       await createPlan({ title: newTitle.trim() })
-      setError(null)
+      clearMutationError(opKey)
       setNewTitle((current) => (current === submittedTitle ? '' : current))
       await load(false)
-    } catch (caught) { setError(caught) }
+    } catch (caught) { setMutationError(opKey, caught) }
     finally { setPending((p) => ({ ...p, plans: false })) }
   }
 
   const handleDeletePlan = async (id) => {
     if (pending.plans) return
+    const opKey = `delete-plan:${id}`
     setPending((p) => ({ ...p, plans: true }))
-    try { await deletePlan(id); setError(null); await load(false) } catch (caught) { setError(caught) }
+    try { await deletePlan(id); clearMutationError(opKey); await load(false) } catch (caught) { setMutationError(opKey, caught) }
     finally { setPending((p) => ({ ...p, plans: false })) }
   }
 
@@ -86,33 +102,36 @@ export default function StudyPlannerPage() {
     const title = (newTask[planId] || '').trim()
     if (!title || pending.tasks[planId]) return
     const submittedTask = newTask[planId] || ''
+    const opKey = `add-task:${planId}`
     setPending((p) => ({ ...p, tasks: { ...p.tasks, [planId]: true } }))
     try {
       await addTask(planId, { title })
-      setError(null)
+      clearMutationError(opKey)
       setNewTask((s) => ({ ...s, [planId]: (s[planId] === submittedTask ? '' : s[planId]) }))
       await load(false)
-    } catch (caught) { setError(caught) }
+    } catch (caught) { setMutationError(opKey, caught) }
     finally { setPending((p) => ({ ...p, tasks: { ...p.tasks, [planId]: false } })) }
   }
 
   const handleToggleTask = async (task) => {
+    const opKey = `toggle-task:${task.id}`
     try {
       await updateTask(task.id, { status: task.status === 'completed' ? 'reopened' : 'completed', version: task.version })
-      setError(null)
+      clearMutationError(opKey)
       await load(false)
     } catch (caught) {
       if (caught instanceof StudyPlanConflictError) {
         await load(false)
-        setError(caught)
+        setMutationError(opKey, caught)
         return
       }
-      setError(caught)
+      setMutationError(opKey, caught)
     }
   }
 
   const handleDeleteTask = async (id) => {
-    try { await deleteTask(id); setError(null); await load(false) } catch (caught) { setError(caught) }
+    const opKey = `delete-task:${id}`
+    try { await deleteTask(id); clearMutationError(opKey); await load(false) } catch (caught) { setMutationError(opKey, caught) }
   }
 
   if (status === PAGE_STATUS.LOADING) return <div className="sp-page"><p>Loading…</p></div>
@@ -127,7 +146,9 @@ export default function StudyPlannerPage() {
         <input aria-label="New plan title" value={newTitle} onChange={(e) => setNewTitle(e.target.value)} placeholder="New plan title" />
         <button type="submit">Create plan</button>
       </form>
-      {error && <p className="sp-error">{String(error)}</p>}
+      {Object.entries(mutationErrors).map(([key, err]) => (
+        <p key={key} className="sp-error" role="alert">{String(err)}</p>
+      ))}
       {refreshError && <div className="sp-refresh-error"><p>{String(refreshError)}</p><button onClick={() => load(false)}>Retry refresh</button></div>}
       {plans.length === 0 && <p>No plans yet.</p>}
       {plans.map((plan) => (
