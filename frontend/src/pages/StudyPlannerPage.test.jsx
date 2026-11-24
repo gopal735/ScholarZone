@@ -79,6 +79,8 @@ describe('StudyPlannerPage', () => {
     // edit draft while pending
     fireEvent.change(input, { target: { value: 'Task B' } })
     addDeferred.resolve({ id: 2, title: 'Task A' })
-    await waitFor(() => expect(input.value).toBe('Task B'))
+    await waitFor(() => expect(screen.getByText('Plan')).toBeInTheDocument())
+    const updatedInput = screen.getByLabelText(/New task for Plan/i)
+    expect(updatedInput.value).toBe('Task B')
   })
 })
