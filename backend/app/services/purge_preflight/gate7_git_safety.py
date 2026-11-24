@@ -1,4 +1,4 @@
-"""
+﻿"""
 Gate 7: Git Safety Verification
 
 Verifies:
@@ -454,11 +454,13 @@ _PR107_ALLOWED_FILES = frozenset({
     "backend/migrations/20261122_purge_execution_ledger.sql",
     "backend/migrations/20261123_purge_hardening.sql",
     "backend/migrations/20261124_scholarship_evidence.sql",
+    "backend/migrations/20261124_scholarship_evidence_archive.sql",
     "backend/requirements.txt",
     "backend/scripts/closed_deletion_cli.py",
     "backend/scripts/init_gate2_test_db.py",
     "backend/tests/test_closed_deletion_postgresql.py",
     "backend/tests/test_closed_deletion_remediation.py",
+    "backend/tests/test_scholarship_evidence_retention.py",
     "backend/tests/test_purge_preflight.py",
     "backend/tests/test_purge_workflow_structure.py",
     "backend/tests/test_trigger_semantic_identity.py",

@@ -1,4 +1,4 @@
-"""Persistent scholarship data model."""
+﻿"""Persistent scholarship data model."""
 
 from datetime import date, datetime
 
@@ -943,7 +943,13 @@ class ScholarshipEvidence(Base):
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     scholarship_id: Mapped[int] = mapped_column(
-        Integer, ForeignKey("scholarships.id", ondelete="CASCADE"), nullable=False
+        Integer,
+        ForeignKey(
+            "scholarships.id",
+            ondelete="NO ACTION",
+            name="fk_scholarship_evidence_scholarship_id",
+        ),
+        nullable=False,
     )
     application_cycle: Mapped[str] = mapped_column(String(128), nullable=False)
     official_domain: Mapped[str] = mapped_column(String(255), nullable=False)
@@ -962,4 +968,55 @@ class ScholarshipEvidence(Base):
     )
     updated_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), nullable=False, server_default=func.now(), onupdate=func.now()
+    )
+
+
+class ScholarshipEvidenceArchive(Base):
+    """Immutable archive of scholarship_evidence rows removed by permanent
+    scholarship deletion (ScholarZone PR #107, P0: Gate 6 evidence retention).
+
+    Each row is a byte-exact copy of a ScholarshipEvidence row that was
+    archived and the live row deleted during the permanent-deletion
+    transaction. The table deliberately has no foreign key to scholarships:
+    the original scholarship identity is stored as data, so retention never
+    blocks and never conflicts with the deletion it preserves.
+
+    original_evidence_id is the primary key of the original evidence row;
+    the unique constraint plus ON CONFLICT DO NOTHING/UPDATE in the deletion
+    flow make retention idempotent across retries.
+    """
+
+    __tablename__ = "scholarship_evidence_archive"
+    __table_args__ = (
+        UniqueConstraint("original_evidence_id", name="uq_scholarship_evidence_archive_original_id"),
+        Index("ix_scholarship_evidence_archive_original_scholarship_id", "original_scholarship_id"),
+        Index("ix_scholarship_evidence_archive_content_hash", "content_hash"),
+    )
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    original_evidence_id: Mapped[int] = mapped_column(Integer, nullable=False)
+    original_scholarship_id: Mapped[int] = mapped_column(Integer, nullable=False)
+    scholarship_legacy_id: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    application_cycle: Mapped[str] = mapped_column(String(128), nullable=False)
+    official_domain: Mapped[str] = mapped_column(String(255), nullable=False)
+    official_url: Mapped[str] = mapped_column(String(2048), nullable=False)
+    source_title: Mapped[str] = mapped_column(String(512), nullable=False)
+    deadline: Mapped[date | None] = mapped_column(Date, nullable=True)
+    deadline_precision: Mapped[str] = mapped_column(String(32), nullable=False, default="day")
+    supporting_excerpt: Mapped[str] = mapped_column(Text, nullable=False)
+    excerpt_hash: Mapped[str] = mapped_column(String(64), nullable=False)
+    retrieval_date: Mapped[date] = mapped_column(Date, nullable=False)
+    reviewer: Mapped[str] = mapped_column(String(120), nullable=False)
+    decision: Mapped[str] = mapped_column(String(64), nullable=False)
+    provenance: Mapped[str | None] = mapped_column(Text, nullable=True)
+    content_hash: Mapped[str] = mapped_column(String(64), nullable=False)
+    archive_execution_id: Mapped[str | None] = mapped_column(String(128), nullable=True)
+    preserved_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=func.now()
+    )
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=func.now()
+    )
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=func.now()
     )

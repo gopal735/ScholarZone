@@ -1,4 +1,4 @@
-"""Closed scholarship permanent deletion service.
+﻿"""Closed scholarship permanent deletion service.
 
 
 
@@ -38,6 +38,7 @@ from typing import List, Optional
 
 
 from sqlalchemy import delete, select, func, or_, text
+from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.orm import Session
 
 
@@ -65,6 +66,10 @@ from ..models import (
     ApplicationRecord,
 
     DeletedClosedScholarship,
+
+    ScholarshipEvidence,
+
+    ScholarshipEvidenceArchive,
 
 )
 
@@ -133,6 +138,7 @@ def _dependency_fingerprint_data(db: Session, scholarship_id: int) -> dict:
                 (ScholarshipProfessorLink, "scholarship_id"),
                 (ScholarshipSupervisorCoverage, "scholarship_id"),
                 (OfficialContact, "scholarship_id"),
+                (ScholarshipEvidence, "scholarship_id"),
             )
         },
         "source_evidence": sorted(
@@ -164,6 +170,7 @@ def _lock_dependents(db: Session, scholarship_id: int) -> None:
         DiscoveryCandidate, ScholarshipVerificationHistory, ScholarshipReview,
         ScholarshipFetchAttempt, ScholarshipSnapshot, ScholarshipRestoreRecord,
         ImageReview, ScholarshipSupervisorCoverage, OfficialContact,
+        ScholarshipEvidence,
     ]
     for model in models:
         col = DiscoveryCandidate.matched_scholarship_id if model is DiscoveryCandidate else model.scholarship_id
@@ -196,6 +203,8 @@ def _unknown_fks_after_lock(db: Session) -> list[dict]:
             "official_contacts", "scholarship_snapshots", "scholarship_fetch_attempts",
             "scholarship_verification_history", "scholarship_reviews", "image_reviews",
             "scholarship_restore_records",
+            "scholarship_evidence",
+            "scholarship_evidence_archive",
         )
     }
     return [dict(r) for r in rows if (r["schema_name"], r["table_name"]) not in known]
@@ -204,6 +213,125 @@ def _unknown_fks_after_lock(db: Session) -> list[dict]:
 
 
 
+
+
+def _evidence_content_hash(row) -> str:
+    import json as _json
+    payload = {
+        "application_cycle": row.application_cycle,
+        "official_domain": row.official_domain,
+        "official_url": row.official_url,
+        "source_title": row.source_title,
+        "deadline": row.deadline.isoformat() if row.deadline else None,
+        "deadline_precision": row.deadline_precision,
+        "supporting_excerpt": row.supporting_excerpt,
+        "excerpt_hash": row.excerpt_hash,
+        "retrieval_date": row.retrieval_date.isoformat(),
+        "reviewer": row.reviewer,
+        "decision": row.decision,
+        "provenance": row.provenance,
+    }
+    return hashlib.sha256(
+        _json.dumps(payload, sort_keys=True, separators=(",", ":"), default=str).encode("utf-8")
+    ).hexdigest()
+
+
+def _gate6_evidence_rows(db: Session, scholarship_id: int):
+    return list(
+        db.execute(
+            select(ScholarshipEvidence)
+            .where(ScholarshipEvidence.scholarship_id == scholarship_id)
+            .with_for_update()
+        ).scalars()
+    )
+
+
+def _archive_gate6_evidence(db: Session, scholarship_id: int, execution_id: Optional[str] = None) -> int:
+    rows = _gate6_evidence_rows(db, scholarship_id)
+    if not rows:
+        return 0
+
+    pre_hashes = {row.id: _evidence_content_hash(row) for row in rows}
+
+    scholarship_row = db.execute(
+        select(Scholarship).where(Scholarship.id == scholarship_id)
+    ).scalars().first()
+    legacy_id = scholarship_row.legacy_id if scholarship_row is not None else None
+
+    values = [
+        {
+            "original_evidence_id": row.id,
+            "original_scholarship_id": scholarship_id,
+            "scholarship_legacy_id": legacy_id,
+            "application_cycle": row.application_cycle,
+            "official_domain": row.official_domain,
+            "official_url": row.official_url,
+            "source_title": row.source_title,
+            "deadline": row.deadline,
+            "deadline_precision": row.deadline_precision,
+            "supporting_excerpt": row.supporting_excerpt,
+            "excerpt_hash": row.excerpt_hash,
+            "retrieval_date": row.retrieval_date,
+            "reviewer": row.reviewer,
+            "decision": row.decision,
+            "provenance": row.provenance,
+            "content_hash": pre_hashes[row.id],
+            "archive_execution_id": execution_id,
+        }
+        for row in rows
+    ]
+
+    db.execute(
+        pg_insert(ScholarshipEvidenceArchive)
+        .values(values)
+        .on_conflict_do_update(
+            index_elements=["original_evidence_id"],
+            set_={
+                "archive_execution_id": text(
+                    "COALESCE(EXCLUDED.archive_execution_id, scholarship_evidence_archive.archive_execution_id)"
+                ),
+            },
+        )
+        .execution_options(synchronize_session=False)
+    )
+    db.expire_all()
+
+    archived = db.execute(
+        select(ScholarshipEvidenceArchive).where(
+            ScholarshipEvidenceArchive.original_evidence_id.in_([row.id for row in rows])
+        )
+    ).scalars().all()
+    by_id = {a.original_evidence_id: a for a in archived}
+    original_ids = {row.id for row in rows}
+
+    if len(archived) != len(original_ids):
+        raise RuntimeError(
+            f"Evidence preservation failed for scholarship {scholarship_id}: "
+            f"archive holds {len(archived)} rows for {len(original_ids)} live evidence rows"
+        )
+    if set(by_id) != original_ids:
+        raise RuntimeError(
+            f"Evidence preservation failed for scholarship {scholarship_id}: "
+            "archived evidence ids do not match live evidence ids"
+        )
+    for row in rows:
+        archive_row = by_id[row.id]
+        if archive_row.original_scholarship_id != scholarship_id:
+            raise RuntimeError(
+                f"Evidence preservation failed: archive row {archive_row.original_evidence_id} "
+                f"does not reference scholarship {scholarship_id}"
+            )
+        if archive_row.content_hash != pre_hashes[row.id]:
+            raise RuntimeError(
+                f"Evidence preservation failed: content hash mismatch for archive row "
+                f"{archive_row.original_evidence_id} (scholarship {scholarship_id})"
+            )
+        if archive_row.excerpt_hash != row.excerpt_hash:
+            raise RuntimeError(
+                f"Evidence preservation failed: excerpt hash mismatch for archive row "
+                f"{archive_row.original_evidence_id} (scholarship {scholarship_id})"
+            )
+    return len(rows)
 
 
 @dataclass
@@ -269,6 +397,8 @@ class DeletionReport:
     deleted_official_contacts: int = 0
 
     tombstones_created: int = 0
+
+    preserved_gate6_evidence: int = 0
 
     preserved_application_records: int = 0
 
@@ -940,6 +1070,12 @@ def audit_dependencies(db: Session, scholarship_id: int) -> dict:
 
     ).scalar_one()
 
+    gate6_evidence = db.execute(
+
+        select(func.count()).where(ScholarshipEvidence.scholarship_id == scholarship_id)
+
+    ).scalar_one()
+
 
 
     return {
@@ -949,6 +1085,8 @@ def audit_dependencies(db: Session, scholarship_id: int) -> dict:
         "coverage_rows": coverage,
 
         "source_evidence": source_evidence,
+
+        "gate6_evidence": gate6_evidence,
 
         "official_contacts": official_contacts,
 
@@ -1120,7 +1258,13 @@ def _populate_application_snapshot(app: ApplicationRecord, s: Scholarship) -> No
 
 
 
-def execute_deletion(db: Session, manifest: List[ClosedScholarshipManifest], dry_run: bool = True, reference_date=None) -> DeletionReport:
+def execute_deletion(
+    db: Session,
+    manifest: List[ClosedScholarshipManifest],
+    dry_run: bool = True,
+    reference_date=None,
+    execution_id: Optional[str] = None,
+) -> DeletionReport:
 
     report = DeletionReport(
 
@@ -1149,6 +1293,8 @@ def execute_deletion(db: Session, manifest: List[ClosedScholarshipManifest], dry
             report.deleted_coverage_rows += deps["coverage_rows"]
 
             report.deleted_source_evidence += deps["source_evidence"]
+
+            report.preserved_gate6_evidence += deps["gate6_evidence"]
 
             report.deleted_official_contacts += deps["official_contacts"]
 
@@ -1411,6 +1557,19 @@ def execute_deletion(db: Session, manifest: List[ClosedScholarshipManifest], dry
 
                 continue
 
+            # Preserve Gate 6 evidence: archive the live evidence rows to the
+            # immutable archive and verify the preservation inside this
+            # transaction. Any failure raises and the deletion is rolled
+            # back. Idempotent across retries.
+            report.preserved_gate6_evidence += _archive_gate6_evidence(
+                db, sid, execution_id=execution_id
+            )
+
+            # Live evidence rows are now archived; delete them so the
+            # ON DELETE NO ACTION FK on scholarships.id allows the scholarship
+            # delete below.
+            db.execute(delete(ScholarshipEvidence).where(ScholarshipEvidence.scholarship_id == sid))
+
             link_ids = _link_ids_for_scholarship(db, sid)
 
 
@@ -1629,6 +1788,8 @@ def execute_deletion(db: Session, manifest: List[ClosedScholarshipManifest], dry
 
         report.tombstones_created = 0
 
+        report.preserved_gate6_evidence = 0
+
         report.preserved_application_records = 0
 
         report.preserved_applications = 0
@@ -1675,6 +1836,8 @@ def save_report(report: DeletionReport, output_path: str) -> None:
         "deleted_official_contacts": report.deleted_official_contacts,
 
         "tombstones_created": report.tombstones_created,
+
+        "preserved_gate6_evidence": report.preserved_gate6_evidence,
 
         "preserved_application_records": report.preserved_application_records,
 

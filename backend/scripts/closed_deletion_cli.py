@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 """Closed scholarship permanent deletion CLI.
 
 Usage:
@@ -115,6 +115,7 @@ def main():
         print(f"Deleted professor links: {report.deleted_professor_links}")
         print(f"Deleted coverage rows: {report.deleted_coverage_rows}")
         print(f"Deleted source evidence: {report.deleted_source_evidence}")
+        print(f"Preserved Gate 6 evidence (archived): {report.preserved_gate6_evidence}")
         print(f"Deleted official contacts: {report.deleted_official_contacts}")
         print(f"Tombstones created: {report.tombstones_created}")
         print(f"Preserved application records: {report.preserved_application_records}")

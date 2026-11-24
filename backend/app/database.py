@@ -1,4 +1,4 @@
-"""SQLAlchemy engine and session lifecycle utilities."""
+﻿"""SQLAlchemy engine and session lifecycle utilities."""
 
 import logging
 from collections.abc import Generator
@@ -387,6 +387,9 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
         # actor that never runs application code, so it is installed here in
         # the same idempotent startup migration as everything else.
         create_image_audit_schema(connection)
+
+        # PR #107 P0: Gate 6 evidence retention (trigger + FK re-point).
+        _upgrade_gate6_evidence_retention(connection)
 
 
 def _upgrade_saved_scholarships_schema(engine: Engine) -> None:
@@ -1128,3 +1131,68 @@ def reset_database_connections() -> None:
     close_database()
     get_session_factory.cache_clear()
     get_engine.cache_clear()
+
+
+def _upgrade_gate6_evidence_retention(connection) -> None:
+    if inspect(connection).has_table("scholarship_evidence") and inspect(connection).has_table("scholarships"):
+        fk_name = connection.execute(text(
+            "SELECT con.conname FROM pg_constraint con "
+            "JOIN pg_class c ON c.oid = con.conrelid "
+            "WHERE con.contype = 'f' AND con.conrelid = 'scholarship_evidence'::regclass "
+            "AND con.confrelid = 'scholarships'::regclass ORDER BY con.conname LIMIT 1"
+        )).scalar()
+        if fk_name is not None:
+            confdel = connection.execute(text(
+                "SELECT confdeltype FROM pg_constraint WHERE conname = :n "
+                "AND conrelid = 'scholarship_evidence'::regclass"
+            ), {"n": fk_name}).scalar()
+            if confdel != "a":
+                connection.execute(text('ALTER TABLE scholarship_evidence DROP CONSTRAINT "' + fk_name + '"'))
+                connection.execute(text(
+                    "ALTER TABLE scholarship_evidence ADD CONSTRAINT fk_scholarship_evidence_scholarship_id "
+                    "FOREIGN KEY (scholarship_id) REFERENCES scholarships(id) ON DELETE NO ACTION"
+                ))
+        else:
+            connection.execute(text(
+                "ALTER TABLE scholarship_evidence ADD CONSTRAINT fk_scholarship_evidence_scholarship_id "
+                "FOREIGN KEY (scholarship_id) REFERENCES scholarships(id) ON DELETE NO ACTION"
+            ))
+
+    if inspect(connection).has_table("scholarship_evidence_archive"):
+        connection.execute(text("""
+            CREATE OR REPLACE FUNCTION protect_scholarship_evidence_archive() RETURNS trigger AS $protect$
+            BEGIN
+                IF TG_OP = 'DELETE' THEN
+                    RAISE EXCEPTION 'scholarship_evidence_archive is immutable: retained historical evidence cannot be deleted';
+                END IF;
+                IF (OLD.original_evidence_id IS DISTINCT FROM NEW.original_evidence_id
+                    OR OLD.original_scholarship_id IS DISTINCT FROM NEW.original_scholarship_id
+                    OR OLD.scholarship_legacy_id IS DISTINCT FROM NEW.scholarship_legacy_id
+                    OR OLD.application_cycle IS DISTINCT FROM NEW.application_cycle
+                    OR OLD.official_domain IS DISTINCT FROM NEW.official_domain
+                    OR OLD.official_url IS DISTINCT FROM NEW.official_url
+                    OR OLD.source_title IS DISTINCT FROM NEW.source_title
+                    OR OLD.deadline IS DISTINCT FROM NEW.deadline
+                    OR OLD.deadline_precision IS DISTINCT FROM NEW.deadline_precision
+                    OR OLD.supporting_excerpt IS DISTINCT FROM NEW.supporting_excerpt
+                    OR OLD.excerpt_hash IS DISTINCT FROM NEW.excerpt_hash
+                    OR OLD.retrieval_date IS DISTINCT FROM NEW.retrieval_date
+                    OR OLD.reviewer IS DISTINCT FROM NEW.reviewer
+                    OR OLD.decision IS DISTINCT FROM NEW.decision
+                    OR OLD.provenance IS DISTINCT FROM NEW.provenance
+                    OR OLD.content_hash IS DISTINCT FROM NEW.content_hash) THEN
+                    RAISE EXCEPTION 'scholarship_evidence_archive is immutable: retained historical evidence cannot be updated';
+                END IF;
+                RETURN NEW;
+            END;
+            $protect$ LANGUAGE plpgsql;
+        """))
+        connection.execute(text(
+            "DROP TRIGGER IF EXISTS trg_scholarship_evidence_archive_immutable "
+            "ON scholarship_evidence_archive"
+        ))
+        connection.execute(text(
+            "CREATE TRIGGER trg_scholarship_evidence_archive_immutable "
+            "BEFORE UPDATE OR DELETE ON scholarship_evidence_archive "
+            "FOR EACH ROW EXECUTE FUNCTION protect_scholarship_evidence_archive()"
+        ))
