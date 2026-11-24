@@ -894,7 +894,24 @@ def _is_tombstoned(session: Session, record: ScholarshipIngestionRecord) -> bool
 
     tombstones = session.scalars(select(DeletedClosedScholarship)).all()
 
-    record_title = _normalize_tombstone_text(getattr(record, "name", None))
+    record_country = getattr(record, "country", None)
+    record_degree = getattr(record, "degree_levels", None)
+
+    # Candidate titles include the incoming title and every legacy title that
+    # ingestion uses to recognise an existing scholarship.  This keeps a
+    # tombstone effective when the official URL changes.
+    candidate_titles = []
+    for t in [getattr(record, "name", None)] + list(getattr(record, "legacy_titles", ()) or ()):
+        nt = _normalize_tombstone_text(t)
+        if nt and nt not in [_normalize_tombstone_text(x) for x in candidate_titles]:
+            candidate_titles.append(t)
+
+    candidate_fps = set()
+    for t in candidate_titles:
+        fp_src = "|".join(str(x or "") for x in (t, record_country, record_degree))
+        import hashlib
+
+        candidate_fps.add(hashlib.sha256(fp_src.encode("utf-8")).hexdigest())
 
     matched_tombstones = set()
     for ts in tombstones:
@@ -909,11 +926,25 @@ def _is_tombstoned(session: Session, record: ScholarshipIngestionRecord) -> bool
             matched_tombstones.add(ts.id)
             continue
 
-        # 2. Exact fingerprint match.
-        fp = getattr(record, "record_fingerprint", None)
-        if fp and getattr(ts, "record_fingerprint", None) and fp == ts.record_fingerprint:
+        # 2. Legacy ID match (stable immutable identity).
+        record_legacy_id = getattr(record, "legacy_id", None)
+        if record_legacy_id is not None and getattr(ts, "legacy_id", None) is not None and record_legacy_id == ts.legacy_id:
             matched_tombstones.add(ts.id)
             continue
+
+        # 3. Exact fingerprint match (title/country/degree, including legacy titles).
+        if getattr(ts, "record_fingerprint", None) and (ts.record_fingerprint in candidate_fps):
+            matched_tombstones.add(ts.id)
+            continue
+
+        # 4. Direct title + country + degree match for tombstones without fingerprint.
+        ts_title = _normalize_tombstone_text(getattr(ts, "title", None))
+        if ts_title in [_normalize_tombstone_text(t) for t in candidate_titles]:
+            if _normalize_tombstone_text(getattr(ts, "country", None)) in (None, _normalize_tombstone_text(record_country)) and _normalize_tombstone_text(getattr(ts, "degree", None)) in (None, _normalize_tombstone_text(record_degree)):
+                # Require at least country or degree agreement to avoid title-only matches.
+                if _normalize_tombstone_text(record_country) is not None or _normalize_tombstone_text(record_degree) is not None:
+                    matched_tombstones.add(ts.id)
+                    continue
 
     if not matched_tombstones:
         # Legacy URL-less tombstones: fingerprint comparison (existing behaviour).
@@ -922,21 +953,8 @@ def _is_tombstoned(session: Session, record: ScholarshipIngestionRecord) -> bool
             if not any(_normalize_tombstone_url(u) for u in (ts.official_source_url, ts.application_link))
         ]
         if url_less_tombstones:
-            fp = getattr(record, "record_fingerprint", None)
-            if not fp:
-                import hashlib
-
-                fp_src = "|".join(str(x or "") for x in (
-                    getattr(record, "name", None),
-                    getattr(record, "country", None),
-                    getattr(record, "degree_levels", None),
-                    None,
-                    getattr(record, "application_link", None),
-                ))
-                fp = hashlib.sha256(fp_src.encode("utf-8")).hexdigest()
-
             for ts in url_less_tombstones:
-                if ts.record_fingerprint and fp == ts.record_fingerprint:
+                if getattr(ts, "record_fingerprint", None) and ts.record_fingerprint in candidate_fps:
                     matched_tombstones.add(ts.id)
 
     if not matched_tombstones:
@@ -955,11 +973,6 @@ def _is_tombstoned(session: Session, record: ScholarshipIngestionRecord) -> bool
         return True
 
     return True
-
-
-
-
-
 def _fit_columns(payload: dict[str, object]) -> tuple[dict[str, object], list[str]]:
 
     """Drop values that do not fit their column, and say which.

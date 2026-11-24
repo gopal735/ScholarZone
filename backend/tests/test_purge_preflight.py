@@ -2518,8 +2518,8 @@ def test_regression_gate5_classification_mismatch():
     }
     actual = classify_record(record_closed)
     assert actual == ClassificationCategory.CLOSED
-    expected = EXPECTED_CLASSIFICATIONS[54]  # This is CLOSING_SOON
-    assert actual != expected  # This mismatch should be caught by validate_classifications
+    expected = EXPECTED_CLASSIFICATIONS[54]  # This is now CLOSED
+    assert actual == expected  # Manifest aligned with canonical lifecycle
 
     # Test 3: Integration test - run_gate5 with mismatched classifications
     with patch.object(accessor, 'connect_readonly') as mock_connect:

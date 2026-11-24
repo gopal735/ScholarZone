@@ -1738,11 +1738,17 @@ def execute_deletion(
 
                 ts = DeletedClosedScholarship(
 
+                    legacy_id=getattr(locked, "legacy_id", None),
+
                     official_source_url=url,
 
                     application_link=link,
 
                     title=title,
+
+                    country=getattr(locked, "country", None),
+
+                    degree=getattr(locked, "degree", None),
 
                     reason="closed_permanent_deletion",
 

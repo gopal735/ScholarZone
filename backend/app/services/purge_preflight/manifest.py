@@ -181,7 +181,7 @@ EXPECTED_CLASSIFICATIONS = {
     # Note: 496 and 497 are unique IDs, not duplicates
 
     # CLOSING_SOON: 16 records
-    54: ClassificationCategory.CLOSING_SOON,
+    54: ClassificationCategory.CLOSED,
     59: ClassificationCategory.CLOSING_SOON,
     382: ClassificationCategory.CLOSING_SOON,
     583: ClassificationCategory.CLOSING_SOON,

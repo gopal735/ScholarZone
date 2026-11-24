@@ -665,7 +665,7 @@ def verify_gpg_key_lifecycle(gpg_recipient: str, expected_fingerprint: str, test
 
 
 
-def run_pg_dump(database_url: str, output_file: str) -> subprocess.CompletedProcess:
+def run_pg_dump(database_url: str, output_file: str, snapshot_id: Optional[str] = None) -> subprocess.CompletedProcess:
 
     """Run pg_dump with custom format and compression.
 
@@ -704,40 +704,36 @@ def run_pg_dump(database_url: str, output_file: str) -> subprocess.CompletedProc
     if parsed.get("sslrootcert"):
 
         env.setdefault("PGSSLROOTCERT", parsed["sslrootcert"])
+    if parsed.get("sslcert"):
+        env.setdefault("PGSSLCERT", parsed["sslcert"])
+    if parsed.get("sslkey"):
+        env.setdefault("PGSSLKEY", parsed["sslkey"])
+    if parsed.get("connect_timeout"):
+        env.setdefault("PGCONNECT_TIMEOUT", str(parsed["connect_timeout"]))
+    if parsed.get("application_name"):
+        env.setdefault("PGAPPNAME", parsed["application_name"])
+    if parsed.get("options"):
+        env.setdefault("PGOPTIONS", parsed["options"])
+    if parsed.get("channel_binding"):
+        env.setdefault("PGCHANNELBINDING", parsed["channel_binding"])
 
 
 
-    return subprocess.run([
-
+    cmd = [
         "pg_dump",
-
         "-h", parsed["host"],
-
         "-p", str(parsed["port"]),
-
         "-U", parsed["user"],
-
         "-d", parsed["database"],
-
         "--format=custom",
-
         "--compress=9",
-
         "--no-owner",
-
         "--no-privileges",
-
-        "--file=" + output_file
-
-    ], check=True, capture_output=True, text=True, timeout=300, env=env)
-
-
-
-
-
-def run_pg_restore_list(backup_file: str) -> subprocess.CompletedProcess:
-
-    """List backup contents."""
+        "--file=" + output_file,
+    ]
+    if snapshot_id:
+        cmd.append(f"--snapshot={snapshot_id}")
+    return subprocess.run(cmd, check=True, capture_output=True, text=True, timeout=300, env=env)
 
     return subprocess.run(
 
@@ -1666,131 +1662,73 @@ def drop_database(db_name: str, host: str, port: int, user: str, password: str) 
 
 
 def parse_database_url(database_url: str) -> dict:
-
     """Parse a PostgreSQL database URL into components for validation.
 
-
-
-    Returns dict with keys: host, port, user, password, database, sslmode
-
+    Uses urllib.parse so credentials containing reserved characters are
+    decoded consistently. Preserves supported libpq/TLS parameters.
     """
+    from urllib.parse import urlsplit, unquote, parse_qs
 
-    # postgresql://user:pass@host:port/dbname?sslmode=require
+    if not isinstance(database_url, str) or not database_url.strip():
+        raise ValueError("Invalid database URL: empty")
+    if "://" not in database_url:
+        raise ValueError(f"Invalid database URL (missing scheme): {database_url}")
 
-    if not database_url.startswith("postgresql://"):
+    parsed = urlsplit(database_url)
+    if parsed.scheme not in ("postgresql", "postgres"):
+        raise ValueError(f"Invalid database URL scheme: {parsed.scheme}")
+    if not parsed.hostname:
+        raise ValueError(f"Invalid database URL (missing host): {database_url}")
 
-        raise ValueError(f"Invalid database URL scheme: {database_url}")
+    user = unquote(parsed.username) if parsed.username is not None else ""
+    password = unquote(parsed.password) if parsed.password is not None else ""
+    host = parsed.hostname
+    port = parsed.port or 5432
 
-
-
-    # Remove scheme
-
-    url = database_url[len("postgresql://"):]
-
-
-
-    # Split auth from host/db
-
-    if "@" not in url:
-
-        raise ValueError(f"Invalid database URL (missing @): {database_url}")
-
-    auth, host_db = url.split("@", 1)
-
-
-
-    # Parse user:password
-
-    if ":" in auth:
-
-        user, password = auth.split(":", 1)
-
-    else:
-
-        user = auth
-
-        password = ""
-
-
-
-    # Split host:port from database and params
-
-    if "/" not in host_db:
-
+    raw_path = (parsed.path or "").lstrip("/")
+    database = unquote(raw_path.split("/", 1)[0]) if raw_path else ""
+    if not database:
         raise ValueError(f"Invalid database URL (missing database): {database_url}")
 
-    host_port, db_params = host_db.split("/", 1)
+    query = parse_qs(parsed.query, keep_blank_values=True)
 
+    def _q(name):
+        values = query.get(name)
+        if values:
+            return unquote(values[0])
+        return None
 
+    sslmode = _q("sslmode") or "prefer"
+    sslrootcert = _q("sslrootcert")
+    sslcert = _q("sslcert")
+    sslkey = _q("sslkey")
+    channel_binding = _q("channel_binding")
+    application_name = _q("application_name")
+    options = _q("options")
+    connect_timeout_raw = _q("connect_timeout")
+    try:
+        connect_timeout = int(connect_timeout_raw) if connect_timeout_raw is not None else None
+    except (TypeError, ValueError):
+        connect_timeout = None
 
-    # Parse host:port
-
-    if ":" in host_port:
-
-        host, port_str = host_port.split(":", 1)
-
-        port = int(port_str)
-
-    else:
-
-        host = host_port
-
-        port = 5432
-
-
-
-    # Parse database and query params
-
-    if "?" in db_params:
-
-        database, query = db_params.split("?", 1)
-
-        sslmode = "prefer"
-
-        sslrootcert = None
-
-        for part in query.split("&"):
-
-            if part.startswith("sslmode="):
-
-                sslmode = part.split("=", 1)[1]
-
-            elif part.startswith("sslrootcert="):
-
-                sslrootcert = part.split("=", 1)[1]
-
-    else:
-
-        database = db_params
-
-        sslmode = "prefer"
-
-        sslrootcert = None
-
-
+    query_params = {key: unquote(values[0]) for key, values in query.items() if values}
 
     return {
-
         "host": host,
-
         "port": port,
-
         "user": user,
-
         "password": password,
-
         "database": database,
-
         "sslmode": sslmode,
-
         "sslrootcert": sslrootcert,
-
+        "sslcert": sslcert,
+        "sslkey": sslkey,
+        "connect_timeout": connect_timeout,
+        "application_name": application_name,
+        "options": options,
+        "channel_binding": channel_binding,
+        "query_params": query_params,
     }
-
-
-
-
-
 def validate_restore_connection_identity(restore_url: str, expected_host: str, expected_port: int, expected_user: str) -> tuple[bool, str]:
 
     """
@@ -1881,7 +1819,7 @@ def run_pg_restore(database_url: str, backup_file: str, host: str, port: int, us
 
         "-U", user,
 
-        "-d", database_url.split("/")[-1].split("?")[0],  # Extract database name
+        "-d", parse_database_url(database_url)["database"],  # Extract database name safely
 
         "--no-owner", "--no-privileges",
 
@@ -1898,12 +1836,13 @@ def _collect_table_counts(conn) -> dict:
     """Collect row counts for every base table in the public schema."""
 
     from psycopg2 import sql
+    from psycopg2.extras import RealDictCursor
 
 
 
     counts = {}
 
-    with conn.cursor() as cur:
+    with conn.cursor(cursor_factory=RealDictCursor) as cur:
 
         cur.execute("""
 
@@ -2207,19 +2146,21 @@ def test_wrong_credentials_rejected(host: str, port: int, user: str, password: s
 
     import psycopg2
 
-    from urllib.parse import urlparse
+    import psycopg2
+
+    from urllib.parse import quote
 
 
 
-    db_name = urlparse(correct_url).path.lstrip("/") or "postgres"
+    db_name = parse_database_url(correct_url)["database"]
 
 
 
     wrong_urls = [
 
-        f"postgresql://{user}:wrongpassword@{host}:{port}/{db_name}",
+        f"postgresql://{quote(user, safe='')}:{quote('wrongpassword', safe='')}@{host}:{port}/{quote(db_name, safe='')}",
 
-        f"postgresql://wronguser:{password}@{host}:{port}/{db_name}",
+        f"postgresql://{quote('wronguser', safe='')}:{quote(password, safe='')}@{host}:{port}/{quote(db_name, safe='')}",
 
     ]
 
@@ -2967,12 +2908,49 @@ def run_gate4(
 
             identity_errors = accessor.validate_identity(identity)
 
+            # P0: synthetic test keys must never back up production or unknown sources.
+            if test_mode:
+                from .gate1_atomicity import validate_disposable_database_url
+
+                disposable_ok, disposable_error = validate_disposable_database_url(accessor.config.backup_url)
+                if not disposable_ok:
+                    result.status = "FAIL"
+                    result.error = (
+                        "Synthetic test-mode GPG keys cannot be used because the backup source "
+                        "is not an independently validated disposable test source: "
+                        + str(disposable_error)
+                    )
+                    return result
+                # Fail closed if the source also matches production identity.
+                if not identity_errors:
+                    result.status = "FAIL"
+                    result.error = (
+                        "Synthetic test-mode GPG keys cannot be used against a production or "
+                        "production-like backup source"
+                    )
+                    return result
+
             if identity_errors:
 
                 result.status = "FAIL"
 
                 result.error = "Backup database identity validation failed: " + "; ".join(identity_errors)
 
+                return result
+
+            # Establish one exported snapshot for counts and pg_dump.
+            import psycopg2.extensions
+
+            conn.autocommit = False
+            conn.set_isolation_level(psycopg2.extensions.ISOLATION_LEVEL_REPEATABLE_READ)
+            conn.set_session(readonly=True)
+            with conn.cursor() as _snap_cur:
+                _snap_cur.execute("SELECT pg_export_snapshot()")
+                _snap_row = _snap_cur.fetchone()
+            snapshot_id = _snap_row["pg_export_snapshot"] if isinstance(_snap_row, dict) else _snap_row[0]
+            if not snapshot_id:
+                result.status = "FAIL"
+                result.error = "Failed to export database snapshot"
                 return result
 
             result.source_table_counts = _collect_table_counts(conn)
@@ -2997,15 +2975,15 @@ def run_gate4(
 
             print(f"✅ PITR verified: enabled={pitr_status=='VERIFIED'}, retention_days={retention_days}")
 
+            # === STEP 4: Create pg_dump backup from the SAME snapshot ===
+            print("=== BACKUP CREATION ===")
+            print(f"Creating backup: {backup_file}")
+            run_pg_dump(accessor.config.backup_url, backup_file, snapshot_id=snapshot_id)
 
-
-        # === STEP 4: Create pg_dump backup ===
-
-        print("=== BACKUP CREATION ===")
-
-        print(f"Creating backup: {backup_file}")
-
-        run_pg_dump(accessor.config.backup_url, backup_file)
+            try:
+                conn.commit()
+            except Exception:
+                conn.rollback()
 
         print("✅ Backup created")
 

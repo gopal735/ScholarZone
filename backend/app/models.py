@@ -889,9 +889,12 @@ class DeletedClosedScholarship(Base):
     )
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    legacy_id: Mapped[int | None] = mapped_column(Integer, nullable=True, index=True)
     official_source_url: Mapped[str | None] = mapped_column(String(2048), nullable=True, index=True)
     application_link: Mapped[str | None] = mapped_column(String(2048), nullable=True)
     title: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    country: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    degree: Mapped[str | None] = mapped_column(String(255), nullable=True)
     deleted_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
     reason: Mapped[str | None] = mapped_column(String(120), nullable=True)
     record_fingerprint: Mapped[str | None] = mapped_column(String(64), nullable=True, index=True)

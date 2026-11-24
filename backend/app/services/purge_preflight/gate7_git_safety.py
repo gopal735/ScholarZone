@@ -604,6 +604,17 @@ def run_gate7() -> Gate7Result:
         required_refs.append(pr_base_sha)
     if pr_head_sha:
         required_refs.append(pr_head_sha)
+    _merge_candidate = ""
+    _event_path = os.getenv("GITHUB_EVENT_PATH", "")
+    if _event_path and os.path.exists(_event_path):
+        try:
+            with open(_event_path, "r", encoding="utf-8") as _ef:
+                _ed = json.load(_ef)
+            _merge_candidate = (_ed.get("pull_request", {}) or {}).get("merge_commit_sha", "") or ""
+        except (OSError, json.JSONDecodeError, ValueError):
+            _merge_candidate = ""
+    if _merge_candidate:
+        required_refs.append(_merge_candidate)
     history_ok, history_error = ensure_git_history(repo_root, required_refs)
     if not history_ok:
         result.status = "BLOCKED"
@@ -618,8 +629,41 @@ def run_gate7() -> Gate7Result:
     # 4. Find nested repos
     result.nested_repos = find_nested_repos(repo_root)
 
+    # Determine whether this is a verified merged-PR run using trusted event metadata.
+    merge_commit_sha = ""
+    merged_mode = False
+    event_path = os.getenv("GITHUB_EVENT_PATH", "")
+    if event_path and os.path.exists(event_path):
+        try:
+            with open(event_path, "r", encoding="utf-8") as event_file:
+                event_data = json.load(event_file)
+            pr_payload = event_data.get("pull_request", {}) or {}
+            merge_commit_sha = pr_payload.get("merge_commit_sha") or ""
+            merged_flag = bool(pr_payload.get("merged", False))
+            if merge_commit_sha and merged_flag:
+                head_result = run_git_command(["rev-parse", "HEAD"], repo_root)
+                if head_result.returncode == 0 and head_result.stdout.strip() == merge_commit_sha:
+                    merged_mode = True
+        except (OSError, json.JSONDecodeError, ValueError):
+            merge_commit_sha = ""
+            merged_mode = False
+
+    # Verify the merge commit object exists when claimed.
+    if merged_mode and merge_commit_sha:
+        obj_result = run_git_command(["cat-file", "-t", merge_commit_sha], repo_root)
+        if obj_result.returncode != 0 or obj_result.stdout.strip() != "commit":
+            result.status = "BLOCKED"
+            result.error = f"Verified merge commit not found: {merge_commit_sha}"
+            return result
+
     # 5. Get committed diff (PR range) - not just working tree
-    result.changed_files = get_committed_diff(repo_root, pr_base_sha, pr_head_sha)
+    if merged_mode and merge_commit_sha:
+        diff_head = merge_commit_sha
+    else:
+        diff_head = pr_head_sha
+    if merged_mode:
+        required_refs.append(merge_commit_sha)
+    result.changed_files = get_committed_diff(repo_root, pr_base_sha, diff_head)
 
     # 6. Check unrelated changes
     result.unrelated_changes = check_unrelated_changes(result.changed_files)
