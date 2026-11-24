@@ -90,14 +90,14 @@ class TaskExecution:
         stored = self._result
         if stored is None:
             return None
-        try:
-            return _detach_result(stored, self.budget.max_context_chars)
-        except (TypeError, ValueError):
-            return stored
+        return _detach_result(stored, self.budget.max_context_chars)
 
     @result.setter
     def result(self, value: Any) -> None:
-        self._result = value
+        if value is None:
+            self._result = None
+            return
+        self._result = _detach_result(value, self.budget.max_context_chars)
 
     @property
     def elapsed_seconds(self) -> float:

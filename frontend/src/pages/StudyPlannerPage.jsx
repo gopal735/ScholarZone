@@ -17,6 +17,7 @@ export default function StudyPlannerPage() {
   const [status, setStatus] = useState(PAGE_STATUS.LOADING)
   const [plans, setPlans] = useState([])
   const [error, setError] = useState(null)
+  const [refreshError, setRefreshError] = useState(null)
   const [newTitle, setNewTitle] = useState('')
   const [newTask, setNewTask] = useState({})
   const [pending, setPending] = useState({ plans: false, tasks: {} })
@@ -32,8 +33,12 @@ export default function StudyPlannerPage() {
       const data = await fetchPlans()
       if (thisRequest !== requestIdRef.current) return
       setPlans(data)
-      setError(null)
-      setStatus(PAGE_STATUS.READY)
+      if (initial) {
+        setError(null)
+        setStatus(PAGE_STATUS.READY)
+      } else {
+        setRefreshError(null)
+      }
     } catch (caught) {
       if (thisRequest !== requestIdRef.current) return
       if (caught instanceof StudyPlanUnauthenticatedError) {
@@ -44,7 +49,7 @@ export default function StudyPlannerPage() {
         setError(caught)
         setStatus(PAGE_STATUS.ERROR)
       } else {
-        setError(caught)
+        setRefreshError(caught)
       }
     } finally {
       if (thisRequest === requestIdRef.current) setRefreshing(false)
@@ -63,6 +68,7 @@ export default function StudyPlannerPage() {
     setPending((p) => ({ ...p, plans: true }))
     try {
       await createPlan({ title: newTitle.trim() })
+      setError(null)
       setNewTitle((current) => (current === submittedTitle ? '' : current))
       await load(false)
     } catch (caught) { setError(caught) }
@@ -72,7 +78,7 @@ export default function StudyPlannerPage() {
   const handleDeletePlan = async (id) => {
     if (pending.plans) return
     setPending((p) => ({ ...p, plans: true }))
-    try { await deletePlan(id); await load(false) } catch (caught) { setError(caught) }
+    try { await deletePlan(id); setError(null); await load(false) } catch (caught) { setError(caught) }
     finally { setPending((p) => ({ ...p, plans: false })) }
   }
 
@@ -83,6 +89,7 @@ export default function StudyPlannerPage() {
     setPending((p) => ({ ...p, tasks: { ...p.tasks, [planId]: true } }))
     try {
       await addTask(planId, { title })
+      setError(null)
       setNewTask((s) => ({ ...s, [planId]: (s[planId] === submittedTask ? '' : s[planId]) }))
       await load(false)
     } catch (caught) { setError(caught) }
@@ -92,6 +99,7 @@ export default function StudyPlannerPage() {
   const handleToggleTask = async (task) => {
     try {
       await updateTask(task.id, { status: task.status === 'completed' ? 'reopened' : 'completed', version: task.version })
+      setError(null)
       await load(false)
     } catch (caught) {
       if (caught instanceof StudyPlanConflictError) {
@@ -104,7 +112,7 @@ export default function StudyPlannerPage() {
   }
 
   const handleDeleteTask = async (id) => {
-    try { await deleteTask(id); await load(false) } catch (caught) { setError(caught) }
+    try { await deleteTask(id); setError(null); await load(false) } catch (caught) { setError(caught) }
   }
 
   if (status === PAGE_STATUS.LOADING) return <div className="sp-page"><p>Loading…</p></div>
@@ -119,7 +127,8 @@ export default function StudyPlannerPage() {
         <input aria-label="New plan title" value={newTitle} onChange={(e) => setNewTitle(e.target.value)} placeholder="New plan title" />
         <button type="submit">Create plan</button>
       </form>
-      {error && <div className="sp-refresh-error"><p>{String(error)}</p><button onClick={() => load(false)}>Retry refresh</button></div>}
+      {error && <p className="sp-error">{String(error)}</p>}
+      {refreshError && <div className="sp-refresh-error"><p>{String(refreshError)}</p><button onClick={() => load(false)}>Retry refresh</button></div>}
       {plans.length === 0 && <p>No plans yet.</p>}
       {plans.map((plan) => (
         <div key={plan.id} className="sp-plan">
