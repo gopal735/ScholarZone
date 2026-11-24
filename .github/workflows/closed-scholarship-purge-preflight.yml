@@ -57,15 +57,16 @@ jobs:
       run: python .github/scripts/verify_pr_merge_trigger.py
     - name: Verify workflow revision matches merged PR
       if: steps.check.outputs.should_run == 'true'
-      run: "\nMERGE_COMMIT_SHA=\"${{ steps.check.outputs.merge_commit_sha }}\"\n\n\
-        git fetch origin $MERGE_COMMIT_SHA --depth=1\n\nif git show $MERGE_COMMIT_SHA:.github/workflows/closed-scholarship-auto-purge.yml\
-        \ >/dev/null 2>&1; then\n\n  echo \"Workflow exists in merge commit - revision\
-        \ verified\"\n\nelse\n\n  echo \"ERROR: Workflow not found in merge commit\
-        \ - possible stale workflow\"\n\n  exit 1\n\nfi\n\ngit fetch origin master\
-        \ --depth=50\n\nif git merge-base --is-ancestor $MERGE_COMMIT_SHA origin/master;\
-        \ then\n\n  echo \"Merge commit reachable from origin/master\"\n\nelse\n\n\
-        \  echo \"ERROR: Merge commit not reachable from origin/master\"\n\n  exit\
-        \ 1\n\nfi\n"
+      run: "MERGE_COMMIT_SHA=\"${{ steps.check.outputs.merge_commit_sha }}\"\ngit\
+        \ fetch origin $MERGE_COMMIT_SHA --depth=1\nfor wf in closed-scholarship-purge-preflight.yml\
+        \ closed-scholarship-purge-execute.yml; do\n  if git show $MERGE_COMMIT_SHA:.github/workflows/$wf\
+        \ >/dev/null 2>&1; then\n    echo \"Workflow $wf exists in merge commit -\
+        \ revision verified\"\n  else\n    echo \"ERROR: Workflow $wf not found in\
+        \ merge commit - possible stale workflow\"\n    exit 1\n  fi\ndone\ngit fetch\
+        \ origin master --depth=50\nif git merge-base --is-ancestor $MERGE_COMMIT_SHA\
+        \ origin/master; then\n  echo \"Merge commit reachable from origin/master\"\
+        \nelse\n  echo \"ERROR: Merge commit not reachable from origin/master\"\n\
+        \  exit 1\nfi\n"
   preflight-gate1-atomicity:
     name: Gate 1 - Atomicity and Rollback
     needs: verify-merge-trigger
@@ -601,7 +602,7 @@ jobs:
       id: validate
       run: python .github/scripts/validate_manifest.py
   final-report:
-    name: Final Execution Report
+    name: Final Preflight Report
     needs:
     - verify-merge-trigger
     - preflight-summary
@@ -616,21 +617,18 @@ jobs:
       with:
         fetch-depth: 1
         ref: ${{ needs.verify-merge-trigger.outputs.merge_commit_sha }}
-    - name: Download Manifest Artifact
+    - name: Download All Artifacts
       uses: actions/download-artifact@v4
       with:
-        name: deletion-manifest
         path: artifacts
-    - name: Download Deletion Report Artifact
-      uses: actions/download-artifact@v4
-      with:
-        name: deletion-report
-        path: artifacts
-    - name: Generate Final Execution Report
-      run: python .github/scripts/generate_final_report.py
-    - name: Upload Final Report
+        merge-multiple: true
+    - name: Generate Preflight Summary
+      run: python .github/scripts/summary.py artifacts "${{ needs.verify-merge-trigger.outputs.merge_commit_sha
+        }}" "${{ github.run_id }}" "${{ github.run_number }}" "${{ github.run_attempt
+        }}" "${{ github.workflow }}"
+    - name: Upload Preflight Report
       uses: actions/upload-artifact@v4
       with:
-        name: final-execution-report
+        name: preflight-final-report
         path: artifacts/
         retention-days: 90

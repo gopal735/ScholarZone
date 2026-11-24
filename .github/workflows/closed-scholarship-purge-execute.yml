@@ -16,6 +16,15 @@ on:
         description: "Exact merge commit SHA of PR #107"
         required: true
         type: string
+      stage1_master_sha:
+        description: "Stage 1 master commit SHA (must contain merge commit)"
+        required: true
+        type: string
+      expected_workflow_id:
+        description: "Expected Stage 1 workflow ID"
+        required: false
+        type: string
+        default: "" 
       manifest_sha256:
         description: "Expected manifest SHA-256 from Stage 1"
         required: true
@@ -90,9 +99,11 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           GITHUB_API_URL: ${{ github.api_url }}
           PREFLIGHT_RUN_ID: ${{ inputs.preflight_run_id }}
+          STAGE1_MASTER_SHA: ${{ inputs.stage1_master_sha }}
           SUPPLIED_MERGE_SHA: ${{ inputs.merge_commit_sha }}
           SUPPLIED_MANIFEST_SHA: ${{ inputs.manifest_sha256 }}
           SUPPLIED_MANIFEST_COUNT: ${{ inputs.manifest_count }}
+          EXPECTED_WORKFLOW_ID: ${{ inputs.expected_workflow_id }}
         run: |
           python .github/scripts/verify_preflight_provenance.py
           echo "should_execute=true" >> "$GITHUB_OUTPUT"
@@ -132,10 +143,18 @@ jobs:
         run: |
           pip install -r backend/requirements.txt --quiet
 
-      - name: Download preflight artifact
+      - name: Download preflight summary artifact
         uses: actions/download-artifact@v4
         with:
-          name: ${{ inputs.preflight_artifact_name }}
+          name: preflight-summary
+          path: artifacts
+          run-id: ${{ inputs.preflight_run_id }}
+          github-token: ${{ github.token }}
+
+      - name: Download deletion manifest artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: deletion-manifest
           path: artifacts
           run-id: ${{ inputs.preflight_run_id }}
           github-token: ${{ github.token }}
