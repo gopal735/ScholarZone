@@ -49,6 +49,14 @@ class StudyPlannerSchemaNotReadyError(Exception):
 
 def _bind(db: Any) -> Any:
     """Return the SQLAlchemy bind (engine/connection) for a session or engine."""
+    getter = getattr(db, "get_bind", None)
+    if callable(getter):
+        try:
+            bind = getter()
+            if bind is not None:
+                return bind
+        except Exception:  # pragma: no cover - defensive
+            pass
     if hasattr(db, "bind") and db.bind is not None:
         return db.bind
     return db
