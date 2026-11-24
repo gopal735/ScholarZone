@@ -878,83 +878,83 @@ def _normalize_tombstone_url(url):
 
 
 
+def _normalize_tombstone_text(value):
+    if value is None:
+        return None
+    text = str(value).strip().lower()
+    return text if text else None
+
+
 def _is_tombstoned(session: Session, record: ScholarshipIngestionRecord) -> bool:
-
     urls = set()
-
     for u in (getattr(record, "official_source_url", None), getattr(record, "application_link", None)):
-
         nu = _normalize_tombstone_url(u)
-
         if nu:
-
             urls.add(nu)
 
     tombstones = session.scalars(select(DeletedClosedScholarship)).all()
 
+    record_title = _normalize_tombstone_text(getattr(record, "name", None))
+
+    matched_tombstones = set()
     for ts in tombstones:
-
         ts_urls = set()
-
         for u in (ts.official_source_url, ts.application_link):
-
             nu = _normalize_tombstone_url(u)
-
             if nu:
-
                 ts_urls.add(nu)
 
-        if urls and (urls & ts_urls):
+        # 1. Exact URL match (strongest).
+        if urls and ts_urls and (urls & ts_urls):
+            matched_tombstones.add(ts.id)
+            continue
 
-            return True
-
+        # 2. Exact fingerprint match.
         fp = getattr(record, "record_fingerprint", None)
-
         if fp and getattr(ts, "record_fingerprint", None) and fp == ts.record_fingerprint:
+            matched_tombstones.add(ts.id)
+            continue
 
-            return True
+    if not matched_tombstones:
+        # Legacy URL-less tombstones: fingerprint comparison (existing behaviour).
+        url_less_tombstones = [
+            ts for ts in tombstones
+            if not any(_normalize_tombstone_url(u) for u in (ts.official_source_url, ts.application_link))
+        ]
+        if url_less_tombstones:
+            fp = getattr(record, "record_fingerprint", None)
+            if not fp:
+                import hashlib
 
-    url_less_tombstones = [
+                fp_src = "|".join(str(x or "") for x in (
+                    getattr(record, "name", None),
+                    getattr(record, "country", None),
+                    getattr(record, "degree_levels", None),
+                    None,
+                    getattr(record, "application_link", None),
+                ))
+                fp = hashlib.sha256(fp_src.encode("utf-8")).hexdigest()
 
-        ts for ts in tombstones
+            for ts in url_less_tombstones:
+                if ts.record_fingerprint and fp == ts.record_fingerprint:
+                    matched_tombstones.add(ts.id)
 
-        if not any(_normalize_tombstone_url(u) for u in (ts.official_source_url, ts.application_link))
+    if not matched_tombstones:
+        return False
 
-    ]
+    # Ambiguity: multiple distinct tombstones matched. Fail safe: block import
+    # rather than guess, and record a non-sensitive diagnostic.
+    if len(matched_tombstones) > 1:
+        import logging
 
+        logging.getLogger(__name__).warning(
+            "ambiguous tombstone match for %r: %d candidates; blocking import",
+            getattr(record, "name", None),
+            len(matched_tombstones),
+        )
+        return True
 
-
-    if url_less_tombstones:
-
-        fp = getattr(record, "record_fingerprint", None)
-
-        if not fp:
-
-            import hashlib
-
-            fp_src = "|".join(str(x or "") for x in (
-
-                getattr(record, "name", None),
-
-                getattr(record, "country", None),
-
-                getattr(record, "degree_levels", None),
-
-                None,
-
-                getattr(record, "application_link", None),
-
-            ))
-
-            fp = hashlib.sha256(fp_src.encode("utf-8")).hexdigest()
-
-        for ts in url_less_tombstones:
-
-            if ts.record_fingerprint and fp == ts.record_fingerprint:
-
-                return True
-
-    return False
+    return True
 
 
 

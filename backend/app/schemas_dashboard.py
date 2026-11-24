@@ -324,7 +324,7 @@ class ScholarshipReference(BaseModel):
     so a shortlist can never surface something the public directory hides.
     """
 
-    scholarship_id: int
+    scholarship_id: int | None = None
     name: str
     country: str
     degree: str
@@ -370,6 +370,7 @@ class DeadlineItem(BaseModel):
 
 
 class SavedItem(BaseModel):
+    id: int
     scholarship: ScholarshipReference
     saved_at: datetime
     is_in_matches: bool = False
@@ -379,6 +380,7 @@ class SavedItem(BaseModel):
 
 
 class ApplicationItem(BaseModel):
+    id: int
     scholarship: ScholarshipReference
     state: str
     state_label: str

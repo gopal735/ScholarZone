@@ -66,7 +66,7 @@ export default function ApplicationProgress({ applications, states, onChangeStat
         {applications.map((item) => {
           const scholarship = item.scholarship
           return (
-            <li className="application-item" key={scholarship.scholarship_id}>
+            <li className="application-item" key={item.id}>
               <div className="application-item__main">
                 <h3 className="application-item__title">
                   <Link to={scholarship.detail_url}>{scholarship.name}</Link>

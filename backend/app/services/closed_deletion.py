@@ -1730,7 +1730,7 @@ def execute_deletion(
 
             import hashlib
 
-            fp_src = "|".join(str(x or "") for x in (title, getattr(locked, "country", None), getattr(locked, "degree", None), url, link))
+            fp_src = "|".join(str(x or "") for x in (title, getattr(locked, "country", None), getattr(locked, "degree", None)))
 
             fingerprint = hashlib.sha256(fp_src.encode("utf-8")).hexdigest()
 
