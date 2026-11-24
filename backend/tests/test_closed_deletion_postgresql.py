@@ -27,6 +27,13 @@ class TestPostgreSQLDeletionRace:
         monkeypatch.setenv("SCHOLARZONE_ENVIRONMENT", "test")
         reset_database_connections()
         init_database()
+        # Isolate tests: clear accumulated rows from prior tests/suites.
+        from app.database import get_engine
+        from sqlalchemy import text as _text
+        _eng = get_engine()
+        with _eng.begin() as _conn:
+            for _tbl in ("scholarship_evidence_archive", "scholarship_evidence", "deleted_closed_scholarships", "scholarships"):
+                _conn.execute(_text("TRUNCATE TABLE " + _tbl + " RESTART IDENTITY CASCADE"))
         yield
         reset_database_connections()
 
