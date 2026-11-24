@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import sys, os, json, hashlib
+import sys, os, json, hashlib, re
 
 from datetime import datetime, timezone, date
 
@@ -20,6 +20,13 @@ from sqlalchemy import select, text, inspect
 
 SCHEMA_VERSION_SUPPORTED = "1.0"
 
+SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
+SHA_RE = re.compile(r"^[0-9a-f]{40}$")
+
+
+
+def _fail(msg):
+    print('ERROR: ' + msg); sys.exit(1)
 
 
 def _verify_write_identity(db):
@@ -34,7 +41,7 @@ def _verify_write_identity(db):
 
         if not os.environ.get(var):
 
-            print('ERROR: missing required env ' + var); sys.exit(1)
+            _fail('missing required env ' + var)
 
 
 
@@ -42,7 +49,7 @@ def _verify_write_identity(db):
 
     if not write_url:
 
-        print('ERROR: SCHOLARZONE_DATABASE_URL not set'); sys.exit(1)
+        _fail('SCHOLARZONE_DATABASE_URL not set')
 
     parsed = urlparse(write_url)
 
@@ -52,13 +59,13 @@ def _verify_write_identity(db):
 
     if not expected_host:
 
-        print('ERROR: invalid database URL host'); sys.exit(1)
+        _fail('invalid database URL host')
 
     expected_host_cfg = os.environ["EXPECTED_DATABASE_HOST"].strip().lower()
 
     if expected_host.strip().lower() != expected_host_cfg:
 
-        print('ERROR: database host mismatch'); sys.exit(1)
+        _fail('database host mismatch')
 
 
 
@@ -86,39 +93,39 @@ def _verify_write_identity(db):
 
     except Exception as e:
 
-        print('ERROR: cannot read DB identity: ' + str(e)); sys.exit(1)
+        _fail('cannot read DB identity: ' + str(e))
 
 
 
     if row is None:
 
-        print('ERROR: cannot read DB identity'); sys.exit(1)
+        _fail('cannot read DB identity')
 
 
 
     if row["db_name"] != os.environ["EXPECTED_DATABASE_NAME"]:
 
-        print('ERROR: database mismatch'); sys.exit(1)
+        _fail('database mismatch')
 
     if expected_user and row["db_user"] != expected_user:
 
-        print('ERROR: database user mismatch'); sys.exit(1)
+        _fail('database user mismatch')
 
     if not row["project_id"] or row["project_id"] != os.environ["EXPECTED_NEON_PROJECT_ID"]:
 
-        print('ERROR: neon project mismatch'); sys.exit(1)
+        _fail('neon project mismatch')
 
     if not row["branch_id"] or row["branch_id"] != os.environ["EXPECTED_NEON_BRANCH_ID"]:
 
-        print('ERROR: neon branch mismatch'); sys.exit(1)
+        _fail('neon branch mismatch')
 
     if not row["branch_name"] or row["branch_name"] != os.environ["EXPECTED_NEON_BRANCH_NAME"]:
 
-        print('ERROR: neon branch name mismatch'); sys.exit(1)
+        _fail('neon branch name mismatch')
 
     if row["server_addr"] is None or str(row["server_addr"]).strip() == "":
 
-        print('ERROR: database host identity unavailable'); sys.exit(1)
+        _fail('database host identity unavailable')
 
 
 
@@ -128,26 +135,74 @@ def _verify_ledger_schema(db):
 
     if bind is None:
 
-        print('ERROR: no DB bind for ledger verification'); sys.exit(1)
+        _fail('no DB bind for ledger verification')
 
     inspector = inspect(bind)
 
     if not inspector.has_table("purge_execution_ledger"):
 
-        print('ERROR: purge_execution_ledger table missing'); sys.exit(1)
+        _fail('purge_execution_ledger table missing')
 
-    ucs = {uc.get("name") for uc in inspector.get_unique_constraints("purge_execution_ledger")}
+    # Semantic uniqueness check via pg_constraint / pg_index
+    try:
+        rows = db.execute(text("""
+            SELECT
+                con.conname AS constraint_name,
+                con.contype AS constraint_type,
+                pg_get_constraintdef(con.oid) AS definition,
+                (SELECT array_agg(att.attname ORDER BY u.ord)
+                   FROM unnest(con.conkey) WITH ORDINALITY AS u(attnum, ord)
+                   JOIN pg_attribute att ON att.attrelid = con.conrelid AND att.attnum = u.attnum) AS columns,
+                pg_get_expr(con.conpred, con.conrelid) AS predicate
+            FROM pg_constraint con
+            WHERE con.conrelid = 'purge_execution_ledger'::regclass
+              AND con.contype = 'u'
+        """)).mappings().all()
+    except Exception as e:
+        _fail('cannot inspect ledger constraints: ' + str(e))
 
-    indexes = inspector.get_indexes("purge_execution_ledger")
+    # Also inspect indexes for unique indexes
+    try:
+        idx_rows = db.execute(text("""
+            SELECT
+                i.relname AS index_name,
+                ix.indisunique AS is_unique,
+                ix.indpred IS NOT NULL AS has_predicate,
+                pg_get_indexdef(ix.indexrelid) AS definition,
+                (SELECT array_agg(a.attname ORDER BY u.ord)
+                   FROM unnest(ix.indkey) WITH ORDINALITY AS u(attnum, ord)
+                   JOIN pg_attribute a ON a.attrelid = ix.indrelid AND a.attnum = u.attnum
+                   WHERE u.attnum > 0) AS columns
+            FROM pg_index ix
+            JOIN pg_class i ON i.oid = ix.indexrelid
+            WHERE ix.indrelid = 'purge_execution_ledger'::regclass
+        """)).mappings().all()
+    except Exception as e:
+        _fail('cannot inspect ledger indexes: ' + str(e))
 
-    unique_index_names = {ix.get("name") for ix in indexes if ix.get("unique")}
+    # Build set of (columns tuple, predicate is None, is_unique) for both constraints and unique indexes
+    unique_single_cols = set()
+    for r in rows:
+        cols = r.get("columns")
+        pred = r.get("predicate")
+        if isinstance(cols, (list, tuple)) and len(cols) == 1 and cols[0] in ("merge_commit_sha", "execution_key"):
+            if not pred:  # unconditional
+                unique_single_cols.add(cols[0])
+    for r in idx_rows:
+        if not r.get("is_unique"):
+            continue
+        cols = r.get("columns")
+        if r.get("has_predicate"):
+            continue
+        if isinstance(cols, (list, tuple)) and len(cols) == 1 and cols[0] in ("merge_commit_sha", "execution_key"):
+            unique_single_cols.add(cols[0])
 
-    required = {"uq_purge_execution_ledger_merge_sha", "uq_purge_execution_ledger_execution_key"}
+    if "merge_commit_sha" not in unique_single_cols:
+        _fail('purge_execution_ledger missing unconditional single-column unique on merge_commit_sha')
+    if "execution_key" not in unique_single_cols:
+        _fail('purge_execution_ledger missing unconditional single-column unique on execution_key')
 
-    if not required.issubset(ucs | unique_index_names):
-
-        print('ERROR: purge_execution_ledger unique constraints missing'); sys.exit(1)
-
+    # Column presence
     cols = {c["name"] for c in inspector.get_columns("purge_execution_ledger")}
 
     required_cols = {"id","pr_number","merge_commit_sha","execution_key","manifest_sha256",
@@ -158,7 +213,7 @@ def _verify_ledger_schema(db):
 
     if not required_cols.issubset(cols):
 
-        print('ERROR: purge_execution_ledger columns missing'); sys.exit(1)
+        _fail('purge_execution_ledger columns missing')
 
 
 
@@ -170,7 +225,7 @@ def _verify_manifest_artifact():
 
     if not os.path.exists(manifest_path) or not os.path.exists(metadata_path):
 
-        print('ERROR: manifest artifact missing'); sys.exit(1)
+        _fail('manifest artifact missing')
 
     with open(manifest_path, "rb") as f:
 
@@ -182,7 +237,7 @@ def _verify_manifest_artifact():
 
     except Exception:
 
-        print('ERROR: invalid manifest JSON'); sys.exit(1)
+        _fail('invalid manifest JSON')
 
     try:
 
@@ -192,15 +247,15 @@ def _verify_manifest_artifact():
 
     except Exception:
 
-        print('ERROR: invalid manifest metadata JSON'); sys.exit(1)
+        _fail('invalid manifest metadata JSON')
 
     if not isinstance(manifest_data, list):
 
-        print('ERROR: manifest must be a list'); sys.exit(1)
+        _fail('manifest must be a list')
 
     if not manifest_data:
 
-        print('ERROR: NO_TARGETS: empty manifest cannot authorize deletion'); sys.exit(1)
+        _fail('NO_TARGETS: empty manifest cannot authorize deletion')
 
     # IDs
 
@@ -210,23 +265,23 @@ def _verify_manifest_artifact():
 
         if not isinstance(rec, dict):
 
-            print('ERROR: invalid manifest record'); sys.exit(1)
+            _fail('invalid manifest record')
 
         if "scholarship_id" not in rec:
 
-            print('ERROR: missing scholarship_id'); sys.exit(1)
+            _fail('missing scholarship_id')
 
         sid = rec["scholarship_id"]
 
         if isinstance(sid, bool) or not isinstance(sid, int) or sid <= 0:
 
-            print('ERROR: invalid scholarship_id'); sys.exit(1)
+            _fail('invalid scholarship_id')
 
         ids.append(sid)
 
     if len(ids) != len(set(ids)):
 
-        print('ERROR: duplicate scholarship_id in manifest'); sys.exit(1)
+        _fail('duplicate scholarship_id in manifest')
 
     # Schema version
 
@@ -234,7 +289,7 @@ def _verify_manifest_artifact():
 
     if not schema_version or schema_version != SCHEMA_VERSION_SUPPORTED:
 
-        print('ERROR: unsupported or missing schema version'); sys.exit(1)
+        _fail('unsupported or missing schema version')
 
     # Hash
 
@@ -244,45 +299,65 @@ def _verify_manifest_artifact():
 
     if not meta_hash or calculated != meta_hash:
 
-        print('ERROR: manifest hash mismatch'); sys.exit(1)
+        _fail('manifest hash mismatch')
 
-    # Trusted outputs
+    # Trusted outputs (MANDATORY - no optional bypass)
 
     trusted_hash = os.environ.get("EXPECTED_MANIFEST_SHA256")
 
-    if trusted_hash and trusted_hash != calculated:
+    if not trusted_hash:
 
-        print('ERROR: trusted manifest hash mismatch'); sys.exit(1)
+        _fail('EXPECTED_MANIFEST_SHA256 not set')
 
-    trusted_count = os.environ.get("EXPECTED_MANIFEST_COUNT")
+    if not SHA256_RE.fullmatch(trusted_hash.strip().lower()):
+
+        _fail('invalid EXPECTED_MANIFEST_SHA256 format')
+
+    if trusted_hash.strip().lower() != calculated:
+
+        _fail('trusted manifest hash mismatch')
+
+    trusted_count_raw = os.environ.get("EXPECTED_MANIFEST_COUNT")
+
+    if not trusted_count_raw:
+
+        _fail('EXPECTED_MANIFEST_COUNT not set')
 
     try:
 
-        trusted_count_int = int(trusted_count) if trusted_count is not None else None
+        trusted_count_int = int(trusted_count_raw)
 
     except (ValueError, TypeError):
 
-        trusted_count_int = None
+        _fail('invalid EXPECTED_MANIFEST_COUNT')
+
+    if isinstance(trusted_count_int, bool) or trusted_count_int <= 0:
+
+        _fail('invalid EXPECTED_MANIFEST_COUNT')
 
     meta_count = metadata.get("manifest_target_count")
 
-    if not isinstance(meta_count, int) or meta_count <= 0:
+    if not isinstance(meta_count, int) or isinstance(meta_count, bool) or meta_count <= 0:
 
-        print('ERROR: invalid manifest target count'); sys.exit(1)
+        _fail('invalid manifest target count')
 
     if meta_count != len(manifest_data):
 
-        print('ERROR: manifest target count mismatch'); sys.exit(1)
+        _fail('manifest target count mismatch')
 
-    if trusted_count_int is not None and trusted_count_int != len(manifest_data):
+    if trusted_count_int != len(manifest_data):
 
-        print('ERROR: trusted manifest count mismatch'); sys.exit(1)
+        _fail('trusted manifest count mismatch')
 
     trusted_schema = os.environ.get("EXPECTED_MANIFEST_SCHEMA_VERSION")
 
-    if trusted_schema and trusted_schema != schema_version:
+    if not trusted_schema:
 
-        print('ERROR: trusted schema version mismatch'); sys.exit(1)
+        _fail('EXPECTED_MANIFEST_SCHEMA_VERSION not set')
+
+    if trusted_schema != schema_version:
+
+        _fail('trusted schema version mismatch')
 
     # Reference date
 
@@ -290,7 +365,7 @@ def _verify_manifest_artifact():
 
     if not ref_date_str:
 
-        print('ERROR: missing reference date'); sys.exit(1)
+        _fail('missing reference date')
 
     try:
 
@@ -298,19 +373,31 @@ def _verify_manifest_artifact():
 
     except (ValueError, TypeError):
 
-        print('ERROR: invalid reference date'); sys.exit(1)
+        _fail('invalid reference date')
 
     trusted_ref = os.environ.get("EXPECTED_MANIFEST_REFERENCE_DATE")
 
-    if trusted_ref and trusted_ref != ref_date_str:
+    if not trusted_ref:
 
-        print('ERROR: trusted reference date mismatch'); sys.exit(1)
+        _fail('EXPECTED_MANIFEST_REFERENCE_DATE not set')
+
+    if trusted_ref != ref_date_str:
+
+        _fail('trusted reference date mismatch')
 
     # generated_at
 
     if not metadata.get("generated_at"):
 
-        print('ERROR: missing generated_at'); sys.exit(1)
+        _fail('missing generated_at')
+
+    # MERGE_COMMIT_SHA validation (mandatory full SHA)
+
+    merge_sha_env = os.environ.get("MERGE_COMMIT_SHA", "")
+
+    if not merge_sha_env or not SHA_RE.fullmatch(merge_sha_env):
+
+        _fail('invalid or missing MERGE_COMMIT_SHA')
 
     return manifest_data, metadata, ref_date_str
 
@@ -322,9 +409,9 @@ def main():
 
     merge_sha = os.environ.get('MERGE_COMMIT_SHA', '')
 
-    if not merge_sha:
+    if not merge_sha or not SHA_RE.fullmatch(merge_sha):
 
-        print('ERROR: MERGE_COMMIT_SHA not set'); sys.exit(1)
+        _fail('MERGE_COMMIT_SHA not set or invalid')
 
     manifest_data, metadata, ref_date_str = _verify_manifest_artifact()
 
