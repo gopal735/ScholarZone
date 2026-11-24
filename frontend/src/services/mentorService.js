@@ -266,6 +266,7 @@ export async function* streamMentorConversationMessage(conversationId, message, 
     }
   }
 }
+export function askMentor(message, { signal, sessionScope, sessionId, sessionKey, scope, session, generation, sessionGeneration } = {}) {
   const resolvedScope = (sessionScope !== undefined ? sessionScope
     : sessionId !== undefined ? sessionId
     : sessionKey !== undefined ? sessionKey
