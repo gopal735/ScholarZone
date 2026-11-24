@@ -2,7 +2,9 @@ import yaml
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
-WORKFLOW = REPO / ".github" / "workflows" / "closed-scholarship-auto-purge.yml"
+PREFLIGHT_WORKFLOW = REPO / ".github" / "workflows" / "closed-scholarship-purge-preflight.yml"
+EXECUTE_WORKFLOW = REPO / ".github" / "workflows" / "closed-scholarship-purge-execute.yml"
+WORKFLOW = PREFLIGHT_WORKFLOW
 
 def test_workflow_yaml_parses():
     data = yaml.safe_load(WORKFLOW.read_text(encoding="utf-8"))
@@ -56,15 +58,14 @@ def test_no_dependency_cycle():
                     q.append(m)
     assert visited == len(graph), "Dependency cycle detected"
 
-def test_executor_depends_on_summary_and_validation():
-    data = yaml.safe_load(WORKFLOW.read_text(encoding="utf-8"))
+def test_executor_depends_on_verification():
+    data = yaml.safe_load(EXECUTE_WORKFLOW.read_text(encoding="utf-8"))
     jobs = data["jobs"]
     exec_job = jobs["execute-deletion"]
     needs = exec_job.get("needs") or []
     if isinstance(needs, str):
         needs = [needs]
-    assert "preflight-summary" in needs
-    assert "validate-manifest" in needs
+    assert "verify-authorization" in needs
 
 def test_no_run_and_uses_same_step():
     data = yaml.safe_load(WORKFLOW.read_text(encoding="utf-8"))
@@ -111,19 +112,19 @@ def test_verify_merge_trigger_has_least_privilege_permissions():
     assert permissions.get("pull-requests") == "read"
 
 
-def test_execute_deletion_needs_backup_job():
-    data = yaml.safe_load(WORKFLOW.read_text(encoding="utf-8"))
+def test_execute_deletion_needs_verification():
+    data = yaml.safe_load(EXECUTE_WORKFLOW.read_text(encoding="utf-8"))
     exec_job = data["jobs"]["execute-deletion"]
     needs = exec_job.get("needs") or []
     if isinstance(needs, str):
         needs = [needs]
-    assert "preflight-gate4-backup" in needs, "execute-deletion must explicitly depend on backup verification"
+    assert "verify-authorization" in needs, "execute-deletion must depend on authorization verification"
 
 
-def test_execute_deletion_requires_backup_success():
-    data = yaml.safe_load(WORKFLOW.read_text(encoding="utf-8"))
+def test_execute_deletion_requires_authorization():
+    data = yaml.safe_load(EXECUTE_WORKFLOW.read_text(encoding="utf-8"))
     exec_job = data["jobs"]["execute-deletion"]
     condition = str(exec_job.get("if", ""))
-    assert "preflight-gate4-backup.result == 'success'" in condition, (
-        "execute-deletion must not run unless backup verification succeeded"
+    assert "verify-authorization.outputs.should_execute == 'true'" in condition, (
+        "execute-deletion must not run unless authorization succeeded"
     )

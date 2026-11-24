@@ -1,0 +1,636 @@
+name: 'Closed Scholarship Production Purge - Stage 1 Preflight (PR #107)'
+on:
+  workflow_dispatch:
+    inputs:
+      merge_commit_sha:
+        description: 'Exact merge commit SHA of PR #107 (verified against GitHub API)'
+        required: true
+        type: string
+permissions:
+  contents: read
+  id-token: write
+  actions: read
+  checks: write
+concurrency:
+  group: closed-scholarship-auto-purge-pr107
+  cancel-in-progress: false
+env:
+  SCHOLARZONE_ENVIRONMENT: production
+jobs:
+  verify-merge-trigger:
+    name: Verify PR
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      should_run: ${{ steps.check.outputs.should_run }}
+      pr_number: ${{ steps.check.outputs.pr_number }}
+      merge_commit_sha: ${{ steps.check.outputs.merge_commit_sha }}
+      head_sha: ${{ steps.check.outputs.head_sha }}
+    steps:
+    - name: Verify repository and ref
+      run: "if [ \"${{ github.repository }}\" != \"gopal735/ScholarZone\" ]; then\n\
+        \  echo \"ERROR: unexpected repository: ${{ github.repository }}\"\n  exit\
+        \ 1\nfi\nif [ \"${{ github.ref }}\" != \"refs/heads/master\" ]; then\n  echo\
+        \ \"ERROR: workflow must run from refs/heads/master, got ${{ github.ref }}\"\
+        \n  exit 1\nfi\necho \"Repository and ref verified\"\n"
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        ref: ${{ github.sha }}
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Verify verifier exists
+      run: test -f .github/scripts/verify_pr_merge_trigger.py
+    - name: Verify PR
+      id: check
+      env:
+        EXPECTED_REPOSITORY: gopal735/ScholarZone
+        GITHUB_API_URL: ${{ github.api_url }}
+        GITHUB_TOKEN: ${{ github.token }}
+        EVENT_MERGE_SHA: ${{ inputs.merge_commit_sha }}
+      run: python .github/scripts/verify_pr_merge_trigger.py
+    - name: Verify workflow revision matches merged PR
+      if: steps.check.outputs.should_run == 'true'
+      run: "\nMERGE_COMMIT_SHA=\"${{ steps.check.outputs.merge_commit_sha }}\"\n\n\
+        git fetch origin $MERGE_COMMIT_SHA --depth=1\n\nif git show $MERGE_COMMIT_SHA:.github/workflows/closed-scholarship-auto-purge.yml\
+        \ >/dev/null 2>&1; then\n\n  echo \"Workflow exists in merge commit - revision\
+        \ verified\"\n\nelse\n\n  echo \"ERROR: Workflow not found in merge commit\
+        \ - possible stale workflow\"\n\n  exit 1\n\nfi\n\ngit fetch origin master\
+        \ --depth=50\n\nif git merge-base --is-ancestor $MERGE_COMMIT_SHA origin/master;\
+        \ then\n\n  echo \"Merge commit reachable from origin/master\"\n\nelse\n\n\
+        \  echo \"ERROR: Merge commit not reachable from origin/master\"\n\n  exit\
+        \ 1\n\nfi\n"
+  preflight-gate1-atomicity:
+    name: Gate 1 - Atomicity and Rollback
+    needs: verify-merge-trigger
+    if: needs.verify-merge-trigger.outputs.should_run == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: test_purge
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+        ports:
+        - 5432:5432
+        options: '
+
+          --health-cmd="pg_isready -U test -d test_purge"
+
+          --health-interval=10s
+
+          --health-timeout=5s
+
+          --health-retries=5'
+    env:
+      TEST_DATABASE_URL: postgresql://test:test@localhost:5432/test_purge
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 1
+        ref: ${{ needs.verify-merge-trigger.outputs.merge_commit_sha }}
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Install dependencies
+      run: '
+
+        pip install psycopg2-binary --quiet
+
+
+        pip install -r backend/requirements.txt --quiet
+
+        '
+    - name: Verify Atomicity and Rollback
+      id: atomicity
+      run: python .github/scripts/gate1_atomicity.py
+    - name: Upload Gate 1 Results
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: gate1-atomicity-result
+        path: gate1_result.json
+        retention-days: 7
+  preflight-gate2-identity:
+    name: Gate 2 - Production Identity Verification
+    needs: verify-merge-trigger
+    if: needs.verify-merge-trigger.outputs.should_run == 'true'
+    environment:
+      name: production-readonly
+      url: https://console.neon.tech
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      SCHOLARZONE_DATABASE_URL_RO: ${{ secrets.SCHOLARZONE_DATABASE_URL_RO }}
+      EXPECTED_NEON_PROJECT_ID: ${{ secrets.EXPECTED_NEON_PROJECT_ID }}
+      EXPECTED_NEON_BRANCH_ID: ${{ secrets.EXPECTED_NEON_BRANCH_ID }}
+      EXPECTED_NEON_BRANCH_NAME: ${{ secrets.EXPECTED_NEON_BRANCH_NAME }}
+      EXPECTED_DATABASE_NAME: ${{ secrets.EXPECTED_DATABASE_NAME }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 1
+        ref: ${{ needs.verify-merge-trigger.outputs.merge_commit_sha }}
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Install dependencies
+      run: '
+
+        pip install psycopg2-binary --quiet
+
+
+        pip install -r backend/requirements.txt --quiet
+
+        '
+    - name: Verify Production Identity
+      id: identity
+      run: python .github/scripts/gate2_identity.py
+    - name: Upload Gate 2 Results
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: gate2-identity-result
+        path: gate2_result.json
+        retention-days: 7
+  preflight-gate3-dependencies:
+    name: Gate 3 - Production Dependencies Verification
+    needs:
+    - verify-merge-trigger
+    - generate-manifest
+    if: needs.verify-merge-trigger.outputs.should_run == 'true'
+    environment: production-readonly
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SCHOLARZONE_DATABASE_URL_RO: ${{ secrets.SCHOLARZONE_DATABASE_URL_RO }}
+      EXPECTED_NEON_PROJECT_ID: ${{ secrets.EXPECTED_NEON_PROJECT_ID }}
+      EXPECTED_NEON_BRANCH_ID: ${{ secrets.EXPECTED_NEON_BRANCH_ID }}
+      EXPECTED_NEON_BRANCH_NAME: ${{ secrets.EXPECTED_NEON_BRANCH_NAME }}
+      EXPECTED_DATABASE_NAME: ${{ secrets.EXPECTED_DATABASE_NAME }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 1
+        ref: ${{ needs.verify-merge-trigger.outputs.merge_commit_sha }}
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Install dependencies
+      run: '
+
+        pip install psycopg2-binary --quiet
+
+
+        pip install -r backend/requirements.txt --quiet
+
+        '
+    - name: Download Manifest Artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: deletion-manifest
+        path: artifacts
+    - name: Verify Production Dependencies
+      id: deps
+      run: python .github/scripts/gate3_dependencies.py
+    - name: Upload Gate 3 Results
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: gate3-dependencies-result
+        path: gate3_result.json
+        retention-days: 7
+  preflight-gate4-backup:
+    name: Gate 4 - Production Backup & Verification
+    needs:
+    - verify-merge-trigger
+    - generate-manifest
+    if: needs.verify-merge-trigger.outputs.should_run == 'true'
+    environment:
+      name: production-backup
+      url: https://console.neon.tech
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      id-token: write
+      contents: read
+    env:
+      SCHOLARZONE_DATABASE_URL_BACKUP: ${{ secrets.SCHOLARZONE_DATABASE_URL_BACKUP
+        }}
+      GPG_RECIPIENT: ${{ secrets.GPG_RECIPIENT }}
+      GPG_EXPECTED_FINGERPRINT: ${{ secrets.GPG_EXPECTED_FINGERPRINT }}
+      EXPECTED_NEON_PROJECT_ID: ${{ secrets.EXPECTED_NEON_PROJECT_ID }}
+      EXPECTED_NEON_BRANCH_ID: ${{ secrets.EXPECTED_NEON_BRANCH_ID }}
+      EXPECTED_NEON_BRANCH_NAME: ${{ secrets.EXPECTED_NEON_BRANCH_NAME }}
+      EXPECTED_DATABASE_NAME: ${{ secrets.EXPECTED_DATABASE_NAME }}
+      RESTORE_TEST_PGHOST: ${{ secrets.RESTORE_TEST_PGHOST }}
+      RESTORE_TEST_PGPORT: ${{ secrets.RESTORE_TEST_PGPORT }}
+      RESTORE_TEST_PGUSER: ${{ secrets.RESTORE_TEST_PGUSER }}
+      RESTORE_TEST_PGPASSWORD: ${{ secrets.RESTORE_TEST_PGPASSWORD }}
+      DURABLE_STORAGE_PROVIDER: ${{ secrets.DURABLE_STORAGE_PROVIDER }}
+      DURABLE_STORAGE_BUCKET: ${{ secrets.DURABLE_STORAGE_BUCKET }}
+      DURABLE_STORAGE_REGION: ${{ secrets.DURABLE_STORAGE_REGION }}
+      DURABLE_STORAGE_CREDENTIAL: ${{ secrets.DURABLE_STORAGE_CREDENTIAL }}
+      DURABLE_STORAGE_CREDENTIAL_SECRET: ${{ secrets.DURABLE_STORAGE_CREDENTIAL_SECRET
+        }}
+      NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 1
+        ref: ${{ needs.verify-merge-trigger.outputs.merge_commit_sha }}
+    - name: Azure OIDC Login
+      if: env.DURABLE_STORAGE_PROVIDER == 'azure'
+      uses: azure/login@v2
+      with:
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        allow-no-subscriptions: true
+    - name: Install PostgreSQL client and GPG
+      run: '
+
+        sudo apt-get update -qq
+
+
+        sudo apt-get install -y -qq postgresql-client gnupg > /dev/null 2>&1
+
+        '
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Install dependencies
+      run: pip install -r backend/requirements.txt --quiet
+    - name: Download Manifest Artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: deletion-manifest
+        path: artifacts
+    - name: Verify Neon PITR & Create Encrypted Backup
+      id: backup
+      run: python .github/scripts/gate4_backup.py
+    - name: Upload Gate 4 Results
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: gate4-backup-result
+        path: '
+
+          gate4_result.json
+
+
+          *.sha256
+
+          '
+        retention-days: 30
+  preflight-gate5-classification:
+    name: Gate 5 - Target Classification Validation
+    needs:
+    - verify-merge-trigger
+    - generate-manifest
+    if: needs.verify-merge-trigger.outputs.should_run == 'true'
+    environment: production-readonly
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SCHOLARZONE_DATABASE_URL_RO: ${{ secrets.SCHOLARZONE_DATABASE_URL_RO }}
+      EXPECTED_NEON_PROJECT_ID: ${{ secrets.EXPECTED_NEON_PROJECT_ID }}
+      EXPECTED_NEON_BRANCH_ID: ${{ secrets.EXPECTED_NEON_BRANCH_ID }}
+      EXPECTED_NEON_BRANCH_NAME: ${{ secrets.EXPECTED_NEON_BRANCH_NAME }}
+      EXPECTED_DATABASE_NAME: ${{ secrets.EXPECTED_DATABASE_NAME }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 1
+        ref: ${{ needs.verify-merge-trigger.outputs.merge_commit_sha }}
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Install dependencies
+      run: '
+
+        pip install psycopg2-binary --quiet
+
+
+        pip install -r backend/requirements.txt --quiet
+
+        '
+    - name: Download Manifest Artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: deletion-manifest
+        path: artifacts
+    - name: Validate Target Classification
+      id: classification
+      run: python .github/scripts/gate5_classification.py
+    - name: Upload Gate 5 Results
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: gate5-classification-result
+        path: gate5_result.json
+        retention-days: 7
+  preflight-gate6-cycle-validation:
+    name: Gate 6 - Application Cycle Validation
+    needs:
+    - verify-merge-trigger
+    - generate-manifest
+    if: needs.verify-merge-trigger.outputs.should_run == 'true'
+    environment: production-readonly
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SCHOLARZONE_DATABASE_URL_RO: ${{ secrets.SCHOLARZONE_DATABASE_URL_RO }}
+      EXPECTED_NEON_PROJECT_ID: ${{ secrets.EXPECTED_NEON_PROJECT_ID }}
+      EXPECTED_NEON_BRANCH_ID: ${{ secrets.EXPECTED_NEON_BRANCH_ID }}
+      EXPECTED_NEON_BRANCH_NAME: ${{ secrets.EXPECTED_NEON_BRANCH_NAME }}
+      EXPECTED_DATABASE_NAME: ${{ secrets.EXPECTED_DATABASE_NAME }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 1
+        ref: ${{ needs.verify-merge-trigger.outputs.merge_commit_sha }}
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Install dependencies
+      run: '
+
+        pip install psycopg2-binary --quiet
+
+
+        pip install -r backend/requirements.txt --quiet
+
+        '
+    - name: Download Manifest Artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: deletion-manifest
+        path: artifacts
+    - name: Validate Application Cycles
+      id: cycle
+      run: python .github/scripts/gate6_cycle_validation.py
+    - name: Upload Gate 6 Results
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: gate6-cycle-validation-result
+        path: gate6_result.json
+        retention-days: 7
+  preflight-gate7-git-safety:
+    name: Gate 7 - Git Safety Verification
+    needs: verify-merge-trigger
+    if: needs.verify-merge-trigger.outputs.should_run == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        ref: ${{ needs.verify-merge-trigger.outputs.merge_commit_sha }}
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Install dependencies
+      run: pip install -r backend/requirements.txt --quiet
+    - name: Verify Git Safety
+      id: gitsafety
+      run: python .github/scripts/gate7_git_safety.py
+    - name: Upload Gate 7 Results
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: gate7-git-safety-result
+        path: gate7_result.json
+        retention-days: 7
+  preflight-summary:
+    name: Preflight Summary & Gate Status
+    needs:
+    - verify-merge-trigger
+    - preflight-gate1-atomicity
+    - preflight-gate2-identity
+    - preflight-gate3-dependencies
+    - preflight-gate4-backup
+    - preflight-gate5-classification
+    - preflight-gate6-cycle-validation
+    - preflight-gate7-git-safety
+    - validate-manifest
+    if: always() && needs.verify-merge-trigger.outputs.should_run == 'true'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 1
+        ref: ${{ needs.verify-merge-trigger.outputs.merge_commit_sha }}
+    - name: Download all artifacts
+      uses: actions/download-artifact@v4
+      with:
+        path: artifacts
+        merge-multiple: true
+    - name: Generate Final Preflight Report
+      env:
+        MERGE_COMMIT_SHA: ${{ needs.verify-merge-trigger.outputs.merge_commit_sha
+          }}
+        RUN_ID: ${{ github.run_id }}
+        RUN_NUMBER: ${{ github.run_number }}
+        RUN_ATTEMPT: ${{ github.run_attempt }}
+        WORKFLOW_NAME: ${{ github.workflow }}
+      run: '
+
+        python .github/scripts/summary.py artifacts "$MERGE_COMMIT_SHA" "$RUN_ID"
+        "$RUN_NUMBER" "$RUN_ATTEMPT" "$WORKFLOW_NAME"
+
+        '
+    - name: Upload Preflight Summary
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: preflight-summary
+        path: '
+
+          artifacts/gate1_result.json
+
+
+          artifacts/gate2_result.json
+
+
+          artifacts/gate3_result.json
+
+
+          artifacts/gate4_result.json
+
+
+          artifacts/gate5_result.json
+
+
+          artifacts/gate6_result.json
+
+
+          artifacts/gate7_result.json
+
+
+          preflight_summary.json
+
+          '
+        retention-days: 30
+    - name: Check Overall Preflight Status
+      run: python .github/scripts/check_preflight_status.py
+  generate-manifest:
+    name: Generate Dynamic Deletion Manifest
+    needs:
+    - verify-merge-trigger
+    - preflight-gate2-identity
+    if: needs.verify-merge-trigger.outputs.should_run == 'true'
+    environment: production-readonly
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      manifest_hash: ${{ steps.manifest.outputs.manifest_hash }}
+      total_closed: ${{ steps.manifest.outputs.total_closed }}
+      schema_version: ${{ steps.manifest.outputs.schema_version }}
+      reference_date: ${{ steps.manifest.outputs.reference_date }}
+      manifest_path: ${{ steps.manifest.outputs.manifest_path }}
+    env:
+      SCHOLARZONE_DATABASE_URL_RO: ${{ secrets.SCHOLARZONE_DATABASE_URL_RO }}
+      EXPECTED_NEON_PROJECT_ID: ${{ secrets.EXPECTED_NEON_PROJECT_ID }}
+      EXPECTED_NEON_BRANCH_ID: ${{ secrets.EXPECTED_NEON_BRANCH_ID }}
+      EXPECTED_NEON_BRANCH_NAME: ${{ secrets.EXPECTED_NEON_BRANCH_NAME }}
+      EXPECTED_DATABASE_NAME: ${{ secrets.EXPECTED_DATABASE_NAME }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 1
+        ref: ${{ needs.verify-merge-trigger.outputs.merge_commit_sha }}
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Install dependencies
+      run: '
+
+        pip install psycopg2-binary --quiet
+
+
+        pip install -r backend/requirements.txt --quiet
+
+        '
+    - name: Generate Dynamic Deletion Manifest
+      id: manifest
+      run: python .github/scripts/generate_manifest.py
+    - name: Upload Manifest
+      uses: actions/upload-artifact@v4
+      with:
+        name: deletion-manifest
+        path: '
+
+          artifacts/deletion_manifest.json
+
+
+          artifacts/manifest_metadata.json
+
+          '
+        retention-days: 30
+  validate-manifest:
+    name: Validate Manifest Stability
+    needs:
+    - verify-merge-trigger
+    - generate-manifest
+    if: needs.verify-merge-trigger.outputs.should_run == 'true'
+    environment: production-readonly
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SCHOLARZONE_DATABASE_URL_RO: ${{ secrets.SCHOLARZONE_DATABASE_URL_RO }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 1
+        ref: ${{ needs.verify-merge-trigger.outputs.merge_commit_sha }}
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Install dependencies
+      run: '
+
+        pip install psycopg2-binary --quiet
+
+
+        pip install -r backend/requirements.txt --quiet
+
+        '
+    - name: Download Manifest
+      uses: actions/download-artifact@v4
+      with:
+        name: deletion-manifest
+        path: artifacts
+    - name: Validate Manifest Stability
+      id: validate
+      run: python .github/scripts/validate_manifest.py
+  final-report:
+    name: Final Execution Report
+    needs:
+    - verify-merge-trigger
+    - preflight-summary
+    - generate-manifest
+    - validate-manifest
+    if: needs.verify-merge-trigger.outputs.should_run == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 1
+        ref: ${{ needs.verify-merge-trigger.outputs.merge_commit_sha }}
+    - name: Download Manifest Artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: deletion-manifest
+        path: artifacts
+    - name: Download Deletion Report Artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: deletion-report
+        path: artifacts
+    - name: Generate Final Execution Report
+      run: python .github/scripts/generate_final_report.py
+    - name: Upload Final Report
+      uses: actions/upload-artifact@v4
+      with:
+        name: final-execution-report
+        path: artifacts/
+        retention-days: 90
