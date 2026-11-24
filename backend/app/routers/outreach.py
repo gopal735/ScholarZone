@@ -1,0 +1,568 @@
+"""Private outreach routes.
+
+Everything here is scoped to the signed-in student, resolved by
+``app.dependencies.require_user`` — the same dependency Dashboard 1.0 and
+Application Workspace use. No second identity system is introduced, and no
+``user_id`` is ever accepted from a request.
+
+A record belonging to another student answers 404 rather than 403: the caller
+should not learn that it exists. That is the same rule ``applications.py``
+documents, and matching it matters because a 403 would confirm the existence and
+rough shape of someone else's private activity.
+
+This module does not send anything. There is no mail path in it, and the only
+outbound email in the codebase is a single-recipient operator notification. That
+is the intended shape for 1.0: the student prepares a draft, reviews it, and
+sends it from their own mail client.
+"""
+
+from __future__ import annotations
+
+import logging
+import re
+from datetime import datetime, timezone
+
+from fastapi import APIRouter, Depends, HTTPException, Query, status
+from sqlalchemy import and_, func, select, update
+from sqlalchemy.exc import IntegrityError
+from sqlalchemy.orm import Session
+
+from ..core.rate_limit import RateLimitExceeded, outreach_write_limiter
+from ..database import get_db
+from ..dependencies import require_user
+from ..models import User
+from ..models_supervisor import (
+    ContactTemplate,
+    ProfessorOutreachRecord,
+    ProfessorProfile,
+)
+from ..schemas import (
+    OutreachCreateRequest,
+    OutreachResponse,
+    OutreachSummaryResponse,
+    OutreachUpdateRequest,
+)
+from ..services.supervisor_email import (
+    DraftRequest,
+    build_draft,
+    get_builtin_template,
+    get_builtin_template_by_id,
+    list_templates,
+    verified_relationship,
+)
+from ..services.supervisor_public import (
+    ScholarshipNotPublic,
+    get_public_scholarship_or_404,
+)
+from ..services.supervisor_status import (
+    OutreachStatus,
+    outreach_transition_is_legal,
+)
+
+logger = logging.getLogger(__name__)
+
+router = APIRouter(prefix="/outreach", tags=["outreach"])
+
+MAX_NOTES_LENGTH = 4000
+MAX_DRAFT_BODY_LENGTH = 12000
+MAX_SUBJECT_LENGTH = 255
+MAX_NEXT_ACTION_LENGTH = 255
+
+#: Matches ``professor_outreach_records.response_status``. Validated here so an
+#: over-long value is a 422 for the caller rather than a truncated value or a
+#: database error on PostgreSQL.
+MAX_RESPONSE_STATUS_LENGTH = 24
+
+_NOT_FOUND = "Outreach record not found."
+
+#: The recognised outreach statuses, as the plain strings a client sends.
+#:
+#: Membership is tested against the values rather than against ``OutreachStatus``
+#: itself. `"sent" in OutreachStatus` is not a documented operation: on Python
+#: 3.12 and later it resolves by value, while on 3.11 - the version CI runs - it
+#: raises ``TypeError``. Comparing values keeps the guard identical on every
+#: supported interpreter.
+_RECOGNISED_OUTREACH_STATUSES: frozenset[str] = frozenset(
+    member.value for member in OutreachStatus
+)
+
+#: Notes are stored and returned as plain text and rendered as text. Actual
+#: HTML/XML tags and template-style brace placeholders are rejected so the
+#: column can never become a rendering or injection surface. Ordinary prose
+#: that merely contains an angle bracket (e.g. "ML < NLP") is allowed, because
+#: rejecting it would silently drop legitimate student text such as a comparison
+#: expression that the draft builder is happy to emit.
+_TAG_PATTERN = re.compile(r"<[A-Za-z/]")
+_BRACE_PATTERN = re.compile(r"\{[^}]*\}")
+
+
+def _reject_markup(value: str | None, field: str, limit: int) -> str | None:
+    if value is None:
+        return None
+    trimmed = value.strip()
+    if len(trimmed) > limit:
+        raise HTTPException(
+            status.HTTP_422_UNPROCESSABLE_ENTITY,
+            f"{field} must be {limit} characters or fewer.",
+        )
+    if _TAG_PATTERN.search(trimmed) or _BRACE_PATTERN.search(trimmed):
+        raise HTTPException(
+            status.HTTP_422_UNPROCESSABLE_ENTITY,
+            f"{field} must be plain text and cannot contain markup or template placeholders.",
+        )
+    return trimmed or None
+
+
+def _rate_limit(user: User) -> None:
+    try:
+        outreach_write_limiter.check(f"write:{user.id}")
+    except RateLimitExceeded as exc:
+        raise HTTPException(
+            status.HTTP_429_TOO_MANY_REQUESTS,
+            "Too many requests. Please slow down.",
+            headers={"Retry-After": str(exc.retry_after_seconds)},
+        )
+
+
+def _owned_record(db: Session, record_id: int, user: User) -> ProfessorOutreachRecord:
+    """Return the record only if this student owns it.
+
+    The ownership test is part of the query rather than a check afterwards, so
+    another student's row is never even loaded. Combined with the identical 404,
+    a caller cannot probe for the existence of someone else's record.
+    """
+    row = db.execute(
+        select(ProfessorOutreachRecord).where(
+            and_(
+                ProfessorOutreachRecord.id == record_id,
+                ProfessorOutreachRecord.user_id == user.id,
+            )
+        )
+    ).scalar_one_or_none()
+    if row is None:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, _NOT_FOUND)
+    return row
+
+
+def _validate_pair(db: Session, scholarship_id: int, professor_id: int) -> ProfessorProfile:
+    """Reject a pair that no verified public relationship supports.
+
+    Without this a student could manufacture an outreach record against any
+    professor id, and the record would then sit next to a scholarship that
+    academic has no evidenced connection to.
+
+    ``verified_relationship`` applies the same visibility predicate the public
+    supervisor list uses, including excluding a merged profile. Reusing it keeps
+    the private tracker and the public list from disagreeing about who exists.
+    """
+    link = verified_relationship(db, scholarship_id, professor_id)
+    if link is None:
+        raise HTTPException(
+            status.HTTP_422_UNPROCESSABLE_ENTITY,
+            "That professor is not a verified match for this scholarship.",
+        )
+    professor = db.get(ProfessorProfile, professor_id)
+    if professor is None:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "Professor not found.")
+    return professor
+
+
+def _resolve_template(db: Session, template_id: int | None) -> int | None:
+    """Return the persisted ``ContactTemplate`` id to store, or ``None``.
+
+    A client may name a built-in template by one of the deterministic
+    read-only identifiers the GET path serves. Those identifiers do not
+    necessarily exist as rows, so they are resolved here to a real persisted
+    row before the outreach write, creating it transaction-safely on first use
+    so the foreign key always points at an actual ``contact_templates`` row.
+    Persisted rows (active or inactive) are honoured as-is; an inactive
+    template is rejected, and an unknown id is a controlled 422 rather than a
+    database error. The write path never overwrites an existing persisted
+    template, so locally edited templates survive.
+    """
+    if template_id is None:
+        return None
+    template = db.get(ContactTemplate, template_id)
+    if template is not None:
+        if not template.is_active:
+            raise HTTPException(
+                status.HTTP_422_UNPROCESSABLE_ENTITY,
+                "That outreach template is not available.",
+            )
+        return template.id
+
+    builtin = get_builtin_template_by_id(template_id)
+    if builtin is None:
+        raise HTTPException(
+            status.HTTP_422_UNPROCESSABLE_ENTITY,
+            "That outreach template is not available.",
+        )
+
+    existing = db.execute(
+        select(ContactTemplate).where(ContactTemplate.template_key == builtin.key)
+    ).scalar_one_or_none()
+    if existing is not None:
+        if not existing.is_active:
+            raise HTTPException(
+                status.HTTP_422_UNPROCESSABLE_ENTITY,
+                "That outreach template is not available.",
+            )
+        return existing.id
+
+    row = ContactTemplate(
+        template_key=builtin.key,
+        title=builtin.title,
+        degree_level=builtin.degree_level,
+        subject_hint=builtin.subject_hint,
+        body_text=builtin.body_text,
+        is_active=True,
+    )
+    db.add(row)
+    try:
+        db.commit()
+    except IntegrityError:
+        # A concurrent first-use request won the race. Re-fetch the row it
+        # created rather than failing; never create a duplicate.
+        db.rollback()
+        existing = db.execute(
+            select(ContactTemplate).where(ContactTemplate.template_key == builtin.key)
+        ).scalar_one_or_none()
+        if existing is None:
+            raise
+        if not existing.is_active:
+            raise HTTPException(
+                status.HTTP_422_UNPROCESSABLE_ENTITY,
+                "That outreach template is not available.",
+            )
+        return existing.id
+    db.refresh(row)
+    return row.id
+
+
+def _to_response(row: ProfessorOutreachRecord) -> OutreachResponse:
+    return OutreachResponse(
+        id=row.id,
+        scholarship_id=row.scholarship_id,
+        professor_id=row.professor_id,
+        application_id=row.application_id,
+        status=row.status,
+        draft_subject=row.draft_subject,
+        draft_body=row.draft_body,
+        first_contacted_at=row.first_contacted_at,
+        last_contacted_at=row.last_contacted_at,
+        follow_up_due_at=row.follow_up_due_at,
+        response_status=row.response_status,
+        response_at=row.response_at,
+        next_action=row.next_action,
+        notes=row.notes,
+        template_id=row.template_id,
+        version=row.version,
+        created_at=row.created_at,
+        updated_at=row.updated_at,
+    )
+
+
+@router.get("", response_model=list[OutreachResponse])
+def list_outreach(
+    outreach_status: str | None = Query(default=None, alias="status"),
+    scholarship_id: int | None = Query(default=None, ge=1),
+    limit: int = Query(default=50, ge=1, le=200),
+    offset: int = Query(default=0, ge=0),
+    user: User = Depends(require_user),
+    db: Session = Depends(get_db),
+) -> list[OutreachResponse]:
+    """Return the signed-in student's own outreach records.
+
+    ``scholarship_id`` scopes the page to the scholarship on screen so the
+    student's own tracker cannot page past records that belong to another
+    scholarship.
+    """
+    query = select(ProfessorOutreachRecord).where(ProfessorOutreachRecord.user_id == user.id)
+    if scholarship_id is not None:
+        query = query.where(ProfessorOutreachRecord.scholarship_id == scholarship_id)
+    if outreach_status:
+        query = query.where(ProfessorOutreachRecord.status == outreach_status)
+    rows = db.execute(
+        query.order_by(ProfessorOutreachRecord.updated_at.desc()).limit(limit).offset(offset)
+    ).scalars()
+    return [_to_response(row) for row in rows]
+
+
+@router.get("/summary", response_model=OutreachSummaryResponse)
+def outreach_summary(
+    user: User = Depends(require_user),
+    db: Session = Depends(get_db),
+) -> OutreachSummaryResponse:
+    """Return counts of this student's own outreach.
+
+    A separate surface from the catalogue's counts on purpose. These numbers are
+    never added to the application, match, saved or catalogue totals, and no
+    response-rate style metric is derived from them — there is not yet enough real
+    outbound data to support one, and a synthesised one would be a fiction.
+    """
+    now = datetime.now(timezone.utc)
+    counts = dict(
+        db.execute(
+            select(ProfessorOutreachRecord.status, func.count(ProfessorOutreachRecord.id))
+            .where(ProfessorOutreachRecord.user_id == user.id)
+            .group_by(ProfessorOutreachRecord.status)
+        ).all()
+    )
+    follow_ups_due = db.execute(
+        select(func.count(ProfessorOutreachRecord.id)).where(
+            and_(
+                ProfessorOutreachRecord.user_id == user.id,
+                ProfessorOutreachRecord.follow_up_due_at.isnot(None),
+                ProfessorOutreachRecord.follow_up_due_at <= now,
+                ProfessorOutreachRecord.status.in_(
+                    [str(OutreachStatus.SENT), str(OutreachStatus.FOLLOW_UP_DUE)]
+                ),
+            )
+        )
+    ).scalar_one()
+    awaiting_reply = sum(
+        counts.get(state, 0) for state in (OutreachStatus.SENT, OutreachStatus.FOLLOW_UP_DUE)
+    )
+    return OutreachSummaryResponse(
+        total=sum(counts.values()),
+        by_status={str(key): value for key, value in counts.items()},
+        follow_ups_due=follow_ups_due,
+        awaiting_reply=awaiting_reply,
+        positive_responses=counts.get(str(OutreachStatus.POSITIVE), 0),
+    )
+
+
+@router.post("", response_model=OutreachResponse, status_code=status.HTTP_201_CREATED)
+def create_outreach(
+    payload: OutreachCreateRequest,
+    user: User = Depends(require_user),
+    db: Session = Depends(get_db),
+) -> OutreachResponse:
+    """Start tracking one professor, idempotently.
+
+    The unique constraint on (user, scholarship, professor) means a
+    double-submitted form returns the record that already exists rather than
+    creating a second one and splitting the history in two.
+    """
+    _rate_limit(user)
+    _validate_pair(db, payload.scholarship_id, payload.professor_id)
+
+    existing = db.execute(
+        select(ProfessorOutreachRecord).where(
+            and_(
+                ProfessorOutreachRecord.user_id == user.id,
+                ProfessorOutreachRecord.scholarship_id == payload.scholarship_id,
+                ProfessorOutreachRecord.professor_id == payload.professor_id,
+            )
+        )
+    ).scalar_one_or_none()
+    if existing is not None:
+        # Historical records are preserved: a student who already tracks a
+        # pairing keeps their record, even if the scholarship later became
+        # hidden.
+        return _to_response(existing)
+
+    # A NEW outreach record may only be created against a scholarship the public
+    # surface would show. The check goes through the shared visibility service
+    # rather than a local copy of the predicate, so the private tracker and the
+    # public list can never disagree about what may be read.
+    try:
+        get_public_scholarship_or_404(db, payload.scholarship_id)
+    except ScholarshipNotPublic:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "Scholarship not found.")
+
+    resolved_template_id = _resolve_template(db, payload.template_id)
+    draft_subject = _reject_markup(payload.draft_subject, "Subject", MAX_SUBJECT_LENGTH)
+    draft_body = _reject_markup(payload.draft_body, "Draft body", MAX_DRAFT_BODY_LENGTH)
+    next_action = _reject_markup(payload.next_action, "Next action", MAX_NEXT_ACTION_LENGTH)
+
+    now = datetime.now(timezone.utc)
+    row = ProfessorOutreachRecord(
+        user_id=user.id,
+        scholarship_id=payload.scholarship_id,
+        professor_id=payload.professor_id,
+        template_id=resolved_template_id,
+        draft_subject=draft_subject,
+        draft_body=draft_body,
+        next_action=next_action,
+        status=str(OutreachStatus.NOT_CONTACTED),
+        created_at=now,
+        updated_at=now,
+    )
+    db.add(row)
+    try:
+        db.commit()
+    except IntegrityError:
+        # Lost a race with a concurrent identical request. The other writer's row
+        # is the correct answer, not an error. A different integrity failure is
+        # not silently converted into success: if no matching row exists, the
+        # original failure is re-raised.
+        db.rollback()
+        existing = db.execute(
+            select(ProfessorOutreachRecord).where(
+                and_(
+                    ProfessorOutreachRecord.user_id == user.id,
+                    ProfessorOutreachRecord.scholarship_id == payload.scholarship_id,
+                    ProfessorOutreachRecord.professor_id == payload.professor_id,
+                )
+            )
+        ).scalar_one_or_none()
+        if existing is None:
+            raise
+        return _to_response(existing)
+    db.refresh(row)
+    return _to_response(row)
+
+
+@router.patch("/{record_id}", response_model=OutreachResponse)
+def update_outreach(
+    record_id: int,
+    payload: OutreachUpdateRequest,
+    user: User = Depends(require_user),
+    db: Session = Depends(get_db),
+) -> OutreachResponse:
+    """Update one record, refusing a write based on a stale read.
+
+    The client must send back the ``version`` it read. A mismatch means another
+    tab saved in between, and overwriting it would silently destroy whatever the
+    student typed there, so this answers 409 instead.
+
+    The refusal is enforced by the database rather than by comparing against a
+    freshly loaded row: the update is constrained by the expected version, and a
+    write that affects no row is a stale write. A comparison against an in-memory
+    snapshot alone would race with a concurrent writer that committed between the
+    read and this write.
+    """
+    _rate_limit(user)
+    row = _owned_record(db, record_id, user)
+
+    if row.version != payload.version:
+        raise HTTPException(
+            status.HTTP_409_CONFLICT,
+            "This record changed since you loaded it. Reload and try again.",
+        )
+
+    # Validate every supplied field before mutating the row, so a rejected
+    # payload cannot leave a partially applied update behind.
+    draft_subject = (
+        _reject_markup(payload.draft_subject, "Subject", MAX_SUBJECT_LENGTH)
+        if payload.draft_subject is not None
+        else row.draft_subject
+    )
+    draft_body = (
+        _reject_markup(payload.draft_body, "Draft body", MAX_DRAFT_BODY_LENGTH)
+        if payload.draft_body is not None
+        else row.draft_body
+    )
+    notes = (
+        _reject_markup(payload.notes, "Notes", MAX_NOTES_LENGTH)
+        if payload.notes is not None
+        else row.notes
+    )
+    next_action = (
+        _reject_markup(payload.next_action, "Next action", MAX_NEXT_ACTION_LENGTH)
+        if payload.next_action is not None
+        else row.next_action
+    )
+    response_status = (
+        _reject_markup(
+            payload.response_status, "Response status", MAX_RESPONSE_STATUS_LENGTH
+        )
+        if payload.response_status is not None
+        else None
+    )
+
+    now = datetime.now(timezone.utc)
+    next_status = row.status
+    next_first_contacted_at = row.first_contacted_at
+    next_last_contacted_at = row.last_contacted_at
+    next_response_at = row.response_at
+    next_response_status = row.response_status
+
+    if payload.status is not None and payload.status != row.status:
+        if payload.status not in _RECOGNISED_OUTREACH_STATUSES:
+            raise HTTPException(
+                status.HTTP_422_UNPROCESSABLE_ENTITY,
+                "That outreach status is not recognised.",
+            )
+        if not outreach_transition_is_legal(row.status, payload.status):
+            raise HTTPException(
+                status.HTTP_422_UNPROCESSABLE_ENTITY,
+                f"An outreach record cannot move from '{row.status}' to '{payload.status}'.",
+            )
+        next_status = payload.status
+        if payload.status == str(OutreachStatus.SENT):
+            # First contact is recorded once and never rewritten by a later send.
+            if row.first_contacted_at is None:
+                next_first_contacted_at = now
+            next_last_contacted_at = now
+        if payload.status in (str(OutreachStatus.POSITIVE), str(OutreachStatus.NEGATIVE)):
+            next_response_at = now
+            next_response_status = response_status or payload.status
+        if payload.status == str(OutreachStatus.NOT_CONTACTED):
+            next_first_contacted_at = None
+            next_last_contacted_at = None
+
+    values = {
+        "status": next_status,
+        "draft_subject": draft_subject,
+        "draft_body": draft_body,
+        "notes": notes,
+        "next_action": next_action,
+        "updated_at": now,
+        "version": row.version + 1,
+        "first_contacted_at": next_first_contacted_at,
+        "last_contacted_at": next_last_contacted_at,
+        "response_at": next_response_at,
+        "response_status": next_response_status,
+    }
+    if payload.follow_up_due_at is not None:
+        values["follow_up_due_at"] = payload.follow_up_due_at
+
+    result = db.execute(
+        update(ProfessorOutreachRecord)
+        .where(
+            ProfessorOutreachRecord.id == record_id,
+            ProfessorOutreachRecord.version == row.version,
+        )
+        .values(**values)
+    )
+    if result.rowcount != 1:
+        # No row matched the expected version: a concurrent writer moved the
+        # record between the read and this write. Refuse rather than overwrite.
+        raise HTTPException(
+            status.HTTP_409_CONFLICT,
+            "This record changed since you loaded it. Reload and try again.",
+        )
+    db.commit()
+    db.refresh(row)
+    return _to_response(row)
+
+
+@router.delete("/{record_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_outreach(
+    record_id: int,
+    user: User = Depends(require_user),
+    db: Session = Depends(get_db),
+) -> None:
+    """Delete one of this student's own records.
+
+    Only the student's own tracking row is removed. Professor profiles,
+    relationships and provenance are untouched, so deleting an outreach record
+    never erases the verified fact that the academic is faculty at that
+    institution.
+    """
+    _rate_limit(user)
+    row = _owned_record(db, record_id, user)
+    db.delete(row)
+    db.commit()
+
+
+__all__ = [
+    "MAX_DRAFT_BODY_LENGTH",
+    "MAX_NOTES_LENGTH",
+    "MAX_NEXT_ACTION_LENGTH",
+    "MAX_RESPONSE_STATUS_LENGTH",
+    "MAX_SUBJECT_LENGTH",
+    "router",
+]

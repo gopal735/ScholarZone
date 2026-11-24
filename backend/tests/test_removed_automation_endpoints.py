@@ -6,6 +6,12 @@ endpoints were removed as part of abandoning internal automation. Every one of
 them must return 404 (not 401/403): the routes themselves are gone rather than
 merely re-guarded. Public routes still work.
 
+The student-facing supervisor outreach and email-draft routes are deliberately
+*not* in this list. They were removed by the same release port even though the
+shipped UI still calls them; they are authenticated, single-recipient
+preparation surfaces rather than internal automation, and their restoration is
+covered by ``test_supervisor_outreach.py``.
+
 The deploy workflow must no longer reference the removed guarded endpoints or
 the verification secret.
 """
@@ -55,10 +61,6 @@ REMOVED_PATHS = [
     "/admin/images/review/1/approve",
     "/admin/images/review/1/reject",
     "/admin/images/review-queue/1/decision",
-    # supervisor outreach (/outreach)
-    "/outreach/",
-    # supervisor email (/supervisor-email)
-    "/supervisor-email/templates",
 ]
 
 
@@ -82,7 +84,6 @@ def test_removed_endpoint_returns_404(client, path):
     "/internal/images/verify",
     "/admin/verification/summary",
     "/admin/images/review-queue",
-    "/outreach/",
 ])
 def test_removed_endpoint_post_returns_404(client, path):
     response = client.post(path)

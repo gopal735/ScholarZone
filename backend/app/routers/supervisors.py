@@ -15,10 +15,15 @@ from __future__ import annotations
 
 import logging
 
-from fastapi import APIRouter, Depends, HTTPException, Query, status
+from fastapi import APIRouter, Depends, HTTPException, Query, Request, status
 from sqlalchemy.orm import Session
 
-from ..core.rate_limit import RateLimitExceeded, supervisor_read_limiter
+from ..core.config import get_settings
+from ..core.rate_limit import (
+    RateLimitExceeded,
+    client_identifier,
+    supervisor_read_limiter,
+)
 from ..database import get_db
 from ..schemas import (
     ProfessorResponse,
@@ -46,9 +51,28 @@ router = APIRouter(prefix="/scholarships", tags=["supervisors"])
 MAX_INTERESTS = 20
 MAX_INTEREST_LENGTH = 120
 
+
+def _client_identifier(request: Request) -> str:
+    """Return the caller identity used for the read budget.
+
+    The bucket must not be keyed by scholarship alone. That made one caller's
+    traffic - or one buggy card loop - exhaust the allowance every other visitor
+    needed for the same record, which is a denial of service on a public read
+    surface.
+
+    ``X-Forwarded-For`` is honoured only when the immediate peer is a configured
+    trusted proxy, in which case the first untrusted entry names the caller and
+    the rest are proxy hops. Behind an untrusted peer the header is treated as
+    caller-controlled and the actual request client address is used instead, so
+    a forged header cannot mint a fresh budget for itself.
+    """
+    return client_identifier(request, get_settings().trusted_proxies)
+
+
 @router.get("/{scholarship_id}/supervisors", response_model=SupervisorListResponse)
 def list_supervisors(
     scholarship_id: int,
+    request: Request,
     interests: list[str] = Query(default=[]),
     limit: int = Query(default=50, ge=1, le=200),
     db: Session = Depends(get_db),
@@ -66,7 +90,9 @@ def list_supervisors(
     cleaned = [value[:MAX_INTEREST_LENGTH] for value in cleaned]
 
     try:
-        supervisor_read_limiter.check(f"read:{scholarship_id}")
+        supervisor_read_limiter.check(
+            f"read:{_client_identifier(request)}:{scholarship_id}"
+        )
     except RateLimitExceeded as exc:
         raise HTTPException(
             status.HTTP_429_TOO_MANY_REQUESTS,
@@ -105,16 +131,21 @@ def list_supervisors(
 @router.get("/{scholarship_id}/supervisor-summary", response_model=SupervisorSummaryResponse)
 def supervisor_summary(
     scholarship_id: int,
+    request: Request,
     db: Session = Depends(get_db),
 ) -> SupervisorSummaryResponse:
     """Return just the coverage state, for a scholarship card.
 
     Separate from the list route so a page of forty cards does not fetch forty
-    professor lists. The count is read from the coverage row rather than
-    recounted, so this stays a single small query.
+    professor lists. The count is still recomputed from the publishable links
+    rather than trusted from the stored coverage row: the row can lag a merge or
+    a withdrawn relationship, and a card must not advertise a number the detail
+    page cannot show.
     """
     try:
-        supervisor_read_limiter.check(f"read-summary:{scholarship_id}")
+        supervisor_read_limiter.check(
+            f"read-summary:{_client_identifier(request)}:{scholarship_id}"
+        )
     except RateLimitExceeded as exc:
         raise HTTPException(
             status.HTTP_429_TOO_MANY_REQUESTS,
@@ -128,7 +159,9 @@ def supervisor_summary(
         raise HTTPException(status.HTTP_404_NOT_FOUND, "Scholarship not found.")
 
     coverage = get_coverage(db, scholarship_id)
-    state = coverage_public_state(coverage)
+    state = coverage_public_state(
+        coverage, publishable_count=count_publishable_links(db, scholarship_id)
+    )
     return SupervisorSummaryResponse(
         scholarship_id=scholarship_id,
         coverage_status=state["coverage_status"],
