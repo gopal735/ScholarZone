@@ -1,4 +1,4 @@
-"""The student dashboard and the state behind it.
+﻿"""The student dashboard and the state behind it.
 
 Every route here requires ``require_user``, which resolves the account from the
 session cookie. No handler accepts a user id, so there is no code path in which
@@ -304,6 +304,69 @@ def list_applications(
         ],
         "count": len(rows),
         "states": [member.value for member in ApplicationState],
+    }
+
+
+@router.delete("/saved/row/{saved_id}", response_model=SavedMutationResponse)
+def remove_saved_scholarship_by_row(
+    saved_id: int,
+    db: Session = Depends(get_db),
+    user: User = Depends(require_user),
+) -> SavedMutationResponse:
+    record = db.execute(
+        select(SavedScholarship).where(
+            SavedScholarship.id == saved_id,
+            SavedScholarship.user_id == user.id,
+        )
+    ).scalar_one_or_none()
+
+    scholarship_id = record.scholarship_id if record is not None else None
+    if record is not None:
+        db.delete(record)
+        db.commit()
+
+    return SavedMutationResponse(
+        scholarship_id=scholarship_id, saved=False, saved_count=count_saved(db, user.id)
+    )
+
+
+@router.put("/applications/row/{application_id}")
+def set_application_state_by_row(
+    application_id: int,
+    payload: ApplicationUpsertRequest,
+    db: Session = Depends(get_db),
+    user: User = Depends(require_user),
+) -> dict:
+    record = db.execute(
+        select(ApplicationRecord).where(
+            ApplicationRecord.id == application_id,
+            ApplicationRecord.user_id == user.id,
+        )
+    ).scalar_one_or_none()
+
+    if record is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="That application is not available.",
+        )
+
+    record.state = payload.state.value
+
+    try:
+        db.commit()
+    except IntegrityError:
+        db.rollback()
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail="That application state could not be saved. Please try again.",
+        ) from None
+
+    db.refresh(record)
+    return {
+        "application_id": record.id,
+        "scholarship_id": record.scholarship_id,
+        "state": record.state,
+        "updated_at": record.updated_at,
     }
 
 

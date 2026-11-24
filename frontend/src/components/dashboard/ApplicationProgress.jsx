@@ -69,7 +69,11 @@ export default function ApplicationProgress({ applications, states, onChangeStat
             <li className="application-item" key={item.id}>
               <div className="application-item__main">
                 <h3 className="application-item__title">
-                  <Link to={scholarship.detail_url}>{scholarship.name}</Link>
+                  {scholarship.detail_url ? (
+                    <Link to={scholarship.detail_url}>{scholarship.name}</Link>
+                  ) : (
+                    scholarship.name
+                  )}
                 </h3>
                 <p className="application-item__meta">
                   {scholarship.country} · {scholarship.degree}
@@ -84,14 +88,14 @@ export default function ApplicationProgress({ applications, states, onChangeStat
 
               <div className="application-item__controls">
                 <div className="application-item__field">
-                  <label className="application-item__label" htmlFor={`state-${scholarship.scholarship_id}`}>
+                  <label className="application-item__label" htmlFor={`state-${item.id}`}>
                     State
                   </label>
                   <select
-                    id={`state-${scholarship.scholarship_id}`}
+                    id={`state-${item.id}`}
                     className="sz-input application-item__select"
                     value={item.state}
-                    onChange={(event) => onChangeState(scholarship.scholarship_id, event.target.value)}
+                    onChange={(event) => onChangeState(item.id, scholarship.scholarship_id, event.target.value)}
                   >
                     {availableStates.map((state) => (
                       <option key={state} value={state}>
@@ -110,7 +114,7 @@ export default function ApplicationProgress({ applications, states, onChangeStat
                   <button
                     type="button"
                     className="sz-btn sz-btn--ghost"
-                    onClick={() => onRemove(scholarship.scholarship_id)}
+                    onClick={() => onRemove(item.id, scholarship.scholarship_id)}
                   >
                     Remove
                   </button>

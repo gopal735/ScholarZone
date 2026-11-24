@@ -441,7 +441,7 @@ class DashboardResponse(BaseModel):
 
 
 class SavedMutationResponse(BaseModel):
-    scholarship_id: int
+    scholarship_id: int | None = None
     saved: bool
     #: The authoritative count after the mutation, so the header cannot drift
     #: from the list it is describing.

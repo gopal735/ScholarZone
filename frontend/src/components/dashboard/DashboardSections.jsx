@@ -60,7 +60,11 @@ export function SavedScholarships({ saved, onRemove }) {
             <li className="saved-item" key={item.id}>
               <div className="saved-item__main">
                 <h3 className="saved-item__title">
-                  <Link to={scholarship.detail_url}>{scholarship.name}</Link>
+                  {scholarship.detail_url ? (
+                    <Link to={scholarship.detail_url}>{scholarship.name}</Link>
+                  ) : (
+                    scholarship.name
+                  )}
                 </h3>
                 <p className="saved-item__meta">
                   {scholarship.country} · {scholarship.degree}
@@ -88,15 +92,13 @@ export function SavedScholarships({ saved, onRemove }) {
                   <dd>{item.application_state ? item.application_state.replace(/_/g, ' ') : 'Not started'}</dd>
                 </div>
               </dl>
-              {scholarship.scholarship_id !== null ? (
-                <button
-                  type="button"
-                  className="sz-btn sz-btn--ghost"
-                  onClick={() => onRemove(scholarship.scholarship_id)}
-                >
-                  Remove
-                </button>
-              ) : null}
+              <button
+                type="button"
+                className="sz-btn sz-btn--ghost"
+                onClick={() => onRemove(item.id)}
+              >
+                Remove
+              </button>
             </li>
           )
         })}
