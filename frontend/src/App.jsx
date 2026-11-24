@@ -19,6 +19,7 @@ const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 const BangladeshJourneyPage = lazy(() => import('./features/journey/components/JourneyPage'))
 const JourneyRoutes = lazy(() => import('./features/journey/components/JourneyRoutes'))
 const ItalyDsuGuidePage = lazy(() => import('./pages/ItalyDsuGuidePage'))
+const StudyPlannerPage = lazy(() => import('./pages/StudyPlannerPage'))
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
         <Route path="/applications" element={<ApplicationsPage />} />
         {/* The workspace itself, so a refresh or a shared link lands on it. */}
         <Route path="/applications/:applicationId" element={<ApplicationsPage />} />
+        <Route path="/study-planner" element={<StudyPlannerPage />} />
         {/* Unified AI Assistant - merges Mentor and AI Assistant */}
         <Route path="/assistant" element={<UnifiedAIPage />} />
         {/* Redirect legacy /mentor to /assistant */}

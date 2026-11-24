@@ -420,11 +420,12 @@ class TestIndexValidation:
         result = validate_schema(sqlite_engine_with_supervisor)
         if not result["valid"]:
             for table, detail in result["table_details"].items():
-                if not detail.get('has_required_columns', True):
-                    print(table + ': has_required_columns=' + str(detail.get('has_required_columns')))
-                    for fk in fk_val["details"]:
-                        if fk.get("status") != "OK":
-                            print("  ", fk)
+                    if not detail.get('has_required_columns', True):
+                        print(table + ': has_required_columns=' + str(detail.get('has_required_columns')))
+                        fk_val = result.get("foreign_key_validation", {}).get(table, {})
+                        for fk in fk_val.get("details", []):
+                            if fk.get("status") != "OK":
+                                print("  ", fk)
             for table, idx_val in result["index_validation"].items():
                 if not idx_val.get("all_present", True):
                     print(table + ': index all_present=' + str(idx_val.get("all_present")) + ', missing=' + str(idx_val.get("missing")))

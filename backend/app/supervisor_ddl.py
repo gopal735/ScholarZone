@@ -307,6 +307,66 @@ NEW_TABLE_DDL: dict[str, dict[str, str]] = {
             CONSTRAINT uq_official_contact_scholarship_url UNIQUE (scholarship_id, official_contact_url)
         """,
     },
+    "study_plans": {
+        "postgresql": """
+            id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+            user_id INTEGER NOT NULL REFERENCES users(id),
+            title VARCHAR(255) NOT NULL,
+            goal TEXT,
+            scholarship_id INTEGER REFERENCES scholarships(id),
+            status VARCHAR(16) NOT NULL DEFAULT 'active',
+            version INTEGER NOT NULL DEFAULT 1,
+            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+        """,
+        "sqlite": """
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL REFERENCES users(id),
+            title VARCHAR(255) NOT NULL,
+            goal TEXT,
+            scholarship_id INTEGER REFERENCES scholarships(id),
+            status VARCHAR(16) NOT NULL DEFAULT 'active',
+            version INTEGER NOT NULL DEFAULT 1,
+            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+        """,
+    },
+    "study_plan_tasks": {
+        "postgresql": """
+            id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+            plan_id INTEGER NOT NULL REFERENCES study_plans(id) ON DELETE CASCADE,
+            title VARCHAR(255) NOT NULL,
+            description TEXT,
+            priority VARCHAR(16) NOT NULL DEFAULT 'medium',
+            due_date DATE,
+            status VARCHAR(16) NOT NULL DEFAULT 'open',
+            rationale TEXT,
+            related_scholarship_id INTEGER REFERENCES scholarships(id),
+            position INTEGER NOT NULL DEFAULT 0,
+            version INTEGER NOT NULL DEFAULT 1,
+            completed_at TIMESTAMPTZ,
+            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            CONSTRAINT uq_study_plan_task_plan_position UNIQUE (plan_id, position)
+        """,
+        "sqlite": """
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            plan_id INTEGER NOT NULL REFERENCES study_plans(id) ON DELETE CASCADE,
+            title VARCHAR(255) NOT NULL,
+            description TEXT,
+            priority VARCHAR(16) NOT NULL DEFAULT 'medium',
+            due_date DATE,
+            status VARCHAR(16) NOT NULL DEFAULT 'open',
+            rationale TEXT,
+            related_scholarship_id INTEGER REFERENCES scholarships(id),
+            position INTEGER NOT NULL DEFAULT 0,
+            version INTEGER NOT NULL DEFAULT 1,
+            completed_at DATETIME,
+            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            CONSTRAINT uq_study_plan_task_plan_position UNIQUE (plan_id, position)
+        """,
+    },
 }
 
 #: Index definitions as ``name ON table (columns)``, without the CREATE prefix.
@@ -352,6 +412,12 @@ NEW_TABLE_INDEXES: dict[str, list[str]] = {
         "ix_official_contacts_scholarship_id ON official_contacts (scholarship_id)",
         "ix_official_contacts_institution ON official_contacts (institution_name)",
         "ix_official_contacts_verification ON official_contacts (verification_status)",
+    ],
+    "study_plans": [
+        "ix_study_plans_user_updated ON study_plans (user_id, updated_at)",
+    ],
+    "study_plan_tasks": [
+        "ix_study_plan_tasks_plan_status ON study_plan_tasks (plan_id, status)",
     ],
 }
 
