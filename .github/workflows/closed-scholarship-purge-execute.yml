@@ -7,11 +7,6 @@ on:
         description: "Stage 1 preflight workflow run ID"
         required: true
         type: string
-      preflight_artifact_name:
-        description: "Preflight artifact name"
-        required: true
-        type: string
-        default: "preflight-summary"
       merge_commit_sha:
         description: "Exact merge commit SHA of PR #107"
         required: true

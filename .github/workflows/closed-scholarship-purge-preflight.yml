@@ -283,7 +283,8 @@ jobs:
         GPG_EXPECTED_FINGERPRINT: ${{ secrets.GPG_EXPECTED_FINGERPRINT }}
       run: |
         set -euo pipefail
-        export GNUPGHOME="$(mktemp -d)"
+        GNUPGHOME="$(mktemp -d)"
+        export GNUPGHOME
         chmod 700 "$GNUPGHOME"
         printf '%s' "$GPG_PUBLIC_KEY" | gpg --batch --import
         printf '%s' "$GPG_PRIVATE_KEY" | gpg --batch --pinentry-mode loopback --passphrase "" --import
