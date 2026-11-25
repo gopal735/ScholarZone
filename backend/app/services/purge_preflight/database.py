@@ -67,12 +67,20 @@ def _ensure_sslmode(url: str, test: bool = False) -> str:
     lower = url.lower()
     if lower.count("sslmode=") > 1:
         raise RuntimeError("multiple sslmode parameters in database URL")
+    import re
+    # Determine if this points at a local/disposable database host.
+    mhost = re.search(r"@([^:/?]+)", url)
+    host = (mhost.group(1) if mhost else "").lower()
+    is_local = host in ("localhost", "127.0.0.1", "::1") or host.startswith("localhost")
+
     if "sslmode=" not in lower:
-        mode = "require" if test else "verify-full"
-        url += ("&" if "?" in url else "?") + "sslmode=" + mode
+        if test or is_local:
+            # Disposable/local test databases may not support TLS; do not force
+            # sslmode so the connection can succeed against a plaintext server.
+            return url
+        url += ("&" if "?" in url else "?") + "sslmode=verify-full"
         return url
-    if not test:
-        import re
+    if not test and not is_local:
         m = re.search(r"sslmode=([^&]+)", lower)
         mode = (m.group(1) if m else "").strip()
         if mode in ("require", "disable", "prefer", "allow"):
