@@ -271,14 +271,36 @@ export async function* streamMentorConversationMessage(conversationId, message, 
     throw new MentorApiError('No response body', response.status)
   }
   const reader = response.body.getReader()
-  const decoder = new TextDecoder('utf-8')
+  const decoder = new TextDecoder('utf-8', { fatal: false })
   let buffer = ''
   let cancelled = false
   let completedNormally = false
-  const onAbort = () => { cancelled = true; try { const p = reader.cancel(); if (p && typeof p.then === 'function') p.catch(() => {}) } catch { /* ignore */ } }
+  let cancelPromise = null
+  const onAbort = () => {
+    cancelled = true
+    try {
+      const p = reader.cancel()
+      if (p && typeof p.then === 'function') {
+        cancelPromise = p
+        p.catch(() => {})
+      }
+    } catch { /* ignore */ }
+  }
   if (signal) {
     if (signal.aborted) onAbort()
     else signal.addEventListener('abort', onAbort, { once: true })
+  }
+  function findBoundary(buf) {
+    const candidates = [
+      { idx: buf.indexOf('\n\n'), len: 2 },
+      { idx: buf.indexOf('\r\n\r\n'), len: 4 },
+      { idx: buf.indexOf('\r\r'), len: 2 },
+    ]
+    let best = null
+    for (const c of candidates) {
+      if (c.idx !== -1 && (best === null || c.idx < best.idx)) best = c
+    }
+    return best
   }
   try {
     while (true) {
@@ -293,32 +315,30 @@ export async function* streamMentorConversationMessage(conversationId, message, 
       const { done, value } = readResult
       if (done) break
       buffer += decoder.decode(value, { stream: true })
-      if (buffer.endsWith('\\r')) {
-        const core = buffer.slice(0, -1)
-        buffer = core.replace(/\\r\\n/g, '\\n').replace(/\\r/g, '\\n') + '\\r'
-      } else {
-        buffer = buffer.replace(/\\r\\n/g, '\\n').replace(/\\r/g, '\\n')
-      }
-      let idx
-      while ((idx = buffer.indexOf('\\n\\n')) !== -1) {
+      while (true) {
         if (cancelled) break
-        const raw = buffer.slice(0, idx)
-        buffer = buffer.slice(idx + 2)
-        const evt = parseSSEEvent(raw)
+        const b = findBoundary(buffer)
+        if (!b) break
+        const raw = buffer.slice(0, b.idx)
+        buffer = buffer.slice(b.idx + b.len)
+        const normalized = raw.replace(/\r\n/g, '\n').replace(/\r/g, '\n')
+        const evt = parseSSEEvent(normalized)
         if (evt) yield evt
       }
       if (cancelled) break
     }
     if (!cancelled && buffer.trim()) {
-      const tail = buffer.endsWith('\\r') ? buffer.slice(0, -1) : buffer
-      const normalized = tail.replace(/\\r\\n/g, '\\n').replace(/\\r/g, '\\n')
+      const normalized = buffer.replace(/\r\n/g, '\n').replace(/\r/g, '\n')
       const evt = parseSSEEvent(normalized)
       if (evt) yield evt
     }
     completedNormally = true
   } finally {
     if (!completedNormally) {
-      try { await reader.cancel() } catch { /* ignore */ }
+      try {
+        if (cancelPromise) await cancelPromise
+        else await reader.cancel()
+      } catch { /* ignore */ }
     }
     try { reader.releaseLock() } catch { /* ignore */ }
     if (signal) signal.removeEventListener('abort', onAbort)

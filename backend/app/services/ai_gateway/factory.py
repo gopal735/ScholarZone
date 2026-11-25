@@ -23,9 +23,18 @@ def _is_production() -> bool:
     return env == "production"
 
 
+_LOOPBACK_HOSTS = {"localhost", "127.0.0.1", "::1"}
+
+
 def _allow_http_base_url(host: str) -> bool:
+    # testserver is never a valid provider endpoint, even in tests.
     host = (host or "").lower()
-    return host in {"localhost", "127.0.0.1", "::1", "testserver"}
+    if host not in _LOOPBACK_HOSTS:
+        return False
+    # In production, plaintext HTTP is never permitted.
+    if _is_production():
+        return False
+    return True
 
 
 def _validate_base_url(base_url: str) -> bool:
@@ -64,6 +73,26 @@ def build_ai_gateway() -> AIGateway:
             max_tokens = int(os.getenv("SCHOLARZONE_AI_PROVIDER_MAX_TOKENS", "800"))
         except (TypeError, ValueError):
             max_tokens = 800
+
+        # Validate token cap: must be a positive integer within bounds.
+        _MAX_TOKEN_CAP = 32768
+        if not isinstance(max_tokens, int) or isinstance(max_tokens, bool) or max_tokens <= 0 or max_tokens > _MAX_TOKEN_CAP:
+            # Invalid configuration must not silently enable an invalid model spec.
+            provider = DisabledProvider()
+            enabled = False
+            registry = []
+            # Rebuild config below with enabled=False.
+            config = GatewayConfig(
+                registry=registry,
+                default_provider=provider,
+                enabled=enabled,
+                production=_is_production(),
+            )
+            return AIGateway(config)
+
+        # Validate timeout.
+        if not isinstance(timeout, (int, float)) or timeout <= 0 or timeout > 600:
+            timeout = 30.0
 
         if not _validate_base_url(base_url):
             # Invalid/insecure configuration must not silently enable a provider.

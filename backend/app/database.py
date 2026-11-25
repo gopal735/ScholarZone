@@ -460,8 +460,20 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
         # PostgreSQL-only: catalog introspection via pg_constraint / pg_index.
         # No silent exception swallowing: a failure here must abort the
         # migration transaction and propagate to the caller.
+        # No silent exception swallowing: a failure here must abort the
+        # migration transaction and propagate to the caller.
         if connection.dialect.name == "postgresql":
-            _schema = connection.execute(text("SELECT current_schema()")).scalar()
+            # Resolve the actual relation identity via search_path so DDL and
+            # catalog queries target the same table even with a customized
+            # search_path. (Do not assume current_schema() alone.)
+            _schema = connection.execute(text(
+                "SELECT n.nspname FROM pg_class c "
+                "JOIN pg_namespace n ON n.oid = c.relnamespace "
+                "WHERE c.oid = 'mentor_messages'::regclass"
+            )).scalar()
+            if _schema is None:
+                # Fall back to current_schema only if regclass resolution fails.
+                _schema = connection.execute(text("SELECT current_schema()")).scalar()
 
             # Drop obsolete global UNIQUE constraints whose key columns are
             # exactly [request_id].
@@ -486,8 +498,9 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
                     f'DROP CONSTRAINT IF EXISTS "{_qname}"'
                 ))
 
-            # Drop obsolete standalone unique indexes whose key columns are
-            # exactly [request_id] (not backing a constraint).
+            # Drop obsolete standalone unique indexes whose actual unique key is
+            # exactly [request_id], excluding partial, expression, invalid, and
+            # not-ready indexes. INCLUDE columns are not counted as key columns.
             _legacy_indexes = connection.execute(text("""
                 SELECT idx.relname
                 FROM pg_index i
@@ -497,6 +510,10 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
                 WHERE tbl.relname = 'mentor_messages'
                   AND n.nspname = :schema
                   AND i.indisunique = TRUE
+                  AND i.indisvalid = TRUE
+                  AND i.indisready = TRUE
+                  AND i.indpred IS NULL
+                  AND i.indexprs IS NULL
                   AND NOT EXISTS (
                         SELECT 1 FROM pg_constraint c WHERE c.conindid = i.indexrelid
                   )
@@ -505,6 +522,7 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
                         FROM unnest(i.indkey) WITH ORDINALITY AS k(attnum, ord)
                         JOIN pg_attribute a ON a.attrelid = tbl.oid AND a.attnum = k.attnum
                         WHERE k.attnum <> 0
+                          AND k.ord <= i.indnkeyatts
                   ) = ARRAY['request_id']::text[]
             """), {"schema": _schema}).fetchall()
             for (_iname,) in _legacy_indexes:
@@ -514,7 +532,7 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
                 ))
 
             # Ensure the intended composite uniqueness exists (any constraint or
-            # unique index name). Never create a duplicate.
+            # valid unique index). Never create a duplicate.
             _composite_exists = connection.execute(text("""
                 SELECT 1
                 FROM pg_constraint c
@@ -536,11 +554,16 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
                 WHERE tbl.relname = 'mentor_messages'
                   AND n.nspname = :schema
                   AND i.indisunique = TRUE
+                  AND i.indisvalid = TRUE
+                  AND i.indisready = TRUE
+                  AND i.indpred IS NULL
+                  AND i.indexprs IS NULL
                   AND (
                         SELECT COALESCE(array_agg(a.attname ORDER BY k.ord)::text[], ARRAY[]::text[])
                         FROM unnest(i.indkey) WITH ORDINALITY AS k(attnum, ord)
                         JOIN pg_attribute a ON a.attrelid = tbl.oid AND a.attnum = k.attnum
                         WHERE k.attnum <> 0
+                          AND k.ord <= i.indnkeyatts
                   ) = ARRAY['conversation_id','role','request_id']::text[]
                 LIMIT 1
             """), {"schema": _schema}).fetchone()
@@ -556,6 +579,7 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
         # actor that never runs application code, so it is installed here in
         # the same idempotent startup migration as everything else.
         create_image_audit_schema(connection)
+
 
 
 def _validate_postgresql_schema(engine: Engine) -> None:

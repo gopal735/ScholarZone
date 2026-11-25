@@ -455,14 +455,26 @@ def stream_msg(conversation_id: int, payload: MentorSendMessageRequest, request:
                         timeout_seconds=getattr(req, "timeout_seconds", None),
                         cancel_event=cancel_event,
                     )
+                    started_output = False
+                    buffered_chunks = []
                     for chunk in gw.generate_stream("general_guidance", gw_req, cancel_event=cancel_event):
                         if cancel_event is not None and cancel_event.is_set():
                             cancelled = True
                             break
                         content_parts.append(chunk)
-                        yield f"event: token\ndata: {json.dumps({'content': chunk})}\n\n"
+                        if not started_output:
+                            buffered_chunks.append(chunk)
+                            if "".join(content_parts).strip():
+                                started_output = True
+                                for b in buffered_chunks:
+                                    yield f"event: token\\ndata: {json.dumps({'content': b})}\\n\\n"
+                                buffered_chunks = []
+                        else:
+                            yield f"event: token\\ndata: {json.dumps({'content': chunk})}\\n\\n"
                     if cancel_event is not None and cancel_event.is_set():
                         cancelled = True
+                    # discard any held-back whitespace-only chunks
+                    buffered_chunks = []
                     if "".join(content_parts).strip():
                         used = True
                         provider_mode = "configured"

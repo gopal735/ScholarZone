@@ -169,15 +169,28 @@ class OpenAICompatibleProvider:
         self._base_url = (base_url or "").rstrip("/")
         self._default_model = default_model
         self._timeout = float(timeout_seconds)
-        # Security: never send credentials over plaintext HTTP (except loopback).
+        # Security: never send credentials over plaintext HTTP (except loopback
+        # in non-production). testserver is never a valid provider endpoint.
+        # Full validation mirrors the factory so direct construction cannot
+        # bypass the security contract.
         if self._api_key:
             try:
                 from urllib.parse import urlparse
+                import os as _os
                 parsed = urlparse(self._base_url)
                 scheme = (parsed.scheme or "").lower()
                 host = (parsed.hostname or "").lower()
-                if scheme != "https" and host not in ("localhost", "127.0.0.1", "::1"):
-                    raise ValueError("base_url must use HTTPS when an API key is provided")
+                production = (_os.getenv("SCHOLARZONE_ENVIRONMENT") or _os.getenv("ENVIRONMENT") or "").strip().lower() == "production"
+                loopback = host in ("localhost", "127.0.0.1", "::1")
+                if scheme not in ("http", "https"):
+                    raise ValueError("base_url must use a supported scheme")
+                if not parsed.netloc or parsed.username or parsed.password:
+                    raise ValueError("base_url must not contain credentials")
+                if parsed.query or parsed.fragment:
+                    raise ValueError("base_url must not contain query or fragment")
+                if scheme == "http":
+                    if production or not loopback or host == "testserver" or host == "":
+                        raise ValueError("base_url must use HTTPS when an API key is provided")
             except ValueError:
                 raise
 
@@ -256,7 +269,7 @@ class OpenAICompatibleProvider:
             "max_tokens": getattr(request, "max_output_tokens", 400) or 400,
             "stream": True,
         }
-        headers = {"Authorization": f"Bearer {self._api_key}", "Content-Type": "application/json"}
+        headers = {"Authorization": f"Bearer {self._api_key}", "Content-Type": "application/json", "Accept-Encoding": "identity"}
         url = f"{self._base_url}/chat/completions"
         cancel_event = getattr(request, "cancel_event", None)
         timeout = getattr(request, "timeout_seconds", None)
@@ -286,11 +299,14 @@ class OpenAICompatibleProvider:
                     if resp.status_code >= 400:
                         raise RuntimeError("unavailable")
                     content_type = (resp.headers.get("content-type") or "").lower()
+                    content_encoding = (resp.headers.get("content-encoding") or "").strip().lower()
+                    if content_encoding and content_encoding not in ("identity", ""):
+                        raise RuntimeError("malformed_response")
                     if "text/event-stream" not in content_type and "application/json" not in content_type:
                         raise RuntimeError("malformed_response")
 
                     buffer = b""
-                    for chunk in resp.iter_bytes():
+                    for chunk in resp.iter_raw():
                         if cancel_event is not None and cancel_event.is_set():
                             raise RuntimeError("cancelled")
                         now = _time.perf_counter()
@@ -326,15 +342,59 @@ class OpenAICompatibleProvider:
                                     if malformed_frames > max_malformed:
                                         raise RuntimeError("malformed_response")
                                     continue
-                                choices = obj.get("choices") or []
+                                # Strict structure validation.
+                                if not isinstance(obj, dict):
+                                    malformed_frames += 1
+                                    if malformed_frames > max_malformed:
+                                        raise RuntimeError("malformed_response")
+                                    continue
+                                if "error" in obj and isinstance(obj.get("error"), (dict, str)):
+                                    raise RuntimeError("provider_error")
+                                choices = obj.get("choices")
+                                if choices is None:
+                                    choices = []
+                                if not isinstance(choices, list):
+                                    malformed_frames += 1
+                                    if malformed_frames > max_malformed:
+                                        raise RuntimeError("malformed_response")
+                                    continue
                                 if not choices:
                                     continue
-                                delta = (choices[0].get("delta") or {}).get("content")
-                                if delta:
-                                    if output_chars + len(delta) > max_output_chars:
-                                        raise RuntimeError("output_limit_exceeded")
-                                    output_chars += len(delta)
-                                    yield delta
+                                choice = choices[0]
+                                if not isinstance(choice, dict):
+                                    malformed_frames += 1
+                                    if malformed_frames > max_malformed:
+                                        raise RuntimeError("malformed_response")
+                                    continue
+                                delta = choice.get("delta")
+                                if delta is None:
+                                    delta = {}
+                                if not isinstance(delta, dict):
+                                    malformed_frames += 1
+                                    if malformed_frames > max_malformed:
+                                        raise RuntimeError("malformed_response")
+                                    continue
+                                content = delta.get("content")
+                                if content is None or content == "":
+                                    # role-only or empty; skip
+                                    if "role" in delta:
+                                        continue
+                                    # usage metadata validation
+                                    usage = obj.get("usage")
+                                    if usage is not None and not isinstance(usage, dict):
+                                        malformed_frames += 1
+                                        if malformed_frames > max_malformed:
+                                            raise RuntimeError("malformed_response")
+                                    continue
+                                if not isinstance(content, str):
+                                    malformed_frames += 1
+                                    if malformed_frames > max_malformed:
+                                        raise RuntimeError("malformed_response")
+                                    continue
+                                if output_chars + len(content) > max_output_chars:
+                                    raise RuntimeError("output_limit_exceeded")
+                                output_chars += len(content)
+                                yield content
                             elif line.startswith(":"):
                                 # SSE comment / keep-alive; ignore.
                                 continue
