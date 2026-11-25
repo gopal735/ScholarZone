@@ -968,6 +968,7 @@ class MentorMessage(Base):
     status: Mapped[str] = mapped_column(String(16), nullable=False, default="pending")
     sequence_number: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
     request_id: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    source_user_message_id: Mapped[int | None] = mapped_column(ForeignKey("mentor_messages.id", ondelete="SET NULL"), nullable=True, index=True)
     provider: Mapped[str | None] = mapped_column(String(64), nullable=True)
     model: Mapped[str | None] = mapped_column(String(128), nullable=True)
     prompt_tokens: Mapped[int | None] = mapped_column(Integer, nullable=True)

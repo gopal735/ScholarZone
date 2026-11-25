@@ -230,11 +230,13 @@ class OpenAICompatibleProvider:
     def generate_stream(self, request: GatewayRequest, model: ModelSpec):
         """Yield incremental text chunks from an OpenAI-compatible endpoint.
 
-        Raises RuntimeError with a stable category on failure instead of
-        reporting silent success. Resources are closed deterministically.
+        Reads bounded byte chunks, enforces absolute size/time/output limits,
+        requires a terminal [DONE] marker, and raises RuntimeError with a
+        stable category on failure.
         """
         import httpx
         import json as _json
+        import time as _time
 
         model_id = self._model_id(model)
         payload = {
@@ -250,6 +252,18 @@ class OpenAICompatibleProvider:
         if timeout is None:
             timeout = self._timeout
         timeout = float(timeout)
+        started = _time.perf_counter()
+        deadline = started + timeout
+
+        max_total_bytes = 1_000_000
+        max_line_bytes = 64_000
+        max_malformed = 10
+        max_output_chars = max(256, (getattr(request, "max_output_tokens", 400) or 400) * 8)
+
+        malformed_frames = 0
+        saw_done = False
+        output_chars = 0
+        total_bytes = 0
 
         try:
             with httpx.Client(timeout=timeout) as client:
@@ -263,42 +277,85 @@ class OpenAICompatibleProvider:
                     content_type = (resp.headers.get("content-type") or "").lower()
                     if "text/event-stream" not in content_type and "application/json" not in content_type:
                         raise RuntimeError("malformed_response")
-                    for line in resp.iter_lines():
+
+                    buffer = b""
+                    for chunk in resp.iter_bytes():
                         if cancel_event is not None and cancel_event.is_set():
                             raise RuntimeError("cancelled")
-                        if not line:
-                            continue
-                        # Handle both "data: ..." and bare lines.
-                        if line.startswith("data:"):
-                            data_str = line[len("data:"):].strip()
-                        elif line.startswith("data:"):
-                            data_str = line[5:].strip()
-                        else:
-                            # Some proxies wrap; skip non-data lines.
-                            if ":" in line and not line.startswith("{"):
+                        now = _time.perf_counter()
+                        if now >= deadline:
+                            raise RuntimeError("timeout")
+                        total_bytes += len(chunk)
+                        if total_bytes > max_total_bytes:
+                            raise RuntimeError("response_too_large")
+                        buffer += chunk
+                        # Process complete lines.
+                        while b"\n" in buffer:
+                            raw_line, buffer = buffer.split(b"\n", 1)
+                            if raw_line.endswith(b"\r"):
+                                raw_line = raw_line[:-1]
+                            if len(raw_line) > max_line_bytes:
+                                raise RuntimeError("malformed_response")
+                            line = raw_line.decode("utf-8", errors="replace")
+                            if not line.strip():
                                 continue
-                            data_str = line.strip()
-                        if not data_str:
-                            continue
-                        if data_str == "[DONE]":
+                            if line.startswith("data:"):
+                                data_str = line[5:].strip()
+                                if not data_str:
+                                    continue
+                                if data_str == "[DONE]":
+                                    saw_done = True
+                                    # Drain not required; break out.
+                                    buffer = b""
+                                    break
+                                try:
+                                    obj = _json.loads(data_str)
+                                except Exception:
+                                    malformed_frames += 1
+                                    if malformed_frames > max_malformed:
+                                        raise RuntimeError("malformed_response")
+                                    continue
+                                choices = obj.get("choices") or []
+                                if not choices:
+                                    continue
+                                delta = (choices[0].get("delta") or {}).get("content")
+                                if delta:
+                                    if output_chars + len(delta) > max_output_chars:
+                                        raise RuntimeError("output_limit_exceeded")
+                                    output_chars += len(delta)
+                                    yield delta
+                            elif line.startswith(":"):
+                                # SSE comment / keep-alive; ignore.
+                                continue
+                            else:
+                                # Unknown field; ignore.
+                                continue
+                        if saw_done:
                             break
-                        try:
-                            obj = _json.loads(data_str)
-                        except Exception:
-                            # Skip a single malformed frame rather than aborting
-                            # the whole stream; a provider may emit keep-alives.
-                            continue
-                        choices = obj.get("choices") or []
-                        if not choices:
-                            continue
-                        delta = (choices[0].get("delta") or {}).get("content")
-                        if delta:
-                            yield delta
+                        if len(buffer) > max_line_bytes:
+                            raise RuntimeError("malformed_response")
+
+                    # Process any final buffered partial line.
+                    if not saw_done and buffer.strip():
+                        raw_line = buffer
+                        if raw_line.endswith(b"\r"):
+                            raw_line = raw_line[:-1]
+                        if len(raw_line) <= max_line_bytes:
+                            line = raw_line.decode("utf-8", errors="replace").strip()
+                            if line.startswith("data:"):
+                                data_str = line[5:].strip()
+                                if data_str and data_str != "[DONE]":
+                                    malformed_frames += 1
+                                if data_str == "[DONE]":
+                                    saw_done = True
+
+                    if not saw_done:
+                        raise RuntimeError("incomplete_stream")
         except RuntimeError:
             raise
         except Exception as exc:  # noqa: BLE001
             name = type(exc).__name__.lower()
-            if "timeout" in name or "timedout" in name:
+            if "timeout" in name or "timedout" in name or "readtimeout" in name:
                 raise RuntimeError("timeout") from exc
             if "connect" in name or "network" in name or "reset" in name:
                 raise RuntimeError("unavailable") from exc

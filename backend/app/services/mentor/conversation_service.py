@@ -123,7 +123,20 @@ def add_user_message(
     conv = get_conversation(db, user_id, conversation_id)
     if conv is None:
         return None
-    # idempotency: if request_id already exists, return existing
+    if request_id is not None:
+        request_id = request_id.strip() if isinstance(request_id, str) else request_id
+        if request_id == "":
+            request_id = None
+        if isinstance(request_id, str) and len(request_id) > 64:
+            raise ValueError("request_id_too_long")
+    try:
+        db.execute(
+            select(MentorConversation)
+            .where(MentorConversation.id == conversation_id)
+            .with_for_update()
+        )
+    except Exception:
+        pass
     if request_id:
         existing = db.execute(
             select(MentorMessage).where(
@@ -159,10 +172,25 @@ def reserve_assistant_message(
     request_id: str | None = None,
     provider: str | None = None,
     model: str | None = None,
+    source_user_message_id: int | None = None,
 ) -> MentorMessage | None:
     conv = get_conversation(db, user_id, conversation_id)
     if conv is None:
         return None
+    if request_id is not None:
+        request_id = request_id.strip() if isinstance(request_id, str) else request_id
+        if request_id == "":
+            request_id = None
+        if isinstance(request_id, str) and len(request_id) > 64:
+            raise ValueError("request_id_too_long")
+    try:
+        db.execute(
+            select(MentorConversation)
+            .where(MentorConversation.id == conversation_id)
+            .with_for_update()
+        )
+    except Exception:
+        pass
     if request_id:
         existing = db.execute(
             select(MentorMessage).where(
@@ -183,6 +211,7 @@ def reserve_assistant_message(
         request_id=request_id,
         provider=provider,
         model=model,
+        source_user_message_id=source_user_message_id,
     )
     db.add(msg)
     db.commit()
@@ -204,40 +233,65 @@ def complete_assistant_message(
     if msg is None or msg.user_id != user_id:
         return None
     if msg.status in ("completed", "failed", "cancelled"):
-        # terminal immutability: don't overwrite completed
-        if msg.status == "completed":
-            return msg
         return msg
-    msg.content = content
-    msg.status = "completed"
-    msg.provider = provider or msg.provider
-    msg.model = model or msg.model
-    msg.prompt_tokens = prompt_tokens
-    msg.completion_tokens = completion_tokens
-    msg.completed_at = _now()
+
+    values = {
+        "content": content,
+        "status": "completed",
+        "completed_at": _now(),
+    }
+    if provider is not None:
+        values["provider"] = provider
+    if model is not None:
+        values["model"] = model
+    if prompt_tokens is not None:
+        values["prompt_tokens"] = prompt_tokens
+    if completion_tokens is not None:
+        values["completion_tokens"] = completion_tokens
+
+    stmt = (
+        update(MentorMessage)
+        .where(
+            MentorMessage.id == message_id,
+            MentorMessage.user_id == user_id,
+            MentorMessage.status == "pending",
+        )
+        .values(**values)
+    )
+    result = db.execute(stmt)
     db.commit()
-    db.refresh(msg)
+    if result.rowcount == 0:
+        # Terminal state changed concurrently; return authoritative state.
+        return db.get(MentorMessage, message_id)
+    refreshed = db.get(MentorMessage, message_id)
     # update conversation
-    conv = get_conversation(db, user_id, msg.conversation_id)
-    if conv is not None:
-        conv.last_message_at = _now()
-        conv.updated_at = _now()
-        db.commit()
-    return msg
+    if refreshed is not None:
+        conv = get_conversation(db, user_id, refreshed.conversation_id)
+        if conv is not None:
+            conv.last_message_at = _now()
+            conv.updated_at = _now()
+            db.commit()
+    return refreshed
 
 
 def fail_assistant_message(db: Session, user_id: int, message_id: int, error: str) -> MentorMessage | None:
     msg = db.get(MentorMessage, message_id)
     if msg is None or msg.user_id != user_id:
         return None
-    if msg.status in ("completed",):
+    if msg.status in ("completed", "cancelled"):
         return msg
-    msg.status = "failed"
-    msg.error = error
-    msg.completed_at = _now()
+    stmt = (
+        update(MentorMessage)
+        .where(
+            MentorMessage.id == message_id,
+            MentorMessage.user_id == user_id,
+            MentorMessage.status == "pending",
+        )
+        .values(status="failed", error=error, completed_at=_now())
+    )
+    db.execute(stmt)
     db.commit()
-    db.refresh(msg)
-    return msg
+    return db.get(MentorMessage, message_id)
 
 
 def cancel_assistant_message(db: Session, user_id: int, message_id: int) -> MentorMessage | None:
@@ -246,8 +300,15 @@ def cancel_assistant_message(db: Session, user_id: int, message_id: int) -> Ment
         return None
     if msg.status in ("completed", "failed"):
         return msg
-    msg.status = "cancelled"
-    msg.completed_at = _now()
+    stmt = (
+        update(MentorMessage)
+        .where(
+            MentorMessage.id == message_id,
+            MentorMessage.user_id == user_id,
+            MentorMessage.status == "pending",
+        )
+        .values(status="cancelled", completed_at=_now())
+    )
+    db.execute(stmt)
     db.commit()
-    db.refresh(msg)
-    return msg
+    return db.get(MentorMessage, message_id)

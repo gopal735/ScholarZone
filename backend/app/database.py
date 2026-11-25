@@ -438,6 +438,7 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
                 status VARCHAR(16) NOT NULL DEFAULT 'pending',
                 sequence_number INTEGER NOT NULL DEFAULT 0,
                 request_id VARCHAR(64),
+                source_user_message_id INTEGER REFERENCES mentor_messages(id) ON DELETE SET NULL,
                 provider VARCHAR(64),
                 model VARCHAR(128),
                 prompt_tokens INTEGER,
@@ -451,7 +452,9 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
         connection.execute(text("CREATE INDEX IF NOT EXISTS ix_mentor_messages_conversation_seq ON mentor_messages (conversation_id, sequence_number)"))
         connection.execute(text("CREATE INDEX IF NOT EXISTS ix_mentor_messages_user_created ON mentor_messages (user_id, created_at)"))
 
-        # Durable, database-level attribution for image mutations. The image
+        # Upgrade existing Mentor 2 message tables with source linkage.
+        connection.execute(text("ALTER TABLE mentor_messages ADD COLUMN IF NOT EXISTS source_user_message_id INTEGER REFERENCES mentor_messages(id) ON DELETE SET NULL"))
+        connection.execute(text("CREATE INDEX IF NOT EXISTS ix_mentor_messages_source_user ON mentor_messages (source_user_message_id)"))
         # regression on scholarships 14/130/554 reverted with no history row
         # and no recorded maintenance run, which left no trace of the writer.
         # A trigger cannot be bypassed by raw SQL, a one-off script or any
@@ -926,6 +929,7 @@ def _upgrade_sqlite_schema(engine: Engine) -> None:
                 status VARCHAR(16) NOT NULL DEFAULT 'pending',
                 sequence_number INTEGER NOT NULL DEFAULT 0,
                 request_id VARCHAR(64),
+                source_user_message_id INTEGER REFERENCES mentor_messages(id) ON DELETE SET NULL,
                 provider VARCHAR(64),
                 model VARCHAR(128),
                 prompt_tokens INTEGER,
@@ -938,6 +942,12 @@ def _upgrade_sqlite_schema(engine: Engine) -> None:
         """))
         connection.execute(text("CREATE INDEX IF NOT EXISTS ix_mentor_messages_conversation_seq ON mentor_messages (conversation_id, sequence_number)"))
         connection.execute(text("CREATE INDEX IF NOT EXISTS ix_mentor_messages_user_created ON mentor_messages (user_id, created_at)"))
+
+        _mentor_cols = {c["name"] for c in inspect(connection).get_columns("mentor_messages")} if inspect(connection).has_table("mentor_messages") else set()
+        if inspect(connection).has_table("mentor_messages") and "source_user_message_id" not in _mentor_cols:
+            connection.execute(text("ALTER TABLE mentor_messages ADD COLUMN source_user_message_id INTEGER REFERENCES mentor_messages(id) ON DELETE SET NULL"))
+        connection.execute(text("CREATE INDEX IF NOT EXISTS ix_mentor_messages_source_user ON mentor_messages (source_user_message_id)"))
+
         for _stmt in (
             "ALTER TABLE study_plans ADD COLUMN version INTEGER NOT NULL DEFAULT 1",
             "ALTER TABLE study_plan_tasks ADD COLUMN version INTEGER NOT NULL DEFAULT 1",

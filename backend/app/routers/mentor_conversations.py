@@ -194,7 +194,7 @@ def send_msg(conversation_id: int, payload: MentorSendMessageRequest, request: R
     _enforce_limit(user.id)
     try:
         user_msg = add_user_message(db, user.id, conversation_id, payload.message, request_id=payload.request_id)
-        assistant = reserve_assistant_message(db, user.id, conversation_id, request_id=payload.request_id)
+        assistant = reserve_assistant_message(db, user.id, conversation_id, request_id=payload.request_id, source_user_message_id=user_msg.id)
         if assistant is None:
             raise HTTPException(status_code=500, detail="persistence_failed")
         if assistant.status == "completed":
@@ -248,7 +248,8 @@ def send_msg(conversation_id: int, payload: MentorSendMessageRequest, request: R
 
 
 @router.post("/conversations/{conversation_id}/messages/{message_id}/cancel")
-def cancel_msg(conversation_id: int, message_id: int, db: Session = Depends(get_db), user: User = Depends(require_user)):
+def cancel_msg(conversation_id: int, message_id: int, request: Request, db: Session = Depends(get_db), user: User = Depends(require_user)):
+    _same_origin_guard(request)
     conv = get_conversation(db, user.id, conversation_id)
     if conv is None:
         raise HTTPException(status_code=404, detail="conversation_not_found")
@@ -277,10 +278,15 @@ def retry_msg(conversation_id: int, message_id: int, request: Request, db: Sessi
         raise HTTPException(status_code=400, detail="retry_requires_assistant_message")
     msgs = list_messages(db, user.id, conversation_id)
     user_msg = None
-    for m in reversed(msgs):
-        if m.id < msg.id and m.role == "user":
-            user_msg = m
-            break
+    if getattr(msg, "source_user_message_id", None):
+        src = db.get(MentorMessage, msg.source_user_message_id)
+        if src is not None and src.user_id == user.id and src.conversation_id == conversation_id and src.role == "user":
+            user_msg = src
+    if user_msg is None:
+        for m in reversed(msgs):
+            if m.id < msg.id and m.role == "user":
+                user_msg = m
+                break
     if user_msg is None:
         raise HTTPException(status_code=400, detail="no_source_user_message")
     if msg.status == "completed":
@@ -331,15 +337,21 @@ def stream_msg(conversation_id: int, payload: MentorSendMessageRequest, request:
     if conv is None:
         raise HTTPException(status_code=404, detail="conversation_not_found")
     _enforce_limit(user.id)
-
-    user_msg = add_user_message(db, user.id, conversation_id, payload.message, request_id=payload.request_id)
-    assistant = reserve_assistant_message(db, user.id, conversation_id, request_id=payload.request_id)
-    if assistant is None:
+    slot_owned_by_setup = True
+    try:
+        user_msg = add_user_message(db, user.id, conversation_id, payload.message, request_id=payload.request_id)
+        assistant = reserve_assistant_message(db, user.id, conversation_id, request_id=payload.request_id, source_user_message_id=user_msg.id if user_msg is not None else None)
+        if assistant is None:
+            raise HTTPException(status_code=500, detail="persistence_failed")
+        cancel_event = threading.Event()
+        _ACTIVE_CANCELS[assistant.id] = cancel_event
+        slot_owned_by_setup = False
+    except Exception:
         _release_limit()
-        raise HTTPException(status_code=500, detail="persistence_failed")
-
-    cancel_event = threading.Event()
-    _ACTIVE_CANCELS[assistant.id] = cancel_event
+        raise
+    finally:
+        if slot_owned_by_setup:
+            _release_limit()
 
     def event_generator():
         import app.models as _models
