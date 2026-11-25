@@ -112,6 +112,8 @@ def _dependency_fingerprint_data(db: Session, scholarship_id: int) -> dict:
             where = model.matched_scholarship_id == scholarship_id
         elif key == "scholarship_id":
             where = model.scholarship_id == scholarship_id
+        elif key == "related_scholarship_id":
+            where = model.related_scholarship_id == scholarship_id
         else:
             link_ids = _link_ids_for_scholarship(db, scholarship_id)
             if link_ids:
@@ -141,6 +143,8 @@ def _dependency_fingerprint_data(db: Session, scholarship_id: int) -> dict:
                 (ScholarshipSupervisorCoverage, "scholarship_id"),
                 (OfficialContact, "scholarship_id"),
                 (ScholarshipEvidence, "scholarship_id"),
+                (StudyPlan, "scholarship_id"),
+                (StudyPlanTask, "related_scholarship_id"),
             )
         },
         "source_evidence": sorted(
@@ -178,6 +182,8 @@ def _lock_dependents(db: Session, scholarship_id: int) -> None:
         col = DiscoveryCandidate.matched_scholarship_id if model is DiscoveryCandidate else model.scholarship_id
         db.execute(select(model).where(col == scholarship_id).with_for_update())
     db.execute(select(ScholarshipProfessorLink).where(ScholarshipProfessorLink.scholarship_id == scholarship_id).with_for_update())
+    db.execute(select(StudyPlan).where(StudyPlan.scholarship_id == scholarship_id).with_for_update())
+    db.execute(select(StudyPlanTask).where(StudyPlanTask.related_scholarship_id == scholarship_id).with_for_update())
     link_ids = _link_ids_for_scholarship(db, scholarship_id)
     if link_ids:
         db.execute(
