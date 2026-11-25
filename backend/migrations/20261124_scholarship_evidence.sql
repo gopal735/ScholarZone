@@ -1,7 +1,7 @@
 -- Persistent authoritative evidence registry for Gate 6 (PR #107).
 CREATE TABLE IF NOT EXISTS scholarship_evidence (
     id SERIAL PRIMARY KEY,
-    scholarship_id INTEGER NOT NULL REFERENCES scholarships(id) ON DELETE CASCADE,
+    scholarship_id INTEGER NOT NULL REFERENCES scholarships(id) ON DELETE NO ACTION,
     application_cycle VARCHAR(128) NOT NULL,
     official_domain VARCHAR(255) NOT NULL,
     official_url VARCHAR(2048) NOT NULL,

@@ -337,6 +337,8 @@ def main() -> int:
 
     expected_manifest_sha = _env("EXPECTED_MANIFEST_SHA256") or _env("SUPPLIED_MANIFEST_SHA")
     expected_manifest_count_raw = _env("EXPECTED_MANIFEST_COUNT") or _env("SUPPLIED_MANIFEST_COUNT")
+    expected_manifest_schema_version = _env("EXPECTED_MANIFEST_SCHEMA_VERSION") or _env("SUPPLIED_MANIFEST_SCHEMA_VERSION")
+    expected_manifest_reference_date = _env("EXPECTED_MANIFEST_REFERENCE_DATE") or _env("SUPPLIED_MANIFEST_REFERENCE_DATE")
 
     if not run_id:
         print("ERROR: PREFLIGHT_RUN_ID not set")
@@ -363,6 +365,12 @@ def main() -> int:
         return 1
     if expected_manifest_count <= 0:
         print("ERROR: expected manifest count must be positive")
+        return 1
+    if not expected_manifest_schema_version:
+        print("ERROR: expected manifest schema version not set")
+        return 1
+    if not expected_manifest_reference_date:
+        print("ERROR: expected manifest reference date not set")
         return 1
 
     try:
@@ -403,6 +411,8 @@ def main() -> int:
     print(f"pr_merge_commit_sha={pr_merge_commit_sha}")
     print(f"expected_manifest_sha256={expected_manifest_sha}")
     print(f"expected_manifest_count={expected_manifest_count}")
+    print(f"expected_manifest_schema_version={expected_manifest_schema_version}")
+    print(f"expected_manifest_reference_date={expected_manifest_reference_date}")
     return 0
 
 

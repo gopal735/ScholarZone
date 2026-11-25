@@ -288,10 +288,10 @@ def get_committed_diff(repo_root: Path, base_sha: str, head_sha: str) -> List[st
     merge_base = get_merge_base(repo_root, base_sha, head_sha)
     if merge_base:
         # Use merge-base..head for the actual PR diff
-        result = run_git_command(["diff", "--name-only", f"{merge_base}..{head_sha}"], repo_root)
+        result = run_git_command(["diff", "--no-renames", "--name-only", f"{merge_base}..{head_sha}"], repo_root)
     else:
         # Fallback to base..head if merge-base fails
-        result = run_git_command(["diff", "--name-only", f"{base_sha}..{head_sha}"], repo_root)
+        result = run_git_command(["diff", "--no-renames", "--name-only", f"{base_sha}..{head_sha}"], repo_root)
     
     changed = [f for f in result.stdout.strip().split('\n') if f]
     return sorted(set(changed))
@@ -300,11 +300,11 @@ def get_committed_diff(repo_root: Path, base_sha: str, head_sha: str) -> List[st
 def get_changed_files(repo_root: Path) -> List[str]:
     """Get list of changed files (staged and unstaged) - working tree."""
     # Staged
-    result = run_git_command(["diff", "--cached", "--name-only"], repo_root)
+    result = run_git_command(["diff", "--cached", "--no-renames", "--name-only"], repo_root)
     staged = [f for f in result.stdout.strip().split('\n') if f]
 
     # Unstaged
-    result = run_git_command(["diff", "--name-only"], repo_root)
+    result = run_git_command(["diff", "--no-renames", "--name-only"], repo_root)
     unstaged = [f for f in result.stdout.strip().split('\n') if f]
 
     # Untracked
@@ -541,10 +541,24 @@ def check_production_mutation_risk(repo_root: Path, changed_files: List[str]) ->
         if is_test_code and not connects_to_production:
             continue
 
-        # For non-test code or production-connected code, flag mutation patterns
+        # For non-test code or production-connected code, flag mutation patterns.
+        # Only flag when the keyword appears on a line that actually invokes SQL
+        # execution (execute/exec_driver_sql/text()/op.execute/connection.execute).
+        # Keywords that appear only inside string literals used as validation
+        # denylists (e.g. database_readonly.py) are not executable mutations.
+        execution_indicators = ("execute", "exec_driver_sql", "text(", "op.execute",
+                                "connection.execute", "session.execute", "bind.execute")
         for pattern in risk_patterns:
-            if re.search(pattern, content, re.IGNORECASE):
-                return True
+            for line in content.splitlines():
+                if not re.search(pattern, line, re.IGNORECASE):
+                    continue
+                low = line.lower()
+                if any(ind in low for ind in execution_indicators):
+                    return True
+                # Dynamic SQL assembly without an execution indicator is still
+                # suspicious; fail closed.
+                if "sql" in low and ("+" in line or "format(" in low or 'f"' in line):
+                    return True
     return False
 
 

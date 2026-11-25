@@ -276,6 +276,24 @@ jobs:
         sudo apt-get install -y -qq postgresql-client gnupg > /dev/null 2>&1
 
         '
+    - name: Provision GPG keys (isolated keyring)
+      env:
+        GPG_PUBLIC_KEY: ${{ secrets.GPG_PUBLIC_KEY }}
+        GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+        GPG_EXPECTED_FINGERPRINT: ${{ secrets.GPG_EXPECTED_FINGERPRINT }}
+      run: |
+        set -euo pipefail
+        export GNUPGHOME="$(mktemp -d)"
+        chmod 700 "$GNUPGHOME"
+        printf '%s' "$GPG_PUBLIC_KEY" | gpg --batch --import
+        printf '%s' "$GPG_PRIVATE_KEY" | gpg --batch --pinentry-mode loopback --passphrase "" --import
+        FPR="$(gpg --batch --with-colons --list-secret-keys | awk -F: '/^fpr:/ {print $10; exit}')"
+        if [ "$FPR" != "$GPG_EXPECTED_FINGERPRINT" ]; then
+          echo "GPG fingerprint mismatch: $FPR != $GPG_EXPECTED_FINGERPRINT"
+          exit 1
+        fi
+        echo "GNUPGHOME=$GNUPGHOME" >> "$GITHUB_ENV"
+        echo "GPG key provisioned: $FPR"
     - name: Set up Python
       uses: actions/setup-python@v5
       with:

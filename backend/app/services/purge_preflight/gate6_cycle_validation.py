@@ -63,6 +63,31 @@ from .config import DatabaseConfig, PreflightConfig, load_config
 from .metadata import save_result_with_metadata
 
 
+def _is_generic_homepage(url: str) -> bool:
+    """Return True if the URL is a bare programme homepage (no cycle-specific path).
+
+    A matching domain alone is not proof of a specific expired cycle. Only
+    URLs with a non-trivial path segment are accepted as cycle-specific
+    evidence. Hostname ownership is validated separately.
+    """
+    if not url or not str(url).strip():
+        return True
+    try:
+        parsed = urlparse(str(url).strip())
+    except Exception:
+        return True
+    path = (parsed.path or "").strip().rstrip("/")
+    # Empty or root path => generic homepage.
+    if path == "" or path == "/":
+        return True
+    # A single trivial segment is still treated as generic when it is just a
+    # locale/language prefix with no resource (e.g. /en, /de).
+    segments = [seg for seg in path.split("/") if seg]
+    if len(segments) == 1 and len(segments[0]) <= 3 and segments[0].isalpha():
+        return True
+    return False
+
+
 def canonical_cycle_identity(
     deadline_display: Optional[str] = None,
     deadline_date: Optional[object] = None,
@@ -424,8 +449,16 @@ def validate_cycle_record(record: dict, reference_date: Optional[date] = None) -
                 actual_hash = hashlib.sha256(excerpt.encode()).hexdigest()
 
                 if actual_hash == expected_hash:
+                    # Reject generic programme homepages for ANY expired evidence.
+                    ev_url = str(record.get("evidence_official_url", "")).strip()
+                    if _is_generic_homepage(ev_url):
+                        blocked_reason = "Generic programme homepage (not cycle-specific) used as expired-cycle evidence"
+                        evidence_sufficient = False
+                        all_present = False
                     # Verify decision is EXPIRED_VERIFIED
-                    if record.get("evidence_decision") == "EXPIRED_VERIFIED":
+                    if not all_present:
+                        pass
+                    elif record.get("evidence_decision") == "EXPIRED_VERIFIED":
                         evidence_sufficient = True
                         evidence = {
                             "official_domain": record.get("evidence_official_domain"),
@@ -440,7 +473,7 @@ def validate_cycle_record(record: dict, reference_date: Optional[date] = None) -
                             "reviewer": record.get("evidence_reviewer"),
                             "decision": record.get("evidence_decision"),
                         }
-                    else:
+                    elif all_present:
                         blocked_reason = f"Evidence decision not EXPIRED_VERIFIED: {record.get('evidence_decision')}"
                         evidence_sufficient = False
                 else:

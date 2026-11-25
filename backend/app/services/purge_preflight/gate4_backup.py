@@ -2916,7 +2916,11 @@ def run_gate4(
 
     temp_dir = tempfile.mkdtemp(prefix="purge_backup_")
 
-    backup_file = os.path.join(temp_dir, f"backup_production_pre_purge_{datetime.datetime.utcnow().strftime('%Y%m%d_%H%M%S')}.dump")
+    _run_component = (os.environ.get("GITHUB_RUN_ID", "") + "_" + os.environ.get("GITHUB_RUN_ATTEMPT", "")).strip("_")
+    if not _run_component:
+        import uuid as _uuid
+        _run_component = _uuid.uuid4().hex
+    backup_file = os.path.join(temp_dir, f"backup_production_pre_purge_{datetime.datetime.utcnow().strftime('%Y%m%d_%H%M%S')}_{_run_component}.dump")
 
     encrypted_file = backup_file + ".gpg"
 
@@ -2997,7 +3001,7 @@ def run_gate4(
             if identity_errors is None:
                 identity_errors = ["identity verification unavailable"]
 
-            # P0: synthetic test keys must never back up production or unknown sources.
+            # P0: separate test mode from production mode.
             if test_mode:
                 from .gate1_atomicity import validate_disposable_database_url
 
@@ -3005,12 +3009,11 @@ def run_gate4(
                 if not disposable_ok:
                     result.status = "FAIL"
                     result.error = (
-                        "Synthetic test-mode GPG keys cannot be used because the backup source "
-                        "is not an independently validated disposable test source: "
-                        + str(disposable_error)
+                        "Disposable test-mode source is not an independently validated "
+                        "disposable database: " + str(disposable_error)
                     )
                     return result
-                # Fail closed if the source also matches production identity.
+                # Reject if the disposable source actually matches production identity.
                 if not identity_errors:
                     result.status = "FAIL"
                     result.error = (
@@ -3018,14 +3021,13 @@ def run_gate4(
                         "production-like backup source"
                     )
                     return result
-
-            if identity_errors:
-
-                result.status = "FAIL"
-
-                result.error = "Backup database identity validation failed: " + "; ".join(identity_errors)
-
-                return result
+                # Test mode does not require production identity; clear errors.
+                identity_errors = []
+            else:
+                if identity_errors:
+                    result.status = "FAIL"
+                    result.error = "Backup database identity validation failed: " + "; ".join(identity_errors)
+                    return result
 
             # Establish one exported snapshot for counts and pg_dump.
             import psycopg2.extensions

@@ -949,7 +949,7 @@ class ScholarshipEvidence(Base):
         Integer,
         ForeignKey(
             "scholarships.id",
-            ondelete=None,
+            ondelete="NO ACTION",
             name="fk_scholarship_evidence_scholarship_id",
         ),
         nullable=False,

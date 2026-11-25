@@ -60,6 +60,28 @@ class ReferenceCount:
     count: int
 
 
+def _ensure_sslmode(url: str, test: bool = False) -> str:
+    """Ensure a production PostgreSQL URL authenticates the server certificate."""
+    if not url or not url.startswith("postgres"):
+        return url
+    lower = url.lower()
+    if lower.count("sslmode=") > 1:
+        raise RuntimeError("multiple sslmode parameters in database URL")
+    if "sslmode=" not in lower:
+        mode = "require" if test else "verify-full"
+        url += ("&" if "?" in url else "?") + "sslmode=" + mode
+        return url
+    if not test:
+        import re
+        m = re.search(r"sslmode=([^&]+)", lower)
+        mode = (m.group(1) if m else "").strip()
+        if mode in ("require", "disable", "prefer", "allow"):
+            raise RuntimeError(
+                "production database sslmode must be verify-full or verify-ca, got: " + mode
+            )
+    return url
+
+
 class DatabaseAccessor:
     """
     Database accessor with dependency-injected connections.
@@ -74,7 +96,7 @@ class DatabaseAccessor:
     @contextlib.contextmanager
     def connect_readonly(self) -> Generator[PgConnection, None, None]:
         """Create a read-only connection to production."""
-        conn = psycopg2.connect(self.config.readonly_url, cursor_factory=RealDictCursor)
+        conn = psycopg2.connect(_ensure_sslmode(self.config.readonly_url), cursor_factory=RealDictCursor)
         try:
             conn.autocommit = True
             conn.set_session(readonly=True)
@@ -85,7 +107,7 @@ class DatabaseAccessor:
     @contextlib.contextmanager
     def connect_backup(self) -> Generator[PgConnection, None, None]:
         """Create a backup-role connection to production."""
-        conn = psycopg2.connect(self.config.backup_url, cursor_factory=RealDictCursor)
+        conn = psycopg2.connect(_ensure_sslmode(self.config.backup_url), cursor_factory=RealDictCursor)
         try:
             conn.autocommit = True
             # Backup role may need write access for pg_dump but we only read
@@ -98,7 +120,7 @@ class DatabaseAccessor:
     def connect_readonly_snapshot(self) -> Generator[PgConnection, None, None]:
         """Read-only REPEATABLE READ snapshot connection for one Gate decision."""
         import psycopg2.extensions
-        conn = psycopg2.connect(self.config.readonly_url, cursor_factory=RealDictCursor)
+        conn = psycopg2.connect(_ensure_sslmode(self.config.readonly_url), cursor_factory=RealDictCursor)
         try:
             conn.autocommit = False
             conn.set_isolation_level(psycopg2.extensions.ISOLATION_LEVEL_REPEATABLE_READ)
@@ -125,7 +147,7 @@ class DatabaseAccessor:
         """
         if not self.config.test_url:
             raise RuntimeError("TEST_DATABASE_URL not configured - required for Gate 1")
-        conn = psycopg2.connect(self.config.test_url)
+        conn = psycopg2.connect(_ensure_sslmode(self.config.test_url, test=True))
         try:
             conn.autocommit = False  # Explicit transaction control for Gate 1
             yield conn

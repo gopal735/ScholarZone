@@ -51,17 +51,31 @@ def get_engine() -> Engine:
     connect_args = {"check_same_thread": False} if database_url.startswith("sqlite") else {}
     if database_url.startswith("postgresql"):
         connect_args["connect_timeout"] = 10
-        # Neon and every other managed Postgres require TLS. A connection string
-        # copied without sslmode negotiates no encryption and is refused or
-        # hangs, and the health check then reports "Database not ready" with
-        # nothing in the log to explain it. Added only when absent, so an
-        # explicit setting in the URL is never overridden.
-        if "sslmode=" not in database_url:
-            database_url += ("&" if "?" in database_url else "?") + "sslmode=require"
+        database_url = _enforce_ssl_policy(database_url, get_settings().environment)
     engine_kwargs: dict = {"connect_args": connect_args, "pool_pre_ping": True}
     if database_url.startswith("postgresql"):
         engine_kwargs["pool_timeout"] = 10
     return create_engine(database_url, **engine_kwargs)
+
+
+def _enforce_ssl_policy(database_url, environment):
+    if not database_url.startswith("postgresql"):
+        return database_url
+    is_test = (environment or "").strip().lower() == "test"
+    lower = database_url.lower()
+    if lower.count("sslmode=") > 1:
+        raise RuntimeError("SAFETY VIOLATION: multiple sslmode parameters in database URL.")
+    if "sslmode=" not in lower:
+        default_mode = "require" if is_test else "verify-full"
+        database_url += ("&" if "?" in database_url else "?") + "sslmode=" + default_mode
+        return database_url
+    if not is_test:
+        import re as _re
+        m = _re.search(r"sslmode=([^&]+)", lower)
+        mode = (m.group(1) if m else "").strip()
+        if mode in ("require", "disable", "prefer", "allow"):
+            raise RuntimeError("SAFETY VIOLATION: production database sslmode must be verify-full or verify-ca, got: " + mode)
+    return database_url
 
 
 def _create_migration_engine(database_url: str) -> Engine:
@@ -83,8 +97,7 @@ def _create_migration_engine(database_url: str) -> Engine:
     if not database_url.startswith("sqlite"):
         # For PostgreSQL, use the standard engine configuration
         connect_args = {"connect_timeout": 10}
-        if "sslmode=" not in database_url:
-            database_url += ("&" if "?" in database_url else "?") + "sslmode=require"
+        database_url = _enforce_ssl_policy(database_url, get_settings().environment)
         engine_kwargs: dict = {"connect_args": connect_args, "pool_pre_ping": True, "pool_timeout": 10}
         return create_engine(database_url, **engine_kwargs)
     

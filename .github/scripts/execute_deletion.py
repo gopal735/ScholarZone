@@ -152,10 +152,9 @@ def _verify_ledger_schema(db):
                 pg_get_constraintdef(con.oid) AS definition,
                 (SELECT array_agg(att.attname ORDER BY u.ord)
                    FROM unnest(con.conkey) WITH ORDINALITY AS u(attnum, ord)
-                   JOIN pg_attribute att ON att.attrelid = con.conrelid AND att.attnum = u.attnum) AS columns,
-                pg_get_expr(con.conpred, con.conrelid) AS predicate
+                   JOIN pg_attribute att ON att.attrelid = con.conrelid AND att.attnum = u.attnum) AS columns
             FROM pg_constraint con
-            WHERE con.conrelid = 'purge_execution_ledger'::regclass
+            WHERE con.conrelid = (SELECT to_regclass('public.purge_execution_ledger'))::regclass
               AND con.contype = 'u'
         """)).mappings().all()
     except Exception as e:
@@ -167,15 +166,19 @@ def _verify_ledger_schema(db):
             SELECT
                 i.relname AS index_name,
                 ix.indisunique AS is_unique,
+                ix.indisvalid AS is_valid,
+                ix.indisready AS is_ready,
                 ix.indpred IS NOT NULL AS has_predicate,
+                ix.indexprs IS NOT NULL AS has_expression,
+                ix.indnkeyatts AS n_key_atts,
                 pg_get_indexdef(ix.indexrelid) AS definition,
                 (SELECT array_agg(a.attname ORDER BY u.ord)
                    FROM unnest(ix.indkey) WITH ORDINALITY AS u(attnum, ord)
                    JOIN pg_attribute a ON a.attrelid = ix.indrelid AND a.attnum = u.attnum
-                   WHERE u.attnum > 0) AS columns
+                   WHERE u.attnum > 0 AND u.ord <= ix.indnkeyatts) AS columns
             FROM pg_index ix
             JOIN pg_class i ON i.oid = ix.indexrelid
-            WHERE ix.indrelid = 'purge_execution_ledger'::regclass
+            WHERE ix.indrelid = (SELECT to_regclass('public.purge_execution_ledger'))::regclass
         """)).mappings().all()
     except Exception as e:
         _fail('cannot inspect ledger indexes: ' + str(e))
@@ -184,16 +187,22 @@ def _verify_ledger_schema(db):
     unique_single_cols = set()
     for r in rows:
         cols = r.get("columns")
-        pred = r.get("predicate")
         if isinstance(cols, (list, tuple)) and len(cols) == 1 and cols[0] in ("merge_commit_sha", "execution_key"):
-            if not pred:  # unconditional
-                unique_single_cols.add(cols[0])
+            unique_single_cols.add(cols[0])
     for r in idx_rows:
         if not r.get("is_unique"):
             continue
-        cols = r.get("columns")
+        if not r.get("is_valid"):
+            continue
+        if not r.get("is_ready"):
+            continue
         if r.get("has_predicate"):
             continue
+        if r.get("has_expression"):
+            continue
+        if r.get("n_key_atts", 0) != 1:
+            continue
+        cols = r.get("columns")
         if isinstance(cols, (list, tuple)) and len(cols) == 1 and cols[0] in ("merge_commit_sha", "execution_key"):
             unique_single_cols.add(cols[0])
 
