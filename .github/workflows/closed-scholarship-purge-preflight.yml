@@ -62,10 +62,8 @@ jobs:
         \ closed-scholarship-purge-execute.yml; do\n  if git show $MERGE_COMMIT_SHA:.github/workflows/$wf\
         \ >/dev/null 2>&1; then\n    echo \"Workflow $wf exists in merge commit -\
         \ revision verified\"\n  else\n    echo \"ERROR: Workflow $wf not found in\
-        \ merge commit - possible stale workflow\"\n    exit 1\n  fi\ndone\ngit fetch\
-        \ origin master\nif git merge-base --is-ancestor $MERGE_COMMIT_SHA\
-        \ origin/master; then\n  echo \"Merge commit reachable from origin/master\"\
-        \nelse\n  echo \"ERROR: Merge commit not reachable from origin/master\"\n\
+        \ merge commit - possible stale workflow\"\n    exit 1\n  fi\ndone\nif git merge-base --is-ancestor $MERGE_COMMIT_SHA ${{ github.sha }}; then\n  echo \"Merge commit reachable from checked-out revision\"\
+        \nelse\n  echo \"ERROR: Merge commit not reachable from checked-out revision\"\n\
         \  exit 1\nfi\n"
   preflight-gate1-atomicity:
     name: Gate 1 - Atomicity and Rollback

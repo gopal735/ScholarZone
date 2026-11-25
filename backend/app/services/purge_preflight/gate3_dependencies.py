@@ -399,6 +399,8 @@ def run_gate3(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate3Result:
                 ("public", "scholarship_restore_records"),
                 ("public", "scholarship_evidence"),
                 ("public", "scholarship_evidence_archive"),
+                ("public", "study_plans"),
+                ("public", "study_plan_tasks"),
             }
 
             dependency_policy = {
@@ -418,6 +420,8 @@ def run_gate3(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate3Result:
                 ("public", "scholarship_restore_records"): "SAFE_CHILD_CLEANUP",
                 ("public", "scholarship_evidence"): "PRESERVE_TO_AUDIT_ARCHIVE_ON_DELETE",
                 ("public", "scholarship_evidence_archive"): "IMMUTABLE_AUDIT_ARCHIVE",
+                ("public", "study_plans"): "DETACH",
+                ("public", "study_plan_tasks"): "DETACH",
             }
 
             def _key_identity(key: str) -> tuple[str, str]:

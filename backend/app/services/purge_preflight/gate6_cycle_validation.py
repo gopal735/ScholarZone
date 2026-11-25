@@ -613,6 +613,7 @@ def run_gate6(accessor: DatabaseAccessor, target_ids: list[int], reference_date:
                 rec_precision = record.get("deadline_precision")
                 rec_cycle_base = " ".join(str(record.get("deadline_display") or record.get("application_cycle") or "").split())
                 exact = []
+                cycle_matches = []
                 for er in candidates:
                     er_deadline = er.get("deadline")
                     er_precision = er.get("deadline_precision")
@@ -622,6 +623,7 @@ def run_gate6(accessor: DatabaseAccessor, target_ids: list[int], reference_date:
                         continue
                     if rec_cycle_base.lower() != er_cycle_base.lower():
                         continue
+                    cycle_matches.append(er)
                     # 2. deadline consistency
                     if rec_deadline is not None and er_deadline is not None:
                         if str(rec_deadline) != str(er_deadline):
@@ -636,8 +638,8 @@ def run_gate6(accessor: DatabaseAccessor, target_ids: list[int], reference_date:
                     if not er.get("decision"):
                         continue
                     exact.append(er)
-                # Fail closed on ambiguity: require exactly one exact match.
-                if len(exact) == 1:
+                # Fail closed on ambiguity: require exactly one cycle match and one exact match.
+                if len(exact) == 1 and len(cycle_matches) == 1:
                     er = exact[0]
                     rec["evidence_official_domain"] = er.get("official_domain")
                     rec["evidence_official_url"] = er.get("official_url")
