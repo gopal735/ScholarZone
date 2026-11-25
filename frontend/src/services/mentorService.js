@@ -275,7 +275,7 @@ export async function* streamMentorConversationMessage(conversationId, message, 
   let buffer = ''
   let cancelled = false
   let completedNormally = false
-  const onAbort = () => { cancelled = true; try { reader.cancel() } catch { /* ignore */ } }
+  const onAbort = () => { cancelled = true; try { const p = reader.cancel(); if (p && typeof p.then === 'function') p.catch(() => {}) } catch { /* ignore */ } }
   if (signal) {
     if (signal.aborted) onAbort()
     else signal.addEventListener('abort', onAbort, { once: true })
@@ -293,17 +293,14 @@ export async function* streamMentorConversationMessage(conversationId, message, 
       const { done, value } = readResult
       if (done) break
       buffer += decoder.decode(value, { stream: true })
-      // Normalize line endings without breaking a CRLF split across chunks:
-      // preserve a trailing CR until the next chunk arrives.
-      if (buffer.endsWith('\r')) {
+      if (buffer.endsWith('\\r')) {
         const core = buffer.slice(0, -1)
-        buffer = core.replace(/\r\n/g, '\n').replace(/\r/g, '\n') + '\r'
+        buffer = core.replace(/\\r\\n/g, '\\n').replace(/\\r/g, '\\n') + '\\r'
       } else {
-        buffer = buffer.replace(/\r\n/g, '\n').replace(/\r/g, '\n')
+        buffer = buffer.replace(/\\r\\n/g, '\\n').replace(/\\r/g, '\\n')
       }
-      // Split on blank line (event boundary)
       let idx
-      while ((idx = buffer.indexOf('\n\n')) !== -1) {
+      while ((idx = buffer.indexOf('\\n\\n')) !== -1) {
         if (cancelled) break
         const raw = buffer.slice(0, idx)
         buffer = buffer.slice(idx + 2)
@@ -312,17 +309,16 @@ export async function* streamMentorConversationMessage(conversationId, message, 
       }
       if (cancelled) break
     }
-    // Final buffered event
     if (!cancelled && buffer.trim()) {
-      const tail = buffer.endsWith('\r') ? buffer.slice(0, -1) : buffer
-      const normalized = tail.replace(/\r\n/g, '\n').replace(/\r/g, '\n')
+      const tail = buffer.endsWith('\\r') ? buffer.slice(0, -1) : buffer
+      const normalized = tail.replace(/\\r\\n/g, '\\n').replace(/\\r/g, '\\n')
       const evt = parseSSEEvent(normalized)
       if (evt) yield evt
     }
     completedNormally = true
   } finally {
     if (!completedNormally) {
-      try { reader.cancel() } catch { /* ignore */ }
+      try { await reader.cancel() } catch { /* ignore */ }
     }
     try { reader.releaseLock() } catch { /* ignore */ }
     if (signal) signal.removeEventListener('abort', onAbort)

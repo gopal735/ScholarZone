@@ -455,6 +455,35 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
         # Upgrade existing Mentor 2 message tables with source linkage.
         connection.execute(text("ALTER TABLE mentor_messages ADD COLUMN IF NOT EXISTS source_user_message_id INTEGER REFERENCES mentor_messages(id) ON DELETE SET NULL"))
         connection.execute(text("CREATE INDEX IF NOT EXISTS ix_mentor_messages_source_user ON mentor_messages (source_user_message_id)"))
+
+        # Idempotent legacy constraint migration for request_id uniqueness.
+        try:
+            _dialect = connection.dialect.name
+            if _dialect == "postgresql":
+                rows = connection.execute(text("""
+                    SELECT tc.constraint_name
+                    FROM information_schema.table_constraints tc
+                    JOIN information_schema.key_column_usage kcu
+                      ON tc.constraint_name = kcu.constraint_name
+                     AND tc.table_schema = kcu.table_schema
+                    WHERE tc.table_name = 'mentor_messages'
+                      AND tc.constraint_type = 'UNIQUE'
+                    GROUP BY tc.constraint_name
+                    HAVING array_agg(kcu.column_name ORDER BY kcu.ordinal_position) = ARRAY['request_id']
+                """)).fetchall()
+                for (cname,) in rows:
+                    connection.execute(text(f'ALTER TABLE mentor_messages DROP CONSTRAINT IF EXISTS "{cname}"'))
+                exists = connection.execute(text("""
+                    SELECT 1 FROM information_schema.table_constraints
+                    WHERE table_name='mentor_messages' AND constraint_type='UNIQUE'
+                      AND constraint_name='uq_mentor_messages_conv_role_request'
+                """)).fetchone()
+                if not exists:
+                    connection.execute(text(
+                        "ALTER TABLE mentor_messages ADD CONSTRAINT uq_mentor_messages_conv_role_request UNIQUE (conversation_id, role, request_id)"
+                    ))
+        except Exception:
+            pass
         # regression on scholarships 14/130/554 reverted with no history row
         # and no recorded maintenance run, which left no trace of the writer.
         # A trigger cannot be bypassed by raw SQL, a one-off script or any

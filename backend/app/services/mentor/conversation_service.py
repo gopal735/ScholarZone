@@ -251,23 +251,35 @@ def complete_assistant_message(
         .values(**values)
     )
     result = db.execute(stmt)
-    db.commit()
     if result.rowcount == 0:
         # Terminal state changed concurrently; return authoritative state.
-        return db.get(MentorMessage, message_id)
-    refreshed = db.get(MentorMessage, message_id)
-    # update conversation
-    if refreshed is not None:
-        conv = get_conversation(db, user_id, refreshed.conversation_id)
+        db.rollback()
+        refreshed = db.execute(
+            select(MentorMessage).where(MentorMessage.id == message_id).execution_options(populate_existing=True)
+        ).scalar_one_or_none()
+        return refreshed
+    # Update conversation in the same transaction.
+    msg_row = db.execute(
+        select(MentorMessage).where(MentorMessage.id == message_id).execution_options(populate_existing=True)
+    ).scalar_one_or_none()
+    if msg_row is not None:
+        conv = db.execute(
+            select(MentorConversation).where(MentorConversation.id == msg_row.conversation_id).execution_options(populate_existing=True)
+        ).scalar_one_or_none()
         if conv is not None:
             conv.last_message_at = _now()
             conv.updated_at = _now()
-            db.commit()
+    db.commit()
+    refreshed = db.execute(
+        select(MentorMessage).where(MentorMessage.id == message_id).execution_options(populate_existing=True)
+    ).scalar_one_or_none()
     return refreshed
 
 
 def fail_assistant_message(db: Session, user_id: int, message_id: int, error: str) -> MentorMessage | None:
-    msg = db.get(MentorMessage, message_id)
+    msg = db.execute(
+        select(MentorMessage).where(MentorMessage.id == message_id).execution_options(populate_existing=True)
+    ).scalar_one_or_none()
     if msg is None or msg.user_id != user_id:
         return None
     if msg.status in ("completed", "cancelled"):
@@ -283,11 +295,15 @@ def fail_assistant_message(db: Session, user_id: int, message_id: int, error: st
     )
     db.execute(stmt)
     db.commit()
-    return db.get(MentorMessage, message_id)
+    return db.execute(
+        select(MentorMessage).where(MentorMessage.id == message_id).execution_options(populate_existing=True)
+    ).scalar_one_or_none()
 
 
 def cancel_assistant_message(db: Session, user_id: int, message_id: int) -> MentorMessage | None:
-    msg = db.get(MentorMessage, message_id)
+    msg = db.execute(
+        select(MentorMessage).where(MentorMessage.id == message_id).execution_options(populate_existing=True)
+    ).scalar_one_or_none()
     if msg is None or msg.user_id != user_id:
         return None
     if msg.status in ("completed", "failed"):
@@ -303,4 +319,6 @@ def cancel_assistant_message(db: Session, user_id: int, message_id: int) -> Ment
     )
     db.execute(stmt)
     db.commit()
-    return db.get(MentorMessage, message_id)
+    return db.execute(
+        select(MentorMessage).where(MentorMessage.id == message_id).execution_options(populate_existing=True)
+    ).scalar_one_or_none()
