@@ -457,33 +457,99 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
         connection.execute(text("CREATE INDEX IF NOT EXISTS ix_mentor_messages_source_user ON mentor_messages (source_user_message_id)"))
 
         # Idempotent legacy constraint migration for request_id uniqueness.
-        try:
-            _dialect = connection.dialect.name
-            if _dialect == "postgresql":
-                rows = connection.execute(text("""
-                    SELECT tc.constraint_name
-                    FROM information_schema.table_constraints tc
-                    JOIN information_schema.key_column_usage kcu
-                      ON tc.constraint_name = kcu.constraint_name
-                     AND tc.table_schema = kcu.table_schema
-                    WHERE tc.table_name = 'mentor_messages'
-                      AND tc.constraint_type = 'UNIQUE'
-                    GROUP BY tc.constraint_name
-                    HAVING array_agg(kcu.column_name ORDER BY kcu.ordinal_position) = ARRAY['request_id']
-                """)).fetchall()
-                for (cname,) in rows:
-                    connection.execute(text(f'ALTER TABLE mentor_messages DROP CONSTRAINT IF EXISTS "{cname}"'))
-                exists = connection.execute(text("""
-                    SELECT 1 FROM information_schema.table_constraints
-                    WHERE table_name='mentor_messages' AND constraint_type='UNIQUE'
-                      AND constraint_name='uq_mentor_messages_conv_role_request'
-                """)).fetchone()
-                if not exists:
-                    connection.execute(text(
-                        "ALTER TABLE mentor_messages ADD CONSTRAINT uq_mentor_messages_conv_role_request UNIQUE (conversation_id, role, request_id)"
-                    ))
-        except Exception:
-            pass
+        # PostgreSQL-only: catalog introspection via pg_constraint / pg_index.
+        # No silent exception swallowing: a failure here must abort the
+        # migration transaction and propagate to the caller.
+        if connection.dialect.name == "postgresql":
+            _schema = connection.execute(text("SELECT current_schema()")).scalar()
+
+            # Drop obsolete global UNIQUE constraints whose key columns are
+            # exactly [request_id].
+            _legacy_constraints = connection.execute(text("""
+                SELECT c.conname
+                FROM pg_constraint c
+                JOIN pg_class t ON t.oid = c.conrelid
+                JOIN pg_namespace n ON n.oid = t.relnamespace
+                WHERE t.relname = 'mentor_messages'
+                  AND n.nspname = :schema
+                  AND c.contype = 'u'
+                  AND (
+                        SELECT COALESCE(array_agg(a.attname ORDER BY k.ord)::text[], ARRAY[]::text[])
+                        FROM unnest(c.conkey) WITH ORDINALITY AS k(attnum, ord)
+                        JOIN pg_attribute a ON a.attrelid = t.oid AND a.attnum = k.attnum
+                  ) = ARRAY['request_id']::text[]
+            """), {"schema": _schema}).fetchall()
+            for (_cname,) in _legacy_constraints:
+                _qname = _cname.replace('"', '""')
+                connection.execute(text(
+                    f'ALTER TABLE "{_schema}"."mentor_messages" '
+                    f'DROP CONSTRAINT IF EXISTS "{_qname}"'
+                ))
+
+            # Drop obsolete standalone unique indexes whose key columns are
+            # exactly [request_id] (not backing a constraint).
+            _legacy_indexes = connection.execute(text("""
+                SELECT idx.relname
+                FROM pg_index i
+                JOIN pg_class tbl ON tbl.oid = i.indrelid
+                JOIN pg_namespace n ON n.oid = tbl.relnamespace
+                JOIN pg_class idx ON idx.oid = i.indexrelid
+                WHERE tbl.relname = 'mentor_messages'
+                  AND n.nspname = :schema
+                  AND i.indisunique = TRUE
+                  AND NOT EXISTS (
+                        SELECT 1 FROM pg_constraint c WHERE c.conindid = i.indexrelid
+                  )
+                  AND (
+                        SELECT COALESCE(array_agg(a.attname ORDER BY k.ord)::text[], ARRAY[]::text[])
+                        FROM unnest(i.indkey) WITH ORDINALITY AS k(attnum, ord)
+                        JOIN pg_attribute a ON a.attrelid = tbl.oid AND a.attnum = k.attnum
+                        WHERE k.attnum <> 0
+                  ) = ARRAY['request_id']::text[]
+            """), {"schema": _schema}).fetchall()
+            for (_iname,) in _legacy_indexes:
+                _qname = _iname.replace('"', '""')
+                connection.execute(text(
+                    f'DROP INDEX IF EXISTS "{_schema}"."{_qname}"'
+                ))
+
+            # Ensure the intended composite uniqueness exists (any constraint or
+            # unique index name). Never create a duplicate.
+            _composite_exists = connection.execute(text("""
+                SELECT 1
+                FROM pg_constraint c
+                JOIN pg_class t ON t.oid = c.conrelid
+                JOIN pg_namespace n ON n.oid = t.relnamespace
+                WHERE t.relname = 'mentor_messages'
+                  AND n.nspname = :schema
+                  AND c.contype = 'u'
+                  AND (
+                        SELECT COALESCE(array_agg(a.attname ORDER BY k.ord)::text[], ARRAY[]::text[])
+                        FROM unnest(c.conkey) WITH ORDINALITY AS k(attnum, ord)
+                        JOIN pg_attribute a ON a.attrelid = t.oid AND a.attnum = k.attnum
+                  ) = ARRAY['conversation_id','role','request_id']::text[]
+                UNION ALL
+                SELECT 1
+                FROM pg_index i
+                JOIN pg_class tbl ON tbl.oid = i.indrelid
+                JOIN pg_namespace n ON n.oid = tbl.relnamespace
+                WHERE tbl.relname = 'mentor_messages'
+                  AND n.nspname = :schema
+                  AND i.indisunique = TRUE
+                  AND (
+                        SELECT COALESCE(array_agg(a.attname ORDER BY k.ord)::text[], ARRAY[]::text[])
+                        FROM unnest(i.indkey) WITH ORDINALITY AS k(attnum, ord)
+                        JOIN pg_attribute a ON a.attrelid = tbl.oid AND a.attnum = k.attnum
+                        WHERE k.attnum <> 0
+                  ) = ARRAY['conversation_id','role','request_id']::text[]
+                LIMIT 1
+            """), {"schema": _schema}).fetchone()
+            if not _composite_exists:
+                connection.execute(text(
+                    f'ALTER TABLE "{_schema}"."mentor_messages" '
+                    'ADD CONSTRAINT uq_mentor_messages_conv_role_request '
+                    'UNIQUE (conversation_id, role, request_id)'
+                ))
         # regression on scholarships 14/130/554 reverted with no history row
         # and no recorded maintenance run, which left no trace of the writer.
         # A trigger cannot be bypassed by raw SQL, a one-off script or any
