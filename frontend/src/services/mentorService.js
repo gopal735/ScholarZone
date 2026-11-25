@@ -258,8 +258,14 @@ export async function* streamMentorConversationMessage(conversationId, message, 
     signal,
   })
   if (!response.ok) {
-    const text = await response.text()
-    throw new MentorApiError(text || 'Stream failed', response.status)
+    const message = await readError(response, 'Stream failed')
+    if (response.status === 401) throw new MentorUnauthenticatedError(message)
+    if (response.status === 429) {
+      throw new MentorRateLimitedError(message, retryAfterSeconds(response))
+    }
+    if (response.status === 422) throw new MentorValidationError(message)
+    if (response.status >= 500) throw new MentorUnavailableError(message, response.status)
+    throw new MentorApiError(message, response.status)
   }
   if (!response.body) {
     throw new MentorApiError('No response body', response.status)
@@ -268,6 +274,7 @@ export async function* streamMentorConversationMessage(conversationId, message, 
   const decoder = new TextDecoder('utf-8')
   let buffer = ''
   let cancelled = false
+  let completedNormally = false
   const onAbort = () => { cancelled = true; try { reader.cancel() } catch { /* ignore */ } }
   if (signal) {
     if (signal.aborted) onAbort()
@@ -312,7 +319,11 @@ export async function* streamMentorConversationMessage(conversationId, message, 
       const evt = parseSSEEvent(normalized)
       if (evt) yield evt
     }
+    completedNormally = true
   } finally {
+    if (!completedNormally) {
+      try { reader.cancel() } catch { /* ignore */ }
+    }
     try { reader.releaseLock() } catch { /* ignore */ }
     if (signal) signal.removeEventListener('abort', onAbort)
   }

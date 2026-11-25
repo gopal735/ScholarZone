@@ -205,7 +205,7 @@ def send_msg(conversation_id: int, payload: MentorSendMessageRequest, request: R
 
         gw = get_ai_gateway()
         content = deterministic
-        provider_mode = answer.provider_mode or "disabled"
+        provider_mode = "disabled"
         model = None
         prompt_tokens = None
         completion_tokens = None
@@ -276,31 +276,51 @@ def retry_msg(conversation_id: int, message_id: int, request: Request, db: Sessi
         raise HTTPException(status_code=404, detail="message_not_found")
     if msg.role != "assistant":
         raise HTTPException(status_code=400, detail="retry_requires_assistant_message")
-    msgs = list_messages(db, user.id, conversation_id)
+    msgs = list_messages(db, user.id, conversation_id, limit=500, offset=0)
     user_msg = None
     if getattr(msg, "source_user_message_id", None):
         src = db.get(MentorMessage, msg.source_user_message_id)
         if src is not None and src.user_id == user.id and src.conversation_id == conversation_id and src.role == "user":
             user_msg = src
     if user_msg is None:
-        for m in reversed(msgs):
-            if m.id < msg.id and m.role == "user":
-                user_msg = m
-                break
+        # Bounded, unambiguous fallback: the immediately preceding message by
+        # sequence number must be a user message. Never scan paginated history.
+        from sqlalchemy import select as _select
+        stmt = _select(MentorMessage).where(
+            MentorMessage.conversation_id == conversation_id,
+            MentorMessage.sequence_number < msg.sequence_number,
+        ).order_by(MentorMessage.sequence_number.desc()).limit(2)
+        candidates = list(db.execute(stmt).scalars().all())
+        if candidates and candidates[0].role == "user" and candidates[0].user_id == user.id:
+            # Unambiguous only when there is no other candidate between.
+            if len(candidates) == 1 or candidates[1].sequence_number < candidates[0].sequence_number:
+                user_msg = candidates[0]
     if user_msg is None:
         raise HTTPException(status_code=400, detail="no_source_user_message")
     if msg.status == "completed":
         return _msg_to_response(msg)
     _enforce_limit(user.id)
     try:
-        msg.status = "pending"
-        msg.error = None
+        # Controlled transition back to pending only for terminal failed/cancelled.
+        from sqlalchemy import update as _upd
+        res = db.execute(
+            _upd(MentorMessage).where(
+                MentorMessage.id == msg.id,
+                MentorMessage.user_id == user.id,
+                MentorMessage.status.in_(["failed", "cancelled"]),
+            ).values(status="pending", error=None)
+        )
         db.commit()
+        if res.rowcount == 0 and msg.status not in ("failed", "cancelled"):
+            # Already completed or pending; do not regenerate completed.
+            if msg.status == "completed":
+                return _msg_to_response(msg)
+            raise HTTPException(status_code=409, detail="retry_not_allowed")
         intent, context, answer, req = _prepare(db, user, user_msg.content)
         deterministic = _deterministic_content(answer)
         gw = get_ai_gateway()
         content = deterministic
-        provider_mode = answer.provider_mode or "disabled"
+        provider_mode = "disabled"
         model = None
         prompt_tokens = None
         completion_tokens = None
@@ -338,15 +358,38 @@ def stream_msg(conversation_id: int, payload: MentorSendMessageRequest, request:
         raise HTTPException(status_code=404, detail="conversation_not_found")
     _enforce_limit(user.id)
     slot_owned_by_setup = True
+    cancel_event = None
+    owns_cancel = False
     try:
         user_msg = add_user_message(db, user.id, conversation_id, payload.message, request_id=payload.request_id)
         assistant = reserve_assistant_message(db, user.id, conversation_id, request_id=payload.request_id, source_user_message_id=user_msg.id if user_msg is not None else None)
         if assistant is None:
             raise HTTPException(status_code=500, detail="persistence_failed")
+        # Replay path: already completed -> return stored content, no generation.
+        if assistant.status == "completed":
+            slot_owned_by_setup = False
+            _release_limit()
+            # Stream a single replay event sequence.
+            def _replay():
+                yield f"event: message_start\\ndata: {json.dumps({'conversation_id': conversation_id, 'user_message_id': user_msg.id, 'assistant_message_id': assistant.id, 'replay': True})}\\n\\n"
+                if assistant.content:
+                    yield f"event: token\\ndata: {json.dumps({'content': assistant.content})}\\n\\n"
+                yield f"event: message_complete\\ndata: {json.dumps({'assistant_message_id': assistant.id, 'status': 'completed'})}\\n\\n"
+            return StreamingResponse(_replay(), media_type="text/event-stream")
+        # Cancel registry: do not overwrite an existing event.
         cancel_event = threading.Event()
-        _ACTIVE_CANCELS[assistant.id] = cancel_event
+        existing_event = _ACTIVE_CANCELS.get(assistant.id)
+        if existing_event is None:
+            _ACTIVE_CANCELS[assistant.id] = cancel_event
+            owns_cancel = True
+        else:
+            cancel_event = existing_event
+            owns_cancel = False
         slot_owned_by_setup = False
     except Exception:
+        if cancel_event is not None and owns_cancel:
+            if _ACTIVE_CANCELS.get(assistant.id) is cancel_event:
+                _ACTIVE_CANCELS.pop(assistant.id, None)
         _release_limit()
         raise
     finally:
@@ -355,6 +398,7 @@ def stream_msg(conversation_id: int, payload: MentorSendMessageRequest, request:
 
     def event_generator():
         import app.models as _models
+        completed_successfully = False
         try:
             yield f"event: message_start\ndata: {json.dumps({'conversation_id': conversation_id, 'user_message_id': user_msg.id, 'assistant_message_id': assistant.id})}\n\n"
 
@@ -377,6 +421,7 @@ def stream_msg(conversation_id: int, payload: MentorSendMessageRequest, request:
             used = False
             cancelled = False
             error_detail = None
+            deterministic_emitted = False
 
             if gw.enabled:
                 try:
@@ -389,46 +434,51 @@ def stream_msg(conversation_id: int, payload: MentorSendMessageRequest, request:
                         cancel_event=cancel_event,
                     )
                     for chunk in gw.generate_stream("general_guidance", gw_req, cancel_event=cancel_event):
-                        if cancel_event.is_set():
+                        if cancel_event is not None and cancel_event.is_set():
                             cancelled = True
                             break
                         content_parts.append(chunk)
                         yield f"event: token\ndata: {json.dumps({'content': chunk})}\n\n"
-                    if cancel_event.is_set():
+                    if cancel_event is not None and cancel_event.is_set():
                         cancelled = True
                     if content_parts:
                         used = True
                         provider_mode = "configured"
                 except Exception as exc:  # noqa: BLE001
                     logger.warning("mentor conversation stream provider error: %s %s", type(exc).__name__, exc)
-                    if cancel_event.is_set():
+                    if cancel_event is not None and cancel_event.is_set():
                         cancelled = True
                     else:
                         error_detail = _map_stream_error(exc)
             else:
-                # Deterministic fallback: send as a single token to avoid
-                # pretending a completed answer is a live stream of chunks.
+                # Deterministic fallback: send as a single token.
                 if deterministic:
                     yield f"event: token\ndata: {json.dumps({'content': deterministic})}\n\n"
                     content_parts.append(deterministic)
+                    deterministic_emitted = True
 
             if cancelled:
                 cancel_assistant_message(db, user.id, assistant.id)
                 yield f"event: message_cancelled\ndata: {json.dumps({'assistant_message_id': assistant.id})}\n\n"
                 return
 
-            content = "".join(content_parts).strip() if content_parts else deterministic
-            if not used and not content_parts and gw.enabled:
-                # fallback to deterministic
-                content = deterministic
-                if deterministic:
-                    yield f"event: token\ndata: {json.dumps({'content': deterministic})}\n\n"
-                    content_parts.append(deterministic)
-
+            # Provider failure: do NOT emit fallback text.
             if error_detail:
                 fail_assistant_message(db, user.id, assistant.id, error_detail)
                 yield f"event: message_error\ndata: {json.dumps({'detail': error_detail})}\n\n"
                 return
+
+            content = "".join(content_parts).strip() if content_parts else ""
+            if not used and not content_parts and gw.enabled:
+                # fallback to deterministic (provider returned empty, no error)
+                content = deterministic
+                if deterministic and not deterministic_emitted:
+                    yield f"event: token\ndata: {json.dumps({'content': deterministic})}\n\n"
+                    content_parts.append(deterministic)
+                    deterministic_emitted = True
+
+            if not content:
+                content = deterministic
 
             complete_assistant_message(
                 db, user.id, assistant.id, content,
@@ -437,17 +487,34 @@ def stream_msg(conversation_id: int, payload: MentorSendMessageRequest, request:
                 prompt_tokens=prompt_tokens,
                 completion_tokens=completion_tokens,
             )
+            completed_successfully = True
             refreshed = db.get(_models.MentorMessage, assistant.id)
             yield f"event: message_complete\ndata: {json.dumps({'assistant_message_id': assistant.id, 'status': refreshed.status if refreshed else 'completed'})}\n\n"
+        except GeneratorExit:
+            # Client disconnected: persist terminal state, no yield.
+            if not completed_successfully:
+                if cancel_event is not None and cancel_event.is_set():
+                    cancel_assistant_message(db, user.id, assistant.id)
+                else:
+                    try:
+                        fail_assistant_message(db, user.id, assistant.id, "stream_interrupted")
+                    except Exception:
+                        pass
+            raise
         except Exception as exc:  # noqa: BLE001
             logger.warning("mentor conversation stream failed: %s", type(exc).__name__)
             try:
                 fail_assistant_message(db, user.id, assistant.id, "provider_unavailable")
             except Exception:
                 pass
-            yield f"event: message_error\ndata: {json.dumps({'detail': 'provider_unavailable'})}\n\n"
+            try:
+                yield f"event: message_error\ndata: {json.dumps({'detail': 'provider_unavailable'})}\n\n"
+            except Exception:
+                pass
         finally:
-            _ACTIVE_CANCELS.pop(assistant.id, None)
+            if owns_cancel and cancel_event is not None:
+                if _ACTIVE_CANCELS.get(assistant.id) is cancel_event:
+                    _ACTIVE_CANCELS.pop(assistant.id, None)
             _release_limit()
 
     return StreamingResponse(event_generator(), media_type="text/event-stream")
@@ -456,7 +523,7 @@ def stream_msg(conversation_id: int, payload: MentorSendMessageRequest, request:
 @router.get("/readiness")
 def readiness():
     import os
-    provider_configured = bool((os.getenv("SCHOLARZONE_AI_PROVIDER_KEY") or os.getenv("SCHOLARZONE_MENTOR_PROVIDER_KEY") or "").strip())
+    provider_configured = bool((os.getenv("SCHOLARZONE_AI_PROVIDER_KEY") or "").strip())
     db_ok = False
     schema_ok = False
     try:

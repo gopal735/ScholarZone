@@ -169,6 +169,17 @@ class OpenAICompatibleProvider:
         self._base_url = (base_url or "").rstrip("/")
         self._default_model = default_model
         self._timeout = float(timeout_seconds)
+        # Security: never send credentials over plaintext HTTP (except loopback).
+        if self._api_key:
+            try:
+                from urllib.parse import urlparse
+                parsed = urlparse(self._base_url)
+                scheme = (parsed.scheme or "").lower()
+                host = (parsed.hostname or "").lower()
+                if scheme != "https" and host not in ("localhost", "127.0.0.1", "::1"):
+                    raise ValueError("base_url must use HTTPS when an API key is provided")
+            except ValueError:
+                raise
 
     def _model_id(self, model) -> str:
         if getattr(model, "id", None):

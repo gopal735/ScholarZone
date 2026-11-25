@@ -19,6 +19,21 @@ def _now() -> datetime:
     return datetime.now(timezone.utc)
 
 
+def _lock_conversation(db: Session, conversation_id: int) -> None:
+    # PostgreSQL: real row lock. SQLite: writes serialize at DB level; skip.
+    try:
+        dialect = db.get_bind().dialect.name
+    except Exception:
+        dialect = ""
+    if dialect != "postgresql":
+        return
+    db.execute(
+        select(MentorConversation)
+        .where(MentorConversation.id == conversation_id)
+        .with_for_update()
+    ).scalar_one_or_none()
+
+
 MAX_CONVERSATIONS_PER_USER = 100
 MAX_MESSAGES_PER_CONVERSATION = 500
 
@@ -96,16 +111,7 @@ def list_messages(db: Session, user_id: int, conversation_id: int, limit: int = 
 
 
 def _next_sequence(db: Session, conversation_id: int) -> int:
-    # Atomic allocation: lock the conversation row (where supported) before
-    # computing MAX+1 to avoid duplicate sequence numbers under concurrency.
-    try:
-        db.execute(
-            select(MentorConversation)
-            .where(MentorConversation.id == conversation_id)
-            .with_for_update()
-        ).scalar_one_or_none()
-    except Exception:
-        pass
+    _lock_conversation(db, conversation_id)
     stmt = select(func.coalesce(func.max(MentorMessage.sequence_number), 0)).where(
         MentorMessage.conversation_id == conversation_id
     )
@@ -129,14 +135,7 @@ def add_user_message(
             request_id = None
         if isinstance(request_id, str) and len(request_id) > 64:
             raise ValueError("request_id_too_long")
-    try:
-        db.execute(
-            select(MentorConversation)
-            .where(MentorConversation.id == conversation_id)
-            .with_for_update()
-        )
-    except Exception:
-        pass
+    _lock_conversation(db, conversation_id)
     if request_id:
         existing = db.execute(
             select(MentorMessage).where(
@@ -183,14 +182,7 @@ def reserve_assistant_message(
             request_id = None
         if isinstance(request_id, str) and len(request_id) > 64:
             raise ValueError("request_id_too_long")
-    try:
-        db.execute(
-            select(MentorConversation)
-            .where(MentorConversation.id == conversation_id)
-            .with_for_update()
-        )
-    except Exception:
-        pass
+    _lock_conversation(db, conversation_id)
     if request_id:
         existing = db.execute(
             select(MentorMessage).where(
