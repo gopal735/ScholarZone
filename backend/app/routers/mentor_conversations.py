@@ -50,6 +50,7 @@ from ..services.mentor.compose import compose
 from ..services.mentor.intents import classify
 from ..services.mentor.guards import normalize_message, MAX_MESSAGE_LENGTH
 from ..services.mentor.provider import SYSTEM_INSTRUCTION
+from ..sse import format_sse
 
 logger = logging.getLogger(__name__)
 
@@ -389,10 +390,10 @@ def stream_msg(conversation_id: int, payload: MentorSendMessageRequest, request:
             _release_once()
             # Stream a single replay event sequence.
             def _replay():
-                yield "event: message_start\ndata: " + json.dumps({'conversation_id': conversation_id, 'user_message_id': user_msg.id, 'assistant_message_id': assistant.id, 'replay': True}) + "\n\n"
+                yield format_sse("message_start", {'conversation_id': conversation_id, 'user_message_id': user_msg.id, 'assistant_message_id': assistant.id, 'replay': True})
                 if assistant.content:
-                    yield "event: token\ndata: " + json.dumps({'content': assistant.content}) + "\n\n"
-                yield "event: message_complete\ndata: " + json.dumps({'assistant_message_id': assistant.id, 'status': 'completed'}) + "\n\n"
+                    yield format_sse("token", {'content': assistant.content})
+                yield format_sse("message_complete", {'assistant_message_id': assistant.id, 'status': 'completed'})
             return StreamingResponse(_replay(), media_type="text/event-stream")
         if assistant.status in ("failed", "cancelled"):
             _release_once()
@@ -422,7 +423,7 @@ def stream_msg(conversation_id: int, payload: MentorSendMessageRequest, request:
         import app.models as _models
         completed_successfully = False
         try:
-            yield f"event: message_start\ndata: {json.dumps({'conversation_id': conversation_id, 'user_message_id': user_msg.id, 'assistant_message_id': assistant.id})}\n\n"
+            yield format_sse("message_start", {'conversation_id': conversation_id, 'user_message_id': user_msg.id, 'assistant_message_id': assistant.id})
 
             intent, context, answer, req = _prepare(db, user, payload.message)
             deterministic = _deterministic_content(answer)
@@ -430,9 +431,9 @@ def stream_msg(conversation_id: int, payload: MentorSendMessageRequest, request:
             # Emit citations from deterministic evidence.
             for ev in (answer.known or []):
                 try:
-                    yield f"event: citation\ndata: {json.dumps({'key': getattr(ev, 'key', None), 'label': getattr(ev, 'label', None), 'value': getattr(ev, 'value', None), 'scholarship_id': getattr(ev, 'scholarship_id', None), 'source_url': getattr(ev, 'source_url', None)})}\n\n"
-                except Exception:
-                    pass
+                    yield format_sse("citation", {'key': getattr(ev, 'key', None), 'label': getattr(ev, 'label', None), 'value': getattr(ev, 'value', None), 'scholarship_id': getattr(ev, 'scholarship_id', None), 'source_url': getattr(ev, 'source_url', None)})
+                except Exception as _ce:  # noqa: BLE001
+                    logger.warning("mentor conversation citation emit failed: %s", type(_ce).__name__)
 
             gw = get_ai_gateway()
             content_parts = []
@@ -467,10 +468,10 @@ def stream_msg(conversation_id: int, payload: MentorSendMessageRequest, request:
                             if "".join(content_parts).strip():
                                 started_output = True
                                 for b in buffered_chunks:
-                                    yield f"event: token\\ndata: {json.dumps({'content': b})}\\n\\n"
+                                    yield format_sse("token", {'content': b})
                                 buffered_chunks = []
                         else:
-                            yield f"event: token\\ndata: {json.dumps({'content': chunk})}\\n\\n"
+                            yield format_sse("token", {'content': chunk})
                     if cancel_event is not None and cancel_event.is_set():
                         cancelled = True
                     # discard any held-back whitespace-only chunks
@@ -489,27 +490,27 @@ def stream_msg(conversation_id: int, payload: MentorSendMessageRequest, request:
             else:
                 # Deterministic fallback: send as a single token.
                 if deterministic:
-                    yield f"event: token\ndata: {json.dumps({'content': deterministic})}\n\n"
+                    yield format_sse("token", {'content': deterministic})
                     content_parts.append(deterministic)
                     deterministic_emitted = True
 
             if cancelled:
                 cancel_assistant_message(db, user.id, assistant.id)
-                yield f"event: message_cancelled\ndata: {json.dumps({'assistant_message_id': assistant.id})}\n\n"
+                yield format_sse("message_cancelled", {'assistant_message_id': assistant.id})
                 return
 
             # Provider failure: do NOT emit fallback text.
             if error_detail:
                 fail_assistant_message(db, user.id, assistant.id, error_detail)
-                yield f"event: message_error\ndata: {json.dumps({'detail': error_detail})}\n\n"
+                yield format_sse("message_error", {'detail': error_detail})
                 return
 
-            content = "".join(content_parts).strip() if content_parts else ""
+            content = "".join(content_parts) if content_parts else ""
             if not used and gw.enabled:
                 # fallback to deterministic (provider returned empty, no error)
                 content = deterministic
                 if deterministic and not deterministic_emitted:
-                    yield f"event: token\ndata: {json.dumps({'content': deterministic})}\n\n"
+                    yield format_sse("token", {'content': deterministic})
                     content_parts.append(deterministic)
                     deterministic_emitted = True
 
@@ -527,7 +528,7 @@ def stream_msg(conversation_id: int, payload: MentorSendMessageRequest, request:
             refreshed = db.execute(
                 __import__("sqlalchemy").select(_models.MentorMessage).where(_models.MentorMessage.id == assistant.id).execution_options(populate_existing=True)
             ).scalar_one_or_none()
-            yield f"event: message_complete\ndata: {json.dumps({'assistant_message_id': assistant.id, 'status': refreshed.status if refreshed else 'completed'})}\n\n"
+            yield format_sse("message_complete", {'assistant_message_id': assistant.id, 'status': refreshed.status if refreshed else 'completed'})
         except GeneratorExit:
             # Client disconnected: persist terminal state, no yield.
             if not completed_successfully:
@@ -536,17 +537,17 @@ def stream_msg(conversation_id: int, payload: MentorSendMessageRequest, request:
                 else:
                     try:
                         fail_assistant_message(db, user.id, assistant.id, "stream_interrupted")
-                    except Exception:
-                        pass
+                    except Exception as _pe:  # noqa: BLE001
+                        logger.warning("mentor conversation terminal-state persistence failed: %s", type(_pe).__name__)
             raise
         except Exception as exc:  # noqa: BLE001
             logger.warning("mentor conversation stream failed: %s", type(exc).__name__)
             try:
                 fail_assistant_message(db, user.id, assistant.id, "provider_unavailable")
-            except Exception:
-                pass
+            except Exception as _pe:  # noqa: BLE001
+                logger.warning("mentor conversation terminal-state persistence failed: %s", type(_pe).__name__)
             try:
-                yield f"event: message_error\ndata: {json.dumps({'detail': 'provider_unavailable'})}\n\n"
+                yield format_sse("message_error", {'detail': 'provider_unavailable'})
             except Exception:
                 pass
         finally:

@@ -20,6 +20,7 @@ const BangladeshJourneyPage = lazy(() => import('./features/journey/components/J
 const JourneyRoutes = lazy(() => import('./features/journey/components/JourneyRoutes'))
 const ItalyDsuGuidePage = lazy(() => import('./pages/ItalyDsuGuidePage'))
 const StudyPlannerPage = lazy(() => import('./pages/StudyPlannerPage'))
+const MentorConversationsPage = lazy(() => import('./pages/MentorConversationsPage'))
 
 function App() {
   return (
@@ -34,24 +35,14 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/saved" element={<SavedScholarshipsPage />} />
-        {/* Declared before the catch-all. The dashboard resolves its own access
-            state from the server session rather than wrapping the route in a
-            client-side guard, because the guard would only be able to trust a
-            value the browser supplied. */}
         <Route path="/dashboard" element={<DashboardPage />} />
-        {/* Declared before the catch-all. Like the dashboard, it resolves its
-            own access state from the server session rather than wrapping the route
-            in a client-side guard that could only trust a browser-supplied value. */}
         <Route path="/applications" element={<ApplicationsPage />} />
-        {/* The workspace itself, so a refresh or a shared link lands on it. */}
         <Route path="/applications/:applicationId" element={<ApplicationsPage />} />
         <Route path="/study-planner" element={<StudyPlannerPage />} />
-        {/* Unified AI Assistant - merges Mentor and AI Assistant */}
         <Route path="/assistant" element={<UnifiedAIPage />} />
-        {/* Redirect legacy /mentor to /assistant */}
         <Route path="/mentor" element={<Navigate to="/assistant" replace />} />
+        <Route path="/mentor/conversations" element={<MentorConversationsPage />} />
         <Route path="/compare" element={<ComparePage />} />
-        {/* Bangladesh Applicant Journey - shared JourneyProvider via parent route with Outlet */}
         <Route
           element={
             <Suspense fallback={<div className="journey-loading" role="status" aria-live="polite">Loading journey…</div>}>
@@ -62,7 +53,6 @@ function App() {
           <Route index path="/bangladesh-journey" element={<BangladeshJourneyPage />} />
           <Route path="/bangladesh-journey/:stepId" element={<BangladeshJourneyPage />} />
         </Route>
-        {/* Legacy alias redirect */}
         <Route path="/journey" element={<Navigate to="/bangladesh-journey" replace />} />
         <Route path="/journey/*" element={<Navigate to="/bangladesh-journey" replace />} />
         <Route path="*" element={<NotFoundPage />} />

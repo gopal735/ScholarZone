@@ -188,8 +188,10 @@ class OpenAICompatibleProvider:
                     raise ValueError("base_url must not contain credentials")
                 if parsed.query or parsed.fragment:
                     raise ValueError("base_url must not contain query or fragment")
+                if host == "testserver" or host.endswith(".testserver"):
+                    raise ValueError("testserver is not a valid provider endpoint")
                 if scheme == "http":
-                    if production or not loopback or host == "testserver" or host == "":
+                    if production or not loopback or host == "":
                         raise ValueError("base_url must use HTTPS when an API key is provided")
             except ValueError:
                 raise

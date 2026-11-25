@@ -160,7 +160,18 @@ def _run_init() -> None:
 
 @asynccontextmanager
 async def lifespan(_: FastAPI):
+    # Single-worker enforcement: the in-flight cancellation registry is
+    # process-local. Refuse to boot with multiple workers unless an explicit
+    # override is provided, so deployment cannot silently scale.
+    _workers_raw = os.getenv("WEB_CONCURRENCY") or os.getenv("UVICORN_WORKERS") or "1"
+    try:
+        _workers = int(str(_workers_raw).strip())
+    except (TypeError, ValueError):
+        _workers = 1
     settings = get_settings()
+    if _workers > 1 and settings.environment != "test" and not os.getenv("SCHOLARZONE_ALLOW_MULTI_WORKER"):
+        logger.critical("Multi-worker deployment (%s) is incompatible with process-local cancellation. Aborting.", _workers)
+        raise RuntimeError("single_worker_required_for_process_local_cancellation")
     if settings.environment == "test":
         _run_init()
         yield

@@ -463,6 +463,9 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
         # No silent exception swallowing: a failure here must abort the
         # migration transaction and propagate to the caller.
         if connection.dialect.name == "postgresql":
+            # Serialize concurrent startup migrations with a transaction-level
+            # advisory lock.
+            connection.execute(text("SELECT pg_advisory_xact_lock(hashtext('scholarzone_mentor_messages_migration_v1'))"))
             # Resolve the actual relation identity via search_path so DDL and
             # catalog queries target the same table even with a customized
             # search_path. (Do not assume current_schema() alone.)

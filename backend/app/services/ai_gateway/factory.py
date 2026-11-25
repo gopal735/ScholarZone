@@ -42,6 +42,9 @@ def _validate_base_url(base_url: str) -> bool:
         parsed = urlparse(base_url)
     except Exception:
         return False
+    host = (parsed.hostname or "").lower()
+    if host == "testserver" or host.endswith(".testserver"):
+        return False
     if parsed.scheme not in {"http", "https"}:
         return False
     if not parsed.netloc or parsed.username or parsed.password:
@@ -65,18 +68,22 @@ def build_ai_gateway() -> AIGateway:
         model_id = (os.getenv("SCHOLARZONE_AI_PROVIDER_MODEL") or "").strip()
         if not model_id:
             model_id = "gpt-4o-mini"
+        _timeout_env = os.getenv("SCHOLARZONE_AI_PROVIDER_TIMEOUT")
+        _timeout_present = _timeout_env is not None and str(_timeout_env).strip() != ""
         try:
-            timeout = float(os.getenv("SCHOLARZONE_AI_PROVIDER_TIMEOUT", "30"))
+            timeout = float(_timeout_env) if _timeout_present else 30.0
         except (TypeError, ValueError):
-            timeout = 30.0
+            timeout = None  # invalid non-empty -> fail closed
+        _max_tokens_env = os.getenv("SCHOLARZONE_AI_PROVIDER_MAX_TOKENS")
+        _max_tokens_present = _max_tokens_env is not None and str(_max_tokens_env).strip() != ""
         try:
-            max_tokens = int(os.getenv("SCHOLARZONE_AI_PROVIDER_MAX_TOKENS", "800"))
+            max_tokens = int(_max_tokens_env) if _max_tokens_present else 800
         except (TypeError, ValueError):
-            max_tokens = 800
+            max_tokens = None  # invalid non-empty -> fail closed
 
         # Validate token cap: must be a positive integer within bounds.
         _MAX_TOKEN_CAP = 32768
-        if not isinstance(max_tokens, int) or isinstance(max_tokens, bool) or max_tokens <= 0 or max_tokens > _MAX_TOKEN_CAP:
+        if max_tokens is None or not isinstance(max_tokens, int) or isinstance(max_tokens, bool) or max_tokens <= 0 or max_tokens > _MAX_TOKEN_CAP:
             # Invalid configuration must not silently enable an invalid model spec.
             provider = DisabledProvider()
             enabled = False
@@ -90,9 +97,18 @@ def build_ai_gateway() -> AIGateway:
             )
             return AIGateway(config)
 
-        # Validate timeout.
-        if not isinstance(timeout, (int, float)) or timeout <= 0 or timeout > 600:
-            timeout = 30.0
+        # Validate timeout. An invalid non-empty value fails closed (disables provider).
+        if timeout is None or not isinstance(timeout, (int, float)) or isinstance(timeout, bool) or timeout <= 0 or timeout > 600:
+            provider = DisabledProvider()
+            enabled = False
+            registry = []
+            config = GatewayConfig(
+                registry=registry,
+                default_provider=provider,
+                enabled=enabled,
+                production=_is_production(),
+            )
+            return AIGateway(config)
 
         if not _validate_base_url(base_url):
             # Invalid/insecure configuration must not silently enable a provider.
