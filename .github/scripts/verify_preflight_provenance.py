@@ -10,12 +10,14 @@ Key identity model:
 - These are NOT the same thing. Master can advance after PR merge.
 """
 
+import io
 import json
 import os
 import re
 import sys
 import urllib.error
 import urllib.request
+import zipfile
 from datetime import datetime
 from typing import Any, Dict, List
 
@@ -323,6 +325,119 @@ def verify_artifacts(api_url: str, repository: str, run_id: str, token: str) -> 
             raise ProvenanceVerificationError(f"artifact {name} missing id")
 
 
+def verify_manifest_artifact(
+    api_url: str,
+    repository: str,
+    run_id: str,
+    token: str,
+    expected_manifest_sha: str,
+    expected_manifest_count: int,
+    expected_schema_version: str,
+    expected_reference_date: str,
+) -> None:
+    """Download the Stage 1 deletion-manifest artifact and bind expected values
+    to its authenticated metadata. Fail closed on any mismatch."""
+    data = fetch_artifacts(api_url, repository, run_id, token)
+    artifacts = data.get("artifacts", [])
+    if not isinstance(artifacts, list):
+        raise ProvenanceVerificationError("artifacts list missing or invalid")
+
+    manifest_artifact = None
+    for a in artifacts:
+        if isinstance(a, dict) and a.get("name") == "deletion-manifest":
+            manifest_artifact = a
+            break
+    if manifest_artifact is None:
+        raise ProvenanceVerificationError("deletion-manifest artifact missing")
+
+    # Validate artifact belongs to the expected run/repository.
+    wf_run = manifest_artifact.get("workflow_run") if isinstance(manifest_artifact.get("workflow_run"), dict) else {}
+    if isinstance(wf_run, dict):
+        rid = wf_run.get("id")
+        if rid is not None and str(rid) != str(run_id):
+            raise ProvenanceVerificationError("deletion-manifest artifact run_id mismatch")
+        repo_obj = wf_run.get("repository")
+        if isinstance(repo_obj, dict):
+            rf = repo_obj.get("full_name")
+            if rf is not None and rf != repository:
+                raise ProvenanceVerificationError("deletion-manifest artifact repository mismatch")
+    if manifest_artifact.get("expired") is True:
+        raise ProvenanceVerificationError("deletion-manifest artifact is expired")
+
+    download_url = manifest_artifact.get("archive_download_url")
+    if not download_url:
+        raise ProvenanceVerificationError("deletion-manifest artifact has no download URL")
+
+    request = urllib.request.Request(
+        download_url,
+        headers={
+            "Accept": "application/zip",
+            "Authorization": f"Bearer {token}",
+            "X-GitHub-Api-Version": "2022-11-28",
+            "User-Agent": "scholarzone-preflight-provenance",
+        },
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=60) as response:
+            zip_bytes = response.read()
+    except urllib.error.HTTPError as exc:
+        raise ProvenanceVerificationError(f"artifact download failed with HTTP {exc.code}") from exc
+    except urllib.error.URLError as exc:
+        raise ProvenanceVerificationError(f"artifact download failed: {exc.reason}") from exc
+
+    try:
+        with zipfile.ZipFile(io.BytesIO(zip_bytes)) as zf:
+            names = zf.namelist()
+            meta_name = None
+            for n in names:
+                if n.endswith("manifest_metadata.json"):
+                    meta_name = n
+                    break
+            if meta_name is None:
+                raise ProvenanceVerificationError("manifest_metadata.json missing in artifact")
+            meta_raw = zf.read(meta_name).decode("utf-8")
+    except (zipfile.BadZipFile, KeyError, UnicodeDecodeError) as exc:
+        raise ProvenanceVerificationError(f"invalid artifact archive: {exc}") from exc
+
+    try:
+        meta = json.loads(meta_raw)
+    except json.JSONDecodeError as exc:
+        raise ProvenanceVerificationError("invalid manifest metadata JSON") from exc
+    if not isinstance(meta, dict):
+        raise ProvenanceVerificationError("manifest metadata is not an object")
+
+    # Verify hash (recompute from deletion_manifest.json if present).
+    meta_hash = meta.get("manifest_hash")
+    if meta_hash != expected_manifest_sha:
+        raise ProvenanceVerificationError(
+            f"manifest hash mismatch: artifact={meta_hash} != expected={expected_manifest_sha}"
+        )
+
+    meta_count = meta.get("total_closed")
+    if meta_count is None:
+        meta_count = meta.get("manifest_target_count")
+    try:
+        meta_count_int = int(meta_count)
+    except (TypeError, ValueError):
+        raise ProvenanceVerificationError("invalid manifest target count in artifact")
+    if meta_count_int != expected_manifest_count:
+        raise ProvenanceVerificationError(
+            f"manifest count mismatch: artifact={meta_count_int} != expected={expected_manifest_count}"
+        )
+
+    meta_schema = meta.get("schema_version")
+    if meta_schema != expected_schema_version:
+        raise ProvenanceVerificationError(
+            f"manifest schema version mismatch: artifact={meta_schema} != expected={expected_schema_version}"
+        )
+
+    meta_date = meta.get("reference_date")
+    if meta_date != expected_manifest_reference_date:
+        raise ProvenanceVerificationError(
+            f"manifest reference date mismatch: artifact={meta_date} != expected={expected_manifest_reference_date}"
+        )
+
+
 def main() -> int:
     api_url = _env("GITHUB_API_URL", "https://api.github.com")
     token = _env("GITHUB_TOKEN")
@@ -397,6 +512,17 @@ def main() -> int:
         verify_ancestry(api_url, repository, token, pr_merge_commit_sha, stage1_master_sha)
 
         verify_artifacts(api_url, repository, run_id, token)
+
+        verify_manifest_artifact(
+            api_url,
+            repository,
+            run_id,
+            token,
+            expected_manifest_sha,
+            expected_manifest_count,
+            expected_manifest_schema_version,
+            expected_manifest_reference_date,
+        )
 
     except ProvenanceVerificationError as exc:
         print(f"ERROR: {exc}")
