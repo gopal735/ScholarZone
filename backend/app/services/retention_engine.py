@@ -395,7 +395,7 @@ def reference_integrity_report() -> dict[str, Any]:
                         "nullable": bool(column.nullable),
                         "ondelete": fk.ondelete,
                         "database_enforcement": (
-                            "NO ACTION / RESTRICT" if fk.ondelete is None else fk.ondelete
+                            "NO ACTION / RESTRICT" if fk.ondelete in (None, "NO ACTION") else fk.ondelete
                         ),
                         "disposition": spec["disposition"] if spec else "UNCLASSIFIED",
                         "rationale": (
