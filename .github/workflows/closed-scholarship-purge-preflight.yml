@@ -63,7 +63,7 @@ jobs:
         \ >/dev/null 2>&1; then\n    echo \"Workflow $wf exists in merge commit -\
         \ revision verified\"\n  else\n    echo \"ERROR: Workflow $wf not found in\
         \ merge commit - possible stale workflow\"\n    exit 1\n  fi\ndone\ngit fetch\
-        \ origin master --depth=50\nif git merge-base --is-ancestor $MERGE_COMMIT_SHA\
+        \ origin master\nif git merge-base --is-ancestor $MERGE_COMMIT_SHA\
         \ origin/master; then\n  echo \"Merge commit reachable from origin/master\"\
         \nelse\n  echo \"ERROR: Merge commit not reachable from origin/master\"\n\
         \  exit 1\nfi\n"

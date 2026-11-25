@@ -647,11 +647,17 @@ def _migrate_fully_funded_to_nullable_sqlite(connection) -> None:
     """)).fetchall()
     
     # 6. Get the current sqlite_sequence value (high-water mark)
-    seq_row = connection.execute(
-        text('SELECT seq FROM sqlite_sequence WHERE name = :name'),
-        {"name": "scholarships"}
+    _seq_tbl = connection.execute(
+        text("SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'sqlite_sequence'")
     ).fetchone()
-    current_seq = seq_row[0] if seq_row else None
+    if _seq_tbl:
+        seq_row = connection.execute(
+            text('SELECT seq FROM sqlite_sequence WHERE name = :name'),
+            {"name": "scholarships"}
+        ).fetchone()
+        current_seq = seq_row[0] if seq_row else None
+    else:
+        current_seq = None
     
     # 7. Get child tables that reference scholarships (to verify they still work)
     child_tables = connection.execute(text("""
@@ -844,11 +850,17 @@ def _migrate_column_to_nullable_sqlite(connection, table_name: str, column_name:
     """)).fetchall()
     
 # 6. Get the current sqlite_sequence value (high-water mark)
-    seq_row = connection.execute(
-        text('SELECT seq FROM sqlite_sequence WHERE name = :name'),
-        {"name": table_name}
+    _seq_tbl = connection.execute(
+        text("SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'sqlite_sequence'")
     ).fetchone()
-    current_seq = seq_row[0] if seq_row else None
+    if _seq_tbl:
+        seq_row = connection.execute(
+            text('SELECT seq FROM sqlite_sequence WHERE name = :name'),
+            {"name": table_name}
+        ).fetchone()
+        current_seq = seq_row[0] if seq_row else None
+    else:
+        current_seq = None
     
     # 7. Get child tables that reference this table
     child_tables = connection.execute(text(f"""

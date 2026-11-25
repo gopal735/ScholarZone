@@ -937,7 +937,7 @@ class ScholarshipEvidence(Base):
     __tablename__ = "scholarship_evidence"
     __table_args__ = (
         UniqueConstraint(
-            "scholarship_id", "application_cycle", "deadline",
+            "scholarship_id", "application_cycle",
             name="uq_scholarship_evidence_cycle",
         ),
         Index("ix_scholarship_evidence_scholarship_id", "scholarship_id"),

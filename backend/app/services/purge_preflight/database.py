@@ -32,6 +32,7 @@ class DatabaseIdentity:
     neon_branch_name: Optional[str]
     is_read_only: bool
     in_transaction: bool
+    connection_host: Optional[str] = None
 
 
 @dataclass(frozen=True)
@@ -166,6 +167,7 @@ class DatabaseAccessor:
                 current_user=row["current_user"],
                 server_address=row["server_addr"] or "unknown",
                 server_port=row["server_port"] or 5432,
+                connection_host=getattr(conn, "info", None) and getattr(conn.info, "host", None),
                 neon_project_id=row["neon_project_id"] or None,
                 neon_branch_id=row["neon_branch_id"] or None,
                 neon_branch_name=row["neon_branch_name"] or None,
@@ -206,9 +208,10 @@ class DatabaseAccessor:
                 f"got '{identity.neon_branch_name}'"
             )
 
-        if self.config.expected_database_host and (identity.server_address or "").strip().lower() != self.config.expected_database_host.strip().lower():
+        effective_host = identity.connection_host or identity.server_address
+        if self.config.expected_database_host and (effective_host or "").strip().lower() != self.config.expected_database_host.strip().lower():
             errors.append(
-                f"Database host mismatch: expected {self.config.expected_database_host}, got {identity.server_address}"
+                f"Database host mismatch: expected {self.config.expected_database_host}, got {effective_host}"
             )
 
         if not identity.is_read_only:
@@ -373,7 +376,7 @@ class DatabaseAccessor:
             query = f"SELECT COUNT(*) AS cnt FROM {quoted_table} WHERE {quoted_column} = ANY(%s)"
 
         with conn.cursor() as cur:
-            cur.execute(query, (tuple(target_ids),))
+            cur.execute(query, (list(target_ids),))
             return cur.fetchone()["cnt"]
 
     def count_references_per_target(

@@ -262,11 +262,11 @@ def run_gate3(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate3Result:
 
                     if fk.is_composite:
 
-                        key = f"{fk.table_schema}.{fk.table_name}.({','.join(fk.column_names)})"
+                        key = f"{fk.table_schema}.{fk.table_name}.({','.join(fk.column_names)}).{fk.constraint_name}"
 
                     else:
 
-                        key = f"{fk.table_schema}.{fk.table_name}.{fk.column_names[0]}"
+                        key = f"{fk.table_schema}.{fk.table_name}.{fk.column_names[0]}.{fk.constraint_name}"
 
                     reference_counts[key] = count
 
@@ -314,11 +314,11 @@ def run_gate3(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate3Result:
 
                     if fk.is_composite:
 
-                        key = f"{fk.table_schema}.{fk.table_name}.({','.join(fk.column_names)})"
+                        key = f"{fk.table_schema}.{fk.table_name}.({','.join(fk.column_names)}).{fk.constraint_name}"
 
                     else:
 
-                        key = f"{fk.table_schema}.{fk.table_name}.{fk.column_names[0]}"
+                        key = f"{fk.table_schema}.{fk.table_name}.{fk.column_names[0]}.{fk.constraint_name}"
 
                     error_msg = f"Failed to inspect {key}: {e}"
 

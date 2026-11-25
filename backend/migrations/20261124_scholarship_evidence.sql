@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS scholarship_evidence (
 );
 
 CREATE UNIQUE INDEX IF NOT EXISTS uq_scholarship_evidence_cycle
-    ON scholarship_evidence (scholarship_id, application_cycle, deadline);
+    ON scholarship_evidence (scholarship_id, application_cycle);
 
 CREATE INDEX IF NOT EXISTS ix_scholarship_evidence_scholarship_id
     ON scholarship_evidence (scholarship_id);

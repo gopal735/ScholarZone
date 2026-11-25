@@ -735,12 +735,12 @@ def run_pg_dump(database_url: str, output_file: str, snapshot_id: Optional[str] 
         cmd.append(f"--snapshot={snapshot_id}")
     return subprocess.run(cmd, check=True, capture_output=True, text=True, timeout=300, env=env)
 
+
+def run_pg_restore_list(backup_file: str):
+    """List contents of a pg_dump custom-format archive."""
     return subprocess.run(
-
         ["pg_restore", "--list", backup_file],
-
-        capture_output=True, text=True, timeout=60
-
+        capture_output=True, text=True, timeout=60,
     )
 
 

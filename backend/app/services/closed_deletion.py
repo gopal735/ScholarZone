@@ -70,6 +70,8 @@ from ..models import (
     ScholarshipEvidence,
 
     ScholarshipEvidenceArchive,
+    StudyPlan,
+    StudyPlanTask,
 
 )
 
@@ -205,6 +207,8 @@ def _unknown_fks_after_lock(db: Session) -> list[dict]:
             "scholarship_restore_records",
             "scholarship_evidence",
             "scholarship_evidence_archive",
+            "study_plans",
+            "study_plan_tasks",
         )
     }
     return [dict(r) for r in rows if (r["schema_name"], r["table_name"]) not in known]
@@ -1716,6 +1720,19 @@ def execute_deletion(
                 report.application_records_preserved += 1
 
 
+
+            # study planner detach: preserve plans/tasks, detach scholarship FK
+            study_plan_rows = db.execute(
+                select(StudyPlan).where(StudyPlan.scholarship_id == sid)
+            ).scalars().all()
+            for sp in study_plan_rows:
+                sp.scholarship_id = None
+
+            db.execute(
+                StudyPlanTask.__table__.update()
+                .where(StudyPlanTask.related_scholarship_id == sid)
+                .values(related_scholarship_id=None)
+            )
 
             # tombstone (idempotent)
 
