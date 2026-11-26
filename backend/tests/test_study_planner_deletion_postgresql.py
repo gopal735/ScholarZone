@@ -39,7 +39,10 @@ class TestStudyPlannerDeletionPostgreSQL:
     @pytest.fixture(autouse=True)
     def setup_env(self, monkeypatch):
         allow = os.environ.get("SCHOLARZONE_ALLOW_DESTRUCTIVE_TEST_DB")
-        expected_port = int(os.environ.get("SCHOLARZONE_TEST_DB_PORT", "0")) or None
+        expected_port_raw = os.environ.get("SCHOLARZONE_TEST_DB_PORT")
+        if not expected_port_raw:
+            raise RuntimeError("SCHOLARZONE_TEST_DB_PORT is required")
+        expected_port = int(expected_port_raw)
         # 1. URL validation (no DB contact)
         validate_disposable_postgres_url(TEST_URL, allow, expected_port)
         monkeypatch.setenv("SCHOLARZONE_DATABASE_URL", TEST_URL)

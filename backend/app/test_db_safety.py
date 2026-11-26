@@ -15,13 +15,19 @@ APPROVED_TEST_DB_NAMES = {"scholarzone_test"}
 APPROVED_SERVER_ADDRESSES = {"", "127.0.0.1", "::1", "localhost", None}
 
 
-def validate_disposable_postgres_url(url: str, allow_flag: str | None, expected_port: int | None = None) -> None:
+def validate_disposable_postgres_url(url: str, allow_flag: str | None, expected_port: int) -> None:
     """Validate a PostgreSQL URL before any destructive test operation.
 
     Raises RuntimeError on any validation failure.
     """
     if allow_flag != "1":
         raise RuntimeError("SCHOLARZONE_ALLOW_DESTRUCTIVE_TEST_DB must be set to 1")
+    if not isinstance(expected_port, int) or isinstance(expected_port, bool):
+        raise RuntimeError("expected database port must be an integer")
+    if expected_port <= 0:
+        raise RuntimeError("expected database port must be positive")
+    if expected_port not in APPROVED_TEST_DB_PORTS:
+        raise RuntimeError(f"unapproved expected port: {expected_port}")
     if not url:
         raise RuntimeError("TEST_POSTGRESQL_URL is required")
     try:
@@ -35,9 +41,11 @@ def validate_disposable_postgres_url(url: str, allow_flag: str | None, expected_
         raise RuntimeError("database URL is missing a hostname")
     if host not in APPROVED_LOOPBACK_HOSTS:
         raise RuntimeError(f"non-loopback or unapproved host: {host}")
-    if expected_port is not None and u.port != expected_port:
+    if u.port is None:
+        raise RuntimeError("database URL is missing a port")
+    if u.port != expected_port:
         raise RuntimeError(f"unexpected port: {u.port} != {expected_port}")
-    if u.port is not None and u.port not in APPROVED_TEST_DB_PORTS:
+    if u.port not in APPROVED_TEST_DB_PORTS:
         raise RuntimeError(f"unapproved port: {u.port}")
     db = u.database
     if db not in APPROVED_TEST_DB_NAMES:
@@ -111,23 +119,31 @@ def verify_disposable_db_marker(connection: Any, expected_run_id: str | None, ex
         raise RuntimeError("database attestation marker digest mismatch")
 
 
+_SUPPORTED_PG_VERSIONS = {"160000", "180000"}
+
+
+def _pg_major(version_num: str) -> int:
+    if not version_num.isdigit() or len(version_num) != 6:
+        raise RuntimeError(f"malformed PostgreSQL version number: {version_num!r}")
+    value = int(version_num)
+    return value // 10000
+
+
 def verify_expected_pg_version(connection: Any, expected_version_num: str | None) -> None:
-    if not expected_version_num or not str(expected_version_num).strip():
+    if expected_version_num is None:
         raise RuntimeError("expected PostgreSQL version is required")
-    expected = str(expected_version_num).strip()
-    try:
-        expected_major = int(expected[:2])
-    except ValueError as exc:
-        raise RuntimeError(f"malformed expected PostgreSQL version: {expected}") from exc
+    expected = str(expected_version_num)
+    if not expected.strip() or expected != expected.strip():
+        raise RuntimeError("expected PostgreSQL version must not be empty or padded")
+    if expected not in _SUPPORTED_PG_VERSIONS:
+        raise RuntimeError(f"unsupported expected PostgreSQL version: {expected}")
     row = connection.execute(text("SELECT current_setting('server_version_num')")).fetchone()
     if row is None:
         raise RuntimeError("could not query PostgreSQL version")
     actual = str(row[0])
-    try:
-        actual_major = int(actual[:2])
-    except ValueError as exc:
-        raise RuntimeError(f"malformed actual PostgreSQL version: {actual}") from exc
-    if actual_major != expected_major:
+    if not actual.isdigit() or len(actual) != 6:
+        raise RuntimeError(f"malformed actual PostgreSQL version: {actual!r}")
+    if _pg_major(actual) != _pg_major(expected):
         raise RuntimeError(
             f"unexpected PostgreSQL version: {actual} != {expected}"
         )

@@ -28,7 +28,15 @@ def main() -> int:
         print("PROVISION_DATABASE_URL/TEST_POSTGRESQL_URL is required", file=sys.stderr)
         return 1
 
-    expected_port = int(os.environ.get("PROVISION_DB_PORT", "0")) or None
+    port_raw = os.environ.get("PROVISION_DB_PORT")
+    if not port_raw:
+        print("PROVISION_DB_PORT is required", file=sys.stderr)
+        return 1
+    try:
+        expected_port = int(port_raw)
+    except ValueError:
+        print("PROVISION_DB_PORT must be an integer", file=sys.stderr)
+        return 1
     # 1. Validate URL before any connection.
     try:
         validate_disposable_postgres_url(url, allow, expected_port)

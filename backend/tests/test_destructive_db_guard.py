@@ -27,75 +27,75 @@ def _set_allow(monkeypatch, val):
 def test_missing_opt_in_flag_rejected(monkeypatch):
     _set_allow(monkeypatch, None)
     with pytest.raises(RuntimeError):
-        validate_disposable_postgres_url(GOOD_URL, None)
+        validate_disposable_postgres_url(GOOD_URL, None, 5440)
 
 
 def test_opt_in_zero_rejected(monkeypatch):
     _set_allow(monkeypatch, "0")
     with pytest.raises(RuntimeError):
-        validate_disposable_postgres_url(GOOD_URL, "0")
+        validate_disposable_postgres_url(GOOD_URL, "0", 5440)
 
 
 def test_opt_in_unexpected_rejected(monkeypatch):
     with pytest.raises(RuntimeError):
-        validate_disposable_postgres_url(GOOD_URL, "yes")
+        validate_disposable_postgres_url(GOOD_URL, "yes", 5440)
 
 
 def test_missing_url_rejected(monkeypatch):
     with pytest.raises(RuntimeError):
-        validate_disposable_postgres_url("", "1")
+        validate_disposable_postgres_url("", "1", 5432)
 
 
 def test_empty_url_rejected(monkeypatch):
     with pytest.raises(RuntimeError):
-        validate_disposable_postgres_url("", "1")
+        validate_disposable_postgres_url("", "1", 5432)
 
 
 def test_malformed_url_rejected(monkeypatch):
     with pytest.raises(RuntimeError):
-        validate_disposable_postgres_url("not-a-url", "1")
+        validate_disposable_postgres_url("not-a-url", "1", 5432)
 
 
 def test_sqlite_url_rejected(monkeypatch):
     with pytest.raises(RuntimeError):
-        validate_disposable_postgres_url("sqlite:///foo.db", "1")
+        validate_disposable_postgres_url("sqlite:///foo.db", "1", 5432)
 
 
 def test_remote_host_rejected(monkeypatch):
     with pytest.raises(RuntimeError):
-        validate_disposable_postgres_url("postgresql://u:p@db.example.com:5432/scholarzone_test", "1")
+        validate_disposable_postgres_url("postgresql://u:p@db.example.com:5432/scholarzone_test", "1", 5432)
 
 
 def test_production_like_host_rejected(monkeypatch):
     with pytest.raises(RuntimeError):
-        validate_disposable_postgres_url("postgresql://u:p@prod.db.internal:5432/scholarzone_test", "1")
+        validate_disposable_postgres_url("postgresql://u:p@prod.db.internal:5432/scholarzone_test", "1", 5432)
 
 
 def test_localhost_attacker_rejected(monkeypatch):
     with pytest.raises(RuntimeError):
-        validate_disposable_postgres_url("postgresql://u:p@localhost.attacker.example:5432/scholarzone_test", "1")
+        validate_disposable_postgres_url("postgresql://u:p@localhost.attacker.example:5432/scholarzone_test", "1", 5432)
 
 
 def test_localhost_permitted_parsing(monkeypatch):
-    validate_disposable_postgres_url("postgresql://u:p@localhost:5432/scholarzone_test", "1")
+    validate_disposable_postgres_url("postgresql://u:p@localhost:5432/scholarzone_test", "1", 5432)
 
 
 def test_127_permitted_parsing(monkeypatch):
-    validate_disposable_postgres_url("postgresql://u:p@127.0.0.1:5432/scholarzone_test", "1")
+    validate_disposable_postgres_url("postgresql://u:p@127.0.0.1:5432/scholarzone_test", "1", 5432)
 
 
 def test_ipv6_permitted_parsing(monkeypatch):
-    validate_disposable_postgres_url("postgresql://u:p@[::1]:5432/scholarzone_test", "1")
+    validate_disposable_postgres_url("postgresql://u:p@[::1]:5432/scholarzone_test", "1", 5432)
 
 
 def test_wrong_db_name_rejected(monkeypatch):
     with pytest.raises(RuntimeError):
-        validate_disposable_postgres_url("postgresql://u:p@127.0.0.1:5432/production", "1")
+        validate_disposable_postgres_url("postgresql://u:p@127.0.0.1:5432/production", "1", 5432)
 
 
 def test_wrong_db_name_postgres_rejected(monkeypatch):
     with pytest.raises(RuntimeError):
-        validate_disposable_postgres_url("postgresql://u:p@127.0.0.1:5432/postgres", "1")
+        validate_disposable_postgres_url("postgresql://u:p@127.0.0.1:5432/postgres", "1", 5432)
 
 
 def test_unexpected_current_database_rejected(monkeypatch):
@@ -120,7 +120,7 @@ def test_valid_identity_permitted(monkeypatch):
 
 def test_production_url_with_opt_in_rejected(monkeypatch):
     with pytest.raises(RuntimeError):
-        validate_disposable_postgres_url("postgresql://u:p@prod.example.com:5432/scholarzone_test", "1")
+        validate_disposable_postgres_url("postgresql://u:p@prod.example.com:5432/scholarzone_test", "1", 5432)
 
 
 def test_marker_missing_rejected():
@@ -208,3 +208,125 @@ def test_marker_query_failure_rejected():
     conn.execute.side_effect = RuntimeError("boom")
     with pytest.raises(RuntimeError):
         verify_disposable_db_marker(conn, "run-1", "digest-1")
+
+
+# --- Port strictness tests ---
+def test_port_missing_rejected():
+    with pytest.raises(RuntimeError):
+        validate_disposable_postgres_url("postgresql://u:p@127.0.0.1:5432/scholarzone_test", "1", None)
+
+
+def test_port_none_rejected():
+    with pytest.raises(RuntimeError):
+        validate_disposable_postgres_url("postgresql://u:p@127.0.0.1:5432/scholarzone_test", "1", None)
+
+
+def test_port_zero_rejected():
+    with pytest.raises(RuntimeError):
+        validate_disposable_postgres_url("postgresql://u:p@127.0.0.1:5432/scholarzone_test", "1", 0)
+
+
+def test_port_negative_rejected():
+    with pytest.raises(RuntimeError):
+        validate_disposable_postgres_url("postgresql://u:p@127.0.0.1:5432/scholarzone_test", "1", -1)
+
+
+def test_port_non_int_rejected():
+    with pytest.raises(RuntimeError):
+        validate_disposable_postgres_url("postgresql://u:p@127.0.0.1:5432/scholarzone_test", "1", "5432")
+
+
+def test_url_without_port_rejected():
+    with pytest.raises(RuntimeError):
+        validate_disposable_postgres_url("postgresql://u:p@127.0.0.1/scholarzone_test", "1", 5432)
+
+
+def test_port_mismatch_rejected():
+    with pytest.raises(RuntimeError):
+        validate_disposable_postgres_url("postgresql://u:p@127.0.0.1:5432/scholarzone_test", "1", 5440)
+
+
+def test_port_unapproved_rejected():
+    with pytest.raises(RuntimeError):
+        validate_disposable_postgres_url("postgresql://u:p@127.0.0.1:9999/scholarzone_test", "1", 9999)
+
+
+def test_port_5440_accepted():
+    validate_disposable_postgres_url("postgresql://u:p@127.0.0.1:5440/scholarzone_test", "1", 5440)
+
+
+def test_port_5433_accepted():
+    validate_disposable_postgres_url("postgresql://u:p@127.0.0.1:5433/scholarzone_test", "1", 5433)
+
+
+# --- Version strictness tests ---
+def test_version_suffix_rejected():
+    conn = MagicMock()
+    conn.execute.return_value.fetchone.return_value = ("160000",)
+    with pytest.raises(RuntimeError):
+        verify_expected_pg_version(conn, "160000junk")
+
+
+def test_version_partial_rejected():
+    conn = MagicMock()
+    conn.execute.return_value.fetchone.return_value = ("160000",)
+    with pytest.raises(RuntimeError):
+        verify_expected_pg_version(conn, "16000")
+
+
+def test_version_whitespace_rejected():
+    conn = MagicMock()
+    with pytest.raises(RuntimeError):
+        verify_expected_pg_version(conn, " 160000")
+
+
+def test_version_whitespace_trailing_rejected():
+    conn = MagicMock()
+    with pytest.raises(RuntimeError):
+        verify_expected_pg_version(conn, "160000 ")
+
+
+def test_version_empty_rejected():
+    conn = MagicMock()
+    with pytest.raises(RuntimeError):
+        verify_expected_pg_version(conn, "")
+
+
+def test_version_unsupported_major_rejected():
+    conn = MagicMock()
+    conn.execute.return_value.fetchone.return_value = ("170000",)
+    with pytest.raises(RuntimeError):
+        verify_expected_pg_version(conn, "170000")
+
+
+def test_version_malformed_actual_rejected():
+    conn = MagicMock()
+    conn.execute.return_value.fetchone.return_value = ("160000junk",)
+    with pytest.raises(RuntimeError):
+        verify_expected_pg_version(conn, "160000")
+
+
+def test_version_actual_major_mismatch_rejected():
+    conn = MagicMock()
+    conn.execute.return_value.fetchone.return_value = ("180000",)
+    with pytest.raises(RuntimeError):
+        verify_expected_pg_version(conn, "160000")
+
+
+def test_version_actual_query_failure_rejected():
+    conn = MagicMock()
+    conn.execute.side_effect = RuntimeError("boom")
+    with pytest.raises(RuntimeError):
+        verify_expected_pg_version(conn, "160000")
+
+
+def test_version_patch_release_accepted():
+    conn = MagicMock()
+    conn.execute.return_value.fetchone.return_value = ("160007",)
+    verify_expected_pg_version(conn, "160000")
+
+
+def test_version_patch_release_18_accepted():
+    conn = MagicMock()
+    conn.execute.return_value.fetchone.return_value = ("180007",)
+    verify_expected_pg_version(conn, "180000")

@@ -30,7 +30,11 @@ class TestPostgreSQLDeletionRace:
     def setup_env(self, monkeypatch):
         pg_url = os.environ.get("TEST_POSTGRESQL_URL")
         allow = os.environ.get("SCHOLARZONE_ALLOW_DESTRUCTIVE_TEST_DB")
-        validate_disposable_postgres_url(pg_url, allow, int(os.environ.get("SCHOLARZONE_TEST_DB_PORT", "0")) or None)
+        expected_port_raw = os.environ.get("SCHOLARZONE_TEST_DB_PORT")
+        if not expected_port_raw:
+            raise RuntimeError("SCHOLARZONE_TEST_DB_PORT is required")
+        expected_port = int(expected_port_raw)
+        validate_disposable_postgres_url(pg_url, allow, expected_port)
         monkeypatch.setenv("SCHOLARZONE_DATABASE_URL", pg_url)
         monkeypatch.setenv("SCHOLARZONE_ENVIRONMENT", "test")
         reset_database_connections()
