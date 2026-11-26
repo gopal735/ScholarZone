@@ -19,6 +19,9 @@ from .capabilities import ModelSpec, ProviderHealth
 
 logger = logging.getLogger(__name__)
 
+# Internal test instrumentation seam (not a public API).
+_LAST_OUTPUT_QUEUE = None
+
 #: Failure categories (closed vocabulary).
 FAILURE_TIMEOUT = "timeout"
 FAILURE_UNAVAILABLE = "unavailable"
@@ -403,6 +406,8 @@ class OpenAICompatibleProvider:
                     self._not_empty.notify_all()
 
         q = _BoundedOutputQueue(_QUEUE_MAX_ITEMS, _QUEUE_MAX_BYTES)
+        global _LAST_OUTPUT_QUEUE
+        _LAST_OUTPUT_QUEUE = q
         holder = {"client": None, "resp": None, "close_requested": False}
         close_lock = _threading.Lock()
 
