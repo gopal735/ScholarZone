@@ -34,11 +34,6 @@ describe('aiAssistant month-precision recovery path', () => {
   })
 
   it('excludes record with null deadline_date even if deadline_display present', async () => {
-    const snap = {
-      scholarships: [
-        { id: 3, title: 'DisplayOnly', country: 'X', degree: 'Master', funding: 'F', deadline: '2026-11-20', deadline_display: '2026-11-20', deadline_date: null, deadline_precision: 'exact', status: 'open', verification_status: 'active', official_source_url: 'https://example.edu/do' },
-      ],
-    }
     vi.mocked(fetch).mockImplementation(async (url) => {
       if (String(url).includes('/scholarships')) {
         return { ok: true, json: async () => ({ items: [], pagination: { page: 1, limit: 20, total: 0, total_pages: 0 } }) }
