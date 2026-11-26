@@ -1000,8 +1000,9 @@ jobs:
           echo "ERROR: study planner JUnit XML missing"
           exit 1
         fi
-        if grep -q "skipped" study_planner_pg.xml; then
-          echo "ERROR: Study Planner PostgreSQL tests were SKIPPED"
+        skipped=$(grep -o 'skipped="[0-9]*"' study_planner_pg.xml | head -1 | grep -o '[0-9]*')
+        if [ "$skipped" != "0" ]; then
+          echo "ERROR: Study Planner PostgreSQL tests were SKIPPED ($skipped)"
           cat study_planner_pg.log
           exit 1
         fi
