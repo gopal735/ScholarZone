@@ -292,6 +292,10 @@ def retry_msg(conversation_id: int, message_id: int, request: Request, db: Sessi
         raise HTTPException(status_code=404, detail="message_not_found")
     if msg.role != "assistant":
         raise HTTPException(status_code=400, detail="retry_requires_assistant_message")
+    if msg.status == "completed":
+        return _msg_to_response(msg)
+    if msg.status not in ("failed", "cancelled"):
+        raise HTTPException(status_code=409, detail="retry_not_allowed")
     msgs = list_messages(db, user.id, conversation_id, limit=500, offset=0)
     user_msg = None
     if getattr(msg, "source_user_message_id", None):
@@ -321,9 +325,7 @@ def retry_msg(conversation_id: int, message_id: int, request: Request, db: Sessi
         claimed = claim_retry_attempt(db, user.id, msg.id)
         if claimed is None:
             raise HTTPException(status_code=404, detail="message_not_found")
-        if not getattr(claimed, "_claimed", False):
-            if claimed.status == "completed":
-                return _msg_to_response(claimed)
+        if claimed is None:
             raise HTTPException(status_code=409, detail="retry_not_allowed")
         if claimed.status != "pending":
             if claimed.status == "completed":

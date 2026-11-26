@@ -243,14 +243,22 @@ def claim_retry_attempt(db: Session, user_id: int, message_id: int, attempt_id: 
     claimed = (result.rowcount or 0) > 0
     if not claimed:
         db.rollback()
-    else:
-        db.commit()
+        refreshed = db.execute(
+            select(MentorMessage).where(MentorMessage.id == message_id).execution_options(populate_existing=True)
+        ).scalar_one_or_none()
+        if refreshed is not None:
+            try:
+                setattr(refreshed, "_claimed", False)
+            except Exception:
+                pass
+        return None
+    db.commit()
     refreshed = db.execute(
         select(MentorMessage).where(MentorMessage.id == message_id).execution_options(populate_existing=True)
     ).scalar_one_or_none()
     if refreshed is not None:
         try:
-            setattr(refreshed, "_claimed", claimed)
+            setattr(refreshed, "_claimed", True)
         except Exception:
             pass
     return refreshed
