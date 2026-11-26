@@ -40,6 +40,27 @@ def validate_disposable_postgres_url(url: str, allow_flag: str | None) -> None:
         raise RuntimeError(f"spoofed localhost hostname rejected: {host}")
 
 
+def _is_approved_server_address(addr: str) -> bool:
+    """Allow loopback and private (RFC1918) addresses used by local/CI containers."""
+    if addr in {"", "127.0.0.1", "::1", "localhost"}:
+        return True
+    # RFC1918 private ranges
+    if addr.startswith("10."):
+        return True
+    if addr.startswith("192.168."):
+        return True
+    if addr.startswith("172."):
+        parts = addr.split(".")
+        if len(parts) >= 2:
+            try:
+                second = int(parts[1])
+            except ValueError:
+                return False
+            if 16 <= second <= 31:
+                return True
+    return False
+
+
 def verify_disposable_db_identity(connection: Any, expected_dbname: str) -> None:
     """Verify the actually connected database before destructive SQL.
 
@@ -57,5 +78,5 @@ def verify_disposable_db_identity(connection: Any, expected_dbname: str) -> None
             f"unexpected current_database(): {actual_db!r} != {expected_dbname!r}"
         )
     addr = (actual_addr or "").split("/")[0]
-    if addr not in {"", "127.0.0.1", "::1", "localhost"}:
+    if not _is_approved_server_address(addr):
         raise RuntimeError(f"unexpected server address: {actual_addr!r}")

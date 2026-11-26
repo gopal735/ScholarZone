@@ -105,7 +105,7 @@ def test_unexpected_current_database_rejected(monkeypatch):
 
 def test_unexpected_server_address_rejected(monkeypatch):
     conn = MagicMock()
-    conn.execute.return_value.fetchone.return_value = ("scholarzone_test", "10.0.0.5", "160000")
+    conn.execute.return_value.fetchone.return_value = ("scholarzone_test", "8.8.8.8", "160000")
     with pytest.raises(RuntimeError):
         verify_disposable_db_identity(conn, "scholarzone_test")
 
