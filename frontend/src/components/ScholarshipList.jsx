@@ -257,6 +257,24 @@ export default function ScholarshipList({ items, initialCountry }) {
     }
   }, [country, deadlineMonth, degree, funding, fullyFunded, department, eligibleField, eligibleProgramme, programmeType, isDirectory, lifecycleFilter, page, requestVersion, search, sortBy, status])
 
+  // Live refresh: poll and refetch on tab focus so updated/deleted records
+  // disappear without a manual page reload.
+  useEffect(() => {
+    if (!isDirectory || typeof window === 'undefined') return undefined
+    const interval = window.setInterval(() => {
+      setRequestVersion((value) => value + 1)
+    }, 45000)
+    const onFocus = () => setRequestVersion((value) => value + 1)
+    window.addEventListener('focus', onFocus)
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') onFocus()
+    })
+    return () => {
+      window.clearInterval(interval)
+      window.removeEventListener('focus', onFocus)
+    }
+  }, [isDirectory])
+
   useEffect(() => {
     if (!isDirectory || typeof window === 'undefined') return undefined
     const syncFromLocation = () => {

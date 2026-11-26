@@ -79,6 +79,7 @@ async function request(path, searchParams, { signal } = {}) {
 
   const response = await fetch(url, {
     signal,
+    cache: 'no-store',
     headers: { Accept: 'application/json' },
   })
   if (!response.ok) {
