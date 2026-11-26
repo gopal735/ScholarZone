@@ -69,6 +69,7 @@ class GatewayConfig:
     enabled: bool = False
     production: bool = False
     allow_recording_provider: bool = False
+    provider_timeout_seconds: float | None = None
 
     def __post_init__(self) -> None:
         from .providers import RecordingProvider
@@ -160,11 +161,21 @@ class AIGateway:
             effective_policy.max_output_tokens,
             model_cap,
         )
-        effective_timeout = (
-            request.timeout_seconds
-            if getattr(request, "timeout_seconds", None) is not None
-            else effective_policy.timeout_seconds
-        )
+        configured_timeout = getattr(self._config, "provider_timeout_seconds", None)
+        if configured_timeout is None:
+            try:
+                configured_timeout = getattr(self._provider, "_timeout", None)
+            except Exception:
+                configured_timeout = None
+        policy_timeout = effective_policy.timeout_seconds
+        caller_timeout = getattr(request, "timeout_seconds", None)
+        candidates = [v for v in (configured_timeout, policy_timeout, caller_timeout) if v is not None]
+        if candidates:
+            effective_timeout = min(float(v) for v in candidates)
+        else:
+            effective_timeout = 30.0
+        if effective_timeout <= 0:
+            effective_timeout = 30.0
 
         if not self._config.enabled:
             return ProviderResult(mode="disabled", used=False, failure=None, latency_ms=elapsed_ms(started))
@@ -238,6 +249,9 @@ class AIGateway:
                                     "prompt_tokens": _late_result.prompt_tokens,
                                     "completion_tokens": _late_result.completion_tokens,
                                 })
+                                # Bound usage history to prevent unbounded memory growth.
+                                if len(self._usage) > 1000:
+                                    self._usage = self._usage[-1000:]
                         self._worker_semaphore.release()
 
                 acquired = self._worker_semaphore.acquire(blocking=False)
@@ -357,11 +371,21 @@ class AIGateway:
             effective_policy.max_output_tokens,
             model_cap,
         )
-        effective_timeout = (
-            request.timeout_seconds
-            if getattr(request, "timeout_seconds", None) is not None
-            else effective_policy.timeout_seconds
-        )
+        configured_timeout = getattr(self._config, "provider_timeout_seconds", None)
+        if configured_timeout is None:
+            try:
+                configured_timeout = getattr(self._provider, "_timeout", None)
+            except Exception:
+                configured_timeout = None
+        policy_timeout = effective_policy.timeout_seconds
+        caller_timeout = getattr(request, "timeout_seconds", None)
+        candidates = [v for v in (configured_timeout, policy_timeout, caller_timeout) if v is not None]
+        if candidates:
+            effective_timeout = min(float(v) for v in candidates)
+        else:
+            effective_timeout = 30.0
+        if effective_timeout <= 0:
+            effective_timeout = 30.0
 
         if not self._config.enabled:
             return

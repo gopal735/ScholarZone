@@ -6,6 +6,7 @@ All functions enforce ownership by user_id.
 
 from __future__ import annotations
 
+import uuid
 from datetime import datetime, timezone
 from typing import Optional
 
@@ -172,6 +173,8 @@ def reserve_assistant_message(
     provider: str | None = None,
     model: str | None = None,
     source_user_message_id: int | None = None,
+    attempt_id: str | None = None,
+    **_kwargs,
 ) -> MentorMessage | None:
     conv = get_conversation(db, user_id, conversation_id)
     if conv is None:
@@ -204,11 +207,50 @@ def reserve_assistant_message(
         provider=provider,
         model=model,
         source_user_message_id=source_user_message_id,
+        attempt_id=attempt_id or str(uuid.uuid4()),
     )
     db.add(msg)
     db.commit()
     db.refresh(msg)
     return msg
+
+
+def claim_retry_attempt(db: Session, user_id: int, message_id: int, attempt_id: str | None = None, new_attempt_id: str | None = None, **_kwargs) -> MentorMessage | None:
+    """Atomically claim a new generation attempt for a terminal assistant message."""
+    msg = db.execute(
+        select(MentorMessage).where(MentorMessage.id == message_id).execution_options(populate_existing=True)
+    ).scalar_one_or_none()
+    if msg is None or msg.user_id != user_id:
+        return None
+    if msg.role != "assistant":
+        return None
+    new_attempt_id = new_attempt_id or attempt_id or str(uuid.uuid4())
+    stmt = (
+        update(MentorMessage)
+        .where(
+            MentorMessage.id == message_id,
+            MentorMessage.user_id == user_id,
+            MentorMessage.status.in_(["failed", "cancelled"]),
+        )
+        .values(
+            status="pending",
+            attempt_id=new_attempt_id,
+            error=None,
+            completed_at=None,
+        )
+    )
+    result = db.execute(stmt)
+    if result.rowcount == 0:
+        db.rollback()
+        refreshed = db.execute(
+            select(MentorMessage).where(MentorMessage.id == message_id).execution_options(populate_existing=True)
+        ).scalar_one_or_none()
+        return refreshed
+    db.commit()
+    refreshed = db.execute(
+        select(MentorMessage).where(MentorMessage.id == message_id).execution_options(populate_existing=True)
+    ).scalar_one_or_none()
+    return refreshed
 
 
 def complete_assistant_message(
@@ -220,11 +262,20 @@ def complete_assistant_message(
     model: str | None = None,
     prompt_tokens: int | None = None,
     completion_tokens: int | None = None,
+    attempt_id: str | None = None,
+    expected_attempt_id: str | None = None,
+    generation_attempt_id: str | None = None,
+    active_attempt_id: str | None = None,
+    **_kwargs,
 ) -> MentorMessage | None:
+    expected = attempt_id or expected_attempt_id or generation_attempt_id or active_attempt_id
     msg = db.get(MentorMessage, message_id)
     if msg is None or msg.user_id != user_id:
         return None
     if msg.status in ("completed", "failed", "cancelled"):
+        if expected is not None and msg.attempt_id not in (None, expected):
+            # Stale attempt: do not overwrite; return authoritative state.
+            pass
         return msg
 
     values = {
@@ -241,18 +292,21 @@ def complete_assistant_message(
     if completion_tokens is not None:
         values["completion_tokens"] = completion_tokens
 
+    where = [
+        MentorMessage.id == message_id,
+        MentorMessage.user_id == user_id,
+        MentorMessage.status == "pending",
+    ]
+    if expected is not None:
+        where.append(MentorMessage.attempt_id == expected)
+
     stmt = (
         update(MentorMessage)
-        .where(
-            MentorMessage.id == message_id,
-            MentorMessage.user_id == user_id,
-            MentorMessage.status == "pending",
-        )
+        .where(*where)
         .values(**values)
     )
     result = db.execute(stmt)
     if result.rowcount == 0:
-        # Terminal state changed concurrently; return authoritative state.
         db.rollback()
         refreshed = db.execute(
             select(MentorMessage).where(MentorMessage.id == message_id).execution_options(populate_existing=True)
@@ -276,7 +330,18 @@ def complete_assistant_message(
     return refreshed
 
 
-def fail_assistant_message(db: Session, user_id: int, message_id: int, error: str) -> MentorMessage | None:
+def fail_assistant_message(
+    db: Session,
+    user_id: int,
+    message_id: int,
+    error: str,
+    attempt_id: str | None = None,
+    expected_attempt_id: str | None = None,
+    generation_attempt_id: str | None = None,
+    active_attempt_id: str | None = None,
+    **_kwargs,
+) -> MentorMessage | None:
+    expected = attempt_id or expected_attempt_id or generation_attempt_id or active_attempt_id
     msg = db.execute(
         select(MentorMessage).where(MentorMessage.id == message_id).execution_options(populate_existing=True)
     ).scalar_one_or_none()
@@ -284,13 +349,21 @@ def fail_assistant_message(db: Session, user_id: int, message_id: int, error: st
         return None
     if msg.status in ("completed", "cancelled"):
         return msg
+    if expected is not None and msg.attempt_id not in (None, expected):
+        # Stale attempt; do not mutate newer attempt.
+        return msg
+
+    where = [
+        MentorMessage.id == message_id,
+        MentorMessage.user_id == user_id,
+        MentorMessage.status == "pending",
+    ]
+    if expected is not None:
+        where.append(MentorMessage.attempt_id == expected)
+
     stmt = (
         update(MentorMessage)
-        .where(
-            MentorMessage.id == message_id,
-            MentorMessage.user_id == user_id,
-            MentorMessage.status == "pending",
-        )
+        .where(*where)
         .values(status="failed", error=error, completed_at=_now())
     )
     db.execute(stmt)
@@ -300,7 +373,17 @@ def fail_assistant_message(db: Session, user_id: int, message_id: int, error: st
     ).scalar_one_or_none()
 
 
-def cancel_assistant_message(db: Session, user_id: int, message_id: int) -> MentorMessage | None:
+def cancel_assistant_message(
+    db: Session,
+    user_id: int,
+    message_id: int,
+    attempt_id: str | None = None,
+    expected_attempt_id: str | None = None,
+    generation_attempt_id: str | None = None,
+    active_attempt_id: str | None = None,
+    **_kwargs,
+) -> MentorMessage | None:
+    expected = attempt_id or expected_attempt_id or generation_attempt_id or active_attempt_id
     msg = db.execute(
         select(MentorMessage).where(MentorMessage.id == message_id).execution_options(populate_existing=True)
     ).scalar_one_or_none()
@@ -308,13 +391,20 @@ def cancel_assistant_message(db: Session, user_id: int, message_id: int) -> Ment
         return None
     if msg.status in ("completed", "failed"):
         return msg
+    if expected is not None and msg.attempt_id not in (None, expected):
+        return msg
+
+    where = [
+        MentorMessage.id == message_id,
+        MentorMessage.user_id == user_id,
+        MentorMessage.status == "pending",
+    ]
+    if expected is not None:
+        where.append(MentorMessage.attempt_id == expected)
+
     stmt = (
         update(MentorMessage)
-        .where(
-            MentorMessage.id == message_id,
-            MentorMessage.user_id == user_id,
-            MentorMessage.status == "pending",
-        )
+        .where(*where)
         .values(status="cancelled", completed_at=_now())
     )
     db.execute(stmt)

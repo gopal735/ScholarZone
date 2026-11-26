@@ -974,8 +974,23 @@ class MentorMessage(Base):
     prompt_tokens: Mapped[int | None] = mapped_column(Integer, nullable=True)
     completion_tokens: Mapped[int | None] = mapped_column(Integer, nullable=True)
     error: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    # Unique generation-attempt identity for retry isolation. Each reservation
+    # or retry claims a new UUID; stale attempts cannot mutate a newer one.
+    attempt_id: Mapped[str | None] = mapped_column(String(64), nullable=True, index=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
     completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
 
     from sqlalchemy.orm import relationship as _rel_mm
     conversation: Mapped["MentorConversation"] = _rel_mm("MentorConversation", back_populates="messages")
+
+    @property
+    def generation_attempt_id(self):
+        return self.attempt_id
+
+    @property
+    def generation_id(self):
+        return self.attempt_id
+
+    @property
+    def active_attempt_id(self):
+        return self.attempt_id

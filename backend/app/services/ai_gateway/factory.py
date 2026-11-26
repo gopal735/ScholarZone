@@ -94,6 +94,7 @@ def build_ai_gateway() -> AIGateway:
                 default_provider=provider,
                 enabled=enabled,
                 production=_is_production(),
+                provider_timeout_seconds=None,
             )
             return AIGateway(config)
 
@@ -107,6 +108,7 @@ def build_ai_gateway() -> AIGateway:
                 default_provider=provider,
                 enabled=enabled,
                 production=_is_production(),
+                provider_timeout_seconds=None,
             )
             return AIGateway(config)
 
@@ -142,6 +144,7 @@ def build_ai_gateway() -> AIGateway:
         default_provider=provider,
         enabled=enabled,
         production=_is_production(),
+        provider_timeout_seconds=(locals().get("timeout") if enabled else None),
     )
     return AIGateway(config)
 

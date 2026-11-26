@@ -444,6 +444,7 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
                 prompt_tokens INTEGER,
                 completion_tokens INTEGER,
                 error VARCHAR(64),
+                attempt_id VARCHAR(64),
                 created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
                 completed_at TIMESTAMPTZ,
                 CONSTRAINT uq_mentor_messages_conv_role_request UNIQUE (conversation_id, role, request_id)
@@ -455,6 +456,8 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
         # Upgrade existing Mentor 2 message tables with source linkage.
         connection.execute(text("ALTER TABLE mentor_messages ADD COLUMN IF NOT EXISTS source_user_message_id INTEGER REFERENCES mentor_messages(id) ON DELETE SET NULL"))
         connection.execute(text("CREATE INDEX IF NOT EXISTS ix_mentor_messages_source_user ON mentor_messages (source_user_message_id)"))
+        connection.execute(text("ALTER TABLE mentor_messages ADD COLUMN IF NOT EXISTS attempt_id VARCHAR(64)"))
+        connection.execute(text("CREATE INDEX IF NOT EXISTS ix_mentor_messages_attempt ON mentor_messages (attempt_id)"))
 
         # Idempotent legacy constraint migration for request_id uniqueness.
         # PostgreSQL-only: catalog introspection via pg_constraint / pg_index.

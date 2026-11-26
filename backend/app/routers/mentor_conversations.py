@@ -56,8 +56,9 @@ logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/mentor", tags=["mentor-conversations"])
 
-# Process-local cancel events for in-flight streams.
-_ACTIVE_CANCELS: dict[int, threading.Event] = {}
+# Process-local cancel events for in-flight streams, keyed by (message_id, attempt_id).
+_ACTIVE_CANCELS: dict[tuple[int, str | None], threading.Event] = {}
+_CURRENT_CANCEL_ATTEMPT: dict[int, str | None] = {}
 
 
 def _conv_to_response(conv) -> MentorConversationResponse:
@@ -227,7 +228,7 @@ def send_msg(conversation_id: int, payload: MentorSendMessageRequest, request: R
                     provider_mode = "disabled" if not result.used else (result.failure or provider_mode)
             except Exception as exc:  # noqa: BLE001
                 logger.warning("mentor conversation generation failed: %s", type(exc).__name__)
-                fail_assistant_message(db, user.id, assistant.id, _map_stream_error(exc))
+                fail_assistant_message(db, user.id, assistant.id, _map_stream_error(exc), attempt_id=assistant.attempt_id)
                 assistant = db.execute(
                     __import__("sqlalchemy").select(MentorMessage).where(MentorMessage.id == assistant.id).execution_options(populate_existing=True)
                 ).scalar_one_or_none()
@@ -243,6 +244,7 @@ def send_msg(conversation_id: int, payload: MentorSendMessageRequest, request: R
             model=model,
             prompt_tokens=prompt_tokens,
             completion_tokens=completion_tokens,
+            attempt_id=assistant.attempt_id,
         )
         assistant = db.execute(
             __import__("sqlalchemy").select(MentorMessage).where(MentorMessage.id == assistant.id).execution_options(populate_existing=True)
@@ -263,10 +265,15 @@ def cancel_msg(conversation_id: int, message_id: int, request: Request, db: Sess
     ).scalar_one_or_none()
     if msg is None or msg.user_id != user.id or msg.conversation_id != conversation_id:
         raise HTTPException(status_code=404, detail="message_not_found")
-    ev = _ACTIVE_CANCELS.get(message_id)
+    ev = None
+    current_attempt = _CURRENT_CANCEL_ATTEMPT.get(message_id)
+    if current_attempt is not None:
+        ev = _ACTIVE_CANCELS.get((message_id, current_attempt))
+    if ev is None:
+        ev = _ACTIVE_CANCELS.get((message_id, msg.attempt_id))
     if ev is not None:
         ev.set()
-    msg = cancel_assistant_message(db, user.id, message_id)
+    msg = cancel_assistant_message(db, user.id, message_id, attempt_id=msg.attempt_id)
     if msg is None:
         raise HTTPException(status_code=404, detail="message_not_found")
     return _msg_to_response(msg)
@@ -310,21 +317,15 @@ def retry_msg(conversation_id: int, message_id: int, request: Request, db: Sessi
         return _msg_to_response(msg)
     _enforce_limit(user.id)
     try:
-        # Controlled transition back to pending only for terminal failed/cancelled.
-        from sqlalchemy import update as _upd
-        res = db.execute(
-            _upd(MentorMessage).where(
-                MentorMessage.id == msg.id,
-                MentorMessage.user_id == user.id,
-                MentorMessage.status.in_(["failed", "cancelled"]),
-            ).values(status="pending", error=None)
-        )
-        db.commit()
-        if res.rowcount == 0 and msg.status not in ("failed", "cancelled"):
-            # Already completed or pending; do not regenerate completed.
-            if msg.status == "completed":
-                return _msg_to_response(msg)
+        from ..services.mentor.conversation_service import claim_retry_attempt
+        claimed = claim_retry_attempt(db, user.id, msg.id)
+        if claimed is None:
+            raise HTTPException(status_code=404, detail="message_not_found")
+        if claimed.status != "pending":
+            if claimed.status == "completed":
+                return _msg_to_response(claimed)
             raise HTTPException(status_code=409, detail="retry_not_allowed")
+        msg = claimed
         intent, context, answer, req = _prepare(db, user, user_msg.content)
         deterministic = _deterministic_content(answer)
         gw = get_ai_gateway()
@@ -347,14 +348,14 @@ def retry_msg(conversation_id: int, message_id: int, request: Request, db: Sessi
                     used = True
             except Exception as exc:  # noqa: BLE001
                 logger.warning("mentor conversation retry failed: %s", type(exc).__name__)
-                fail_assistant_message(db, user.id, msg.id, _map_stream_error(exc))
+                fail_assistant_message(db, user.id, msg.id, _map_stream_error(exc), attempt_id=msg.attempt_id)
                 msg = db.execute(
                     __import__("sqlalchemy").select(MentorMessage).where(MentorMessage.id == msg.id).execution_options(populate_existing=True)
                 ).scalar_one_or_none()
                 return _msg_to_response(msg)
         if not used and gw.enabled:
             provider_mode = "disabled"
-        complete_assistant_message(db, user.id, msg.id, content, provider=provider_mode, model=model, prompt_tokens=prompt_tokens, completion_tokens=completion_tokens)
+        complete_assistant_message(db, user.id, msg.id, content, provider=provider_mode, model=model, prompt_tokens=prompt_tokens, completion_tokens=completion_tokens, attempt_id=msg.attempt_id)
         msg = db.execute(
             __import__("sqlalchemy").select(MentorMessage).where(MentorMessage.id == msg.id).execution_options(populate_existing=True)
         ).scalar_one_or_none()
@@ -400,19 +401,25 @@ def stream_msg(conversation_id: int, payload: MentorSendMessageRequest, request:
             raise HTTPException(status_code=409, detail="retry_required")
         # Cancel registry: do not overwrite an existing event.
         cancel_event = threading.Event()
-        existing_event = _ACTIVE_CANCELS.get(assistant.id)
+        existing_attempt = _CURRENT_CANCEL_ATTEMPT.get(assistant.id)
+        existing_event = None
+        if existing_attempt is not None:
+            existing_event = _ACTIVE_CANCELS.get((assistant.id, existing_attempt))
         if existing_event is not None:
             # Active generation already in progress for this reservation.
             _release_once()
             raise HTTPException(status_code=409, detail="generation_already_active")
-        _ACTIVE_CANCELS[assistant.id] = cancel_event
+        _ACTIVE_CANCELS[(assistant.id, assistant.attempt_id)] = cancel_event
+        _CURRENT_CANCEL_ATTEMPT[assistant.id] = assistant.attempt_id
         owns_cancel = True
         # Transfer slot ownership to the generator, which releases on completion.
         slot_owned_by_setup = False
     except Exception:
         if cancel_event is not None and owns_cancel:
-            if _ACTIVE_CANCELS.get(assistant.id) is cancel_event:
-                _ACTIVE_CANCELS.pop(assistant.id, None)
+            if _ACTIVE_CANCELS.get((assistant.id, assistant.attempt_id if assistant is not None else None)) is cancel_event:
+                _ACTIVE_CANCELS.pop((assistant.id, assistant.attempt_id if assistant is not None else None), None)
+            if _CURRENT_CANCEL_ATTEMPT.get(assistant.id if assistant is not None else -1) == (assistant.attempt_id if assistant is not None else None):
+                _CURRENT_CANCEL_ATTEMPT.pop(assistant.id if assistant is not None else -1, None)
         _release_once()
         raise
     finally:
@@ -495,13 +502,13 @@ def stream_msg(conversation_id: int, payload: MentorSendMessageRequest, request:
                     deterministic_emitted = True
 
             if cancelled:
-                cancel_assistant_message(db, user.id, assistant.id)
+                cancel_assistant_message(db, user.id, assistant.id, attempt_id=assistant.attempt_id)
                 yield format_sse("message_cancelled", {'assistant_message_id': assistant.id})
                 return
 
             # Provider failure: do NOT emit fallback text.
             if error_detail:
-                fail_assistant_message(db, user.id, assistant.id, error_detail)
+                fail_assistant_message(db, user.id, assistant.id, error_detail, attempt_id=assistant.attempt_id)
                 yield format_sse("message_error", {'detail': error_detail})
                 return
 
@@ -523,6 +530,7 @@ def stream_msg(conversation_id: int, payload: MentorSendMessageRequest, request:
                 model=model,
                 prompt_tokens=prompt_tokens,
                 completion_tokens=completion_tokens,
+                attempt_id=assistant.attempt_id,
             )
             completed_successfully = True
             refreshed = db.execute(
@@ -533,17 +541,17 @@ def stream_msg(conversation_id: int, payload: MentorSendMessageRequest, request:
             # Client disconnected: persist terminal state, no yield.
             if not completed_successfully:
                 if cancel_event is not None and cancel_event.is_set():
-                    cancel_assistant_message(db, user.id, assistant.id)
+                    cancel_assistant_message(db, user.id, assistant.id, attempt_id=assistant.attempt_id)
                 else:
                     try:
-                        fail_assistant_message(db, user.id, assistant.id, "stream_interrupted")
+                        fail_assistant_message(db, user.id, assistant.id, "stream_interrupted", attempt_id=assistant.attempt_id)
                     except Exception as _pe:  # noqa: BLE001
                         logger.warning("mentor conversation terminal-state persistence failed: %s", type(_pe).__name__)
             raise
         except Exception as exc:  # noqa: BLE001
             logger.warning("mentor conversation stream failed: %s", type(exc).__name__)
             try:
-                fail_assistant_message(db, user.id, assistant.id, "provider_unavailable")
+                fail_assistant_message(db, user.id, assistant.id, "provider_unavailable", attempt_id=assistant.attempt_id)
             except Exception as _pe:  # noqa: BLE001
                 logger.warning("mentor conversation terminal-state persistence failed: %s", type(_pe).__name__)
             try:
@@ -552,8 +560,11 @@ def stream_msg(conversation_id: int, payload: MentorSendMessageRequest, request:
                 pass
         finally:
             if owns_cancel and cancel_event is not None:
-                if _ACTIVE_CANCELS.get(assistant.id) is cancel_event:
-                    _ACTIVE_CANCELS.pop(assistant.id, None)
+                key = (assistant.id, assistant.attempt_id)
+                if _ACTIVE_CANCELS.get(key) is cancel_event:
+                    _ACTIVE_CANCELS.pop(key, None)
+                if _CURRENT_CANCEL_ATTEMPT.get(assistant.id) == assistant.attempt_id:
+                    _CURRENT_CANCEL_ATTEMPT.pop(assistant.id, None)
             _release_limit()
 
     return StreamingResponse(event_generator(), media_type="text/event-stream")
