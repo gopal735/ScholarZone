@@ -18,8 +18,8 @@ describe('aiAssistant cycle-year preservation and duration boundaries', () => {
 
   function mockSnapshot(snap) {
     vi.mocked(fetch).mockImplementation(async (url) => {
-      if (String(url).includes('scholarships-snapshot')) {
-        return { ok: true, json: async () => snap }
+      if (String(url).includes('/scholarships')) {
+        return { ok: true, json: async () => ({ items: snap.scholarships, pagination: { page: 1, limit: 20, total: snap.scholarships.length, total_pages: 1 } }) }
       }
       return { ok: false, status: 500, json: async () => ({}) }
     })
@@ -117,8 +117,8 @@ describe('aiAssistant cycle-year preservation and duration boundaries', () => {
       ],
     }
     vi.mocked(fetch).mockImplementation(async (url) => {
-      if (String(url).includes('scholarships-snapshot')) {
-        return { ok: true, json: async () => snap }
+      if (String(url).includes('/scholarships')) {
+        return { ok: true, json: async () => ({ items: [snap.scholarships[0]], pagination: { page: 1, limit: 20, total: 1, total_pages: 1 } }) }
       }
       return { ok: false, status: 500, json: async () => ({}) }
     })
