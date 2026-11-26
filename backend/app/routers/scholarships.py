@@ -3,7 +3,7 @@
 from datetime import date
 from typing import Annotated
 
-from fastapi import APIRouter, Depends, HTTPException, Path, Query, status
+from fastapi import APIRouter, Depends, HTTPException, Path, Query, Response, status
 from sqlalchemy.orm import Session
 
 from ..core.admin_auth import require_admin_secret
@@ -43,8 +43,11 @@ def list_scholarships_endpoint(
     sort: ScholarshipSort = ScholarshipSort.DEFAULT,
     page: Annotated[int, Query(ge=1, le=100_000)] = 1,
     limit: Annotated[int, Query(ge=1, le=100)] = 12,
+    response: Response = None,
     session: Session = Depends(get_db),
 ) -> ScholarshipListResponse:
+    if response is not None:
+        response.headers["Cache-Control"] = "no-store"
     query = ScholarshipQuery(
         search=search,
         country=country,
@@ -67,6 +70,7 @@ def list_scholarships_endpoint(
 
 @router.get("/stats", response_model=ScholarshipStatsResponse)
 def get_scholarship_stats(
+    response: Response = None,
     session: Session = Depends(get_db),
 ) -> ScholarshipStatsResponse:
     """Live aggregate statistics for the public homepage and trust bar.
@@ -83,6 +87,8 @@ def get_scholarship_stats(
     advertise a total the public list cannot actually show.
     """
     counts = catalogue_counts(session)
+    if response is not None:
+        response.headers["Cache-Control"] = "no-store"
     return ScholarshipStatsResponse(**catalogue_summary(counts))
 
 
@@ -131,12 +137,14 @@ def verify_scholarship_endpoint(
 @router.get("/{scholarship_id}", response_model=ScholarshipDetailResponse)
 def get_scholarship_endpoint(
     scholarship_id: Annotated[int, Path(ge=1)],
+    response: Response = None,
     session: Session = Depends(get_db),
-) -> ScholarshipDetailResponse:
+):
     scholarship = get_scholarship_details(session, scholarship_id)
     if scholarship is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Scholarship not found")
-
+    if response is not None:
+        response.headers["Cache-Control"] = "no-store"
     return scholarship
 
 

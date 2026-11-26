@@ -300,16 +300,6 @@ export default function ScholarshipList({ items, initialCountry }) {
   const isInitialLoading = isDirectory && loadState === 'loading' && apiDirectory.items.length === 0
   const isRefreshing = isDirectory && loadState === 'refreshing'
   const isUsingFallback = isDirectory && loadState === 'fallback'
-  const isStaticMode = isDirectory && Boolean(apiDirectory?.staticMode)
-  /* The snapshot already answered the query — filter, sort and pagination
-     are applied inside the static service, against the same semantics the
-     API uses. Running the local pipeline over it as well would filter the
-     page the snapshot returned rather than the whole catalogue, and would
-     silently disagree with the snapshot's own reported total.
-
-     ``localResults`` stays for the caller-supplied list and for a total
-     API failure: those are the cases where there is no server to have
-     applied the query for us. */
   const isSnapshot = Boolean(apiDirectory?.fromSnapshot)
   const currentItems = isDirectory && !isUsingFallback
     ? apiDirectory.items
@@ -700,23 +690,11 @@ export default function ScholarshipList({ items, initialCountry }) {
         </div>
       </div>
 
-      {isStaticMode && (
-        <div className="scholarship-list__static-notice" role="status">
+      {isUsingFallback && (
+        <div className="scholarship-list__source-notice" role="alert">
           <div>
-            <strong>Browsing the static public catalogue.</strong>
-            <span> No database connection required. Data from version-controlled snapshot generated at build time.</span>
-          </div>
-        </div>
-      )}
-      {isUsingFallback && !isStaticMode && (
-        <div className="scholarship-list__source-notice" role="status">
-          <div>
-            <strong>Showing the snapshot catalogue.</strong>
-            <span>
-              {apiDirectory?.fromSnapshot
-                ? 'The live directory is unavailable right now, so these results come from the version-controlled public snapshot. Browsing works; saving, applying and supervisor contact stay unavailable until the database is back.'
-                : 'Showing local scholarship data instead.'}
-            </span>
+            <strong>The live scholarship directory is unavailable.</strong>
+            <span> {apiError || 'Please check your connection and try again.'}</span>
           </div>
           <button type="button" onClick={retryRequest}>Retry</button>
         </div>
@@ -724,7 +702,7 @@ export default function ScholarshipList({ items, initialCountry }) {
 
       <div className="scholarship-list__summary" aria-live="polite">
         <p><strong>{totalResults}</strong> {resultLabel} found</p>
-        <span>{isRefreshing ? 'Updating results...' : isStaticMode ? 'Static catalogue — pagination, search, filters, and sort work without a database.' : isUsingFallback ? (apiDirectory?.fromSnapshot ? 'Pagination is applied inside the snapshot, so it stays consistent. Supervisor features need the database.' : 'Local fallback does not use server pagination.') : hasActiveControls ? 'Matching your current search and filters.' : 'Compare funding, location and key dates.'}</span>
+          <span>{isRefreshing ? 'Updating results...' : isUsingFallback ? 'The live directory is unavailable. Retry to load current data.' : hasActiveControls ? 'Matching your current search and filters.' : 'Compare funding, location and key dates.'}</span>
       </div>
 
       {isInitialLoading ? (

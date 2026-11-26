@@ -1,44 +1,11 @@
 const apiBaseUrl = (import.meta.env.VITE_API_BASE_URL || '/api').replace(/\/$/, '')
 
 /**
- * Determine if static-first catalogue mode should be enabled.
- *
- * Priority order:
- * 1. Explicit build-time flag: VITE_STATIC_CATALOGUE=true enables, =false disables
- * 2. Runtime override via localStorage (setStaticCatalogueMode)
- * 3. Production default: enabled for production builds (mode === 'production')
- *    when no explicit flag is set.
- *
- * This function is called on every public read so runtime changes via
- * setStaticCatalogueMode take effect without a page reload.
+ * The public scholarship catalogue is served exclusively by the live backend
+ * API, which reads from the authoritative production database. There is no
+ * static-first mode and no silent snapshot fallback: when the API cannot
+ * answer, the caller receives an error and must render an unavailable state.
  */
-function getStaticCatalogueMode() {
-  const buildFlag = import.meta.env.VITE_STATIC_CATALOGUE
-  if (buildFlag === 'true') return true
-  if (buildFlag === 'false') return false
-
-  // Runtime override via localStorage
-  if (typeof window !== 'undefined') {
-    const runtime = window.localStorage.getItem('scholarzone.staticCatalogue')
-    if (runtime === 'true') return true
-    if (runtime === 'false') return false
-  }
-
-  // Production default: static-first for production builds
-  return import.meta.env.PROD === true || import.meta.env.MODE === 'production'
-}
-
-// The API-independent catalogue. Imported here so the static source is a
-// property of this service rather than something each page has to remember
-// to do: a caller that asks for scholarships gets scholarships, and the
-// provenance travels with the result.
-import {
-  fetchScholarshipsFromSnapshot,
-  fetchScholarshipStatsFromSnapshot,
-  fetchScholarshipByIdFromSnapshot,
-} from './staticScholarshipService'
-import { classifyLifecycle, LIFECYCLE } from '../utils/lifecycle'
-
 export class ScholarshipApiError extends Error {
   constructor(message, status) {
     super(message)
@@ -47,21 +14,9 @@ export class ScholarshipApiError extends Error {
   }
 }
 
-function isRetryableError(error) {
-  // Network errors, timeouts, and 5xx are retryable
-  if (error instanceof TypeError && error.message.includes('fetch')) return true
-  if (error instanceof DOMException && error.name === 'AbortError') return false
-  if (error instanceof ScholarshipApiError) {
-    return error.status >= 500
-  }
-  return false
-}
-
 function normalizeScholarship(scholarship) {
   return {
     ...scholarship,
-    // The API keeps the existing display text while also returning deadline_date
-    // for any future date-aware UI.
     deadline: scholarship.deadline ?? scholarship.deadline_date ?? null,
   }
 }
@@ -97,47 +52,27 @@ async function request(path, searchParams, { signal } = {}) {
   return response.json()
 }
 
-/* ── In-flight de-duplication ─────────────────────────────────────────
-   Three call sites on the home page want the same first page of the
-   catalogue at the same moment — HomePage's directory, ScholarZoneHero's
-   directory, and the featured list — plus a stats call from both HomePage and
-   ScholarZoneHero. Each went straight to fetch, so one home page load issued
-   six identical directory requests and two identical stats requests.
-   Measured over the wire, not inferred.
-
-   This is not a cache and not a state library. It is one module-level map
-   from request key to the promise already in flight for it, cleared the
-   moment that promise settles. Concurrent callers share one request; a
-   caller arriving after it settles gets a fresh one. Nothing is stored
-   between page loads, so freshness is unchanged.
-
-   A caller that brings its own AbortSignal still shares the request, but
-   only ever cancels its own wait for it. Handing the caller's signal to
-   fetch would let one component unmounting abort the data another component
-   is still reading — which is precisely the case here, since the two
-   directory callers mount together and unmount at different times. So the
-   shared request runs signal-less and each caller races it against its own
-   abort. */
+/* In-flight de-duplication (unchanged). */
 const inFlight = new Map()
 
 function dedupe(key, run, signal) {
-  let request = inFlight.get(key)
+  let requestPromise = inFlight.get(key)
 
-  if (!request) {
-    request = run()
-    inFlight.set(key, request)
+  if (!requestPromise) {
+    requestPromise = run()
+    inFlight.set(key, requestPromise)
 
     const release = () => {
-      if (inFlight.get(key) === request) {
+      if (inFlight.get(key) === requestPromise) {
         inFlight.delete(key)
       }
     }
 
-    request.then(release, release)
+    requestPromise.then(release, release)
   }
 
   if (!signal) {
-    return request
+    return requestPromise
   }
 
   return new Promise((resolve, reject) => {
@@ -149,7 +84,7 @@ function dedupe(key, run, signal) {
     }
 
     signal.addEventListener('abort', onAbort, { once: true })
-    request.then(
+    requestPromise.then(
       (value) => {
         signal.removeEventListener('abort', onAbort)
         resolve(value)
@@ -163,51 +98,18 @@ function dedupe(key, run, signal) {
 }
 
 export async function fetchScholarships(query = {}, options) {
-  // Static-first: when enabled, the snapshot is the primary source.
-  // The API is not called at all for public catalogue reads.
-  if (getStaticCatalogueMode()) {
-    const key = `list:${JSON.stringify(query, Object.keys(query).sort())}`
-    const send = () => fetchScholarshipsFromSnapshot(query).then((fallback) => ({
-      ...fallback,
-      fromSnapshot: true,
-      staticMode: true,
-    }))
-    return dedupe(key, send, options?.signal)
-  }
-
-  // The key is the resolved query, so two callers asking for the same page
-  // share a request and two callers asking for different pages do not.
-  // The shared request runs without a caller signal; dedupe handles per-caller
-  // cancellation so one aborted consumer cannot cancel another's in-flight read.
   const key = `list:${JSON.stringify(query, Object.keys(query).sort())}`
   const send = () =>
-    request('/scholarships', query)
-      .then((payload) => ({
-        items: Array.isArray(payload.items) ? payload.items.map(normalizeScholarship) : [],
-        pagination: payload.pagination,
-      }))
-      // The API is the source of truth. When it cannot answer due to a
-      // transient failure (network, timeout, 5xx), the catalogue is still
-      // readable from the version-controlled snapshot, so browsing does not
-      // stop just because the database is down — and the caller is told it is
-      // reading the snapshot. Client errors (4xx) do NOT trigger fallback;
-      // they represent invalid requests or genuinely missing resources that
-      // the snapshot should not paper over.
-      .catch(async (error) => {
-        if (!isRetryableError(error)) throw error
-        const fallback = await fetchScholarshipsFromSnapshot(query)
-        if (!fallback || fallback.items.length === 0) throw error
-        return { ...fallback, fromSnapshot: true }
-      })
+    request('/scholarships', query).then((payload) => ({
+      items: Array.isArray(payload.items) ? payload.items.map(normalizeScholarship) : [],
+      pagination: payload.pagination,
+    }))
 
   return dedupe(key, send, options?.signal)
 }
 
-/**
- * Lifecycle states are derived from cycle dates rather than stored as one
- * database status. Fetch all pages before filtering so results and pagination
- * describe the complete matching catalogue, not just the current API page.
- */
+import { classifyLifecycle, LIFECYCLE } from '../utils/lifecycle'
+
 export async function fetchScholarshipsByLifecycle(query = {}, lifecycle = 'All', options) {
   const page = Number(query.page) || 1
   const limit = Number(query.limit) || 12
@@ -239,27 +141,13 @@ export async function fetchScholarshipsByLifecycle(query = {}, lifecycle = 'All'
   }
   const firstPage = await fetchScholarships({ ...apiFilters, page: 1, limit: 100 }, options)
 
-  if (firstPage.fromSnapshot) {
-    const snapshot = await fetchScholarshipsFromSnapshot({
-      ...apiFilters,
-      lifecycle: targetLifecycle,
-      page,
-      limit,
-    })
-    return {
-      ...snapshot,
-      fromSnapshot: true,
-      ...(firstPage.staticMode ? { staticMode: true } : {}),
-    }
-  }
-
   const totalPages = firstPage.pagination?.total_pages || 1
   const pageNumbers = Array.from({ length: Math.max(0, totalPages - 1) }, (_, index) => index + 2)
 
   const remainingPages = []
   const CONCURRENCY = 4
   for (let i = 0; i < pageNumbers.length; i += CONCURRENCY) {
-  if (options?.signal?.aborted) break
+    if (options?.signal?.aborted) break
     const chunk = pageNumbers.slice(i, i + CONCURRENCY)
     const chunkResults = await Promise.all(
       chunk.map((pageNumber) =>
@@ -267,16 +155,6 @@ export async function fetchScholarshipsByLifecycle(query = {}, lifecycle = 'All'
       ),
     )
     remainingPages.push(...chunkResults)
-    if (chunkResults.some((result) => result.fromSnapshot)) {
-      // Stop fetching further pages; fall back to snapshot for exact parity.
-      const snapshot = await fetchScholarshipsFromSnapshot({
-        ...apiFilters,
-        lifecycle: targetLifecycle,
-        page,
-        limit,
-      })
-      return { ...snapshot, fromSnapshot: true }
-    }
   }
 
   if (options?.signal?.aborted) {
@@ -284,7 +162,6 @@ export async function fetchScholarshipsByLifecycle(query = {}, lifecycle = 'All'
   }
 
   const allItems = [firstPage, ...remainingPages].flatMap((result) => result.items)
-  // Remove duplicate records (by id) that can appear across overlapping pages.
   const seen = new Set()
   const uniqueItems = allItems.filter((item) => {
     const key = item?.id ?? item?.title
@@ -307,69 +184,21 @@ export async function fetchScholarshipsByLifecycle(query = {}, lifecycle = 'All'
 }
 
 export async function fetchScholarshipById(id, options) {
-  // Static-first: try snapshot first for detail pages too.
-  if (getStaticCatalogueMode()) {
-    const record = await fetchScholarshipByIdFromSnapshot(id)
-    if (record) return normalizeScholarship(record)
-    // In static mode, a missing ID is a clear not-found — never fall through to API.
-    throw new ScholarshipApiError('Scholarship not found', 404)
-  }
-
-  // Non-static mode: try API first, fall back to snapshot on transient failures.
-  try {
-    const payload = await request(`/scholarships/${encodeURIComponent(id)}`, undefined, options)
-    return normalizeScholarship(payload)
-  } catch (error) {
-    // AbortError and 4xx errors never trigger fallback
-    if (!isRetryableError(error)) throw error
-    const record = await fetchScholarshipByIdFromSnapshot(id)
-    if (!record) throw error
-    return { ...normalizeScholarship(record), fromSnapshot: true }
-  }
+  const payload = await request(`/scholarships/${encodeURIComponent(id)}`, undefined, options)
+  return normalizeScholarship(payload)
 }
 
 export async function fetchScholarshipStats(options) {
-  if (getStaticCatalogueMode()) {
-    return dedupe('stats', async () => {
-      const fallback = await fetchScholarshipStatsFromSnapshot()
-      if (!fallback || fallback.total === 0) throw new Error('Empty snapshot stats')
-      return { ...fallback, fromSnapshot: true, staticMode: true }
-    }, options?.signal)
-  }
-
   return dedupe('stats', async () => {
-    try {
-      return await request('/scholarships/stats')
-    } catch (error) {
-      if (!isRetryableError(error)) throw error
-      const fallback = await fetchScholarshipStatsFromSnapshot()
-      if (!fallback || fallback.total === 0) throw error
-      return { ...fallback, fromSnapshot: true }
-    }
+    return await request('/scholarships/stats')
   }, options?.signal)
 }
 
-/**
- * Enable or disable static-first catalogue mode at runtime.
- * Persists to localStorage so the preference survives page loads.
- * When enabled, public browsing uses the version-controlled snapshot
- * exclusively and never calls the database-backed API.
- * Pass true to enable, false to explicitly disable (overriding production default).
- */
-export function setStaticCatalogueMode(enabled) {
-  if (typeof window !== 'undefined') {
-    if (enabled) {
-      window.localStorage.setItem('scholarzone.staticCatalogue', 'true')
-    } else {
-      window.localStorage.setItem('scholarzone.staticCatalogue', 'false')
-    }
-  }
+// Deprecated compatibility shims. Static catalogue mode no longer exists.
+export function setStaticCatalogueMode() {
+  // no-op: retained only for backwards compatibility with older callers.
 }
 
-/**
- * Check if static-first catalogue mode is currently active.
- * Re-evaluates on each call so runtime changes take effect immediately.
- */
 export function isStaticCatalogueMode() {
-  return getStaticCatalogueMode()
+  return false
 }

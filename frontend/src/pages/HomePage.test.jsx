@@ -4,7 +4,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest'
 import HomePage from './HomePage'
 
 vi.mock('../hooks/useScholarshipDirectory', () => ({
-  useScholarshipDirectory: () => ({ scholarships: [], staticMode: true }),
+  useScholarshipDirectory: () => ({ scholarships: [] }),
 }))
 
 vi.mock('../hooks/useScholarshipStats', () => ({
