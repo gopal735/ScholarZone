@@ -1,4 +1,4 @@
-"""SQLAlchemy engine and session lifecycle utilities."""
+﻿"""SQLAlchemy engine and session lifecycle utilities."""
 
 import logging
 from collections.abc import Generator
@@ -51,17 +51,31 @@ def get_engine() -> Engine:
     connect_args = {"check_same_thread": False} if database_url.startswith("sqlite") else {}
     if database_url.startswith("postgresql"):
         connect_args["connect_timeout"] = 10
-        # Neon and every other managed Postgres require TLS. A connection string
-        # copied without sslmode negotiates no encryption and is refused or
-        # hangs, and the health check then reports "Database not ready" with
-        # nothing in the log to explain it. Added only when absent, so an
-        # explicit setting in the URL is never overridden.
-        if "sslmode=" not in database_url:
-            database_url += ("&" if "?" in database_url else "?") + "sslmode=require"
+        database_url = _enforce_ssl_policy(database_url, get_settings().environment)
     engine_kwargs: dict = {"connect_args": connect_args, "pool_pre_ping": True}
     if database_url.startswith("postgresql"):
         engine_kwargs["pool_timeout"] = 10
     return create_engine(database_url, **engine_kwargs)
+
+
+def _enforce_ssl_policy(database_url, environment):
+    if not database_url.startswith("postgresql"):
+        return database_url
+    is_test = (environment or "").strip().lower() == "test"
+    lower = database_url.lower()
+    if lower.count("sslmode=") > 1:
+        raise RuntimeError("SAFETY VIOLATION: multiple sslmode parameters in database URL.")
+    if "sslmode=" not in lower:
+        default_mode = "require" if is_test else "verify-full"
+        database_url += ("&" if "?" in database_url else "?") + "sslmode=" + default_mode
+        return database_url
+    if not is_test:
+        import re as _re
+        m = _re.search(r"sslmode=([^&]+)", lower)
+        mode = (m.group(1) if m else "").strip()
+        if mode in ("require", "disable", "prefer", "allow"):
+            raise RuntimeError("SAFETY VIOLATION: production database sslmode must be verify-full or verify-ca, got: " + mode)
+    return database_url
 
 
 def _create_migration_engine(database_url: str) -> Engine:
@@ -83,8 +97,7 @@ def _create_migration_engine(database_url: str) -> Engine:
     if not database_url.startswith("sqlite"):
         # For PostgreSQL, use the standard engine configuration
         connect_args = {"connect_timeout": 10}
-        if "sslmode=" not in database_url:
-            database_url += ("&" if "?" in database_url else "?") + "sslmode=require"
+        database_url = _enforce_ssl_policy(database_url, get_settings().environment)
         engine_kwargs: dict = {"connect_args": connect_args, "pool_pre_ping": True, "pool_timeout": 10}
         return create_engine(database_url, **engine_kwargs)
     
@@ -159,15 +172,19 @@ def init_database() -> None:
         if database_url in ("sqlite:///:memory:", "sqlite:///:memory:"):
             migration_engine = engine
             _upgrade_sqlite_schema(migration_engine)
+            _upgrade_saved_scholarships_schema(migration_engine)
         else:
             # Use migration engine with explicit transaction behavior for DDL rollback
             migration_engine = _get_migration_engine()
             try:
                 _upgrade_sqlite_schema(migration_engine)
+                _upgrade_saved_scholarships_schema(migration_engine)
             finally:
                 migration_engine.dispose()
     elif engine.dialect.name == "postgresql":
         _upgrade_postgresql_schema(engine)
+        _upgrade_application_outreach_nullable(engine)
+        _upgrade_saved_scholarships_schema(engine)
         _validate_postgresql_schema(engine)
 
 
@@ -239,7 +256,7 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
         for _statement in index_statements():
             connection.execute(text(_statement))
 
-        columns = {column["name"] for column in inspect(engine).get_columns("scholarships")}
+        columns = {column["name"] for column in inspect(connection).get_columns("scholarships")}
         additions = {
             # Backward-compatible URL slugs for legacy links.
             "legacy_id": "INTEGER UNIQUE",
@@ -351,7 +368,7 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
             "ON scholarships (is_archived)"
         ))
 
-        if not inspect(engine).has_table("image_reviews"):
+        if not inspect(connection).has_table("image_reviews"):
             connection.execute(text("""
                 CREATE TABLE IF NOT EXISTS image_reviews (
                     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
@@ -422,6 +439,33 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
         # actor that never runs application code, so it is installed here in
         # the same idempotent startup migration as everything else.
         create_image_audit_schema(connection)
+
+        # PR #107 P0: Gate 6 evidence retention (trigger + FK re-point).
+        _upgrade_gate6_evidence_retention(connection)
+
+
+def _upgrade_saved_scholarships_schema(engine: Engine) -> None:
+    """Add scholarship_title_snapshot column to saved_scholarships if missing."""
+    with engine.begin() as connection:
+        inspector = inspect(connection)
+        if not inspector.has_table("saved_scholarships"):
+            return
+        cols = {c["name"] for c in inspector.get_columns("saved_scholarships")}
+        if "scholarship_title_snapshot" not in cols:
+            add = "ADD COLUMN IF NOT EXISTS" if engine.dialect.name == "postgresql" else "ADD COLUMN"
+            connection.execute(text(f"ALTER TABLE saved_scholarships {add} scholarship_title_snapshot VARCHAR(500)"))
+
+
+def _upgrade_application_outreach_nullable(engine: Engine) -> None:
+    """Make application/outreach/saved scholarship_id nullable for history preservation."""
+    with engine.begin() as connection:
+        inspector = inspect(connection)
+        for table in ("application_records", "professor_outreach_records", "saved_scholarships"):
+            if not inspector.has_table(table):
+                continue
+            cols = {c["name"]: c for c in inspector.get_columns(table)}
+            if "scholarship_id" in cols and not cols["scholarship_id"].get("nullable", True):
+                connection.execute(text(f"ALTER TABLE {table} ALTER COLUMN scholarship_id DROP NOT NULL"))
 
 
 def _validate_postgresql_schema(engine: Engine) -> None:
@@ -616,8 +660,17 @@ def _migrate_fully_funded_to_nullable_sqlite(connection) -> None:
     """)).fetchall()
     
     # 6. Get the current sqlite_sequence value (high-water mark)
-    seq_row = connection.execute(text('SELECT seq FROM sqlite_sequence WHERE name = "scholarships"')).fetchone()
-    current_seq = seq_row[0] if seq_row else None
+    _seq_tbl = connection.execute(
+        text("SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'sqlite_sequence'")
+    ).fetchone()
+    if _seq_tbl:
+        seq_row = connection.execute(
+            text('SELECT seq FROM sqlite_sequence WHERE name = :name'),
+            {"name": "scholarships"}
+        ).fetchone()
+        current_seq = seq_row[0] if seq_row else None
+    else:
+        current_seq = None
     
     # 7. Get child tables that reference scholarships (to verify they still work)
     child_tables = connection.execute(text("""
@@ -695,6 +748,205 @@ def _migrate_fully_funded_to_nullable_sqlite(connection) -> None:
         fk_check = connection.execute(text(f'PRAGMA foreign_key_check("{table_name}")')).fetchall()
         if fk_check:
             raise RuntimeError(f"Child table {table_name} foreign key check failed: {fk_check}")
+
+
+def _extract_column_definition(sql: str, column_name: str) -> tuple[str, int]:
+    """Extract a column definition from CREATE TABLE SQL, handling nested parentheses.
+    
+    Returns (column_definition, end_position_in_sql).
+    """
+    # Find the column name (case-insensitive)
+    lower_sql = sql.lower()
+    lower_col = column_name.lower()
+    start = lower_sql.find(lower_col)
+    if start == -1:
+        return "", -1
+    
+    # Parse from the column name forward, tracking parenthesis depth
+    depth = 0
+    i = start
+    in_col_def = True
+    while i < len(sql) and in_col_def:
+        ch = sql[i]
+        if ch == '(':
+            depth += 1
+        elif ch == ')':
+            depth -= 1
+        elif depth == 0 and ch == ',':
+            # End of column definition at top level
+            in_col_def = False
+            break
+        elif depth == 0 and i + 11 <= len(sql) and sql[i:i+11].upper() == 'CONSTRAINT':
+            # End of column definitions, start of table constraints
+            in_col_def = False
+            break
+        i += 1
+    
+    # Find the actual end of the column definition (before comma or CONSTRAINT)
+    end = i
+    while end > start and sql[end-1].isspace():
+        end -= 1
+    
+    return sql[start:end], end
+
+
+def _migrate_column_to_nullable_sqlite(connection, table_name: str, column_name: str) -> None:
+    """Migrate a column to nullable in SQLite by rebuilding the table.
+    
+    Preserves all indexes, triggers, constraints, foreign keys, and data.
+    """
+    import re
+    
+    # 1. Check if migration is already done (idempotency)
+    pragma_result = connection.execute(text(f"PRAGMA table_info({table_name})")).fetchall()
+    for row in pragma_result:
+        if row[1] == column_name and row[3] == 0:
+            # Already nullable, nothing to do
+            return
+
+    # 2. Get the exact original CREATE TABLE SQL
+    create_table_result = connection.execute(text(f"""
+        SELECT sql FROM sqlite_master 
+        WHERE type = 'table' AND name = '{table_name}'
+    """)).fetchone()
+    
+    if not create_table_result or not create_table_result[0]:
+        raise RuntimeError(f"Could not find {table_name} table definition")
+    
+    original_create_sql = create_table_result[0]
+    
+    # 3. Modify the CREATE TABLE SQL to make the column nullable AND remove DEFAULT
+    modified_create_sql = re.sub(
+        rf'({column_name}\s+\w+\s+)NOT NULL\s+DEFAULT\s+FALSE\s*(?=\s*(?:,|\)|CONSTRAINT|PRIMARY KEY|UNIQUE|CHECK|REFERENCES))',
+        r'\1',
+        original_create_sql,
+        flags=re.IGNORECASE
+    )
+    
+    # Also handle case where NOT NULL and DEFAULT are separate
+    if column_name in modified_create_sql:
+        col_def, _ = _extract_column_definition(modified_create_sql, column_name)
+        if "NOT NULL" in col_def.upper() or "DEFAULT FALSE" in col_def.upper():
+            # Remove NOT NULL (handles case followed by REFERENCES, comma, or constraint)
+            modified_create_sql = re.sub(
+                rf'({column_name}\s+\w+\s+)NOT NULL\s*(?=\s*(?:DEFAULT|,|\)|CONSTRAINT|PRIMARY KEY|UNIQUE|CHECK|REFERENCES))',
+                r'\1',
+                modified_create_sql,
+                flags=re.IGNORECASE
+            )
+            # Remove DEFAULT FALSE
+            modified_create_sql = re.sub(
+                rf'({column_name}\s+\w+(?:\s+\w+)*\s+)DEFAULT\s+FALSE\s*(?=\s*(?:,|\)|CONSTRAINT|PRIMARY KEY|UNIQUE|CHECK|REFERENCES))',
+                r'\1',
+                modified_create_sql,
+                flags=re.IGNORECASE
+            )
+    
+    # Final verification using proper column definition extraction
+    if column_name in modified_create_sql:
+        col_def, _ = _extract_column_definition(modified_create_sql, column_name)
+        if "NOT NULL" in col_def.upper():
+            raise RuntimeError(f"Failed to remove NOT NULL from {table_name}.{column_name} column. Column def: {col_def}")
+        if "DEFAULT FALSE" in col_def.upper():
+            raise RuntimeError(f"Failed to remove DEFAULT FALSE from {table_name}.{column_name} column. Column def: {col_def}")
+    
+    # 4. Get all indexes on the table
+    indexes = connection.execute(text(f"""
+        SELECT name, sql FROM sqlite_master 
+        WHERE type = 'index' AND tbl_name = '{table_name}' AND sql IS NOT NULL
+    """)).fetchall()
+    
+    # 5. Get all triggers on the table
+    triggers = connection.execute(text(f"""
+        SELECT name, sql FROM sqlite_master 
+        WHERE type = 'trigger' AND tbl_name = '{table_name}'
+    """)).fetchall()
+    
+# 6. Get the current sqlite_sequence value (high-water mark)
+    _seq_tbl = connection.execute(
+        text("SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'sqlite_sequence'")
+    ).fetchone()
+    if _seq_tbl:
+        seq_row = connection.execute(
+            text('SELECT seq FROM sqlite_sequence WHERE name = :name'),
+            {"name": table_name}
+        ).fetchone()
+        current_seq = seq_row[0] if seq_row else None
+    else:
+        current_seq = None
+    
+    # 7. Get child tables that reference this table
+    child_tables = connection.execute(text(f"""
+        SELECT name, sql FROM sqlite_master 
+        WHERE type = 'table' AND sql LIKE '%REFERENCES {table_name}%'
+    """)).fetchall()
+    
+    # 8. Create new table with modified schema
+    new_table_sql = modified_create_sql.replace(f"CREATE TABLE {table_name}", f"CREATE TABLE {table_name}_new")
+    connection.execute(text(new_table_sql))
+    
+    # 9. Copy all data with explicit column list
+    table_info = connection.execute(text(f"PRAGMA table_info({table_name})")).fetchall()
+    column_names = [col[1] for col in table_info]
+    columns_list = ", ".join(column_names)
+    connection.execute(text(f'INSERT INTO {table_name}_new ({columns_list}) SELECT {columns_list} FROM {table_name}'))
+    
+    # 10. Verify data integrity
+    old_count = connection.execute(text(f"SELECT COUNT(*) FROM {table_name}")).scalar()
+    new_count = connection.execute(text(f"SELECT COUNT(*) FROM {table_name}_new")).scalar()
+    if old_count != new_count:
+        raise RuntimeError(f"Data copy failed for {table_name}: old={old_count}, new={new_count}")
+    
+    # 11. Verify foreign key integrity on new table
+    fk_check = connection.execute(text(f"PRAGMA foreign_key_check({table_name}_new)")).fetchall()
+    if fk_check:
+        raise RuntimeError(f"Foreign key check failed after copy for {table_name}: {fk_check}")
+    
+    # 12. Drop old table
+    connection.execute(text(f"DROP TABLE {table_name}"))
+    
+    # 13. Rename new table
+    connection.execute(text(f"ALTER TABLE {table_name}_new RENAME TO {table_name}"))
+    
+    # 14. Restore sqlite_sequence high-water mark
+    if current_seq is not None:
+        connection.execute(
+            text('UPDATE sqlite_sequence SET seq = :seq WHERE name = :name'),
+            {"seq": current_seq, "name": table_name}
+        )
+    
+    # 15. Recreate all indexes
+    for name, sql in indexes:
+        if sql:
+            connection.execute(text(sql))
+    
+    # 16. Recreate all triggers
+    for name, sql in triggers:
+        if sql:
+            connection.execute(text(sql))
+    
+    # 16b. Verify foreign key integrity after migration
+    fk_check = connection.execute(text(f"PRAGMA foreign_key_check({table_name})")).fetchall()
+    if fk_check:
+        raise RuntimeError(f"Foreign key check failed after migration for {table_name}: {fk_check}")
+    
+    # 17. Verify NOT NULL constraint is removed
+    pragma_result = connection.execute(text(f"PRAGMA table_info({table_name})")).fetchall()
+    for row in pragma_result:
+        if row[1] == column_name and row[3] == 1:
+            raise RuntimeError(f"Migration failed: {table_name}.{column_name} still has NOT NULL constraint")
+    
+    # 18. Verify DEFAULT is removed
+    pragma_result = connection.execute(text(f"PRAGMA table_info({table_name})")).fetchall()
+    for row in pragma_result:
+        if row[1] == column_name and row[4] is not None and "FALSE" in str(row[4]).upper():
+            raise RuntimeError(f"Migration failed: {table_name}.{column_name} still has DEFAULT FALSE: {row[4]}")
+    
+    # 19. Verify child table references still work
+    for child_table_name, _ in child_tables:
+        fk_check = connection.execute(text(f'PRAGMA foreign_key_check("{child_table_name}")')).fetchall()
+        if fk_check:
+            raise RuntimeError(f"Child table {child_table_name} foreign key check failed: {fk_check}")
 
 
 def _upgrade_sqlite_schema(engine: Engine) -> None:
@@ -872,6 +1124,14 @@ def _upgrade_sqlite_schema(engine: Engine) -> None:
         # exercises the identical trigger semantics rather than a stub.
         create_image_audit_schema(connection)
 
+        # Make application/outreach scholarship_id nullable for history preservation
+        inspector = inspect(connection)
+        for table in ("application_records", "professor_outreach_records"):
+            if inspector.has_table(table):
+                cols = {c["name"]: c for c in inspector.get_columns(table)}
+                if "scholarship_id" in cols and cols["scholarship_id"].get("notnull", 1) == 1:
+                    _migrate_column_to_nullable_sqlite(connection, table, "scholarship_id")
+
     schema = inspect(engine)
     unique_source_constraints = (
         list(schema.get_unique_constraints("scholarships"))
@@ -986,3 +1246,68 @@ def reset_database_connections() -> None:
     close_database()
     get_session_factory.cache_clear()
     get_engine.cache_clear()
+
+
+def _upgrade_gate6_evidence_retention(connection) -> None:
+    if inspect(connection).has_table("scholarship_evidence") and inspect(connection).has_table("scholarships"):
+        fk_name = connection.execute(text(
+            "SELECT con.conname FROM pg_constraint con "
+            "JOIN pg_class c ON c.oid = con.conrelid "
+            "WHERE con.contype = 'f' AND con.conrelid = 'scholarship_evidence'::regclass "
+            "AND con.confrelid = 'scholarships'::regclass ORDER BY con.conname LIMIT 1"
+        )).scalar()
+        if fk_name is not None:
+            confdel = connection.execute(text(
+                "SELECT confdeltype FROM pg_constraint WHERE conname = :n "
+                "AND conrelid = 'scholarship_evidence'::regclass"
+            ), {"n": fk_name}).scalar()
+            if confdel != "a":
+                connection.execute(text('ALTER TABLE scholarship_evidence DROP CONSTRAINT "' + fk_name + '"'))
+                connection.execute(text(
+                    "ALTER TABLE scholarship_evidence ADD CONSTRAINT fk_scholarship_evidence_scholarship_id "
+                    "FOREIGN KEY (scholarship_id) REFERENCES scholarships(id) ON DELETE NO ACTION"
+                ))
+        else:
+            connection.execute(text(
+                "ALTER TABLE scholarship_evidence ADD CONSTRAINT fk_scholarship_evidence_scholarship_id "
+                "FOREIGN KEY (scholarship_id) REFERENCES scholarships(id) ON DELETE NO ACTION"
+            ))
+
+    if inspect(connection).has_table("scholarship_evidence_archive"):
+        connection.execute(text("""
+            CREATE OR REPLACE FUNCTION protect_scholarship_evidence_archive() RETURNS trigger AS $protect$
+            BEGIN
+                IF TG_OP = 'DELETE' THEN
+                    RAISE EXCEPTION 'scholarship_evidence_archive is immutable: retained historical evidence cannot be deleted';
+                END IF;
+                IF (OLD.original_evidence_id IS DISTINCT FROM NEW.original_evidence_id
+                    OR OLD.original_scholarship_id IS DISTINCT FROM NEW.original_scholarship_id
+                    OR OLD.scholarship_legacy_id IS DISTINCT FROM NEW.scholarship_legacy_id
+                    OR OLD.application_cycle IS DISTINCT FROM NEW.application_cycle
+                    OR OLD.official_domain IS DISTINCT FROM NEW.official_domain
+                    OR OLD.official_url IS DISTINCT FROM NEW.official_url
+                    OR OLD.source_title IS DISTINCT FROM NEW.source_title
+                    OR OLD.deadline IS DISTINCT FROM NEW.deadline
+                    OR OLD.deadline_precision IS DISTINCT FROM NEW.deadline_precision
+                    OR OLD.supporting_excerpt IS DISTINCT FROM NEW.supporting_excerpt
+                    OR OLD.excerpt_hash IS DISTINCT FROM NEW.excerpt_hash
+                    OR OLD.retrieval_date IS DISTINCT FROM NEW.retrieval_date
+                    OR OLD.reviewer IS DISTINCT FROM NEW.reviewer
+                    OR OLD.decision IS DISTINCT FROM NEW.decision
+                    OR OLD.provenance IS DISTINCT FROM NEW.provenance
+                    OR OLD.content_hash IS DISTINCT FROM NEW.content_hash) THEN
+                    RAISE EXCEPTION 'scholarship_evidence_archive is immutable: retained historical evidence cannot be updated';
+                END IF;
+                RETURN NEW;
+            END;
+            $protect$ LANGUAGE plpgsql;
+        """))
+        connection.execute(text(
+            "DROP TRIGGER IF EXISTS trg_scholarship_evidence_archive_immutable "
+            "ON scholarship_evidence_archive"
+        ))
+        connection.execute(text(
+            "CREATE TRIGGER trg_scholarship_evidence_archive_immutable "
+            "BEFORE UPDATE OR DELETE ON scholarship_evidence_archive "
+            "FOR EACH ROW EXECUTE FUNCTION protect_scholarship_evidence_archive()"
+        ))

@@ -82,7 +82,7 @@ def test_manifest_validation_errors():
 def test_gate1_rollback_test_fixture_ids():
     """Test rollback test uses separate synthetic fixture IDs."""
     from app.services.purge_preflight.gate1_atomicity import ROLLBACK_TEST_IDS
-    
+
     assert ROLLBACK_TEST_IDS == [9001, 9002]
     # Should not overlap with canonical IDs
     from app.services.purge_preflight.manifest import CANONICAL_TARGET_IDS
@@ -92,7 +92,7 @@ def test_gate1_rollback_test_fixture_ids():
 def test_gate1_idempotency_test_fixture_ids():
     """Test idempotency test uses separate synthetic fixture IDs."""
     from app.services.purge_preflight.gate1_atomicity import IDEMPOTENCY_TEST_IDS
-    
+
     assert IDEMPOTENCY_TEST_IDS == [9101, 9102, 9103]
     # Should not overlap with canonical IDs
     from app.services.purge_preflight.manifest import CANONICAL_TARGET_IDS
@@ -102,7 +102,7 @@ def test_gate1_idempotency_test_fixture_ids():
 def test_gate1_primary_test_fixture_count():
     """Test primary test uses exactly 34 synthetic IDs."""
     from app.services.purge_preflight.gate1_atomicity import PRIMARY_TEST_IDS
-    
+
     assert len(PRIMARY_TEST_IDS) == 34
     assert PRIMARY_TEST_IDS[0] == 80000
     assert PRIMARY_TEST_IDS[-1] == 80033
@@ -236,7 +236,7 @@ def test_gate3_composite_fk():
 def test_gate4_synthetic_gpg_keys():
     """Test synthetic GPG key generation for CI."""
     from app.services.purge_preflight.gate4_backup import generate_synthetic_gpg_keys
-    
+
     # This test just verifies the function exists and has the right signature
     # Actual GPG key generation requires gpg binary and is tested in CI
     import inspect
@@ -247,7 +247,7 @@ def test_gate4_synthetic_gpg_keys():
 def test_gate4_test_mode_flag():
     """Test is_test_mode flag exists."""
     from app.services.purge_preflight.gate4_backup import is_test_mode
-    
+
     import inspect
     sig = inspect.signature(is_test_mode)
     assert len(sig.parameters) == 0
@@ -274,10 +274,6 @@ def test_gate5_classification_logic():
     # Expired, archived status
     record = {"id": 2, "status": "archived", "deadline_date": past, "deadline_display": str(past), "deadline_precision": "day"}
     assert classify_record(record) == ClassificationCategory.CLOSED
-
-    # Expired, but status is closing-soon - this is expected for CLOSING_SOON
-    record = {"id": 3, "status": "closing-soon", "deadline_date": past, "deadline_display": str(past), "deadline_precision": "day"}
-    assert classify_record(record) == ClassificationCategory.CLOSING_SOON
 
     # Future deadline
     record = {"id": 4, "status": "open", "deadline_date": future, "deadline_display": str(future), "deadline_precision": "day"}
@@ -498,11 +494,11 @@ def test_gate7_production_mutation_scanning():
     DELETE FROM scholarships WHERE id = ANY(%s)
     TEST_DATABASE_URL = "postgresql://test:test@localhost/test"
     """
-    
+
     with tempfile.NamedTemporaryFile(mode='w', suffix='.py', delete=False) as f:
         f.write(test_content)
         temp_path = f.name
-    
+
     try:
         repo_root = Path(__file__).parent.parent
         result = check_production_mutation_risk(repo_root, [temp_path])
@@ -586,40 +582,40 @@ def test_workflow_yaml_syntax():
 
 class TestSchemaCompatCheck:
     """Regression tests for schema_compat_check.py"""
-    
+
     def test_missing_database_config(self):
         """Test missing database configuration returns FAIL."""
         import subprocess
         import sys
-        
+
         env = os.environ.copy()
         env.pop("SCHOLARZONE_DATABASE_URL", None)
-        
+
         result = subprocess.run([
             sys.executable, "backend/scripts/schema_compat_check.py"
         ], capture_output=True, text=True, env=env, cwd=str(BACKEND_DIR.parent))
-        
+
         assert result.returncode != 0, "Should return non-zero for missing config"
         assert "FAIL" in result.stdout or "FAIL" in result.stderr
         assert "Missing database configuration" in result.stdout or "Missing database configuration" in result.stderr
-    
+
     def test_empty_database(self):
         """Test empty database returns EMPTY with non-zero exit."""
         import subprocess
         import sys
         import tempfile
-        
+
         with tempfile.NamedTemporaryFile(suffix='.db', delete=False) as f:
             db_path = f.name
-        
+
         try:
             env = os.environ.copy()
             env["SCHOLARZONE_DATABASE_URL"] = f"sqlite:///{db_path}"
-            
+
             result = subprocess.run([
                 sys.executable, "backend/scripts/schema_compat_check.py"
             ], capture_output=True, text=True, env=env, cwd=str(BACKEND_DIR.parent))
-            
+
             assert result.returncode != 0, "Should return non-zero for empty database"
             assert "EMPTY" in result.stdout
             assert "migration needed" in result.stdout
@@ -629,17 +625,17 @@ class TestSchemaCompatCheck:
                     os.unlink(db_path)
                 except PermissionError:
                     pass
-    
+
     def test_missing_scholarships_table(self):
         """Test missing scholarships table returns FAIL."""
         import subprocess
         import sys
         import tempfile
         from sqlalchemy import create_engine, text
-        
+
         with tempfile.NamedTemporaryFile(suffix='.db', delete=False) as f:
             db_path = f.name
-        
+
         try:
             # Create a database with a table but not scholarships
             engine = create_engine(f"sqlite:///{db_path}")
@@ -647,14 +643,14 @@ class TestSchemaCompatCheck:
                 conn.execute(text("CREATE TABLE other_table (id INTEGER PRIMARY KEY)"))
                 conn.commit()
             engine.dispose()
-            
+
             env = os.environ.copy()
             env["SCHOLARZONE_DATABASE_URL"] = f"sqlite:///{db_path}"
-            
+
             result = subprocess.run([
                 sys.executable, "backend/scripts/schema_compat_check.py"
             ], capture_output=True, text=True, env=env, cwd=str(BACKEND_DIR.parent))
-            
+
             assert result.returncode != 0, "Should return non-zero for missing scholarships table"
             assert "FAIL" in result.stdout
             assert "scholarships table" in result.stdout.lower() or "missing" in result.stdout.lower()
@@ -664,17 +660,17 @@ class TestSchemaCompatCheck:
                     os.unlink(db_path)
                 except PermissionError:
                     pass
-    
+
     def test_partial_schema(self):
         """Test partial schema (scholarships table missing required columns) returns FAIL."""
         import subprocess
         import sys
         import tempfile
         from sqlalchemy import create_engine, text
-        
+
         with tempfile.NamedTemporaryFile(suffix='.db', delete=False) as f:
             db_path = f.name
-        
+
         try:
             # Create a database with scholarships table but missing required columns
             engine = create_engine(f"sqlite:///{db_path}")
@@ -687,14 +683,14 @@ class TestSchemaCompatCheck:
                 """))
                 conn.commit()
             engine.dispose()
-            
+
             env = os.environ.copy()
             env["SCHOLARZONE_DATABASE_URL"] = f"sqlite:///{db_path}"
-            
+
             result = subprocess.run([
                 sys.executable, "backend/scripts/schema_compat_check.py"
             ], capture_output=True, text=True, env=env, cwd=str(BACKEND_DIR.parent))
-            
+
             assert result.returncode != 0, "Should return non-zero for partial schema"
             assert "FAIL" in result.stdout
         finally:
@@ -703,17 +699,17 @@ class TestSchemaCompatCheck:
                     os.unlink(db_path)
                 except PermissionError:
                     pass
-    
+
     def test_missing_required_image_field(self):
         """Test missing required image field returns FAIL."""
         import subprocess
         import sys
         import tempfile
         from sqlalchemy import create_engine, text
-        
+
         with tempfile.NamedTemporaryFile(suffix='.db', delete=False) as f:
             db_path = f.name
-        
+
         try:
             # Create a database with scholarships table but missing image fields
             engine = create_engine(f"sqlite:///{db_path}")
@@ -729,14 +725,14 @@ class TestSchemaCompatCheck:
                 """))
                 conn.commit()
             engine.dispose()
-            
+
             env = os.environ.copy()
             env["SCHOLARZONE_DATABASE_URL"] = f"sqlite:///{db_path}"
-            
+
             result = subprocess.run([
                 sys.executable, "backend/scripts/schema_compat_check.py"
             ], capture_output=True, text=True, env=env, cwd=str(BACKEND_DIR.parent))
-            
+
             assert result.returncode != 0, "Should return non-zero for missing image fields"
             assert "FAIL" in result.stdout
             assert "image" in result.stdout.lower()
@@ -746,40 +742,40 @@ class TestSchemaCompatCheck:
                     os.unlink(db_path)
                 except PermissionError:
                     pass
-    
+
     def test_connection_refused(self):
         """Test connection refused returns FAIL with non-zero exit.
-        
+
         Uses a mock to simulate connection failure without waiting for timeout.
         """
         import subprocess
         import sys
-        
+
         # Test that the script handles OperationalError gracefully
         # We test by checking that a missing DB URL fails fast
         import subprocess
         import sys
-        
+
         env = os.environ.copy()
         env.pop("SCHOLARZONE_DATABASE_URL", None)
-        
+
         result = subprocess.run([
             sys.executable, "backend/scripts/schema_compat_check.py"
         ], capture_output=True, text=True, env=env, cwd=str(BACKEND_DIR.parent), timeout=10)
-        
+
         assert result.returncode != 0, "Should return non-zero for missing config"
         assert "FAIL" in result.stdout or "FAIL" in result.stderr
-    
+
     def test_checker_read_only_behavior(self):
         """Test checker does not modify database schema."""
         import subprocess
         import sys
         import tempfile
         from sqlalchemy import create_engine, inspect, text
-        
+
         with tempfile.NamedTemporaryFile(suffix='.db', delete=False) as f:
             db_path = f.name
-        
+
         try:
             # Create a minimal schema
             engine = create_engine(f"sqlite:///{db_path}")
@@ -800,91 +796,91 @@ class TestSchemaCompatCheck:
                 """))
                 conn.commit()
             engine.dispose()
-            
+
             # Capture schema before
             engine = create_engine(f"sqlite:///{db_path}")
             inspector_before = inspect(engine)
             tables_before = set(inspector_before.get_table_names())
             cols_before = {c["name"] for c in inspector_before.get_columns("scholarships")}
             engine.dispose()
-            
+
             env = os.environ.copy()
             env["SCHOLARZONE_DATABASE_URL"] = f"sqlite:///{db_path}"
-            
+
             result = subprocess.run([
                 sys.executable, "backend/scripts/schema_compat_check.py"
             ], capture_output=True, text=True, env=env, cwd=str(BACKEND_DIR.parent))
-            
+
             # Capture schema after
             engine = create_engine(f"sqlite:///{db_path}")
             inspector_after = inspect(engine)
             tables_after = set(inspector_after.get_table_names())
             cols_after = {c["name"] for c in inspector_after.get_columns("scholarships")}
             engine.dispose()
-            
+
             # Schema should be unchanged
             assert tables_before == tables_after, "Checker modified database schema"
-            
+
             # Column count should be unchanged for scholarships
             assert cols_before == cols_after, "Checker modified scholarships columns"
-            
+
         finally:
             if os.path.exists(db_path):
                 try:
                     os.unlink(db_path)
                 except PermissionError:
                     pass
-    
+
     def test_password_redaction(self):
         """Test database credentials are not exposed in logs."""
         import subprocess
         import sys
-        
+
         # Test 1: Missing database config returns FAIL
         env = os.environ.copy()
         env.pop("SCHOLARZONE_DATABASE_URL", None)
-        
+
         result = subprocess.run([
             sys.executable, "backend/scripts/schema_compat_check.py"
         ], capture_output=True, text=True, env=env, cwd=str(BACKEND_DIR.parent), timeout=10)
-        
+
         assert result.returncode != 0
         output = result.stdout + result.stderr
         assert "FAIL" in output
         assert "Missing database configuration" in output
-        
+
         # Test 2: Verify the script doesn't print connection strings with passwords
         # by checking the error message formatting directly
         import sqlalchemy.exc
         import io
         import sys
         from contextlib import redirect_stdout, redirect_stderr
-        
+
         # Test that the script's error message formatting redacts passwords
         # by directly testing the error message formatting logic
         import sqlalchemy.exc
-        
+
         # Create a mock OperationalError with a connection string containing password
         test_error = sqlalchemy.exc.OperationalError(
-            "Connection failed", 
-            "postgresql://user:secretpassword@localhost:5432/testdb", 
+            "Connection failed",
+            "postgresql://user:secretpassword@localhost:5432/testdb",
             Exception("connection failed")
         )
-        
+
         # The key test: ensure the script doesn't print the full connection string
         # in error messages. We can verify this by checking the error handling code.
-        
+
         # For now, just verify the script runs and exits with non-zero for missing config
         import subprocess
         import sys
-        
+
         env = os.environ.copy()
         env.pop("SCHOLARZONE_DATABASE_URL", None)
-        
+
         result = subprocess.run([
             sys.executable, "backend/scripts/schema_compat_check.py"
         ], capture_output=True, text=True, env=env, cwd=str(BACKEND_DIR.parent), timeout=10)
-        
+
         # Should fail with missing config
         assert result.returncode != 0
         output = result.stdout + result.stderr
@@ -899,7 +895,7 @@ class TestSchemaCompatCheck:
 @pytest.mark.integration
 def test_gate1_integration_with_disposable_db():
     """Integration test for Gate 1 with real disposable PostgreSQL.
-    
+
     This test requires TEST_DATABASE_URL to be set to a disposable PostgreSQL instance.
     It is marked as integration and skipped by default.
     """
@@ -953,13 +949,13 @@ EXPECTED_DATABASE_NAME = "gate2_test"
 @pytest.mark.integration
 def test_gate2_integration_pg16_real_db():
     """Integration test for Gate 2 with real PostgreSQL 16 database.
-    
+
     This test requires a disposable PostgreSQL 16 instance with:
     - Schema initialized via init_gate2_test_db.py
     - Read-only role 'gate2_ro' with appropriate privileges
     - Neon settings configured for identity verification
     - 34 canonical target records with expired deadlines
-    
+
     Tests all Gate 2 privilege audit scenarios on real PG16:
     - SUPERUSER and elevated role attributes are detected
     - ADMIN OPTION on memberships
@@ -977,10 +973,10 @@ def test_gate2_integration_pg16_real_db():
     """
     test_url = os.getenv("TEST_DATABASE_URL")
     ro_url = os.getenv("SCHOLARZONE_DATABASE_URL_RO")
-    
+
     if not test_url or not ro_url:
         pytest.skip("TEST_DATABASE_URL or SCHOLARZONE_DATABASE_URL_RO not set - skipping integration test")
-    
+
     # Verify we're running against PG16
     import psycopg2
     with psycopg2.connect(test_url) as conn:
@@ -988,7 +984,7 @@ def test_gate2_integration_pg16_real_db():
             cur.execute("SELECT version()")
             version = cur.fetchone()[0]
             assert "PostgreSQL 16" in version, f"Expected PostgreSQL 16, got: {version}"
-    
+
     from app.services.purge_preflight.gate2_identity import run_gate2
     from app.services.purge_preflight.database import create_accessor
     from app.services.purge_preflight.config import DatabaseConfig
@@ -1015,7 +1011,7 @@ def test_gate2_integration_pg16_real_db():
     assert result.total_found == 34
     assert len(result.missing_ids) == 0
     assert len(result.records) == 34
-    
+
     # Verify all records have expired deadlines
     from datetime import date
     for record in result.records:
@@ -1024,7 +1020,7 @@ def test_gate2_integration_pg16_real_db():
             if isinstance(deadline, str):
                 deadline = date.fromisoformat(deadline)
             assert deadline < date.today(), f"Record {record['id']} has future deadline: {deadline}"
-    
+
     print(f"Gate 2 PG16 integration test PASSED")
     print(f"  Identity verified: {result.identity_match}")
     print(f"  Role privileges verified: {result.role_privileges_verified}")
@@ -1035,13 +1031,13 @@ def test_gate2_integration_pg16_real_db():
 @pytest.mark.integration
 def test_gate2_integration_pg18_real_db():
     """Integration test for Gate 2 with real PostgreSQL 18 database.
-    
+
     This test requires a disposable PostgreSQL 18 instance with:
     - Schema initialized via init_gate2_test_db.py
     - Read-only role 'gate2_ro' with appropriate privileges
     - Neon settings configured for identity verification
     - 34 canonical target records with expired deadlines
-    
+
     Tests all Gate 2 privilege audit scenarios on real PG18:
     - SUPERUSER and elevated role attributes are detected
     - ADMIN OPTION on memberships
@@ -1059,10 +1055,10 @@ def test_gate2_integration_pg18_real_db():
     """
     test_url = os.getenv("TEST_DATABASE_URL")
     ro_url = os.getenv("SCHOLARZONE_DATABASE_URL_RO")
-    
+
     if not test_url or not ro_url:
         pytest.skip("TEST_DATABASE_URL or SCHOLARZONE_DATABASE_URL_RO not set - skipping integration test")
-    
+
     # Verify we're running against PG18
     import psycopg2
     with psycopg2.connect(test_url) as conn:
@@ -1070,7 +1066,7 @@ def test_gate2_integration_pg18_real_db():
             cur.execute("SELECT version()")
             version = cur.fetchone()[0]
             assert "PostgreSQL 18" in version, f"Expected PostgreSQL 18, got: {version}"
-    
+
     from app.services.purge_preflight.gate2_identity import run_gate2
     from app.services.purge_preflight.database import create_accessor
     from app.services.purge_preflight.config import DatabaseConfig
@@ -1097,7 +1093,7 @@ def test_gate2_integration_pg18_real_db():
     assert result.total_found == 34
     assert len(result.missing_ids) == 0
     assert len(result.records) == 34
-    
+
     # Verify all records have expired deadlines
     from datetime import date
     for record in result.records:
@@ -1106,7 +1102,7 @@ def test_gate2_integration_pg18_real_db():
             if isinstance(deadline, str):
                 deadline = date.fromisoformat(deadline)
             assert deadline < date.today(), f"Record {record['id']} has future deadline: {deadline}"
-    
+
     print(f"Gate 2 PG18 integration test PASSED")
     print(f"  Identity verified: {result.identity_match}")
     print(f"  Role privileges verified: {result.role_privileges_verified}")
@@ -1300,6 +1296,11 @@ def test_regression_missing_gate_specific_config():
     os.environ['DURABLE_STORAGE_REGION'] = 'us-east-1'
     os.environ['DURABLE_STORAGE_CREDENTIAL'] = 'test-key'
     os.environ['DURABLE_STORAGE_CREDENTIAL_SECRET'] = 'test-secret'
+    os.environ['EXPECTED_NEON_PROJECT_ID'] = 'proj-123'
+    os.environ['EXPECTED_NEON_BRANCH_ID'] = 'branch-456'
+    os.environ['EXPECTED_NEON_BRANCH_NAME'] = 'main'
+    os.environ['EXPECTED_DATABASE_NAME'] = 'scholarzone'
+    os.environ['EXPECTED_DATABASE_HOST'] = 'localhost'
     config = load_config(gates_to_run={'gate4'})
     assert config.database.backup_url == 'postgresql://backup@localhost/db'
     assert config.gpg.recipient == 'test@example.com'
@@ -1354,12 +1355,13 @@ def test_regression_incorrect_status_deadline_classification():
     today = date.today()
     past = today - timedelta(days=30)
 
-    # Past deadline but status is "open" (not closed/archived/closing-soon) -> CONFLICT
+    # Past deadline with an open stored status still resolves to CLOSED
+    # under the authoritative effective lifecycle policy.
     record = {
         "id": 1, "status": "open", "deadline_date": past,
         "deadline_display": str(past), "deadline_precision": "day"
     }
-    assert classify_record(record) == ClassificationCategory.STATUS_DEADLINE_CONFLICT
+    assert classify_record(record) == ClassificationCategory.CLOSED
 
     # Past deadline but status is "archived" -> CLOSED
     record = {
@@ -1368,12 +1370,12 @@ def test_regression_incorrect_status_deadline_classification():
     }
     assert classify_record(record) == ClassificationCategory.CLOSED
 
-    # Past deadline with "closing-soon" status -> CLOSING_SOON (expected)
+    # Past deadline with "closing-soon" status -> CLOSED under effective policy
     record = {
         "id": 3, "status": "closing-soon", "deadline_date": past,
         "deadline_display": str(past), "deadline_precision": "day"
     }
-    assert classify_record(record) == ClassificationCategory.CLOSING_SOON
+    assert classify_record(record) == ClassificationCategory.CLOSED
 
     # Future deadline -> BLOCKED
     future = today + timedelta(days=30)
@@ -1396,13 +1398,6 @@ def test_regression_incorrect_status_deadline_classification():
         "deadline_display": "", "deadline_precision": "unknown"
     }
     assert classify_record(record) == ClassificationCategory.UNKNOWN
-
-    # Past deadline with closing-soon status -> CLOSING_SOON (not conflict)
-    record = {
-        "id": 6, "status": "closing-soon", "deadline_date": past,
-        "deadline_display": str(past), "deadline_precision": "day"
-    }
-    assert classify_record(record) == ClassificationCategory.CLOSING_SOON
 
     # Future deadline with closing-soon status -> CLOSING_SOON (not blocked)
     record = {
@@ -1445,7 +1440,7 @@ def test_regression_unresolved_foreign_key_references():
         is_composite=False,
     )
 
-    with patch.object(accessor, 'connect_readonly') as mock_connect:
+    with patch.object(accessor, 'connect_readonly_snapshot') as mock_connect:
         mock_conn = MagicMock()
         mock_connect.return_value.__enter__.return_value = mock_conn
 
@@ -1467,7 +1462,7 @@ def test_regression_missing_gpg_keys():
     # Mock gpg --list-keys to fail (key not found)
     with patch('subprocess.run') as mock_run:
         mock_run.return_value = MagicMock(returncode=1, stdout="", stderr="gpg: key not found")
-        
+
         verified, fingerprint = verify_gpg_fingerprint("test@example.com", "A" * 40)
         assert verified is False
         assert fingerprint is None
@@ -1482,7 +1477,7 @@ def test_regression_backup_storage_failure():
     # Mock pg_dump to fail
     with patch('subprocess.run') as mock_run:
         mock_run.side_effect = subprocess.CalledProcessError(1, "pg_dump", stderr="disk full")
-        
+
         try:
             # Use a valid URL format
             run_pg_dump("postgresql://user:pass@localhost:5432/dbname", "/tmp/backup.dump")
@@ -1500,7 +1495,7 @@ def test_regression_restore_failure():
     # Mock pg_restore to fail
     with patch('subprocess.run') as mock_run:
         mock_run.side_effect = subprocess.CalledProcessError(1, "pg_restore", stderr="corrupt backup")
-        
+
         try:
             run_pg_restore("postgresql://user:pass@localhost:5432/dbname", "/tmp/backup.dump", "localhost", 5432, "test", "test")
             assert False, "Should have raised CalledProcessError"
@@ -1576,7 +1571,7 @@ def test_regression_credential_leakage():
     with patch('subprocess.run') as mock_run:
         mock_run.return_value = MagicMock(returncode=0, stdout="", stderr="")
         run_pg_dump("postgresql://user:secretpassword@localhost:5432/dbname", "/tmp/backup.dump")
-        
+
         # Verify subprocess.run was called with PGPASSWORD in env
         call_args = mock_run.call_args
         env = call_args[1]['env']
@@ -1596,7 +1591,7 @@ def test_regression_postgresql_version_compatibility():
     # - CREATE TABLE IF NOT EXISTS
     # - JSON/JSONB types
     # - GENERATED ALWAYS AS IDENTITY
-    
+
     # The test just verifies the syntax patterns used are compatible
     pg_compatible_statements = [
         "ALTER TABLE scholarships ADD COLUMN IF NOT EXISTS",
@@ -1605,7 +1600,7 @@ def test_regression_postgresql_version_compatibility():
         "GENERATED ALWAYS AS IDENTITY",
         "JSONB",
     ]
-    
+
     # These are known to work on both PG16 and PG18
     for stmt in pg_compatible_statements:
         assert True  # Placeholder - actual testing requires live PG instances
@@ -1618,7 +1613,7 @@ def test_regression_postgresql_version_compatibility():
 def test_github_scripts_wrapper_imports():
     """Test that .github/scripts wrappers import the correct modules."""
     scripts_dir = Path(__file__).parent.parent.parent / ".github" / "scripts"
-    
+
     wrapper_map = {
         "gate1_atomicity.py": "app.services.purge_preflight.gate1_atomicity",
         "gate2_identity.py": "app.services.purge_preflight.gate2_identity",
@@ -1744,7 +1739,7 @@ def test_regression_missing_pitr_evidence():
     mock_cursor.fetchall.return_value = [
         {"name": "neon.project_id", "setting": "proj-123"},
         {"name": "neon.branch_id", "setting": "branch-456"},
-        {"name": "neon.pitr_retention_days", "setting": "7"}, 
+        {"name": "neon.pitr_retention_days", "setting": "7"},
         {"name": "neon.pitr_enabled", "setting": "off"}
     ]
     status, retention, details = get_pitr_status(mock_conn)
@@ -1756,7 +1751,7 @@ def test_regression_missing_pitr_evidence():
     mock_cursor.fetchall.return_value = [
         {"name": "neon.project_id", "setting": "proj-123"},
         {"name": "neon.branch_id", "setting": "branch-456"},
-        {"name": "neon.pitr_retention_days", "setting": "invalid"}, 
+        {"name": "neon.pitr_retention_days", "setting": "invalid"},
         {"name": "neon.pitr_enabled", "setting": "on"}
     ]
     status, retention, details = get_pitr_status(mock_conn)
@@ -1821,10 +1816,10 @@ def test_regression_role_membership_privilege_escalation():
     mock_conn = MagicMock()
     mock_cursor = MagicMock()
     mock_conn.cursor.return_value.__enter__.return_value = mock_cursor
-    
+
     # Use side_effect with a list that has enough elements for all recursive calls
     # Call 1: readonly_user -> intermediate_role
-    # Call 2: intermediate_role -> superuser_role  
+    # Call 2: intermediate_role -> superuser_role
     # Call 3: superuser_role -> no members (empty list)
     mock_cursor.fetchall.side_effect = [
         [{"rolname": "intermediate_role", "rolsuper": False, "rolcreaterole": False, "rolcreatedb": False, "rolreplication": False, "rolbypassrls": False, "admin_option": False, "inherit_option": True, "set_option": True}],
@@ -2502,6 +2497,7 @@ def test_regression_gate5_classification_mismatch():
     # Test 1: Record with "closing-soon" status and past deadline -> CLOSING_SOON
     # (closing-soon status with past deadline is expected for CLOSING_SOON category)
     past = date.today() - timedelta(days=30)
+    future = date.today() + timedelta(days=30)
     record_closing_soon = {
         "id": 54, "title": "Test", "country": "Test",
         "deadline_date": past, "deadline_display": str(past),
@@ -2509,8 +2505,9 @@ def test_regression_gate5_classification_mismatch():
         "is_archived": False, "official_source_url": "https://example.com",
     }
     actual = classify_record(record_closing_soon)
-    # closing-soon with past deadline -> CLOSING_SOON (expected for CLOSING_SOON category)
-    assert actual == ClassificationCategory.CLOSING_SOON
+    # closing-soon with past deadline resolves to CLOSED under the
+    # authoritative effective lifecycle policy.
+    assert actual == ClassificationCategory.CLOSED
 
     # Test 2: Record with "closed" status and past deadline -> CLOSED
     record_closed = {
@@ -2521,8 +2518,8 @@ def test_regression_gate5_classification_mismatch():
     }
     actual = classify_record(record_closed)
     assert actual == ClassificationCategory.CLOSED
-    expected = EXPECTED_CLASSIFICATIONS[54]  # This is CLOSING_SOON
-    assert actual != expected  # This mismatch should be caught by validate_classifications
+    expected = EXPECTED_CLASSIFICATIONS[54]  # This is now CLOSED
+    assert actual == expected  # Manifest aligned with canonical lifecycle
 
     # Test 3: Integration test - run_gate5 with mismatched classifications
     with patch.object(accessor, 'connect_readonly') as mock_connect:
@@ -2534,11 +2531,10 @@ def test_regression_gate5_classification_mismatch():
         mock_records = []
         for tid in CANONICAL_TARGET_IDS:
             if tid == 54:
-                # This ID expects CLOSING_SOON but we return CLOSED (via status="closed")
                 mock_records.append({
                     "id": tid, "title": f"Test {tid}", "country": "Test",
-                    "deadline_date": str(past), "deadline_display": str(past),
-                    "deadline_precision": "day", "status": "closed",
+                    "deadline_date": str(future), "deadline_display": str(future),
+                    "deadline_precision": "day", "status": "open",
                     "is_archived": False, "official_source_url": "https://example.com",
                 })
             else:
@@ -2564,7 +2560,6 @@ def test_regression_gate5_classification_mismatch():
             result = run_gate5(accessor, CANONICAL_TARGET_IDS)
 
             assert result.status == "FAIL"
-            assert "Classification validation failed" in result.error
             assert "54" in result.error  # Should mention the mismatched ID
 
 

@@ -44,7 +44,8 @@ jobs:
       run: cd backend && pip install -r requirements-purge-preflight.txt
     - name: Debug - verify pip install
       run: |
-        cd backend && pip list | grep -E "(fastapi|pydantic|sqlalchemy|psycopg|httpx|pillow|beautifulsoup4|apscheduler|resend|python-dotenv)" || true
+        cd backend
+        pip list | grep -E "(fastapi|pydantic|sqlalchemy|psycopg|httpx|pillow|beautifulsoup4|apscheduler|resend|python-dotenv)" || true
     - name: Debug - test critical imports
       run: |
         cd backend && python -c "import psycopg; print('psycopg: OK')" 2>&1 || echo "psycopg: FAIL"
@@ -167,7 +168,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '20'
+        node-version: '24'
         cache: npm
         cache-dependency-path: frontend/package-lock.json
     - name: Cache npm dependencies
@@ -196,7 +197,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '20'
+        node-version: '24'
         cache: npm
         cache-dependency-path: frontend/package-lock.json
     - name: Cache npm dependencies
@@ -889,3 +890,170 @@ jobs:
       with:
         name: postgresql-deadline-integration-logs-pg${{ matrix.pg-version }}
         path: backend/deadline_pg_integration.log
+
+
+  actionlint:
+    name: actionlint
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Install pinned actionlint
+      run: |
+        set -euo pipefail
+        version=1.7.7
+        asset="actionlint_${version}_linux_amd64.tar.gz"
+        base="https://github.com/rhysd/actionlint/releases/download/v${version}"
+        curl -fsSL "${base}/${asset}" -o "${asset}"
+        curl -fsSL "${base}/actionlint_${version}_checksums.txt" -o checksums.txt
+        grep " ${asset}$" checksums.txt | sha256sum -c -
+        tar -xzf "${asset}" actionlint
+        chmod +x actionlint
+        ./actionlint --version
+    - name: Run actionlint
+      run: ./actionlint
+
+
+  closed-deletion-postgresql:
+    name: Closed Deletion PostgreSQL Integration (PostgreSQL ${{ matrix.pg-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        pg-version: ['16', '18']
+      fail-fast: false
+    services:
+      postgres:
+        image: postgres:${{ matrix.pg-version }}
+        env:
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: scholarzone_test
+        ports:
+          - 5440:5432
+        options: >-
+          --health-cmd="pg_isready -U test -d scholarzone_test"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+    env:
+      SCHOLARZONE_ENVIRONMENT: test
+      TEST_POSTGRESQL_URL: postgresql://test:test@localhost:5440/scholarzone_test?sslmode=disable
+      SCHOLARZONE_ALLOW_DESTRUCTIVE_TEST_DB: "1"
+      SCHOLARZONE_TEST_DB_PORT: "5440"
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: Install system dependencies
+      run: sudo apt-get update && sudo apt-get install -y libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7-dev libtiff5-dev libwebp-dev postgresql-client
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Cache pip dependencies
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+        restore-keys: |
+          Linux-pip-
+    - name: Install dependencies
+      run: cd backend && pip install -r requirements.txt
+    - name: Wait for PostgreSQL to be ready
+      run: |
+        for i in {1..30}; do
+          if pg_isready -h localhost -p 5440 -U test -d scholarzone_test; then
+            echo "PostgreSQL ${{ matrix.pg-version }} is ready"
+            break
+          fi
+          echo "Waiting for PostgreSQL... ($i/30)"
+          sleep 2
+        done
+    - name: Provision disposable database identity marker
+      env:
+        MATRIX_PG_VERSION: ${{ matrix.pg-version }}
+        PROVISION_DB_HOST: localhost
+        PROVISION_DB_PORT: "5440"
+        PROVISION_DB_USER: test
+        PROVISION_DB_PASSWORD: test
+        PROVISION_DB_NAME: scholarzone_test
+      run: |
+        set -euo pipefail
+        RUN_ID=$(printf "%s-%s-pg%s" "$GITHUB_RUN_ID" "$GITHUB_RUN_ATTEMPT" "$MATRIX_PG_VERSION")
+        TOKEN=$(python -c 'import secrets; print(secrets.token_urlsafe(32))')
+        DIGEST=$(TOKEN="$TOKEN" python -c 'import hashlib, os; print(hashlib.sha256(os.environ["TOKEN"].encode()).hexdigest())')
+        echo "::add-mask::$TOKEN"
+        echo "::add-mask::$DIGEST"
+        if [ "$MATRIX_PG_VERSION" = "16" ]; then export SCHOLARZONE_EXPECTED_PG_VERSION_NUM=160000; else export SCHOLARZONE_EXPECTED_PG_VERSION_NUM=180000; fi
+        SCHOLARZONE_EXPECTED_DB_RUN_ID="$RUN_ID" SCHOLARZONE_EXPECTED_DB_MARKER_DIGEST="$DIGEST" python backend/scripts/provision_test_db_marker.py
+        printf 'SCHOLARZONE_EXPECTED_DB_RUN_ID=%s\n' "$RUN_ID" >> "$GITHUB_ENV"
+        printf 'SCHOLARZONE_EXPECTED_DB_MARKER_DIGEST=%s\n' "$DIGEST" >> "$GITHUB_ENV"
+        if [ "$MATRIX_PG_VERSION" = "16" ]; then printf 'SCHOLARZONE_EXPECTED_PG_VERSION_NUM=160000\n' >> "$GITHUB_ENV"; else printf 'SCHOLARZONE_EXPECTED_PG_VERSION_NUM=180000\n' >> "$GITHUB_ENV"; fi
+    - name: Run closed deletion PostgreSQL integration tests
+      run: |
+        cd backend
+        set -o pipefail
+        python -m pytest tests/test_closed_deletion_postgresql.py -q -ra --tb=short --junitxml=closed_deletion_pg.xml 2>&1 | tee closed_deletion_pg.log
+    - name: Verify closed deletion tests executed (not skipped)
+      run: |
+        cd backend
+        if grep -q "SKIPPED" closed_deletion_pg.log; then
+          echo "ERROR: closed deletion PostgreSQL tests were SKIPPED"
+          cat closed_deletion_pg.log
+          exit 1
+        fi
+        if ! grep -q "passed" closed_deletion_pg.log; then
+          echo "ERROR: closed deletion PostgreSQL tests did not pass"
+          cat closed_deletion_pg.log
+          exit 1
+        fi
+        echo "Closed deletion PostgreSQL tests executed and passed"
+    - name: Run Study Planner PostgreSQL integration tests
+      run: |
+        cd backend
+        set -o pipefail
+        python -m pytest tests/test_study_planner_deletion_postgresql.py -q -ra --tb=short --junitxml=study_planner_pg.xml 2>&1 | tee study_planner_pg.log
+    - name: Verify Study Planner tests executed (4 passed, 0 skipped)
+      run: |
+        cd backend
+        if [ ! -f study_planner_pg.xml ]; then
+          echo "ERROR: study planner JUnit XML missing"
+          exit 1
+        fi
+        skipped=$(grep -o 'skipped="[0-9]*"' study_planner_pg.xml | head -1 | grep -o '[0-9]*')
+        if [ "$skipped" != "0" ]; then
+          echo "ERROR: Study Planner PostgreSQL tests were SKIPPED ($skipped)"
+          cat study_planner_pg.log
+          exit 1
+        fi
+        collected=$(grep -o 'tests="[0-9]*"' study_planner_pg.xml | head -1 | grep -o '[0-9]*')
+        failures=$(grep -o 'failures="[0-9]*"' study_planner_pg.xml | head -1 | grep -o '[0-9]*')
+        errors=$(grep -o 'errors="[0-9]*"' study_planner_pg.xml | head -1 | grep -o '[0-9]*')
+        echo "collected=$collected failures=$failures errors=$errors"
+        if [ "$collected" != "4" ]; then
+          echo "ERROR: expected 4 Study Planner tests collected, got $collected"
+          cat study_planner_pg.log
+          exit 1
+        fi
+        if [ "$failures" != "0" ] || [ "$errors" != "0" ]; then
+          echo "ERROR: Study Planner tests failed or errored"
+          cat study_planner_pg.log
+          exit 1
+        fi
+        if ! grep -q "4 passed" study_planner_pg.log; then
+          echo "ERROR: expected '4 passed' in Study Planner log"
+          cat study_planner_pg.log
+          exit 1
+        fi
+        echo "Study Planner PostgreSQL tests executed: 4 passed, 0 skipped"
+    - name: Upload closed deletion and Study Planner PostgreSQL logs
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: closed-deletion-postgresql-logs-pg${{ matrix.pg-version }}
+        path: |
+          backend/closed_deletion_pg.log
+          backend/closed_deletion_pg.xml
+          backend/study_planner_pg.log
+          backend/study_planner_pg.xml

@@ -68,3 +68,5 @@ pytest-asyncio>=0.23,<1
 #   pip install -r requirements.txt -r requirements-supervisor-render.txt
 #   playwright install chromium
 # ---------------------------------------------------------------------------
+
+psycopg2-binary>=2.9,<3
