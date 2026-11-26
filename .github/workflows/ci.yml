@@ -985,6 +985,7 @@ jobs:
         DIGEST=$(TOKEN="$TOKEN" python -c 'import hashlib, os; print(hashlib.sha256(os.environ["TOKEN"].encode()).hexdigest())')
         echo "::add-mask::$TOKEN"
         echo "::add-mask::$DIGEST"
+        if [ "$MATRIX_PG_VERSION" = "16" ]; then export SCHOLARZONE_EXPECTED_PG_VERSION_NUM=160000; else export SCHOLARZONE_EXPECTED_PG_VERSION_NUM=180000; fi
         SCHOLARZONE_EXPECTED_DB_RUN_ID="$RUN_ID" SCHOLARZONE_EXPECTED_DB_MARKER_DIGEST="$DIGEST" python backend/scripts/provision_test_db_marker.py
         printf 'SCHOLARZONE_EXPECTED_DB_RUN_ID=%s\n' "$RUN_ID" >> "$GITHUB_ENV"
         printf 'SCHOLARZONE_EXPECTED_DB_MARKER_DIGEST=%s\n' "$DIGEST" >> "$GITHUB_ENV"
