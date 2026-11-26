@@ -10,6 +10,8 @@ from app.test_db_safety import (
     APPROVED_TEST_DB_NAMES,
     validate_disposable_postgres_url,
     verify_disposable_db_identity,
+    verify_disposable_db_marker,
+    verify_expected_pg_version,
 )
 
 GOOD_URL = "postgresql://test:test@127.0.0.1:5440/scholarzone_test?sslmode=disable"
@@ -119,3 +121,56 @@ def test_valid_identity_permitted(monkeypatch):
 def test_production_url_with_opt_in_rejected(monkeypatch):
     with pytest.raises(RuntimeError):
         validate_disposable_postgres_url("postgresql://u:p@prod.example.com:5432/scholarzone_test", "1")
+
+
+def test_marker_missing_rejected():
+    conn = MagicMock()
+    conn.execute.return_value.fetchone.return_value = None
+    with pytest.raises(RuntimeError):
+        verify_disposable_db_marker(conn, "run-1", "digest-1")
+
+
+def test_marker_wrong_run_id_rejected():
+    conn = MagicMock()
+    conn.execute.return_value.fetchone.return_value = ("other-run", "digest-1")
+    with pytest.raises(RuntimeError):
+        verify_disposable_db_marker(conn, "run-1", "digest-1")
+
+
+def test_marker_wrong_digest_rejected():
+    conn = MagicMock()
+    conn.execute.return_value.fetchone.return_value = ("run-1", "wrong-digest")
+    with pytest.raises(RuntimeError):
+        verify_disposable_db_marker(conn, "run-1", "digest-1")
+
+
+def test_marker_missing_config_rejected():
+    conn = MagicMock()
+    with pytest.raises(RuntimeError):
+        verify_disposable_db_marker(conn, None, "digest-1")
+    with pytest.raises(RuntimeError):
+        verify_disposable_db_marker(conn, "run-1", None)
+
+
+def test_marker_valid_accepted():
+    conn = MagicMock()
+    conn.execute.return_value.fetchone.return_value = ("run-1", "digest-1")
+    verify_disposable_db_marker(conn, "run-1", "digest-1")
+
+
+def test_pg_version_mismatch_rejected():
+    conn = MagicMock()
+    conn.execute.return_value.fetchone.return_value = ("170000",)
+    with pytest.raises(RuntimeError):
+        verify_expected_pg_version(conn, "160000")
+
+
+def test_pg_version_match_accepted():
+    conn = MagicMock()
+    conn.execute.return_value.fetchone.return_value = ("160000",)
+    verify_expected_pg_version(conn, "160000")
+
+
+def test_pg_version_none_skips():
+    conn = MagicMock()
+    verify_expected_pg_version(conn, None)

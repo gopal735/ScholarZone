@@ -15,7 +15,12 @@ from sqlalchemy import select, text
 
 from app.database import get_session_factory, init_database, reset_database_connections
 from app.models import Scholarship, StudyPlan, StudyPlanTask, User
-from app.test_db_safety import validate_disposable_postgres_url, verify_disposable_db_identity
+from app.test_db_safety import (
+    validate_disposable_postgres_url,
+    verify_disposable_db_identity,
+    verify_disposable_db_marker,
+    verify_expected_pg_version,
+)
 from app.services.closed_deletion import (
     build_deletion_manifest,
     execute_deletion,
@@ -34,17 +39,33 @@ class TestStudyPlannerDeletionPostgreSQL:
     @pytest.fixture(autouse=True)
     def setup_env(self, monkeypatch):
         allow = os.environ.get("SCHOLARZONE_ALLOW_DESTRUCTIVE_TEST_DB")
-        # Guard runs BEFORE any destructive SQL or DB init side effects.
-        validate_disposable_postgres_url(TEST_URL, allow)
+        expected_port = int(os.environ.get("SCHOLARZONE_TEST_DB_PORT", "0")) or None
+        # 1. URL validation (no DB contact)
+        validate_disposable_postgres_url(TEST_URL, allow, expected_port)
         monkeypatch.setenv("SCHOLARZONE_DATABASE_URL", TEST_URL)
         monkeypatch.setenv("SCHOLARZONE_ENVIRONMENT", "test")
         reset_database_connections()
-        init_database()
         from app.database import get_engine
         eng = get_engine()
+        # 2. Identity verification BEFORE init_database()
         with eng.connect() as conn:
             verify_disposable_db_identity(conn, "scholarzone_test")
+            verify_expected_pg_version(conn, os.environ.get("SCHOLARZONE_EXPECTED_PG_VERSION_NUM"))
+            verify_disposable_db_marker(
+                conn,
+                os.environ.get("SCHOLARZONE_EXPECTED_DB_RUN_ID"),
+                os.environ.get("SCHOLARZONE_EXPECTED_DB_MARKER_DIGEST"),
+            )
+        # 3. Only now initialize schema
+        init_database()
+        # 4. Reverify on the connection used for cleanup, then TRUNCATE
         with eng.begin() as conn:
+            verify_disposable_db_identity(conn, "scholarzone_test")
+            verify_disposable_db_marker(
+                conn,
+                os.environ.get("SCHOLARZONE_EXPECTED_DB_RUN_ID"),
+                os.environ.get("SCHOLARZONE_EXPECTED_DB_MARKER_DIGEST"),
+            )
             for tbl in (
                 "study_plan_tasks", "study_plans", "deleted_closed_scholarships",
                 "scholarship_evidence_archive", "scholarship_evidence", "scholarships",

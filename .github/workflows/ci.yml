@@ -939,6 +939,7 @@ jobs:
       SCHOLARZONE_ENVIRONMENT: test
       TEST_POSTGRESQL_URL: postgresql://test:test@localhost:5440/scholarzone_test?sslmode=disable
       SCHOLARZONE_ALLOW_DESTRUCTIVE_TEST_DB: "1"
+      SCHOLARZONE_TEST_DB_PORT: "5440"
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -969,6 +970,25 @@ jobs:
           echo "Waiting for PostgreSQL... ($i/30)"
           sleep 2
         done
+    - name: Provision disposable database identity marker
+      env:
+        MATRIX_PG_VERSION: ${{ matrix.pg-version }}
+        PROVISION_DB_HOST: localhost
+        PROVISION_DB_PORT: "5440"
+        PROVISION_DB_USER: test
+        PROVISION_DB_PASSWORD: test
+        PROVISION_DB_NAME: scholarzone_test
+      run: |
+        set -euo pipefail
+        RUN_ID=$(printf "%s-%s-pg%s" "$GITHUB_RUN_ID" "$GITHUB_RUN_ATTEMPT" "$MATRIX_PG_VERSION")
+        TOKEN=$(python -c 'import secrets; print(secrets.token_urlsafe(32))')
+        DIGEST=$(TOKEN="$TOKEN" python -c 'import hashlib, os; print(hashlib.sha256(os.environ["TOKEN"].encode()).hexdigest())')
+        echo "::add-mask::$TOKEN"
+        echo "::add-mask::$DIGEST"
+        SCHOLARZONE_EXPECTED_DB_RUN_ID="$RUN_ID" SCHOLARZONE_EXPECTED_DB_MARKER_DIGEST="$DIGEST" python backend/scripts/provision_test_db_marker.py
+        printf 'SCHOLARZONE_EXPECTED_DB_RUN_ID=%s\n' "$RUN_ID" >> "$GITHUB_ENV"
+        printf 'SCHOLARZONE_EXPECTED_DB_MARKER_DIGEST=%s\n' "$DIGEST" >> "$GITHUB_ENV"
+        if [ "$MATRIX_PG_VERSION" = "16" ]; then printf 'SCHOLARZONE_EXPECTED_PG_VERSION_NUM=160000\n' >> "$GITHUB_ENV"; else printf 'SCHOLARZONE_EXPECTED_PG_VERSION_NUM=180000\n' >> "$GITHUB_ENV"; fi
     - name: Run closed deletion PostgreSQL integration tests
       run: |
         cd backend

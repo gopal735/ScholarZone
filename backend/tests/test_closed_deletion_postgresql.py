@@ -12,6 +12,12 @@ import pytest
 
 from app.database import init_database, reset_database_connections
 from app.models import Scholarship, ApplicationRecord, User
+from app.test_db_safety import (
+    validate_disposable_postgres_url,
+    verify_disposable_db_identity,
+    verify_disposable_db_marker,
+    verify_expected_pg_version,
+)
 from app.services.closed_deletion import build_deletion_manifest, execute_deletion, get_effective_lifecycle_status
 
 
@@ -23,15 +29,32 @@ class TestPostgreSQLDeletionRace:
     @pytest.fixture(autouse=True)
     def setup_env(self, monkeypatch):
         pg_url = os.environ.get("TEST_POSTGRESQL_URL")
+        allow = os.environ.get("SCHOLARZONE_ALLOW_DESTRUCTIVE_TEST_DB")
+        validate_disposable_postgres_url(pg_url, allow, int(os.environ.get("SCHOLARZONE_TEST_DB_PORT", "0")) or None)
         monkeypatch.setenv("SCHOLARZONE_DATABASE_URL", pg_url)
         monkeypatch.setenv("SCHOLARZONE_ENVIRONMENT", "test")
         reset_database_connections()
-        init_database()
-        # Isolate tests: clear accumulated rows from prior tests/suites.
         from app.database import get_engine
-        from sqlalchemy import text as _text
         _eng = get_engine()
+        # Identity BEFORE init_database
+        with _eng.connect() as _conn:
+            verify_disposable_db_identity(_conn, "scholarzone_test")
+            verify_expected_pg_version(_conn, os.environ.get("SCHOLARZONE_EXPECTED_PG_VERSION_NUM"))
+            verify_disposable_db_marker(
+                _conn,
+                os.environ.get("SCHOLARZONE_EXPECTED_DB_RUN_ID"),
+                os.environ.get("SCHOLARZONE_EXPECTED_DB_MARKER_DIGEST"),
+            )
+        init_database()
+        # Reverify + cleanup
+        from sqlalchemy import text as _text
         with _eng.begin() as _conn:
+            verify_disposable_db_identity(_conn, "scholarzone_test")
+            verify_disposable_db_marker(
+                _conn,
+                os.environ.get("SCHOLARZONE_EXPECTED_DB_RUN_ID"),
+                os.environ.get("SCHOLARZONE_EXPECTED_DB_MARKER_DIGEST"),
+            )
             for _tbl in ("scholarship_evidence_archive", "scholarship_evidence", "deleted_closed_scholarships", "scholarships"):
                 _conn.execute(_text("TRUNCATE TABLE " + _tbl + " RESTART IDENTITY CASCADE"))
         yield
