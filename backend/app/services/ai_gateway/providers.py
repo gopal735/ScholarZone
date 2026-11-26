@@ -213,6 +213,16 @@ class OpenAICompatibleProvider:
     def generate(self, request: GatewayRequest, model: ModelSpec) -> ProviderResult:
         import time as _t
         started = _t.perf_counter()
+        cancel_event = getattr(request, "cancel_event", None)
+        timeout = getattr(request, "timeout_seconds", None)
+        if timeout is None:
+            timeout = self._timeout
+        try:
+            timeout = float(timeout)
+        except (TypeError, ValueError):
+            timeout = float(self._timeout)
+        if timeout <= 0:
+            timeout = float(self._timeout)
         model_id = self._model_id(model)
         payload = {
             "model": model_id,
@@ -224,7 +234,9 @@ class OpenAICompatibleProvider:
         try:
             import httpx
 
-            with httpx.Client(timeout=self._timeout) as client:
+            if cancel_event is not None and cancel_event.is_set():
+                return ProviderResult(mode=PROVIDER_MODE_CONFIGURED, used=False, failure=FAILURE_CANCELLED, latency_ms=elapsed_ms(started), model=model_id, provider=self.name)
+            with httpx.Client(timeout=httpx.Timeout(timeout)) as client:
                 resp = client.post(url, json=payload, headers=headers)
             if resp.status_code == 401 or resp.status_code == 403:
                 return ProviderResult(mode=PROVIDER_MODE_CONFIGURED, used=False, failure=FAILURE_UNAVAILABLE if False else "unauthorized", latency_ms=elapsed_ms(started), model=model_id, provider=self.name)
@@ -254,15 +266,19 @@ class OpenAICompatibleProvider:
             return ProviderResult(mode=PROVIDER_MODE_CONFIGURED, used=False, failure=category, latency_ms=elapsed_ms(started), model=model_id, provider=self.name)
 
     def generate_stream(self, request: GatewayRequest, model: ModelSpec):
-        """Yield incremental text chunks from an OpenAI-compatible endpoint.
+        """Yield incremental text chunks with a hard absolute deadline.
 
-        Reads bounded byte chunks, enforces absolute size/time/output limits,
-        requires a terminal [DONE] marker, and raises RuntimeError with a
-        stable category on failure.
+        The HTTP read loop runs in a worker thread. The calling generator
+        enforces the original monotonic deadline while waiting for chunks and
+        closes the underlying client to interrupt a blocked read. The worker
+        is joined before this generator returns or raises, so callers (and the
+        gateway capacity limiter) do not release resources prematurely.
         """
         import httpx
         import json as _json
         import time as _time
+        import queue as _queue
+        import threading as _threading
 
         model_id = self._model_id(model)
         payload = {
@@ -277,7 +293,12 @@ class OpenAICompatibleProvider:
         timeout = getattr(request, "timeout_seconds", None)
         if timeout is None:
             timeout = self._timeout
-        timeout = float(timeout)
+        try:
+            timeout = float(timeout)
+        except (TypeError, ValueError):
+            timeout = float(self._timeout)
+        if timeout <= 0:
+            timeout = float(self._timeout)
         started = _time.perf_counter()
         deadline = started + timeout
 
@@ -286,154 +307,209 @@ class OpenAICompatibleProvider:
         max_malformed = 10
         max_output_chars = max(256, (getattr(request, "max_output_tokens", 400) or 400) * 8)
 
-        malformed_frames = 0
-        saw_done = False
-        output_chars = 0
-        total_bytes = 0
+        q: "_queue.Queue" = _queue.Queue()
+        holder = {"client": None, "resp": None, "closed": False}
+        close_lock = _threading.Lock()
 
-        try:
-            with httpx.Client(timeout=timeout) as client:
-                with client.stream("POST", url, json=payload, headers=headers) as resp:
-                    if resp.status_code in (401, 403):
-                        raise RuntimeError("unauthorized")
-                    if resp.status_code == 429:
-                        raise RuntimeError("rate_limited")
-                    if resp.status_code >= 400:
-                        raise RuntimeError("unavailable")
-                    content_type = (resp.headers.get("content-type") or "").lower()
-                    content_encoding = (resp.headers.get("content-encoding") or "").strip().lower()
-                    if content_encoding and content_encoding not in ("identity", ""):
-                        raise RuntimeError("malformed_response")
-                    if "text/event-stream" not in content_type and "application/json" not in content_type:
-                        raise RuntimeError("malformed_response")
+        def _close() -> None:
+            with close_lock:
+                if holder["closed"]:
+                    return
+                holder["closed"] = True
+                resp = holder.get("resp")
+                client = holder.get("client")
+            for obj in (resp, client):
+                try:
+                    if obj is not None:
+                        obj.close()
+                except Exception:
+                    pass
 
-                    buffer = b""
-                    for chunk in resp.iter_raw():
-                        if cancel_event is not None and cancel_event.is_set():
-                            raise RuntimeError("cancelled")
-                        now = _time.perf_counter()
-                        if now >= deadline:
-                            raise RuntimeError("timeout")
-                        total_bytes += len(chunk)
-                        if total_bytes > max_total_bytes:
-                            raise RuntimeError("response_too_large")
-                        buffer += chunk
-                        # Process complete lines.
-                        while b"\n" in buffer:
-                            raw_line, buffer = buffer.split(b"\n", 1)
-                            if raw_line.endswith(b"\r"):
-                                raw_line = raw_line[:-1]
-                            if len(raw_line) > max_line_bytes:
-                                raise RuntimeError("malformed_response")
-                            line = raw_line.decode("utf-8", errors="replace")
-                            if not line.strip():
-                                continue
-                            if line.startswith("data:"):
-                                data_str = line[5:].strip()
-                                if not data_str:
+        def worker() -> None:
+            malformed_frames = 0
+            saw_done = False
+            output_chars = 0
+            total_bytes = 0
+            buffer = b""
+            try:
+                with httpx.Client(timeout=httpx.Timeout(timeout)) as client:
+                    holder["client"] = client
+                    with client.stream("POST", url, json=payload, headers=headers) as resp:
+                        holder["resp"] = resp
+                        if resp.status_code in (401, 403):
+                            raise RuntimeError("unauthorized")
+                        if resp.status_code == 429:
+                            raise RuntimeError("rate_limited")
+                        if resp.status_code >= 400:
+                            raise RuntimeError("unavailable")
+                        content_type = (resp.headers.get("content-type") or "").lower()
+                        content_encoding = (resp.headers.get("content-encoding") or "").strip().lower()
+                        if content_encoding and content_encoding not in ("identity", ""):
+                            raise RuntimeError("malformed_response")
+                        if "text/event-stream" not in content_type and "application/json" not in content_type:
+                            raise RuntimeError("malformed_response")
+
+                        for chunk in resp.iter_raw():
+                            if cancel_event is not None and cancel_event.is_set():
+                                raise RuntimeError("cancelled")
+                            now = _time.perf_counter()
+                            if now >= deadline:
+                                raise RuntimeError("timeout")
+                            total_bytes += len(chunk)
+                            if total_bytes > max_total_bytes:
+                                raise RuntimeError("response_too_large")
+                            buffer += chunk
+                            while b"\n" in buffer:
+                                raw_line, buffer = buffer.split(b"\n", 1)
+                                if raw_line.endswith(b"\r"):
+                                    raw_line = raw_line[:-1]
+                                if len(raw_line) > max_line_bytes:
+                                    raise RuntimeError("malformed_response")
+                                line = raw_line.decode("utf-8", errors="replace")
+                                if not line.strip():
                                     continue
-                                if data_str == "[DONE]":
-                                    saw_done = True
-                                    # Drain not required; break out.
-                                    buffer = b""
-                                    break
-                                try:
-                                    obj = _json.loads(data_str)
-                                except Exception:
-                                    malformed_frames += 1
-                                    if malformed_frames > max_malformed:
-                                        raise RuntimeError("malformed_response")
-                                    continue
-                                # Strict structure validation.
-                                if not isinstance(obj, dict):
-                                    malformed_frames += 1
-                                    if malformed_frames > max_malformed:
-                                        raise RuntimeError("malformed_response")
-                                    continue
-                                if "error" in obj and isinstance(obj.get("error"), (dict, str)):
-                                    raise RuntimeError("provider_error")
-                                choices = obj.get("choices")
-                                if choices is None:
-                                    choices = []
-                                if not isinstance(choices, list):
-                                    malformed_frames += 1
-                                    if malformed_frames > max_malformed:
-                                        raise RuntimeError("malformed_response")
-                                    continue
-                                if not choices:
-                                    continue
-                                choice = choices[0]
-                                if not isinstance(choice, dict):
-                                    malformed_frames += 1
-                                    if malformed_frames > max_malformed:
-                                        raise RuntimeError("malformed_response")
-                                    continue
-                                delta = choice.get("delta")
-                                if delta is None:
-                                    delta = {}
-                                if not isinstance(delta, dict):
-                                    malformed_frames += 1
-                                    if malformed_frames > max_malformed:
-                                        raise RuntimeError("malformed_response")
-                                    continue
-                                content = delta.get("content")
-                                if content is None or content == "":
-                                    # role-only or empty; skip
-                                    if "role" in delta:
+                                if line.startswith("data:"):
+                                    data_str = line[5:].strip()
+                                    if not data_str:
                                         continue
-                                    # usage metadata validation
-                                    usage = obj.get("usage")
-                                    if usage is not None and not isinstance(usage, dict):
+                                    if data_str == "[DONE]":
+                                        saw_done = True
+                                        buffer = b""
+                                        break
+                                    try:
+                                        obj = _json.loads(data_str)
+                                    except Exception:
                                         malformed_frames += 1
                                         if malformed_frames > max_malformed:
                                             raise RuntimeError("malformed_response")
+                                        continue
+                                    if not isinstance(obj, dict):
+                                        malformed_frames += 1
+                                        if malformed_frames > max_malformed:
+                                            raise RuntimeError("malformed_response")
+                                        continue
+                                    if "error" in obj and isinstance(obj.get("error"), (dict, str)):
+                                        raise RuntimeError("provider_error")
+                                    choices = obj.get("choices")
+                                    if choices is None:
+                                        choices = []
+                                    if not isinstance(choices, list):
+                                        malformed_frames += 1
+                                        if malformed_frames > max_malformed:
+                                            raise RuntimeError("malformed_response")
+                                        continue
+                                    if not choices:
+                                        continue
+                                    choice = choices[0]
+                                    if not isinstance(choice, dict):
+                                        malformed_frames += 1
+                                        if malformed_frames > max_malformed:
+                                            raise RuntimeError("malformed_response")
+                                        continue
+                                    delta = choice.get("delta")
+                                    if delta is None:
+                                        delta = {}
+                                    if not isinstance(delta, dict):
+                                        malformed_frames += 1
+                                        if malformed_frames > max_malformed:
+                                            raise RuntimeError("malformed_response")
+                                        continue
+                                    content = delta.get("content")
+                                    if content is None or content == "":
+                                        if "role" in delta:
+                                            continue
+                                        usage = obj.get("usage")
+                                        if usage is not None and not isinstance(usage, dict):
+                                            malformed_frames += 1
+                                            if malformed_frames > max_malformed:
+                                                raise RuntimeError("malformed_response")
+                                        continue
+                                    if not isinstance(content, str):
+                                        malformed_frames += 1
+                                        if malformed_frames > max_malformed:
+                                            raise RuntimeError("malformed_response")
+                                        continue
+                                    if output_chars + len(content) > max_output_chars:
+                                        raise RuntimeError("output_limit_exceeded")
+                                    output_chars += len(content)
+                                    q.put(("chunk", content))
+                                elif line.startswith(":"):
                                     continue
-                                if not isinstance(content, str):
-                                    malformed_frames += 1
-                                    if malformed_frames > max_malformed:
-                                        raise RuntimeError("malformed_response")
+                                else:
                                     continue
-                                if output_chars + len(content) > max_output_chars:
-                                    raise RuntimeError("output_limit_exceeded")
-                                output_chars += len(content)
-                                yield content
-                            elif line.startswith(":"):
-                                # SSE comment / keep-alive; ignore.
-                                continue
-                            else:
-                                # Unknown field; ignore.
-                                continue
-                        if saw_done:
-                            break
-                        if len(buffer) > max_line_bytes:
-                            raise RuntimeError("malformed_response")
+                            if saw_done:
+                                break
+                            if len(buffer) > max_line_bytes:
+                                raise RuntimeError("malformed_response")
 
-                    # Process any final buffered partial line.
-                    if not saw_done and buffer.strip():
-                        raw_line = buffer
-                        if raw_line.endswith(b"\r"):
-                            raw_line = raw_line[:-1]
-                        if len(raw_line) <= max_line_bytes:
-                            line = raw_line.decode("utf-8", errors="replace").strip()
-                            if line.startswith("data:"):
-                                data_str = line[5:].strip()
-                                if data_str and data_str != "[DONE]":
-                                    malformed_frames += 1
-                                if data_str == "[DONE]":
-                                    saw_done = True
+                        if not saw_done and buffer.strip():
+                            raw_line = buffer
+                            if raw_line.endswith(b"\r"):
+                                raw_line = raw_line[:-1]
+                            if len(raw_line) <= max_line_bytes:
+                                line = raw_line.decode("utf-8", errors="replace").strip()
+                                if line.startswith("data:"):
+                                    data_str = line[5:].strip()
+                                    if data_str and data_str != "[DONE]":
+                                        malformed_frames += 1
+                                    if data_str == "[DONE]":
+                                        saw_done = True
 
-                    if not saw_done:
-                        raise RuntimeError("incomplete_stream")
-        except RuntimeError:
-            raise
-        except Exception as exc:  # noqa: BLE001
-            name = type(exc).__name__.lower()
-            if "timeout" in name or "timedout" in name or "readtimeout" in name:
-                raise RuntimeError("timeout") from exc
-            if "connect" in name or "network" in name or "reset" in name:
-                raise RuntimeError("unavailable") from exc
-            raise RuntimeError("unavailable") from exc
+                        if not saw_done:
+                            raise RuntimeError("incomplete_stream")
+            except Exception as exc:  # noqa: BLE001
+                name = type(exc).__name__.lower()
+                if isinstance(exc, RuntimeError):
+                    mapped = exc
+                elif "timeout" in name or "timedout" in name or "readtimeout" in name:
+                    mapped = RuntimeError("timeout")
+                elif "connect" in name or "network" in name or "reset" in name:
+                    mapped = RuntimeError("unavailable")
+                else:
+                    mapped = RuntimeError("unavailable")
+                q.put(("exc", mapped))
+            else:
+                q.put(("done", None))
+            finally:
+                _close()
 
+        worker_thread = _threading.Thread(target=worker, daemon=True)
+        worker_thread.start()
+        try:
+            while True:
+                now = _time.perf_counter()
+                remaining = deadline - now
+                if remaining <= 0:
+                    _close()
+                    worker_thread.join(timeout=2.0)
+                    raise RuntimeError("timeout")
+                wait = remaining if remaining < 0.1 else 0.1
+                if wait < 0.01:
+                    wait = 0.01
+                try:
+                    item = q.get(timeout=wait)
+                except _queue.Empty:
+                    if cancel_event is not None and cancel_event.is_set():
+                        _close()
+                        worker_thread.join(timeout=2.0)
+                        raise RuntimeError("cancelled")
+                    if _time.perf_counter() >= deadline:
+                        _close()
+                        worker_thread.join(timeout=2.0)
+                        raise RuntimeError("timeout")
+                    continue
+                kind, payload = item
+                if kind == "chunk":
+                    yield payload
+                elif kind == "exc":
+                    worker_thread.join(timeout=2.0)
+                    raise payload
+                elif kind == "done":
+                    worker_thread.join(timeout=2.0)
+                    return
+        finally:
+            _close()
+            worker_thread.join(timeout=5.0)
     def health(self) -> ProviderHealth:
         # Lightweight: report configured. Avoid network calls by default.
         return ProviderHealth(provider=self.name, available=bool(self._api_key))
