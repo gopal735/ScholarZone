@@ -125,21 +125,28 @@ def test_production_url_with_opt_in_rejected(monkeypatch):
 
 def test_marker_missing_rejected():
     conn = MagicMock()
-    conn.execute.return_value.fetchone.return_value = None
+    conn.execute.return_value.fetchall.return_value = []
     with pytest.raises(RuntimeError):
         verify_disposable_db_marker(conn, "run-1", "digest-1")
 
 
 def test_marker_wrong_run_id_rejected():
     conn = MagicMock()
-    conn.execute.return_value.fetchone.return_value = ("other-run", "digest-1")
+    conn.execute.return_value.fetchall.return_value = [("other-run", "digest-1")]
     with pytest.raises(RuntimeError):
         verify_disposable_db_marker(conn, "run-1", "digest-1")
 
 
 def test_marker_wrong_digest_rejected():
     conn = MagicMock()
-    conn.execute.return_value.fetchone.return_value = ("run-1", "wrong-digest")
+    conn.execute.return_value.fetchall.return_value = [("run-1", "wrong-digest")]
+    with pytest.raises(RuntimeError):
+        verify_disposable_db_marker(conn, "run-1", "digest-1")
+
+
+def test_multiple_markers_rejected():
+    conn = MagicMock()
+    conn.execute.return_value.fetchall.return_value = [("run-1", "digest-1"), ("run-2", "digest-2")]
     with pytest.raises(RuntimeError):
         verify_disposable_db_marker(conn, "run-1", "digest-1")
 
@@ -154,7 +161,7 @@ def test_marker_missing_config_rejected():
 
 def test_marker_valid_accepted():
     conn = MagicMock()
-    conn.execute.return_value.fetchone.return_value = ("run-1", "digest-1")
+    conn.execute.return_value.fetchall.return_value = [("run-1", "digest-1")]
     verify_disposable_db_marker(conn, "run-1", "digest-1")
 
 
@@ -171,6 +178,33 @@ def test_pg_version_match_accepted():
     verify_expected_pg_version(conn, "160000")
 
 
-def test_pg_version_none_skips():
+def test_pg_version_malformed_rejected():
     conn = MagicMock()
-    verify_expected_pg_version(conn, None)
+    conn.execute.return_value.fetchone.return_value = ("160000",)
+    with pytest.raises(RuntimeError):
+        verify_expected_pg_version(conn, "abc")
+
+def test_pg_version_empty_rejected():
+    conn = MagicMock()
+    with pytest.raises(RuntimeError):
+        verify_expected_pg_version(conn, "")
+
+
+def test_pg_version_none_rejected():
+    conn = MagicMock()
+    with pytest.raises(RuntimeError):
+        verify_expected_pg_version(conn, None)
+
+
+def test_identity_query_failure_rejected():
+    conn = MagicMock()
+    conn.execute.side_effect = RuntimeError("boom")
+    with pytest.raises(RuntimeError):
+        verify_disposable_db_identity(conn, "scholarzone_test")
+
+
+def test_marker_query_failure_rejected():
+    conn = MagicMock()
+    conn.execute.side_effect = RuntimeError("boom")
+    with pytest.raises(RuntimeError):
+        verify_disposable_db_marker(conn, "run-1", "digest-1")

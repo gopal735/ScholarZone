@@ -94,15 +94,17 @@ def verify_disposable_db_marker(connection: Any, expected_run_id: str | None, ex
     if not expected_run_id or not expected_digest:
         raise RuntimeError("expected database marker identity is not configured")
     try:
-        row = connection.execute(
+        rows = connection.execute(
             text("SELECT run_id, marker_digest FROM sz_test_instance_attestation")
-        ).fetchone()
+        ).fetchall()
     except Exception as exc:  # noqa: BLE001
         raise RuntimeError(f"could not read database attestation marker: {exc}") from exc
-    if row is None:
+    if not rows:
         raise RuntimeError("database attestation marker is missing")
-    actual_run_id = row[0]
-    actual_digest = row[1]
+    if len(rows) != 1:
+        raise RuntimeError(f"ambiguous database attestation markers: {len(rows)}")
+    actual_run_id = rows[0][0]
+    actual_digest = rows[0][1]
     if actual_run_id != expected_run_id:
         raise RuntimeError("database attestation run id mismatch")
     if not hmac.compare_digest(str(actual_digest), str(expected_digest)):
@@ -110,12 +112,22 @@ def verify_disposable_db_marker(connection: Any, expected_run_id: str | None, ex
 
 
 def verify_expected_pg_version(connection: Any, expected_version_num: str | None) -> None:
-    if not expected_version_num:
-        return
+    if not expected_version_num or not str(expected_version_num).strip():
+        raise RuntimeError("expected PostgreSQL version is required")
+    expected = str(expected_version_num).strip()
+    try:
+        expected_major = int(expected[:2])
+    except ValueError as exc:
+        raise RuntimeError(f"malformed expected PostgreSQL version: {expected}") from exc
     row = connection.execute(text("SELECT current_setting('server_version_num')")).fetchone()
-    actual = str(row[0]) if row else ""
-    expected = str(expected_version_num)
-    if actual[:2] != expected[:2]:
+    if row is None:
+        raise RuntimeError("could not query PostgreSQL version")
+    actual = str(row[0])
+    try:
+        actual_major = int(actual[:2])
+    except ValueError as exc:
+        raise RuntimeError(f"malformed actual PostgreSQL version: {actual}") from exc
+    if actual_major != expected_major:
         raise RuntimeError(
             f"unexpected PostgreSQL version: {actual} != {expected}"
         )
