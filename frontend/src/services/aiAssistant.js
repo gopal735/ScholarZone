@@ -12,7 +12,6 @@
  */
 
 import { fetchScholarships } from './scholarshipService';
-import { fetchScholarshipsFromSnapshot } from './staticScholarshipService';
 import { parseDate } from '../utils/lifecycle';
 
 const AI_ENDPOINT = '/api/ai/assistant';
@@ -205,14 +204,6 @@ function getDeadlineDateUtc(scholarship) {
   return toUtcDateStart(parsed);
 }
 
-function getRawDeadlineDateUtc(scholarship) {
-  const raw = scholarship?.deadline_date;
-  if (!raw) return null;
-  const parsed = new Date(`${raw}T00:00:00Z`);
-  if (isNaN(parsed.getTime())) return null;
-  return toUtcDateStart(parsed);
-}
-
 function formatDeadline(scholarship) {
   if (typeof scholarship?.deadline === 'string' && scholarship.deadline.trim()) return scholarship.deadline;
   const parsed = getDeadlineDateUtc(scholarship);
@@ -242,8 +233,6 @@ async function fetchDeadlineWindowScholarships(days, question = '') {
 
   const boundedDays = Math.min(Math.max(days, 1), 365);
 
-  // Prefer API contract with deadline_within_days (works for live DB and for
-  // static-first/snapshot-backed fetchScholarships implementations).
   try {
     const directory = await fetchScholarships({
       ...(search ? { search } : {}),
@@ -257,33 +246,9 @@ async function fetchDeadlineWindowScholarships(days, question = '') {
       return items.sort(compareByDeadlineThenTitle);
     }
   } catch {
-    // fall through to deterministic snapshot scan
+    // Live API unavailable: do not fall back to stale snapshot data.
   }
-
-  const snapshot = await fetchScholarshipsFromSnapshot({
-    ...(search ? { search } : {}),
-    deadline_within_days: boundedDays,
-    page: 1,
-    limit: 10000,
-    sort: 'deadline-soon',
-  });
-  const allItems = Array.isArray(snapshot?.items) ? snapshot.items : [];
-  const now = new Date();
-  const todayUtc = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
-  const cutoff = new Date(todayUtc);
-  cutoff.setUTCDate(cutoff.getUTCDate() + boundedDays);
-
-  return allItems
-    .filter((s) => {
-      const d = getRawDeadlineDateUtc(s);
-      return d && d >= todayUtc && d <= cutoff;
-    })
-    .sort((a, b) => {
-      const ad = getRawDeadlineDateUtc(a)?.getTime() ?? Number.POSITIVE_INFINITY;
-      const bd = getRawDeadlineDateUtc(b)?.getTime() ?? Number.POSITIVE_INFINITY;
-      if (ad !== bd) return ad - bd;
-      return String(a?.title || '').localeCompare(String(b?.title || ''), undefined, { sensitivity: 'base' });
-    });
+  return [];
 }
 
 /**
