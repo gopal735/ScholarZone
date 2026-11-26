@@ -251,7 +251,6 @@ class AIGateway:
             max_output_tokens=effective_max_tokens,
             timeout_seconds=effective_timeout,
             cancel_event=effective_cancel_event if effective_cancel_event is not None else request.cancel_event,
-            capacity_lease=lease,
         )
 
         last_failure = None
@@ -304,13 +303,22 @@ class AIGateway:
                         provider=provider.name,
                     )
                 lease = ProviderCapacityLease(self._worker_semaphore)
+                operation_state = {"worker_started": False, "startup_failed": False}
                 ownership_transferred = False
+                from dataclasses import replace as _replace2
+                request = _replace2(
+                    request,
+                    capacity_lease=lease,
+                    operation_state=operation_state,
+                )
 
                 worker = threading.Thread(target=_run, daemon=True)
                 try:
                     worker.start()
+                    operation_state["worker_started"] = True
                     ownership_transferred = True
                 except Exception:  # noqa: BLE001
+                    operation_state["startup_failed"] = True
                     lease.release()
                     raise
 
@@ -360,7 +368,7 @@ class AIGateway:
                     import time as _t
                     _t.sleep(RETRY_BASE_DELAY * (attempt + 1))
                     continue
-                if not ownership_transferred and lease is not None:
+                if not operation_state.get("worker_started") and lease is not None:
                     lease.release()
                 return ProviderResult(
                     mode="configured",
@@ -455,19 +463,20 @@ class AIGateway:
             timeout_seconds=effective_timeout,
             cancel_event=effective_cancel_event if effective_cancel_event is not None else request.cancel_event,
             capacity_lease=None,
+            operation_state=None,
         )
 
         acquired = self._worker_semaphore.acquire(blocking=False)
         if not acquired:
             raise RuntimeError("worker_capacity_exhausted")
         lease = ProviderCapacityLease(self._worker_semaphore)
-        ownership_transferred = False
+        operation_state = {"worker_started": False, "startup_failed": False}
         try:
             request = _replace(
                 request,
                 capacity_lease=lease,
+                operation_state=operation_state,
             )
-            ownership_transferred = True
             gen = provider.generate_stream(request, model)
             try:
                 for chunk in gen:
@@ -492,10 +501,10 @@ class AIGateway:
                 except Exception:
                     pass
         finally:
-            if not ownership_transferred:
+            if not operation_state.get("worker_started"):
                 lease.release()
-            # Provider owns the lease after transfer and releases it when
-            # its transport worker exits. Do not release it here.
+            # Provider owns the lease after successful startup and releases it
+            # when its transport worker exits. Do not release it here.
 
     def stream(self, *args, **kwargs):
         return self.generate_stream(*args, **kwargs)

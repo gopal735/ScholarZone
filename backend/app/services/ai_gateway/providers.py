@@ -44,6 +44,7 @@ class GatewayRequest:
     model_override: str | None = None
     cancel_event: threading.Event | None = None
     capacity_lease: object = None
+    operation_state: object = None
 
 
 @dataclass(frozen=True)
@@ -508,8 +509,41 @@ class OpenAICompatibleProvider:
                     except Exception:
                         pass
 
+        operation_state = getattr(request, "operation_state", None)
         worker_thread = _threading.Thread(target=worker, daemon=True)
-        worker_thread.start()
+        try:
+            worker_thread.start()
+            if isinstance(operation_state, dict):
+                operation_state["worker_started"] = True
+        except Exception:
+            if isinstance(operation_state, dict):
+                operation_state["startup_failed"] = True
+            _lease = getattr(request, "capacity_lease", None)
+            if _lease is not None:
+                try:
+                    _lease.release()
+                except Exception:
+                    pass
+            raise
+        _watchdog_stop = _threading.Event()
+
+        def _watchdog() -> None:
+            remaining = deadline - _time.perf_counter()
+            if remaining > 0:
+                _watchdog_stop.wait(timeout=remaining)
+            if _watchdog_stop.is_set():
+                return
+            if isinstance(operation_state, dict):
+                operation_state["deadline_expired"] = True
+            if cancel_event is not None:
+                try:
+                    cancel_event.set()
+                except Exception:
+                    pass
+            _close()
+
+        _watchdog_thread = _threading.Thread(target=_watchdog, daemon=True)
+        _watchdog_thread.start()
         try:
             while True:
                 now = _time.perf_counter()
@@ -543,13 +577,15 @@ class OpenAICompatibleProvider:
                     worker_thread.join(timeout=2.0)
                     return
         finally:
+            try:
+                _watchdog_stop.set()
+            except Exception:
+                pass
+            try:
+                _watchdog_thread.join(timeout=1.0)
+            except Exception:
+                pass
             _close()
-            _lease = getattr(request, "capacity_lease", None)
-            if _lease is not None:
-                try:
-                    _lease.release()
-                except Exception:
-                    pass
             worker_thread.join(timeout=5.0)
     def health(self) -> ProviderHealth:
         # Lightweight: report configured. Avoid network calls by default.
