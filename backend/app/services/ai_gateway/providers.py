@@ -43,6 +43,7 @@ class GatewayRequest:
     timeout_seconds: float | None = None
     model_override: str | None = None
     cancel_event: threading.Event | None = None
+    capacity_lease: object = None
 
 
 @dataclass(frozen=True)
@@ -215,6 +216,7 @@ class OpenAICompatibleProvider:
         started = _t.perf_counter()
         cancel_event = getattr(request, "cancel_event", None)
         timeout = getattr(request, "timeout_seconds", None)
+        lease = getattr(request, "capacity_lease", None)
         if timeout is None:
             timeout = self._timeout
         try:
@@ -235,6 +237,9 @@ class OpenAICompatibleProvider:
             import httpx
 
             if cancel_event is not None and cancel_event.is_set():
+                if lease is not None:
+                    try: lease.release()
+                    except Exception: pass
                 return ProviderResult(mode=PROVIDER_MODE_CONFIGURED, used=False, failure=FAILURE_CANCELLED, latency_ms=elapsed_ms(started), model=model_id, provider=self.name)
             with httpx.Client(timeout=httpx.Timeout(timeout)) as client:
                 resp = client.post(url, json=payload, headers=headers)
@@ -250,6 +255,9 @@ class OpenAICompatibleProvider:
             if choices:
                 text = (choices[0].get("message") or {}).get("content")
             usage = data.get("usage") or {}
+            if lease is not None:
+                try: lease.release()
+                except Exception: pass
             return ProviderResult(
                 mode=PROVIDER_MODE_CONFIGURED,
                 used=text is not None,
@@ -263,7 +271,14 @@ class OpenAICompatibleProvider:
             )
         except Exception as exc:  # noqa: BLE001
             category = sanitise_provider_error(exc)
+            if lease is not None:
+                try: lease.release()
+                except Exception: pass
             return ProviderResult(mode=PROVIDER_MODE_CONFIGURED, used=False, failure=category, latency_ms=elapsed_ms(started), model=model_id, provider=self.name)
+        finally:
+            if lease is not None:
+                try: lease.release()
+                except Exception: pass
 
     def generate_stream(self, request: GatewayRequest, model: ModelSpec):
         """Yield incremental text chunks with a hard absolute deadline.
@@ -308,14 +323,12 @@ class OpenAICompatibleProvider:
         max_output_chars = max(256, (getattr(request, "max_output_tokens", 400) or 400) * 8)
 
         q: "_queue.Queue" = _queue.Queue()
-        holder = {"client": None, "resp": None, "closed": False}
+        holder = {"client": None, "resp": None, "close_requested": False}
         close_lock = _threading.Lock()
 
         def _close() -> None:
             with close_lock:
-                if holder["closed"]:
-                    return
-                holder["closed"] = True
+                holder["close_requested"] = True
                 resp = holder.get("resp")
                 client = holder.get("client")
             for obj in (resp, client):
@@ -333,9 +346,25 @@ class OpenAICompatibleProvider:
             buffer = b""
             try:
                 with httpx.Client(timeout=httpx.Timeout(timeout)) as client:
-                    holder["client"] = client
+                    with close_lock:
+                        holder["client"] = client
+                        _client_close_requested = holder["close_requested"]
+                    if _client_close_requested:
+                        try:
+                            client.close()
+                        except Exception:
+                            pass
+                        raise RuntimeError("cancelled")
                     with client.stream("POST", url, json=payload, headers=headers) as resp:
-                        holder["resp"] = resp
+                        with close_lock:
+                            holder["resp"] = resp
+                            _resp_close_requested = holder["close_requested"]
+                        if _resp_close_requested:
+                            try:
+                                resp.close()
+                            except Exception:
+                                pass
+                            raise RuntimeError("cancelled")
                         if resp.status_code in (401, 403):
                             raise RuntimeError("unauthorized")
                         if resp.status_code == 429:
@@ -472,6 +501,12 @@ class OpenAICompatibleProvider:
                 q.put(("done", None))
             finally:
                 _close()
+                _lease = getattr(request, "capacity_lease", None)
+                if _lease is not None:
+                    try:
+                        _lease.release()
+                    except Exception:
+                        pass
 
         worker_thread = _threading.Thread(target=worker, daemon=True)
         worker_thread.start()
@@ -509,6 +544,12 @@ class OpenAICompatibleProvider:
                     return
         finally:
             _close()
+            _lease = getattr(request, "capacity_lease", None)
+            if _lease is not None:
+                try:
+                    _lease.release()
+                except Exception:
+                    pass
             worker_thread.join(timeout=5.0)
     def health(self) -> ProviderHealth:
         # Lightweight: report configured. Avoid network calls by default.

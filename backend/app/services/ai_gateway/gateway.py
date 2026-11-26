@@ -77,6 +77,35 @@ class GatewayConfig:
             raise ValueError("RecordingProvider is test-only and cannot be selected in production configuration.")
 
 
+class ProviderCapacityLease:
+    """A release-once handle for one provider capacity slot."""
+
+    def __init__(self, semaphore):
+        self._semaphore = semaphore
+        self._released = False
+        self._lock = threading.Lock()
+        self._released_event = threading.Event()
+
+    def release(self) -> bool:
+        with self._lock:
+            if self._released:
+                return False
+            self._released = True
+        try:
+            self._semaphore.release()
+        except (ValueError, RuntimeError):
+            pass
+        self._released_event.set()
+        return True
+
+    @property
+    def released(self) -> bool:
+        return self._released
+
+    def wait(self, timeout=None) -> bool:
+        return self._released_event.wait(timeout)
+
+
 class AIGateway:
     """Provider-independent AI gateway."""
 
@@ -134,7 +163,7 @@ class AIGateway:
         cancel_event: Optional[threading.Event] = None,
     ) -> ProviderResult:
         started = __import__("time").perf_counter()
-
+        lease = None
         effective_model_override = model_override if model_override is not None else getattr(request, "model_override", None)
         effective_cancel_event = cancel_event if cancel_event is not None else getattr(request, "cancel_event", None)
 
@@ -184,6 +213,8 @@ class AIGateway:
             provider = self._provider
 
         if model is None:
+            if lease is not None:
+                lease.release()
             return ProviderResult(
                 mode="configured",
                 used=False,
@@ -192,6 +223,8 @@ class AIGateway:
             )
 
         if not model.supports(effective_required):
+            if lease is not None:
+                lease.release()
             return ProviderResult(
                 mode="configured",
                 used=False,
@@ -202,6 +235,8 @@ class AIGateway:
             )
 
         if effective_cancel_event is not None and effective_cancel_event.is_set():
+            if lease is not None:
+                lease.release()
             return ProviderResult(
                 mode="configured",
                 used=False,
@@ -216,6 +251,7 @@ class AIGateway:
             max_output_tokens=effective_max_tokens,
             timeout_seconds=effective_timeout,
             cancel_event=effective_cancel_event if effective_cancel_event is not None else request.cancel_event,
+            capacity_lease=lease,
         )
 
         last_failure = None
@@ -252,7 +288,10 @@ class AIGateway:
                                 # Bound usage history to prevent unbounded memory growth.
                                 if len(self._usage) > 1000:
                                     self._usage = self._usage[-1000:]
-                        self._worker_semaphore.release()
+                        try:
+                            lease.release()
+                        except Exception:
+                            pass
 
                 acquired = self._worker_semaphore.acquire(blocking=False)
                 if not acquired:
@@ -264,12 +303,15 @@ class AIGateway:
                         model=model.id,
                         provider=provider.name,
                     )
+                lease = ProviderCapacityLease(self._worker_semaphore)
+                ownership_transferred = False
 
                 worker = threading.Thread(target=_run, daemon=True)
                 try:
                     worker.start()
+                    ownership_transferred = True
                 except Exception:  # noqa: BLE001
-                    self._worker_semaphore.release()
+                    lease.release()
                     raise
 
                 timeout = request.timeout_seconds if request.timeout_seconds is not None else policy.timeout_seconds
@@ -318,6 +360,8 @@ class AIGateway:
                     import time as _t
                     _t.sleep(RETRY_BASE_DELAY * (attempt + 1))
                     continue
+                if not ownership_transferred and lease is not None:
+                    lease.release()
                 return ProviderResult(
                     mode="configured",
                     used=False,
@@ -410,12 +454,20 @@ class AIGateway:
             max_output_tokens=effective_max_tokens,
             timeout_seconds=effective_timeout,
             cancel_event=effective_cancel_event if effective_cancel_event is not None else request.cancel_event,
+            capacity_lease=None,
         )
 
         acquired = self._worker_semaphore.acquire(blocking=False)
         if not acquired:
             raise RuntimeError("worker_capacity_exhausted")
+        lease = ProviderCapacityLease(self._worker_semaphore)
+        ownership_transferred = False
         try:
+            request = _replace(
+                request,
+                capacity_lease=lease,
+            )
+            ownership_transferred = True
             gen = provider.generate_stream(request, model)
             try:
                 for chunk in gen:
@@ -440,7 +492,10 @@ class AIGateway:
                 except Exception:
                     pass
         finally:
-            self._worker_semaphore.release()
+            if not ownership_transferred:
+                lease.release()
+            # Provider owns the lease after transfer and releases it when
+            # its transport worker exits. Do not release it here.
 
     def stream(self, *args, **kwargs):
         return self.generate_stream(*args, **kwargs)
