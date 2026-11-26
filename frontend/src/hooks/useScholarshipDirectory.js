@@ -7,6 +7,7 @@ export function useScholarshipDirectory() {
   const [scholarships, setScholarships] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [requestVersion, setRequestVersion] = useState(0)
 
   useEffect(() => {
     const controller = new AbortController()
@@ -29,6 +30,22 @@ export function useScholarshipDirectory() {
       })
 
     return () => controller.abort()
+  }, [requestVersion])
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return undefined
+    const interval = window.setInterval(() => setRequestVersion((value) => value + 1), 45000)
+    const onFocus = () => setRequestVersion((value) => value + 1)
+    window.addEventListener('focus', onFocus)
+    const onVisibility = () => {
+      if (document.visibilityState === 'visible') onFocus()
+    }
+    document.addEventListener('visibilitychange', onVisibility)
+    return () => {
+      window.clearInterval(interval)
+      window.removeEventListener('focus', onFocus)
+      document.removeEventListener('visibilitychange', onVisibility)
+    }
   }, [])
 
   return {
