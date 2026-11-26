@@ -938,6 +938,7 @@ jobs:
     env:
       SCHOLARZONE_ENVIRONMENT: test
       TEST_POSTGRESQL_URL: postgresql://test:test@localhost:5440/scholarzone_test?sslmode=disable
+      SCHOLARZONE_ALLOW_DESTRUCTIVE_TEST_DB: "1"
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -972,7 +973,7 @@ jobs:
       run: |
         cd backend
         set -o pipefail
-        python -m pytest tests/test_closed_deletion_postgresql.py -q -ra --tb=short 2>&1 | tee closed_deletion_pg.log
+        python -m pytest tests/test_closed_deletion_postgresql.py -q -ra --tb=short --junitxml=closed_deletion_pg.xml 2>&1 | tee closed_deletion_pg.log
     - name: Verify closed deletion tests executed (not skipped)
       run: |
         cd backend
@@ -987,9 +988,50 @@ jobs:
           exit 1
         fi
         echo "Closed deletion PostgreSQL tests executed and passed"
-    - name: Upload closed deletion PostgreSQL logs
+    - name: Run Study Planner PostgreSQL integration tests
+      run: |
+        cd backend
+        set -o pipefail
+        python -m pytest tests/test_study_planner_deletion_postgresql.py -q -ra --tb=short --junitxml=study_planner_pg.xml 2>&1 | tee study_planner_pg.log
+    - name: Verify Study Planner tests executed (4 passed, 0 skipped)
+      run: |
+        cd backend
+        if [ ! -f study_planner_pg.xml ]; then
+          echo "ERROR: study planner JUnit XML missing"
+          exit 1
+        fi
+        if grep -q "skipped" study_planner_pg.xml; then
+          echo "ERROR: Study Planner PostgreSQL tests were SKIPPED"
+          cat study_planner_pg.log
+          exit 1
+        fi
+        collected=$(grep -o 'tests="[0-9]*"' study_planner_pg.xml | head -1 | grep -o '[0-9]*')
+        failures=$(grep -o 'failures="[0-9]*"' study_planner_pg.xml | head -1 | grep -o '[0-9]*')
+        errors=$(grep -o 'errors="[0-9]*"' study_planner_pg.xml | head -1 | grep -o '[0-9]*')
+        echo "collected=$collected failures=$failures errors=$errors"
+        if [ "$collected" != "4" ]; then
+          echo "ERROR: expected 4 Study Planner tests collected, got $collected"
+          cat study_planner_pg.log
+          exit 1
+        fi
+        if [ "$failures" != "0" ] || [ "$errors" != "0" ]; then
+          echo "ERROR: Study Planner tests failed or errored"
+          cat study_planner_pg.log
+          exit 1
+        fi
+        if ! grep -q "4 passed" study_planner_pg.log; then
+          echo "ERROR: expected '4 passed' in Study Planner log"
+          cat study_planner_pg.log
+          exit 1
+        fi
+        echo "Study Planner PostgreSQL tests executed: 4 passed, 0 skipped"
+    - name: Upload closed deletion and Study Planner PostgreSQL logs
       uses: actions/upload-artifact@v4
       if: always()
       with:
         name: closed-deletion-postgresql-logs-pg${{ matrix.pg-version }}
-        path: backend/closed_deletion_pg.log
+        path: |
+          backend/closed_deletion_pg.log
+          backend/closed_deletion_pg.xml
+          backend/study_planner_pg.log
+          backend/study_planner_pg.xml

@@ -15,6 +15,7 @@ from sqlalchemy import select, text
 
 from app.database import get_session_factory, init_database, reset_database_connections
 from app.models import Scholarship, StudyPlan, StudyPlanTask, User
+from app.test_db_safety import validate_disposable_postgres_url, verify_disposable_db_identity
 from app.services.closed_deletion import (
     build_deletion_manifest,
     execute_deletion,
@@ -32,11 +33,17 @@ TEST_URL = os.environ.get("TEST_POSTGRESQL_URL")
 class TestStudyPlannerDeletionPostgreSQL:
     @pytest.fixture(autouse=True)
     def setup_env(self, monkeypatch):
+        allow = os.environ.get("SCHOLARZONE_ALLOW_DESTRUCTIVE_TEST_DB")
+        # Guard runs BEFORE any destructive SQL or DB init side effects.
+        validate_disposable_postgres_url(TEST_URL, allow)
         monkeypatch.setenv("SCHOLARZONE_DATABASE_URL", TEST_URL)
         monkeypatch.setenv("SCHOLARZONE_ENVIRONMENT", "test")
         reset_database_connections()
         init_database()
-        eng = __import__("app.database", fromlist=["get_engine"]).get_engine()
+        from app.database import get_engine
+        eng = get_engine()
+        with eng.connect() as conn:
+            verify_disposable_db_identity(conn, "scholarzone_test")
         with eng.begin() as conn:
             for tbl in (
                 "study_plan_tasks", "study_plans", "deleted_closed_scholarships",
