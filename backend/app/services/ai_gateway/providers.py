@@ -169,11 +169,17 @@ class OpenAICompatibleProvider:
         base_url: str = "https://api.openai.com/v1",
         default_model: str | None = None,
         timeout_seconds: float = 30.0,
+        queue_max_items: int | None = None,
+        queue_max_bytes: int | None = None,
     ) -> None:
         self._api_key = (api_key or "").strip()
         self._base_url = (base_url or "").rstrip("/")
         self._default_model = default_model
         self._timeout = float(timeout_seconds)
+        # Internal/test seam for the bounded output queue. Production defaults
+        # (16 items / 256 KiB) are preserved when these are None.
+        self._queue_max_items = queue_max_items
+        self._queue_max_bytes = queue_max_bytes
         # Security: never send credentials over plaintext HTTP (except loopback
         # in non-production). testserver is never a valid provider endpoint.
         # Full validation mirrors the factory so direct construction cannot
@@ -326,8 +332,8 @@ class OpenAICompatibleProvider:
         max_malformed = 10
         max_output_chars = max(256, (getattr(request, "max_output_tokens", 400) or 400) * 8)
 
-        _QUEUE_MAX_ITEMS = 16
-        _QUEUE_MAX_BYTES = 256 * 1024
+        _QUEUE_MAX_ITEMS = self._queue_max_items if self._queue_max_items is not None else 16
+        _QUEUE_MAX_BYTES = self._queue_max_bytes if self._queue_max_bytes is not None else (256 * 1024)
 
         class _BoundedOutputQueue:
             def __init__(self, max_items, max_bytes):
@@ -339,6 +345,9 @@ class OpenAICompatibleProvider:
                 self._not_full = _threading.Condition(self._lock)
                 self._not_empty = _threading.Condition(self._lock)
                 self._closed = False
+                # Internal diagnostic state for producer backpressure (test-only).
+                self._producer_waiting = _threading.Event()
+                self._waiting_producers = 0
 
             @staticmethod
             def _item_size(item):
@@ -353,25 +362,38 @@ class OpenAICompatibleProvider:
             def put(self, item, *, cancel_event=None, deadline=None, timeout=None):
                 size = self._item_size(item)
                 end = None if timeout is None else _time.perf_counter() + timeout
-                with self._lock:
-                    while True:
-                        if self._closed:
-                            raise RuntimeError("queue_closed")
-                        if cancel_event is not None and cancel_event.is_set():
-                            raise RuntimeError("cancelled")
-                        if deadline is not None and _time.perf_counter() >= deadline:
-                            raise RuntimeError("timeout")
-                        if len(self._items) < self._max_items and self._bytes + size <= self._max_bytes:
-                            break
-                        wait = 0.05
-                        if end is not None:
-                            wait = min(wait, max(0.0, end - _time.perf_counter()))
-                        if wait <= 0:
-                            raise _queue.Full
-                        self._not_full.wait(timeout=wait)
-                    self._items.append((item, size))
-                    self._bytes += size
-                    self._not_empty.notify_all()
+                blocked = False
+                try:
+                    with self._lock:
+                        while True:
+                            if self._closed:
+                                raise RuntimeError("queue_closed")
+                            if cancel_event is not None and cancel_event.is_set():
+                                raise RuntimeError("cancelled")
+                            if deadline is not None and _time.perf_counter() >= deadline:
+                                raise RuntimeError("timeout")
+                            if len(self._items) < self._max_items and self._bytes + size <= self._max_bytes:
+                                break
+                            if not blocked:
+                                self._waiting_producers += 1
+                                self._producer_waiting.set()
+                                blocked = True
+                            wait = 0.05
+                            if end is not None:
+                                wait = min(wait, max(0.0, end - _time.perf_counter()))
+                            if wait <= 0:
+                                raise _queue.Full
+                            self._not_full.wait(timeout=wait)
+                        self._items.append((item, size))
+                        self._bytes += size
+                        self._not_empty.notify_all()
+                finally:
+                    if blocked:
+                        with self._lock:
+                            self._waiting_producers -= 1
+                            if self._waiting_producers <= 0:
+                                self._waiting_producers = 0
+                                self._producer_waiting.clear()
 
             def get(self, timeout=None):
                 end = None if timeout is None else _time.perf_counter() + timeout
