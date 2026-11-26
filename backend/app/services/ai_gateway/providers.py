@@ -323,7 +323,86 @@ class OpenAICompatibleProvider:
         max_malformed = 10
         max_output_chars = max(256, (getattr(request, "max_output_tokens", 400) or 400) * 8)
 
-        q: "_queue.Queue" = _queue.Queue()
+        _QUEUE_MAX_ITEMS = 16
+        _QUEUE_MAX_BYTES = 256 * 1024
+
+        class _BoundedOutputQueue:
+            def __init__(self, max_items, max_bytes):
+                self._max_items = max_items
+                self._max_bytes = max_bytes
+                self._items = __import__("collections").deque()
+                self._bytes = 0
+                self._lock = _threading.Lock()
+                self._not_full = _threading.Condition(self._lock)
+                self._not_empty = _threading.Condition(self._lock)
+                self._closed = False
+
+            @staticmethod
+            def _item_size(item):
+                try:
+                    kind, payload = item
+                except Exception:
+                    return 0
+                if kind == "chunk" and isinstance(payload, str):
+                    return len(payload.encode("utf-8", "replace"))
+                return 0
+
+            def put(self, item, *, cancel_event=None, deadline=None, timeout=None):
+                size = self._item_size(item)
+                end = None if timeout is None else _time.perf_counter() + timeout
+                with self._lock:
+                    while True:
+                        if self._closed:
+                            raise RuntimeError("queue_closed")
+                        if cancel_event is not None and cancel_event.is_set():
+                            raise RuntimeError("cancelled")
+                        if deadline is not None and _time.perf_counter() >= deadline:
+                            raise RuntimeError("timeout")
+                        if len(self._items) < self._max_items and self._bytes + size <= self._max_bytes:
+                            break
+                        wait = 0.05
+                        if end is not None:
+                            wait = min(wait, max(0.0, end - _time.perf_counter()))
+                        if wait <= 0:
+                            raise _queue.Full
+                        self._not_full.wait(timeout=wait)
+                    self._items.append((item, size))
+                    self._bytes += size
+                    self._not_empty.notify_all()
+
+            def get(self, timeout=None):
+                end = None if timeout is None else _time.perf_counter() + timeout
+                with self._lock:
+                    while not self._items:
+                        if self._closed:
+                            raise _queue.Empty
+                        remaining = None if end is None else end - _time.perf_counter()
+                        if remaining is not None and remaining <= 0:
+                            raise _queue.Empty
+                        wait = 0.05
+                        if remaining is not None:
+                            wait = min(wait, max(0.0, remaining))
+                        self._not_empty.wait(timeout=wait)
+                    item, size = self._items.popleft()
+                    self._bytes -= size
+                    if self._bytes < 0:
+                        self._bytes = 0
+                    self._not_full.notify_all()
+                    return item
+
+            def clear(self):
+                with self._lock:
+                    self._items.clear()
+                    self._bytes = 0
+                    self._not_full.notify_all()
+
+            def close(self):
+                with self._lock:
+                    self._closed = True
+                    self._not_full.notify_all()
+                    self._not_empty.notify_all()
+
+        q = _BoundedOutputQueue(_QUEUE_MAX_ITEMS, _QUEUE_MAX_BYTES)
         holder = {"client": None, "resp": None, "close_requested": False}
         close_lock = _threading.Lock()
 
@@ -462,7 +541,7 @@ class OpenAICompatibleProvider:
                                     if output_chars + len(content) > max_output_chars:
                                         raise RuntimeError("output_limit_exceeded")
                                     output_chars += len(content)
-                                    q.put(("chunk", content))
+                                    q.put(("chunk", content), cancel_event=cancel_event, deadline=deadline)
                                 elif line.startswith(":"):
                                     continue
                                 else:
@@ -497,11 +576,17 @@ class OpenAICompatibleProvider:
                     mapped = RuntimeError("unavailable")
                 else:
                     mapped = RuntimeError("unavailable")
+                q.clear()
                 q.put(("exc", mapped))
             else:
+                q.clear()
                 q.put(("done", None))
             finally:
                 _close()
+                try:
+                    q.close()
+                except Exception:
+                    pass
                 _lease = getattr(request, "capacity_lease", None)
                 if _lease is not None:
                     try:
