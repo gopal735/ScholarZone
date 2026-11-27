@@ -47,7 +47,7 @@ from ..services.mentor.service import (
 )
 from ..services.mentor.context import build_context
 from ..services.mentor.discovery import run_discovery
-from ..services.mentor.compose import ComposedAnswer
+from ..services.mentor.compose import compose, ComposedAnswer
 from ..services.mentor.intents import classify
 from ..services.mentor.guards import normalize_message, MAX_MESSAGE_LENGTH
 from ..services.mentor.provider import SYSTEM_INSTRUCTION
@@ -589,7 +589,7 @@ def stream_msg(conversation_id: int, payload: MentorSendMessageRequest, request:
                         logger.warning("mentor conversation terminal-state persistence failed: %s", type(_pe).__name__)
             raise
         except Exception as exc:  # noqa: BLE001
-            logger.warning("mentor conversation stream failed: %s", type(exc).__name__)
+            logger.warning("mentor conversation stream failed: %s %s", type(exc).__name__, exc)
             try:
                 fail_assistant_message(db, user.id, assistant.id, "provider_unavailable", attempt_id=assistant.attempt_id)
             except Exception as _pe:  # noqa: BLE001
