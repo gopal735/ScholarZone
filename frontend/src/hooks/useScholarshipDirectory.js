@@ -11,7 +11,6 @@ export function useScholarshipDirectory() {
 
   useEffect(() => {
     const controller = new AbortController()
-    setIsLoading(true)
 
     fetchScholarships({ page: 1, limit: DIRECTORY_LIMIT }, { signal: controller.signal })
       .then((directory) => {
@@ -50,6 +49,7 @@ export function useScholarshipDirectory() {
   }, [])
 
   const retry = useCallback(() => {
+    setIsLoading(true)
     setRequestVersion((value) => value + 1)
   }, [])
 
