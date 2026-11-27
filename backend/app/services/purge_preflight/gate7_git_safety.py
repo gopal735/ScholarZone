@@ -28,6 +28,7 @@ from .metadata import save_result_with_metadata
 
 
 @dataclass
+
 class Gate7Result:
     """Gate 7 execution result."""
     test_name: str = "gate7_git_safety"
@@ -185,6 +186,12 @@ def check_branch_and_base(repo_root: Path) -> tuple[str, str, str, str, bool, bo
     pr_merge_sha = os.getenv("PR_MERGE_COMMIT_SHA", "").strip()
     stage1_master_sha = os.getenv("STAGE1_MASTER_SHA", "").strip()
 
+    # Validate SHA format when supplied; fail closed on malformed values.
+    if pr_merge_sha and not re.fullmatch(r"[0-9a-fA-F]{40}", pr_merge_sha):
+        return current_branch, "master", "", "", False, False, "PR_MERGE_COMMIT_SHA must be a full 40-character SHA"
+    if stage1_master_sha and not re.fullmatch(r"[0-9a-fA-F]{40}", stage1_master_sha):
+        return current_branch, "master", "", "", False, False, "STAGE1_MASTER_SHA must be a full 40-character SHA"
+
     if pr_merge_sha:
         head_sha = pr_merge_sha
     else:
@@ -193,13 +200,6 @@ def check_branch_and_base(repo_root: Path) -> tuple[str, str, str, str, bool, bo
             return current_branch, "master", "", "", False, False, f"Failed to resolve HEAD: {head_result.stderr.strip()}"
         head_sha = head_result.stdout.strip()
 
-    # Resolve the merge commit's first parent for the committed-diff scan.
-    parent_result = run_git_command(["rev-parse", f"{head_sha}^"], repo_root)
-    if parent_result.returncode == 0:
-        base_sha = parent_result.stdout.strip()
-    else:
-        base_sha = os.getenv("PR_BASE_SHA", "").strip() or "HEAD^"
-
     # Resolve Stage 1 master for ancestry validation when it was not supplied.
     if not stage1_master_sha:
         master_result = run_git_command(["rev-parse", "origin/master"], repo_root)
@@ -207,13 +207,20 @@ def check_branch_and_base(repo_root: Path) -> tuple[str, str, str, str, bool, bo
             stage1_master_sha = master_result.stdout.strip()
 
     if not stage1_master_sha:
-        return current_branch, "master", head_sha, base_sha, False, False, "STAGE1_MASTER_SHA is required"
+        return current_branch, "master", head_sha, os.getenv("PR_BASE_SHA", "").strip() or "HEAD^", False, False, "STAGE1_MASTER_SHA is required"
+
+    # Resolve the merge commit's first parent for the committed-diff scan.
+    parent_result = run_git_command(["rev-parse", f"{head_sha}^"], repo_root)
+    if parent_result.returncode == 0:
+        base_sha = parent_result.stdout.strip()
+    else:
+        base_sha = os.getenv("PR_BASE_SHA", "").strip() or "HEAD^"
 
     if current_branch:
         branch_match = current_branch in {"master", "feat/closed-scholarship-permanent-deletion"}
     else:
         actual_head = run_git_command(["rev-parse", "HEAD"], repo_root).stdout.strip()
-        branch_match = actual_head == head_sha
+        branch_match = actual_head == stage1_master_sha
 
     # PR #107 must be contained in the Stage 1 master history.  Equality is not
     # required and would be wrong because master advances after the PR merges.
