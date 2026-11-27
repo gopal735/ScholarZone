@@ -1,0 +1,1566 @@
+{
+  "audit_timestamp": "2026-11-09",
+  "audit_timezone": "Asia/Dhaka",
+  "summary": {
+    "total_catalogue_records": 790,
+    "total_research_entries": 825,
+    "completed_research": 87,
+    "pending_research": 738,
+    "funding_corrections": 5,
+    "lifecycle_corrections": 3,
+    "duplicates_found": 5,
+    "pending_new_candidates": 46
+  },
+  "funding_corrections": [
+    {
+      "catalogue_id": 3,
+      "title": "DAAD Scholarship",
+      "current_fully_funded": 1,
+      "corrected_fully_funded": false,
+      "reason": "DAAD Scholarship (general) provides stipend EUR 992/mo + insurance + travel allowance + study allowance EUR 460/yr. NO tuition coverage (German public universities are tuition-free for most programmes). Not fully funded per ScholarZone definition (requires tuition + living).",
+      "evidence_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+    },
+    {
+      "catalogue_id": 40,
+      "title": "ARES Scholarships (Belgium)",
+      "current_fully_funded": 1,
+      "corrected_fully_funded": null,
+      "reason": "ARES provides living allowance and travel but tuition coverage varies by programme. Funding scope not fully confirmed from official source.",
+      "evidence_url": "https://www.ares-ac.be/en/cooperation-au-developpement/bourses"
+    },
+    {
+      "catalogue_id": 31,
+      "title": "Netherlands Fellowship Programme (NFP/OTS)",
+      "current_fully_funded": 1,
+      "corrected_fully_funded": null,
+      "reason": "Netherlands Fellowship Programme (NFP/OTS) discontinued. Replaced by NL Scholarship (EUR 5000 first year only, partial).",
+      "evidence_url": "https://www.studyinnl.org/finances/ots-scholarships"
+    },
+    {
+      "catalogue_id": 729,
+      "title": "Vanier Canada Graduate Scholarship",
+      "current_fully_funded": 1,
+      "corrected_fully_funded": null,
+      "reason": "Vanier CGS discontinued after Fall 2024. Replaced by CGRS-D. Should be archived/discontinued.",
+      "evidence_url": "https://vanier.gc.ca/en/home-accueil.html"
+    },
+    {
+      "catalogue_id": 1,
+      "title": "Erasmus Mundus",
+      "current_fully_funded": null,
+      "corrected_fully_funded": true,
+      "reason": "Erasmus Mundus Joint Masters covers full tuition + EUR 1,400/mo stipend + travel + insurance. Fully funded.",
+      "evidence_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters"
+    }
+  ],
+  "lifecycle_corrections": [
+    {
+      "catalogue_id": 729,
+      "title": "Vanier Canada Graduate Scholarship",
+      "current_status": "open",
+      "corrected_status": "discontinued",
+      "replacement": "CGRS-D (Canada Graduate Research Scholarship - Doctoral)",
+      "reason": "Vanier CGS discontinued after Fall 2024 final competition. Official source confirms no further competitions. Replaced by CGRS-D.",
+      "evidence_url": "https://vanier.gc.ca/en/home-accueil.html"
+    },
+    {
+      "catalogue_id": 31,
+      "title": "Netherlands Fellowship Programme (NFP/OTS)",
+      "current_status": "open",
+      "corrected_status": "discontinued",
+      "replacement": "NL Scholarship",
+      "reason": "Netherlands Fellowship Programme (NFP/OTS) discontinued. Replaced by NL Scholarship.",
+      "evidence_url": "https://www.studyinnl.org/finances/ots-scholarships"
+    },
+    {
+      "catalogue_id": 1312,
+      "title": "Knight-Hennessy Scholars",
+      "current_status": "closed",
+      "corrected_status": "closed",
+      "replacement": "Knight-Hennessy 2028 cohort (opens Summer 2027)",
+      "reason": "2027 cohort application closed Oct 6 2026. Next cycle 2028 opens Summer 2027.",
+      "evidence_url": "https://knight-hennessy.stanford.edu/admission/preparing-your-applications/application-deadlines"
+    }
+  ],
+  "duplicates": [
+    {
+      "title": "lund university global scholarship",
+      "country": "sweden",
+      "ids": [
+        183,
+        753
+      ]
+    },
+    {
+      "title": "copenhagen business school danish government scholarship",
+      "country": "denmark",
+      "ids": [
+        270,
+        1244
+      ]
+    },
+    {
+      "title": "university of copenhagen danish government scholarship",
+      "country": "denmark",
+      "ids": [
+        271,
+        760
+      ]
+    },
+    {
+      "title": "stipendium hungaricum scholarship programme",
+      "country": "hungary",
+      "ids": [
+        285,
+        1277
+      ]
+    },
+    {
+      "title": "fulbright foreign student program",
+      "country": "united states",
+      "ids": [
+        1217,
+        1309
+      ]
+    }
+  ],
+  "pending_new_candidates": [
+    {
+      "research_id": 175,
+      "title": "Erasmus University Rotterdam (EUR) - Holland Scholarship & Talent Programmes (NL Scholarship)",
+      "url": "https://www.eur.nl/en/education/practical-matters/scholarships-grants",
+      "provider": "",
+      "country": "Netherlands",
+      "fields_not_established": [
+        "exact_deadline_per_faculty_2027_28",
+        "number_of_awards_per_faculty_2027_28",
+        "specific_selection_criteria_per_school"
+      ],
+      "notes": "Reclassified from completed: no evidence-backed findings found during audit. Requires official source review."
+    },
+    {
+      "research_id": 360,
+      "title": "MEXT Scholarship for 2027 - Embassy Recommendation (Research Students)",
+      "url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [
+        "2027-specific application timeline",
+        "2027-specific quota numbers",
+        "Country-specific embassy availability for 2027"
+      ],
+      "notes": "Reclassified from completed: no evidence-backed findings found during audit. Requires official source review."
+    },
+    {
+      "research_id": 383,
+      "title": "Erasmus Trustfonds Scholarship",
+      "url": "https://www.eur.nl/en/scholarship/erasmus-trustfonds-scholarship",
+      "provider": "",
+      "country": "Netherlands",
+      "fields_not_established": [
+        "exact_2027_28_deadline",
+        "number_of_scholarships_2027_28",
+        "school_specific_selection_criteria"
+      ],
+      "notes": "Reclassified from completed: no evidence-backed findings found during audit. Requires official source review."
+    },
+    {
+      "research_id": 384,
+      "title": "Erasmus Trustfonds Scholarship / TSH Changemaker Scholarship (Erasmus MC)",
+      "url": "https://www.eur.nl/en/scholarship/erasmus-trustfonds-and-tsh-changemaker-scholarship",
+      "provider": "",
+      "country": "Netherlands",
+      "fields_not_established": [
+        "exact_2027_28_deadline",
+        "number_of_awards_2027_28",
+        "specific_eligible_programmes_2027_28"
+      ],
+      "notes": "Reclassified from completed: no evidence-backed findings found during audit. Requires official source review."
+    },
+    {
+      "research_id": 423,
+      "title": "Erasmus+ Grant (Erasmus University Rotterdam)",
+      "url": "https://www.eur.nl/en/scholarship/erasmus-grant",
+      "provider": "",
+      "country": "Netherlands",
+      "fields_not_established": [
+        "exact_nomination_dates_per_faculty_2027_28",
+        "International_Mobility_Grant_pilot_continuation_2027_28",
+        "number_of_grants_awarded_per_year"
+      ],
+      "notes": "Reclassified from completed: no evidence-backed findings found during audit. Requires official source review."
+    },
+    {
+      "research_id": 554,
+      "title": "Apoyo Complementario SECIHTI-OEA 2026",
+      "url": "https://www.oas.org/es/becas/Mexico/Convocatoria_Secihti_OEA2026.pdf",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 555,
+      "title": "2026-2027 OAS - Universidad del Desarrollo Scholarship Opportunity (dLab Global)",
+      "url": "https://www.oas.org/en/scholarships/PAEC/2026/2026-2027 OAS - The UDD Scholarship Program Announcement.pdf",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 595,
+      "title": "Bolsas Doutorado Sanduiche no Exterior - Edital Comite Gestor Fiocruz no 01/2026 (CAPES-Global.Edu)",
+      "url": "https://formeditais.campusvirtual.fiocruz.br/editais/cg-fiocruz-012026",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 598,
+      "title": "Programa de patrocinios del Banco de la República para estudios de posgrado en el exterior",
+      "url": "https://www.banrep.gov.co/es/contenidos/programas-estudios-el-exterior",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 601,
+      "title": "Beca Interna Postdoctoral - Convocatoria Becas 2026 (CONICET)",
+      "url": "https://convocatorias.conicet.gov.ar/becas/convocatoria-vigente",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 604,
+      "title": "Beca Universidad de Chile (BUCH)",
+      "url": "https://uchile.cl/convocatorias/37944/beca-universidad-de-chile",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 605,
+      "title": "Programa de Becas de Cooperacion Sur-Sur - Republica de Chile 2027 (AGCID)",
+      "url": "https://web.icetex.gov.co/es/-/becas-maestria-chile-agcid-2027",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 621,
+      "title": "Türkiye Scholarships (Türkiye Bursları) — Government Scholarship Programme of the Presidency of Turks Abroad and Related Communities",
+      "url": "https://www.turkiyeburslari.gov.tr/announcements/turkiye-scholarships-2026-applications-121",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 631,
+      "title": "Beca al Talento Académico Internacional",
+      "url": "https://tec.mx/es/profesional/becas/internacional",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 633,
+      "title": "Frederick Douglass Bicentennial Scholarship Program (UNCF)",
+      "url": "https://uncf.org/pages/the-frederick-douglass-bicentennial-scholarship-program",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 637,
+      "title": "Bolsas Capacitacao de Curta Duracao no Exterior - Edital Comite Gestor Fiocruz no 02/2026 (CAPES-Glo",
+      "url": "https://formeditais.campusvirtual.fiocruz.br/editais/cg-fiocruz-022026",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 639,
+      "title": "Becas de apoyo a la investigacion del Instituto Riva-Aguero 2027",
+      "url": "https://ira.pucp.edu.pe/wp-content/uploads/2026/08/Convocatoria-Becas-IRA-individual-y-grupal-2027-.pdf",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 640,
+      "title": "Beca Doctoral PUCP - Programa de Apoyo a la Investigación Doctoral",
+      "url": "https://posgrado.pucp.edu.pe/becas/becas-doctoral-pucp",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 641,
+      "title": "Becas R.P. Jorge Dintilhac SS.CC. (PUCP)",
+      "url": "https://admision.pucp.edu.pe/becas-y-pensiones/becas/becas-rp-jorge-dintilhac-sscc",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 642,
+      "title": "Programa de Cooperacion Internacional del Gobierno de Chile para Policias Extranjeras Uniformadas (CECIPU)",
+      "url": "https://www.cecipu.gob.cl/becas-de-estudios",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 643,
+      "title": "Programa de Becas de Investigacion para Estudiantes 2026-2027 (FCM UNCUYO)",
+      "url": "https://fcm.uncuyo.edu.ar/convocatoria-2026-2027-a-becas-de-investigacion-para-estudiantes",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 680,
+      "title": "Qatar University International Students Scholarship",
+      "url": "https://www.qu.edu.qa/en-us/students/admission/scholarships/types",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 688,
+      "title": "Becas Nacionales de Inclusión 2026 (A. Becas de Licenciatura para Jefas de Familia; B. Apoyos Complementarios para Personas Indígenas; C. Apoyos Complementarios para Personas con Discapacidad)",
+      "url": "https://secihti.mx/convocatoria/becas-nacionales/convocatoria-becas-nacionales-de-inclusion-2026",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 689,
+      "title": "Apoyo Complementario de Maternidad y Paternidad Nacional, en el Extranjero y de Consolidación 2026",
+      "url": "https://secihti.mx/convocatoria/becas-nacionales/convocatoria-2026-apoyo-complementario-de-maternidad-y-paternidad-nacional-en-el-extranjero-y-de-consolidacion",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 693,
+      "title": "Errol Walton Barrow Scholarships",
+      "url": "https://education.gov.bb/2026-errol-walton-barrow-scholarships",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 702,
+      "title": "Beca Nuevo Milenio",
+      "url": "https://www.chileatiende.gob.cl/fichas/15118-beca-nuevo-milenio",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 1247,
+      "title": "King Abdullah Scholarship Program (KASP)",
+      "url": "https://www.moe.gov.sa/en/scholarships/Pages/default.aspx",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 1248,
+      "title": "King Fahd University of Petroleum & Minerals (KFUPM) Graduate Scholarships",
+      "url": "https://www.kfupm.edu.sa/grad/scholarships",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 1249,
+      "title": "King Abdullah University of Science and Technology (KAUST) Fellowships",
+      "url": "https://www.kaust.edu.sa/en/study/fellowships",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 1250,
+      "title": "King Saud University Scholarships for International Students",
+      "url": "https://deanship.ksu.edu.sa/en/international-student-scholarships",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 1251,
+      "title": "UAE Presidential Scholarship (Mohammed bin Rashid Al Maktoum Foundation)",
+      "url": "https://www.mbrf.ae/en/initiatives/presidential-scholarship",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 1252,
+      "title": "Khalifa University Graduate Scholarships",
+      "url": "https://www.ku.ac.ae/admissions/graduate/scholarships",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 1253,
+      "title": "United Arab Emirates University (UAEU) Scholarships",
+      "url": "https://www.uaeu.ac.ae/en/admissions/scholarships",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 1254,
+      "title": "American University of Sharjah (AUS) Merit Scholarships",
+      "url": "https://www.aus.edu/admissions/scholarships",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 1259,
+      "title": "Israeli Government Scholarships (MASHAV)",
+      "url": "https://mashav.mfa.gov.il/MASHAV/Programs/Pages/Scholarships.aspx",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 1260,
+      "title": "Technion — Israel Institute of Technology Graduate Scholarships",
+      "url": "https://graduate.technion.ac.il/scholarships",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 1261,
+      "title": "Weizmann Institute of Science International PhD Program",
+      "url": "https://www.weizmann.ac.il/feinberg/phd",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 1262,
+      "title": "Tel Aviv University Lowy International Scholarship Fund",
+      "url": "https://international.tau.ac.il/scholarships",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 1275,
+      "title": "Türkiye Scholarships — Full-Time Degree Programmes",
+      "url": "https://turkiyeburslari.gov.tr/fulltimeprograms",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 1276,
+      "title": "Türkiye Scholarships — Short-Term Programmes (Success & Research)",
+      "url": "https://turkiyeburslari.gov.tr/shorttermprograms",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 1284,
+      "title": "Qatar Foundation Scholarship",
+      "url": "https://www.qf.org.qa/education/scholarships",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 1285,
+      "title": "PEC-G (Undergraduate Exchange) Scholarship - Brazil",
+      "url": "https://www.gov.br/mre/pt-br/assuntos/cultura-e-educacao/educacao/pec-g",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 1286,
+      "title": "ICETEX International Scholarship - Colombia",
+      "url": "https://www.icetex.gov.co",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 1287,
+      "title": "ANID Becas Chile (International)",
+      "url": "https://www.anid.cl/concursos/becas-chile",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 1291,
+      "title": "PEC-PG (Postgraduate) Scholarship - Brazil",
+      "url": "https://www.gov.br/mre/pt-br/assuntos/cultura-e-educacao/educacao/pec-pg",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    },
+    {
+      "research_id": 556,
+      "title": "Convocatoria de Becas OEA - UNIR, EP NEWMAN y UNIR Mexico (Curso Academico 2026, 2a convocatoria)",
+      "url": "https://www.oas.org/en/scholarships/PAEC/2026/P26_Convocatoria_de_BecasOEA_UNIR_EP_NEWMAN_y_UNIR_MX_2026.pdf",
+      "provider": "",
+      "country": "",
+      "fields_not_established": [
+        "official_verification"
+      ],
+      "notes": "Auto-generated from canonical public records; requires manual official-source verification"
+    }
+  ],
+  "completed_matches_detail": [
+    {
+      "research_id": 1,
+      "catalogue_id": 1,
+      "research_title": "Erasmus Mundus Joint Masters (EMJM)",
+      "catalogue_title": "Erasmus Mundus",
+      "url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+      "differences": [
+        {
+          "field": "title",
+          "research": "Erasmus Mundus Joint Masters (EMJM)",
+          "catalogue": "Erasmus Mundus"
+        }
+      ],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "EUR 1,400/month + tuition + travel"
+    },
+    {
+      "research_id": 3,
+      "catalogue_id": 3,
+      "research_title": "DAAD Scholarship",
+      "catalogue_title": "DAAD Scholarship",
+      "url": "https://www.daad.de",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": 1,
+      "catalogue_funding": "Fully Funded"
+    },
+    {
+      "research_id": 4,
+      "catalogue_id": 516,
+      "research_title": "GKS (Global Korea Scholarship) Program - Undergraduate Degree Programs",
+      "catalogue_title": "GKS (Global Korea Scholarship) Program - Undergraduate Degree Programs",
+      "url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
+      "differences": [],
+      "research_funding_type": "Fully Funded",
+      "catalogue_fully_funded": 1,
+      "catalogue_funding": "Fully Funded"
+    },
+    {
+      "research_id": 5,
+      "catalogue_id": 5,
+      "research_title": "MEXT (Monbukagakusho) Scholarship",
+      "catalogue_title": "MEXT (Monbukagakusho) Scholarship",
+      "url": "https://www.studyinjapan.go.jp",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": 1,
+      "catalogue_funding": "Fully Funded"
+    },
+    {
+      "research_id": 17,
+      "catalogue_id": 17,
+      "research_title": "Erasmus+ Student Exchange (Studying Abroad)",
+      "catalogue_title": "Erasmus+ Student Exchange (Studying Abroad)",
+      "url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/studying-abroad",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "Partial to Full"
+    },
+    {
+      "research_id": 21,
+      "catalogue_id": 21,
+      "research_title": "DAAD Study Scholarships - Master Studies for All Academic Disciplines",
+      "catalogue_title": "DAAD Study Scholarships - Master Studies for All Academic Disciplines",
+      "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "Partial to Full"
+    },
+    {
+      "research_id": 23,
+      "catalogue_id": 23,
+      "research_title": "DAAD Development-Related Postgraduate Courses (EPOS)",
+      "catalogue_title": "DAAD Development-Related Postgraduate Courses (EPOS)",
+      "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": 1,
+      "catalogue_funding": "Fully Funded"
+    },
+    {
+      "research_id": 26,
+      "catalogue_id": 516,
+      "research_title": "GKS (Global Korea Scholarship) Program - Graduate Degree Programs",
+      "catalogue_title": "GKS (Global Korea Scholarship) Program - Undergraduate Degree Programs",
+      "url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
+      "differences": [
+        {
+          "field": "title",
+          "research": "GKS (Global Korea Scholarship) Program - Graduate Degree Programs",
+          "catalogue": "GKS (Global Korea Scholarship) Program - Undergraduate Degree Programs"
+        }
+      ],
+      "research_funding_type": "Fully Funded",
+      "catalogue_fully_funded": 1,
+      "catalogue_funding": "Fully Funded"
+    },
+    {
+      "research_id": 168,
+      "catalogue_id": 168,
+      "research_title": "Erasmus Mundus Joint Master Degrees — Austria-based",
+      "catalogue_title": "Erasmus Mundus Joint Master Degrees — Austria-based",
+      "url": "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "Partial"
+    },
+    {
+      "research_id": 192,
+      "catalogue_id": 192,
+      "research_title": "Erasmus Mundus Joint Master Degrees — Sweden-based",
+      "catalogue_title": "Erasmus Mundus Joint Master Degrees — Sweden-based",
+      "url": "https://www.eacea.ec.europa.eu/scholarships/emjmd-catalogue_en/sweden",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": 1,
+      "catalogue_funding": "Fully Funded"
+    },
+    {
+      "research_id": 228,
+      "catalogue_id": 228,
+      "research_title": "DAAD Research Grants - Doctoral Candidates and Young Academics",
+      "catalogue_title": "DAAD Research Grants - Doctoral Candidates and Young Academics",
+      "url": "https://www.daad-bangladesh.org/en/studying-in-germany/phd-studies/research-grants-in-germany-for-phd-scholars",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": 1,
+      "catalogue_funding": "Fully Funded"
+    },
+    {
+      "research_id": 229,
+      "catalogue_id": 229,
+      "research_title": "DAAD University Summer Courses Scholarship",
+      "catalogue_title": "DAAD University Summer Courses Scholarship",
+      "url": "https://www.daad-bangladesh.org/en/studying-in-germany/daad-scholarships",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "Partial"
+    },
+    {
+      "research_id": 230,
+      "catalogue_id": 230,
+      "research_title": "DAAD Helmut-Schmidt-Programme (Master's Scholarships for Public Policy and Good Governance - PPGG)",
+      "catalogue_title": "DAAD Helmut-Schmidt-Programme (Master's Scholarships for Public Policy and Good Governance - PPGG)",
+      "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026397",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "Partial"
+    },
+    {
+      "research_id": 231,
+      "catalogue_id": 231,
+      "research_title": "Postgraduate Studies - Architecture",
+      "catalogue_title": "DAAD Postgraduate Studies in the Field of Architecture",
+      "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135744",
+      "differences": [
+        {
+          "field": "title",
+          "research": "Postgraduate Studies - Architecture",
+          "catalogue": "DAAD Postgraduate Studies in the Field of Architecture"
+        }
+      ],
+      "research_funding_type": "",
+      "catalogue_fully_funded": 1,
+      "catalogue_funding": "Fully Funded"
+    },
+    {
+      "research_id": 232,
+      "catalogue_id": 232,
+      "research_title": "Postgraduate Studies - Fine Art/Design/Film",
+      "catalogue_title": "DAAD Postgraduate Studies in the Fields of Fine Art, Design, Visual Communication and Film",
+      "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135742",
+      "differences": [
+        {
+          "field": "title",
+          "research": "Postgraduate Studies - Fine Art/Design/Film",
+          "catalogue": "DAAD Postgraduate Studies in the Fields of Fine Art, Design, Visual Communication and Film"
+        }
+      ],
+      "research_funding_type": "",
+      "catalogue_fully_funded": 1,
+      "catalogue_funding": "Fully Funded"
+    },
+    {
+      "research_id": 234,
+      "catalogue_id": 234,
+      "research_title": "Postgraduate Studies - Performing Arts",
+      "catalogue_title": "DAAD Postgraduate Studies in the Field of Performing Arts",
+      "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50109971",
+      "differences": [
+        {
+          "field": "title",
+          "research": "Postgraduate Studies - Performing Arts",
+          "catalogue": "DAAD Postgraduate Studies in the Field of Performing Arts"
+        }
+      ],
+      "research_funding_type": "",
+      "catalogue_fully_funded": 1,
+      "catalogue_funding": "Fully Funded"
+    },
+    {
+      "research_id": 236,
+      "catalogue_id": 236,
+      "research_title": "MEXT Scholarship for Undergraduate Students",
+      "catalogue_title": "MEXT Scholarship for Undergraduate Students",
+      "url": "https://www.mext.go.jp/en/policy/education/highered/title02/detail02/sdetail02/1373897.htm",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": 1,
+      "catalogue_funding": "Fully Funded"
+    },
+    {
+      "research_id": 237,
+      "catalogue_id": 237,
+      "research_title": "MEXT Scholarship for Research Students (University Recommendation)",
+      "catalogue_title": "MEXT Scholarship for Research Students (University Recommendation)",
+      "url": "https://www.mext.go.jp/content/20251205-mxt_kotokoku01-000046164_2.pdf",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": 1,
+      "catalogue_funding": "Fully Funded"
+    },
+    {
+      "research_id": 239,
+      "catalogue_id": 239,
+      "research_title": "MEXT Young Leaders Program (YLP) Scholarship",
+      "catalogue_title": "MEXT Young Leaders Program (YLP) Scholarship",
+      "url": "https://www.studyinjapan.go.jp/en/planning/scholarships/about-scholarships",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": 1,
+      "catalogue_funding": "Fully Funded"
+    },
+    {
+      "research_id": 284,
+      "catalogue_id": 284,
+      "research_title": "Erasmus Mundus Joint Master Degrees — Belgian Universities",
+      "catalogue_title": "Erasmus Mundus Joint Master Degrees — Belgian Universities",
+      "url": "https://www.studyinbelgium.be/en/scholarships/erasmus-mundus-joint-masters-degrees-emjmd",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": 1,
+      "catalogue_funding": "Fully Funded"
+    },
+    {
+      "research_id": 293,
+      "catalogue_id": 293,
+      "research_title": "Erasmus Mundus Joint Master Degrees — Polish Universities",
+      "catalogue_title": "Erasmus Mundus Joint Master Degrees — Polish Universities",
+      "url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters/poland",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": 1,
+      "catalogue_funding": "Fully Funded"
+    },
+    {
+      "research_id": 298,
+      "catalogue_id": 298,
+      "research_title": "Erasmus Mundus Joint Master Degrees — Czech Universities",
+      "catalogue_title": "Erasmus Mundus Joint Master Degrees — Czech Universities",
+      "url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters/czech-republic",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": 1,
+      "catalogue_funding": "Fully Funded"
+    },
+    {
+      "research_id": 300,
+      "catalogue_id": 300,
+      "research_title": "Erasmus Mundus Joint Master Degrees — Portuguese Universities",
+      "catalogue_title": "Erasmus Mundus Joint Master Degrees — Portuguese Universities",
+      "url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters/portugal",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": 1,
+      "catalogue_funding": "Fully Funded"
+    },
+    {
+      "research_id": 350,
+      "catalogue_id": 350,
+      "research_title": "Erasmus Mundus Joint Master Scholarship - Bioceb (European Master in Biological and Chemical Enginee",
+      "catalogue_title": "Erasmus Mundus Joint Master Scholarship - Bioceb (European Master in Biological and Chemical Enginee",
+      "url": "https://www.master-bioceb.eu",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "Partial"
+    },
+    {
+      "research_id": 514,
+      "catalogue_id": 514,
+      "research_title": "Japanese Government (MEXT) Scholarship for 2027 - Research Students (Embassy Recommendation)",
+      "catalogue_title": "Japanese Government (MEXT) Scholarship for 2027 - Research Students (Embassy Recommendation)",
+      "url": "https://www.mext.go.jp/a_menu/koutou/ryugaku/boshu/1415352_00008.htm",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": 1,
+      "catalogue_funding": "Fully Funded"
+    },
+    {
+      "research_id": 515,
+      "catalogue_id": 515,
+      "research_title": "Young Leaders' Program (YLP) - Japanese Government (MEXT) Scholarship, GRIPS School of Government and School of Local Governance",
+      "catalogue_title": "Young Leaders' Program (YLP) - Japanese Government (MEXT) Scholarship, GRIPS School of Government and School of Local Governance",
+      "url": "https://www.grips.ac.jp/en/education/inter_programs/leader",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": 1,
+      "catalogue_funding": "Fully Funded"
+    },
+    {
+      "research_id": 516,
+      "catalogue_id": 516,
+      "research_title": "GKS (Global Korea Scholarship) Program - Undergraduate Degree Programs",
+      "catalogue_title": "GKS (Global Korea Scholarship) Program - Undergraduate Degree Programs",
+      "url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
+      "differences": [],
+      "research_funding_type": "Fully Funded",
+      "catalogue_fully_funded": 1,
+      "catalogue_funding": "Fully Funded"
+    },
+    {
+      "research_id": 757,
+      "catalogue_id": 757,
+      "research_title": "DAAD Postgraduate Studies in the Field of Music",
+      "catalogue_title": "DAAD Postgraduate Studies in the Field of Music",
+      "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135743",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": 1,
+      "catalogue_funding": "Fully Funded"
+    },
+    {
+      "research_id": 769,
+      "catalogue_id": 769,
+      "research_title": "DAAD Study Scholarships - Master Studies for All Academic Disciplines (2027)",
+      "catalogue_title": "DAAD Study Scholarships - Master Studies for All Academic Disciplines (2027)",
+      "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": 1,
+      "catalogue_funding": "Fully Funded"
+    },
+    {
+      "research_id": 1233,
+      "catalogue_id": 1233,
+      "research_title": "Erasmus Mundus Joint Master Degrees — Austria-based",
+      "catalogue_title": "Erasmus Mundus Joint Master Degrees — Austria-based",
+      "url": "https://www.eacea.ec.europa.eu/scholarships/emjmd-catalogue_en",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": 1,
+      "catalogue_funding": "Fully Funded"
+    },
+    {
+      "research_id": 1239,
+      "catalogue_id": 1239,
+      "research_title": "DAAD Helmut-Schmidt-Programme (Public Policy and Good Governance)",
+      "catalogue_title": "DAAD Helmut-Schmidt-Programme (Public Policy and Good Governance)",
+      "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50018884",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": 1,
+      "catalogue_funding": "Fully Funded"
+    },
+    {
+      "research_id": 1240,
+      "catalogue_id": 1240,
+      "research_title": "MEXT Scholarship for Japanese Studies Students",
+      "catalogue_title": "MEXT Scholarship for Japanese Studies Students",
+      "url": "https://www.mext.go.jp/content/20251222-mxt_kotokoku01-000046488_02.pdf",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": 1,
+      "catalogue_funding": "Fully Funded"
+    },
+    {
+      "research_id": 1298,
+      "catalogue_id": 1292,
+      "research_title": "Kipaji Scholarship Fund (University of Twente)",
+      "catalogue_title": "Kipaji Scholarship Fund (University of Twente)",
+      "url": "https://www.utwente.nl/en/education/scholarship-finder/kipaji-scholarship",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "Partial"
+    },
+    {
+      "research_id": 1299,
+      "catalogue_id": 1299,
+      "research_title": "Slovak Republic Governmental Scholarships 2026/2027",
+      "catalogue_title": "Slovak Republic Governmental Scholarships 2026/2027",
+      "url": "https://www.vladnestipendia.sk/en",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "Stipend"
+    },
+    {
+      "research_id": 1300,
+      "catalogue_id": 1300,
+      "research_title": "Slovak Republic National Scholarship Programme 2026/2027",
+      "catalogue_title": "Slovak Republic National Scholarship Programme 2026/2027",
+      "url": "https://www.scholarships.sk/en",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "Stipend"
+    },
+    {
+      "research_id": 1301,
+      "catalogue_id": 1301,
+      "research_title": "Slovak Republic Bilateral Scholarships 2026/2027",
+      "catalogue_title": "Slovak Republic Bilateral Scholarships 2026/2027",
+      "url": "https://www.minedu.sk/scholarships-offered-within-the-framework-of-bilateral-programs-of-cooperation-for-20262027",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "Partial Funding"
+    },
+    {
+      "research_id": 1302,
+      "catalogue_id": 1302,
+      "research_title": "Slovenia Ad Futura Scholarships for Western Balkans 2026/2027",
+      "catalogue_title": "Slovenia Ad Futura Scholarships for Western Balkans 2026/2027",
+      "url": "https://srips-rs.si/en/scholarships/ad-futura-scholarships/scholarships-for-studies-of-foreign-nationals-in-slovenia",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "9,600 EUR/year (800 EUR/month) for living expenses for official duration of programme"
+    },
+    {
+      "research_id": 1303,
+      "catalogue_id": 1303,
+      "research_title": "Slovenia Bilateral Scholarships 2026/2027",
+      "catalogue_title": "Slovenia Bilateral Scholarships 2026/2027",
+      "url": "https://studyinslovenia.si/wp-content/uploads/Invitation-Slovenia-Bilateral-scholarships-2026-27.pdf",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "Partial Funding"
+    },
+    {
+      "research_id": 1304,
+      "catalogue_id": 1304,
+      "research_title": "Malta Endeavour II Scholarships Scheme 2026 (5th Call)",
+      "catalogue_title": "Malta Endeavour II Scholarships Scheme 2026 (5th Call)",
+      "url": "https://myscholarship.gov.mt/en/services/endeavour-ii",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "Fully Funded"
+    },
+    {
+      "research_id": 1305,
+      "catalogue_id": 1305,
+      "research_title": "Malta Tertiary Education Scholarships Scheme (TESS) 2026",
+      "catalogue_title": "Malta Tertiary Education Scholarships Scheme (TESS) 2026",
+      "url": "https://www.servizz.gov.mt/en/Pages/Education_-Science-and-Technology/Education-Services/Scholarships/default.aspx",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "Partial Funding"
+    },
+    {
+      "research_id": 1306,
+      "catalogue_id": 1306,
+      "research_title": "Luxembourg Guillaume Dupaix International Excellence Scholarship 2026/2027",
+      "catalogue_title": "Luxembourg Guillaume Dupaix International Excellence Scholarship 2026/2027",
+      "url": "https://www.uni.lu/life-en/financial-support/scholarships/guillaume-dupaix-international-scholarship",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "Master's: 11,526 EUR/year (5,763 EUR/semester) for living/accommodation; Exchange: ~5,763 EUR/semester; PhD: ~1,150 E..."
+    },
+    {
+      "research_id": 1307,
+      "catalogue_id": 1307,
+      "research_title": "Icelandic Government Scholarships 2026/2027 (BA Icelandic as Second Language)",
+      "catalogue_title": "Icelandic Government Scholarships 2026/2027 (BA Icelandic as Second Language)",
+      "url": "https://www.arnastofnun.is/en/about-scholarship",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "Stipend"
+    },
+    {
+      "research_id": 1308,
+      "catalogue_id": 1308,
+      "research_title": "Cyprus CyprusAid Scholarships 2026/2027 (CUT, AUB Mediterraneo, University of Nicosia)",
+      "catalogue_title": "Cyprus CyprusAid Scholarships 2026/2027 (CUT, AUB Mediterraneo, University of Nicosia)",
+      "url": "https://www.cut.ac.cy/news/article/?contentId=636570&languageId=1",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "Fully Funded"
+    },
+    {
+      "research_id": 1309,
+      "catalogue_id": 1309,
+      "research_title": "Fulbright Foreign Student Program",
+      "catalogue_title": "Fulbright Foreign Student Program",
+      "url": "https://fulbright.state.gov",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "Partial Funding"
+    },
+    {
+      "research_id": 1310,
+      "catalogue_id": 1310,
+      "research_title": "Fulbright Foreign Language Teaching Assistant (FLTA) Program",
+      "catalogue_title": "Fulbright Foreign Language Teaching Assistant (FLTA) Program",
+      "url": "https://fulbright.state.gov/flta",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "Tuition Waiver"
+    },
+    {
+      "research_id": 1311,
+      "catalogue_id": 1311,
+      "research_title": "Harvard College International Student Financial Aid",
+      "catalogue_title": "Harvard College International Student Financial Aid",
+      "url": "https://college.harvard.edu/financial-aid",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "Partial Funding"
+    },
+    {
+      "research_id": 1312,
+      "catalogue_id": 1312,
+      "research_title": "Stanford Knight-Hennessy Scholars Program",
+      "catalogue_title": "Knight-Hennessy Scholars",
+      "url": "https://knight-hennessy.stanford.edu",
+      "differences": [
+        {
+          "field": "title",
+          "research": "Stanford Knight-Hennessy Scholars Program",
+          "catalogue": "Knight-Hennessy Scholars"
+        }
+      ],
+      "research_funding_type": "",
+      "catalogue_fully_funded": 1,
+      "catalogue_funding": "Fully Funded"
+    },
+    {
+      "research_id": 1313,
+      "catalogue_id": 1313,
+      "research_title": "Pearson",
+      "catalogue_title": "Pearson",
+      "url": "https://future.utoronto.ca/pearson-scholarships",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "CAD 17,500/year + tuition"
+    },
+    {
+      "research_id": 1314,
+      "catalogue_id": 1314,
+      "research_title": "University of Alberta International Entrance Scholarships",
+      "catalogue_title": "University of Alberta International Entrance Scholarships",
+      "url": "https://www.ualberta.ca/en/admissions/tuition-and-scholarships/international-entrance-scholarships/index.html",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "Partial Funding"
+    },
+    {
+      "research_id": 1315,
+      "catalogue_id": 1315,
+      "research_title": "JICA",
+      "catalogue_title": "JICA",
+      "url": "https://www.jica.go.jp/english/our_work/types_of_assistance/tech_acceptance/training/index.html",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "JPY 145,000/month + tuition + travel"
+    },
+    {
+      "research_id": 1316,
+      "catalogue_id": 1316,
+      "research_title": "ADB-Japan",
+      "catalogue_title": "ADB-Japan",
+      "url": "https://www.adb.org/scholarship/adb-japan-scholarship-program",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "JPY 145,000/month + tuition + travel"
+    },
+    {
+      "research_id": 1317,
+      "catalogue_id": 1317,
+      "research_title": "UTokyo",
+      "catalogue_title": "UTokyo",
+      "url": "https://www.u-tokyo.ac.jp/en/admission/scholarship.html",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "Tuition Waiver"
+    },
+    {
+      "research_id": 1318,
+      "catalogue_id": 1318,
+      "research_title": "Kyoto",
+      "catalogue_title": "Kyoto",
+      "url": "https://www.kyoto-u.ac.jp/en/education-campus/scholarship",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "Tuition Waiver"
+    },
+    {
+      "research_id": 1319,
+      "catalogue_id": 1319,
+      "research_title": "Tokyo Tech",
+      "catalogue_title": "Tokyo Tech",
+      "url": "https://www.titech.ac.jp/english/enrolled/scholarships",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "Tuition Waiver"
+    },
+    {
+      "research_id": 1320,
+      "catalogue_id": 1320,
+      "research_title": "SNU",
+      "catalogue_title": "SNU",
+      "url": "https://en.snu.ac.kr/admission/scholarship",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "KRW 1,200,000/month + tuition + insurance"
+    },
+    {
+      "research_id": 1321,
+      "catalogue_id": 1321,
+      "research_title": "KAIST",
+      "catalogue_title": "KAIST",
+      "url": "https://admission.kaist.ac.kr/scholarship",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "KRW 1,200,000/month + tuition + insurance"
+    },
+    {
+      "research_id": 1322,
+      "catalogue_id": 1322,
+      "research_title": "POSTECH",
+      "catalogue_title": "POSTECH",
+      "url": "https://admission.postech.ac.kr/scholarship",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "KRW 1,200,000/month + tuition + insurance"
+    },
+    {
+      "research_id": 1323,
+      "catalogue_id": 1323,
+      "research_title": "Samsung Dream Scholarship Foundation",
+      "catalogue_title": "Samsung Dream Scholarship Foundation",
+      "url": "https://www.samsungdreamfund.org",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "Corporate Foundation"
+    },
+    {
+      "research_id": 1324,
+      "catalogue_id": 1324,
+      "research_title": "KFAS Scholarship (Korea Foundation for Advanced Studies)",
+      "catalogue_title": "KFAS Scholarship (Korea Foundation for Advanced Studies)",
+      "url": "https://www.kfas.or.kr/eng/scholarship",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "Foundation"
+    },
+    {
+      "research_id": 1325,
+      "catalogue_id": 1325,
+      "research_title": "A*STAR AGS",
+      "catalogue_title": "A*STAR AGS",
+      "url": "https://www.a-star.edu.sg/Scholarships/For-Graduate-Studies/ASTAR-Graduate-Scholarship",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "SGD 2,200/month + tuition + travel"
+    },
+    {
+      "research_id": 1326,
+      "catalogue_id": 1326,
+      "research_title": "SINGA",
+      "catalogue_title": "SINGA",
+      "url": "https://www.singa.a-star.edu.sg",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "SGD 2,200/month + tuition + travel"
+    },
+    {
+      "research_id": 1327,
+      "catalogue_id": 1327,
+      "research_title": "NUS",
+      "catalogue_title": "NUS",
+      "url": "https://nus.edu.sg/scholarships",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "SGD 1,500-3,000/month + tuition"
+    },
+    {
+      "research_id": 1328,
+      "catalogue_id": 1328,
+      "research_title": "ANU",
+      "catalogue_title": "ANU",
+      "url": "https://study.anu.edu.au/scholarships",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "AUD 32,500/year + tuition + insurance"
+    },
+    {
+      "research_id": 1329,
+      "catalogue_id": 1329,
+      "research_title": "Melbourne",
+      "catalogue_title": "Melbourne",
+      "url": "https://scholarships.unimelb.edu.au",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "AUD 35,000/year + tuition + insurance"
+    },
+    {
+      "research_id": 1330,
+      "catalogue_id": 1330,
+      "research_title": "UNSW",
+      "catalogue_title": "UNSW",
+      "url": "https://www.scholarships.unsw.edu.au",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "AUD 35,000/year + tuition + insurance"
+    },
+    {
+      "research_id": 1331,
+      "catalogue_id": 1331,
+      "research_title": "Auckland/Otago",
+      "catalogue_title": "Auckland/Otago",
+      "url": "https://international.auckland.ac.nz/study/scholarships",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "NZD 27,000/year + tuition + insurance"
+    },
+    {
+      "research_id": 1332,
+      "catalogue_id": 1332,
+      "research_title": "University of Otago International Scholarships",
+      "catalogue_title": "University of Otago International Scholarships",
+      "url": "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "University"
+    },
+    {
+      "research_id": 1333,
+      "catalogue_id": 1333,
+      "research_title": "Beijing Government Scholarship (BGS)",
+      "catalogue_title": "Beijing Government Scholarship (BGS)",
+      "url": "https://english.beijing.gov.cn/studyinginbeijing/index.html",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "Municipal Government"
+    },
+    {
+      "research_id": 1334,
+      "catalogue_id": 1334,
+      "research_title": "Peking University Scholarships for International Students",
+      "catalogue_title": "Peking University Scholarships for International Students",
+      "url": "https://isd.pku.edu.cn/en/scholarship.php",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "University"
+    },
+    {
+      "research_id": 1335,
+      "catalogue_id": 1335,
+      "research_title": "Tsinghua University Scholarships for International Students",
+      "catalogue_title": "Tsinghua University Scholarships for International Students",
+      "url": "https://yz.tsinghua.edu.cn/en/Financial_Aid/Scholarship_Application.htm",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "University"
+    },
+    {
+      "research_id": 1336,
+      "catalogue_id": 1336,
+      "research_title": "Huayu Enrichment Scholarship (HES)",
+      "catalogue_title": "Taiwan Scholarship 2027",
+      "url": "https://taiwanscholarship.moe.gov.tw",
+      "differences": [
+        {
+          "field": "title",
+          "research": "Huayu Enrichment Scholarship (HES)",
+          "catalogue": "Taiwan Scholarship 2027"
+        }
+      ],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "Partial"
+    },
+    {
+      "research_id": 1337,
+      "catalogue_id": 1337,
+      "research_title": "Taiwan International Graduate Program (TIGP)",
+      "catalogue_title": "Taiwan International Graduate Program (TIGP)",
+      "url": "https://tigp.apps.sinica.edu.tw",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "Government (Academia Sinica)"
+    },
+    {
+      "research_id": 1338,
+      "catalogue_id": 1338,
+      "research_title": "NTU International Degree Student Scholarship",
+      "catalogue_title": "NTU International Degree Student Scholarship",
+      "url": "https://admissions.ntu.edu.tw/apply/scholarships",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "University"
+    },
+    {
+      "research_id": 1339,
+      "catalogue_id": 1339,
+      "research_title": "HKSAR Fund",
+      "catalogue_title": "HKSAR Fund",
+      "url": "https://www.edb.gov.hk/en/edu-system/postsecondary/local-higher-edu/publicly-funded-programmes/scholarship.html",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "HKD 200,000/year + tuition"
+    },
+    {
+      "research_id": 1340,
+      "catalogue_id": 1340,
+      "research_title": "HKU",
+      "catalogue_title": "HKU",
+      "url": "https://admissions.hku.hk/fees-and-scholarships/scholarships",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "HKD 200,000/year + tuition + stipend"
+    },
+    {
+      "research_id": 1341,
+      "catalogue_id": 1341,
+      "research_title": "CUHK",
+      "catalogue_title": "CUHK",
+      "url": "https://admission.cuhk.edu.hk/fees-financing-your-studies/scholarships",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "HKD 200,000/year + tuition + stipend"
+    },
+    {
+      "research_id": 1342,
+      "catalogue_id": 1342,
+      "research_title": "GREAT Scholarships (British Council)",
+      "catalogue_title": "GREAT Scholarships (British Council)",
+      "url": "https://study-uk.britishcouncil.org/scholarships-funding/great-scholarships",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "Government + Universities + British Council"
+    },
+    {
+      "research_id": 1343,
+      "catalogue_id": 1343,
+      "research_title": "MAECI",
+      "catalogue_title": "MAECI",
+      "url": "https://www.esteri.it/en/servizi-opportunita/opportunita/borse-di-studio/per-cittadini-stranieri/borsestudio_stranieri",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "Tuition Waiver"
+    },
+    {
+      "research_id": 1344,
+      "catalogue_id": 1344,
+      "research_title": "Invest Your Talent",
+      "catalogue_title": "Invest Your Talent",
+      "url": "https://investyourtalentapplication.esteri.it/SitoIYT/EN/invest-your-talent-in-italy",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "Tuition Waiver"
+    },
+    {
+      "research_id": 1345,
+      "catalogue_id": 1345,
+      "research_title": "DAAD-EPOS",
+      "catalogue_title": "DAAD-EPOS",
+      "url": "https://www.daad.de/epos",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "EUR 934/month + travel + insurance"
+    },
+    {
+      "research_id": 1346,
+      "catalogue_id": 1346,
+      "research_title": "Eiffel",
+      "catalogue_title": "Eiffel",
+      "url": "https://www.campusfrance.org/en/france-excellence-eiffel-scholarship-program",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "EUR 1,181/month + travel + insurance"
+    },
+    {
+      "research_id": 1347,
+      "catalogue_id": 1347,
+      "research_title": "Ernst Mach Worldwide",
+      "catalogue_title": "Ernst Mach Worldwide",
+      "url": "https://oead.at/en/study-research-teaching/overview-grants-and-scholarships/ernst-mach-grant",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "EUR 1,150/month + insurance"
+    },
+    {
+      "research_id": 1348,
+      "catalogue_id": 1348,
+      "research_title": "Ernst Mach FH",
+      "catalogue_title": "Ernst Mach FH",
+      "url": "https://oead.at/en/study-research-teaching/overview-grants-and-scholarships/ernst-mach-grant#ernst-mach-fh",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "EUR 1,150/month + insurance"
+    },
+    {
+      "research_id": 1349,
+      "catalogue_id": 1349,
+      "research_title": "Ernst Mach ASEA",
+      "catalogue_title": "Ernst Mach ASEA",
+      "url": "https://oead.at/en/study-research-teaching/overview-grants-and-scholarships/ernst-mach-grant#ernst-mach-asea",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "EUR 1,150/month + insurance"
+    },
+    {
+      "research_id": 1350,
+      "catalogue_id": 1350,
+      "research_title": "CGRS-D",
+      "catalogue_title": "CGRS-D",
+      "url": "https://www.nserc-crsng.gc.ca/Students-Etudiants/PG-CS/CGRS-D-BRCD_eng.asp",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "CAD 35,000/year + research allowance"
+    },
+    {
+      "research_id": 1351,
+      "catalogue_id": 1351,
+      "research_title": "CPRA",
+      "catalogue_title": "CPRA",
+      "url": "https://www.nserc-crsng.gc.ca/Students-Etudiants/PD-PD/CPRA-BRPC_eng.asp",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "CAD 35,000/year + research allowance"
+    },
+    {
+      "research_id": 1352,
+      "catalogue_id": 1352,
+      "research_title": "HKUST",
+      "catalogue_title": "HKUST",
+      "url": "https://join.hkust.edu.hk/admissions/scholarships",
+      "differences": [],
+      "research_funding_type": "",
+      "catalogue_fully_funded": null,
+      "catalogue_funding": "HKD 200,000/year + tuition + stipend"
+    }
+  ]
+}

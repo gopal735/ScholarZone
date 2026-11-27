@@ -1,0 +1,2117 @@
+[
+  {
+    "research_record_key": "research_1",
+    "existing_canonical_id": 1,
+    "proposed_operation": "EXISTING_CYCLE_UPDATE",
+    "programme_identity": "Erasmus Mundus Joint Masters (EMJM)",
+    "provider": "",
+    "host_country": "Germany",
+    "source_references": [
+      "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CORRECTED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; cycle update needed"
+  },
+  {
+    "research_record_key": "research_3",
+    "existing_canonical_id": 3,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "DAAD Scholarship",
+    "provider": "",
+    "host_country": "Germany",
+    "source_references": [
+      "https://www.daad.de"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CORRECTED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_4",
+    "existing_canonical_id": 516,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "GKS (Global Korea Scholarship) Program - Undergraduate Degree Programs",
+    "provider": "",
+    "host_country": "South Korea",
+    "source_references": [
+      "https://www.studyinkorea.go.kr/en/plan/scholarship.do"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_5",
+    "existing_canonical_id": 5,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "MEXT (Monbukagakusho) Scholarship",
+    "provider": "",
+    "host_country": "Japan",
+    "source_references": [
+      "https://www.studyinjapan.go.jp"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_17",
+    "existing_canonical_id": 17,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Erasmus+ Student Exchange (Studying Abroad)",
+    "provider": "",
+    "host_country": "EU (multiple)",
+    "source_references": [
+      "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/studying-abroad"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_21",
+    "existing_canonical_id": 21,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "DAAD Study Scholarships - Master Studies for All Academic Disciplines",
+    "provider": "",
+    "host_country": "Germany",
+    "source_references": [
+      "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_23",
+    "existing_canonical_id": 23,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "DAAD Development-Related Postgraduate Courses (EPOS)",
+    "provider": "",
+    "host_country": "Germany",
+    "source_references": [
+      "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_26",
+    "existing_canonical_id": 516,
+    "proposed_operation": "EXISTING_CYCLE_UPDATE",
+    "programme_identity": "GKS (Global Korea Scholarship) Program - Graduate Degree Programs",
+    "provider": "",
+    "host_country": "South Korea",
+    "source_references": [
+      "https://www.studyinkorea.go.kr/en/plan/scholarship.do"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; cycle update needed"
+  },
+  {
+    "research_record_key": "research_168",
+    "existing_canonical_id": 168,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Erasmus Mundus Joint Master Degrees — Austria-based",
+    "provider": "",
+    "host_country": "Netherlands",
+    "source_references": [
+      "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_192",
+    "existing_canonical_id": 192,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Erasmus Mundus Joint Master Degrees — Sweden-based",
+    "provider": "",
+    "host_country": "Sweden",
+    "source_references": [
+      "https://www.eacea.ec.europa.eu/scholarships/emjmd-catalogue_en/sweden"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_228",
+    "existing_canonical_id": 228,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "DAAD Research Grants - Doctoral Candidates and Young Academics",
+    "provider": "",
+    "host_country": "Germany",
+    "source_references": [
+      "https://www.daad-bangladesh.org/en/studying-in-germany/phd-studies/research-grants-in-germany-for-phd-scholars"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_229",
+    "existing_canonical_id": 229,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "DAAD University Summer Courses Scholarship",
+    "provider": "",
+    "host_country": "Germany",
+    "source_references": [
+      "https://www.daad-bangladesh.org/en/studying-in-germany/daad-scholarships"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_230",
+    "existing_canonical_id": 230,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "DAAD Helmut-Schmidt-Programme (Master's Scholarships for Public Policy and Good Governance - PPGG)",
+    "provider": "",
+    "host_country": "Germany",
+    "source_references": [
+      "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026397"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_231",
+    "existing_canonical_id": 231,
+    "proposed_operation": "EXISTING_CYCLE_UPDATE",
+    "programme_identity": "Postgraduate Studies - Architecture",
+    "provider": "",
+    "host_country": "Germany",
+    "source_references": [
+      "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135744"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; cycle update needed"
+  },
+  {
+    "research_record_key": "research_232",
+    "existing_canonical_id": 232,
+    "proposed_operation": "EXISTING_CYCLE_UPDATE",
+    "programme_identity": "Postgraduate Studies - Fine Art/Design/Film",
+    "provider": "",
+    "host_country": "Germany",
+    "source_references": [
+      "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135742"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; cycle update needed"
+  },
+  {
+    "research_record_key": "research_234",
+    "existing_canonical_id": 234,
+    "proposed_operation": "EXISTING_CYCLE_UPDATE",
+    "programme_identity": "Postgraduate Studies - Performing Arts",
+    "provider": "",
+    "host_country": "Germany",
+    "source_references": [
+      "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50109971"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; cycle update needed"
+  },
+  {
+    "research_record_key": "research_236",
+    "existing_canonical_id": 236,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "MEXT Scholarship for Undergraduate Students",
+    "provider": "",
+    "host_country": "Japan",
+    "source_references": [
+      "https://www.mext.go.jp/en/policy/education/highered/title02/detail02/sdetail02/1373897.htm"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_237",
+    "existing_canonical_id": 237,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "MEXT Scholarship for Research Students (University Recommendation)",
+    "provider": "",
+    "host_country": "Japan",
+    "source_references": [
+      "https://www.mext.go.jp/content/20251205-mxt_kotokoku01-000046164_2.pdf"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_239",
+    "existing_canonical_id": 239,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "MEXT Young Leaders Program (YLP) Scholarship",
+    "provider": "",
+    "host_country": "Japan",
+    "source_references": [
+      "https://www.studyinjapan.go.jp/en/planning/scholarships/about-scholarships"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_284",
+    "existing_canonical_id": 284,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Erasmus Mundus Joint Master Degrees — Belgian Universities",
+    "provider": "",
+    "host_country": "Belgium",
+    "source_references": [
+      "https://www.studyinbelgium.be/en/scholarships/erasmus-mundus-joint-masters-degrees-emjmd"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_293",
+    "existing_canonical_id": 293,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Erasmus Mundus Joint Master Degrees — Polish Universities",
+    "provider": "",
+    "host_country": "Poland",
+    "source_references": [
+      "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters/poland"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_298",
+    "existing_canonical_id": 298,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Erasmus Mundus Joint Master Degrees — Czech Universities",
+    "provider": "",
+    "host_country": "Czech Republic",
+    "source_references": [
+      "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters/czech-republic"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_300",
+    "existing_canonical_id": 300,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Erasmus Mundus Joint Master Degrees — Portuguese Universities",
+    "provider": "",
+    "host_country": "Portugal",
+    "source_references": [
+      "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters/portugal"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_350",
+    "existing_canonical_id": 350,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Erasmus Mundus Joint Master Scholarship - Bioceb (European Master in Biological and Chemical Enginee",
+    "provider": "",
+    "host_country": "International",
+    "source_references": [
+      "https://www.master-bioceb.eu"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_514",
+    "existing_canonical_id": 514,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Japanese Government (MEXT) Scholarship for 2027 - Research Students (Embassy Recommendation)",
+    "provider": "",
+    "host_country": "Japan",
+    "source_references": [
+      "https://www.mext.go.jp/a_menu/koutou/ryugaku/boshu/1415352_00008.htm"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_515",
+    "existing_canonical_id": 515,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Young Leaders' Program (YLP) - Japanese Government (MEXT) Scholarship, GRIPS School of Government and School of Local Governance",
+    "provider": "",
+    "host_country": "Japan",
+    "source_references": [
+      "https://www.grips.ac.jp/en/education/inter_programs/leader"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_516",
+    "existing_canonical_id": 516,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "GKS (Global Korea Scholarship) Program - Undergraduate Degree Programs",
+    "provider": "",
+    "host_country": "South Korea",
+    "source_references": [
+      "https://www.studyinkorea.go.kr/en/plan/scholarship.do"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_757",
+    "existing_canonical_id": 757,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "DAAD Postgraduate Studies in the Field of Music",
+    "provider": "",
+    "host_country": "Germany",
+    "source_references": [
+      "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135743"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_769",
+    "existing_canonical_id": 769,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "DAAD Study Scholarships - Master Studies for All Academic Disciplines (2027)",
+    "provider": "",
+    "host_country": "Germany",
+    "source_references": [
+      "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1233",
+    "existing_canonical_id": 1233,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Erasmus Mundus Joint Master Degrees — Austria-based",
+    "provider": "",
+    "host_country": "Austria",
+    "source_references": [
+      "https://www.eacea.ec.europa.eu/scholarships/emjmd-catalogue_en"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1239",
+    "existing_canonical_id": 1239,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "DAAD Helmut-Schmidt-Programme (Public Policy and Good Governance)",
+    "provider": "",
+    "host_country": "Germany",
+    "source_references": [
+      "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50018884"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1240",
+    "existing_canonical_id": 1240,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "MEXT Scholarship for Japanese Studies Students",
+    "provider": "",
+    "host_country": "Japan",
+    "source_references": [
+      "https://www.mext.go.jp/content/20251222-mxt_kotokoku01-000046488_02.pdf"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1298",
+    "existing_canonical_id": 1292,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Kipaji Scholarship Fund (University of Twente)",
+    "provider": "",
+    "host_country": "Netherlands",
+    "source_references": [
+      "https://www.utwente.nl/en/education/scholarship-finder/kipaji-scholarship"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1299",
+    "existing_canonical_id": 1299,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Slovak Republic Governmental Scholarships 2026/2027",
+    "provider": "",
+    "host_country": "Europe",
+    "source_references": [
+      "https://www.vladnestipendia.sk/en"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1300",
+    "existing_canonical_id": 1300,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Slovak Republic National Scholarship Programme 2026/2027",
+    "provider": "",
+    "host_country": "Europe",
+    "source_references": [
+      "https://www.scholarships.sk/en"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1301",
+    "existing_canonical_id": 1301,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Slovak Republic Bilateral Scholarships 2026/2027",
+    "provider": "",
+    "host_country": "Europe",
+    "source_references": [
+      "https://www.minedu.sk/scholarships-offered-within-the-framework-of-bilateral-programs-of-cooperation-for-20262027"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1302",
+    "existing_canonical_id": 1302,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Slovenia Ad Futura Scholarships for Western Balkans 2026/2027",
+    "provider": "",
+    "host_country": "Slovenia",
+    "source_references": [
+      "https://srips-rs.si/en/scholarships/ad-futura-scholarships/scholarships-for-studies-of-foreign-nationals-in-slovenia"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1303",
+    "existing_canonical_id": 1303,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Slovenia Bilateral Scholarships 2026/2027",
+    "provider": "",
+    "host_country": "Slovenia",
+    "source_references": [
+      "https://studyinslovenia.si/wp-content/uploads/Invitation-Slovenia-Bilateral-scholarships-2026-27.pdf"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1304",
+    "existing_canonical_id": 1304,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Malta Endeavour II Scholarships Scheme 2026 (5th Call)",
+    "provider": "",
+    "host_country": "Malta",
+    "source_references": [
+      "https://myscholarship.gov.mt/en/services/endeavour-ii"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1305",
+    "existing_canonical_id": 1305,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Malta Tertiary Education Scholarships Scheme (TESS) 2026",
+    "provider": "",
+    "host_country": "Malta",
+    "source_references": [
+      "https://www.servizz.gov.mt/en/Pages/Education_-Science-and-Technology/Education-Services/Scholarships/default.aspx"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1306",
+    "existing_canonical_id": 1306,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Luxembourg Guillaume Dupaix International Excellence Scholarship 2026/2027",
+    "provider": "",
+    "host_country": "Luxembourg",
+    "source_references": [
+      "https://www.uni.lu/life-en/financial-support/scholarships/guillaume-dupaix-international-scholarship"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1307",
+    "existing_canonical_id": 1307,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Icelandic Government Scholarships 2026/2027 (BA Icelandic as Second Language)",
+    "provider": "",
+    "host_country": "Iceland",
+    "source_references": [
+      "https://www.arnastofnun.is/en/about-scholarship"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1308",
+    "existing_canonical_id": 1308,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Cyprus CyprusAid Scholarships 2026/2027 (CUT, AUB Mediterraneo, University of Nicosia)",
+    "provider": "",
+    "host_country": "Cyprus",
+    "source_references": [
+      "https://www.cut.ac.cy/news/article/?contentId=636570&languageId=1"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1309",
+    "existing_canonical_id": 1309,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Fulbright Foreign Student Program",
+    "provider": "",
+    "host_country": "United States",
+    "source_references": [
+      "https://fulbright.state.gov"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1310",
+    "existing_canonical_id": 1310,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Fulbright Foreign Language Teaching Assistant (FLTA) Program",
+    "provider": "",
+    "host_country": "United States",
+    "source_references": [
+      "https://fulbright.state.gov/flta"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1311",
+    "existing_canonical_id": 1311,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Harvard College International Student Financial Aid",
+    "provider": "",
+    "host_country": "United States",
+    "source_references": [
+      "https://college.harvard.edu/financial-aid"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1312",
+    "existing_canonical_id": 1312,
+    "proposed_operation": "EXISTING_CYCLE_UPDATE",
+    "programme_identity": "Stanford Knight-Hennessy Scholars Program",
+    "provider": "",
+    "host_country": "United States",
+    "source_references": [
+      "https://knight-hennessy.stanford.edu"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; cycle update needed"
+  },
+  {
+    "research_record_key": "research_1313",
+    "existing_canonical_id": 1313,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Pearson",
+    "provider": "",
+    "host_country": "Canada",
+    "source_references": [
+      "https://future.utoronto.ca/pearson-scholarships"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1314",
+    "existing_canonical_id": 1314,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "University of Alberta International Entrance Scholarships",
+    "provider": "",
+    "host_country": "United States",
+    "source_references": [
+      "https://www.ualberta.ca/en/admissions/tuition-and-scholarships/international-entrance-scholarships/index.html"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1315",
+    "existing_canonical_id": 1315,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "JICA",
+    "provider": "",
+    "host_country": "Japan",
+    "source_references": [
+      "https://www.jica.go.jp/english/our_work/types_of_assistance/tech_acceptance/training/index.html"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1316",
+    "existing_canonical_id": 1316,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "ADB-Japan",
+    "provider": "",
+    "host_country": "Japan",
+    "source_references": [
+      "https://www.adb.org/scholarship/adb-japan-scholarship-program"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1317",
+    "existing_canonical_id": 1317,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "UTokyo",
+    "provider": "",
+    "host_country": "Japan",
+    "source_references": [
+      "https://www.u-tokyo.ac.jp/en/admission/scholarship.html"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1318",
+    "existing_canonical_id": 1318,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Kyoto",
+    "provider": "",
+    "host_country": "Japan",
+    "source_references": [
+      "https://www.kyoto-u.ac.jp/en/education-campus/scholarship"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1319",
+    "existing_canonical_id": 1319,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Tokyo Tech",
+    "provider": "",
+    "host_country": "Japan",
+    "source_references": [
+      "https://www.titech.ac.jp/english/enrolled/scholarships"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1320",
+    "existing_canonical_id": 1320,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "SNU",
+    "provider": "",
+    "host_country": "South Korea",
+    "source_references": [
+      "https://en.snu.ac.kr/admission/scholarship"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1321",
+    "existing_canonical_id": 1321,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "KAIST",
+    "provider": "",
+    "host_country": "South Korea",
+    "source_references": [
+      "https://admission.kaist.ac.kr/scholarship"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1322",
+    "existing_canonical_id": 1322,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "POSTECH",
+    "provider": "",
+    "host_country": "South Korea",
+    "source_references": [
+      "https://admission.postech.ac.kr/scholarship"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1323",
+    "existing_canonical_id": 1323,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Samsung Dream Scholarship Foundation",
+    "provider": "",
+    "host_country": "South Korea",
+    "source_references": [
+      "https://www.samsungdreamfund.org"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1324",
+    "existing_canonical_id": 1324,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "KFAS Scholarship (Korea Foundation for Advanced Studies)",
+    "provider": "",
+    "host_country": "South Korea",
+    "source_references": [
+      "https://www.kfas.or.kr/eng/scholarship"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1325",
+    "existing_canonical_id": 1325,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "A*STAR AGS",
+    "provider": "",
+    "host_country": "Singapore",
+    "source_references": [
+      "https://www.a-star.edu.sg/Scholarships/For-Graduate-Studies/ASTAR-Graduate-Scholarship"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1326",
+    "existing_canonical_id": 1326,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "SINGA",
+    "provider": "",
+    "host_country": "Singapore",
+    "source_references": [
+      "https://www.singa.a-star.edu.sg"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1327",
+    "existing_canonical_id": 1327,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "NUS",
+    "provider": "",
+    "host_country": "Singapore",
+    "source_references": [
+      "https://nus.edu.sg/scholarships"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1328",
+    "existing_canonical_id": 1328,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "ANU",
+    "provider": "",
+    "host_country": "Australia",
+    "source_references": [
+      "https://study.anu.edu.au/scholarships"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1329",
+    "existing_canonical_id": 1329,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Melbourne",
+    "provider": "",
+    "host_country": "Australia",
+    "source_references": [
+      "https://scholarships.unimelb.edu.au"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1330",
+    "existing_canonical_id": 1330,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "UNSW",
+    "provider": "",
+    "host_country": "Australia",
+    "source_references": [
+      "https://www.scholarships.unsw.edu.au"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1331",
+    "existing_canonical_id": 1331,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Auckland/Otago",
+    "provider": "",
+    "host_country": "New Zealand",
+    "source_references": [
+      "https://international.auckland.ac.nz/study/scholarships"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1332",
+    "existing_canonical_id": 1332,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "University of Otago International Scholarships",
+    "provider": "",
+    "host_country": "New Zealand",
+    "source_references": [
+      "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1333",
+    "existing_canonical_id": 1333,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Beijing Government Scholarship (BGS)",
+    "provider": "",
+    "host_country": "China",
+    "source_references": [
+      "https://english.beijing.gov.cn/studyinginbeijing/index.html"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1334",
+    "existing_canonical_id": 1334,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Peking University Scholarships for International Students",
+    "provider": "",
+    "host_country": "China",
+    "source_references": [
+      "https://isd.pku.edu.cn/en/scholarship.php"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1335",
+    "existing_canonical_id": 1335,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Tsinghua University Scholarships for International Students",
+    "provider": "",
+    "host_country": "China",
+    "source_references": [
+      "https://yz.tsinghua.edu.cn/en/Financial_Aid/Scholarship_Application.htm"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1336",
+    "existing_canonical_id": 1336,
+    "proposed_operation": "EXISTING_CYCLE_UPDATE",
+    "programme_identity": "Huayu Enrichment Scholarship (HES)",
+    "provider": "",
+    "host_country": "Taiwan",
+    "source_references": [
+      "https://taiwanscholarship.moe.gov.tw"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; cycle update needed"
+  },
+  {
+    "research_record_key": "research_1337",
+    "existing_canonical_id": 1337,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Taiwan International Graduate Program (TIGP)",
+    "provider": "",
+    "host_country": "Taiwan",
+    "source_references": [
+      "https://tigp.apps.sinica.edu.tw"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1338",
+    "existing_canonical_id": 1338,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "NTU International Degree Student Scholarship",
+    "provider": "",
+    "host_country": "Taiwan",
+    "source_references": [
+      "https://admissions.ntu.edu.tw/apply/scholarships"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1339",
+    "existing_canonical_id": 1339,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "HKSAR Fund",
+    "provider": "",
+    "host_country": "Hong Kong",
+    "source_references": [
+      "https://www.edb.gov.hk/en/edu-system/postsecondary/local-higher-edu/publicly-funded-programmes/scholarship.html"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1340",
+    "existing_canonical_id": 1340,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "HKU",
+    "provider": "",
+    "host_country": "Hong Kong",
+    "source_references": [
+      "https://admissions.hku.hk/fees-and-scholarships/scholarships"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1341",
+    "existing_canonical_id": 1341,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "CUHK",
+    "provider": "",
+    "host_country": "Hong Kong",
+    "source_references": [
+      "https://admission.cuhk.edu.hk/fees-financing-your-studies/scholarships"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1342",
+    "existing_canonical_id": 1342,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "GREAT Scholarships (British Council)",
+    "provider": "",
+    "host_country": "United Kingdom",
+    "source_references": [
+      "https://study-uk.britishcouncil.org/scholarships-funding/great-scholarships"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1343",
+    "existing_canonical_id": 1343,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "MAECI",
+    "provider": "",
+    "host_country": "Italy",
+    "source_references": [
+      "https://www.esteri.it/en/servizi-opportunita/opportunita/borse-di-studio/per-cittadini-stranieri/borsestudio_stranieri"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1344",
+    "existing_canonical_id": 1344,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Invest Your Talent",
+    "provider": "",
+    "host_country": "Italy",
+    "source_references": [
+      "https://investyourtalentapplication.esteri.it/SitoIYT/EN/invest-your-talent-in-italy"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1345",
+    "existing_canonical_id": 1345,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "DAAD-EPOS",
+    "provider": "",
+    "host_country": "Germany",
+    "source_references": [
+      "https://www.daad.de/epos"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1346",
+    "existing_canonical_id": 1346,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Eiffel",
+    "provider": "",
+    "host_country": "France",
+    "source_references": [
+      "https://www.campusfrance.org/en/france-excellence-eiffel-scholarship-program"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1347",
+    "existing_canonical_id": 1347,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Ernst Mach Worldwide",
+    "provider": "",
+    "host_country": "Austria",
+    "source_references": [
+      "https://oead.at/en/study-research-teaching/overview-grants-and-scholarships/ernst-mach-grant"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1348",
+    "existing_canonical_id": 1348,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Ernst Mach FH",
+    "provider": "",
+    "host_country": "Austria",
+    "source_references": [
+      "https://oead.at/en/study-research-teaching/overview-grants-and-scholarships/ernst-mach-grant#ernst-mach-fh"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1349",
+    "existing_canonical_id": 1349,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "Ernst Mach ASEA",
+    "provider": "",
+    "host_country": "Austria",
+    "source_references": [
+      "https://oead.at/en/study-research-teaching/overview-grants-and-scholarships/ernst-mach-grant#ernst-mach-asea"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1350",
+    "existing_canonical_id": 1350,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "CGRS-D",
+    "provider": "",
+    "host_country": "Canada",
+    "source_references": [
+      "https://www.nserc-crsng.gc.ca/Students-Etudiants/PG-CS/CGRS-D-BRCD_eng.asp"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1351",
+    "existing_canonical_id": 1351,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "CPRA",
+    "provider": "",
+    "host_country": "Canada",
+    "source_references": [
+      "https://www.nserc-crsng.gc.ca/Students-Etudiants/PD-PD/CPRA-BRPC_eng.asp"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_1352",
+    "existing_canonical_id": 1352,
+    "proposed_operation": "NO_CHANGE",
+    "programme_identity": "HKUST",
+    "provider": "",
+    "host_country": "Hong Kong",
+    "source_references": [
+      "https://join.hkust.edu.hk/admissions/scholarships"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CONFIRMED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Exact match by official_source_url; no changes"
+  },
+  {
+    "research_record_key": "research_175",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "Erasmus University Rotterdam (EUR) - Holland Scholarship & Talent Programmes (NL Scholarship)",
+    "provider": "",
+    "host_country": "Netherlands",
+    "source_references": [
+      "https://www.eur.nl/en/education/practical-matters/scholarships-grants"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_360",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "MEXT Scholarship for 2027 - Embassy Recommendation (Research Students)",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_383",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "Erasmus Trustfonds Scholarship",
+    "provider": "",
+    "host_country": "Netherlands",
+    "source_references": [
+      "https://www.eur.nl/en/scholarship/erasmus-trustfonds-scholarship"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_384",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "Erasmus Trustfonds Scholarship / TSH Changemaker Scholarship (Erasmus MC)",
+    "provider": "",
+    "host_country": "Netherlands",
+    "source_references": [
+      "https://www.eur.nl/en/scholarship/erasmus-trustfonds-and-tsh-changemaker-scholarship"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_423",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "Erasmus+ Grant (Erasmus University Rotterdam)",
+    "provider": "",
+    "host_country": "Netherlands",
+    "source_references": [
+      "https://www.eur.nl/en/scholarship/erasmus-grant"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_554",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "Apoyo Complementario SECIHTI-OEA 2026",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://www.oas.org/es/becas/Mexico/Convocatoria_Secihti_OEA2026.pdf"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_555",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "2026-2027 OAS - Universidad del Desarrollo Scholarship Opportunity (dLab Global)",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://www.oas.org/en/scholarships/PAEC/2026/2026-2027 OAS - The UDD Scholarship Program Announcement.pdf"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_595",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "Bolsas Doutorado Sanduiche no Exterior - Edital Comite Gestor Fiocruz no 01/2026 (CAPES-Global.Edu)",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://formeditais.campusvirtual.fiocruz.br/editais/cg-fiocruz-012026"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_598",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "Programa de patrocinios del Banco de la República para estudios de posgrado en el exterior",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://www.banrep.gov.co/es/contenidos/programas-estudios-el-exterior"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_601",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "Beca Interna Postdoctoral - Convocatoria Becas 2026 (CONICET)",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://convocatorias.conicet.gov.ar/becas/convocatoria-vigente"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_604",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "Beca Universidad de Chile (BUCH)",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://uchile.cl/convocatorias/37944/beca-universidad-de-chile"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_605",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "Programa de Becas de Cooperacion Sur-Sur - Republica de Chile 2027 (AGCID)",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://web.icetex.gov.co/es/-/becas-maestria-chile-agcid-2027"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_621",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "Türkiye Scholarships (Türkiye Bursları) — Government Scholarship Programme of the Presidency of Turks Abroad and Related Communities",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://www.turkiyeburslari.gov.tr/announcements/turkiye-scholarships-2026-applications-121"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_631",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "Beca al Talento Académico Internacional",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://tec.mx/es/profesional/becas/internacional"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_633",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "Frederick Douglass Bicentennial Scholarship Program (UNCF)",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://uncf.org/pages/the-frederick-douglass-bicentennial-scholarship-program"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_637",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "Bolsas Capacitacao de Curta Duracao no Exterior - Edital Comite Gestor Fiocruz no 02/2026 (CAPES-Glo",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://formeditais.campusvirtual.fiocruz.br/editais/cg-fiocruz-022026"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_639",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "Becas de apoyo a la investigacion del Instituto Riva-Aguero 2027",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://ira.pucp.edu.pe/wp-content/uploads/2026/08/Convocatoria-Becas-IRA-individual-y-grupal-2027-.pdf"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_640",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "Beca Doctoral PUCP - Programa de Apoyo a la Investigación Doctoral",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://posgrado.pucp.edu.pe/becas/becas-doctoral-pucp"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_641",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "Becas R.P. Jorge Dintilhac SS.CC. (PUCP)",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://admision.pucp.edu.pe/becas-y-pensiones/becas/becas-rp-jorge-dintilhac-sscc"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_642",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "Programa de Cooperacion Internacional del Gobierno de Chile para Policias Extranjeras Uniformadas (CECIPU)",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://www.cecipu.gob.cl/becas-de-estudios"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_643",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "Programa de Becas de Investigacion para Estudiantes 2026-2027 (FCM UNCUYO)",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://fcm.uncuyo.edu.ar/convocatoria-2026-2027-a-becas-de-investigacion-para-estudiantes"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_680",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "Qatar University International Students Scholarship",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://www.qu.edu.qa/en-us/students/admission/scholarships/types"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_688",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "Becas Nacionales de Inclusión 2026 (A. Becas de Licenciatura para Jefas de Familia; B. Apoyos Complementarios para Personas Indígenas; C. Apoyos Complementarios para Personas con Discapacidad)",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://secihti.mx/convocatoria/becas-nacionales/convocatoria-becas-nacionales-de-inclusion-2026"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_689",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "Apoyo Complementario de Maternidad y Paternidad Nacional, en el Extranjero y de Consolidación 2026",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://secihti.mx/convocatoria/becas-nacionales/convocatoria-2026-apoyo-complementario-de-maternidad-y-paternidad-nacional-en-el-extranjero-y-de-consolidacion"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_693",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "Errol Walton Barrow Scholarships",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://education.gov.bb/2026-errol-walton-barrow-scholarships"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_702",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "Beca Nuevo Milenio",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://www.chileatiende.gob.cl/fichas/15118-beca-nuevo-milenio"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_1247",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "King Abdullah Scholarship Program (KASP)",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://www.moe.gov.sa/en/scholarships/Pages/default.aspx"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_1248",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "King Fahd University of Petroleum & Minerals (KFUPM) Graduate Scholarships",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://www.kfupm.edu.sa/grad/scholarships"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_1249",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "King Abdullah University of Science and Technology (KAUST) Fellowships",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://www.kaust.edu.sa/en/study/fellowships"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_1250",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "King Saud University Scholarships for International Students",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://deanship.ksu.edu.sa/en/international-student-scholarships"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_1251",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "UAE Presidential Scholarship (Mohammed bin Rashid Al Maktoum Foundation)",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://www.mbrf.ae/en/initiatives/presidential-scholarship"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_1252",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "Khalifa University Graduate Scholarships",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://www.ku.ac.ae/admissions/graduate/scholarships"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_1253",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "United Arab Emirates University (UAEU) Scholarships",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://www.uaeu.ac.ae/en/admissions/scholarships"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_1254",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "American University of Sharjah (AUS) Merit Scholarships",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://www.aus.edu/admissions/scholarships"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_1259",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "Israeli Government Scholarships (MASHAV)",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://mashav.mfa.gov.il/MASHAV/Programs/Pages/Scholarships.aspx"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_1260",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "Technion — Israel Institute of Technology Graduate Scholarships",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://graduate.technion.ac.il/scholarships"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_1261",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "Weizmann Institute of Science International PhD Program",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://www.weizmann.ac.il/feinberg/phd"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_1262",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "Tel Aviv University Lowy International Scholarship Fund",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://international.tau.ac.il/scholarships"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_1275",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "Türkiye Scholarships — Full-Time Degree Programmes",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://turkiyeburslari.gov.tr/fulltimeprograms"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_1276",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "Türkiye Scholarships — Short-Term Programmes (Success & Research)",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://turkiyeburslari.gov.tr/shorttermprograms"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_1284",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "Qatar Foundation Scholarship",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://www.qf.org.qa/education/scholarships"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_1285",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "PEC-G (Undergraduate Exchange) Scholarship - Brazil",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://www.gov.br/mre/pt-br/assuntos/cultura-e-educacao/educacao/pec-g"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_1286",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "ICETEX International Scholarship - Colombia",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://www.icetex.gov.co"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_1287",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "ANID Becas Chile (International)",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://www.anid.cl/concursos/becas-chile"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_1291",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "PEC-PG (Postgraduate) Scholarship - Brazil",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://www.gov.br/mre/pt-br/assuntos/cultura-e-educacao/educacao/pec-pg"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "research_556",
+    "existing_canonical_id": null,
+    "proposed_operation": "NEW_INSERT",
+    "programme_identity": "Convocatoria de Becas OEA - UNIR, EP NEWMAN y UNIR Mexico (Curso Academico 2026, 2a convocatoria)",
+    "provider": "",
+    "host_country": "",
+    "source_references": [
+      "https://www.oas.org/en/scholarships/PAEC/2026/P26_Convocatoria_de_BecasOEA_UNIR_EP_NEWMAN_y_UNIR_MX_2026.pdf"
+    ],
+    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
+    "funding_state": "UNKNOWN",
+    "lifecycle_state": "UNKNOWN",
+    "reason": "No match in current catalogue; requires official verification before import"
+  },
+  {
+    "research_record_key": "correction_funding_3",
+    "existing_canonical_id": 3,
+    "proposed_operation": "FUNDING_CORRECTION",
+    "programme_identity": "DAAD Scholarship",
+    "provider": "",
+    "host_country": "Germany",
+    "source_references": [
+      "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CORRECTED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "DAAD Scholarship (general) provides stipend EUR 992/mo + insurance + travel allowance + study allowance EUR 460/yr. NO tuition coverage (German public universities are tuition-free for most programmes). Not fully funded per ScholarZone definition (requires tuition + living)."
+  },
+  {
+    "research_record_key": "correction_funding_40",
+    "existing_canonical_id": 40,
+    "proposed_operation": "FUNDING_CORRECTION",
+    "programme_identity": "ARES Scholarships (Belgium)",
+    "provider": "",
+    "host_country": "Belgium",
+    "source_references": [
+      "https://www.ares-ac.be/en/cooperation-au-developpement/bourses"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CORRECTED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "ARES provides living allowance and travel but tuition coverage varies by programme. Funding scope not fully confirmed from official source."
+  },
+  {
+    "research_record_key": "correction_funding_31",
+    "existing_canonical_id": 31,
+    "proposed_operation": "FUNDING_CORRECTION",
+    "programme_identity": "Netherlands Fellowship Programme (NFP/OTS)",
+    "provider": "",
+    "host_country": "Netherlands",
+    "source_references": [
+      "https://www.studyinnl.org/finances/ots-scholarships"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CORRECTED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Netherlands Fellowship Programme (NFP/OTS) discontinued. Replaced by NL Scholarship (EUR 5000 first year only, partial)."
+  },
+  {
+    "research_record_key": "correction_funding_729",
+    "existing_canonical_id": 729,
+    "proposed_operation": "FUNDING_CORRECTION",
+    "programme_identity": "Vanier Canada Graduate Scholarship",
+    "provider": "",
+    "host_country": "Canada",
+    "source_references": [
+      "https://vanier.gc.ca/en/home-accueil.html"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CORRECTED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Vanier CGS discontinued after Fall 2024. Replaced by CGRS-D. Should be archived/discontinued."
+  },
+  {
+    "research_record_key": "correction_funding_1",
+    "existing_canonical_id": 1,
+    "proposed_operation": "FUNDING_CORRECTION",
+    "programme_identity": "Erasmus Mundus",
+    "provider": "",
+    "host_country": "Germany",
+    "source_references": [
+      "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "CORRECTED",
+    "lifecycle_state": "ACTIVE",
+    "reason": "Erasmus Mundus Joint Masters covers full tuition + EUR 1,400/mo stipend + travel + insurance. Fully funded."
+  },
+  {
+    "research_record_key": "correction_lifecycle_729",
+    "existing_canonical_id": 729,
+    "proposed_operation": "LIFECYCLE_CORRECTION",
+    "programme_identity": "Vanier Canada Graduate Scholarship",
+    "provider": "",
+    "host_country": "Canada",
+    "source_references": [
+      "https://vanier.gc.ca/en/home-accueil.html"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "UNCHANGED",
+    "lifecycle_state": "DISCONTINUED",
+    "reason": "Vanier CGS discontinued after Fall 2024 final competition. Official source confirms no further competitions. Replaced by CGRS-D."
+  },
+  {
+    "research_record_key": "correction_lifecycle_31",
+    "existing_canonical_id": 31,
+    "proposed_operation": "LIFECYCLE_CORRECTION",
+    "programme_identity": "Netherlands Fellowship Programme (NFP/OTS)",
+    "provider": "",
+    "host_country": "Netherlands",
+    "source_references": [
+      "https://www.studyinnl.org/finances/ots-scholarships"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "UNCHANGED",
+    "lifecycle_state": "DISCONTINUED",
+    "reason": "Netherlands Fellowship Programme (NFP/OTS) discontinued. Replaced by NL Scholarship."
+  },
+  {
+    "research_record_key": "correction_lifecycle_1312",
+    "existing_canonical_id": 1312,
+    "proposed_operation": "LIFECYCLE_CORRECTION",
+    "programme_identity": "Knight-Hennessy Scholars",
+    "provider": "",
+    "host_country": "United States",
+    "source_references": [
+      "https://knight-hennessy.stanford.edu/admission/preparing-your-applications/application-deadlines"
+    ],
+    "verification_state": "VERIFIED",
+    "funding_state": "UNCHANGED",
+    "lifecycle_state": "CLOSED",
+    "reason": "2027 cohort application closed Oct 6 2026. Next cycle 2028 opens Summer 2027."
+  }
+]

@@ -1,0 +1,138 @@
+{
+  "reconciliation_date": "2026-11-10",
+  "database_source": "backend/scholarzone.db (local SQLite, read-only introspection)",
+  "database_sha256": "c4737c7fce02c719caed1c4f95de0b2ded926e2a84c4bcbda16cddfb9b8a3adb",
+  "schema_version": "ScholarZone v1 (backend/app/models.py)",
+  "baseline": {
+    "total": 830,
+    "active": 830,
+    "archived": 0,
+    "status_distribution": {
+      "closed": 6,
+      "closing-soon": 4,
+      "open": 820
+    },
+    "archived_status_distribution": {}
+  },
+  "approved_operations": {
+    "new_inserts": 0,
+    "cycle_updates": 11,
+    "funding_corrections": 2,
+    "lifecycle_corrections": 0,
+    "total": 13
+  },
+  "excluded_pending_operations": {
+    "cycle_updates": 7,
+    "funding_corrections": 3,
+    "lifecycle_corrections": 2,
+    "total": 12
+  },
+  "duplicate_reconciliation": {
+    "pairs": 5,
+    "merge_ready_for_owner_review": 4,
+    "blocked_manual_review": 1,
+    "plans_approved_for_execution": 0,
+    "plans_executed": 0,
+    "archive_only_plans": 4,
+    "duplicate_archives_if_approved": 4,
+    "record_deletions": 0,
+    "merge_ready_pair_ids": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "blocked_pair_ids": [
+      5
+    ],
+    "fulbright_pair": {
+      "pair_id": 5,
+      "canonical_id": 1217,
+      "duplicate_id": 1309,
+      "status": "BLOCKED_MANUAL_REVIEW"
+    },
+    "fk_rows_reassigned_in_plan": 0,
+    "duplicate_side_fk_rows_all_pairs": 5,
+    "duplicate_side_fk_rows_merge_ready_pairs": 4,
+    "duplicate_side_fk_rows_blocked_fulbright": 1,
+    "unique_collisions_if_merge_ready_reassigned": 4,
+    "unique_collisions_if_all_pairs_reassigned": 5
+  },
+  "lifecycle_proposals": {
+    "proposed_archives": 2,
+    "approved_archives": 0,
+    "approval_status": "NOT_APPROVED_PENDING_RESEARCH",
+    "operation_ids": [
+      "LIFECYCLE-729",
+      "LIFECYCLE-31"
+    ]
+  },
+  "projected_states": {
+    "after_approved_subset": {
+      "total": 830,
+      "active": 830,
+      "archived": 0,
+      "status_distribution": {
+        "closed": 6,
+        "closing-soon": 4,
+        "open": 820
+      },
+      "description": "After the 11 cycle updates and 2 funding corrections only. No inserts, archives, or duplicate merges."
+    },
+    "after_approved_plus_lifecycle_proposals": {
+      "total": 830,
+      "active": 828,
+      "archived": 2,
+      "status_distribution": {
+        "closed": 8,
+        "closing-soon": 4,
+        "open": 818
+      },
+      "description": "If the 2 PENDING_RESEARCH lifecycle proposals were later approved. Duplicate merges still not executed."
+    },
+    "after_approved_plus_lifecycle_plus_4_duplicate_archives": {
+      "total": 830,
+      "active": 824,
+      "archived": 6,
+      "status_distribution": {
+        "closed": 8,
+        "closing-soon": 4,
+        "open": 818
+      },
+      "description": "If lifecycle proposals and the 4 archive-only duplicate plans were all approved. Fulbright remains blocked. Duplicate archives do not change status."
+    }
+  },
+  "archive_accounting": {
+    "lifecycle_archives": 2,
+    "duplicate_archives": 4,
+    "total_archives": 6,
+    "total_equals_active_plus_archived": true,
+    "no_double_counting": true
+  },
+  "fk_reconciliation": {
+    "declared_fk_tables": 14,
+    "declared_fk_references": 14,
+    "append_only_non_fk_tables": 1,
+    "total_fk_reference_rows_for_pair_ids": 10,
+    "duplicate_side_fk_rows": 5,
+    "safe_reassignments": 0,
+    "rows_reassigned_in_plan": 0,
+    "collisions_in_plan": 0
+  },
+  "validation": {
+    "baseline_total_equals_active_plus_archived": true,
+    "status_distribution_sums_to_total": true,
+    "approved_operation_count_matches_files": true,
+    "pending_operation_count_matches_mapping": true,
+    "duplicate_plan_counts_match_fk_report": true,
+    "duplicate_dry_run_matches_plan": true,
+    "projected_counts_consistent": true,
+    "no_lifecycle_duplicate_double_counting": true
+  },
+  "recommendations": [
+    "Keep the package blocked until Vanier CGS and NFP/OTS lifecycle evidence is captured as DIRECT.",
+    "Run the duplicate archive-only plans on an isolated PostgreSQL instance before any execution.",
+    "Do not import from this package without explicit owner authorization.",
+    "Treat the 6 new-insert candidates as blocked research, not approved records."
+  ]
+}

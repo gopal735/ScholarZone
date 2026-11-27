@@ -1,0 +1,25 @@
+{
+  "audit_timestamp": "2026-11-09",
+  "discontinued_in_catalogue": [
+    {
+      "catalogue_id": 729,
+      "title": "Vanier Canada Graduate Scholarship",
+      "old_name": "Vanier CGS",
+      "new_name": "CGRS-D",
+      "current_status": "open",
+      "current_fully_funded": 1,
+      "deadline_date": null
+    }
+  ],
+  "funding_corrections": [],
+  "lifecycle_corrections": [
+    {
+      "catalogue_id": 729,
+      "title": "Vanier Canada Graduate Scholarship",
+      "current_status": "open",
+      "corrected_status": "discontinued",
+      "replacement": "CGRS-D",
+      "reason": "Vanier CGS discontinued after Fall 2024 competition; replaced by Canada Graduate Research Scholarship - Doctoral (CGRS-D). Official source: vanier.gc.ca"
+    }
+  ]
+}
