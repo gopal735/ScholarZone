@@ -6,6 +6,7 @@ from functools import lru_cache
 from pathlib import Path
 
 from sqlalchemy import Engine, create_engine, inspect, text, event
+from sqlalchemy.exc import OperationalError
 from sqlalchemy.orm import Session, sessionmaker
 
 from .core.config import get_settings
@@ -1331,11 +1332,26 @@ def _upgrade_sqlite_schema(engine: Engine) -> None:
         connection.execute(text("CREATE INDEX IF NOT EXISTS ix_mentor_messages_source_user ON mentor_messages (source_user_message_id)"))
         # Structured discovery payload (nullable) for history restoration.
         _mentor_cols_dp = {c["name"] for c in inspect(connection).get_columns("mentor_messages")} if inspect(connection).has_table("mentor_messages") else set()
-        if inspect(connection).has_table("mentor_messages") and "discovery_payload" not in _mentor_cols_dp:
+        if inspect(connection).has_table("mentor_messages") and "attempt_id" not in _mentor_cols_dp:
+            try:
+                connection.execute(text("ALTER TABLE mentor_messages ADD COLUMN attempt_id VARCHAR(64)"))
+            except OperationalError:
+                _cols_now = {c["name"] for c in inspect(connection).get_columns("mentor_messages")}
+                if "attempt_id" not in _cols_now:
+                    raise
+        connection.execute(text("CREATE INDEX IF NOT EXISTS ix_mentor_messages_attempt ON mentor_messages (attempt_id)"))
+        _mentor_cols_dp2 = {c["name"] for c in inspect(connection).get_columns("mentor_messages")} if inspect(connection).has_table("mentor_messages") else set()
+        if inspect(connection).has_table("mentor_messages") and "discovery_payload" not in _mentor_cols_dp2:
             try:
                 connection.execute(text("ALTER TABLE mentor_messages ADD COLUMN discovery_payload TEXT"))
-            except Exception:
-                pass
+            except OperationalError:
+                _cols_now = {c["name"] for c in inspect(connection).get_columns("mentor_messages")}
+                if "discovery_payload" not in _cols_now:
+                    raise
+        if inspect(connection).has_table("mentor_messages"):
+            _cols_after = {c["name"] for c in inspect(connection).get_columns("mentor_messages")}
+            if "discovery_payload" not in _cols_after:
+                raise RuntimeError("mentor_messages.discovery_payload column missing after migration")
         for _stmt in (
             "ALTER TABLE study_plans ADD COLUMN version INTEGER NOT NULL DEFAULT 1",
             "ALTER TABLE study_plan_tasks ADD COLUMN version INTEGER NOT NULL DEFAULT 1",
