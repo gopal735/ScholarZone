@@ -3,6 +3,7 @@
 from datetime import date, datetime
 
 from sqlalchemy import JSON, Boolean, CheckConstraint, Date, DateTime, Float, ForeignKey, Index, Integer, Numeric, String, Text, UniqueConstraint, func
+from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 from .maintenance_slots import LogicalSource, SlotState
@@ -1121,8 +1122,9 @@ class MentorMessage(Base):
     prompt_tokens: Mapped[int | None] = mapped_column(Integer, nullable=True)
     completion_tokens: Mapped[int | None] = mapped_column(Integer, nullable=True)
     error: Mapped[str | None] = mapped_column(String(64), nullable=True)
-    # Structured discovery result payload (JSON). Nullable for legacy/text-only messages.
-    discovery_payload: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+    # Structured discovery result payload (JSON, stored as JSONB on PostgreSQL).
+    # Nullable for legacy/text-only messages.
+    discovery_payload: Mapped[dict | None] = mapped_column(JSON().with_variant(JSONB(), "postgresql"), nullable=True)
     # Unique generation-attempt identity for retry isolation. Each reservation
     # or retry claims a new UUID; stale attempts cannot mutate a newer one.
     attempt_id: Mapped[str | None] = mapped_column(String(64), nullable=True, index=True)

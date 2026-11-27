@@ -162,12 +162,7 @@ def _discovery_to_snapshot_payload(discovery) -> dict | None:
             "supporting_fields": list(getattr(m, "supporting_fields", []) or []),
             "warnings": list(m.warnings or []),
         }
-    full_items = [_match(m) for m in (getattr(discovery, "all_matches", None) or discovery.potential_matches or [])]
-    # If all_matches is empty but potential_matches has items (legacy callers),
-    # fall back to potential_matches so we never persist an empty snapshot
-    # when matches exist.
-    if not full_items and discovery.potential_matches:
-        full_items = [_match(m) for m in discovery.potential_matches]
+    full_items = [_match(m) for m in (getattr(discovery, "all_matches", None) or [])]
     return {
         "search_status": discovery.search_status,
         "query_summary": discovery.query_summary,
@@ -328,16 +323,31 @@ def get_discovery(conversation_id: int, message_id: int, page: int = Query(1, ge
     payload = getattr(msg, "discovery_payload", None)
     if not isinstance(payload, dict):
         raise HTTPException(status_code=404, detail="historical_discovery_unavailable")
+
+    # A historical snapshot is only usable when it is explicitly complete.
+    # Legacy first-page payloads and malformed snapshots must not be treated
+    # as the full catalogue result set.
+    snapshot_version = payload.get("snapshot_version")
+    if snapshot_version != 1:
+        raise HTTPException(status_code=404, detail="historical_discovery_unavailable")
     snapshot_items = payload.get("snapshot_items")
     if not isinstance(snapshot_items, list):
-        # Legacy/partial snapshot: treat persisted potential_matches as the
-        # entire available snapshot. No live re-query is performed.
-        snapshot_items = list(payload.get("potential_matches") or [])
-    total = payload.get("result_count")
-    if not isinstance(total, int):
-        total = len(snapshot_items)
-    if total < len(snapshot_items):
-        total = len(snapshot_items)
+        raise HTTPException(status_code=404, detail="historical_discovery_unavailable")
+    snapshot_ids: list[int] = []
+    for item in snapshot_items:
+        if not isinstance(item, dict):
+            raise HTTPException(status_code=404, detail="historical_discovery_unavailable")
+        scholarship_id = item.get("scholarship_id")
+        if not isinstance(scholarship_id, int) or isinstance(scholarship_id, bool):
+            raise HTTPException(status_code=404, detail="historical_discovery_unavailable")
+        snapshot_ids.append(scholarship_id)
+    if len(snapshot_ids) != len(set(snapshot_ids)):
+        raise HTTPException(status_code=404, detail="historical_discovery_unavailable")
+    result_count = payload.get("result_count")
+    if isinstance(result_count, int) and not isinstance(result_count, bool) and result_count != len(snapshot_items):
+        raise HTTPException(status_code=404, detail="historical_discovery_unavailable")
+
+    total = len(snapshot_items)
     start = (page - 1) * page_size
     page_items = snapshot_items[start:start + page_size]
     total_pages = (total + page_size - 1) // page_size if page_size > 0 else 0

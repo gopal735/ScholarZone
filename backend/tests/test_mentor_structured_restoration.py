@@ -254,3 +254,87 @@ def test_legacy_snapshot_unavailable(tmp_path):
             assert page.json()["detail"] == "historical_discovery_unavailable"
     finally:
         _teardown(engine, session, prev)
+
+
+
+def test_historical_ambiguous_result_restoration(tmp_path):
+    engine, TS, session, prev = _setup(tmp_path, "amb.db")
+    try:
+        user = _make_user(session)
+        _make_sch(session, country="Germany")
+        with TestClient(app) as client:
+            r = client.post("/auth/login", json={"email": user.email, "password": PASSWORD})
+            assert r.status_code == 200
+            c = client.post("/mentor/conversations", json={"title": "t"})
+            cid = c.json()["id"]
+            s = client.post(f"/mentor/conversations/{cid}/messages", json={"message": "Find PhD scholarships in Germany and France"})
+            assert s.status_code == 200
+            am = s.json()["assistant_message"]
+            assert am["discovery_payload"]["search_status"] == "AMBIGUOUS_FILTER"
+            assert am["discovery_payload"]["result_count"] == 0
+            page = client.get(f"/mentor/conversations/{cid}/messages/{am['id']}/discovery?page=1&page_size=5")
+            assert page.status_code == 200
+            d = page.json()
+            assert d["search_status"] == "AMBIGUOUS_FILTER"
+            assert d["result_count"] == 0
+            assert d["returned_count"] == 0
+            assert d["potential_matches"] == []
+            assert d["pagination"]["total_pages"] == 0
+            assert d["pagination"]["has_more"] is False
+    finally:
+        _teardown(engine, session, prev)
+
+
+def test_historical_unsupported_result_restoration(tmp_path):
+    engine, TS, session, prev = _setup(tmp_path, "uns.db")
+    try:
+        user = _make_user(session)
+        _make_sch(session, country="Germany")
+        with TestClient(app) as client:
+            r = client.post("/auth/login", json={"email": user.email, "password": PASSWORD})
+            assert r.status_code == 200
+            c = client.post("/mentor/conversations", json={"title": "t"})
+            cid = c.json()["id"]
+            s = client.post(f"/mentor/conversations/{cid}/messages", json={"message": "Find PhD scholarships in Nepal"})
+            assert s.status_code == 200
+            am = s.json()["assistant_message"]
+            assert am["discovery_payload"]["search_status"] == "UNSUPPORTED_FILTER"
+            assert am["discovery_payload"]["result_count"] == 0
+            page = client.get(f"/mentor/conversations/{cid}/messages/{am['id']}/discovery?page=1&page_size=5")
+            assert page.status_code == 200
+            d = page.json()
+            assert d["search_status"] == "UNSUPPORTED_FILTER"
+            assert d["result_count"] == 0
+            assert d["potential_matches"] == []
+            assert d["pagination"]["has_more"] is False
+    finally:
+        _teardown(engine, session, prev)
+
+
+
+def test_stale_attempt_cannot_overwrite_snapshot(tmp_path):
+    engine, TS, session, prev = _setup(tmp_path, "stale.db")
+    try:
+        user = _make_user(session)
+        from app.models import MentorConversation, MentorMessage
+        from app.services.mentor import conversation_service as cs
+        conv = MentorConversation(user_id=user.id, title="t")
+        session.add(conv); session.commit(); session.refresh(conv)
+        um = MentorMessage(conversation_id=conv.id, user_id=user.id, role="user", content="hi", status="completed", sequence_number=1)
+        session.add(um); session.commit(); session.refresh(um)
+        am = cs.reserve_assistant_message(session, user.id, conv.id, source_user_message_id=um.id, attempt_id="attempt-a")
+        assert am is not None
+        # Fail attempt A so it becomes retryable.
+        cs.fail_assistant_message(session, user.id, am.id, "boom", attempt_id="attempt-a")
+        # Claim attempt B.
+        claimed = cs.claim_retry_attempt(session, user.id, am.id, new_attempt_id="attempt-b")
+        assert claimed is not None and claimed.attempt_id == "attempt-b"
+        payload_b = {"snapshot_items": [{"scholarship_id": 2, "title": "B"}], "result_count": 1, "search_status": "POTENTIAL_MATCHES_FOUND", "snapshot_version": 1}
+        cs.complete_assistant_message(session, user.id, am.id, "answer B", attempt_id="attempt-b", discovery_payload=payload_b)
+        # Stale attempt A tries to complete afterward.
+        stale = cs.complete_assistant_message(session, user.id, am.id, "answer A", attempt_id="attempt-a", discovery_payload={"snapshot_items": [{"scholarship_id": 1, "title": "A"}], "result_count": 1})
+        assert stale is not None
+        assert stale.attempt_id == "attempt-b"
+        assert stale.discovery_payload["snapshot_items"][0]["title"] == "B"
+    finally:
+        _teardown(engine, session, prev)

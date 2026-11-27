@@ -135,3 +135,37 @@ def test_no_public_candidates(client, db):
     data = r.json()
     assert data["search_status"] == "NO_PUBLIC_CANDIDATES"
     assert data["result_count"] == 0
+
+
+
+def test_ambiguous_country_empty_result_contract(client, db):
+    user = make_user(db)
+    make_sch(db)
+    login(client, user.email)
+    r = client.post("/mentor/message", json={"message": "Find PhD scholarships in Germany and France"})
+    assert r.status_code == 200, r.text
+    data = r.json()
+    assert data["search_status"] == "AMBIGUOUS_FILTER"
+    assert data["result_count"] == 0
+    assert data["returned_count"] == 0
+    assert data["potential_matches"] == []
+    assert data["pagination"]["total"] == 0
+    assert data["pagination"]["total_pages"] == 0
+    assert data["pagination"]["has_more"] is False
+    assert data["pagination"]["returned"] == 0
+
+
+def test_unsupported_country_empty_result_contract(client, db):
+    user = make_user(db)
+    make_sch(db)
+    login(client, user.email)
+    r = client.post("/mentor/message", json={"message": "Find PhD scholarships in Nepal"})
+    assert r.status_code == 200, r.text
+    data = r.json()
+    assert data["search_status"] == "UNSUPPORTED_FILTER"
+    assert data["result_count"] == 0
+    assert data["returned_count"] == 0
+    assert data["potential_matches"] == []
+    assert data["pagination"]["total"] == 0
+    assert data["pagination"]["total_pages"] == 0
+    assert data["pagination"]["has_more"] is False

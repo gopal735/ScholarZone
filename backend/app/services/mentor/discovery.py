@@ -257,51 +257,52 @@ def run_discovery(db: Session, message: str, as_of: date | None = None, limit: i
         select(func.count()).select_from(Scholarship).where(*region_conditions)
     ) or 0
 
-    # Batched classification across full population for parity.
+    # Single consistent catalogue read. Fetching all matching rows in one
+    # statement gives one statement-level snapshot (PostgreSQL) instead of
+    # repeated OFFSET windows that can observe concurrent inserts/deletes.
+    # Match records are built directly from these rows, so no second re-fetch
+    # can disagree with the scan.
     batch_size = 500
-    boff = 0
     excluded_count = 0
     stipend_text_candidates_count = 0
     stipend_text_candidate_ids: list[int] = []
     funding_support_unclear_count = 0
     unverified_count = 0
     funding_evidence_conflict_count = 0
-    eligible_ids: list[int] = []
-    while True:
-        batch = list(
-            db.execute(
-                select(Scholarship)
-                .where(*region_conditions)
-                .order_by(Scholarship.id.asc())
-                .offset(boff)
-                .limit(batch_size)
-            ).scalars()
-        )
-        if not batch:
-            break
-        for row in batch:
-            cls, _, _ = classify_funding(row)
-            if cls == "STIPEND_EXPLICITLY_EXCLUDED":
-                excluded_count += 1
-                # Only exclude from candidate list when the user explicitly asked for stipend.
-                if funding_val != "stipend":
-                    eligible_ids.append(row.id)
-            elif cls == "STIPEND_TEXT_CANDIDATE":
-                stipend_text_candidates_count += 1
-                stipend_text_candidate_ids.append(row.id)
-                eligible_ids.append(row.id)
-            elif cls == "FUNDING_UNVERIFIED":
-                unverified_count += 1
-                eligible_ids.append(row.id)
-            elif cls == "FUNDING_SUPPORT_CONFIRMED_STIPEND_UNCLEAR":
-                funding_support_unclear_count += 1
-                eligible_ids.append(row.id)
-            elif cls == "FUNDING_EVIDENCE_CONFLICT":
-                funding_evidence_conflict_count += 1
-                # Keep as potential/uncertain; never verified. Exclude only if
-                # the user explicitly asked for a confirmed stipend? Keep visible.
-                eligible_ids.append(row.id)
-        boff += batch_size
+    eligible_matches: list[DiscoveryMatch] = []
+
+    rows = list(
+        db.execute(
+            select(Scholarship)
+            .where(*region_conditions)
+            .order_by(Scholarship.id.asc())
+            .execution_options(populate_existing=True)
+        ).scalars()
+    )
+    # Region candidate count comes from the same consistent scan.
+    region_count = len(rows)
+
+    for row in rows:
+        cls, reason, supporting = classify_funding(row)
+        if cls == "STIPEND_EXPLICITLY_EXCLUDED":
+            excluded_count += 1
+            # Only include in the candidate set when the user did not ask for a
+            # stipend; stipend searches exclude tuition-only records.
+            if funding_val != "stipend":
+                eligible_matches.append(_match_from_row(row, cls, reason, supporting))
+        elif cls == "STIPEND_TEXT_CANDIDATE":
+            stipend_text_candidates_count += 1
+            stipend_text_candidate_ids.append(row.id)
+            eligible_matches.append(_match_from_row(row, cls, reason, supporting))
+        elif cls == "FUNDING_UNVERIFIED":
+            unverified_count += 1
+            eligible_matches.append(_match_from_row(row, cls, reason, supporting))
+        elif cls == "FUNDING_SUPPORT_CONFIRMED_STIPEND_UNCLEAR":
+            funding_support_unclear_count += 1
+            eligible_matches.append(_match_from_row(row, cls, reason, supporting))
+        elif cls == "FUNDING_EVIDENCE_CONFLICT":
+            funding_evidence_conflict_count += 1
+            eligible_matches.append(_match_from_row(row, cls, reason, supporting))
 
     counts = {
         "public_candidates": int(public_count),
@@ -313,6 +314,7 @@ def run_discovery(db: Session, message: str, as_of: date | None = None, limit: i
         "funding_unverified": int(unverified_count),
         "explicit_stipend_excluded": int(excluded_count),
         "funding_evidence_conflict": int(funding_evidence_conflict_count),
+        "eligible_candidate_count": int(len(eligible_matches)),
     }
 
     # For stipend searches, rank stipend-text candidates ahead of records
@@ -320,32 +322,10 @@ def run_discovery(db: Session, message: str, as_of: date | None = None, limit: i
     # keep the existing (id-ordered) candidate order.
     if funding_val == "stipend" and stipend_text_candidate_ids:
         candidate_set = set(stipend_text_candidate_ids)
-        eligible_ids = [i for i in eligible_ids if i in candidate_set] + [i for i in eligible_ids if i not in candidate_set]
+        eligible_matches = [m for m in eligible_matches if m.scholarship_id in candidate_set] + [m for m in eligible_matches if m.scholarship_id not in candidate_set]
 
-    # Build the full immutable match snapshot across the entire eligible
-    # population (stable order). This is the source of truth for historical
-    # pagination; the live response only exposes the requested page.
-    all_matches: list[DiscoveryMatch] = []
-    for _start in range(0, len(eligible_ids), batch_size):
-        _chunk = eligible_ids[_start:_start + batch_size]
-        if not _chunk:
-            continue
-        _rows_by_id = {
-            r.id: r for r in db.execute(
-                select(Scholarship).where(
-                    Scholarship.id.in_(_chunk),
-                    *public_visibility_conditions(),
-                )
-            ).scalars()
-        }
-        for _sid in _chunk:
-            _row = _rows_by_id.get(_sid)
-            if _row is None:
-                continue
-            _classification, _reason, _supporting = classify_funding(_row)
-            if _classification == "STIPEND_EXPLICITLY_EXCLUDED" and funding_val == "stipend":
-                continue
-            all_matches.append(_match_from_row(_row, _classification, _reason, _supporting))
+    # The immutable match snapshot is the consistent result set built above.
+    all_matches: list[DiscoveryMatch] = list(eligible_matches)
 
     # Paginate the immutable snapshot for the live response.
     page_matches = all_matches[offset:offset + limit] if (limit and limit > 0) else list(all_matches)
@@ -394,7 +374,7 @@ def run_discovery(db: Session, message: str, as_of: date | None = None, limit: i
         evidence = []
         all_matches = []
 
-    total_matches = len(eligible_ids)
+    total_matches = len(all_matches)
     returned_count = len(potential)
     page = (offset // limit + 1) if limit and limit > 0 else 1
     total_pages = ((total_matches + limit - 1) // limit) if limit and limit > 0 else (1 if total_matches > 0 else 0)
