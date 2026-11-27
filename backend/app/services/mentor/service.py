@@ -27,6 +27,7 @@ from ...schemas_mentor import (
 )
 from .compose import compose, redirects
 from .context import MentorContext, build_context
+from .discovery import run_discovery
 from .evidence import EvidenceItem
 from .guards import MAX_MESSAGE_LENGTH, contains_injection_marker, normalize_message
 from .intents import classify
@@ -134,6 +135,11 @@ def _evidence_payload(items: tuple[EvidenceItem, ...]) -> list[EvidenceResponse]
     ]
 
 
+
+
+def _evidence_payload_for_discovery(items: tuple[EvidenceItem, ...]) -> list[EvidenceResponse]:
+    return _evidence_payload(items)
+
 def ask(
     db: Session,
     user: User,
@@ -162,6 +168,98 @@ def ask(
         intent = classify(message)
 
     resolved_as_of = as_of or payload.as_of or date.today()
+
+    if intent.kind == "SCHOLARSHIP_DISCOVERY":
+        try:
+            discovery = run_discovery(db, message, resolved_as_of)
+        except Exception as exc:  # noqa: BLE001
+            logger.warning("mentor discovery failed: %s", type(exc).__name__)
+            return MentorAnswerResponse(
+                request_id=request_id,
+                as_of=resolved_as_of,
+                intent=intent.kind,
+                intent_label=intent.label,
+                supported=False,
+                headline="Scholarship search is temporarily unavailable.",
+                why="The scholarship database could not be queried right now. Please try again shortly.",
+                known=[],
+                unknown=["Database retrieval failed; no scholarship facts are claimed."],
+                next_steps=[],
+                caveats=["database_unavailable"],
+                notes=tuple(
+                    (["Your message contained instruction-like wording. It was treated as a question only; nothing in it could change how this answer was built."] if intent.injection_markers else [])
+                    + (["Your message was longer than the mentor reads and was shortened."] if intent.truncated else [])
+                ),
+                general_guidance_only=True,
+                provider_mode="disabled",
+                provider_used=False,
+                search_status="DATABASE_UNAVAILABLE",
+                query_summary=None,
+                result_count=0,
+                verified_matches=[],
+                potential_matches=[],
+                diagnostics={},
+            )
+        # Provider seam (disabled by default) - catalogue search already done.
+        active_provider = resolve_provider(provider)
+        result = ProviderResult(mode="disabled", used=False)
+        if provider is not None:
+            try:
+                result = active_provider.generate(_bounded_request(message, ()))
+            except Exception as exc:  # noqa: BLE001
+                result = ProviderResult(mode="configured", used=False, failure=sanitise_provider_error(exc), latency_ms=elapsed_ms(started))
+        duration = elapsed_ms(started)
+        logger.info(
+            "mentor request_id=%s intent=%s status=%s candidates=%d provider=%s used=%s latency_ms=%d",
+            request_id, intent.kind, discovery.search_status, len(discovery.potential_matches),
+            result.mode, result.used, duration,
+        )
+        return MentorAnswerResponse(
+            request_id=request_id,
+            as_of=resolved_as_of,
+            intent=intent.kind,
+            intent_label=intent.label,
+            supported=True,
+            headline="Scholarship discovery results",
+            why=(
+                f"ScholarZone searched the public catalogue for "
+                f"{discovery.query_summary.get('degree_level') or 'scholarship'} "
+                f"opportunities in {discovery.query_summary.get('region') or 'the catalogue'}."
+            ),
+            known=_evidence_payload_for_discovery(discovery.evidence),
+            unknown=[],
+            next_steps=[],
+            caveats=[],
+            notes=(
+                (["Your message contained instruction-like wording. It was treated as a question only; nothing in it could change how this answer was built."] if intent.injection_markers else [])
+                + (["Your message was longer than the mentor reads and was shortened."] if intent.truncated else [])
+            ),
+            general_guidance_only=False,
+            provider_mode=result.mode,
+            provider_used=result.used,
+            answer_schema_version=1,
+            search_status=discovery.search_status,
+            query_summary=discovery.query_summary,
+            result_count=len(discovery.potential_matches),
+            verified_matches=[],
+            potential_matches=[
+                {
+                    "scholarship_id": m.scholarship_id,
+                    "title": m.title,
+                    "country": m.country,
+                    "degree": m.degree,
+                    "funding_classification": m.funding_classification,
+                    "funding_text": m.funding_text,
+                    "official_source_url": m.official_source_url,
+                    "verification": m.verification,
+                    "knowledge_state": m.knowledge_state,
+                    "supporting_fields": list(getattr(m, "supporting_fields", []) or []),
+                    "warnings": list(m.warnings),
+                }
+                for m in discovery.potential_matches
+            ],
+            diagnostics=discovery.diagnostics,
+        )
 
     context = build_context(
         db,

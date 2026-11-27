@@ -46,7 +46,8 @@ from ..services.mentor.service import (
     MAX_PROVIDER_CONTEXT_CHARS,
 )
 from ..services.mentor.context import build_context
-from ..services.mentor.compose import compose
+from ..services.mentor.discovery import run_discovery
+from ..services.mentor.compose import ComposedAnswer
 from ..services.mentor.intents import classify
 from ..services.mentor.guards import normalize_message, MAX_MESSAGE_LENGTH
 from ..services.mentor.provider import SYSTEM_INSTRUCTION
@@ -121,6 +122,39 @@ def _prepare(db, user, message):
     )
     answer = compose(intent, context)
     req = _bounded_request(msg or message, _context_blocks(context))
+
+    if intent.kind == "SCHOLARSHIP_DISCOVERY":
+        try:
+            discovery = run_discovery(db, msg or message, date.today())
+            evidence = tuple(discovery.evidence or ())
+            headline = (
+                f"Found {len(discovery.potential_matches)} potential scholarship "
+                f"matches (status: {discovery.search_status})."
+            )
+            answer = ComposedAnswer(
+                headline=headline,
+                why=headline,
+                known=evidence,
+                unknown=(),
+                next_steps=answer.next_steps,
+                supported=True,
+                general_guidance_only=False,
+                caveats=(),
+                notes=answer.notes,
+            )
+        except Exception as exc:  # noqa: BLE001
+            logger.warning("mentor conversation discovery failed: %s", type(exc).__name__)
+            answer = ComposedAnswer(
+                headline="Scholarship search is temporarily unavailable.",
+                why="The scholarship database could not be queried right now. Please try again shortly.",
+                known=(),
+                unknown=("Database retrieval failed; no scholarship facts are claimed.",),
+                next_steps=(),
+                supported=False,
+                general_guidance_only=True,
+                caveats=("database_unavailable",),
+                notes=answer.notes,
+            )
     return intent, context, answer, req
 
 
