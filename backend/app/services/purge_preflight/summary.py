@@ -268,7 +268,7 @@ def generate_summary(artifacts_dir: Path, commit_sha: str = "", run_id: str = ""
         run_id=expected_run_id,
         run_number=int(run_number or os.getenv("GITHUB_RUN_NUMBER", "0")),
         run_attempt=expected_run_attempt,
-        commit_sha=expected_commit_sha[:12] if expected_commit_sha else "",
+        commit_sha=expected_commit_sha if expected_commit_sha else "",
         trigger=os.getenv("GITHUB_EVENT_NAME", "unknown"),
         timestamp=datetime.utcnow().isoformat() + "Z",
     )

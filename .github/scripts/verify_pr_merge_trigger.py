@@ -33,7 +33,8 @@ def _env(name: str, default: str = "") -> str:
 
 
 def is_valid_sha(value: Any) -> bool:
-    return isinstance(value, str) and bool(SHA_RE.fullmatch(value.strip()))
+    # Exact 40-hex-character lowercase match: no surrounding whitespace.
+    return isinstance(value, str) and bool(SHA_RE.fullmatch(value))
 
 
 def _require(env: Dict[str, str], name: str) -> str:
@@ -233,10 +234,10 @@ def verify_live_pr_metadata(
     if not is_valid_sha(api_merge_sha):
         errors.append(f"merge commit SHA: invalid format {api_merge_sha!r}")
 
-    # Supplied merge SHA must match API-reported merge SHA
+    # Supplied merge SHA must match API-reported merge SHA (exact, canonical).
     if not is_valid_sha(supplied_merge_sha):
         errors.append(f"supplied merge SHA: invalid format {supplied_merge_sha!r}")
-    if supplied_merge_sha.strip().lower() != api_merge_sha.strip().lower():
+    if supplied_merge_sha != api_merge_sha:
         errors.append(f"merge commit SHA mismatch: supplied={supplied_merge_sha!r}, api={api_merge_sha!r}")
 
     if errors:
