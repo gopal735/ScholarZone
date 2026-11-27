@@ -13,11 +13,62 @@ someone else's application.
 
 from __future__ import annotations
 
-from datetime import date
+from datetime import date, datetime
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 from .services.mentor.guards import MAX_MESSAGE_LENGTH
+
+
+class MentorConversationCreate(BaseModel):
+    title: str | None = None
+
+
+class MentorConversationResponse(BaseModel):
+    id: int
+    title: str
+    status: str
+    created_at: datetime
+    updated_at: datetime
+    last_message_at: datetime | None = None
+
+
+class MentorMessageResponse(BaseModel):
+    id: int
+    conversation_id: int
+    role: str
+    content: str
+    status: str
+    sequence_number: int
+    request_id: str | None = None
+    provider: str | None = None
+    model: str | None = None
+    prompt_tokens: int | None = None
+    completion_tokens: int | None = None
+    error: str | None = None
+    created_at: datetime
+    completed_at: datetime | None = None
+
+
+class MentorSendMessageRequest(BaseModel):
+    model_config = {"extra": "forbid"}
+    message: str = Field(min_length=1, max_length=MAX_MESSAGE_LENGTH)
+    conversation_id: int | None = None
+    request_id: str | None = None
+
+    @field_validator("request_id")
+    @classmethod
+    def _normalize_request_id(cls, value):
+        if value is None:
+            return None
+        value = value.strip()
+        if not value:
+            return None
+        if len(value) > 64:
+            raise ValueError("request_id_too_long")
+        return value
+
+
 from .services.mentor.intents import INTENT_LABELS
 
 #: Published so the interface offers exactly what the server understands, rather

@@ -197,6 +197,190 @@ export const clearMentorInFlight = clearInFlightAsk
 // Legacy compatibility shim (some callers/tests may reference inFlightAsk).
 export let inFlightAsk = null
 
+// ---------------------------------------------------------------------------
+// Dream AI Mentor 2 conversation helpers
+// ---------------------------------------------------------------------------
+
+export async function fetchMentorConversations() {
+  return request('/mentor/conversations')
+}
+
+export async function createMentorConversation(title) {
+  return request('/mentor/conversations', {
+    method: 'POST',
+    body: JSON.stringify({ title }),
+  })
+}
+
+export async function fetchMentorConversationMessages(conversationId) {
+  return request(`/mentor/conversations/${conversationId}/messages`)
+}
+
+export async function deleteMentorConversation(conversationId) {
+  return request(`/mentor/conversations/${conversationId}`, { method: 'DELETE' })
+}
+
+export async function renameMentorConversation(conversationId, title) {
+  return request(`/mentor/conversations/${conversationId}`, {
+    method: 'PATCH',
+    body: JSON.stringify({ title }),
+  })
+}
+
+export async function sendMentorMessage(conversationId, message, { signal } = {}) {
+  return raceAbort(request(`/mentor/conversations/${conversationId}/messages`, {
+    method: 'POST',
+    body: JSON.stringify({ message }),
+  }), signal)
+}
+
+export async function cancelMentorMessage(conversationId, messageId) {
+  return request(`/mentor/conversations/${conversationId}/messages/${messageId}/cancel`, { method: 'POST' })
+}
+
+export async function retryMentorMessage(conversationId, messageId) {
+  return request(`/mentor/conversations/${conversationId}/messages/${messageId}/retry`, { method: 'POST' })
+}
+
+/**
+ * Stream a conversation message via SSE. Yields parsed event objects:
+ * { event, data }
+ *
+ * Robustly handles arbitrary chunk boundaries, CRLF/LF, multiline data,
+ * UTF-8 boundaries, and final buffered events.
+ */
+export async function* streamMentorConversationMessage(conversationId, message, { signal } = {}) {
+  let response
+  try {
+    response = await fetch(`${apiBaseUrl}/mentor/conversations/${conversationId}/messages/stream`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json', Accept: 'text/event-stream' },
+      body: JSON.stringify({ message }),
+      signal,
+    })
+  } catch (error) {
+    // Intentional cancellation must remain distinguishable from a transport
+    // failure, mirroring the shared request() classification.
+    if (error?.name === 'AbortError') throw error
+    throw new MentorApiError(
+      'We could not reach ScholarZone. Check your connection and try again.',
+      0,
+    )
+  }
+  if (!response.ok) {
+    const message = await readError(response, 'Stream failed')
+    if (response.status === 401) throw new MentorUnauthenticatedError(message)
+    if (response.status === 429) {
+      throw new MentorRateLimitedError(message, retryAfterSeconds(response))
+    }
+    if (response.status === 422) throw new MentorValidationError(message)
+    if (response.status >= 500) throw new MentorUnavailableError(message, response.status)
+    throw new MentorApiError(message, response.status)
+  }
+  if (!response.body) {
+    throw new MentorApiError('No response body', response.status)
+  }
+  const reader = response.body.getReader()
+  const decoder = new TextDecoder('utf-8', { fatal: false })
+  let buffer = ''
+  let cancelled = false
+  let completedNormally = false
+  let cancelPromise = null
+  const onAbort = () => {
+    cancelled = true
+    try {
+      const p = reader.cancel()
+      if (p && typeof p.then === 'function') {
+        cancelPromise = p
+        p.catch(() => {})
+      }
+    } catch { /* ignore */ }
+  }
+  if (signal) {
+    if (signal.aborted) onAbort()
+    else signal.addEventListener('abort', onAbort, { once: true })
+  }
+  function findBoundary(buf) {
+    const candidates = [
+      { idx: buf.indexOf('\n\n'), len: 2 },
+      { idx: buf.indexOf('\r\n\r\n'), len: 4 },
+      { idx: buf.indexOf('\r\r'), len: 2 },
+    ]
+    let best = null
+    for (const c of candidates) {
+      if (c.idx !== -1 && (best === null || c.idx < best.idx)) best = c
+    }
+    return best
+  }
+  try {
+    while (true) {
+      if (cancelled) break
+      let readResult
+      try {
+        readResult = await reader.read()
+      } catch (e) {
+        if (cancelled) break
+        if (e?.name === 'AbortError') throw e
+        throw new MentorApiError(
+          'We could not reach ScholarZone. Check your connection and try again.',
+          0,
+        )
+      }
+      const { done, value } = readResult
+      if (done) break
+      buffer += decoder.decode(value, { stream: true })
+      while (true) {
+        if (cancelled) break
+        const b = findBoundary(buffer)
+        if (!b) break
+        const raw = buffer.slice(0, b.idx)
+        buffer = buffer.slice(b.idx + b.len)
+        const normalized = raw.replace(/\r\n/g, '\n').replace(/\r/g, '\n')
+        const evt = parseSSEEvent(normalized)
+        if (evt) yield evt
+      }
+      if (cancelled) break
+    }
+    if (!cancelled && buffer.trim()) {
+      const normalized = buffer.replace(/\r\n/g, '\n').replace(/\r/g, '\n')
+      const evt = parseSSEEvent(normalized)
+      if (evt) yield evt
+    }
+    completedNormally = true
+  } finally {
+    if (!completedNormally) {
+      try {
+        if (cancelPromise) await cancelPromise
+        else await reader.cancel()
+      } catch { /* ignore */ }
+    }
+    try { reader.releaseLock() } catch { /* ignore */ }
+    if (signal) signal.removeEventListener('abort', onAbort)
+  }
+}
+
+function parseSSEEvent(raw) {
+  if (!raw.trim()) return null
+  const lines = raw.split('\n')
+  let event = 'message'
+  const dataLines = []
+  for (const line of lines) {
+    if (line.startsWith('event:')) {
+      event = line.slice(6).trim()
+    } else if (line.startsWith('data:')) {
+      dataLines.push(line.slice(5).replace(/^ /, ''))
+    } else if (line.startsWith(':')) {
+      // comment, ignore
+    }
+  }
+  const dataStr = dataLines.join('\n')
+  let parsed = null
+  if (dataStr) {
+    try { parsed = JSON.parse(dataStr) } catch { parsed = dataStr }
+  }
+  return { event, data: parsed }
+}
 export function askMentor(message, { signal, sessionScope, sessionId, sessionKey, scope, session, generation, sessionGeneration } = {}) {
   const resolvedScope = (sessionScope !== undefined ? sessionScope
     : sessionId !== undefined ? sessionId

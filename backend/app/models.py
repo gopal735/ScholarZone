@@ -1,4 +1,4 @@
-﻿"""Persistent scholarship data model."""
+"""Persistent scholarship data model."""
 
 from datetime import date, datetime
 
@@ -1073,3 +1073,71 @@ class StudyPlanTask(Base):
 
     from sqlalchemy.orm import relationship as _rel2
     plan: Mapped["StudyPlan"] = _rel2("StudyPlan", back_populates="tasks")
+
+# ---------------------------------------------------------------------------
+# Dream AI Mentor 2.0 conversation persistence
+# ---------------------------------------------------------------------------
+
+
+class MentorConversation(Base):
+    __tablename__ = "mentor_conversations"
+    __table_args__ = (
+        Index("ix_mentor_conversations_user_updated", "user_id", "updated_at"),
+    )
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False, index=True)
+    title: Mapped[str] = mapped_column(String(255), nullable=False, default="New conversation")
+    status: Mapped[str] = mapped_column(String(16), nullable=False, default="active", index=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now(), onupdate=func.now())
+    last_message_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+    from sqlalchemy.orm import relationship as _rel_mc
+    messages: Mapped[list["MentorMessage"]] = _rel_mc(
+        "MentorMessage", back_populates="conversation", cascade="all, delete-orphan", order_by="MentorMessage.sequence_number"
+    )
+
+
+class MentorMessage(Base):
+    __tablename__ = "mentor_messages"
+    __table_args__ = (
+        Index("ix_mentor_messages_conversation_seq", "conversation_id", "sequence_number"),
+        Index("ix_mentor_messages_user_created", "user_id", "created_at"),
+        UniqueConstraint("conversation_id", "role", "request_id", name="uq_mentor_messages_conv_role_request"),
+    )
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    conversation_id: Mapped[int] = mapped_column(ForeignKey("mentor_conversations.id", ondelete="CASCADE"), nullable=False, index=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False, index=True)
+    role: Mapped[str] = mapped_column(String(16), nullable=False)
+    content: Mapped[str] = mapped_column(Text, nullable=False, default="")
+    status: Mapped[str] = mapped_column(String(16), nullable=False, default="pending")
+    sequence_number: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    request_id: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    source_user_message_id: Mapped[int | None] = mapped_column(ForeignKey("mentor_messages.id", ondelete="SET NULL"), nullable=True, index=True)
+    provider: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    model: Mapped[str | None] = mapped_column(String(128), nullable=True)
+    prompt_tokens: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    completion_tokens: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    error: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    # Unique generation-attempt identity for retry isolation. Each reservation
+    # or retry claims a new UUID; stale attempts cannot mutate a newer one.
+    attempt_id: Mapped[str | None] = mapped_column(String(64), nullable=True, index=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
+    completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+    from sqlalchemy.orm import relationship as _rel_mm
+    conversation: Mapped["MentorConversation"] = _rel_mm("MentorConversation", back_populates="messages")
+
+    @property
+    def generation_attempt_id(self):
+        return self.attempt_id
+
+    @property
+    def generation_id(self):
+        return self.attempt_id
+
+    @property
+    def active_attempt_id(self):
+        return self.attempt_id

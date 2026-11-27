@@ -69,11 +69,41 @@ class GatewayConfig:
     enabled: bool = False
     production: bool = False
     allow_recording_provider: bool = False
+    provider_timeout_seconds: float | None = None
 
     def __post_init__(self) -> None:
         from .providers import RecordingProvider
         if isinstance(self.default_provider, RecordingProvider) and not _recording_provider_allowed(self):
             raise ValueError("RecordingProvider is test-only and cannot be selected in production configuration.")
+
+
+class ProviderCapacityLease:
+    """A release-once handle for one provider capacity slot."""
+
+    def __init__(self, semaphore):
+        self._semaphore = semaphore
+        self._released = False
+        self._lock = threading.Lock()
+        self._released_event = threading.Event()
+
+    def release(self) -> bool:
+        with self._lock:
+            if self._released:
+                return False
+            self._released = True
+        try:
+            self._semaphore.release()
+        except (ValueError, RuntimeError):
+            pass
+        self._released_event.set()
+        return True
+
+    @property
+    def released(self) -> bool:
+        return self._released
+
+    def wait(self, timeout=None) -> bool:
+        return self._released_event.wait(timeout)
 
 
 class AIGateway:
@@ -133,7 +163,7 @@ class AIGateway:
         cancel_event: Optional[threading.Event] = None,
     ) -> ProviderResult:
         started = __import__("time").perf_counter()
-
+        lease = None
         effective_model_override = model_override if model_override is not None else getattr(request, "model_override", None)
         effective_cancel_event = cancel_event if cancel_event is not None else getattr(request, "cancel_event", None)
 
@@ -160,11 +190,21 @@ class AIGateway:
             effective_policy.max_output_tokens,
             model_cap,
         )
-        effective_timeout = (
-            request.timeout_seconds
-            if getattr(request, "timeout_seconds", None) is not None
-            else effective_policy.timeout_seconds
-        )
+        configured_timeout = getattr(self._config, "provider_timeout_seconds", None)
+        if configured_timeout is None:
+            try:
+                configured_timeout = getattr(self._provider, "_timeout", None)
+            except Exception:
+                configured_timeout = None
+        policy_timeout = effective_policy.timeout_seconds
+        caller_timeout = getattr(request, "timeout_seconds", None)
+        candidates = [v for v in (configured_timeout, policy_timeout, caller_timeout) if v is not None]
+        if candidates:
+            effective_timeout = min(float(v) for v in candidates)
+        else:
+            effective_timeout = 30.0
+        if effective_timeout <= 0:
+            effective_timeout = 30.0
 
         if not self._config.enabled:
             return ProviderResult(mode="disabled", used=False, failure=None, latency_ms=elapsed_ms(started))
@@ -173,6 +213,8 @@ class AIGateway:
             provider = self._provider
 
         if model is None:
+            if lease is not None:
+                lease.release()
             return ProviderResult(
                 mode="configured",
                 used=False,
@@ -181,6 +223,8 @@ class AIGateway:
             )
 
         if not model.supports(effective_required):
+            if lease is not None:
+                lease.release()
             return ProviderResult(
                 mode="configured",
                 used=False,
@@ -191,6 +235,8 @@ class AIGateway:
             )
 
         if effective_cancel_event is not None and effective_cancel_event.is_set():
+            if lease is not None:
+                lease.release()
             return ProviderResult(
                 mode="configured",
                 used=False,
@@ -238,7 +284,13 @@ class AIGateway:
                                     "prompt_tokens": _late_result.prompt_tokens,
                                     "completion_tokens": _late_result.completion_tokens,
                                 })
-                        self._worker_semaphore.release()
+                                # Bound usage history to prevent unbounded memory growth.
+                                if len(self._usage) > 1000:
+                                    self._usage = self._usage[-1000:]
+                        try:
+                            lease.release()
+                        except Exception:
+                            pass
 
                 acquired = self._worker_semaphore.acquire(blocking=False)
                 if not acquired:
@@ -250,12 +302,24 @@ class AIGateway:
                         model=model.id,
                         provider=provider.name,
                     )
+                lease = ProviderCapacityLease(self._worker_semaphore)
+                operation_state = {"worker_started": False, "startup_failed": False}
+                ownership_transferred = False
+                from dataclasses import replace as _replace2
+                request = _replace2(
+                    request,
+                    capacity_lease=lease,
+                    operation_state=operation_state,
+                )
 
                 worker = threading.Thread(target=_run, daemon=True)
                 try:
                     worker.start()
+                    operation_state["worker_started"] = True
+                    ownership_transferred = True
                 except Exception:  # noqa: BLE001
-                    self._worker_semaphore.release()
+                    operation_state["startup_failed"] = True
+                    lease.release()
                     raise
 
                 timeout = request.timeout_seconds if request.timeout_seconds is not None else policy.timeout_seconds
@@ -304,6 +368,8 @@ class AIGateway:
                     import time as _t
                     _t.sleep(RETRY_BASE_DELAY * (attempt + 1))
                     continue
+                if not operation_state.get("worker_started") and lease is not None:
+                    lease.release()
                 return ProviderResult(
                     mode="configured",
                     used=False,
@@ -319,6 +385,129 @@ class AIGateway:
             failure=last_failure or "unavailable",
             latency_ms=elapsed_ms(started),
         )
+
+    def generate_stream(
+        self,
+        task_kind: str,
+        request: GatewayRequest,
+        *,
+        model_override: str | None = None,
+        validator=None,
+        cancel_event=None,
+    ):
+        started = __import__("time").perf_counter()
+        effective_model_override = model_override if model_override is not None else getattr(request, "model_override", None)
+        effective_cancel_event = cancel_event if cancel_event is not None else getattr(request, "cancel_event", None)
+
+        policy = self.get_policy(task_kind)
+        if policy is None:
+            from .routing import RoutingPolicy
+            policy = RoutingPolicy(task_kind=task_kind, required_capabilities=frozenset())
+
+        from .routing import RoutingPolicy, resolve_model
+
+        effective_required = policy.required_capabilities | set(getattr(request, "required_capabilities", frozenset()) or frozenset())
+        effective_policy = RoutingPolicy(
+            task_kind=policy.task_kind,
+            required_capabilities=frozenset(effective_required),
+            preferred_cost_tier=policy.preferred_cost_tier,
+            allow_fallback=policy.allow_fallback,
+            max_output_tokens=policy.max_output_tokens,
+            timeout_seconds=policy.timeout_seconds,
+        )
+        model = resolve_model(effective_policy, self._config.registry, model_override=effective_model_override)
+
+        model_cap = model.max_output_tokens if model is not None and getattr(model, "max_output_tokens", None) is not None else effective_policy.max_output_tokens
+        effective_max_tokens = min(
+            getattr(request, "max_output_tokens", effective_policy.max_output_tokens),
+            effective_policy.max_output_tokens,
+            model_cap,
+        )
+        configured_timeout = getattr(self._config, "provider_timeout_seconds", None)
+        if configured_timeout is None:
+            try:
+                configured_timeout = getattr(self._provider, "_timeout", None)
+            except Exception:
+                configured_timeout = None
+        policy_timeout = effective_policy.timeout_seconds
+        caller_timeout = getattr(request, "timeout_seconds", None)
+        candidates = [v for v in (configured_timeout, policy_timeout, caller_timeout) if v is not None]
+        if candidates:
+            effective_timeout = min(float(v) for v in candidates)
+        else:
+            effective_timeout = 30.0
+        if effective_timeout <= 0:
+            effective_timeout = 30.0
+
+        if not self._config.enabled:
+            return
+            yield
+
+        with self._lock:
+            provider = self._provider
+
+        if model is None:
+            raise RuntimeError("unavailable")
+
+        if not model.supports(effective_required):
+            raise RuntimeError("capability_mismatch")
+
+        if effective_cancel_event is not None and effective_cancel_event.is_set():
+            raise RuntimeError("cancelled")
+
+        from dataclasses import replace as _replace
+        request = _replace(
+            request,
+            required_capabilities=frozenset(effective_required),
+            max_output_tokens=effective_max_tokens,
+            timeout_seconds=effective_timeout,
+            cancel_event=effective_cancel_event if effective_cancel_event is not None else request.cancel_event,
+            capacity_lease=None,
+            operation_state=None,
+        )
+
+        acquired = self._worker_semaphore.acquire(blocking=False)
+        if not acquired:
+            raise RuntimeError("worker_capacity_exhausted")
+        lease = ProviderCapacityLease(self._worker_semaphore)
+        operation_state = {"worker_started": False, "startup_failed": False}
+        try:
+            request = _replace(
+                request,
+                capacity_lease=lease,
+                operation_state=operation_state,
+            )
+            gen = provider.generate_stream(request, model)
+            try:
+                for chunk in gen:
+                    if effective_cancel_event is not None and effective_cancel_event.is_set():
+                        try:
+                            gen.close()
+                        except Exception:
+                            pass
+                        raise RuntimeError("cancelled")
+                    if __import__("time").perf_counter() - started >= effective_timeout:
+                        try:
+                            gen.close()
+                        except Exception:
+                            pass
+                        raise RuntimeError("timeout")
+                    if chunk is None:
+                        continue
+                    yield chunk
+            finally:
+                try:
+                    gen.close()
+                except Exception:
+                    pass
+        finally:
+            if not operation_state.get("worker_started"):
+                lease.release()
+            # Provider owns the lease after successful startup and releases it
+            # when its transport worker exits. Do not release it here.
+
+    def stream(self, *args, **kwargs):
+        return self.generate_stream(*args, **kwargs)
 
     @property
     def pending_timed_out_workers(self) -> int:

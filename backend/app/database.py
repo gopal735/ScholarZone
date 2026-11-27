@@ -1,4 +1,4 @@
-﻿"""SQLAlchemy engine and session lifecycle utilities."""
+"""SQLAlchemy engine and session lifecycle utilities."""
 
 import logging
 from collections.abc import Generator
@@ -432,6 +432,171 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
         connection.execute(text("ALTER TABLE study_plan_tasks ADD COLUMN IF NOT EXISTS version INTEGER NOT NULL DEFAULT 1"))
         connection.execute(text("CREATE INDEX IF NOT EXISTS ix_study_plan_tasks_plan_status ON study_plan_tasks (plan_id, status)"))
 
+        # Dream AI Mentor 2.0 conversation persistence tables.
+        connection.execute(text("""
+            CREATE TABLE IF NOT EXISTS mentor_conversations (
+                id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+                user_id INTEGER NOT NULL REFERENCES users(id),
+                title VARCHAR(255) NOT NULL DEFAULT 'New conversation',
+                status VARCHAR(16) NOT NULL DEFAULT 'active',
+                created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+                updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+                last_message_at TIMESTAMPTZ
+            )
+        """))
+        connection.execute(text("CREATE INDEX IF NOT EXISTS ix_mentor_conversations_user_updated ON mentor_conversations (user_id, updated_at)"))
+        connection.execute(text("""
+            CREATE TABLE IF NOT EXISTS mentor_messages (
+                id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+                conversation_id INTEGER NOT NULL REFERENCES mentor_conversations(id) ON DELETE CASCADE,
+                user_id INTEGER NOT NULL REFERENCES users(id),
+                role VARCHAR(16) NOT NULL,
+                content TEXT NOT NULL DEFAULT '',
+                status VARCHAR(16) NOT NULL DEFAULT 'pending',
+                sequence_number INTEGER NOT NULL DEFAULT 0,
+                request_id VARCHAR(64),
+                source_user_message_id INTEGER REFERENCES mentor_messages(id) ON DELETE SET NULL,
+                provider VARCHAR(64),
+                model VARCHAR(128),
+                prompt_tokens INTEGER,
+                completion_tokens INTEGER,
+                error VARCHAR(64),
+                attempt_id VARCHAR(64),
+                created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+                completed_at TIMESTAMPTZ,
+                CONSTRAINT uq_mentor_messages_conv_role_request UNIQUE (conversation_id, role, request_id)
+            )
+        """))
+        connection.execute(text("CREATE INDEX IF NOT EXISTS ix_mentor_messages_conversation_seq ON mentor_messages (conversation_id, sequence_number)"))
+        connection.execute(text("CREATE INDEX IF NOT EXISTS ix_mentor_messages_user_created ON mentor_messages (user_id, created_at)"))
+
+        # Upgrade existing Mentor 2 message tables with source linkage.
+        connection.execute(text("ALTER TABLE mentor_messages ADD COLUMN IF NOT EXISTS source_user_message_id INTEGER REFERENCES mentor_messages(id) ON DELETE SET NULL"))
+        connection.execute(text("CREATE INDEX IF NOT EXISTS ix_mentor_messages_source_user ON mentor_messages (source_user_message_id)"))
+        connection.execute(text("ALTER TABLE mentor_messages ADD COLUMN IF NOT EXISTS attempt_id VARCHAR(64)"))
+        connection.execute(text("CREATE INDEX IF NOT EXISTS ix_mentor_messages_attempt ON mentor_messages (attempt_id)"))
+
+        # Idempotent legacy constraint migration for request_id uniqueness.
+        # PostgreSQL-only: catalog introspection via pg_constraint / pg_index.
+        # No silent exception swallowing: a failure here must abort the
+        # migration transaction and propagate to the caller.
+        # No silent exception swallowing: a failure here must abort the
+        # migration transaction and propagate to the caller.
+        if connection.dialect.name == "postgresql":
+            # Serialize concurrent startup migrations with a transaction-level
+            # advisory lock.
+            connection.execute(text("SELECT pg_advisory_xact_lock(hashtext('scholarzone_mentor_messages_migration_v1'))"))
+            # Resolve the actual relation identity via search_path so DDL and
+            # catalog queries target the same table even with a customized
+            # search_path. (Do not assume current_schema() alone.)
+            _schema = connection.execute(text(
+                "SELECT n.nspname FROM pg_class c "
+                "JOIN pg_namespace n ON n.oid = c.relnamespace "
+                "WHERE c.oid = 'mentor_messages'::regclass"
+            )).scalar()
+            if _schema is None:
+                # Fall back to current_schema only if regclass resolution fails.
+                _schema = connection.execute(text("SELECT current_schema()")).scalar()
+
+            # Drop obsolete global UNIQUE constraints whose key columns are
+            # exactly [request_id].
+            _legacy_constraints = connection.execute(text("""
+                SELECT c.conname
+                FROM pg_constraint c
+                JOIN pg_class t ON t.oid = c.conrelid
+                JOIN pg_namespace n ON n.oid = t.relnamespace
+                WHERE t.relname = 'mentor_messages'
+                  AND n.nspname = :schema
+                  AND c.contype = 'u'
+                  AND (
+                        SELECT COALESCE(array_agg(a.attname ORDER BY k.ord)::text[], ARRAY[]::text[])
+                        FROM unnest(c.conkey) WITH ORDINALITY AS k(attnum, ord)
+                        JOIN pg_attribute a ON a.attrelid = t.oid AND a.attnum = k.attnum
+                  ) = ARRAY['request_id']::text[]
+            """), {"schema": _schema}).fetchall()
+            for (_cname,) in _legacy_constraints:
+                _qname = _cname.replace('"', '""')
+                connection.execute(text(
+                    f'ALTER TABLE "{_schema}"."mentor_messages" '
+                    f'DROP CONSTRAINT IF EXISTS "{_qname}"'
+                ))
+
+            # Drop obsolete standalone unique indexes whose actual unique key is
+            # exactly [request_id], excluding partial, expression, invalid, and
+            # not-ready indexes. INCLUDE columns are not counted as key columns.
+            _legacy_indexes = connection.execute(text("""
+                SELECT idx.relname
+                FROM pg_index i
+                JOIN pg_class tbl ON tbl.oid = i.indrelid
+                JOIN pg_namespace n ON n.oid = tbl.relnamespace
+                JOIN pg_class idx ON idx.oid = i.indexrelid
+                WHERE tbl.relname = 'mentor_messages'
+                  AND n.nspname = :schema
+                  AND i.indisunique = TRUE
+                  AND i.indisvalid = TRUE
+                  AND i.indisready = TRUE
+                  AND i.indpred IS NULL
+                  AND i.indexprs IS NULL
+                  AND NOT EXISTS (
+                        SELECT 1 FROM pg_constraint c WHERE c.conindid = i.indexrelid
+                  )
+                  AND (
+                        SELECT COALESCE(array_agg(a.attname ORDER BY k.ord)::text[], ARRAY[]::text[])
+                        FROM unnest(i.indkey) WITH ORDINALITY AS k(attnum, ord)
+                        JOIN pg_attribute a ON a.attrelid = tbl.oid AND a.attnum = k.attnum
+                        WHERE k.attnum <> 0
+                          AND k.ord <= i.indnkeyatts
+                  ) = ARRAY['request_id']::text[]
+            """), {"schema": _schema}).fetchall()
+            for (_iname,) in _legacy_indexes:
+                _qname = _iname.replace('"', '""')
+                connection.execute(text(
+                    f'DROP INDEX IF EXISTS "{_schema}"."{_qname}"'
+                ))
+
+            # Ensure the intended composite uniqueness exists (any constraint or
+            # valid unique index). Never create a duplicate.
+            _composite_exists = connection.execute(text("""
+                SELECT 1
+                FROM pg_constraint c
+                JOIN pg_class t ON t.oid = c.conrelid
+                JOIN pg_namespace n ON n.oid = t.relnamespace
+                WHERE t.relname = 'mentor_messages'
+                  AND n.nspname = :schema
+                  AND c.contype = 'u'
+                  AND (
+                        SELECT COALESCE(array_agg(a.attname ORDER BY k.ord)::text[], ARRAY[]::text[])
+                        FROM unnest(c.conkey) WITH ORDINALITY AS k(attnum, ord)
+                        JOIN pg_attribute a ON a.attrelid = t.oid AND a.attnum = k.attnum
+                  ) = ARRAY['conversation_id','role','request_id']::text[]
+                UNION ALL
+                SELECT 1
+                FROM pg_index i
+                JOIN pg_class tbl ON tbl.oid = i.indrelid
+                JOIN pg_namespace n ON n.oid = tbl.relnamespace
+                WHERE tbl.relname = 'mentor_messages'
+                  AND n.nspname = :schema
+                  AND i.indisunique = TRUE
+                  AND i.indisvalid = TRUE
+                  AND i.indisready = TRUE
+                  AND i.indpred IS NULL
+                  AND i.indexprs IS NULL
+                  AND (
+                        SELECT COALESCE(array_agg(a.attname ORDER BY k.ord)::text[], ARRAY[]::text[])
+                        FROM unnest(i.indkey) WITH ORDINALITY AS k(attnum, ord)
+                        JOIN pg_attribute a ON a.attrelid = tbl.oid AND a.attnum = k.attnum
+                        WHERE k.attnum <> 0
+                          AND k.ord <= i.indnkeyatts
+                  ) = ARRAY['conversation_id','role','request_id']::text[]
+                LIMIT 1
+            """), {"schema": _schema}).fetchone()
+            if not _composite_exists:
+                connection.execute(text(
+                    f'ALTER TABLE "{_schema}"."mentor_messages" '
+                    'ADD CONSTRAINT uq_mentor_messages_conv_role_request '
+                    'UNIQUE (conversation_id, role, request_id)'
+                ))
+
         # Durable, database-level attribution for image mutations. The image
         # regression on scholarships 14/130/554 reverted with no history row
         # and no recorded maintenance run, which left no trace of the writer.
@@ -515,6 +680,10 @@ def _validate_postgresql_schema(engine: Engine) -> None:
     study_plans_ok = inspector.has_table("study_plans")
     study_plan_tasks_ok = inspector.has_table("study_plan_tasks")
 
+    # Dream AI Mentor 2.0 conversation persistence tables.
+    mentor_conversations_ok = inspector.has_table("mentor_conversations")
+    mentor_messages_ok = inspector.has_table("mentor_messages")
+
     logger.info("[SCHEMA VALIDATION] image_kind: %s", "OK" if image_kind_ok else "MISSING")
     logger.info("[SCHEMA VALIDATION] image_reviews: %s", "OK" if image_reviews_ok else "MISSING")
     logger.info("[SCHEMA VALIDATION] indexes: %s", "OK" if indexes_ok else "MISSING")
@@ -536,7 +705,7 @@ def _validate_postgresql_schema(engine: Engine) -> None:
             image_audit_ok, trigger_ok,
         )
 
-    if not (image_kind_ok and image_reviews_ok and indexes_ok and supervisor_tables_ok and study_plans_ok and study_plan_tasks_ok):
+    if not (image_kind_ok and image_reviews_ok and indexes_ok and supervisor_tables_ok and study_plans_ok and study_plan_tasks_ok and mentor_conversations_ok and mentor_messages_ok):
         missing = []
         if not image_kind_ok:
             missing.append("scholarships.image_kind")
@@ -551,6 +720,10 @@ def _validate_postgresql_schema(engine: Engine) -> None:
             missing.append("study_plans")
         if not study_plan_tasks_ok:
             missing.append("study_plan_tasks")
+        if not mentor_conversations_ok:
+            missing.append("mentor_conversations")
+        if not mentor_messages_ok:
+            missing.append("mentor_messages")
         raise RuntimeError(
             "[SCHEMA VALIDATION] STATUS: INVALID - Missing: " + ", ".join(missing)
         )
@@ -1111,6 +1284,48 @@ def _upgrade_sqlite_schema(engine: Engine) -> None:
             )
         """))
         connection.execute(text("CREATE INDEX IF NOT EXISTS ix_study_plan_tasks_plan_status ON study_plan_tasks (plan_id, status)"))
+
+        # Dream AI Mentor 2.0 conversation persistence tables.
+        connection.execute(text("""
+            CREATE TABLE IF NOT EXISTS mentor_conversations (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id INTEGER NOT NULL REFERENCES users(id),
+                title VARCHAR(255) NOT NULL DEFAULT 'New conversation',
+                status VARCHAR(16) NOT NULL DEFAULT 'active',
+                created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                last_message_at DATETIME
+            )
+        """))
+        connection.execute(text("CREATE INDEX IF NOT EXISTS ix_mentor_conversations_user_updated ON mentor_conversations (user_id, updated_at)"))
+        connection.execute(text("""
+            CREATE TABLE IF NOT EXISTS mentor_messages (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                conversation_id INTEGER NOT NULL REFERENCES mentor_conversations(id) ON DELETE CASCADE,
+                user_id INTEGER NOT NULL REFERENCES users(id),
+                role VARCHAR(16) NOT NULL,
+                content TEXT NOT NULL DEFAULT '',
+                status VARCHAR(16) NOT NULL DEFAULT 'pending',
+                sequence_number INTEGER NOT NULL DEFAULT 0,
+                request_id VARCHAR(64),
+                source_user_message_id INTEGER REFERENCES mentor_messages(id) ON DELETE SET NULL,
+                provider VARCHAR(64),
+                model VARCHAR(128),
+                prompt_tokens INTEGER,
+                completion_tokens INTEGER,
+                error VARCHAR(64),
+                created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                completed_at DATETIME,
+                CONSTRAINT uq_mentor_messages_conv_role_request UNIQUE (conversation_id, role, request_id)
+            )
+        """))
+        connection.execute(text("CREATE INDEX IF NOT EXISTS ix_mentor_messages_conversation_seq ON mentor_messages (conversation_id, sequence_number)"))
+        connection.execute(text("CREATE INDEX IF NOT EXISTS ix_mentor_messages_user_created ON mentor_messages (user_id, created_at)"))
+
+        _mentor_cols = {c["name"] for c in inspect(connection).get_columns("mentor_messages")} if inspect(connection).has_table("mentor_messages") else set()
+        if inspect(connection).has_table("mentor_messages") and "source_user_message_id" not in _mentor_cols:
+            connection.execute(text("ALTER TABLE mentor_messages ADD COLUMN source_user_message_id INTEGER REFERENCES mentor_messages(id) ON DELETE SET NULL"))
+        connection.execute(text("CREATE INDEX IF NOT EXISTS ix_mentor_messages_source_user ON mentor_messages (source_user_message_id)"))
         for _stmt in (
             "ALTER TABLE study_plans ADD COLUMN version INTEGER NOT NULL DEFAULT 1",
             "ALTER TABLE study_plan_tasks ADD COLUMN version INTEGER NOT NULL DEFAULT 1",
