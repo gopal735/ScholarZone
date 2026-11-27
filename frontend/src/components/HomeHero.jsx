@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import ScholarshipCard from '../components/ScholarshipCard'
 import { fetchScholarships } from '../services/scholarshipService'
-import { scholarships as fallbackScholarships } from '../data/scholarships'
 import './HomeHero.css'
 
 function LiveIndicator({ stats, isLoading, isUnavailable }) {
@@ -41,7 +40,6 @@ function LiveIndicator({ stats, isLoading, isUnavailable }) {
 export default function HomeHero({ stats, isLoading, isUnavailable }) {
   const [preview, setPreview] = useState([])
   const [loading, setLoading] = useState(true)
-  const [useFallback, setUseFallback] = useState(false)
 
   useEffect(() => {
     const controller = new AbortController()
@@ -53,8 +51,7 @@ export default function HomeHero({ stats, isLoading, isUnavailable }) {
       })
       .catch(() => {
         if (!controller.signal.aborted) {
-          setPreview(fallbackScholarships.slice(0, 3))
-          setUseFallback(true)
+          setPreview([])
           setLoading(false)
         }
       })
@@ -93,11 +90,6 @@ export default function HomeHero({ stats, isLoading, isUnavailable }) {
             </div>
           ) : (
             <>
-              {useFallback && (
-                <p className="home-hero__fallback-notice" role="status">
-                  Showing local directory data.
-                </p>
-              )}
               <div className="home-hero__cards">
                 {preview.map((s, i) => (
                   <div key={s.id} className="home-hero__card" style={{ animationDelay: `${i * 0.08}s` }}>

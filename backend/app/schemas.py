@@ -74,6 +74,7 @@ class ScholarshipQuery(BaseModel):
         description="Only scholarships with a known deadline on or after the current UTC date and within N days from that date (inclusive).",
     )
     status: ScholarshipStatus | None = None
+    lifecycle: str | None = Field(default=None, description="Server-authoritative lifecycle filter (opening, upcoming, open, closing_soon, closed, unknown).")
     sort: ScholarshipSort = ScholarshipSort.DEFAULT
     page: int = Field(default=1, ge=1, le=100_000)
     limit: int = Field(default=12, ge=1, le=100)
@@ -127,6 +128,7 @@ class ScholarshipResponse(BaseModel):
     deadline_date: date | None = None
     deadline_precision: str
     status: ScholarshipStatus | None = None
+    lifecycle: str | None = None
     verified: bool = Field(
         default=False, validation_alias=AliasChoices("verified", "is_verified")
     )
@@ -349,6 +351,7 @@ class PaginationMetadata(BaseModel):
 class ScholarshipListResponse(BaseModel):
     items: list[ScholarshipResponse]
     pagination: PaginationMetadata
+    lifecycle_counts: dict[str, int] = Field(default_factory=dict)
 
 class ScholarshipStatsResponse(BaseModel):
     """Live aggregate statistics served from the database."""

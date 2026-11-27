@@ -1,0 +1,73 @@
+{
+  "generated_at": "2026-11-26T19:22:45.131724+00:00",
+  "verification_at": "2026-11-26T19:22:45.130402+00:00",
+  "total_candidates": 8,
+  "inserted": 2,
+  "skipped_duplicate": 6,
+  "failed": 0,
+  "inserted_ids": [
+    2008,
+    2009
+  ],
+  "matched_ids": [
+    2001,
+    2003,
+    2004,
+    2005,
+    2006,
+    2007
+  ],
+  "matched_details": [
+    {
+      "id": 2001,
+      "title": "Future Ukraine: Research Grants for Ukrainian Master's Students and Researchers",
+      "country": "Germany",
+      "matched_by": "stable_identity"
+    },
+    {
+      "id": 2003,
+      "title": "Hans-Böckler-Stiftung International PhD Scholarship",
+      "country": "Germany",
+      "matched_by": "stable_identity"
+    },
+    {
+      "id": 2004,
+      "title": "Heinrich Böll Foundation Scholarship (Spring 2027 Round)",
+      "country": "Germany",
+      "matched_by": "stable_identity"
+    },
+    {
+      "id": 2005,
+      "title": "Konrad-Adenauer-Stiftung Scholarship Programme for International Students",
+      "country": "Germany",
+      "matched_by": "stable_identity"
+    },
+    {
+      "id": 2006,
+      "title": "Rosa-Luxemburg-Stiftung Doctoral Scholarship (2027 Round)",
+      "country": "Germany",
+      "matched_by": "stable_identity"
+    },
+    {
+      "id": 2007,
+      "title": "DAAD Helmut-Schmidt-Programme (Master's Scholarships for Public Policy and Good Governance)",
+      "country": "Germany",
+      "matched_by": "stable_identity"
+    }
+  ],
+  "open_count": 0,
+  "upcoming_count": 2,
+  "audit_records": 2,
+  "master_baseline_verified": true,
+  "total_records_before": 9,
+  "total_records_after": 11,
+  "germany_records_before": 7,
+  "germany_records_after": 9,
+  "id_mapping": {
+    "erasmus_mundus_id": 1,
+    "iccr_id": 2,
+    "vda_id": null,
+    "polito_phd_id": null
+  },
+  "errors": []
+}

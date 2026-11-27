@@ -22,327 +22,6 @@ const EUROPE_COUNTRIES = ['Germany', 'Europe', 'UK', 'United Kingdom', 'France',
 
 
 
-const FLAGSHIP_PROGRAMMES = [
-
-  // Verified programmes from the canonical snapshot (verification_status === 'active')
-
-  {
-
-    id: 1002,
-
-    title: 'DAAD Scholarship',
-
-    country: 'Germany',
-
-    degree: "Master's, PhD",
-
-    funding: 'Stipend',
-
-    levels: ["Master's", 'PhD'],
-
-    isFull: false,
-
-    coverage: 'Monthly stipend (€934–€1,300), health insurance and travel allowance for postgraduate study in Germany.',
-
-    officialUrl: 'https://www.daad.de/en/study-and-research-in-germany/scholarships/',
-
-    provider: 'German Academic Exchange Service (DAAD)',
-
-    verified: true,
-
-    image_url: 'https://www.daad.de/_nuxt/logo-small-light.BeMXrHNY.svg',
-
-    image_source_url: 'https://www.daad.de/en/',
-
-    image_source_type: 'official_provider',
-
-    image_kind: 'official_logo',
-
-    image_verified_at: '2025-04-10T00:00:00',
-
-    image_alt_text: 'German Academic Exchange Service (DAAD) official logo',
-
-  },
-
-  {
-
-    id: 1003,
-
-    title: 'Chevening Scholarship',
-
-    country: 'UK',
-
-    degree: "Master's",
-
-    funding: 'Fully Funded',
-
-    levels: ["Master's"],
-
-    isFull: true,
-
-    coverage: "One-year master's at any UK university with 100% tuition, monthly living costs and return flights covered.",
-
-    officialUrl: 'https://www.chevening.org/',
-
-    provider: 'UK Foreign, Commonwealth & Development Office',
-
-    verified: true,
-
-    image_url: 'https://www.chevening.org/wp-content/themes/chevening/assets/images/logo.png',
-
-    image_source_url: 'https://www.chevening.org/',
-
-    image_source_type: 'official_provider',
-
-    image_kind: 'official_logo',
-
-    image_verified_at: '2025-05-15T00:00:00',
-
-    image_alt_text: 'Chevening Scholarship official logo',
-
-  },
-
-  {
-
-    id: 1004,
-
-    title: 'Commonwealth Scholarship',
-
-    country: 'UK',
-
-    degree: "Master's, PhD",
-
-    funding: 'Fully Funded',
-
-    levels: ["Master's", 'PhD'],
-
-    isFull: true,
-
-    coverage: 'Full tuition, warm clothing allowance, monthly living stipend and return flights for developing Commonwealth nations.',
-
-    officialUrl: 'https://cscuk.fcdo.gov.uk/apply/',
-
-    provider: 'Commonwealth Scholarship Commission in the UK',
-
-    verified: true,
-
-    image_url: '',
-
-    image_source_url: '',
-
-    image_source_type: '',
-
-    image_kind: '',
-
-    image_verified_at: '',
-
-    image_alt_text: '',
-
-  },
-
-  // Editorial examples — not matched to canonical snapshot records
-
-  {
-
-    id: 1001,
-
-    title: 'MEXT Scholarship',
-
-    country: 'Japan',
-
-    degree: "Bachelor's, Master's, PhD",
-
-    funding: 'Fully Funded',
-
-    levels: ["Bachelor's", "Master's", 'PhD'],
-
-    isFull: true,
-
-    coverage: 'Tuition, monthly allowance (¥144,000+) and round-trip airfare from the Japanese government.',
-
-    officialUrl: 'https://www.studyinjapan.go.jp/en/planning/scholarship/mext-scholarship/',
-
-    provider: 'Ministry of Education, Culture, Sports, Science and Technology Japan',
-
-    verified: false,
-
-    editorialNote: 'Editorial example — not yet matched to canonical verified record',
-
-    image_url: 'https://www.studyinjapan.go.jp/en/assets/images/common/logo_mext_en.svg',
-
-    image_source_url: 'https://www.studyinjapan.go.jp/en/about/logo/index.htm',
-
-    image_source_type: 'official_provider',
-
-    image_kind: 'official_logo',
-
-    image_verified_at: '2025-06-26T00:00:00',
-
-    image_alt_text: 'MEXT Ministry of Education, Culture, Sports, Science and Technology (Japan) official logo',
-
-  },
-
-  {
-
-    id: 1005,
-
-    title: 'Australia Awards',
-
-    country: 'Australia',
-
-    degree: "Master's, PhD",
-
-    funding: 'Fully Funded',
-
-    levels: ["Master's", 'PhD'],
-
-    isFull: true,
-
-    coverage: 'Full tuition fees, return air travel, establishment allowance, and contribution to living expenses (CLE).',
-
-    officialUrl: 'https://www.dfat.gov.au/people-to-people/australia-awards',
-
-    provider: 'Department of Foreign Affairs and Trade (DFAT) Australia',
-
-    verified: false,
-
-    editorialNote: 'Editorial example — not yet matched to canonical verified record',
-
-    image_url: '',
-
-    image_source_url: '',
-
-    image_source_type: '',
-
-    image_kind: '',
-
-    image_verified_at: '',
-
-    image_alt_text: '',
-
-  },
-
-  {
-
-    id: 1006,
-
-    title: 'Fulbright Program',
-
-    country: 'USA',
-
-    degree: "Master's, PhD",
-
-    funding: 'Fully Funded',
-
-    levels: ["Master's", 'PhD'],
-
-    isFull: true,
-
-    coverage: 'Full tuition, monthly stipend, health insurance, and international travel for graduate study in the United States.',
-
-    officialUrl: 'https://bd.usembassy.gov/education-culture/student-exchange-programs/fulbright-foreign-student-program/',
-
-    provider: 'U.S. Department of State / US Embassy Dhaka',
-
-    verified: false,
-
-    editorialNote: 'Editorial example — not yet matched to canonical verified record',
-
-    image_url: 'https://us.fulbrightonline.org/templates/us/images/iie_logo.png',
-
-    image_source_url: 'https://us.fulbrightonline.org',
-
-    image_source_type: 'official_provider',
-
-    image_kind: 'official_logo',
-
-    image_verified_at: '2025-08-01T00:00:00',
-
-    image_alt_text: 'Fulbright Program official logo',
-
-  },
-
-  {
-
-    id: 1007,
-
-    title: 'Türkiye Burslari',
-
-    country: 'Türkiye',
-
-    degree: "Bachelor's, Master's, PhD",
-
-    funding: 'Fully Funded',
-
-    levels: ["Bachelor's", "Master's", 'PhD'],
-
-    isFull: true,
-
-    coverage: 'Full university tuition, free accommodation, monthly allowance, 1-year Turkish course and airfare.',
-
-    officialUrl: 'https://www.turkiyeburslari.gov.tr/',
-
-    provider: 'Presidency for Turks Abroad and Related Communities (YTB)',
-
-    verified: false,
-
-    editorialNote: 'Editorial example — not yet matched to canonical verified record',
-
-    image_url: '',
-
-    image_source_url: '',
-
-    image_source_type: '',
-
-    image_kind: '',
-
-    image_verified_at: '',
-
-    image_alt_text: '',
-
-  },
-
-  {
-
-    id: 1008,
-
-    title: 'Erasmus Mundus',
-
-    country: 'Europe',
-
-    degree: "Master's",
-
-    funding: 'Fully Funded',
-
-    levels: ["Master's"],
-
-    isFull: true,
-
-    coverage: "Joint master's degree across 2+ European countries with tuition waiver and €1,400 monthly living allowance.",
-
-    officialUrl: 'https://erasmus-plus.ec.europa.eu/opportunities/opportunities-for-individuals/students/erasmus-mundus-joint-masters',
-
-    provider: 'European Commission',
-
-    verified: false,
-
-    editorialNote: 'Editorial example — not yet matched to canonical verified record',
-
-    image_url: '',
-
-    image_source_url: '',
-
-    image_source_type: '',
-
-    image_kind: '',
-
-    image_verified_at: '',
-
-    image_alt_text: '',
-
-  },
-
-]
 
 
 
@@ -638,7 +317,14 @@ function flagFor(country) {
 
 export default function HomePage() {
 
-  const { scholarships: directoryScholarships, staticMode } = useScholarshipDirectory()
+  const {
+    scholarships: directoryScholarships = [],
+    isLoading: isDirectoryLoading = false,
+    error: directoryError = null,
+    retry: retryFromHook,
+    refetch: refetchFromHook,
+  } = useScholarshipDirectory() || {}
+  const retryDirectory = retryFromHook || refetchFromHook || (() => {})
 
   const { stats } = useScholarshipStats()
 
@@ -918,13 +604,9 @@ export default function HomePage() {
 
   const allScholarships = useMemo(() => {
 
-    const flagTitles = new Set(FLAGSHIP_PROGRAMMES.map((f) => f.title.toLowerCase()))
-
     const extra = (directoryScholarships || [])
 
-      .filter((s) => !flagTitles.has((s.title || '').toLowerCase()))
-
-      .slice(0, 48) // Rich batch from the 725+ catalogue
+      .slice(0, 48) // Rich batch from the live catalogue
 
       .map((s) => ({
 
@@ -964,7 +646,7 @@ export default function HomePage() {
 
       }))
 
-    return [...FLAGSHIP_PROGRAMMES, ...extra]
+    return [...extra]
 
   }, [directoryScholarships])
 
@@ -1943,30 +1625,30 @@ export default function HomePage() {
 
 
 
-            {staticMode && (
-
-              <div className="homepage__static-notice" role="status" style={{marginBottom: 16, padding: '12px 16px', background: 'var(--surface-2)', border: '1px solid var(--border)', borderRadius: 8, display: 'flex', alignItems: 'center', gap: 8}}>
-
-                <svg viewBox="0 0 24 24" aria-hidden="true" style={{width: 16, height: 16, flexShrink: 0, color: 'var(--accent)'}}>
-
-                  <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-
-                </svg>
-
-                <span style={{fontSize: '0.9rem', color: 'var(--ink-muted)'}}>
-
-                  Browsing the static public catalogue. No database connection required.
-
-                </span>
-
-              </div>
-
-            )}
-
-
-
             {/* ── Scholarship Cards Grid ───────────────────────────────── */}
 
+            {isDirectoryLoading && (
+              <p className="empty" data-testid="scholarship-loading" role="status">
+                Loading scholarships…
+              </p>
+            )}
+
+            {directoryError && (
+              <div className="empty" data-testid="scholarship-unavailable" role="alert">
+                <p>Scholarships are temporarily unavailable. Please try again.</p>
+                <button type="button" onClick={retryDirectory}>
+                  Retry
+                </button>
+              </div>
+            )}
+
+            {!isDirectoryLoading && !directoryError && !(directoryScholarships && directoryScholarships.length) && (
+              <p className="empty" data-testid="scholarship-empty" role="status">
+                No live scholarships are available right now.
+              </p>
+            )}
+
+            {!directoryError && (
             <div className="grid" id="res">
 
             {matchedScholarships.length === 0 ? (
@@ -2548,6 +2230,7 @@ export default function HomePage() {
             )}
 
           </div>
+            )}
 
 
 

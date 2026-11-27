@@ -8,6 +8,7 @@ from sqlalchemy.orm import Session
 from ..models import Scholarship
 from ..schemas import ScholarshipQuery, ScholarshipSort, ScholarshipStatus
 from ..services.taxonomy import degree_filter_bucket, funding_filter_bucket
+from ..services.lifecycle_classification import compute_lifecycle, lifecycle_counts
 
 
 def _normalise_optional_filter(value: str | None) -> str | None:
@@ -247,6 +248,25 @@ def _sort_expressions(sort: ScholarshipSort):
 
 def list_scholarships(session: Session, query: ScholarshipQuery) -> tuple[list[Scholarship], int]:
     conditions = _filter_conditions(query)
+    # Determine target lifecycle filter (normalised).
+    target_lifecycle = (query.lifecycle or "").strip().lower()
+    if target_lifecycle in ("", "all", "none"):
+        target_lifecycle = None
+    # Map frontend underscore to canonical (already underscore).
+    if target_lifecycle == "closing-soon":
+        target_lifecycle = "closing_soon"
+
+    # When a lifecycle filter is active, classify in Python and paginate
+    # after filtering so the backend remains authoritative.
+    if target_lifecycle is not None:
+        stmt = select(Scholarship).where(*conditions).order_by(*_sort_expressions(query.sort))
+        all_rows = list(session.scalars(stmt))
+        filtered = [r for r in all_rows if compute_lifecycle(r) == target_lifecycle]
+        total = len(filtered)
+        offset = (query.page - 1) * query.limit
+        page_rows = filtered[offset: offset + query.limit]
+        return page_rows, total
+
     total = session.scalar(select(func.count()).select_from(Scholarship).where(*conditions)) or 0
     offset = (query.page - 1) * query.limit
     statement = (
