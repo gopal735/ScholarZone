@@ -14,6 +14,7 @@ someone else's application.
 from __future__ import annotations
 
 from datetime import date, datetime
+from typing import Any
 
 from pydantic import BaseModel, Field, field_validator
 
@@ -48,6 +49,7 @@ class MentorMessageResponse(BaseModel):
     error: str | None = None
     created_at: datetime
     completed_at: datetime | None = None
+    discovery_payload: dict[str, Any] | None = None
 
 
 class MentorSendMessageRequest(BaseModel):
@@ -121,6 +123,20 @@ class NextActionResponse(BaseModel):
     action_label: str
 
 
+class ScholarshipDiscoveryMatch(BaseModel):
+    scholarship_id: int
+    title: str
+    country: str
+    degree: str | None = None
+    funding_classification: str
+    funding_text: str | None = None
+    official_source_url: str | None = None
+    verification: str | None = None
+    knowledge_state: str | None = None
+    supporting_fields: list[str] = Field(default_factory=list)
+    warnings: list[str] = Field(default_factory=list)
+
+
 class MentorAnswerResponse(BaseModel):
     """The whole answer, in one document.
 
@@ -159,3 +175,13 @@ class MentorAnswerResponse(BaseModel):
 
     supported_intents: list[str] = Field(default_factory=lambda: list(SUPPORTED_INTENTS))
     redirects: list[str] = Field(default_factory=list)
+
+    answer_schema_version: int = 1
+    search_status: str | None = None
+    query_summary: dict[str, Any] | None = None
+    result_count: int = 0
+    returned_count: int = 0
+    verified_matches: list[ScholarshipDiscoveryMatch] = Field(default_factory=list)
+    potential_matches: list[ScholarshipDiscoveryMatch] = Field(default_factory=list)
+    diagnostics: dict[str, Any] = Field(default_factory=dict)
+    pagination: dict[str, Any] | None = None

@@ -242,6 +242,11 @@ export async function retryMentorMessage(conversationId, messageId) {
   return request(`/mentor/conversations/${conversationId}/messages/${messageId}/retry`, { method: 'POST' })
 }
 
+export async function fetchMentorDiscovery(conversationId, messageId, { page = 1, pageSize = 20, signal } = {}) {
+  const params = new URLSearchParams({ page: String(page), page_size: String(pageSize) })
+  return request(`/mentor/conversations/${conversationId}/messages/${messageId}/discovery?${params.toString()}`, { signal })
+}
+
 /**
  * Stream a conversation message via SSE. Yields parsed event objects:
  * { event, data }

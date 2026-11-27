@@ -22,6 +22,7 @@ from .guards import MAX_MESSAGE_LENGTH, contains_injection_marker, normalize_mes
 #: Ordered. When two intents score identically the earlier entry wins, which is
 #: what makes ties deterministic rather than dependent on dict ordering.
 INTENT_ORDER: tuple[str, ...] = (
+    "SCHOLARSHIP_DISCOVERY",
     "NEXT_ACTION",
     "DEADLINE",
     "APPLICATION_PROGRESS",
@@ -36,6 +37,7 @@ INTENT_ORDER: tuple[str, ...] = (
 )
 
 INTENT_LABELS: dict[str, str] = {
+    "SCHOLARSHIP_DISCOVERY": "Find scholarships",
     "NEXT_ACTION": "What to do next",
     "SCHOLARSHIP_EXPLANATION": "Why this scholarship fits",
     "MATCH_EXPLANATION": "Reading your match",
@@ -53,6 +55,45 @@ INTENT_LABELS: dict[str, str] = {
 #: are deliberate: "what next" and "next steps" are how people actually ask,
 #: while a bare "next" would capture unrelated sentences.
 _PHRASES: dict[str, tuple[str, ...]] = {
+    "SCHOLARSHIP_DISCOVERY": (
+        "find scholarship",
+        "find scholarships",
+        "find grant",
+        "find grants",
+        "search scholarship",
+        "search scholarships",
+        "search grant",
+        "search grants",
+        "show scholarship",
+        "show scholarships",
+        "show grant",
+        "show grants",
+        "list scholarship",
+        "list scholarships",
+        "list grant",
+        "list grants",
+        "grants in",
+        "grants for",
+        "grants with",
+        "scholarships for",
+        "scholarships in",
+        "scholarships with",
+        "phd scholarships",
+        "doctoral scholarships",
+        "phd funding",
+        "scholarships with stipend",
+        "stipend in",
+        "opportunities in",
+        "opportunities for",
+        "opportunities with",
+        "funding in",
+        "funding for",
+        "স্কলারশিপ খুঁজ",
+        "বৃত্তি খুঁজ",
+        "scholarship ase",
+        "stipend chai",
+        "khuje dao",
+    ),
     "NEXT_ACTION": (
         "what should i do",
         "what do i do",
@@ -294,10 +335,34 @@ def classify(message: object) -> Intent:
             truncated=truncated,
         )
 
+    # Deadline-question precedence: "What is the deadline for X?" is a DEADLINE
+    # question even when X contains many discovery keywords. But "Find X and
+    # show their deadlines" remains discovery.
+    deadline_question = (
+        "deadline for" in haystack
+        or "deadline of" in haystack
+        or "deadline to" in haystack
+        or "what is the deadline" in haystack
+        or "what are the deadlines" in haystack
+        or "when is the deadline" in haystack
+        or "when are the deadlines" in haystack
+        or "when do they close" in haystack
+        or "when does it close" in haystack
+    )
+    discovery_with_deadline = (
+        ("find " in haystack or "search " in haystack or "show " in haystack)
+        and "deadline" in haystack
+        and " and " in haystack
+    )
+
     best_kind: str | None = None
     best_score = 0
     for kind in INTENT_ORDER:
         score = sum(1 for phrase in _PHRASES[kind] if phrase in haystack)
+        if kind == "DEADLINE" and deadline_question and not discovery_with_deadline:
+            score += 10
+        if kind == "SCHOLARSHIP_DISCOVERY" and discovery_with_deadline:
+            score += 10
         if score > best_score:
             best_kind, best_score = kind, score
 

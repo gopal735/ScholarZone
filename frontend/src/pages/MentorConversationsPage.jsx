@@ -8,7 +8,9 @@ import {
   streamMentorConversationMessage,
   cancelMentorMessage,
   retryMentorMessage,
+  fetchMentorDiscovery,
 } from '../services/mentorService'
+import MentorDiscoveryResults from '../components/mentor/MentorDiscoveryResults'
 
 export default function MentorConversationsPage() {
   const [conversations, setConversations] = useState([])
@@ -20,6 +22,8 @@ export default function MentorConversationsPage() {
   const [streaming, setStreaming] = useState(false)
   const [partial, setPartial] = useState('')
   const [streamingStatus, setStreamingStatus] = useState('')
+  const [discoveryOverrides, setDiscoveryOverrides] = useState({})
+  const [discoveryLoadingId, setDiscoveryLoadingId] = useState(null)
   const abortRef = useRef(null)
   const activeAssistantIdRef = useRef(null)
 
@@ -137,7 +141,19 @@ export default function MentorConversationsPage() {
     if (abortRef.current) abortRef.current.abort()
   }, [selectedId])
 
-  const handleRetry = useCallback(async (messageId) => {
+  const loadDiscoveryPage = useCallback(async (messageId, page) => {
+    if (!selectedId) return
+    setDiscoveryLoadingId(messageId)
+    try {
+      const payload = await fetchMentorDiscovery(selectedId, messageId, { page, pageSize: 20 })
+      setDiscoveryOverrides((prev) => ({ ...prev, [messageId]: payload }))
+    } catch (e) {
+      setError(e?.message || 'Failed to load discovery results')
+    } finally {
+      setDiscoveryLoadingId(null)
+    }
+  }, [selectedId])
+    const handleRetry = useCallback(async (messageId) => {
     if (!selectedId) return
     setError(null)
     try {
@@ -177,14 +193,21 @@ export default function MentorConversationsPage() {
             {selectedId ? (
               <>
                 <ul data-testid="message-list">
-                  {messages.map((m) => (
-                    <li key={m.id} data-testid={`message-${m.id}`} data-status={m.status}>
-                      <strong>{m.role}</strong>: {m.content}
-                      {m.status === 'failed' || m.status === 'cancelled' ? (
-                        <button data-testid={`retry-message-${m.id}`} onClick={() => handleRetry(m.id)}>Retry</button>
-                      ) : null}
-                    </li>
-                  ))}
+                   {messages.map((m) => (
+                     <li key={m.id} data-testid={`message-${m.id}`} data-status={m.status}>
+                       <strong>{m.role}</strong>: {m.content}
+                       {(m.discovery_payload || discoveryOverrides[m.id]) && (
+                         <MentorDiscoveryResults
+                           payload={discoveryOverrides[m.id] || m.discovery_payload}
+                           loading={discoveryLoadingId === m.id}
+                           onPageChange={(page) => loadDiscoveryPage(m.id, page)}
+                         />
+                       )}
+                       {m.status === 'failed' || m.status === 'cancelled' ? (
+                         <button data-testid={`retry-message-${m.id}`} onClick={() => handleRetry(m.id)}>Retry</button>
+                       ) : null}
+                     </li>
+                   ))}
                   {partial && <li data-testid="streaming-token">{partial}</li>}
                 </ul>
                 <div className="mentor-composer">

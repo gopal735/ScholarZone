@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import uuid
 from datetime import datetime, timezone
-from typing import Optional
+from typing import Optional, Any
 
 from sqlalchemy import select, update, func
 from sqlalchemy.orm import Session
@@ -277,6 +277,7 @@ def complete_assistant_message(
     expected_attempt_id: str | None = None,
     generation_attempt_id: str | None = None,
     active_attempt_id: str | None = None,
+    discovery_payload: Any = None,
     **_kwargs,
 ) -> MentorMessage | None:
     expected = attempt_id or expected_attempt_id or generation_attempt_id or active_attempt_id
@@ -302,6 +303,8 @@ def complete_assistant_message(
         values["prompt_tokens"] = prompt_tokens
     if completion_tokens is not None:
         values["completion_tokens"] = completion_tokens
+    if discovery_payload is not None:
+        values["discovery_payload"] = discovery_payload
 
     where = [
         MentorMessage.id == message_id,
