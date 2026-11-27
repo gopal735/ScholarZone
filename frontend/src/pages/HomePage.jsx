@@ -638,7 +638,14 @@ function flagFor(country) {
 
 export default function HomePage() {
 
-  const { scholarships: directoryScholarships } = useScholarshipDirectory()
+  const {
+    scholarships: directoryScholarships = [],
+    isLoading: isDirectoryLoading = false,
+    error: directoryError = null,
+    retry: retryFromHook,
+    refetch: refetchFromHook,
+  } = useScholarshipDirectory() || {}
+  const retryDirectory = retryFromHook || refetchFromHook || (() => {})
 
   const { stats } = useScholarshipStats()
 
@@ -1945,6 +1952,28 @@ export default function HomePage() {
 
             {/* ── Scholarship Cards Grid ───────────────────────────────── */}
 
+            {isDirectoryLoading && (
+              <p className="empty" data-testid="scholarship-loading" role="status">
+                Loading scholarships…
+              </p>
+            )}
+
+            {directoryError && (
+              <div className="empty" data-testid="scholarship-unavailable" role="alert">
+                <p>Scholarships are temporarily unavailable. Please try again.</p>
+                <button type="button" onClick={retryDirectory}>
+                  Retry
+                </button>
+              </div>
+            )}
+
+            {!isDirectoryLoading && !directoryError && !(directoryScholarships && directoryScholarships.length) && (
+              <p className="empty" data-testid="scholarship-empty" role="status">
+                No live scholarships are available right now.
+              </p>
+            )}
+
+            {!directoryError && (
             <div className="grid" id="res">
 
             {matchedScholarships.length === 0 ? (
@@ -2526,6 +2555,7 @@ export default function HomePage() {
             )}
 
           </div>
+            )}
 
 
 

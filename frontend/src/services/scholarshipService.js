@@ -109,17 +109,15 @@ export async function fetchScholarships(query = {}, options) {
   return dedupe(key, send, options?.signal)
 }
 
-import { classifyLifecycle, LIFECYCLE } from '../utils/lifecycle'
-
 export async function fetchScholarshipsByLifecycle(query = {}, lifecycle = 'All', options) {
   const page = Number(query.page) || 1
   const limit = Number(query.limit) || 12
   const lifecycleForStatus = {
-    open: LIFECYCLE.OPEN,
-    'closing-soon': LIFECYCLE.CLOSING_SOON,
-    closed: LIFECYCLE.CLOSED,
+    open: 'open',
+    'closing-soon': 'closing_soon',
+    closed: 'closed',
   }[query.status]
-  const targetLifecycle = lifecycle === 'All' ? lifecycleForStatus || lifecycle : lifecycle
+  const targetLifecycle = lifecycle === 'All' ? (lifecycleForStatus || 'All') : lifecycle
 
   if (lifecycle !== 'All' && lifecycleForStatus && lifecycle !== lifecycleForStatus) {
     return {
@@ -128,60 +126,19 @@ export async function fetchScholarshipsByLifecycle(query = {}, lifecycle = 'All'
     }
   }
 
-  if (!targetLifecycle || targetLifecycle === 'All') {
-    return fetchScholarships(query, options)
-  }
-
   const filters = { ...query }
-  delete filters.page
-  delete filters.limit
-  delete filters.lifecycle
   const apiFilters = {
     ...filters,
     status: lifecycleForStatus ? undefined : filters.status,
   }
-  const firstPage = await fetchScholarships({ ...apiFilters, page: 1, limit: 100 }, options)
-
-  const totalPages = firstPage.pagination?.total_pages || 1
-  const pageNumbers = Array.from({ length: Math.max(0, totalPages - 1) }, (_, index) => index + 2)
-
-  const remainingPages = []
-  const CONCURRENCY = 4
-  for (let i = 0; i < pageNumbers.length; i += CONCURRENCY) {
-    if (options?.signal?.aborted) break
-    const chunk = pageNumbers.slice(i, i + CONCURRENCY)
-    const chunkResults = await Promise.all(
-      chunk.map((pageNumber) =>
-        fetchScholarships({ ...apiFilters, page: pageNumber, limit: 100 }, options),
-      ),
-    )
-    remainingPages.push(...chunkResults)
+  if (targetLifecycle && targetLifecycle !== 'All') {
+    apiFilters.lifecycle = targetLifecycle
   }
+  apiFilters.page = page
+  apiFilters.limit = limit
+  delete apiFilters.lifecycleFilter
 
-  if (options?.signal?.aborted) {
-    throw new DOMException('The operation was aborted.', 'AbortError')
-  }
-
-  const allItems = [firstPage, ...remainingPages].flatMap((result) => result.items)
-  const seen = new Set()
-  const uniqueItems = allItems.filter((item) => {
-    const key = item?.id ?? item?.title
-    if (seen.has(key)) return false
-    seen.add(key)
-    return true
-  })
-  const matches = uniqueItems.filter((scholarship) => classifyLifecycle(scholarship).status === targetLifecycle)
-  const total = matches.length
-
-  return {
-    items: matches.slice((page - 1) * limit, page * limit),
-    pagination: {
-      page,
-      limit,
-      total,
-      total_pages: Math.max(1, Math.ceil(total / limit)),
-    },
-  }
+  return fetchScholarships(apiFilters, options)
 }
 
 export async function fetchScholarshipById(id, options) {

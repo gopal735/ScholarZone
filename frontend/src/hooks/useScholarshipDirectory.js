@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { fetchScholarships } from '../services/scholarshipService'
 
 const DIRECTORY_LIMIT = 100
@@ -11,17 +11,18 @@ export function useScholarshipDirectory() {
 
   useEffect(() => {
     const controller = new AbortController()
+    setIsLoading(true)
 
     fetchScholarships({ page: 1, limit: DIRECTORY_LIMIT }, { signal: controller.signal })
       .then((directory) => {
         if (controller.signal.aborted) return
-        setScholarships(directory.items)
+        setScholarships(Array.isArray(directory?.items) ? directory.items : [])
         setError(null)
       })
-      .catch((error) => {
+      .catch((caughtError) => {
         if (controller.signal.aborted) return
         setScholarships([])
-        setError(error)
+        setError(caughtError)
       })
       .finally(() => {
         if (!controller.signal.aborted) {
@@ -48,13 +49,19 @@ export function useScholarshipDirectory() {
     }
   }, [])
 
+  const retry = useCallback(() => {
+    setRequestVersion((value) => value + 1)
+  }, [])
+
   return {
     scholarships,
     isLoading,
+    error,
+    retry,
+    refetch: retry,
     isUsingSnapshot: false,
     isUsingLocalFallback: false,
     fromSnapshot: false,
     staticMode: false,
-    error,
   }
 }

@@ -40,6 +40,7 @@ def list_scholarships_endpoint(
     deadline_month: Annotated[int | None, Query(ge=1, le=12)] = None,
     deadline_within_days: Annotated[int | None, Query(ge=1, le=365)] = None,
     listing_status: Annotated[ScholarshipStatus | None, Query(alias="status")] = None,
+    lifecycle: Annotated[str | None, Query(max_length=32)] = None,
     sort: ScholarshipSort = ScholarshipSort.DEFAULT,
     page: Annotated[int, Query(ge=1, le=100_000)] = 1,
     limit: Annotated[int, Query(ge=1, le=100)] = 12,
@@ -61,6 +62,7 @@ def list_scholarships_endpoint(
         deadline_month=deadline_month,
         deadline_within_days=deadline_within_days,
         status=listing_status,
+        lifecycle=lifecycle,
         sort=sort,
         page=page,
         limit=limit,
@@ -170,4 +172,4 @@ def debug_raw_scholarship(
     return raw
 
 
- 
+

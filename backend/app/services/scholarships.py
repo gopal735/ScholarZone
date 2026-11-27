@@ -13,11 +13,22 @@ from ..repositories.scholarships import (
     public_visibility_conditions,
     detail_visibility_conditions,
 )
+from ..services.lifecycle_classification import compute_lifecycle, lifecycle_counts
 from ..schemas import PaginationMetadata, ScholarshipListResponse, ScholarshipQuery, ScholarshipVerificationUpdate
 
 
 def get_scholarship_directory(session: Session, query: ScholarshipQuery) -> ScholarshipListResponse:
     scholarships, total = list_scholarships(session, query)
+    # Attach server-authoritative lifecycle to each item.
+    for s in scholarships:
+        try:
+            s.lifecycle = compute_lifecycle(s)
+        except Exception:
+            s.lifecycle = None
+    # Lifecycle counts scoped to the active (non-lifecycle) filters.
+    count_query = query.model_copy(update={"lifecycle": None, "page": 1, "limit": 100000})
+    count_rows, _ = list_scholarships(session, count_query)
+    counts = lifecycle_counts(count_rows)
     return ScholarshipListResponse(
         items=scholarships,
         pagination=PaginationMetadata(
@@ -26,6 +37,7 @@ def get_scholarship_directory(session: Session, query: ScholarshipQuery) -> Scho
             total=total,
             total_pages=ceil(total / query.limit) if total else 0,
         ),
+        lifecycle_counts=counts,
     )
 
 
@@ -50,6 +62,11 @@ def get_scholarship_details(session: Session, scholarship_id: int):
         # The caller turns this into the same 404 a missing id produces, so the
         # response cannot be used to discover that a hidden record exists.
         return None
+
+    try:
+        scholarship.lifecycle = compute_lifecycle(scholarship)
+    except Exception:
+        scholarship.lifecycle = None
 
     dirty = False
     for field in (
