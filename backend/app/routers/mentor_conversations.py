@@ -89,7 +89,7 @@ def _msg_to_response(msg) -> MentorMessageResponse:
         error=msg.error,
         created_at=msg.created_at,
         completed_at=msg.completed_at,
-        discovery_payload=getattr(msg, "discovery_payload", None),
+        discovery_payload=_public_discovery_payload(getattr(msg, "discovery_payload", None)),
     )
 
 
@@ -142,6 +142,62 @@ def _discovery_to_payload(discovery) -> dict | None:
         },
         "answer_schema_version": 1,
     }
+
+
+def _discovery_to_snapshot_payload(discovery) -> dict | None:
+    """Persist the full immutable discovery snapshot for historical restoration."""
+    if discovery is None:
+        return None
+    def _match(m):
+        return {
+            "scholarship_id": m.scholarship_id,
+            "title": m.title,
+            "country": m.country,
+            "degree": m.degree,
+            "funding_classification": m.funding_classification,
+            "funding_text": m.funding_text,
+            "official_source_url": m.official_source_url,
+            "verification": m.verification,
+            "knowledge_state": m.knowledge_state,
+            "supporting_fields": list(getattr(m, "supporting_fields", []) or []),
+            "warnings": list(m.warnings or []),
+        }
+    full_items = [_match(m) for m in (getattr(discovery, "all_matches", None) or discovery.potential_matches or [])]
+    # If all_matches is empty but potential_matches has items (legacy callers),
+    # fall back to potential_matches so we never persist an empty snapshot
+    # when matches exist.
+    if not full_items and discovery.potential_matches:
+        full_items = [_match(m) for m in discovery.potential_matches]
+    return {
+        "search_status": discovery.search_status,
+        "query_summary": discovery.query_summary,
+        "result_count": discovery.total_matches,
+        "returned_count": discovery.returned_count,
+        "verified_matches": [],
+        "potential_matches": [_match(m) for m in (discovery.potential_matches or [])],
+        "diagnostics": discovery.diagnostics,
+        "pagination": {
+            "page": discovery.page,
+            "page_size": discovery.page_size,
+            "total": discovery.total_matches,
+            "total_pages": discovery.total_pages,
+            "has_more": discovery.has_more,
+            "returned": discovery.returned_count,
+        },
+        "snapshot_items": full_items,
+        "snapshot_version": 1,
+        "answer_schema_version": 1,
+    }
+
+
+def _public_discovery_payload(payload):
+    """Strip internal snapshot fields from payloads sent to clients."""
+    if not isinstance(payload, dict):
+        return payload
+    out = dict(payload)
+    out.pop("snapshot_items", None)
+    out.pop("snapshot_version", None)
+    return out
 
 
 def _prepare(db, user, message):
@@ -269,22 +325,43 @@ def get_discovery(conversation_id: int, message_id: int, page: int = Query(1, ge
     ).scalar_one_or_none()
     if msg is None or msg.user_id != user.id or msg.conversation_id != conversation_id:
         raise HTTPException(status_code=404, detail="message_not_found")
-    # Resolve source user message.
-    user_msg = None
-    if getattr(msg, "source_user_message_id", None):
-        src = db.get(MentorMessage, msg.source_user_message_id)
-        if src is not None and src.user_id == user.id and src.conversation_id == conversation_id and src.role == "user":
-            user_msg = src
-    if user_msg is None:
-        raise HTTPException(status_code=400, detail="no_source_user_message")
-    discovery = run_discovery(db, user_msg.content, date.today(), limit=page_size, offset=(page - 1) * page_size)
-    return _discovery_to_payload(discovery)
-def get_msgs(conversation_id: int, limit: int = Query(100, ge=1, le=500), offset: int = Query(0, ge=0), db: Session = Depends(get_db), user: User = Depends(require_user)):
-    conv = get_conversation(db, user.id, conversation_id)
-    if conv is None:
-        raise HTTPException(status_code=404, detail="conversation_not_found")
-    msgs = list_messages(db, user.id, conversation_id, limit=limit, offset=offset)
-    return [_msg_to_response(m) for m in msgs]
+    payload = getattr(msg, "discovery_payload", None)
+    if not isinstance(payload, dict):
+        raise HTTPException(status_code=404, detail="historical_discovery_unavailable")
+    snapshot_items = payload.get("snapshot_items")
+    if not isinstance(snapshot_items, list):
+        # Legacy/partial snapshot: treat persisted potential_matches as the
+        # entire available snapshot. No live re-query is performed.
+        snapshot_items = list(payload.get("potential_matches") or [])
+    total = payload.get("result_count")
+    if not isinstance(total, int):
+        total = len(snapshot_items)
+    if total < len(snapshot_items):
+        total = len(snapshot_items)
+    start = (page - 1) * page_size
+    page_items = snapshot_items[start:start + page_size]
+    total_pages = (total + page_size - 1) // page_size if page_size > 0 else 0
+    if total == 0:
+        total_pages = 0
+    has_more = (start + len(page_items)) < total
+    return {
+        "search_status": payload.get("search_status"),
+        "query_summary": payload.get("query_summary"),
+        "result_count": total,
+        "returned_count": len(page_items),
+        "verified_matches": payload.get("verified_matches") or [],
+        "potential_matches": page_items,
+        "diagnostics": payload.get("diagnostics") or {},
+        "pagination": {
+            "page": page,
+            "page_size": page_size,
+            "total": total,
+            "total_pages": total_pages,
+            "has_more": has_more,
+            "returned": len(page_items),
+        },
+        "answer_schema_version": payload.get("answer_schema_version", 1),
+    }
 
 
 @router.post("/conversations/{conversation_id}/messages")
@@ -304,7 +381,8 @@ def send_msg(conversation_id: int, payload: MentorSendMessageRequest, request: R
 
         intent, context, answer, req, discovery = _prepare(db, user, payload.message)
         deterministic = _deterministic_content(answer)
-        discovery_payload = _discovery_to_payload(discovery)
+        discovery_payload_full = _discovery_to_snapshot_payload(discovery)
+        discovery_payload_public = _discovery_to_payload(discovery)
 
         gw = get_ai_gateway()
         content = deterministic
@@ -346,7 +424,7 @@ def send_msg(conversation_id: int, payload: MentorSendMessageRequest, request: R
             prompt_tokens=prompt_tokens,
             completion_tokens=completion_tokens,
             attempt_id=assistant.attempt_id,
-            discovery_payload=discovery_payload,
+            discovery_payload=discovery_payload_full,
         )
         assistant = db.execute(
             __import__("sqlalchemy").select(MentorMessage).where(MentorMessage.id == assistant.id).execution_options(populate_existing=True)
@@ -436,7 +514,8 @@ def retry_msg(conversation_id: int, message_id: int, request: Request, db: Sessi
         msg = claimed
         intent, context, answer, req, discovery = _prepare(db, user, user_msg.content)
         deterministic = _deterministic_content(answer)
-        discovery_payload = _discovery_to_payload(discovery)
+        discovery_payload_full = _discovery_to_snapshot_payload(discovery)
+        discovery_payload_public = _discovery_to_payload(discovery)
         gw = get_ai_gateway()
         content = deterministic
         provider_mode = "disabled"
@@ -464,7 +543,7 @@ def retry_msg(conversation_id: int, message_id: int, request: Request, db: Sessi
                 return _msg_to_response(msg)
         if not used and gw.enabled:
             provider_mode = "disabled"
-        complete_assistant_message(db, user.id, msg.id, content, provider=provider_mode, model=model, prompt_tokens=prompt_tokens, completion_tokens=completion_tokens, attempt_id=msg.attempt_id, discovery_payload=discovery_payload)
+        complete_assistant_message(db, user.id, msg.id, content, provider=provider_mode, model=model, prompt_tokens=prompt_tokens, completion_tokens=completion_tokens, attempt_id=msg.attempt_id, discovery_payload=discovery_payload_full)
         msg = db.execute(
             __import__("sqlalchemy").select(MentorMessage).where(MentorMessage.id == msg.id).execution_options(populate_existing=True)
         ).scalar_one_or_none()
@@ -503,7 +582,7 @@ def stream_msg(conversation_id: int, payload: MentorSendMessageRequest, request:
                 yield format_sse("message_start", {'conversation_id': conversation_id, 'user_message_id': user_msg.id, 'assistant_message_id': assistant.id, 'replay': True})
                 if assistant.content:
                     yield format_sse("token", {'content': assistant.content})
-                yield format_sse("message_complete", {'assistant_message_id': assistant.id, 'status': 'completed', 'discovery': getattr(assistant, 'discovery_payload', None)})
+                yield format_sse("message_complete", {'assistant_message_id': assistant.id, 'status': 'completed', 'discovery': _public_discovery_payload(getattr(assistant, 'discovery_payload', None))})
             return StreamingResponse(_replay(), media_type="text/event-stream")
         if assistant.status in ("failed", "cancelled"):
             _release_once()
@@ -543,7 +622,8 @@ def stream_msg(conversation_id: int, payload: MentorSendMessageRequest, request:
 
             intent, context, answer, req, discovery = _prepare(db, user, payload.message)
             deterministic = _deterministic_content(answer)
-            discovery_payload = _discovery_to_payload(discovery)
+            discovery_payload_full = _discovery_to_snapshot_payload(discovery)
+            discovery_payload_public = _discovery_to_payload(discovery)
 
             # Emit citations from deterministic evidence.
             for ev in (answer.known or []):
@@ -641,13 +721,13 @@ def stream_msg(conversation_id: int, payload: MentorSendMessageRequest, request:
                 prompt_tokens=prompt_tokens,
                 completion_tokens=completion_tokens,
                 attempt_id=assistant.attempt_id,
-                discovery_payload=discovery_payload,
+                discovery_payload=discovery_payload_full,
             )
             completed_successfully = True
             refreshed = db.execute(
                 __import__("sqlalchemy").select(_models.MentorMessage).where(_models.MentorMessage.id == assistant.id).execution_options(populate_existing=True)
             ).scalar_one_or_none()
-            yield format_sse("message_complete", {'assistant_message_id': assistant.id, 'status': refreshed.status if refreshed else 'completed', 'discovery': discovery_payload})
+            yield format_sse("message_complete", {'assistant_message_id': assistant.id, 'status': refreshed.status if refreshed else 'completed', 'discovery': discovery_payload_public})
         except GeneratorExit:
             # Client disconnected: persist terminal state, no yield.
             if not completed_successfully:

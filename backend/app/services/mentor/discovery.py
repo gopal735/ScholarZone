@@ -159,6 +159,7 @@ class DiscoveryResult:
     search_status: str
     verified_matches: list[DiscoveryMatch] = field(default_factory=list)
     potential_matches: list[DiscoveryMatch] = field(default_factory=list)
+    all_matches: list[DiscoveryMatch] = field(default_factory=list)
     diagnostics: dict[str, int] = field(default_factory=dict)
     evidence: list[EvidenceItem] = field(default_factory=list)
     total_matches: int = 0
@@ -321,42 +322,47 @@ def run_discovery(db: Session, message: str, as_of: date | None = None, limit: i
         candidate_set = set(stipend_text_candidate_ids)
         eligible_ids = [i for i in eligible_ids if i in candidate_set] + [i for i in eligible_ids if i not in candidate_set]
 
-    # Paginate eligible (non-excluded) population.
-    page_ids = eligible_ids[offset:offset + limit]
-    if page_ids:
-        rows_by_id = {
+    # Build the full immutable match snapshot across the entire eligible
+    # population (stable order). This is the source of truth for historical
+    # pagination; the live response only exposes the requested page.
+    all_matches: list[DiscoveryMatch] = []
+    for _start in range(0, len(eligible_ids), batch_size):
+        _chunk = eligible_ids[_start:_start + batch_size]
+        if not _chunk:
+            continue
+        _rows_by_id = {
             r.id: r for r in db.execute(
                 select(Scholarship).where(
-                    Scholarship.id.in_(page_ids),
+                    Scholarship.id.in_(_chunk),
                     *public_visibility_conditions(),
                 )
             ).scalars()
         }
-        region_rows = [rows_by_id[i] for i in page_ids if i in rows_by_id]
-    else:
-        region_rows = []
+        for _sid in _chunk:
+            _row = _rows_by_id.get(_sid)
+            if _row is None:
+                continue
+            _classification, _reason, _supporting = classify_funding(_row)
+            if _classification == "STIPEND_EXPLICITLY_EXCLUDED" and funding_val == "stipend":
+                continue
+            all_matches.append(_match_from_row(_row, _classification, _reason, _supporting))
 
-    potential: list[DiscoveryMatch] = []
+    # Paginate the immutable snapshot for the live response.
+    page_matches = all_matches[offset:offset + limit] if (limit and limit > 0) else list(all_matches)
+
+    potential: list[DiscoveryMatch] = list(page_matches)
     evidence: list[EvidenceItem] = []
-    for row in region_rows:
-        classification, reason, supporting = classify_funding(row)
-        # Only exclude explicit no-stipend records when the user explicitly
-        # asked for a stipend. Generic discovery keeps them (with correct
-        # funding classification).
-        if classification == "STIPEND_EXPLICITLY_EXCLUDED" and funding_val == "stipend":
-            continue
-        match = _match_from_row(row, classification, reason, supporting)
-        potential.append(match)
+    for _match in page_matches:
         evidence.append(
             EvidenceItem(
-                key=f"scholarship-{row.id}-discovery",
+                key=f"scholarship-{_match.scholarship_id}-discovery",
                 label="Scholarship",
-                value=bound_text(f"{row.title} (record {row.id})"),
+                value=bound_text(f"{_match.title} (record {_match.scholarship_id})"),
                 field="scholarship.title",
                 basis=BASIS_CATALOGUE,
-                verification=row.verification_status,
-                source_url=row.official_source_url,
-                scholarship_id=row.id,
+                verification=_match.verification,
+                source_url=_match.official_source_url,
+                scholarship_id=_match.scholarship_id,
             )
         )
 
@@ -386,6 +392,7 @@ def run_discovery(db: Session, message: str, as_of: date | None = None, limit: i
     if status in ("UNSUPPORTED_FILTER", "AMBIGUOUS_FILTER"):
         potential = []
         evidence = []
+        all_matches = []
 
     total_matches = len(eligible_ids)
     returned_count = len(potential)
@@ -398,6 +405,7 @@ def run_discovery(db: Session, message: str, as_of: date | None = None, limit: i
         search_status=status,
         verified_matches=[],
         potential_matches=potential,
+        all_matches=all_matches,
         diagnostics=counts,
         evidence=evidence,
         total_matches=total_matches,
