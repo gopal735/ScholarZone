@@ -250,13 +250,24 @@ export async function retryMentorMessage(conversationId, messageId) {
  * UTF-8 boundaries, and final buffered events.
  */
 export async function* streamMentorConversationMessage(conversationId, message, { signal } = {}) {
-  const response = await fetch(`${apiBaseUrl}/mentor/conversations/${conversationId}/messages/stream`, {
-    method: 'POST',
-    credentials: 'include',
-    headers: { 'Content-Type': 'application/json', Accept: 'text/event-stream' },
-    body: JSON.stringify({ message }),
-    signal,
-  })
+  let response
+  try {
+    response = await fetch(`${apiBaseUrl}/mentor/conversations/${conversationId}/messages/stream`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json', Accept: 'text/event-stream' },
+      body: JSON.stringify({ message }),
+      signal,
+    })
+  } catch (error) {
+    // Intentional cancellation must remain distinguishable from a transport
+    // failure, mirroring the shared request() classification.
+    if (error?.name === 'AbortError') throw error
+    throw new MentorApiError(
+      'We could not reach ScholarZone. Check your connection and try again.',
+      0,
+    )
+  }
   if (!response.ok) {
     const message = await readError(response, 'Stream failed')
     if (response.status === 401) throw new MentorUnauthenticatedError(message)
@@ -310,7 +321,11 @@ export async function* streamMentorConversationMessage(conversationId, message, 
         readResult = await reader.read()
       } catch (e) {
         if (cancelled) break
-        throw e
+        if (e?.name === 'AbortError') throw e
+        throw new MentorApiError(
+          'We could not reach ScholarZone. Check your connection and try again.',
+          0,
+        )
       }
       const { done, value } = readResult
       if (done) break
