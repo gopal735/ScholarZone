@@ -318,7 +318,7 @@ class ProfessorOutreachRecord(Base):
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     #: The canonical ScholarZone identity. Not a new user table.
     user_id: Mapped[int] = mapped_column(Integer, ForeignKey("users.id"), nullable=False)
-    scholarship_id: Mapped[int] = mapped_column(Integer, ForeignKey("scholarships.id"), nullable=False)
+    scholarship_id: Mapped[int | None] = mapped_column(Integer, ForeignKey("scholarships.id"), nullable=True)
     professor_id: Mapped[int] = mapped_column(Integer, ForeignKey("professor_profiles.id"), nullable=False)
     #: Optional correlation to Dashboard 1.0's application record. Ownership is
     #: always ``user_id``; this column never grants access, so deleting an

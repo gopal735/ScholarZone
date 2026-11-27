@@ -1,4 +1,4 @@
-﻿"""Persistent scholarship data model."""
+"""Persistent scholarship data model."""
 
 from datetime import date, datetime
 
@@ -750,13 +750,13 @@ class SavedScholarship(Base):
 
     __tablename__ = "saved_scholarships"
     __table_args__ = (
-        UniqueConstraint("user_id", "scholarship_id", name="uq_saved_scholarships_user_scholarship"),
         Index("ix_saved_scholarships_user_created", "user_id", "created_at"),
     )
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False, index=True)
-    scholarship_id: Mapped[int] = mapped_column(ForeignKey("scholarships.id"), nullable=False, index=True)
+    scholarship_id: Mapped[int | None] = mapped_column(ForeignKey("scholarships.id"), nullable=True, index=True)
+    scholarship_title_snapshot: Mapped[str | None] = mapped_column(String(500), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
 
 
@@ -796,7 +796,7 @@ class ApplicationRecord(Base):
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False, index=True)
-    scholarship_id: Mapped[int] = mapped_column(ForeignKey("scholarships.id"), nullable=False, index=True)
+    scholarship_id: Mapped[int | None] = mapped_column(ForeignKey("scholarships.id"), nullable=True, index=True)
     #: One of ``APPLICATION_STATES``. Stored as text rather than a database enum
     #: so adding a state is a code change plus a migration, never a type
     #: rewrite of live rows.
@@ -876,6 +876,153 @@ class ApplicationChecklistItem(Base):
 
 
 
+class DeletedClosedScholarship(Base):
+    """Minimal tombstone preventing re-import of permanently deleted closed scholarships.
+
+    Stores only the identity fields the scholarship importer checks, so a
+    deleted closed record cannot be silently restored by a later import.
+    """
+
+    __tablename__ = "deleted_closed_scholarships"
+    __table_args__ = (
+        Index("ix_deleted_closed_scholarships_url", "official_source_url"),
+    )
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    legacy_id: Mapped[int | None] = mapped_column(Integer, nullable=True, index=True)
+    official_source_url: Mapped[str | None] = mapped_column(String(2048), nullable=True, index=True)
+    application_link: Mapped[str | None] = mapped_column(String(2048), nullable=True)
+    title: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    country: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    degree: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    deleted_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
+    reason: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    record_fingerprint: Mapped[str | None] = mapped_column(String(64), nullable=True, index=True)
+
+
+class PurgeExecutionLedger(Base):
+    """Dedicated execution ledger for PR #107 purge runs (NOT a scholarship tombstone)."""
+
+    __tablename__ = "purge_execution_ledger"
+    __table_args__ = (
+        UniqueConstraint("merge_commit_sha", name="uq_purge_execution_ledger_merge_sha"),
+        UniqueConstraint("execution_key", name="uq_purge_execution_ledger_execution_key"),
+    )
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    pr_number: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    merge_commit_sha: Mapped[str] = mapped_column(String(64), nullable=False, index=True)
+    execution_key: Mapped[str] = mapped_column(String(128), nullable=False, index=True)
+    manifest_sha256: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    manifest_schema_version: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    manifest_target_count: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    started_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
+    completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    execution_status: Mapped[str] = mapped_column(String(32), nullable=False, default="started")
+    deleted_count: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    workflow_run_id: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    reference_date: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    audit_metadata: Mapped[str | None] = mapped_column(Text, nullable=True)
+
+
+
+class ScholarshipEvidence(Base):
+    """Authoritative application-cycle evidence registry for purge Gate 6.
+
+    One row per (scholarship_id, application_cycle). Evidence must be exact:
+    scholarship + cycle identity. Duplicate/conflicting rows fail closed in
+    Gate 6.
+    """
+
+    __tablename__ = "scholarship_evidence"
+    __table_args__ = (
+        UniqueConstraint(
+            "scholarship_id", "application_cycle",
+            name="uq_scholarship_evidence_cycle",
+        ),
+        Index("ix_scholarship_evidence_scholarship_id", "scholarship_id"),
+        Index("ix_scholarship_evidence_deadline", "deadline"),
+    )
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    scholarship_id: Mapped[int] = mapped_column(
+        Integer,
+        ForeignKey(
+            "scholarships.id",
+            ondelete="NO ACTION",
+            name="fk_scholarship_evidence_scholarship_id",
+        ),
+        nullable=False,
+    )
+    application_cycle: Mapped[str] = mapped_column(String(128), nullable=False)
+    official_domain: Mapped[str] = mapped_column(String(255), nullable=False)
+    official_url: Mapped[str] = mapped_column(String(2048), nullable=False)
+    source_title: Mapped[str] = mapped_column(String(512), nullable=False)
+    deadline: Mapped[date | None] = mapped_column(Date, nullable=True)
+    deadline_precision: Mapped[str] = mapped_column(String(32), nullable=False, default="day")
+    supporting_excerpt: Mapped[str] = mapped_column(Text, nullable=False)
+    excerpt_hash: Mapped[str] = mapped_column(String(64), nullable=False)
+    retrieval_date: Mapped[date] = mapped_column(Date, nullable=False)
+    reviewer: Mapped[str] = mapped_column(String(120), nullable=False)
+    decision: Mapped[str] = mapped_column(String(64), nullable=False)
+    provenance: Mapped[str | None] = mapped_column(Text, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=func.now()
+    )
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=func.now(), onupdate=func.now()
+    )
+
+
+class ScholarshipEvidenceArchive(Base):
+    """Immutable archive of scholarship_evidence rows removed by permanent
+    scholarship deletion (ScholarZone PR #107, P0: Gate 6 evidence retention).
+
+    Each row is a byte-exact copy of a ScholarshipEvidence row that was
+    archived and the live row deleted during the permanent-deletion
+    transaction. The table deliberately has no foreign key to scholarships:
+    the original scholarship identity is stored as data, so retention never
+    blocks and never conflicts with the deletion it preserves.
+
+    original_evidence_id is the primary key of the original evidence row;
+    the unique constraint plus ON CONFLICT DO NOTHING/UPDATE in the deletion
+    flow make retention idempotent across retries.
+    """
+
+    __tablename__ = "scholarship_evidence_archive"
+    __table_args__ = (
+        UniqueConstraint("original_evidence_id", name="uq_scholarship_evidence_archive_original_id"),
+        Index("ix_scholarship_evidence_archive_original_scholarship_id", "original_scholarship_id"),
+        Index("ix_scholarship_evidence_archive_content_hash", "content_hash"),
+    )
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    original_evidence_id: Mapped[int] = mapped_column(Integer, nullable=False)
+    original_scholarship_id: Mapped[int] = mapped_column(Integer, nullable=False)
+    scholarship_legacy_id: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    application_cycle: Mapped[str] = mapped_column(String(128), nullable=False)
+    official_domain: Mapped[str] = mapped_column(String(255), nullable=False)
+    official_url: Mapped[str] = mapped_column(String(2048), nullable=False)
+    source_title: Mapped[str] = mapped_column(String(512), nullable=False)
+    deadline: Mapped[date | None] = mapped_column(Date, nullable=True)
+    deadline_precision: Mapped[str] = mapped_column(String(32), nullable=False, default="day")
+    supporting_excerpt: Mapped[str] = mapped_column(Text, nullable=False)
+    excerpt_hash: Mapped[str] = mapped_column(String(64), nullable=False)
+    retrieval_date: Mapped[date] = mapped_column(Date, nullable=False)
+    reviewer: Mapped[str] = mapped_column(String(120), nullable=False)
+    decision: Mapped[str] = mapped_column(String(64), nullable=False)
+    provenance: Mapped[str | None] = mapped_column(Text, nullable=True)
+    content_hash: Mapped[str] = mapped_column(String(64), nullable=False)
+    archive_execution_id: Mapped[str | None] = mapped_column(String(128), nullable=True)
+    preserved_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=func.now()
+    )
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=func.now()
+    )
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=func.now()
+    )
 # ---------------------------------------------------------------------------
 # Study planner (Dream AI Mentor 2.0)
 # ---------------------------------------------------------------------------

@@ -65,6 +65,7 @@ from ..models import (
     MaintenanceRun,
     SavedScholarship,
     Scholarship,
+    ScholarshipEvidence,
     ScholarshipFetchAttempt,
     ScholarshipRestoreRecord,
     ScholarshipReview,
@@ -283,6 +284,17 @@ REFERENCE_INTEGRITY: dict[str, dict[str, str]] = {
             "delete. Any record carrying an official contact is never a deletion candidate."
         ),
     },
+    "ScholarshipEvidence": {
+        "table": "scholarship_evidence",
+        "disposition": "PRESERVE",
+        "rationale": (
+            "Authoritative application-cycle evidence used to authorize permanent "
+            "deletion (Gate 6). Removing the scholarship would destroy the evidence, "
+            "and the foreign key refuses the parent delete (ON DELETE NO ACTION). "
+            "Any record carrying scholarship evidence is never an auto-deletion "
+            "candidate; permanent deletion archives it first via closed_deletion."
+        ),
+    },
     "StudyPlan": {
         "table": "study_plans",
         "disposition": "PRESERVE",
@@ -338,12 +350,14 @@ DEPENDENT_MODELS: Mapping[str, type] = {
     "SupervisorSourceEvidence": SupervisorSourceEvidence,
     "ProfessorOutreachRecord": ProfessorOutreachRecord,
     "OfficialContact": OfficialContact,
+    "ScholarshipEvidence": ScholarshipEvidence,
     "StudyPlan": StudyPlan,
     "StudyPlanTask": StudyPlanTask,
 }
 
 #: Actual scholarship-linking column for each dependent model.
 DEPENDENT_MODEL_COLUMNS: dict[str, str] = {
+    "ScholarshipEvidence": "scholarship_id",
     "StudyPlan": "scholarship_id",
     "StudyPlanTask": "related_scholarship_id",
 }
@@ -381,7 +395,7 @@ def reference_integrity_report() -> dict[str, Any]:
                         "nullable": bool(column.nullable),
                         "ondelete": fk.ondelete,
                         "database_enforcement": (
-                            "NO ACTION / RESTRICT" if fk.ondelete is None else fk.ondelete
+                            "NO ACTION / RESTRICT" if fk.ondelete in (None, "NO ACTION") else fk.ondelete
                         ),
                         "disposition": spec["disposition"] if spec else "UNCLASSIFIED",
                         "rationale": (
