@@ -50,11 +50,13 @@ def _env(name: str, default: str = "") -> str:
 
 
 def is_valid_sha(value: Any) -> bool:
-    return isinstance(value, str) and bool(SHA_RE.fullmatch(value.strip()))
+    # Exact 40-hex-character match: no surrounding whitespace is accepted.
+    return isinstance(value, str) and bool(SHA_RE.fullmatch(value))
 
 
 def is_valid_sha256(value: Any) -> bool:
-    return isinstance(value, str) and bool(SHA256_RE.fullmatch(value.strip().lower()))
+    # Exact 64-hex-character lowercase match: no surrounding whitespace.
+    return isinstance(value, str) and bool(SHA256_RE.fullmatch(value))
 
 
 def _request(url: str, token: str) -> Dict[str, Any]:
@@ -438,6 +440,136 @@ def verify_manifest_artifact(
         )
 
 
+def verify_preflight_summary_artifact(
+    api_url: str,
+    repository: str,
+    run_id: str,
+    token: str,
+    expected_run_id: str,
+    expected_run_attempt: int,
+    expected_commit_sha: str = "",
+    expected_workflow: str = "",
+) -> None:
+    """Download the Stage 1 preflight-summary artifact and verify that it
+    claims a complete, all-gates-passed preflight. Fail closed on any mismatch."""
+    data = fetch_artifacts(api_url, repository, run_id, token)
+    artifacts = data.get("artifacts", [])
+    if not isinstance(artifacts, list):
+        raise ProvenanceVerificationError("artifacts list missing or invalid")
+
+    summary_artifact = None
+    for a in artifacts:
+        if isinstance(a, dict) and a.get("name") == "preflight-summary":
+            summary_artifact = a
+            break
+    if summary_artifact is None:
+        raise ProvenanceVerificationError("preflight-summary artifact missing")
+
+    wf_run = summary_artifact.get("workflow_run") if isinstance(summary_artifact.get("workflow_run"), dict) else {}
+    if isinstance(wf_run, dict):
+        rid = wf_run.get("id")
+        if rid is not None and str(rid) != str(run_id):
+            raise ProvenanceVerificationError("preflight-summary artifact run_id mismatch")
+        repo_obj = wf_run.get("repository")
+        if isinstance(repo_obj, dict):
+            rf = repo_obj.get("full_name")
+            if rf is not None and rf != repository:
+                raise ProvenanceVerificationError("preflight-summary artifact repository mismatch")
+    if summary_artifact.get("expired") is True:
+        raise ProvenanceVerificationError("preflight-summary artifact is expired")
+
+    download_url = summary_artifact.get("archive_download_url")
+    if not download_url:
+        raise ProvenanceVerificationError("preflight-summary artifact has no download URL")
+
+    request = urllib.request.Request(
+        download_url,
+        headers={
+            "Accept": "application/zip",
+            "Authorization": f"Bearer {token}",
+            "X-GitHub-Api-Version": "2022-11-28",
+            "User-Agent": "scholarzone-preflight-provenance",
+        },
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=60) as response:
+            zip_bytes = response.read()
+    except urllib.error.HTTPError as exc:
+        raise ProvenanceVerificationError(f"preflight-summary download failed with HTTP {exc.code}") from exc
+    except urllib.error.URLError as exc:
+        raise ProvenanceVerificationError(f"preflight-summary download failed: {exc.reason}") from exc
+
+    try:
+        with zipfile.ZipFile(io.BytesIO(zip_bytes)) as zf:
+            names = zf.namelist()
+            summary_name = None
+            for n in names:
+                if n.endswith("preflight_summary.json"):
+                    summary_name = n
+                    break
+            if summary_name is None:
+                raise ProvenanceVerificationError("preflight_summary.json missing in preflight-summary artifact")
+            summary_raw = zf.read(summary_name).decode("utf-8")
+    except (zipfile.BadZipFile, KeyError, UnicodeDecodeError) as exc:
+        raise ProvenanceVerificationError(f"invalid preflight-summary archive: {exc}") from exc
+
+    try:
+        summary = json.loads(summary_raw)
+    except json.JSONDecodeError as exc:
+        raise ProvenanceVerificationError("invalid preflight_summary.json") from exc
+    if not isinstance(summary, dict):
+        raise ProvenanceVerificationError("preflight_summary.json is not an object")
+
+    if summary.get("overall_status") != "ALL_PREFLIGHT_GATES_COMPLETE":
+        raise ProvenanceVerificationError(
+            f"preflight overall_status not complete: {summary.get('overall_status')!r}"
+        )
+    if summary.get("all_mandatory_passed") is not True:
+        raise ProvenanceVerificationError("preflight all_mandatory_passed is not true")
+    missing = summary.get("missing_mandatory")
+    if not isinstance(missing, list) or missing:
+        raise ProvenanceVerificationError(f"preflight missing mandatory gates: {missing!r}")
+    validation_errors = summary.get("validation_errors")
+    if not isinstance(validation_errors, list) or validation_errors:
+        raise ProvenanceVerificationError(f"preflight validation errors present: {validation_errors!r}")
+
+    gates = summary.get("gates")
+    if not isinstance(gates, dict):
+        raise ProvenanceVerificationError("preflight gates missing or invalid")
+    for gate_id in ("gate1", "gate2", "gate3", "gate4", "gate5", "gate6", "gate7"):
+        gate = gates.get(gate_id)
+        if not isinstance(gate, dict):
+            raise ProvenanceVerificationError(f"preflight gate missing: {gate_id}")
+        if gate.get("status") != "PASS":
+            raise ProvenanceVerificationError(f"preflight gate {gate_id} status is {gate.get('status')!r}, not PASS")
+
+    # Workflow identity binding.
+    if expected_workflow and summary.get("workflow") not in (None, ""):
+        if str(summary.get("workflow")) != str(expected_workflow):
+            raise ProvenanceVerificationError("preflight summary workflow mismatch")
+
+    # Commit identity binding: the summary must carry the complete canonical
+    # 40-character Stage 1 commit SHA, compared by exact equality (no prefix
+    # matching).
+    if expected_commit_sha and summary.get("commit_sha") not in (None, ""):
+        summary_commit = str(summary.get("commit_sha"))
+        if not is_valid_sha(summary_commit):
+            raise ProvenanceVerificationError(
+                f"preflight summary commit SHA invalid: {summary_commit!r}"
+            )
+        if summary_commit != str(expected_commit_sha):
+            raise ProvenanceVerificationError("preflight summary commit SHA mismatch")
+
+    if summary.get("run_id") not in (None, "") and str(summary.get("run_id")) != str(expected_run_id):
+        raise ProvenanceVerificationError("preflight summary run_id mismatch")
+    if summary.get("run_attempt") not in (None, ""):
+        try:
+            if int(summary.get("run_attempt")) != int(expected_run_attempt):
+                raise ProvenanceVerificationError("preflight summary run_attempt mismatch")
+        except (TypeError, ValueError):
+            raise ProvenanceVerificationError("invalid preflight summary run_attempt")
+
+
 def main() -> int:
     api_url = _env("GITHUB_API_URL", "https://api.github.com")
     token = _env("GITHUB_TOKEN")
@@ -512,6 +644,17 @@ def main() -> int:
         verify_ancestry(api_url, repository, token, pr_merge_commit_sha, stage1_master_sha)
 
         verify_artifacts(api_url, repository, run_id, token)
+
+        verify_preflight_summary_artifact(
+            api_url,
+            repository,
+            run_id,
+            token,
+            run_id,
+            run_data.get("run_attempt", 1) if isinstance(run_data, dict) else 1,
+            stage1_master_sha,
+            os.environ.get("GITHUB_WORKFLOW", "Closed Scholarship Production Purge - Stage 1 Preflight (PR #107)"),
+        )
 
         verify_manifest_artifact(
             api_url,

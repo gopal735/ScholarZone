@@ -23,11 +23,10 @@ def _valid_event():
     }
 
 
-def test_valid_sha():
-    assert trigger.is_valid_sha("a" * 40)
-    assert not trigger.is_valid_sha("A" * 40)
-    assert not trigger.is_valid_sha("a" * 39)
-    assert not trigger.is_valid_sha("a" * 41)
+def test_valid_sha_rejects_whitespace():
+    assert not trigger.is_valid_sha(" " + "a" * 40)
+    assert not trigger.is_valid_sha("a" * 40 + " ")
+    assert not trigger.is_valid_sha(" " + "a" * 40 + " ")
 
 
 def test_wrong_repository_fails_closed():

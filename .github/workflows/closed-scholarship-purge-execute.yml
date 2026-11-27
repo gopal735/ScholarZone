@@ -43,6 +43,10 @@ on:
         default: false
       confirmation_phrase:
         description: "Type EXECUTE PR107 PURGE to authorize deletion"
+        # The phrase is intentionally bound to PR #107, which is the original
+        # purge operation (feat/closed: permanent deletion workflow for CLOSED
+        # scholarships). PR #116 repairs the preflight gate but does not change
+        # the operation identity. The phrase must match byte-for-byte.
         required: true
         type: string
         default: ""
