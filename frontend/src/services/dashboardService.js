@@ -130,8 +130,19 @@ export function removeSavedScholarship(scholarshipId) {
   return request(`/dashboard/saved/${encodeURIComponent(scholarshipId)}`, { method: 'DELETE' })
 }
 
+export function removeSavedScholarshipByRow(savedId) {
+  return request(`/dashboard/saved/row/${encodeURIComponent(savedId)}`, { method: 'DELETE' })
+}
+
 export function setApplicationState(scholarshipId, state) {
   return request(`/dashboard/applications/${encodeURIComponent(scholarshipId)}`, {
+    method: 'PUT',
+    body: JSON.stringify({ state }),
+  })
+}
+
+export function setApplicationStateByRow(applicationId, state) {
+  return request(`/dashboard/applications/row/${encodeURIComponent(applicationId)}`, {
     method: 'PUT',
     body: JSON.stringify({ state }),
   })

@@ -50,7 +50,7 @@ BACKEND = Path(__file__).resolve().parents[1]
 #: tables under test keeps the fixtures honest instead of hiding the defect.
 SCHEMA_TABLES = ("scholarships", "scholarship_reviews",
                  "scholarship_verification_history", "image_reviews",
-                 "maintenance_runs")
+                 "maintenance_runs", "deleted_closed_scholarships")
 
 
 def _create_schema(engine):

@@ -57,10 +57,14 @@ export function SavedScholarships({ saved, onRemove }) {
         {saved.map((item) => {
           const scholarship = item.scholarship
           return (
-            <li className="saved-item" key={scholarship.scholarship_id}>
+            <li className="saved-item" key={item.id}>
               <div className="saved-item__main">
                 <h3 className="saved-item__title">
-                  <Link to={scholarship.detail_url}>{scholarship.name}</Link>
+                  {scholarship.detail_url ? (
+                    <Link to={scholarship.detail_url}>{scholarship.name}</Link>
+                  ) : (
+                    scholarship.name
+                  )}
                 </h3>
                 <p className="saved-item__meta">
                   {scholarship.country} · {scholarship.degree}
@@ -91,7 +95,7 @@ export function SavedScholarships({ saved, onRemove }) {
               <button
                 type="button"
                 className="sz-btn sz-btn--ghost"
-                onClick={() => onRemove(scholarship.scholarship_id)}
+                onClick={() => onRemove(item.id)}
               >
                 Remove
               </button>

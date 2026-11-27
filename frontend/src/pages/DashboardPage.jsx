@@ -33,8 +33,10 @@ import {
   DashboardUnauthenticatedError,
   fetchDashboard,
   removeSavedScholarship,
+  removeSavedScholarshipByRow,
   saveScholarship,
   setApplicationState,
+  setApplicationStateByRow,
 } from '../services/dashboardService'
 import './DashboardPage.css'
 
@@ -149,17 +151,35 @@ export default function DashboardPage() {
     },
     [mutate],
   )
+  const handleRemoveSaved = useCallback(
+    (savedRowId) => {
+      mutate(() => removeSavedScholarshipByRow(savedRowId), 'Removed from your shortlist.')
+    },
+    [mutate],
+  )
 
   const handleStateChange = useCallback(
-    (scholarshipId, state) => {
-      mutate(() => setApplicationState(scholarshipId, state), 'Application state updated.')
+    (applicationRowId, scholarshipId, state) => {
+      mutate(
+        () =>
+          scholarshipId !== null && scholarshipId !== undefined
+            ? setApplicationState(scholarshipId, state)
+            : setApplicationStateByRow(applicationRowId, state),
+        'Application state updated.',
+      )
     },
     [mutate],
   )
 
   const handleRemoveApplication = useCallback(
-    (scholarshipId) => {
-      mutate(() => setApplicationState(scholarshipId, 'withdrawn'), 'Marked as withdrawn.')
+    (applicationRowId, scholarshipId) => {
+      mutate(
+        () =>
+          scholarshipId !== null && scholarshipId !== undefined
+            ? setApplicationState(scholarshipId, 'withdrawn')
+            : setApplicationStateByRow(applicationRowId, 'withdrawn'),
+        'Marked as withdrawn.',
+      )
     },
     [mutate],
   )
@@ -306,7 +326,7 @@ export default function DashboardPage() {
 
         <DeadlineWatch deadlines={data.deadlines} />
 
-        <SavedScholarships saved={data.saved} onRemove={(id) => handleSave(id, false)} />
+        <SavedScholarships saved={data.saved} onRemove={handleRemoveSaved} />
 
         {hasProfile ? <ProfileGaps gaps={data.gaps} /> : null}
       </div>

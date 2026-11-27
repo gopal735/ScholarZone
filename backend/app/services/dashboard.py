@@ -748,7 +748,7 @@ def build_dashboard(db: Session, user: User, as_of: date | None = None) -> Dashb
     # One bounded query for every id this response will describe: the shortlist,
     # the applications, and the recommended cards that need their published
     # deadline wording. Never one query per card.
-    acted_ids = sorted({row.scholarship_id for row in saved_rows} | {row.scholarship_id for row in application_rows})
+    acted_ids = sorted({row.scholarship_id for row in saved_rows if row.scholarship_id is not None} | {row.scholarship_id for row in application_rows if row.scholarship_id is not None})
     needed_ids = sorted(set(acted_ids) | {result.scholarship_id for result in selected})
     rows_by_id = load_facts_for_ids(db, needed_ids)
 
@@ -766,16 +766,18 @@ def build_dashboard(db: Session, user: User, as_of: date | None = None) -> Dashb
         recommendations.append(recommendation)
 
     match_by_id = {item.scholarship_id: item for item in recommendations}
-    saved_by_id = {row.scholarship_id: row for row in saved_rows}
-    application_by_id = {row.scholarship_id: row for row in application_rows}
+    saved_by_id = {row.scholarship_id: row for row in saved_rows if row.scholarship_id is not None}
+    application_by_id = {row.scholarship_id: row for row in application_rows if row.scholarship_id is not None}
 
     # Applications whose scholarship has since left the public universe. The
     # student created these rows, so they are shown from the snapshot taken at
     # that moment rather than dropped: a round closing must not make an
     # application count quietly shrink.
-    snapshot_by_id = {row.scholarship_id: row for row in application_rows}
+    snapshot_by_id = {row.scholarship_id: row for row in application_rows if row.scholarship_id is not None}
 
-    def _reference(scholarship_id: int) -> ScholarshipReference | None:
+    def _reference_for_id(scholarship_id: int | None) -> ScholarshipReference | None:
+        if scholarship_id is None:
+            return None
         row = rows_by_id.get(scholarship_id)
         if row is not None:
             status = normalize_public_verification_status(row.verification_status)
@@ -817,13 +819,32 @@ def build_dashboard(db: Session, user: User, as_of: date | None = None) -> Dashb
 
     saved_items: list[SavedItem] = []
     for row in saved_rows:
-        reference = _reference(row.scholarship_id)
+        scholarship_id = row.scholarship_id
+        if scholarship_id is not None:
+            reference = _reference_for_id(scholarship_id)
+        else:
+            # Detached saved shortlist entry: scholarship left the catalogue.
+            # Preserve it as an independent row using its own title snapshot.
+            reference = ScholarshipReference(
+                scholarship_id=None,
+                name=row.scholarship_title_snapshot or "Scholarship (no longer listed)",
+                country="",
+                degree="",
+                funding=None,
+                detail_url="",
+                official_source_url=None,
+                verification_status="not_listed",
+                verified=False,
+                verification_display="No longer listed",
+                is_listed=False,
+            )
         if reference is None:
             continue
-        match_item = match_by_id.get(row.scholarship_id)
-        application = application_by_id.get(row.scholarship_id)
+        match_item = match_by_id.get(scholarship_id) if scholarship_id is not None else None
+        application = application_by_id.get(scholarship_id) if scholarship_id is not None else None
         saved_items.append(
             SavedItem(
+                id=row.id,
                 scholarship=reference,
                 saved_at=row.created_at,
                 is_in_matches=match_item is not None,
@@ -835,12 +856,29 @@ def build_dashboard(db: Session, user: User, as_of: date | None = None) -> Dashb
 
     application_items: list[ApplicationItem] = []
     for row in application_rows:
-        reference = _reference(row.scholarship_id)
+        scholarship_id = row.scholarship_id
+        if scholarship_id is not None:
+            reference = _reference_for_id(scholarship_id)
+        else:
+            reference = ScholarshipReference(
+                scholarship_id=None,
+                name=row.scholarship_name_snapshot or "Scholarship (no longer listed)",
+                country=row.scholarship_country_snapshot or "",
+                degree=row.scholarship_degree_snapshot or "",
+                funding=row.scholarship_funding_snapshot,
+                detail_url="",
+                official_source_url=row.scholarship_source_url_snapshot,
+                verification_status="not_listed",
+                verified=False,
+                verification_display="No longer listed",
+                is_listed=False,
+            )
         if reference is None:
             continue
-        match_item = match_by_id.get(row.scholarship_id)
+        match_item = match_by_id.get(scholarship_id) if scholarship_id is not None else None
         application_items.append(
             ApplicationItem(
+                id=row.id,
                 scholarship=reference,
                 state=row.state,
                 state_label=APPLICATION_STATE_LABELS.get(row.state, row.state),
@@ -900,6 +938,8 @@ def _build_deadlines(
 
     for item in application_items:
         reference = item.scholarship
+        if reference.scholarship_id is None:
+            continue
         entries[reference.scholarship_id] = DeadlineItem(
             scholarship_id=reference.scholarship_id,
             name=reference.name,
@@ -919,6 +959,8 @@ def _build_deadlines(
 
     for item in saved_items:
         reference = item.scholarship
+        if reference.scholarship_id is None:
+            continue
         existing = entries.get(reference.scholarship_id)
         if existing is None:
             entries[reference.scholarship_id] = DeadlineItem(

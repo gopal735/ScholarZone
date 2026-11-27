@@ -1,0 +1,208 @@
+name: Closed Scholarship Production Purge - Stage 2 Execution (PR #107)
+
+on:
+  workflow_dispatch:
+    inputs:
+      preflight_run_id:
+        description: "Stage 1 preflight workflow run ID"
+        required: true
+        type: string
+      merge_commit_sha:
+        description: "Exact merge commit SHA of PR #107"
+        required: true
+        type: string
+      stage1_master_sha:
+        description: "Stage 1 master commit SHA (must contain merge commit)"
+        required: true
+        type: string
+      expected_workflow_id:
+        description: "Expected Stage 1 workflow ID"
+        required: false
+        type: string
+        default: "" 
+      manifest_sha256:
+        description: "Expected manifest SHA-256 from Stage 1"
+        required: true
+        type: string
+      manifest_count:
+        description: "Expected manifest target count from Stage 1"
+        required: true
+        type: string
+      manifest_schema_version:
+        description: "Expected manifest schema version from Stage 1"
+        required: true
+        type: string
+      manifest_reference_date:
+        description: "Expected manifest reference date from Stage 1"
+        required: true
+        type: string
+      confirm_execution:
+        description: "Confirm production deletion execution"
+        required: true
+        type: boolean
+        default: false
+      confirmation_phrase:
+        description: "Type EXECUTE PR107 PURGE to authorize deletion"
+        required: true
+        type: string
+        default: ""
+
+permissions:
+  contents: read
+  id-token: write
+  actions: read
+  checks: write
+
+concurrency:
+  group: closed-scholarship-purge-execute-pr107
+  cancel-in-progress: false
+
+env:
+  SCHOLARZONE_ENVIRONMENT: production
+
+jobs:
+  verify-authorization:
+    name: Verify Stage 1 Preflight and Authorization
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      actions: read
+      pull-requests: read
+    outputs:
+      should_execute: ${{ steps.auth.outputs.should_execute }}
+      merge_commit_sha: ${{ steps.auth.outputs.merge_commit_sha }}
+    steps:
+      - name: Checkout trusted workflow code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          ref: ${{ github.sha }}
+
+      - name: Verify repository and ref
+        run: |
+          if [ "${{ github.repository }}" != "gopal735/ScholarZone" ]; then
+            echo "ERROR: unexpected repository"
+            exit 1
+          fi
+          if [ "${{ github.ref }}" != "refs/heads/master" ]; then
+            echo "ERROR: must run from refs/heads/master"
+            exit 1
+          fi
+
+      - name: Verify confirmation
+        run: |
+          if [ "${{ inputs.confirm_execution }}" != "true" ]; then
+            echo "ERROR: confirm_execution must be true"
+            exit 1
+          fi
+          if [ "${{ inputs.confirmation_phrase }}" != "EXECUTE PR107 PURGE" ]; then
+            echo "ERROR: incorrect confirmation phrase"
+            exit 1
+          fi
+          echo "Confirmation verified"
+
+      - name: Verify preflight run via GitHub API
+        id: auth
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_API_URL: ${{ github.api_url }}
+          PREFLIGHT_RUN_ID: ${{ inputs.preflight_run_id }}
+          STAGE1_MASTER_SHA: ${{ inputs.stage1_master_sha }}
+          SUPPLIED_MERGE_SHA: ${{ inputs.merge_commit_sha }}
+          SUPPLIED_MANIFEST_SHA: ${{ inputs.manifest_sha256 }}
+          SUPPLIED_MANIFEST_COUNT: ${{ inputs.manifest_count }}
+          SUPPLIED_MANIFEST_SCHEMA_VERSION: ${{ inputs.manifest_schema_version }}
+          SUPPLIED_MANIFEST_REFERENCE_DATE: ${{ inputs.manifest_reference_date }}
+          EXPECTED_WORKFLOW_ID: ${{ inputs.expected_workflow_id }}
+        run: |
+          python .github/scripts/verify_preflight_provenance.py
+          echo "should_execute=true" >> "$GITHUB_OUTPUT"
+          echo "merge_commit_sha=${{ inputs.merge_commit_sha }}" >> "$GITHUB_OUTPUT"
+
+  execute-deletion:
+    name: Execute Production Deletion
+    needs: verify-authorization
+    if: needs.verify-authorization.outputs.should_execute == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    environment: production
+    env:
+      SCHOLARZONE_ENVIRONMENT: production
+      SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
+      EXPECTED_NEON_PROJECT_ID: ${{ secrets.EXPECTED_NEON_PROJECT_ID }}
+      EXPECTED_NEON_BRANCH_ID: ${{ secrets.EXPECTED_NEON_BRANCH_ID }}
+      EXPECTED_NEON_BRANCH_NAME: ${{ secrets.EXPECTED_NEON_BRANCH_NAME }}
+      EXPECTED_DATABASE_NAME: ${{ secrets.EXPECTED_DATABASE_NAME }}
+      EXPECTED_DATABASE_HOST: ${{ secrets.EXPECTED_DATABASE_HOST }}
+      EXPECTED_MANIFEST_SHA256: ${{ inputs.manifest_sha256 }}
+      EXPECTED_MANIFEST_COUNT: ${{ inputs.manifest_count }}
+      EXPECTED_MANIFEST_SCHEMA_VERSION: ${{ inputs.manifest_schema_version }}
+      EXPECTED_MANIFEST_REFERENCE_DATE: ${{ inputs.manifest_reference_date }}
+      MERGE_COMMIT_SHA: ${{ inputs.merge_commit_sha }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          ref: ${{ inputs.merge_commit_sha }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install -r backend/requirements.txt --quiet
+
+      - name: Download preflight summary artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: preflight-summary
+          path: artifacts
+          run-id: ${{ inputs.preflight_run_id }}
+          github-token: ${{ github.token }}
+
+      - name: Download deletion manifest artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: deletion-manifest
+          path: artifacts
+          run-id: ${{ inputs.preflight_run_id }}
+          github-token: ${{ github.token }}
+
+      - name: Execute Production Deletion
+        id: deletion
+        run: python .github/scripts/execute_deletion.py
+        env:
+          MERGE_COMMIT_SHA: ${{ inputs.merge_commit_sha }}
+
+      - name: Upload Deletion Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: deletion-report
+          path: deletion_report.json
+          retention-days: 90
+
+  final-report:
+    name: Final Execution Report
+    needs: [verify-authorization, execute-deletion]
+    if: always() && needs.verify-authorization.outputs.should_execute == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          ref: ${{ inputs.merge_commit_sha }}
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: true
+
+      - name: Generate Final Report
+        run: python .github/scripts/generate_final_report.py

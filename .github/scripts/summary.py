@@ -17,4 +17,8 @@ if __name__ == "__main__":
     # Pass command line arguments to the core module
     artifacts_dir = sys.argv[1] if len(sys.argv) > 1 else "artifacts"
     commit_sha = sys.argv[2] if len(sys.argv) > 2 else ""
-    raise SystemExit(main(artifacts_dir, commit_sha))
+    run_id = sys.argv[3] if len(sys.argv) > 3 else ""
+    run_number = sys.argv[4] if len(sys.argv) > 4 else ""
+    run_attempt = sys.argv[5] if len(sys.argv) > 5 else "1"
+    workflow = sys.argv[6] if len(sys.argv) > 6 else ""
+    raise SystemExit(main(artifacts_dir, commit_sha, run_id, run_number, run_attempt, workflow))

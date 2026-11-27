@@ -95,13 +95,12 @@ jobs:
             exit 0
           fi
 
-          DEPS=$(cat frontend/package.json | grep -A 1000 '"dependencies"' | head -200)
-          DEV_DEPS=$(cat frontend/package.json | grep -A 1000 '"devDependencies"' | head -200)
+          DEPS=$(grep -A 1000 '"dependencies"' frontend/package.json | head -200)
+          DEV_DEPS=$(grep -A 1000 '"devDependencies"' frontend/package.json | head -200)
 
           FOUND=0
           for pkg in "${PAID_PACKAGES[@]}"; do
-            ESCAPED=$(echo "$pkg" | sed 's/[[\.*^$()+?{|\\]/\\&/g')
-            if echo "$DEPS" | grep -q "\"$ESCAPED\"" || echo "$DEV_DEPS" | grep -q "\"$ESCAPED\""; then
+            if echo "$DEPS" | grep -qF "\"$pkg\"" || echo "$DEV_DEPS" | grep -qF "\"$pkg\""; then
               echo "WARNING: Found potentially paid package: $pkg"
               FOUND=1
             fi
