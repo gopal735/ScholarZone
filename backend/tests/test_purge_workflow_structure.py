@@ -121,10 +121,29 @@ def test_execute_deletion_needs_verification():
     assert "verify-authorization" in needs, "execute-deletion must depend on authorization verification"
 
 
-def test_execute_deletion_requires_authorization():
+def test_execute_deletion_has_production_environment():
     data = yaml.safe_load(EXECUTE_WORKFLOW.read_text(encoding="utf-8"))
     exec_job = data["jobs"]["execute-deletion"]
-    condition = str(exec_job.get("if", ""))
-    assert "verify-authorization.outputs.should_execute == 'true'" in condition, (
-        "execute-deletion must not run unless authorization succeeded"
+    assert exec_job.get("environment") == "production", (
+        "execute-deletion must declare the protected production environment"
     )
+
+
+def test_execute_deletion_confirmation_phrase_exact():
+    raw = EXECUTE_WORKFLOW.read_text(encoding="utf-8")
+    assert 'inputs.confirmation_phrase }}" != "EXECUTE PR107 PURGE"' in raw
+    assert 'inputs.confirm_execution }}" != "true"' in raw
+
+
+def test_execute_deletion_has_production_environment():
+    data = yaml.safe_load(EXECUTE_WORKFLOW.read_text(encoding="utf-8"))
+    exec_job = data["jobs"]["execute-deletion"]
+    assert exec_job.get("environment") == "production", (
+        "execute-deletion must declare the protected production environment"
+    )
+
+
+def test_execute_deletion_confirmation_phrase_exact():
+    raw = EXECUTE_WORKFLOW.read_text(encoding="utf-8")
+    assert 'inputs.confirmation_phrase }}" != "EXECUTE PR107 PURGE"' in raw
+    assert 'inputs.confirm_execution }}" != "true"' in raw

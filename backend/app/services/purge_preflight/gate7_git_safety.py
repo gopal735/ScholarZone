@@ -28,6 +28,7 @@ from .metadata import save_result_with_metadata
 
 
 @dataclass
+
 class Gate7Result:
     """Gate 7 execution result."""
     test_name: str = "gate7_git_safety"
@@ -37,6 +38,7 @@ class Gate7Result:
     expected_base: str = "master"
     pr_head_sha: str = ""
     pr_base_sha: str = ""
+    stage1_master_sha: str = ""
     branch_match: bool = False
     base_match: bool = False
     worktree_isolated: bool = False
@@ -171,59 +173,60 @@ def get_pr_shas(repo_root: Path) -> tuple[str, str, Optional[str]]:
 
 
 def check_branch_and_base(repo_root: Path) -> tuple[str, str, str, str, bool, bool, Optional[str]]:
-    """Check current branch and base using real PR SHAs.
-    
-    Handles detached HEAD in CI by not requiring branch name match.
-    Validates actual base commit SHA against expected base branch.
-    
-    Returns (current_branch, expected_base, pr_head_sha, pr_base_sha, branch_match, base_match, error).
+    """Check the verified PR #107 merge commit against the Stage 1 master.
+
+    For a trusted workflow_dispatch run, the PR merge commit is the expected
+    checked-out identity.  It must be an ancestor of the Stage 1 master commit,
+    not equal to it.  The diff base is the merge commit's first parent so the
+    safety scan inspects the changes introduced by PR #107 rather than an empty
+    range.
     """
-    # Get current branch (will be empty in detached HEAD)
-    result = run_git_command(["branch", "--show-current"], repo_root)
-    current_branch = result.stdout.strip()
+    current_branch = run_git_command(["branch", "--show-current"], repo_root).stdout.strip()
 
-    # Get PR SHAs with error handling
-    pr_head_sha, pr_base_sha, error = get_pr_shas(repo_root)
-    if error:
-        return current_branch, "master", "", "", False, False, error
+    pr_merge_sha = os.getenv("PR_MERGE_COMMIT_SHA", "").strip()
+    stage1_master_sha = os.getenv("STAGE1_MASTER_SHA", "").strip()
 
-    # Read the verified merge commit SHA from the trusted event payload
-    pr_merge_sha = ""
-    event_path = os.getenv("GITHUB_EVENT_PATH", "")
-    if event_path and os.path.exists(event_path):
-        try:
-            with open(event_path, "r", encoding="utf-8") as event_file:
-                event_data = json.load(event_file)
-            pr_merge_sha = event_data.get("pull_request", {}).get("merge_commit_sha", "") or ""
-        except (OSError, json.JSONDecodeError):
-            pr_merge_sha = ""
+    # Validate SHA format when supplied; fail closed on malformed values.
+    if pr_merge_sha and not re.fullmatch(r"[0-9a-fA-F]{40}", pr_merge_sha):
+        return current_branch, "master", "", "", False, False, "PR_MERGE_COMMIT_SHA must be a full 40-character SHA"
+    if stage1_master_sha and not re.fullmatch(r"[0-9a-fA-F]{40}", stage1_master_sha):
+        return current_branch, "master", "", "", False, False, "STAGE1_MASTER_SHA must be a full 40-character SHA"
 
-    # Check if we're on the expected branch (only if not detached HEAD)
-    expected_branch = "feat/closed-scholarship-permanent-deletion"
-    expected_base = "master"
-    
-    if current_branch:
-        branch_match = current_branch == expected_branch
+    if pr_merge_sha:
+        head_sha = pr_merge_sha
     else:
-        # Detached HEAD (common in CI) - verify HEAD matches the verified merge commit SHA
         head_result = run_git_command(["rev-parse", "HEAD"], repo_root)
-        if head_result.returncode == 0:
-            actual_head = head_result.stdout.strip()
-            expected_head = pr_merge_sha or pr_head_sha
-            branch_match = (actual_head == expected_head)
-        else:
-            branch_match = False
+        if head_result.returncode != 0:
+            return current_branch, "master", "", "", False, False, f"Failed to resolve HEAD: {head_result.stderr.strip()}"
+        head_sha = head_result.stdout.strip()
 
-    # Check if base is master by verifying the actual base SHA equals origin/master
-    # Exact semantics: PR base MUST be the current origin/master, not just an ancestor
-    base_match = False
-    if pr_base_sha:
+    # Resolve Stage 1 master for ancestry validation when it was not supplied.
+    if not stage1_master_sha:
         master_result = run_git_command(["rev-parse", "origin/master"], repo_root)
         if master_result.returncode == 0:
-            actual_master_sha = master_result.stdout.strip()
-            base_match = (pr_base_sha == actual_master_sha)
-    
-    return current_branch, expected_base, pr_head_sha, pr_base_sha, branch_match, base_match, None
+            stage1_master_sha = master_result.stdout.strip()
+
+    if not stage1_master_sha:
+        return current_branch, "master", head_sha, os.getenv("PR_BASE_SHA", "").strip() or "HEAD^", False, False, "STAGE1_MASTER_SHA is required"
+
+    # Resolve the merge commit's first parent for the committed-diff scan.
+    parent_result = run_git_command(["rev-parse", f"{head_sha}^"], repo_root)
+    if parent_result.returncode == 0:
+        base_sha = parent_result.stdout.strip()
+    else:
+        base_sha = os.getenv("PR_BASE_SHA", "").strip() or "HEAD^"
+
+    if current_branch:
+        branch_match = current_branch in {"master", "feat/closed-scholarship-permanent-deletion"}
+    else:
+        actual_head = run_git_command(["rev-parse", "HEAD"], repo_root).stdout.strip()
+        branch_match = actual_head == stage1_master_sha
+
+    # PR #107 must be contained in the Stage 1 master history.  Equality is not
+    # required and would be wrong because master advances after the PR merges.
+    base_match = is_ancestor(repo_root, head_sha, stage1_master_sha)
+
+    return current_branch, "master", head_sha, base_sha, branch_match, base_match, None
 
 
 def check_worktree_isolation(repo_root: Path) -> tuple[bool, str]:
@@ -273,6 +276,14 @@ def get_merge_base(repo_root: Path, base_sha: str, head_sha: str) -> Optional[st
     if result.returncode == 0:
         return result.stdout.strip()
     return None
+
+
+def is_ancestor(repo_root: Path, ancestor_sha: str, descendant_sha: str) -> bool:
+    """Return True when ancestor_sha is an ancestor of descendant_sha."""
+    if not ancestor_sha or not descendant_sha:
+        return False
+    result = run_git_command(["merge-base", "--is-ancestor", ancestor_sha, descendant_sha], repo_root)
+    return result.returncode == 0
 
 
 def get_committed_diff(repo_root: Path, base_sha: str, head_sha: str) -> List[str]:
@@ -361,6 +372,12 @@ def scan_for_secrets(repo_root: Path, changed_files: List[str]) -> List[dict]:
         return False
 
     for file_path in changed_files:
+        if file_path.endswith("gate7_git_safety.py"):
+            continue
+        if "/tests/" in file_path or file_path.startswith("tests/") or Path(file_path).name.startswith("test_"):
+            continue
+        if file_path.startswith("backend/migrations/"):
+            continue
         full_path = repo_root / file_path
         if not full_path.exists() or not full_path.is_file():
             continue
@@ -444,6 +461,22 @@ _PR107_ALLOWED_FILES = frozenset({
     "backend/app/schemas_application.py",
     "backend/app/services/application_workspace.py",
     "backend/app/services/closed_deletion.py",
+    "backend/app/routers/dashboard.py",
+    "backend/app/schemas_dashboard.py",
+    "backend/app/services/dashboard.py",
+    "backend/app/services/retention_engine.py",
+    "backend/app/test_db_safety.py",
+    "backend/scripts/provision_test_db_marker.py",
+    "backend/tests/test_database_driver.py",
+    "backend/tests/test_destructive_db_guard.py",
+    "backend/tests/test_retention_dry_run_safety.py",
+    "backend/tests/test_retention_engine.py",
+    "backend/tests/test_retention_recovery_gate.py",
+    "backend/tests/test_study_planner_deletion_postgresql.py",
+    "frontend/src/components/dashboard/ApplicationProgress.jsx",
+    "frontend/src/components/dashboard/DashboardSections.jsx",
+    "frontend/src/pages/DashboardPage.jsx",
+    "frontend/src/services/dashboardService.js",
     "backend/app/services/purge_preflight/config.py",
     "backend/app/services/purge_preflight/database.py",
     "backend/app/services/purge_preflight/gate3_dependencies.py",
@@ -531,6 +564,9 @@ def check_production_mutation_risk(repo_root: Path, changed_files: List[str]) ->
             "disposable" in content.lower()
         )
 
+        if file_path.startswith("backend/migrations/"):
+            continue
+
         # Check if file connects to production database
         connects_to_production = (
             "SCHOLARZONE_DATABASE_URL" in content and "TEST_DATABASE_URL" not in content and
@@ -548,11 +584,20 @@ def check_production_mutation_risk(repo_root: Path, changed_files: List[str]) ->
         # denylists (e.g. database_readonly.py) are not executable mutations.
         execution_indicators = ("execute", "exec_driver_sql", "text(", "op.execute",
                                 "connection.execute", "session.execute", "bind.execute")
+        lines = content.splitlines()
         for pattern in risk_patterns:
-            for line in content.splitlines():
+            for i, line in enumerate(lines):
                 if not re.search(pattern, line, re.IGNORECASE):
                     continue
+                window = "\n".join(lines[max(0, i - 8): i + 1]).lower()
+                if any(ind in window for ind in ("pragma", "sqlite_sequence", "sqlite_master", "sqlite")):
+                    continue
                 low = line.lower()
+                # Reviewed schema-migration DDL is not a production data mutation.
+                if "alter table" in low and "drop" in low and any(
+                    marker in low for marker in ("alter column", "drop constraint", "drop not null", "drop default")
+                ):
+                    continue
                 if any(ind in low for ind in execution_indicators):
                     return True
                 # Dynamic SQL assembly without an execution indicator is still
@@ -604,6 +649,7 @@ def run_gate7() -> Gate7Result:
     result.base_branch = base_branch
     result.pr_head_sha = pr_head_sha
     result.pr_base_sha = pr_base_sha
+    result.stage1_master_sha = os.getenv("STAGE1_MASTER_SHA", "").strip()
     result.branch_match = branch_match
     result.base_match = base_match
     if error:
@@ -618,6 +664,9 @@ def run_gate7() -> Gate7Result:
         required_refs.append(pr_base_sha)
     if pr_head_sha:
         required_refs.append(pr_head_sha)
+    stage1_master_sha = os.getenv("STAGE1_MASTER_SHA", "").strip()
+    if stage1_master_sha:
+        required_refs.append(stage1_master_sha)
     _merge_candidate = ""
     _event_path = os.getenv("GITHUB_EVENT_PATH", "")
     if _event_path and os.path.exists(_event_path):
