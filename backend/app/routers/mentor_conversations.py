@@ -89,6 +89,7 @@ def _msg_to_response(msg) -> MentorMessageResponse:
         error=msg.error,
         created_at=msg.created_at,
         completed_at=msg.completed_at,
+        discovery_payload=getattr(msg, "discovery_payload", None),
     )
 
 
@@ -105,6 +106,42 @@ def _deterministic_content(answer) -> str:
         for u in answer.unknown:
             parts.append(f"- {u}")
     return "\n".join(parts).strip()
+
+def _discovery_to_payload(discovery) -> dict | None:
+    if discovery is None:
+        return None
+    def _match(m):
+        return {
+            "scholarship_id": m.scholarship_id,
+            "title": m.title,
+            "country": m.country,
+            "degree": m.degree,
+            "funding_classification": m.funding_classification,
+            "funding_text": m.funding_text,
+            "official_source_url": m.official_source_url,
+            "verification": m.verification,
+            "knowledge_state": m.knowledge_state,
+            "supporting_fields": list(getattr(m, "supporting_fields", []) or []),
+            "warnings": list(m.warnings or []),
+        }
+    return {
+        "search_status": discovery.search_status,
+        "query_summary": discovery.query_summary,
+        "result_count": discovery.total_matches,
+        "returned_count": discovery.returned_count,
+        "verified_matches": [],
+        "potential_matches": [_match(m) for m in (discovery.potential_matches or [])],
+        "diagnostics": discovery.diagnostics,
+        "pagination": {
+            "page": discovery.page,
+            "page_size": discovery.page_size,
+            "total": discovery.total_matches,
+            "total_pages": discovery.total_pages,
+            "has_more": discovery.has_more,
+            "returned": discovery.returned_count,
+        },
+        "answer_schema_version": 1,
+    }
 
 
 def _prepare(db, user, message):
@@ -124,11 +161,12 @@ def _prepare(db, user, message):
     req = _bounded_request(msg or message, _context_blocks(context))
 
     if intent.kind == "SCHOLARSHIP_DISCOVERY":
+        discovery = None
         try:
             discovery = run_discovery(db, msg or message, date.today())
             evidence = tuple(discovery.evidence or ())
             headline = (
-                f"Found {len(discovery.potential_matches)} potential scholarship "
+                f"Found {discovery.total_matches} potential scholarship "
                 f"matches (status: {discovery.search_status})."
             )
             answer = ComposedAnswer(
@@ -155,7 +193,8 @@ def _prepare(db, user, message):
                 caveats=("database_unavailable",),
                 notes=answer.notes,
             )
-    return intent, context, answer, req
+        return intent, context, answer, req, discovery
+    return intent, context, answer, req, None
 
 
 def _map_stream_error(exc: Exception) -> str:
@@ -212,7 +251,26 @@ def delete_conv(conversation_id: int, db: Session = Depends(get_db), user: User 
     return None
 
 
-@router.get("/conversations/{conversation_id}/messages", response_model=list[MentorMessageResponse])
+@router.get("/conversations/{conversation_id}/messages/{message_id}/discovery")
+def get_discovery(conversation_id: int, message_id: int, page: int = Query(1, ge=1), page_size: int = Query(20, ge=1, le=100), db: Session = Depends(get_db), user: User = Depends(require_user)):
+    conv = get_conversation(db, user.id, conversation_id)
+    if conv is None:
+        raise HTTPException(status_code=404, detail="conversation_not_found")
+    msg = db.execute(
+        __import__("sqlalchemy").select(MentorMessage).where(MentorMessage.id == message_id).execution_options(populate_existing=True)
+    ).scalar_one_or_none()
+    if msg is None or msg.user_id != user.id or msg.conversation_id != conversation_id:
+        raise HTTPException(status_code=404, detail="message_not_found")
+    # Resolve source user message.
+    user_msg = None
+    if getattr(msg, "source_user_message_id", None):
+        src = db.get(MentorMessage, msg.source_user_message_id)
+        if src is not None and src.user_id == user.id and src.conversation_id == conversation_id and src.role == "user":
+            user_msg = src
+    if user_msg is None:
+        raise HTTPException(status_code=400, detail="no_source_user_message")
+    discovery = run_discovery(db, user_msg.content, date.today(), limit=page_size, offset=(page - 1) * page_size)
+    return _discovery_to_payload(discovery)
 def get_msgs(conversation_id: int, limit: int = Query(100, ge=1, le=500), offset: int = Query(0, ge=0), db: Session = Depends(get_db), user: User = Depends(require_user)):
     conv = get_conversation(db, user.id, conversation_id)
     if conv is None:
@@ -236,8 +294,9 @@ def send_msg(conversation_id: int, payload: MentorSendMessageRequest, request: R
         if assistant.status == "completed":
             return {"user_message": _msg_to_response(user_msg), "assistant_message": _msg_to_response(assistant)}
 
-        intent, context, answer, req = _prepare(db, user, payload.message)
+        intent, context, answer, req, discovery = _prepare(db, user, payload.message)
         deterministic = _deterministic_content(answer)
+        discovery_payload = _discovery_to_payload(discovery)
 
         gw = get_ai_gateway()
         content = deterministic
@@ -279,6 +338,7 @@ def send_msg(conversation_id: int, payload: MentorSendMessageRequest, request: R
             prompt_tokens=prompt_tokens,
             completion_tokens=completion_tokens,
             attempt_id=assistant.attempt_id,
+            discovery_payload=discovery_payload,
         )
         assistant = db.execute(
             __import__("sqlalchemy").select(MentorMessage).where(MentorMessage.id == assistant.id).execution_options(populate_existing=True)
@@ -366,8 +426,9 @@ def retry_msg(conversation_id: int, message_id: int, request: Request, db: Sessi
                 return _msg_to_response(claimed)
             raise HTTPException(status_code=409, detail="retry_not_allowed")
         msg = claimed
-        intent, context, answer, req = _prepare(db, user, user_msg.content)
+        intent, context, answer, req, discovery = _prepare(db, user, user_msg.content)
         deterministic = _deterministic_content(answer)
+        discovery_payload = _discovery_to_payload(discovery)
         gw = get_ai_gateway()
         content = deterministic
         provider_mode = "disabled"
@@ -395,7 +456,7 @@ def retry_msg(conversation_id: int, message_id: int, request: Request, db: Sessi
                 return _msg_to_response(msg)
         if not used and gw.enabled:
             provider_mode = "disabled"
-        complete_assistant_message(db, user.id, msg.id, content, provider=provider_mode, model=model, prompt_tokens=prompt_tokens, completion_tokens=completion_tokens, attempt_id=msg.attempt_id)
+        complete_assistant_message(db, user.id, msg.id, content, provider=provider_mode, model=model, prompt_tokens=prompt_tokens, completion_tokens=completion_tokens, attempt_id=msg.attempt_id, discovery_payload=discovery_payload)
         msg = db.execute(
             __import__("sqlalchemy").select(MentorMessage).where(MentorMessage.id == msg.id).execution_options(populate_existing=True)
         ).scalar_one_or_none()
@@ -434,7 +495,7 @@ def stream_msg(conversation_id: int, payload: MentorSendMessageRequest, request:
                 yield format_sse("message_start", {'conversation_id': conversation_id, 'user_message_id': user_msg.id, 'assistant_message_id': assistant.id, 'replay': True})
                 if assistant.content:
                     yield format_sse("token", {'content': assistant.content})
-                yield format_sse("message_complete", {'assistant_message_id': assistant.id, 'status': 'completed'})
+                yield format_sse("message_complete", {'assistant_message_id': assistant.id, 'status': 'completed', 'discovery': getattr(assistant, 'discovery_payload', None)})
             return StreamingResponse(_replay(), media_type="text/event-stream")
         if assistant.status in ("failed", "cancelled"):
             _release_once()
@@ -472,8 +533,9 @@ def stream_msg(conversation_id: int, payload: MentorSendMessageRequest, request:
         try:
             yield format_sse("message_start", {'conversation_id': conversation_id, 'user_message_id': user_msg.id, 'assistant_message_id': assistant.id})
 
-            intent, context, answer, req = _prepare(db, user, payload.message)
+            intent, context, answer, req, discovery = _prepare(db, user, payload.message)
             deterministic = _deterministic_content(answer)
+            discovery_payload = _discovery_to_payload(discovery)
 
             # Emit citations from deterministic evidence.
             for ev in (answer.known or []):
@@ -571,12 +633,13 @@ def stream_msg(conversation_id: int, payload: MentorSendMessageRequest, request:
                 prompt_tokens=prompt_tokens,
                 completion_tokens=completion_tokens,
                 attempt_id=assistant.attempt_id,
+                discovery_payload=discovery_payload,
             )
             completed_successfully = True
             refreshed = db.execute(
                 __import__("sqlalchemy").select(_models.MentorMessage).where(_models.MentorMessage.id == assistant.id).execution_options(populate_existing=True)
             ).scalar_one_or_none()
-            yield format_sse("message_complete", {'assistant_message_id': assistant.id, 'status': refreshed.status if refreshed else 'completed'})
+            yield format_sse("message_complete", {'assistant_message_id': assistant.id, 'status': refreshed.status if refreshed else 'completed', 'discovery': discovery_payload})
         except GeneratorExit:
             # Client disconnected: persist terminal state, no yield.
             if not completed_successfully:

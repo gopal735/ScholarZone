@@ -1121,6 +1121,8 @@ class MentorMessage(Base):
     prompt_tokens: Mapped[int | None] = mapped_column(Integer, nullable=True)
     completion_tokens: Mapped[int | None] = mapped_column(Integer, nullable=True)
     error: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    # Structured discovery result payload (JSON). Nullable for legacy/text-only messages.
+    discovery_payload: Mapped[dict | None] = mapped_column(JSON, nullable=True)
     # Unique generation-attempt identity for retry isolation. Each reservation
     # or retry claims a new UUID; stale attempts cannot mutate a newer one.
     attempt_id: Mapped[str | None] = mapped_column(String(64), nullable=True, index=True)

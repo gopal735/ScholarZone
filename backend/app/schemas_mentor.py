@@ -49,6 +49,7 @@ class MentorMessageResponse(BaseModel):
     error: str | None = None
     created_at: datetime
     completed_at: datetime | None = None
+    discovery_payload: dict[str, Any] | None = None
 
 
 class MentorSendMessageRequest(BaseModel):
@@ -179,6 +180,8 @@ class MentorAnswerResponse(BaseModel):
     search_status: str | None = None
     query_summary: dict[str, Any] | None = None
     result_count: int = 0
+    returned_count: int = 0
     verified_matches: list[ScholarshipDiscoveryMatch] = Field(default_factory=list)
     potential_matches: list[ScholarshipDiscoveryMatch] = Field(default_factory=list)
     diagnostics: dict[str, Any] = Field(default_factory=dict)
+    pagination: dict[str, Any] | None = None

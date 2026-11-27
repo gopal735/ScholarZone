@@ -161,6 +161,12 @@ class DiscoveryResult:
     potential_matches: list[DiscoveryMatch] = field(default_factory=list)
     diagnostics: dict[str, int] = field(default_factory=dict)
     evidence: list[EvidenceItem] = field(default_factory=list)
+    total_matches: int = 0
+    returned_count: int = 0
+    page: int = 1
+    page_size: int = 0
+    total_pages: int = 0
+    has_more: bool = False
 
 
 def _match_from_row(row: Scholarship, classification: str, reason: str, supporting_fields=None) -> DiscoveryMatch:
@@ -380,6 +386,13 @@ def run_discovery(db: Session, message: str, as_of: date | None = None, limit: i
     if status in ("UNSUPPORTED_FILTER", "AMBIGUOUS_FILTER"):
         potential = []
         evidence = []
+
+    total_matches = len(eligible_ids)
+    returned_count = len(potential)
+    page = (offset // limit + 1) if limit and limit > 0 else 1
+    total_pages = ((total_matches + limit - 1) // limit) if limit and limit > 0 else (1 if total_matches > 0 else 0)
+    has_more = (offset + returned_count) < total_matches
+
     return DiscoveryResult(
         query_summary=query_summary,
         search_status=status,
@@ -387,4 +400,10 @@ def run_discovery(db: Session, message: str, as_of: date | None = None, limit: i
         potential_matches=potential,
         diagnostics=counts,
         evidence=evidence,
+        total_matches=total_matches,
+        returned_count=returned_count,
+        page=page,
+        page_size=limit,
+        total_pages=total_pages,
+        has_more=has_more,
     )

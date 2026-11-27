@@ -240,7 +240,8 @@ def ask(
             answer_schema_version=1,
             search_status=discovery.search_status,
             query_summary=discovery.query_summary,
-            result_count=len(discovery.potential_matches),
+            result_count=discovery.total_matches,
+            returned_count=discovery.returned_count,
             verified_matches=[],
             potential_matches=[
                 {
@@ -259,6 +260,14 @@ def ask(
                 for m in discovery.potential_matches
             ],
             diagnostics=discovery.diagnostics,
+            pagination={
+                "page": discovery.page,
+                "page_size": discovery.page_size,
+                "total": discovery.total_matches,
+                "total_pages": discovery.total_pages,
+                "has_more": discovery.has_more,
+                "returned": discovery.returned_count,
+            },
         )
 
     context = build_context(

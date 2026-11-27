@@ -462,6 +462,7 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
                 completion_tokens INTEGER,
                 error VARCHAR(64),
                 attempt_id VARCHAR(64),
+                discovery_payload JSONB,
                 created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
                 completed_at TIMESTAMPTZ,
                 CONSTRAINT uq_mentor_messages_conv_role_request UNIQUE (conversation_id, role, request_id)
@@ -474,6 +475,7 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
         connection.execute(text("ALTER TABLE mentor_messages ADD COLUMN IF NOT EXISTS source_user_message_id INTEGER REFERENCES mentor_messages(id) ON DELETE SET NULL"))
         connection.execute(text("CREATE INDEX IF NOT EXISTS ix_mentor_messages_source_user ON mentor_messages (source_user_message_id)"))
         connection.execute(text("ALTER TABLE mentor_messages ADD COLUMN IF NOT EXISTS attempt_id VARCHAR(64)"))
+        connection.execute(text("ALTER TABLE mentor_messages ADD COLUMN IF NOT EXISTS discovery_payload JSONB"))
         connection.execute(text("CREATE INDEX IF NOT EXISTS ix_mentor_messages_attempt ON mentor_messages (attempt_id)"))
 
         # Idempotent legacy constraint migration for request_id uniqueness.
@@ -1316,6 +1318,7 @@ def _upgrade_sqlite_schema(engine: Engine) -> None:
                 error VARCHAR(64),
                 created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
                 completed_at DATETIME,
+                discovery_payload TEXT,
                 CONSTRAINT uq_mentor_messages_conv_role_request UNIQUE (conversation_id, role, request_id)
             )
         """))
@@ -1326,6 +1329,13 @@ def _upgrade_sqlite_schema(engine: Engine) -> None:
         if inspect(connection).has_table("mentor_messages") and "source_user_message_id" not in _mentor_cols:
             connection.execute(text("ALTER TABLE mentor_messages ADD COLUMN source_user_message_id INTEGER REFERENCES mentor_messages(id) ON DELETE SET NULL"))
         connection.execute(text("CREATE INDEX IF NOT EXISTS ix_mentor_messages_source_user ON mentor_messages (source_user_message_id)"))
+        # Structured discovery payload (nullable) for history restoration.
+        _mentor_cols_dp = {c["name"] for c in inspect(connection).get_columns("mentor_messages")} if inspect(connection).has_table("mentor_messages") else set()
+        if inspect(connection).has_table("mentor_messages") and "discovery_payload" not in _mentor_cols_dp:
+            try:
+                connection.execute(text("ALTER TABLE mentor_messages ADD COLUMN discovery_payload TEXT"))
+            except Exception:
+                pass
         for _stmt in (
             "ALTER TABLE study_plans ADD COLUMN version INTEGER NOT NULL DEFAULT 1",
             "ALTER TABLE study_plan_tasks ADD COLUMN version INTEGER NOT NULL DEFAULT 1",
