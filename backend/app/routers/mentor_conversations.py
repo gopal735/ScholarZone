@@ -251,6 +251,14 @@ def delete_conv(conversation_id: int, db: Session = Depends(get_db), user: User 
     return None
 
 
+@router.get("/conversations/{conversation_id}/messages", response_model=list[MentorMessageResponse])
+def get_msgs(conversation_id: int, limit: int = Query(100, ge=1, le=500), offset: int = Query(0, ge=0), db: Session = Depends(get_db), user: User = Depends(require_user)):
+    conv = get_conversation(db, user.id, conversation_id)
+    if conv is None:
+        raise HTTPException(status_code=404, detail="conversation_not_found")
+    msgs = list_messages(db, user.id, conversation_id, limit=limit, offset=offset)
+    return [_msg_to_response(m) for m in msgs]
+
 @router.get("/conversations/{conversation_id}/messages/{message_id}/discovery")
 def get_discovery(conversation_id: int, message_id: int, page: int = Query(1, ge=1), page_size: int = Query(20, ge=1, le=100), db: Session = Depends(get_db), user: User = Depends(require_user)):
     conv = get_conversation(db, user.id, conversation_id)
