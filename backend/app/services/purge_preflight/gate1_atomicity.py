@@ -578,10 +578,10 @@ def main() -> int:
     print(json.dumps(result.to_dict(), indent=2, default=str))
 
     if result.status == "PASS":
-        print("\n✅ GATE 1 PASSED")
+        print("\n[PASS] GATE 1 PASSED")
         return 0
     else:
-        print(f"\n❌ GATE 1 {result.status}: {result.error}")
+        print(f"\n[FAIL] GATE 1 {result.status}: {result.error}")
         return 1
 
 
