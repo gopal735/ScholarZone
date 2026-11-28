@@ -205,6 +205,7 @@ jobs:
       EXPECTED_NEON_BRANCH_ID: ${{ secrets.EXPECTED_NEON_BRANCH_ID }}
       EXPECTED_NEON_BRANCH_NAME: ${{ secrets.EXPECTED_NEON_BRANCH_NAME }}
       EXPECTED_DATABASE_NAME: ${{ secrets.EXPECTED_DATABASE_NAME }}
+      EXPECTED_DATABASE_HOST: ${{ secrets.EXPECTED_DATABASE_HOST }}
       RESTORE_TEST_PGHOST: ${{ secrets.RESTORE_TEST_PGHOST }}
       RESTORE_TEST_PGPORT: ${{ secrets.RESTORE_TEST_PGPORT }}
       RESTORE_TEST_PGUSER: ${{ secrets.RESTORE_TEST_PGUSER }}
@@ -251,6 +252,27 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y -qq postgresql-client gnupg > /dev/null 2>&1
 
+      - name: Provision GPG keys (isolated keyring)
+        env:
+          GPG_PUBLIC_KEY: ${{ secrets.GPG_PUBLIC_KEY }}
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+          GPG_EXPECTED_FINGERPRINT: ${{ secrets.GPG_EXPECTED_FINGERPRINT }}
+        run: |
+          set -euo pipefail
+          GNUPGHOME="$(mktemp -d)"
+          export GNUPGHOME
+          chmod 700 "$GNUPGHOME"
+          printf '%s' "$GPG_PUBLIC_KEY" | gpg --batch --import
+          printf '%s' "$GPG_PRIVATE_KEY" | gpg --batch --pinentry-mode loopback --passphrase "" --import
+          FPR="$(gpg --batch --with-colons --list-secret-keys | awk -F: '/^fpr:/ {print $10; exit}')"
+          if [ "$FPR" != "$GPG_EXPECTED_FINGERPRINT" ]; then
+            echo "GPG fingerprint mismatch: $FPR != $GPG_EXPECTED_FINGERPRINT"
+            exit 1
+          fi
+          echo "GNUPGHOME=$GNUPGHOME" >> "$GITHUB_ENV"
+          echo "GPG key provisioned: $FPR"
+
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -272,6 +294,13 @@ jobs:
             gate4_result.json
             *.sha256
           retention-days: 30
+
+      - name: Clean up ephemeral GPG keyring
+        if: always()
+        run: |
+          if [ -n "${GNUPGHOME:-}" ] && [ -d "${GNUPGHOME}" ]; then
+            rm -rf "${GNUPGHOME}"
+          fi
 
   gate5-classification:
     name: Gate 5 - Target Classification Validation
@@ -372,11 +401,25 @@ jobs:
     timeout-minutes: 5
     permissions:
       contents: read
+    env:
+      STAGE1_MASTER_SHA: ${{ github.sha }}
     steps:
+      - name: Verify repository and ref
+        run: |
+          if [ "${{ github.repository }}" != "gopal735/ScholarZone" ]; then
+            echo "ERROR: unexpected repository: ${{ github.repository }}"
+            exit 1
+          fi
+          if [ "${{ github.ref }}" != "refs/heads/master" ]; then
+            echo "ERROR: workflow must run from refs/heads/master, got ${{ github.ref }}"
+            exit 1
+          fi
+          echo "Repository and ref verified"
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Full history for git safety checks
+          ref: ${{ github.sha }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -417,7 +460,7 @@ jobs:
       - name: Upload Summary
         uses: actions/upload-artifact@v4
         with:
-          name: preflight-summary
+          name: production-preflight-summary
           path: |
             artifacts/gate1_result.json
             artifacts/gate2_result.json

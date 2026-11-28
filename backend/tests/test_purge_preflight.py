@@ -2569,3 +2569,95 @@ def test_regression_gate5_classification_mismatch():
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v", "--tb=short"])
+
+
+def test_config_provider_conditional_credential_secret_s3_requires():
+    """S3 provider requires DURABLE_STORAGE_CREDENTIAL_SECRET."""
+    from app.services.purge_preflight.config import PreflightConfig
+    import os
+    for key in list(os.environ.keys()):
+        if key.startswith(('SCHOLARZONE_', 'EXPECTED_', 'GPG_', 'RESTORE_TEST_', 'TEST_DATABASE_', 'ARTIFACT_', 'DURABLE_')):
+            del os.environ[key]
+    os.environ['SCHOLARZONE_DATABASE_URL_BACKUP'] = 'postgresql://backup@localhost/db'
+    os.environ['GPG_RECIPIENT'] = 'test@example.com'
+    os.environ['GPG_EXPECTED_FINGERPRINT'] = 'A' * 40
+    os.environ['RESTORE_TEST_PGHOST'] = 'localhost'
+    os.environ['RESTORE_TEST_PGPORT'] = '5432'
+    os.environ['RESTORE_TEST_PGUSER'] = 'test'
+    os.environ['RESTORE_TEST_PGPASSWORD'] = 'test'
+    os.environ['DURABLE_STORAGE_PROVIDER'] = 's3'
+    os.environ['DURABLE_STORAGE_BUCKET'] = 'bucket'
+    os.environ['DURABLE_STORAGE_REGION'] = 'us-east-1'
+    os.environ['DURABLE_STORAGE_CREDENTIAL'] = 'AKIAEXAMPLE'
+    os.environ['EXPECTED_NEON_PROJECT_ID'] = 'proj'
+    os.environ['EXPECTED_NEON_BRANCH_ID'] = 'br'
+    os.environ['EXPECTED_NEON_BRANCH_NAME'] = 'main'
+    os.environ['EXPECTED_DATABASE_NAME'] = 'db'
+    os.environ['EXPECTED_DATABASE_HOST'] = 'localhost'
+    try:
+        PreflightConfig.from_env(gates_to_run={'gate4'})
+        assert False, "Should require credential secret for s3"
+    except ValueError as e:
+        assert "DURABLE_STORAGE_CREDENTIAL_SECRET" in str(e)
+
+
+def test_config_provider_conditional_credential_secret_gcs_not_required():
+    """GCS provider does not require DURABLE_STORAGE_CREDENTIAL_SECRET."""
+    from app.services.purge_preflight.config import PreflightConfig
+    import os
+    for key in list(os.environ.keys()):
+        if key.startswith(('SCHOLARZONE_', 'EXPECTED_', 'GPG_', 'RESTORE_TEST_', 'TEST_DATABASE_', 'ARTIFACT_', 'DURABLE_')):
+            del os.environ[key]
+    os.environ['SCHOLARZONE_DATABASE_URL_BACKUP'] = 'postgresql://backup@localhost/db'
+    os.environ['GPG_RECIPIENT'] = 'test@example.com'
+    os.environ['GPG_EXPECTED_FINGERPRINT'] = 'A' * 40
+    os.environ['RESTORE_TEST_PGHOST'] = 'localhost'
+    os.environ['RESTORE_TEST_PGPORT'] = '5432'
+    os.environ['RESTORE_TEST_PGUSER'] = 'test'
+    os.environ['RESTORE_TEST_PGPASSWORD'] = 'test'
+    os.environ['DURABLE_STORAGE_PROVIDER'] = 'gcs'
+    os.environ['DURABLE_STORAGE_BUCKET'] = 'bucket'
+    os.environ['DURABLE_STORAGE_REGION'] = 'us'
+    os.environ['DURABLE_STORAGE_CREDENTIAL'] = '/path/sa.json'
+    os.environ['EXPECTED_NEON_PROJECT_ID'] = 'proj'
+    os.environ['EXPECTED_NEON_BRANCH_ID'] = 'br'
+    os.environ['EXPECTED_NEON_BRANCH_NAME'] = 'main'
+    os.environ['EXPECTED_DATABASE_NAME'] = 'db'
+    os.environ['EXPECTED_DATABASE_HOST'] = 'localhost'
+    config = PreflightConfig.from_env(gates_to_run={'gate4'})
+    assert config.durable_storage.provider == 'gcs'
+    assert config.durable_storage.credential_secret == ''
+
+
+def test_database_host_normalization_match():
+    """Host validation normalizes case and trailing dot."""
+    from app.services.purge_preflight.database import DatabaseAccessor, DatabaseConfig, DatabaseIdentity
+    cfg = DatabaseConfig(expected_database_name='db', expected_neon_project_id='p',
+                          expected_neon_branch_id='b', expected_neon_branch_name='main',
+                          expected_database_host='Example.COM.')
+    accessor = DatabaseAccessor(cfg)
+    identity = DatabaseIdentity(
+        database_name='db', server_version='v', current_user='u',
+        server_address='example.com', server_port=5432, connection_host=None,
+        neon_project_id='p', neon_branch_id='b', neon_branch_name='main',
+        is_read_only=True, in_transaction=False,
+    )
+    errors = accessor.validate_identity(identity)
+    assert errors == [], errors
+
+
+def test_database_host_normalization_mismatch():
+    """Different host is rejected after normalization."""
+    from app.services.purge_preflight.database import DatabaseAccessor, DatabaseConfig, DatabaseIdentity
+    cfg = DatabaseConfig(expected_database_name='db', expected_neon_project_id='p',
+                          expected_neon_branch_id='b', expected_neon_branch_name='main',
+                          expected_database_host='expected.example.com')
+    accessor = DatabaseAccessor(cfg)
+    identity = DatabaseIdentity(
+        database_name='db', server_version='v', current_user='u',
+        server_address='other.example.com', server_port=5432, connection_host=None,
+        neon_project_id='p', neon_branch_id='b', neon_branch_name='main',
+        is_read_only=True, in_transaction=False,
+    )
+    errors = accessor.validate_identity(identity)
+    assert any('host mismatch' in e.lower() or 'Database host mismatch' in e for e in errors), errors

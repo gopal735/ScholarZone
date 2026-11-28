@@ -1,279 +1,93 @@
 # REQUIRED GITHUB CONFIGURATION
 
-## Overview
-This document lists all GitHub environments, secrets, and permissions required for the production purge preflight workflow.
+Source of truth: `backend/app/services/purge_preflight/config.py`,
+`backend/app/services/purge_preflight/database.py`, and the workflow files under
+`.github/workflows/`. This document must not be used to override code.
 
-## Required Environments
+## Workflow roles
 
-### 1. production-readonly
-**Purpose:** Gates 2 (Identity) and 3 (Dependencies) - Read-only production access
+- `production-purge-preflight.yml` — operator-run preflight (Gates 1-7).
+- `closed-scholarship-purge-preflight.yml` — PR #107 Stage 1 preflight (merge-commit verified).
+- `closed-scholarship-purge-execute.yml` — Stage 2 execution (separately authorized, not part of this prompt).
 
-**Configuration:**
-- **Name:** `production-readonly`
-- **URL:** `https://console.neon.tech`
-- **Protection Rules:**
-  - ✅ Required reviewers: 1+ required
-  - ✅ Wait timer: 0 minutes
-  - ✅ Deployment branch policy: `main` / `master` only
-- **Secrets:**
-  - `SCHOLARZONE_DATABASE_URL_RO` - Read-only Neon PostgreSQL connection string
-  - `EXPECTED_NEON_PROJECT_ID` - Expected Neon project ID (e.g., `scholarzone-production`)
-  - `EXPECTED_NEON_BRANCH_ID` - Expected branch ID (e.g., `br-xxxxxxxxx`)
-  - `EXPECTED_NEON_BRANCH_NAME` - Expected branch name (default: `main`)
-  - `EXPECTED_DATABASE_NAME` - Expected database name (e.g., `scholarzone`)
-
-**Branch Restriction:** Only `main` / `master` branch can deploy to this environment
-
-**Required Reviewers:** At least 1 required reviewer
-
-### 2. production-backup
-**Purpose:** Gate 4 - Production Backup & Verification
-
-**Configuration:**
-- **Name:** `production-backup`
-- **URL:** `https://console.neon.tech`
-- **Protection Rules:**
-  - ✅ Required reviewers: 1+ required
-  - ✅ Wait timer: 0 minutes
-  - ✅ Deployment branch policy: `main` / `master` only
-- **Secrets:**
-  - `SCHOLARZONE_DATABASE_URL_BACKUP` - Backup role Neon PostgreSQL connection string
-  - `GPG_RECIPIENT` - GPG key ID for encryption (e.g., `backup@scholarzone.org`)
-  - `BACKUP_ENCRYPTION_PASSPHRASE` - Optional symmetric encryption passphrase
-  - `BACKUP_STORAGE_BUCKET` - Optional: S3/GCS bucket for durable backup storage
-  - `BACKUP_STORAGE_CREDENTIALS` - Optional: Credentials for backup storage
-
-**Branch Restriction:** Only `main` / `master` branch can deploy to this environment
-
-**Required Reviewers:** At least 1 required reviewer
-
----
-
-## Required Secrets Summary
-
-| Secret | Environment | Description |
-|--------|-------------|-------------|
-| `SCHOLARZONE_DATABASE_URL_RO` | `production-readonly` | Read-only Neon PostgreSQL connection string |
-| `EXPECTED_NEON_PROJECT_ID` | `production-readonly` | Expected Neon project ID (e.g., `scholarzone-production`) |
-| `EXPECTED_NEON_BRANCH_ID` | `production-readonly` | Expected Neon branch ID (e.g., `br-xxxxxxxxx`) |
-| `EXPECTED_NEON_BRANCH_NAME` | `production-readonly` | Expected branch name (default: `main`) |
-| `EXPECTED_DATABASE_NAME` | `production-readonly` | Expected database name (e.g., `scholarzone`) |
-| `SCHOLARZONE_DATABASE_URL_BACKUP` | `production-backup` | Backup role Neon PostgreSQL connection string |
-| `GPG_RECIPIENT` | `production-backup` | GPG key ID for encryption (e.g., `backup@scholarzone.org`) |
-| `BACKUP_ENCRYPTION_PASSPHRASE` | `production-backup` | Optional symmetric encryption passphrase |
-| `BACKUP_STORAGE_BUCKET` | `production-backup` | Optional: S3/GCS bucket for durable backup storage |
-| `BACKUP_STORAGE_CREDENTIALS` | `production-backup` | Optional: Credentials for backup storage |
-
----
-
-## GitHub Actions Workflow Permissions
-
-### Workflow: `production-purge-preflight.yml`
-
-**Permissions:**
-```yaml
-permissions:
-  contents: read
-  actions: read
-  checks: write
-  id-token: write  # For OIDC if needed
-```
-
-**Job Permissions:**
-- Gate 2 & 3 jobs: `contents: read`, `id-token: write`
-- Gate 4 job: `contents: read`
-- Summary job: `contents: read`
-
----
-
-## Environment Protection Rules
+## Environments
 
 ### production-readonly
-- ✅ Required reviewers: 1+
-- ✅ Wait timer: 0 minutes
-- ✅ Deployment branches: `main`, `master` only
-- ✅ No self-review by workflow author
+- Branch policy: `master` only (verified via GitHub API).
+- Required reviewers: **none currently** (owner policy decision; see section 6).
+- Secrets: `SCHOLARZONE_DATABASE_URL_RO`.
+- Variables or secrets (workflows currently read via `secrets.*`): `EXPECTED_NEON_PROJECT_ID`, `EXPECTED_NEON_BRANCH_ID`, `EXPECTED_NEON_BRANCH_NAME`, `EXPECTED_DATABASE_NAME`, `EXPECTED_DATABASE_HOST`.
+- Gates: 2, 3, 5, 6.
 
 ### production-backup
-- ✅ Required reviewers: 1+
-- ✅ Wait timer: 0 minutes
-- ✅ Deployment branches: `main`, `master` only
-- ✅ No self-review by workflow author
+- Branch policy: `master` only (verified via GitHub API).
+- Required reviewers: 1 (`gopal735`) (verified via GitHub API).
+- Secrets: `SCHOLARZONE_DATABASE_URL_BACKUP`, `RESTORE_TEST_PGPASSWORD`, `DURABLE_STORAGE_CREDENTIAL_SECRET` (S3 only), `NEON_API_KEY`, and (for the closed workflow's GPG provisioning) `GPG_PUBLIC_KEY`, `GPG_PRIVATE_KEY`.
+- Variables or secrets (workflows currently read via `secrets.*`): `GPG_RECIPIENT`, `GPG_EXPECTED_FINGERPRINT`, `RESTORE_TEST_PGHOST`, `RESTORE_TEST_PGPORT`, `RESTORE_TEST_PGUSER`, `EXPECTED_NEON_PROJECT_ID`, `EXPECTED_NEON_BRANCH_ID`, `EXPECTED_NEON_BRANCH_NAME`, `EXPECTED_DATABASE_NAME`, `EXPECTED_DATABASE_HOST`, `DURABLE_STORAGE_PROVIDER`, `DURABLE_STORAGE_BUCKET`, `DURABLE_STORAGE_REGION`, `DURABLE_STORAGE_CREDENTIAL`, `AZURE_CLIENT_ID`, `AZURE_TENANT_ID`, `AZURE_SUBSCRIPTION_ID`.
+- Gates: 4.
 
----
+### production
+- Used only by Stage 2 execution. No configuration action is authorized under this prompt.
 
-## Workflow Dispatch Configuration
+## Gate dependency matrix
 
-The workflow uses `workflow_dispatch` with these inputs:
+| Gate | Required configuration |
+|---|---|
+| Gate 1 | `TEST_DATABASE_URL` (disposable local PostgreSQL only) |
+| Gate 2 | `SCHOLARZONE_DATABASE_URL_RO`, `EXPECTED_NEON_PROJECT_ID`, `EXPECTED_NEON_BRANCH_ID`, `EXPECTED_NEON_BRANCH_NAME`, `EXPECTED_DATABASE_NAME` |
+| Gate 3 | Same as Gate 2, plus deletion manifest artifact |
+| Gate 4 | `SCHOLARZONE_DATABASE_URL_BACKUP`, `GPG_RECIPIENT`, `GPG_EXPECTED_FINGERPRINT`, `RESTORE_TEST_PGHOST`, `RESTORE_TEST_PGPORT`, `RESTORE_TEST_PGUSER`, `RESTORE_TEST_PGPASSWORD`, `DURABLE_STORAGE_PROVIDER`, `DURABLE_STORAGE_BUCKET`, `DURABLE_STORAGE_REGION`, `DURABLE_STORAGE_CREDENTIAL`, `EXPECTED_NEON_PROJECT_ID`, `EXPECTED_NEON_BRANCH_ID`, `EXPECTED_NEON_BRANCH_NAME`, `EXPECTED_DATABASE_NAME`, `EXPECTED_DATABASE_HOST`, plus `DURABLE_STORAGE_CREDENTIAL_SECRET` only when provider is `s3` |
+| Gate 5 | Same as Gate 2, plus deletion manifest artifact |
+| Gate 6 | Same as Gate 2, plus deletion manifest artifact |
+| Gate 7 | `STAGE1_MASTER_SHA` (passed by workflow from `github.sha`); no database configuration |
 
-```yaml
-on:
-  workflow_dispatch:
-    inputs:
-      gate:
-        description: "Which gate to execute"
-        required: true
-        type: choice
-        options:
-          - "gate1-atomicity"
-          - "gate2-identity"
-          - "gate3-dependencies"
-          - "gate4-backup"
-          - "all"
-      confirm_environment:
-        description: "Confirm this runs against PRODUCTION Neon database"
-        required: true
-        type: boolean
-```
+## Provider-conditional durable storage
 
----
+- `s3`: requires `DURABLE_STORAGE_CREDENTIAL` (access key id) and `DURABLE_STORAGE_CREDENTIAL_SECRET` (secret access key).
+- `gcs`: requires `DURABLE_STORAGE_CREDENTIAL` (service account JSON path). `DURABLE_STORAGE_CREDENTIAL_SECRET` is not consumed.
+- `azure`: requires `DURABLE_STORAGE_CREDENTIAL` (storage account name). Uses OIDC via `azure/login`; no client secret is supported.
 
-## Branch Protection for Deployment
+## Optional / internal defaults
 
-The workflow uses `workflow_dispatch` trigger, so it can only be triggered manually.
+- `DURABLE_STORAGE_PREFIX` — internal default `purge-preflight-backups/`. Not mapped in workflows; do not override without review.
+- `ARTIFACT_RETENTION_DAYS` — internal default `30`.
+- `SCHOLARZONE_TEST_MODE` — internal default false. Must never be enabled in production workflows.
+- `MANIFEST_PATH` — internal default `artifacts/deletion_manifest.json`.
+- `NEON_API_KEY` — optional but recommended for authoritative PITR verification (Gate 4). Without it, PITR status is `UNVERIFIED`.
+- `AZURE_CLIENT_ID`, `AZURE_TENANT_ID`, `AZURE_SUBSCRIPTION_ID` — required only when provider is `azure`.
+- `GPG_PUBLIC_KEY`, `GPG_PRIVATE_KEY` — required only in workflows that provision an ephemeral keyring (closed preflight).
 
-**Branch Restriction:** The workflow file must exist on the `main` branch to be manually dispatched.
+## GPG handling
 
-**Branch Protection:** `main` branch should have:
-- ✅ Require pull request reviews
-- ✅ Require status checks to pass
-- ✅ Require branches to be up to date
-- ✅ Include administrators
-- ✅ No force pushes
-- ✅ No deletions
+- Production workflows provision an ephemeral `GNUPGHOME` (mode 700) from `GPG_PUBLIC_KEY` and `GPG_PRIVATE_KEY`.
+- Keys are imported via stdin; private key material is never placed in argv.
+- Fingerprint is verified after import against `GPG_EXPECTED_FINGERPRINT`.
+- The ephemeral keyring is removed in an `if: always()` cleanup step.
+- Private key material is never uploaded as an artifact or cached.
 
----
+## Owner policy (not changed by this repository)
 
-## Secret Management
+### production-readonly reviewers
+Currently none. Recommendation: add at least one required reviewer because read-only
+credentials can expose sensitive production data. Trade-off: each manual preflight
+run waits for approval.
 
-### Production Secrets (Never in Repository)
-| Secret | Environment | Source |
-|--------|-------------|--------|
-| `SCHOLARZONE_DATABASE_URL_RO` | GitHub Actions Secret → `production-readonly` | Neon Dashboard → Connection String (read-only role) |
-| `SCHOLARZONE_DATABASE_URL_BACKUP` | `production-backup` | Neon Dashboard → Connection String (backup role) |
-| `EXPECTED_NEON_PROJECT_ID` | `production-readonly` | Neon Console → Project Settings → Project ID |
-| `EXPECTED_NEON_BRANCH_ID` | `production-readonly` | Neon Console → Branches → main → Branch ID |
-| `EXPECTED_NEON_BRANCH_NAME` | `production-readonly` | `main` (or actual branch name) |
-| `EXPECTED_DATABASE_NAME` | `production-readonly` | Database name (e.g., `scholarzone`) |
-| `SCHOLARZONE_DATABASE_URL_BACKUP` | `production-backup` | Neon Dashboard → Connection String (backup role) |
-| `GPG_RECIPIENT` | `production-backup` | GPG Key ID (e.g., `backup@scholarzone.org`) |
-| `BACKUP_ENCRYPTION_PASSPHRASE` | `production-backup` | High-entropy passphrase from password manager |
-| `BACKUP_STORAGE_BUCKET` | `production-backup` | S3/GCS bucket name (optional) |
-| `BACKUP_STORAGE_CREDENTIALS` | `production-backup` | AWS/GCP credentials for backup storage |
+### master branch protection
+Currently not enabled (API returned 404). Recommendation: enable branch protection
+with pull-request requirement, no force push, no deletion, required status checks,
+and restricted bypass. Preserve an emergency recovery procedure.
 
----
+## Obsolete names (do not use)
 
-## GPG Key Management
+The following names are not part of the current purge-preflight contract and must
+not be provisioned as required secrets: `BACKUP_ENCRYPTION_PASSPHRASE`,
+`BACKUP_STORAGE_BUCKET`, `BACKUP_STORAGE_CREDENTIALS`.
 
-### Generating Backup GPG Key
-```bash
-# Generate key (run once, store private key securely)
-gpg --full-generate-key
-# Key type: RSA and RSA
-# Key size: 4096
-# Expiration: 2y (or never)
-# Name: ScholarZone Backup
-# Email: backup@scholarzone.org
+## Secret handling
 
-# Export public key
-gpg --armor --export backup@scholarzone.org > backup.pub
-
-# Export private key (store securely OFFLINE)
-gpg --armor --export-secret-keys backup@scholarzone.org > backup.sec
-
-# Get key ID
-gpg --list-keys backup@scholarzone.org
-# Use the key ID (e.g., ABCDEF123456) as GPG_RECIPIENT
-```
-
-### GPG Key Distribution
-- **Public key:** Commit to repository or distribute to team
-- **Private key:** Store in 1Password/LastPass/Bitwarden + offline backup
-- **GitHub Actions:** Use `GPG_RECIPIENT` secret (key ID only)
-
----
-
-## GitHub Actions Workflow Permissions
-
-```yaml
-permissions:
-  contents: read
-  actions: read
-  checks: write
-  id-token: write  # For OIDC if needed
-```
-
-**Job-specific permissions:**
-- Gate 2 & 3: `contents: read`, `id-token: write`
-- Gate 4: `contents: read`
-- Summary: `contents: read`
-
----
-
-## Branch Protection for Deployment
-
-The workflow uses `workflow_dispatch` (manual trigger), so:
-
-**Branch Protection for `main`:**
-- ✅ Require pull request reviews (1+)
-- ✅ Require status checks to pass
-- ✅ Require branches to be up to date
-- ✅ Include administrators
-- ✅ No force pushes
-- ✅ No deletions
-
-**Branch Protection for `fix/production-expired-cycle-purge`:**
-- ✅ Same as main
-- ✅ This is the feature branch for the purge PR
-
----
-
-## Verification Checklist Before Running
-
-- [ ] `production-readonly` environment exists with required reviewers
-- [ ] `production-backup` environment exists with required reviewers
-- [ ] All 10 secrets configured in correct environments
-- [ ] Branch protection rules active on `main`
-- [ ] Workflow file on `main` branch (or merged PR)
-- [ ] Neon PITR verified: `history_retention_seconds >= 604800`
-- [ ] GPG key generated and recipient configured
-- [ ] GPG private key stored in secure key service
-- [ ] GPG recipient fingerprint verified
-- [ ] `EXPECTED_NEON_PROJECT_ID` matches actual Neon project
-- [ ] `EXPECTED_NEON_BRANCH_ID` matches actual Neon branch
-- [ ] `EXPECTED_DATABASE_NAME` matches actual database name
-- [ ] Workflow file on `main` branch (or merged PR)
-- [ ] PR #67 open with preflight workflow
-
----
-
-## Verification Commands
-
-```bash
-# Verify Neon project ID
-gh api repos/gopal735/ScholarZone/secrets/SCHOLARZONE_DATABASE_URL_RO --jq '.name'
-
-# Check environment exists
-gh api repos/gopal735/ScholarZone/environments/production-readonly
-gh api repos/gopal735/ScholarZone/environments/production-backup
-
-# Check branch protection
-gh api repos/gopal735/ScholarZone/branches/main/protection
-
-# Test workflow dispatch (dry run)
-gh workflow run production-purge-preflight.yml --ref fix/production-expired-cycle-purge \
-  -f gate=all -f confirm_environment=true
-```
-
----
-
-## Security Notes
-
-1. **Never commit secrets** to repository
-2. **Use GitHub Environments** for secret isolation
-3. **Rotate credentials** after purge if needed
-4. **Monitor** workflow runs for unauthorized access
-5. **Audit** environment access quarterly
-6. **Backup GPG private key** offline in secure location
-7. **Rotate** database passwords annually
-8. **Review** environment access quarterly
+- Never commit secrets.
+- Never print secret values.
+- Never share connection strings, passwords, API keys, GPG private keys, or storage credentials.
+- Validate configuration privately through the gates after provisioning.
+filePath">
+C:\Users\GopaL\AppData\Local\Temp\kilo\audit-master-pr116\docs\operations\purge\REQUIRED_GITHUB_CONFIGURATION.md

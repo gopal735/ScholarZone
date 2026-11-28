@@ -543,31 +543,29 @@ def verify_preflight_summary_artifact(
         if gate.get("status") != "PASS":
             raise ProvenanceVerificationError(f"preflight gate {gate_id} status is {gate.get('status')!r}, not PASS")
 
-    # Workflow identity binding.
-    if expected_workflow and summary.get("workflow") not in (None, ""):
-        if str(summary.get("workflow")) != str(expected_workflow):
-            raise ProvenanceVerificationError("preflight summary workflow mismatch")
+    # Workflow identity binding. Mandatory: missing/empty fails closed.
+    if str(summary.get("workflow", "")) != str(expected_workflow):
+        raise ProvenanceVerificationError("preflight summary workflow mismatch")
 
     # Commit identity binding: the summary must carry the complete canonical
     # 40-character Stage 1 commit SHA, compared by exact equality (no prefix
-    # matching).
-    if expected_commit_sha and summary.get("commit_sha") not in (None, ""):
-        summary_commit = str(summary.get("commit_sha"))
-        if not is_valid_sha(summary_commit):
-            raise ProvenanceVerificationError(
-                f"preflight summary commit SHA invalid: {summary_commit!r}"
-            )
-        if summary_commit != str(expected_commit_sha):
-            raise ProvenanceVerificationError("preflight summary commit SHA mismatch")
+    # matching). Mandatory: missing/empty/invalid fails closed.
+    summary_commit = str(summary.get("commit_sha", ""))
+    if not is_valid_sha(summary_commit):
+        raise ProvenanceVerificationError(
+            f"preflight summary commit SHA invalid: {summary_commit!r}"
+        )
+    if summary_commit != str(expected_commit_sha):
+        raise ProvenanceVerificationError("preflight summary commit SHA mismatch")
 
-    if summary.get("run_id") not in (None, "") and str(summary.get("run_id")) != str(expected_run_id):
+    # Run identity binding. Mandatory: missing/empty fails closed.
+    if str(summary.get("run_id", "")) != str(expected_run_id):
         raise ProvenanceVerificationError("preflight summary run_id mismatch")
-    if summary.get("run_attempt") not in (None, ""):
-        try:
-            if int(summary.get("run_attempt")) != int(expected_run_attempt):
-                raise ProvenanceVerificationError("preflight summary run_attempt mismatch")
-        except (TypeError, ValueError):
-            raise ProvenanceVerificationError("invalid preflight summary run_attempt")
+    try:
+        if int(summary.get("run_attempt")) != int(expected_run_attempt):
+            raise ProvenanceVerificationError("preflight summary run_attempt mismatch")
+    except (TypeError, ValueError):
+        raise ProvenanceVerificationError("invalid preflight summary run_attempt")
 
 
 def main() -> int:
