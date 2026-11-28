@@ -240,7 +240,9 @@ class DatabaseAccessor:
             )
 
         effective_host = identity.connection_host or identity.server_address
-        if self.config.expected_database_host and (effective_host or "").strip().lower() != self.config.expected_database_host.strip().lower():
+        expected_host = (self.config.expected_database_host or "").strip().lower().rstrip(".")
+        observed_host = (effective_host or "").strip().lower().rstrip(".")
+        if expected_host and observed_host != expected_host:
             errors.append(
                 f"Database host mismatch: expected {self.config.expected_database_host}, got {effective_host}"
             )

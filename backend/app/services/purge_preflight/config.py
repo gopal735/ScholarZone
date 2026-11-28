@@ -92,7 +92,7 @@ class PreflightConfig:
         "gate1": {"TEST_DATABASE_URL"},
         "gate2": {"SCHOLARZONE_DATABASE_URL_RO", "EXPECTED_NEON_PROJECT_ID", "EXPECTED_NEON_BRANCH_ID", "EXPECTED_NEON_BRANCH_NAME", "EXPECTED_DATABASE_NAME"},
         "gate3": {"SCHOLARZONE_DATABASE_URL_RO", "EXPECTED_NEON_PROJECT_ID", "EXPECTED_NEON_BRANCH_ID", "EXPECTED_NEON_BRANCH_NAME", "EXPECTED_DATABASE_NAME"},
-        "gate4": {"SCHOLARZONE_DATABASE_URL_BACKUP", "GPG_RECIPIENT", "GPG_EXPECTED_FINGERPRINT", "RESTORE_TEST_PGHOST", "RESTORE_TEST_PGPORT", "RESTORE_TEST_PGUSER", "RESTORE_TEST_PGPASSWORD", "DURABLE_STORAGE_PROVIDER", "DURABLE_STORAGE_BUCKET", "DURABLE_STORAGE_REGION", "DURABLE_STORAGE_CREDENTIAL", "DURABLE_STORAGE_CREDENTIAL_SECRET", "EXPECTED_NEON_PROJECT_ID", "EXPECTED_NEON_BRANCH_ID", "EXPECTED_NEON_BRANCH_NAME", "EXPECTED_DATABASE_NAME", "EXPECTED_DATABASE_HOST"},
+        "gate4": {"SCHOLARZONE_DATABASE_URL_BACKUP", "GPG_RECIPIENT", "GPG_EXPECTED_FINGERPRINT", "RESTORE_TEST_PGHOST", "RESTORE_TEST_PGPORT", "RESTORE_TEST_PGUSER", "RESTORE_TEST_PGPASSWORD", "DURABLE_STORAGE_PROVIDER", "DURABLE_STORAGE_BUCKET", "DURABLE_STORAGE_REGION", "DURABLE_STORAGE_CREDENTIAL", "EXPECTED_NEON_PROJECT_ID", "EXPECTED_NEON_BRANCH_ID", "EXPECTED_NEON_BRANCH_NAME", "EXPECTED_DATABASE_NAME", "EXPECTED_DATABASE_HOST"},
         "gate5": {"SCHOLARZONE_DATABASE_URL_RO", "EXPECTED_NEON_PROJECT_ID", "EXPECTED_NEON_BRANCH_ID", "EXPECTED_NEON_BRANCH_NAME", "EXPECTED_DATABASE_NAME"},
         "gate6": {"SCHOLARZONE_DATABASE_URL_RO", "EXPECTED_NEON_PROJECT_ID", "EXPECTED_NEON_BRANCH_ID", "EXPECTED_NEON_BRANCH_NAME", "EXPECTED_DATABASE_NAME"},
         "gate7": set(),  # No environment variables required
@@ -122,11 +122,21 @@ class PreflightConfig:
             required = set()
             for gate_reqs in cls.GATE_REQUIREMENTS.values():
                 required.update(gate_reqs)
+            provider = (os.getenv("DURABLE_STORAGE_PROVIDER") or "").strip().lower()
+            if provider == "s3":
+                required.add("DURABLE_STORAGE_CREDENTIAL_SECRET")
             return required
         required = set()
         for gate in gates_to_run:
             if gate in cls.GATE_REQUIREMENTS:
                 required.update(cls.GATE_REQUIREMENTS[gate])
+        # DURABLE_STORAGE_CREDENTIAL_SECRET is consumed only by the S3 provider.
+        # Make it mandatory only when Gate 4 runs against S3, so GCS/Azure are
+        # not blocked by an unused field.
+        if "gate4" in (gates_to_run or set()):
+            provider = (os.getenv("DURABLE_STORAGE_PROVIDER") or "").strip().lower()
+            if provider == "s3":
+                required.add("DURABLE_STORAGE_CREDENTIAL_SECRET")
         return required
 
     @classmethod

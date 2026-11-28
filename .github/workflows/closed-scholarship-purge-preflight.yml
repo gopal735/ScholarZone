@@ -241,6 +241,7 @@ jobs:
       EXPECTED_NEON_BRANCH_ID: ${{ secrets.EXPECTED_NEON_BRANCH_ID }}
       EXPECTED_NEON_BRANCH_NAME: ${{ secrets.EXPECTED_NEON_BRANCH_NAME }}
       EXPECTED_DATABASE_NAME: ${{ secrets.EXPECTED_DATABASE_NAME }}
+      EXPECTED_DATABASE_HOST: ${{ secrets.EXPECTED_DATABASE_HOST }}
       RESTORE_TEST_PGHOST: ${{ secrets.RESTORE_TEST_PGHOST }}
       RESTORE_TEST_PGPORT: ${{ secrets.RESTORE_TEST_PGPORT }}
       RESTORE_TEST_PGUSER: ${{ secrets.RESTORE_TEST_PGUSER }}
@@ -325,6 +326,12 @@ jobs:
 
           '
         retention-days: 30
+    - name: Clean up ephemeral GPG keyring
+      if: always()
+      run: |
+        if [ -n "${GNUPGHOME:-}" ] && [ -d "${GNUPGHOME}" ]; then
+          rm -rf "${GNUPGHOME}"
+        fi
   preflight-gate5-classification:
     name: Gate 5 - Target Classification Validation
     needs:
